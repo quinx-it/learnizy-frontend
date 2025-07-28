@@ -5,8 +5,8 @@
 1. Клонирование репозитория
 
 ```bash
-git clone https://github.com/pxel-pioneer/stroim-rai.git
-cd stroim-rai
+git clone https://github.com/pxel-pioneer/pxel-educational-project-frontend.git
+cd pxel-educational-project-frontend
 ```
 
 2. Установка Yarn (если не установлен)
