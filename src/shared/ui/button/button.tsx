@@ -14,8 +14,7 @@ const buttonVariants = cva(baseStyles, {
   variants: {
     variant: {
       blue: 'bg-medium hover:bg-dark disabled:bg-soft',
-      yellow:
-        'bg-yellow-pale text-black hover:bg-yellow',
+      yellow: 'bg-yellow-pale text-black hover:bg-yellow',
       white:
         'bg-light border border-medium text-black hover:bg-medium hover:text-light active:border-medium md:active:text-light disabled:border-gray disabled:text-gray',
     },
@@ -35,43 +34,48 @@ function Button({
   className,
   variant,
   size,
+  onClick,
   asChild = false,
   ...props
 }: React.ComponentProps<'button'> &
   VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
+    asChild?: boolean;
   }) {
-  const Comp = asChild ? Slot : 'button'
+  const Comp = asChild ? Slot : 'button';
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const button = e.currentTarget
-    const circle = document.createElement('span')
-    circle.setAttribute('aria-hidden', 'true')
-    const diameter = Math.max(button.clientWidth, button.clientHeight)
-    const radius = diameter / 2
+    const button = e.currentTarget;
+    const circle = document.createElement('span');
+    circle.setAttribute('aria-hidden', 'true');
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const radius = diameter / 2;
 
-    circle.style.width = circle.style.height = `${diameter}px`
-    circle.style.left = `${e.clientX - button.getBoundingClientRect().left - radius}px`
-    circle.style.top = `${e.clientY - button.getBoundingClientRect().top - radius}px`
-    circle.classList.add('ripple')
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${e.clientX - button.getBoundingClientRect().left - radius}px`;
+    circle.style.top = `${e.clientY - button.getBoundingClientRect().top - radius}px`;
+    circle.classList.add('ripple');
 
-    const ripple = button.getElementsByClassName('ripple')[0]
+    const ripple = button.getElementsByClassName('ripple')[0];
     if (ripple) {
-      ripple.remove()
+      ripple.remove();
     }
 
-    button.appendChild(circle)
-  }
+    button.appendChild(circle);
+
+    if (typeof onClick === 'function') {
+      onClick(e);
+    }
+  };
 
   return (
     <Comp
-      data-slot='button'
+      data-slot="button"
       onClick={handleClick}
       data-variant={variant}
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     />
-  )
+  );
 }
 
 export { Button, buttonVariants };
