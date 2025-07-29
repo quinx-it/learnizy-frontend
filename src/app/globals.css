@@ -132,13 +132,13 @@ a {
   --sidebar-border: #A9DBE9;
   --sidebar-ring: #238BA7;
 
-  --light: #f7f1e6;
-  --soft: #efe6d4;
-  --medium: #5d4e3f;
-  --dark: #47392a;
-  --deep: #30200d;
-  --error: #b72020;
-  --success: #309447;
+  --light: #FAFAFA;
+  --soft: #A9DBE9;
+  --medium: #238BA7;
+  --dark: #0C0C0C;
+  --deep: #0C0C0C;
+  --error: #E5932B;
+  --success: #5F4EE0;
 }
 
 
