@@ -36,10 +36,3 @@ export const Invalid: Story = {
     defaultValue: 'text',
   },
 };
-
-export const PasswordType: Story = {
-  args: {
-    type: 'password',
-    placeholder: 'Введите пароль',
-  },
-};
