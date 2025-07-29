@@ -3,7 +3,7 @@ import * as React from 'react';
 import { cn } from '@/shared/lib/utils';
 import { Text } from '@/shared/ui/typography';
 
-interface InputProps extends React.ComponentProps<'input'> {
+export interface InputProps extends React.ComponentProps<'input'> {
   error?: string; // текст ошибки, если есть
 }
 
