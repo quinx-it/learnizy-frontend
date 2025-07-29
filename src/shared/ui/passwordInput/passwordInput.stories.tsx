@@ -28,9 +28,3 @@ export const Disabled: Story = {
     disabled: true,
   },
 };
-
-export const Empty: Story = {
-  args: {
-    value: '',
-  },
-};
