@@ -1,38 +1,48 @@
 'use client';
-
 import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/shared/lib/utils';
-const headingVariants = cva('font-nunito leading-normal transition-colors', {
+
+
+const headingVariants = cva('leading-normal transition-colors', {
   variants: {
     variant: {
-      'minor-6xl':
-        'text-[32px] sm:text-[40px] md:text-[44px] leading-9 sm:leading-12.5 md:leading-13 font-normal',
-      'minor-5xl':
-        'text-[32px] sm:text-[32px] md:text-[40px] leading-9 sm:leading-10 md:leading-12.5 font-normal',
-      'minor-4xl': 'text-[24px] leading-[26px] font-normal',
-      'minor-3xl': 'text-[28px] sm:text-[32px] leading-8 sm:leading-10 font-normal',
-      'minor-2xl': 'text-[24px] sm:text-[28px] leading-6.5 sm:leading-8 font-normal',
-      'minor-xl':
-        'text-[16px] sm:text-[20px] md:text-[24px] leading-4.5 sm:leading-5.5 md:leading-6.5 font-normal',
+      xl: 'text-[24px] leading-[33px] font-medium',
+      '2xl': 'text-[28px] leading-[38px] font-medium',
+      '3xl': 'text-[32px] leading-[44px] font-medium',
+      '4xl': 'text-[36px] leading-[49px] font-medium',
+      '5xl': 'text-[40px] leading-[55px] font-medium',
+      '6xl': 'text-[44px] leading-[60px] font-medium',
+      '7xl': 'text-[52px] leading-[71px] font-medium',
+
+      'xl-bold': 'text-[24px] leading-[26px] font-bold',
+      '2xl-bold': 'text-[28px] leading-[32px] font-bold',
+      '3xl-bold': 'text-[32px] leading-[36px] font-bold',
+      '4xl-bold': 'text-[36px] leading-[40px] font-bold',
+      '5xl-bold': 'text-[40px] leading-[46px] font-bold',
+      '6xl-bold': 'text-[44px] leading-[48px] font-bold',
+      '7xl-bold': 'text-[52px] leading-[58px] font-bold',
     },
   },
   defaultVariants: {
-    variant: 'minor-6xl',
+    variant: 'xl',
   },
 });
 
-const textVariants = cva('font-nunito leading-normal transition-colors', {
+const textVariants = cva('leading-normal transition-colors', {
   variants: {
     variant: {
-      'l-20': 'text-[16px] md:text-[20px] leading-4.5 md:leading-5.5 font-normal',
-      'm-16': 'text-[12px] md:text-[16px] leading-4 md:leading-4.5 font-normal',
-      'xs-12': 'text-[12px] leading-4 font-normal',
-      's-14': 'text-[14px] leading-[17px] font-normal',
+      s: 'text-[12px] leading-[16px] font-medium',
+      m: 'text-[16px] leading-[22px] font-medium',
+      l: 'text-[20px] leading-[27px] font-medium',
+
+      's-bold': 'text-[12px] leading-[14px] font-bold',
+      'm-bold': 'text-[16px] leading-[18px] font-bold',
+      'l-bold': 'text-[20px] leading-[22px] font-bold',
     },
   },
   defaultVariants: {
-    variant: 'm-16',
+    variant: 's',
   },
 });
 
