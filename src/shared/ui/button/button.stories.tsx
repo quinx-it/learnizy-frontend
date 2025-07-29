@@ -8,66 +8,37 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: [
-        'default',
-        'secondary',
-        'third',
-        'link',
-        'destructive',
-        'outline',
-      ],
+      options: ['blue', 'yellow', 'white'],
     },
     size: {
       control: 'select',
-      options: ['lg', 'text', 'xs', 'm'],
+      options: ['small', 'medium', 'large'],
     },
-    asChild: {
+    disabled: {
       control: 'boolean',
     },
   },
   args: {
     children: 'Button',
-    variant: 'default',
-    size: 'lg',
+    variant: 'blue',
+    size: 'large',
+    disabled: false,
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Blue: Story = {};
 
-export const Secondary: Story = {
+export const Yellow: Story = {
   args: {
-    variant: 'secondary',
+    variant: 'yellow',
   },
 };
 
-export const Destructive: Story = {
+export const White: Story = {
   args: {
-    variant: 'destructive',
-  },
-};
-
-export const Outline: Story = {
-  args: {
-    variant: 'outline',
-  },
-};
-
-export const Small: Story = {
-  args: {
-    size: 'xs',
-  },
-};
-
-export const AsChild: Story = {
-  args: {
-    asChild: true,
-    children: (
-      <a href="#" className="inline-flex items-center">
-        Link Button <span className="ml-2">→</span>
-      </a>
-    ),
+    variant: 'white',
   },
 };
