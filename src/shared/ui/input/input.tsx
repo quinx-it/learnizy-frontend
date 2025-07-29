@@ -4,7 +4,7 @@ import { cn } from '@/shared/lib/utils';
 import { Text } from '@/shared/ui/typography';
 
 export interface InputProps extends React.ComponentProps<'input'> {
-  error?: string; // текст ошибки, если есть
+  error?: string;
 }
 
 function Input({ className, type = 'text',error, ...props }: InputProps) {

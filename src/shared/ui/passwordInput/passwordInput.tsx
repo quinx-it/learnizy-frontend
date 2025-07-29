@@ -9,9 +9,8 @@ import './styles.css';
 import { EyeIcon } from '@ui/icons';
 
 const PasswordInput = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, ...props }, ref) => {
+  ({ className,disabled, ...props }, ref) => {
     const [showPassword, setShowPassword] = React.useState(false);
-    const disabled = props.disabled;
 
     return (
       <div className="relative">
