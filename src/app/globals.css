@@ -6,7 +6,14 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-Regular.ttf') format('truetype');
+  src: url('./fonts/Montserrat-Regular.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Involve';
+  src: url('./fonts/Involve-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -16,6 +23,9 @@ html,
 body {
   max-width: 100vw;
   scroll-behavior: smooth;
+}
+.sb-show-main {
+  font-family: 'Involve';
 }
 
 * {
@@ -78,6 +88,7 @@ a {
 
 :root {
   --radius: 0.75rem;
+  --montserrat: 'Montserrat';
 
   --background: #FAFAFA;
   --foreground: #0C0C0C;
@@ -121,13 +132,13 @@ a {
   --sidebar-border: #A9DBE9;
   --sidebar-ring: #238BA7;
 
-  --light: #FAFAFA;
-  --soft: #A9DBE9;
-  --medium: #238BA7;
-  --dark: #0C0C0C;
-  --deep: #0C0C0C;
-  --error: #E5932B;
-  --success: #5F4EE0;
+  --light: #f7f1e6;
+  --soft: #efe6d4;
+  --medium: #5d4e3f;
+  --dark: #47392a;
+  --deep: #30200d;
+  --error: #b72020;
+  --success: #309447;
 }
 
 

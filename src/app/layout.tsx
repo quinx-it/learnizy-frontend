@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 const involve = localFont({
-  src: './fonts/Involve-Regular.ttf',
+  src: './fonts/Involve-Medium.ttf',
   display: 'swap',
 });
 
