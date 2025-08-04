@@ -1,1 +1,0 @@
-export { CardAccordion } from './accordion'
