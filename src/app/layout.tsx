@@ -3,7 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import { Header } from '@/shared/components/header';
 import { Footer } from '@shared/components/footer';
-import { Toaster } from '@/shared/ui/sonner/sonner';
+import { Toaster } from '@/shared/ui/sonner/toaster';
 
 export const metadata: Metadata = {
   title: {

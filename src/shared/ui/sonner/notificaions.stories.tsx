@@ -1,0 +1,99 @@
+'use client'
+
+import React from 'react'
+import { ThemeProvider } from 'next-themes'
+import { Meta, StoryFn } from '@storybook/nextjs'
+import { Toaster, showToast } from './toaster'
+
+const Demo = () => {
+  return (
+    <div className='w-[300px] flex flex-col'>
+      <button
+        onClick={() =>
+          showToast('success', 'Успешно!', 'Кастомный тост работает')
+        }
+        style={{
+          padding: '8px 16px',
+          marginBottom: 20,
+          cursor: 'pointer',
+          backgroundColor: 'var(--success)',
+          color: 'var(--black)',
+          border: 'none',
+          borderRadius: 6,
+        }}
+      >
+        Успех
+      </button>
+
+      <button
+        onClick={() =>
+          showToast('warning', 'Предупреждение!', 'Кастомный тост работает')
+        }
+        style={{
+          padding: '8px 16px',
+          marginBottom: 20,
+          cursor: 'pointer',
+          backgroundColor: 'var(--warning)',
+          color: 'var(--black)',
+          border: 'none',
+          borderRadius: 6,
+        }}
+      >
+        Предупреждение
+      </button>
+
+      <button
+        onClick={() =>
+          showToast('error', 'Ошибка!', 'Кастомный тост работает')
+        }
+        style={{
+          padding: '8px 16px',
+          marginBottom: 20,
+          cursor: 'pointer',
+          backgroundColor: 'var(--error)',
+          color: 'var(--black)',
+          border: 'none',
+          borderRadius: 6,
+        }}
+      >
+        Ошибка
+      </button>
+
+      <button
+        onClick={() =>
+          showToast('info', 'Информация!', 'Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает Кастомный тост работает ')
+        }
+        style={{
+          padding: '8px 16px',
+          marginBottom: 20,
+          cursor: 'pointer',
+          backgroundColor: 'var(--soft)',
+          color: 'var(--medium)',
+          border: 'none',
+          borderRadius: 6,
+        }}
+      >
+        Информация
+      </button>
+      <Toaster />
+    </div>
+  )
+}
+
+export default {
+  title: 'Components/UI/Notification',
+  component: Demo,
+  decorators: [
+    (Story) => (
+      <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        <div style={{ padding: 20 }}>
+          <Story />
+        </div>
+      </ThemeProvider>
+    ),
+  ],
+} as Meta
+
+const Template: StoryFn = () => <Demo />
+
+export const Default = Template.bind({})
