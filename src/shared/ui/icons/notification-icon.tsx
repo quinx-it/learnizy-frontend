@@ -1,63 +1,96 @@
 import { IconProps } from '@/shared/types';
+import { JSX } from 'react';
 
-type NotificationStatus = {
-  status?: 'error' | 'success';
+type NotificationStatus = 'error' | 'success' | 'info' | 'warning';
+
+const ICON_SIZE = 18;
+const VIEW_BOX = '0 0 18 18';
+
+const BaseIcon = ({ className, children }: IconProps & { children: React.ReactNode }) => (
+  <svg
+    className={className}
+    width={ICON_SIZE}
+    height={ICON_SIZE}
+    viewBox={VIEW_BOX}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    {children}
+  </svg>
+);
+
+const StatusIcons: Record<NotificationStatus, JSX.Element> = {
+  success: (
+    <>
+      <path
+        d="M9 0.599609C13.6392 0.599609 17.4004 4.36081 17.4004 9C17.4004 13.6392 13.6392 17.4004 9 17.4004C4.36081 17.4004 0.599609 13.6392 0.599609 9C0.599609 4.36081 4.36081 0.599609 9 0.599609Z"
+        stroke="#1E1E1E"
+        strokeWidth="1.2"
+      />
+      <rect
+        x="4"
+        y="9.00342"
+        width="1.40205"
+        height="5.60819"
+        rx="0.701024"
+        transform="rotate(-45 4 9.00342)"
+        fill="#1E1E1E"
+      />
+      <rect
+        x="13.5309"
+        y="5.47754"
+        width="1.40205"
+        height="9.22091"
+        rx="0.701024"
+        transform="rotate(45 13.5309 5.47754)"
+        fill="#1E1E1E"
+      />
+    </>
+  ),
+  warning: (
+    <>
+      <path
+        d="M8.58105 1.42383C9.21234 0.325444 10.7877 0.325445 11.4189 1.42383L19.1768 14.9238C19.8112 16.0281 19.0144 17.4004 17.7568 17.4004H2.24316C0.98559 17.4004 0.188786 16.0281 0.823242 14.9238L8.58105 1.42383Z"
+        stroke="#1E1E1E"
+        strokeWidth="1.2"
+      />
+      <rect x="8" y="4" width="2" height="7" rx="1" fill="#1E1E1E" />
+      <rect x="8" y="13" width="2" height="2" rx="1" fill="#1E1E1E" />
+    </>
+  ),
+  info: (
+    <>
+      <path
+        d="M9 0.599609C13.6392 0.599609 17.4004 4.36081 17.4004 9C17.4004 13.6392 13.6392 17.4004 9 17.4004C4.36081 17.4004 0.599609 13.6392 0.599609 9C0.599609 4.36081 4.36081 0.599609 9 0.599609Z"
+        stroke="#5F4EE0"
+        strokeWidth="1.2"
+      />
+      <rect x="8" y="7" width="2" height="8" rx="1" fill="#5F4EE0" />
+      <rect x="8" y="3" width="2" height="2" rx="1" fill="#5F4EE0" />
+    </>
+  ),
+  error: (
+    <>
+      <path
+        d="M9 0.599609C13.6392 0.599609 17.4004 4.36081 17.4004 9C17.4004 13.6392 13.6392 17.4004 9 17.4004C4.36081 17.4004 0.599609 13.6392 0.599609 9C0.599609 4.36081 4.36081 0.599609 9 0.599609Z"
+        stroke="#1E1E1E"
+        strokeWidth="1.2"
+      />
+      <rect
+        x="14.0022"
+        y="2.84204"
+        width="2"
+        height="15.7829"
+        transform="rotate(45 14.0022 2.84204)"
+        fill="#1E1E1E"
+      />
+    </>
+  ),
 };
 
 export const NotificationIcon = ({
   className,
   status = 'success',
-}: IconProps & NotificationStatus) => {
-  if (status === 'error') {
-    return (
-      <svg
-        className={className}
-        width="18"
-        height="18"
-        viewBox="0 0 18 18"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M12.4639 6.1947C12.5071 6.15152 12.5414 6.10025 12.5649 6.04381C12.5883 5.98737 12.6004 5.92687 12.6004 5.86577C12.6004 5.80467 12.5884 5.74415 12.5651 5.68769C12.5417 5.63122 12.5075 5.57991 12.4643 5.53667C12.4211 5.49344 12.3699 5.45913 12.3134 5.43572C12.257 5.4123 12.1965 5.40023 12.1354 5.40019C12.0743 5.40015 12.0138 5.41215 11.9573 5.4355C11.9008 5.45885 11.8495 5.49309 11.8063 5.53627L9.00033 8.34228L6.19517 5.53627C6.10786 5.44895 5.98944 5.3999 5.86596 5.3999C5.74249 5.3999 5.62407 5.44895 5.53675 5.53627C5.44944 5.62358 5.40039 5.742 5.40039 5.86548C5.40039 5.98896 5.44944 6.10738 5.53675 6.1947L8.34272 8.9999L5.53675 11.8051C5.49352 11.8483 5.45923 11.8997 5.43583 11.9562C5.41243 12.0126 5.40039 12.0732 5.40039 12.1343C5.40039 12.1955 5.41243 12.256 5.43583 12.3125C5.45923 12.369 5.49352 12.4203 5.53675 12.4635C5.62407 12.5508 5.74249 12.5999 5.86596 12.5999C5.9271 12.5999 5.98764 12.5879 6.04413 12.5645C6.10062 12.5411 6.15194 12.5068 6.19517 12.4635L9.00033 9.65752L11.8063 12.4635C11.8936 12.5507 12.012 12.5997 12.1354 12.5996C12.2588 12.5995 12.3771 12.5504 12.4643 12.4631C12.5515 12.3758 12.6005 12.2574 12.6004 12.134C12.6003 12.0106 12.5512 11.8923 12.4639 11.8051L9.65794 8.9999L12.4639 6.1947Z"
-          fill="#F4F0E5"
-        />
-        <circle cx="9" cy="9" r="8.5" stroke="#F4F0E5" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg
-      className={className}
-      width="18"
-      height="18"
-      viewBox="0 0 18 18"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect x="0.5" y="0.5" width="17" height="17" rx="8.5" stroke="currentColor" />
-      <rect
-        x="4.34961"
-        y="9.37769"
-        width="1.66844"
-        height="5.02475"
-        rx="0.834218"
-        transform="rotate(-45 4.34961 9.37769)"
-        fill="currentColor"
-      />
-      <rect
-        x="12.8594"
-        y="5.77124"
-        width="1.66844"
-        height="8.55441"
-        rx="0.834218"
-        transform="rotate(45 12.8594 5.77124)"
-        fill="currentColor"
-      />
-    </svg>
-  );
+}: IconProps & { status?: NotificationStatus }) => {
+  return <BaseIcon className={className}>{StatusIcons[status]}</BaseIcon>;
 };
