@@ -1,0 +1,57 @@
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import { Calendar } from './calendar';
+
+const meta: Meta<typeof Calendar> = {
+  title: 'Components/UI/Calendar',
+  component: Calendar,
+  tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+    backgrounds: {
+      default: 'light',
+    },
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ backgroundColor: '#393e45ff', padding: '20px', borderRadius: '8px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+};
+
+export default meta;
+
+type Story = StoryObj<typeof Calendar>;
+
+export const Default: Story = {
+  args: {
+    mode: 'single',
+    selected: new Date(),
+  },
+};
+
+export const WithRangeSelection: Story = {
+  args: {
+    mode: 'range',
+    selected: {
+      from: new Date(2025, 6, 10),
+      to: new Date(2025, 6, 15),
+    },
+  },
+};
+
+export const WithCaptionDropdowns: Story = {
+  args: {
+    mode: 'single',
+    selected: new Date(),
+    captionLayout: 'dropdown',
+  },
+};
+
+export const WithWeekNumbers: Story = {
+  args: {
+    mode: 'single',
+    showWeekNumber: true,
+  },
+};
