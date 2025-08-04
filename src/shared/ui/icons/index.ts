@@ -14,4 +14,5 @@ export { DiscussionIcon } from './discussion-icon';
 export { ExitIcon } from './exit-icon';
 export { PersonIcon } from './person-icon';
 export { StudentHatIcon } from './student-hat-icon';
+export { EyeIcon } from './eye-icon';
 export { NotificationIcon } from './notification-icon';
