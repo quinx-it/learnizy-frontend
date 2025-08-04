@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import { Calendar } from '@ui/calendar';
 import { Input } from '@ui/input';
-import { Popover, PopoverContent, PopoverTrigger } from '@ui/popover';
+import { Popover } from '@ui/popover';
 import { CalendarIcon } from '@ui/icons';
 import { formatDate, parseDateString } from './utils';
 
@@ -42,21 +42,13 @@ export function DatePicker() {
             }
           }}
         />
-        <Popover open={open} onOpenChange={setOpen}>
-          <PopoverTrigger asChild>
-            <div
-              id="date-picker"
-              className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer"
-            >
-              <CalendarIcon type="dark" />
-            </div>
-          </PopoverTrigger>
-          <PopoverContent
-            className="w-auto overflow-hidden p-0"
-            align="end"
-            alignOffset={-8}
-            sideOffset={10}
-          >
+        <Popover
+          open={open}
+          onOpenChange={setOpen}
+          side="bottom"
+          align="end"
+          offset={10}
+          content={
             <Calendar
               mode="single"
               selected={date}
@@ -69,7 +61,14 @@ export function DatePicker() {
                 setOpen(false);
               }}
             />
-          </PopoverContent>
+          }
+        >
+          <div
+            id="date-picker"
+            className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer"
+          >
+            <CalendarIcon type="dark" />
+          </div>
         </Popover>
       </div>
     </div>
