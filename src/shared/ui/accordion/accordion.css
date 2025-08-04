@@ -1,0 +1,40 @@
+@keyframes accordion-down {
+  0% {
+    height: 0;
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  100% {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes accordion-up {
+  0% {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    height: 0;
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+.accordion-content {
+  overflow: hidden;
+  animation-duration: 300ms;
+  animation-timing-function: ease-out;
+  will-change: height, opacity, transform;
+}
+
+.accordion-content[data-state='open'] {
+  animation-name: accordion-down;
+}
+
+.accordion-content[data-state='closed'] {
+  animation-name: accordion-up;
+}
