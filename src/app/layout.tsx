@@ -2,16 +2,13 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import { Header } from '@/shared/components/header';
-import { Footer } from '@shared/components/footer';
-import { Toaster } from '@/shared/ui/toaster';
 
 export const metadata: Metadata = {
   title: {
     template: '',
     default: '',
   },
-  description:
-    '',
+  description: '',
 };
 
 const involve = localFont({
@@ -30,11 +27,9 @@ export default function RootLayout({
 
   return (
     <html lang="ru" className={involve.className}>
-      <body>
+      <body className="bg-accent-background grid min-h-[100vh] grid-cols-[auto_1fr]">
         <Header />
-        <main>{children}</main>
-        <Footer />
-        <Toaster richColors position="top-right" />
+        <main className="h-full max-h-screen w-full overflow-y-auto px-7.5 py-5">{children}</main>
       </body>
     </html>
   );
