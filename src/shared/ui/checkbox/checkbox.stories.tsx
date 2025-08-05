@@ -7,9 +7,13 @@ const meta: Meta<typeof Checkbox> = {
   title: 'Components/UI/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
-  args: {
-    checked: false,
-  },
+  decorators: [
+    (Story) => (
+      <div style={{ backgroundColor: '#393e45ff', padding: '20px', display:'flex'}}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
