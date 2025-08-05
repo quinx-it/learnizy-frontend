@@ -1,8 +1,8 @@
 'use client';
 
 import { Area, AreaChart as AreaChartDefault, XAxis, YAxis } from 'recharts';
-import { ChartContainer } from '@/components/ui/chart';
 import { chartData } from './constants';
+import { ChartContainer } from '@ui/chart';
 
 export interface ChartLineProps {
   data?: { day: string; value: number }[];
