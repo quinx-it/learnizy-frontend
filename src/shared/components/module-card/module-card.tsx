@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { ModuleCardType } from './types';
 import { Text } from '@/shared/ui/typography';
 import Image from 'next/image';
@@ -26,22 +26,28 @@ export const ModuleCard = ({
 
   const { active, completed, blocked } = constants.status;
 
-  const isBlocked = progressStatus === blocked;
-  const isCompleted = progressStatus === completed;
-  const isActive = progressStatus === active;
+  const { isBlocked, isCompleted, isActive } = useMemo(
+    () => ({
+      isBlocked: progressStatus === blocked,
+      isCompleted: progressStatus === completed,
+      isActive: progressStatus === active,
+    }),
+    [progressStatus, active, completed, blocked],
+  );
 
   const moduleLabel = bonus ? constants.bonus : `Модуль ${module_number}`;
 
   const lessonInfo = `${lessons.length} уроков`;
   const taskInfo = `${total_tasks} заданий`;
 
+  const cardClass = cn('border border-transparent', {
+    'border-medium border': isActive,
+    'bg-soft/50 border-soft': bonus,
+    'hover:border-medium': !isBlocked,
+  });
+
   return (
-    <CardWrapper
-      className={cn('border border-transparent', {
-        'border-medium border': isActive,
-        'bg-soft/50 border-soft': bonus,
-      })}
-    >
+    <CardWrapper className={cardClass}>
       <div className="flex items-center justify-between gap-3">
         <div className="max-w-7/10 space-y-3.5">
           <div className="space-y-2">

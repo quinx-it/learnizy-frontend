@@ -4,6 +4,7 @@ import React from 'react';
 export const colors = {
   default: '#238BA7',
   gold: '#F9DD69',
+  disabled: '#B9B9B9',
 } as const;
 
 type StarIconProps = {
