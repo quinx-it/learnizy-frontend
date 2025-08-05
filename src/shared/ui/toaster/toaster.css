@@ -1,0 +1,15 @@
+ol > li:nth-child(1) {
+  opacity: 1 !important;
+}
+
+ol > li:nth-child(2) {
+  opacity: 0.8 !important ;
+}
+
+ol > li:nth-child(3) {
+  opacity: 0.6 !important;
+}
+
+ol:hover > li {
+    opacity: 1 !important;
+}
