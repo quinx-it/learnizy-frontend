@@ -16,3 +16,5 @@ export { PersonIcon } from './person-icon';
 export { StudentHatIcon } from './student-hat-icon';
 export { EyeIcon } from './eye-icon';
 export { NotificationIcon } from './notification-icon';
+export { HeaderLogo } from './header-logo'
+export { ProjectsIcon } from './projects-icon'
