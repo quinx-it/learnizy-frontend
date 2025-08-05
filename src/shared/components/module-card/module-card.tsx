@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import { ModuleCardType } from './types';
 import { Text } from '@/shared/ui/typography';
 import Image from 'next/image';
@@ -12,7 +12,7 @@ const Dot = ({ className }: { className?: string }) => (
   <span className={cn('bg-medium h-[3px] w-[3.2px] rounded-full', className)}></span>
 );
 
-export const ModuleCard = ({
+const ModuleCardComponent = ({
   title,
   module_number,
   description,
@@ -84,3 +84,5 @@ export const ModuleCard = ({
     </CardWrapper>
   );
 };
+
+export const ModuleCard = memo(ModuleCardComponent)
