@@ -1,13 +1,13 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { persistStore, persistReducer } from 'redux-persist'
-import authReducer from './slices/auth/slice'
-import { authPersistConfig } from './persistConfig'
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import authReducer from './slices/auth/slice';
+import { authPersistConfig } from './persistConfig';
 
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
-})
+});
 
-const persistedReducer = rootReducer
+const persistedReducer = rootReducer;
 
 export const makeStore = () =>
   configureStore({
@@ -16,11 +16,11 @@ export const makeStore = () =>
       getDefaultMiddleware({
         serializableCheck: false,
       }),
-  })
+  });
 
-export const store = makeStore()
-export const persistor = persistStore(store)
+export const store = makeStore();
+export const persistor = persistStore(store);
 
-export type AppStore = typeof store
-export type RootState = ReturnType<AppStore['getState']>
-export type AppDispatch = AppStore['dispatch']
+export type AppStore = typeof store;
+export type RootState = ReturnType<AppStore['getState']>;
+export type AppDispatch = AppStore['dispatch'];

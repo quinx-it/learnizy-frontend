@@ -1,17 +1,11 @@
 'use client';
 
-import { useAppSelector } from '@/shared/hooks/redux';
-import { selectUser } from '@/store/slices/auth/selectors';
-import Link from 'next/link';
+import AuthForm from '@/shared/components/auth-form/auth-form';
 
 function LoginPage() {
-  const user = useAppSelector(selectUser);
-
   return (
-    <div>
-      <Link href="/learn">Войти</Link>
-      <br />
-      {JSON.stringify(user)}
+    <div className="flex h-[100vh] items-center justify-center">
+      <AuthForm />
     </div>
   );
 }
