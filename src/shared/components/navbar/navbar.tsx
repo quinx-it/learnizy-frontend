@@ -3,49 +3,13 @@
 import Link from 'next/link';
 import { NavbarLink } from './navbar-link';
 
+import { constants } from './constants';
+
 import {
   HeaderLogo,
-  ProjectsIcon,
-  APlusIcon,
-  CubesMainIcon,
-  DiscussionIcon,
   ExitIcon,
-  PersonIcon,
-  StudentHatIcon,
 } from '@shared/ui/icons';
 
-const links = [
-  {
-    href: '/',
-    icon: <CubesMainIcon />,
-    label: 'Главная',
-  },
-  {
-    href: '/modules',
-    icon: <StudentHatIcon />,
-    label: 'Модули',
-  },
-  {
-    href: '/learn-base',
-    icon: <DiscussionIcon />,
-    label: 'База знаний',
-  },
-  {
-    href: '/exams',
-    icon: <APlusIcon />,
-    label: 'Экзамены',
-  },
-  {
-    href: '/projects',
-    icon: <ProjectsIcon />,
-    label: 'Проекты',
-  },
-  {
-    href: '/user-profile',
-    icon: <PersonIcon />,
-    label: 'Профиль',
-  },
-];
 
 export const Navbar = () => {
   return (
@@ -54,11 +18,11 @@ export const Navbar = () => {
         <HeaderLogo />
       </Link>
       <div className="flex flex-col gap-6 lg:gap-3">
-        {links.map(({ href, icon, label }) => {
-          return <NavbarLink key={label} href={href} icon={icon} label={label} />;
+        {constants.links.map(({ href, Icon, label }) => {
+          return <NavbarLink key={label} href={href} Icon={Icon} label={label} />;
         })}
       </div>
-      <NavbarLink href="#" icon={<ExitIcon />} label="Выход" className="mt-auto" />
+      <NavbarLink href="#" Icon={ExitIcon} label="Выход" className="mt-auto" />
     </nav>
   );
 };

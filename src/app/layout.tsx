@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import { Navbar } from '@/shared/components/navbar';
+
 import StoreProvider from './StoreProvider';
 
 export const metadata: Metadata = {
@@ -28,10 +28,9 @@ export default function RootLayout({
 
   return (
     <html lang="ru" className={involve.className}>
-      <body className="bg-accent-background grid min-h-[100vh] grid-cols-[auto_1fr]">
+      <body>
         <StoreProvider>
-          <Navbar />
-          <main className="h-full max-h-screen w-full overflow-y-auto px-7.5 py-5">{children}</main>
+          {children}
         </StoreProvider>
       </body>
     </html>
