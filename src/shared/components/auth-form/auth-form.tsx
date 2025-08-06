@@ -6,6 +6,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { AuthFormValues, formSchema } from './validation';
 import { useLoginMutation } from '@/api/endpoints/auth';
 import { Spinner } from '@/shared/ui/spinner';
+import { Input } from '@ui/input';
+import { PasswordInput } from '@/shared/ui/passwordInput'; // Путь может отличаться
+import { Button } from '@ui/button';
 
 const AuthForm = () => {
   const [login, { isLoading, error }] = useLoginMutation();
@@ -31,32 +34,20 @@ const AuthForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mx-auto flex max-w-sm flex-col gap-4">
-      <div>
-        <label htmlFor="name">Имя</label>
-        <input id="name" type="text" {...register('name')} className="w-full border px-2 py-1" />
-        {errors.name && <p className="text-sm text-red-500">{errors.name.message}</p>}
-      </div>
+      <Input id="name" placeholder="Имя" {...register('name')} error={errors.name?.message} />
 
-      <div>
-        <label htmlFor="password">Пароль</label>
-        <input
-          id="password"
-          type="password"
-          {...register('password')}
-          className="w-full border px-2 py-1"
-        />
-        {errors.password && <p className="text-sm text-red-500">{errors.password.message}</p>}
-      </div>
+      <PasswordInput
+        id="password"
+        placeholder="Пароль"
+        {...register('password')}
+        error={errors.password?.message}
+      />
 
       {error && <p className="text-sm text-red-600">Ошибка входа. Проверьте логин и пароль.</p>}
 
-      <button
-        type="submit"
-        disabled={isLoading}
-        className="rounded bg-blue-500 px-4 py-2 text-white disabled:opacity-50"
-      >
+      <Button type="submit" disabled={isLoading} className="rounded-full">
         {isLoading ? <Spinner /> : 'Войти'}
-      </button>
+      </Button>
     </form>
   );
 };
