@@ -1,22 +1,21 @@
 import * as React from 'react';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
-import { CheckIcon } from 'lucide-react';
 import { cn } from '@/shared/lib/utils';
+import { CheckIcon } from '@ui/icons';
 
 function Checkbox({ className, ...props }: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
   return (
     <CheckboxPrimitive.Root
       className={cn(
-        'peer border-medium size-5 rounded-full border bg-transparent transition-colors',
-        'data-[state=checked]:border-dark data-[state=checked]:text-dark data-[state=checked]:bg-transparent',
-        'hover:border-deep',
-        'disabled:border-medium disabled:cursor-not-allowed',
+        'peer size-4.5 cursor-pointer rounded-full border border-white bg-transparent transition-colors',
+        'hover:border-gray',
+        'disabled:opacity-50 disabled:cursor-not-allowed',
         className,
       )}
       {...props}
     >
       <CheckboxPrimitive.Indicator className="flex items-center justify-center">
-        <CheckIcon className="size-3.5" />
+        <CheckIcon color="blue" className="size-2.25" />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );
