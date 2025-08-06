@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import { Header } from '@/shared/components/header';
+import { Navbar } from '@/shared/components/navbar';
+import StoreProvider from './StoreProvider';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistor } from '@/store/store';
 
 export const metadata: Metadata = {
   title: {
@@ -28,8 +31,14 @@ export default function RootLayout({
   return (
     <html lang="ru" className={involve.className}>
       <body className="bg-accent-background grid min-h-[100vh] grid-cols-[auto_1fr]">
-        <Header />
-        <main className="h-full max-h-screen w-full overflow-y-auto px-7.5 py-5">{children}</main>
+        <StoreProvider>
+          <PersistGate persistor={persistor} loading={null}>
+            <Navbar />
+            <main className="h-full max-h-screen w-full overflow-y-auto px-7.5 py-5">
+              {children}
+            </main>
+          </PersistGate>
+        </StoreProvider>
       </body>
     </html>
   );

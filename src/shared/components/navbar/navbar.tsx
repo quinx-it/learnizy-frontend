@@ -1,7 +1,7 @@
 'use-client';
 
 import Link from 'next/link';
-import { HeaderLink } from './header-link';
+import { NavbarLink } from './navbar-link';
 
 import {
   HeaderLogo,
@@ -47,18 +47,18 @@ const links = [
   },
 ];
 
-export const Header = () => {
+export const Navbar = () => {
   return (
-    <header className="bg-light box-shadow hidden w-[100px] flex-col rounded-e-4xl px-6 py-8 md:flex lg:w-[230px]">
+    <nav className="bg-light box-shadow hidden w-[100px] flex-col rounded-e-4xl px-6 py-8 md:flex lg:w-[230px]">
       <Link href="#" className="mb-15 block">
         <HeaderLogo />
       </Link>
       <div className="flex flex-col gap-6 lg:gap-3">
         {links.map(({ href, icon, label }) => {
-          return <HeaderLink key={label} href={href} icon={icon} label={label} />;
+          return <NavbarLink key={label} href={href} icon={icon} label={label} />;
         })}
       </div>
-      <HeaderLink href="#" icon={<ExitIcon />} label="Выход" className="mt-auto" />
-    </header>
+      <NavbarLink href="#" icon={<ExitIcon />} label="Выход" className="mt-auto" />
+    </nav>
   );
 };

@@ -14,7 +14,7 @@ export const getOrderClass = (index: number) => {
 
 
 import { jwtDecode } from 'jwt-decode'
-import { DecodedToken } from '@shared/store/slices/auth/types';
+import { DecodedToken } from '@/store/slices/auth/types';
 
 export const decodeToken = (token: string): DecodedToken => {
     return jwtDecode<DecodedToken>(token)

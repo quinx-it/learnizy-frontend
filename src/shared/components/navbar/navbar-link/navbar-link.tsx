@@ -6,13 +6,13 @@ import { Text } from '@shared/ui/typography';
 import { Button } from '@/shared/ui/button';
 import { usePathname } from 'next/navigation';
 
-interface HeaderLinkProps extends LinkProps {
+interface NavbarLinkProps extends LinkProps {
   icon: ReactNode;
   label: string;
   className?: string;
 }
 
-export const HeaderLink = ({ href, icon, label, className }: HeaderLinkProps) => {
+export const NavbarLink = ({ href, icon, label, className }: NavbarLinkProps) => {
   const pathname = usePathname();
   const isActive = pathname === href;
 
