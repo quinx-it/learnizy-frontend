@@ -1,4 +1,4 @@
-'use-client';
+'use client';
 
 import Link from 'next/link';
 import { NavbarLink } from './navbar-link';
@@ -22,7 +22,7 @@ export const Navbar = () => {
           return <NavbarLink key={label} href={href} Icon={Icon} label={label} />;
         })}
       </div>
-      <NavbarLink href="#" Icon={ExitIcon} label="Выход" className="mt-auto" />
+      <NavbarLink href="/login" Icon={ExitIcon} label="Выход" className="mt-auto" />
     </nav>
   );
 };

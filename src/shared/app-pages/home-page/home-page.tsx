@@ -4,7 +4,7 @@ import React from 'react';
 export const HomePage = () => {
   return (
     <React.Fragment>
-      <Heading>home page</Heading>
+      <Heading>Landing</Heading>
     </React.Fragment>
   );
 };
