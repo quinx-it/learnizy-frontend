@@ -4,9 +4,13 @@ export enum UserRole {
     GUEST = 'GUEST',
 }
 
+export interface User {
+    userName: string
+    role: UserRole
+}
+
 export interface DecodedToken {
-  userName: string | null
-  role: UserRole
+    user: User | null
 }
 
 export interface AuthState extends DecodedToken {
