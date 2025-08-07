@@ -4,8 +4,8 @@ export const routes = {
   loginPage: '/login',
   homePage: '/learn',
   exams: '/learn/exams',
-  knowlegeBase: '/learn/knowlege-base',
+  knowlegeBase: '/learn/knowledge-base',
   modules: '/learn/modules',
   projects: '/learn/projects',
-  userProfile: '/learn/userProfile',
+  userProfile: '/learn/user-profile',
 };

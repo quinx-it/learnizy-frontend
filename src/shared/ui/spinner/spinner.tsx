@@ -2,9 +2,10 @@ import { type LucideProps } from 'lucide-react';
 
 type SpinnerVariantProps = Omit<SpinnerProps, 'variant'>;
 
-const Ring = ({ size = 24, ...props }: SpinnerVariantProps) => (
+const Ring = ({ size = 24, className = '', ...props }: SpinnerVariantProps) => (
   <svg
     height={size}
+    className={className}
     stroke="currentColor"
     viewBox="0 0 44 44"
     width={size}
@@ -63,13 +64,14 @@ const Ring = ({ size = 24, ...props }: SpinnerVariantProps) => (
 
 export type SpinnerProps = LucideProps & {
   variant?: 'ring';
+  className?: string;
 };
 
-export const Spinner = ({ variant, ...props }: SpinnerProps) => {
+export const Spinner = ({ variant, className, ...props }: SpinnerProps) => {
   switch (variant) {
     case 'ring':
-      return <Ring {...props} />;
+      return <Ring {...props} className={className} />;
     default:
-      return <Ring {...props} />;
+      return <Ring {...props} className={className} />;
   }
 };

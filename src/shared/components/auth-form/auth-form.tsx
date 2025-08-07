@@ -9,6 +9,7 @@ import { Spinner } from '@/shared/ui/spinner';
 import { Input } from '@ui/input';
 import { PasswordInput } from '@/shared/ui/passwordInput'; // Путь может отличаться
 import { Button } from '@ui/button';
+import { showToast } from '@/shared/ui/toaster';
 
 const AuthForm = () => {
   const [login, { isLoading, error }] = useLoginMutation();
@@ -28,6 +29,7 @@ const AuthForm = () => {
         password: data.password,
       }).unwrap();
     } catch (err) {
+      showToast('error', 'Ошибка авторизации', 'Чето не так');
       console.error('Login error:', err);
     }
   };

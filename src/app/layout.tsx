@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 
 import StoreProvider from './StoreProvider';
+import { Toaster } from '@/shared/ui/toaster';
 
 export const metadata: Metadata = {
   title: {
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body>
         <StoreProvider>
           {children}
+          <Toaster />
         </StoreProvider>
       </body>
     </html>
