@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { NavbarLink } from './navbar-link';
 
 import { constants } from './constants';
+import { routes } from '@/shared/constants'
 
 import {
   HeaderLogo,
@@ -14,7 +15,7 @@ import {
 export const Navbar = () => {
   return (
     <nav className="bg-light box-shadow hidden w-[100px] flex-col rounded-e-4xl px-6 py-8 md:flex lg:w-[230px]">
-      <Link href="#" className="mb-15 block">
+      <Link href={routes.homePage} className="mb-15 block">
         <HeaderLogo />
       </Link>
       <div className="flex flex-col gap-6 lg:gap-3">
@@ -22,7 +23,7 @@ export const Navbar = () => {
           return <NavbarLink key={label} href={href} Icon={Icon} label={label} />;
         })}
       </div>
-      <NavbarLink href="/login" Icon={ExitIcon} label="Выход" className="mt-auto" />
+      <NavbarLink href={routes.loginPage} Icon={ExitIcon} label="Выход" className="mt-auto" />
     </nav>
   );
 };

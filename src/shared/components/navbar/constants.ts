@@ -6,14 +6,15 @@ import {
   PersonIcon,
   StudentHatIcon,
 } from '@shared/ui/icons'
+import { routes } from '@/shared/constants'
 
 export const constants = {
   links: [
-    { href: '/learn', Icon: CubesMainIcon, label: 'Главная' },
-    { href: '/learn/modules', Icon: StudentHatIcon, label: 'Модули' },
-    { href: '/learn/knowledge-base', Icon: DiscussionIcon, label: 'База знаний' },
-    { href: '/learn/exams', Icon: APlusIcon, label: 'Экзамены' },
-    { href: '/learn/projects', Icon: ProjectsIcon, label: 'Проекты' },
-    { href: '/learn/user-profile', Icon: PersonIcon, label: 'Профиль' },
+    { href: routes.homePage, Icon: CubesMainIcon, label: 'Главная' },
+    { href: routes.modules, Icon: StudentHatIcon, label: 'Модули' },
+    { href: routes.knowlegeBase, Icon: DiscussionIcon, label: 'База знаний' },
+    { href: routes.exams, Icon: APlusIcon, label: 'Экзамены' },
+    { href: routes.projects, Icon: ProjectsIcon, label: 'Проекты' },
+    { href: routes.userProfile, Icon: PersonIcon, label: 'Профиль' },
   ],
 }
