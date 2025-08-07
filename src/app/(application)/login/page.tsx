@@ -1,5 +1,3 @@
-'use client';
-
 import AuthForm from '@/shared/components/auth-form/auth-form';
 
 function LoginPage() {
