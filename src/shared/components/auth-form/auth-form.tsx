@@ -7,7 +7,7 @@ import { AuthFormValues, formSchema } from './validation';
 import { useLoginMutation } from '@/api/endpoints/auth';
 import { Spinner } from '@/shared/ui/spinner';
 import { Input } from '@ui/input';
-import { PasswordInput } from '@/shared/ui/passwordInput'; // Путь может отличаться
+import { PasswordInput } from '@/shared/ui/passwordInput'; 
 import { Button } from '@ui/button';
 import { showToast } from '@/shared/ui/toaster';
 
