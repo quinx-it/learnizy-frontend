@@ -1,3 +1,1 @@
-import { setCredentials, logout } from './slice'
-
-export { setCredentials, logout }
+export { setCredentials, logout } from './slice'

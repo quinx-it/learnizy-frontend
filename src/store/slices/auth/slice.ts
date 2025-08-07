@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { decodeToken } from '@shared/lib/utils'
 import { AuthState, DecodedToken } from './types'
-// import { persistor } from '../../store'
 
 const initialState: AuthState = {
   accessToken: null,
@@ -24,7 +23,6 @@ export const authSlice = createSlice({
       }
     },
     logout: () => {
-      // persistor.purge()
       return initialState
     },
   },

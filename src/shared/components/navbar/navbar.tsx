@@ -13,12 +13,17 @@ import { Spinner } from '@/shared/ui/spinner';
 import { Text } from '@/shared/ui/typography';
 import { showToast } from '@/shared/ui/toaster';
 
+import { useAppDispatch } from '@/shared/hooks/redux';
+import { logout } from '@/store/slices/auth/actions';
+
 export const Navbar = () => {
-  const [logout, { isLoading }] = useLogoutMutation();
+  const [logoutApi, { isLoading }] = useLogoutMutation();
+  const dispatch = useAppDispatch()
 
   const handleLogout = async () => {
     try {
-      await logout({}).unwrap();
+      await logoutApi({}).unwrap();
+      dispatch(logout())
     } catch (err) {
       showToast('error', 'Ошибка', 'Что-то пошло не так, попробуйте снова 😭');
       console.error('Logout error:', err);
