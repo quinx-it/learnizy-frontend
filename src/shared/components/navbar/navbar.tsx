@@ -14,7 +14,7 @@ import { Text } from '@/shared/ui/typography';
 import { showToast } from '@/shared/ui/toaster';
 
 import { useAppDispatch } from '@/shared/hooks/redux';
-import { logout } from '@/store/slices/auth/actions';
+import { logout } from '@/store/slices/auth/slice';
 
 export const Navbar = () => {
   const [logoutApi, { isLoading }] = useLogoutMutation();
@@ -47,7 +47,7 @@ export const Navbar = () => {
         className="mt-auto justify-start gap-2.5 border-0 !px-5 !py-2"
       >
         {isLoading ? (
-          <Spinner size={16} className="mx-auto" />
+          <Spinner type='ring' size={16} className="mx-auto" />
         ) : (
           <>
             <ExitIcon className="h-[16px] w-[16px]" />

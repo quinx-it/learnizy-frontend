@@ -13,7 +13,14 @@ export default function StoreProvider({ children }: { children: React.ReactNode 
 
   return (
     <Provider store={storeRef.current}>
-      <PersistGate persistor={persistor} loading={<Spinner />}>
+      <PersistGate
+        loading={
+          <div className='text-medium flex items-center justify-center h-screen'>
+            <Spinner size={100} />
+          </div>
+        }
+        persistor={persistor}
+      >
         {children}
       </PersistGate>
     </Provider>

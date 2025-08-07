@@ -1,4 +1,3 @@
-
 export const routes = {
   landingPage: '/',
   loginPage: '/login',
@@ -9,3 +8,5 @@ export const routes = {
   projects: '/learn/projects',
   userProfile: '/learn/user-profile',
 };
+
+export const publicRoutes = [routes.loginPage, routes.landingPage];

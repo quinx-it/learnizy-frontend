@@ -1,6 +1,6 @@
 import { AuthState } from '@/store/slices/auth/types'
 import { BaseQueryFn, FetchArgs, fetchBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/query'
-import { logout, setCredentials } from '@/store/slices/auth/actions'
+import { logout, setCredentials } from '@/store/slices/auth/slice'
 import { RootState } from '@/store/store'
 
 const baseQuery = fetchBaseQuery({

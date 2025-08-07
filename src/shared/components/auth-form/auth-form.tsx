@@ -25,7 +25,7 @@ const AuthForm = () => {
   const onSubmit: SubmitHandler<AuthFormValues> = async (data) => {
     try {
       await login({
-        email: data.name,
+        email: data.email,
         password: data.password,
       }).unwrap();
     } catch (err) {
@@ -36,7 +36,7 @@ const AuthForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mx-auto flex max-w-sm flex-col gap-4">
-      <Input id="name" placeholder="Имя" {...register('name')} error={errors.name?.message} />
+      <Input id="email" placeholder="Email" {...register('email')} error={errors.email?.message} />
 
       <PasswordInput
         id="password"
@@ -48,7 +48,7 @@ const AuthForm = () => {
       {error && <p className="text-sm text-red-600">Ошибка входа. Проверьте логин и пароль.</p>}
 
       <Button type="submit" disabled={isLoading} className="rounded-full">
-        {isLoading ? <Spinner /> : 'Войти'}
+        {isLoading ? <Spinner type='ring'/> : 'Войти'}
       </Button>
     </form>
   );
