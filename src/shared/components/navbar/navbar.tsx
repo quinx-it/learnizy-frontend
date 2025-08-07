@@ -7,28 +7,13 @@ import { constants } from './constants';
 import { routes } from '@/shared/constants';
 
 import { HeaderLogo, ExitIcon } from '@shared/ui/icons';
-import { useLogoutMutation } from '@/api/endpoints/auth';
 import { Button } from '@/shared/ui/button';
 import { Spinner } from '@/shared/ui/spinner';
 import { Text } from '@/shared/ui/typography';
-import { showToast } from '@/shared/ui/toaster';
-
-import { useAppDispatch } from '@/shared/hooks/redux';
-import { logout } from '@/store/slices/auth/slice';
+import { useLogout } from '@/shared/hooks/useLogout';
 
 export const Navbar = () => {
-  const [logoutApi, { isLoading }] = useLogoutMutation();
-  const dispatch = useAppDispatch()
-
-  const handleLogout = async () => {
-    try {
-      await logoutApi({}).unwrap();
-      dispatch(logout())
-    } catch (err) {
-      showToast('error', 'Ошибка', 'Что-то пошло не так, попробуйте снова 😭');
-      console.error('Logout error:', err);
-    }
-  };
+ const { handleLogout, isLoading } = useLogout();
 
   return (
     <nav className="bg-light box-shadow hidden w-[100px] flex-col rounded-e-4xl px-6 py-8 md:flex lg:w-[230px]">
