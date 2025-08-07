@@ -1,10 +1,10 @@
-import { logout, setCredentials } from '@/store/slices/auth/slice'
 import { AuthState } from '@/store/slices/auth/types'
-import { RootState } from '@/store/store'
 import { BaseQueryFn, FetchArgs, fetchBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/query'
+import { logout, setCredentials } from '@/store/slices/auth/actions'
+import { RootState } from '@/store/store'
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://your-backend.com/api',
+  baseUrl: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api`,
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.accessToken
