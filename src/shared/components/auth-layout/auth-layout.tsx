@@ -16,9 +16,7 @@ export function AuthLayout({ children }: { children: React.ReactNode }) {
   const isPublic = publicRoutes.includes(pathname);
   const [checked, setChecked] = useState(false);
 
-  const { data, isLoading, isError } = useRefreshQuery(undefined, {
-    skip: Boolean(accessToken) || isPublic,
-  });
+  const { data, isLoading, isError } = useRefreshQuery();
 
   useEffect(() => {
     if (isPublic) {
