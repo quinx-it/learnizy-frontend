@@ -1,25 +1,24 @@
-'use client'
+'use client';
 import { useEffect } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
-import { selectAuth } from '@/store/slices/auth/selectors';
+import { useRouter } from 'next/navigation';
 import { useAppSelector } from '@/shared/hooks/redux';
 import { routes } from '@/shared/constants';
+import { FullscreenLoader } from '../fullscreen-loader/fullscreen-loader';
+import { selectToken } from '@/store/slices/auth/selectors';
 
 export function AuthLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const pathname = usePathname();
-  const { accessToken } = useAppSelector(selectAuth);
+  const accessToken = useAppSelector(selectToken);
 
   useEffect(() => {
     if (!accessToken) {
-      router.push(routes.loginPage);
+      router.replace(routes.loginPage);
     }
+  }, [accessToken, router]);
 
-    if (accessToken && pathname === routes.loginPage) {
-      router.push(routes.homePage);
-    }
-  }, [accessToken, router, pathname]);
+  if (!accessToken) {
+    return <FullscreenLoader />;
+  }
 
-  return accessToken ? children : null;
+  return children;
 }
-

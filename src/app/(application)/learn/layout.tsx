@@ -6,7 +6,7 @@ interface ApplicationLayoutProps {
   children: ReactNode;
 }
 
-const ApplicationLayout = ({ children }: ApplicationLayoutProps) => {
+const LearnLayout = ({ children }: ApplicationLayoutProps) => {
   return (
     <AuthLayout>
       <div className="bg-accent-background grid min-h-[100vh] grid-cols-[auto_1fr]">
@@ -17,4 +17,4 @@ const ApplicationLayout = ({ children }: ApplicationLayoutProps) => {
   );
 };
 
-export default ApplicationLayout;
+export default LearnLayout;
