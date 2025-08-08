@@ -7,5 +7,9 @@ export const metadata: Metadata = {
 };
 
 export default function NotFound() {
-  return <NotFoundPage />;
+  return (
+    <div className='flex items-center justify-center h-screen'>
+      <NotFoundPage />
+    </div>
+  );
 }

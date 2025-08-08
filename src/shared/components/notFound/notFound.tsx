@@ -1,15 +1,28 @@
 import React from 'react';
 import { cn } from '@/shared/lib/utils';
+import { Heading } from '@/shared/ui/typography';
+import Image from 'next/image';
 
 type NotFoundProps = {
-  errorText?: string;
   className?: string;
 };
 
-export const NotFound = ({ className, /* errorText = 'Страница не найдена' */ }: NotFoundProps) => {
+export const NotFound = ({ className }: NotFoundProps) => {
   return (
-    <div className={cn('text-deep mx-auto p-4 text-center', className)}>
-      <h1>Not found</h1>
+    <div className={cn('text-deep relative mx-auto flex flex-col p-4 text-center', className)}>
+      <Heading className="leading-auto text-[200px] text-[#CCEDF6] md:text-[300px] md:leading-[270px]">
+        404
+      </Heading>
+      <Heading variant={'2xl'} className="text-medium mt-5">
+        Not found
+      </Heading>
+      <Image
+        width={192}
+        height={207}
+        src="/images/notfound-astronaut.webp"
+        alt="astronaut"
+        className="absolute right-1/5 bottom-1/8 max-w-[132px] translate-x-1/5 transform md:max-w-[192px]"
+      />
     </div>
   );
 };
