@@ -17,7 +17,14 @@ export const auth = api.injectEndpoints({
         method: 'POST',
       }),
     }),
+    refresh: builder.query<AuthState, void>({
+      query: () => ({
+        url: '/refresh',
+        method: 'POST',
+        credentials: 'include',
+      }),
+    }),
   }),
-})
+});
 
-export const { useLoginMutation, useLogoutMutation } = auth
+export const { useLoginMutation, useLogoutMutation, useRefreshQuery } = auth
