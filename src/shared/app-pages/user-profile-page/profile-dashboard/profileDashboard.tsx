@@ -14,7 +14,7 @@ export const ProfileDashboard = () => {
       <div className="mb-8 w-full">
         <div className="mx-auto h-[152px] w-[152px] overflow-visible rounded-full mb-3 relative">
           <Image src="/images/astronaut1.png" alt="Profile Image" width={152} height={152} />
-          <button className="absolute bottom-0 right-0 -translate-x-9/10">
+          <button className="absolute bottom-0 right-0 -translate-x-9/10 cursor-pointer">
             <EditPhotoIcon />
           </button>
         </div>

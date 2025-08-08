@@ -22,10 +22,10 @@ export const PersonalDataForm = () => {
         <DatePicker label="Дата рождения" />
         <Input label="Страна" />
         <Input label="Город" />
-        <Button type="reset" variant="white" className="flex-1">
+        <Button type="reset" variant="white" className="flex-1 text-[16px]">
           Не сохранять
         </Button>
-        <Button type="submit" variant="blue" className="flex-1">
+        <Button type="submit" variant="blue" className="flex-1 text-[16px]">
           Сохранить изменения
         </Button>
       </div>

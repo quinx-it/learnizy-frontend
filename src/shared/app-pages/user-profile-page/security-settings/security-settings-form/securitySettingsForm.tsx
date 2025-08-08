@@ -12,10 +12,10 @@ export const SecuritySettingsForm = () => {
         <PasswordInput label="Пароль" className="col-span-2" />
         <PasswordInput label="Новый пароль" className="col-span-2" />
         <Input label="Логин (Email или телефон)" className="col-span-2" />
-        <Button type="reset" variant="white" className="flex-1">
+        <Button type="reset" variant="white" className="flex-1 text-[16px]">
           Не сохранять
         </Button>
-        <Button type="submit" variant="blue" className="flex-1">
+        <Button type="submit" variant="blue" className="flex-1 text-[16px]">
           Сохранить изменения
         </Button>
       </div>
