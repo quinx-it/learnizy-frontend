@@ -10,7 +10,7 @@ import { Text } from '@/shared/ui/typography';
 
 export const ProfileDashboard = () => {
   return (
-    <CardWrapper className="max-w-full">
+    <CardWrapper className="max-w-full h-full">
       <div className="mb-8 w-full">
         <div className="mx-auto h-[152px] w-[152px] overflow-visible rounded-full mb-3 relative">
           <Image src="/images/astronaut1.png" alt="Profile Image" width={152} height={152} />

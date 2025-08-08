@@ -4,7 +4,7 @@ import { PersonalDataForm } from './personal-data-form';
 
 export const PersonalData = () => {
   return (
-    <CardWrapper className="max-w-full">
+    <CardWrapper className="max-w-full h-fit">
       <Heading variant="xl" className="mb-4">
         Персональные данные
       </Heading>
