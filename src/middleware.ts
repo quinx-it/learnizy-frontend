@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { publicRoutes } from './shared/constants/routes';
 
 export function middleware(req: NextRequest) {
-    console.log('Middleware triggered');
   const { pathname } = req.nextUrl;
 
   const isPublic = publicRoutes.find((path) => pathname === path);
