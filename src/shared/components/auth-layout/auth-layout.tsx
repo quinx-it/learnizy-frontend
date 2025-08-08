@@ -1,12 +1,12 @@
 'use client'
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store/store';
 import { useRouter } from 'next/navigation';
+import { selectAuth } from '@/store/slices/auth/selectors';
+import { useAppSelector } from '@/shared/hooks/redux';
 
 export function AuthLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const { accessToken } = useSelector((state: RootState) => state.auth);
+  const { accessToken } = useAppSelector(selectAuth);
 
   useEffect(() => {
     if (!accessToken) {
@@ -16,3 +16,4 @@ export function AuthLayout({ children }: { children: React.ReactNode }) {
 
   return accessToken ? children : null;
 }
+

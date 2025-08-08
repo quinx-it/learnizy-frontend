@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { publicRoutes } from './shared/constants/routes';
 
 export function middleware(req: NextRequest) {
+    console.log('Middleware triggered');
   const { pathname } = req.nextUrl;
 
   const isPublic = publicRoutes.find((path) => pathname === path);
@@ -17,5 +18,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/', '/login', '/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico$|login$|$).*)'],
 };
