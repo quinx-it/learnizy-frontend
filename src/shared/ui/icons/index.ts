@@ -19,3 +19,5 @@ export { NotificationIcon } from './notification-icon';
 export { StarIcon } from './star-icon';
 export { HeaderLogo } from './header-logo'
 export { ProjectsIcon } from './projects-icon'
+export { CircleIcon } from './circle-icon'
+export { LockIcon } from './lock-icon'
