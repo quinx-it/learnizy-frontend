@@ -16,7 +16,7 @@ export const constants = {
 } as const;
 
 export const completedModule: ModuleCardType = {
-  img_url: 'images/astronaut1.png',
+  img_url: 'images/astronaut1.webp',
   title: 'Введение',
   id: 'module-1',
   module_number: 1,
@@ -88,7 +88,7 @@ export const completedModule: ModuleCardType = {
 };
 
 export const inProgressModule: ModuleCardType = {
-  img_url: 'images/astronaut2.png',
+  img_url: 'images/astronaut2.webp',
   title: 'Анализ',
   id: 'module-2',
   module_number: 2,
@@ -147,7 +147,7 @@ export const inProgressModule: ModuleCardType = {
 };
 
 export const lockedModule: ModuleCardType = {
-  img_url: 'images/astronaut3.png',
+  img_url: 'images/astronaut3.webp',
   title: 'Резюме',
   id: 'module-3',
   module_number: 3,
@@ -163,7 +163,7 @@ export const lockedModule: ModuleCardType = {
 };
 
 export const newModule: ModuleCardType = {
-  img_url: 'images/astronaut4.png',
+  img_url: 'images/astronaut4.webp',
   title: 'Введение',
   id: 'module-4',
   module_number: 4,

@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   description: 'Sorry, this page does not exist.',
 };
 
-export default function NotFound() {
-  return <NotFoundPage />;
+export default function GlobalNotFound() {
+  return (
+    <div className='flex items-center justify-center h-screen'>
+      <NotFoundPage />
+    </div>
+  );
 }
