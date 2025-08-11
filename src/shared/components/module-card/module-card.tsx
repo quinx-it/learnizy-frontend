@@ -46,8 +46,12 @@ const ModuleCardComponent = ({
     'hover:border-medium': !isBlocked,
   });
 
+  /* const handleCardClick = () => {
+    router.push(`${routes.modules}/${id}`);
+  } */
+
   return (
-    <CardWrapper className={cardClass}>
+    <CardWrapper /* onClick={handleCardClick} */ className={cardClass}>
       <div className="flex items-center justify-between gap-3">
         <div className="max-w-7/10 space-y-3.5">
           <div className="space-y-2">
