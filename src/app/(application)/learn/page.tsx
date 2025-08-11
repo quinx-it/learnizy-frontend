@@ -1,6 +1,12 @@
-const ApplicationHomePage = () => {
+import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
+import { constants } from './constants';
 
-  return <>Main Page</>;
+const ApplicationHomePage = () => {
+  return (
+    <>
+      <Breadcrumbs rootDescription={constants.main.description} />
+    </>
+  );
 };
 
 export default ApplicationHomePage;
