@@ -1,7 +1,10 @@
+'use client'
 import React from 'react';
 import { cn } from '@/shared/lib/utils';
 import { Heading } from '@/shared/ui/typography';
 import Image from 'next/image';
+import { Button } from '@/shared/ui/button';
+import Link from 'next/link';
 
 type NotFoundComponentProps = {
   className?: string;
@@ -21,8 +24,11 @@ export const NotFoundComponent = ({ className }: NotFoundComponentProps) => {
         height={207}
         src="/images/notfound-astronaut.webp"
         alt="astronaut"
-        className="absolute right-1/5 bottom-1/8 max-w-[132px] translate-x-1/5 transform md:max-w-[192px]"
+        className="absolute right-1/5 bottom-2/7 max-w-[132px] translate-x-1/5 transform md:max-w-[192px]"
       />
+      <Button className='max-w-[141px] mx-auto mt-8' size={'medium'} asChild>
+        <Link href="/learn">На главную</Link>
+      </Button>
     </div>
   );
 };

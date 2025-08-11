@@ -3,7 +3,8 @@ import { decodeToken } from '@shared/lib/utils';
 import { AuthState, DecodedToken } from './types';
 
 const initialState: AuthState = {
-  accessToken: null,
+  accessToken:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0dXNlciIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzA0MDY3MjAwLCJleHAiOjE3MDQwNzgwMDB9.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
   user: null,
 };
 
