@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { Calendar } from '@ui/calendar'
 import { Input } from '@ui/input'
@@ -16,12 +16,12 @@ interface DatePickerProps {
 }
 
 export function DatePicker({ label, value, onChange, error }: DatePickerProps) {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
 
-  const [inputValue, setInputValue] = React.useState(formatDate(value || undefined))
-  const [month, setMonth] = React.useState<Date | undefined>(value || undefined)
+  const [inputValue, setInputValue] = useState(formatDate(value || undefined))
+  const [month, setMonth] = useState<Date | undefined>(value || undefined)
 
-  React.useEffect(() => {
+  useEffect(() => {
     setInputValue(formatDate(value || undefined))
     setMonth(value || undefined)
   }, [value])
