@@ -2,16 +2,13 @@
 
 import React from 'react'
 import { useForm, Controller } from 'react-hook-form'
-import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { personalDataSchema } from './validation'
+import { PersonalDataFormValues, personalDataSchema } from './validation'
 import { RadioGroup, RadioGroupItem } from '@/shared/ui/radioGroup'
 import { Input } from '@/shared/ui/input'
 import { DatePicker } from '@/shared/ui/datePicker'
 import { Button } from '@/shared/ui/button'
-
-type PersonalDataFormValues = yup.InferType<typeof personalDataSchema>
 
 export const PersonalDataForm = () => {
   const {
@@ -41,7 +38,6 @@ export const PersonalDataForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {/* Пол */}
       <Controller
         name='gender'
         control={control}
@@ -58,7 +54,6 @@ export const PersonalDataForm = () => {
       />
       {errors.gender && <p className='text-red-500'>{errors.gender.message}</p>}
 
-      {/* Остальные поля */}
       <div className='grid-rows-[repeat(5,1fr)_auto] grid grid-cols-2 gap-x-4 gap-y-8'>
         <Input
           label='Имя'
