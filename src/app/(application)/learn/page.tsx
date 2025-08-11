@@ -1,12 +1,7 @@
-import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
-import { constants } from './constants';
+import { LearnMainPage } from '@/shared/app-pages/learn-main-page/learn-main-page';
 
-const ApplicationHomePage = () => {
-  return (
-    <>
-      <Breadcrumbs rootDescription={constants.main.description} />
-    </>
-  );
+const LearnPage = () => {
+  return <LearnMainPage />;
 };
 
-export default ApplicationHomePage;
+export default LearnPage;
