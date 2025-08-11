@@ -3,11 +3,11 @@ import { cn } from '@/shared/lib/utils';
 import { Heading } from '@/shared/ui/typography';
 import Image from 'next/image';
 
-type NotFoundProps = {
+type NotFoundComponentProps = {
   className?: string;
 };
 
-export const NotFound = ({ className }: NotFoundProps) => {
+export const NotFoundComponent = ({ className }: NotFoundComponentProps) => {
   return (
     <div className={cn('text-deep relative mx-auto flex flex-col p-4 text-center', className)}>
       <Heading className="leading-auto text-[200px] text-[#CCEDF6] md:text-[300px] md:leading-[270px]">

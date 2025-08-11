@@ -1,5 +1,4 @@
-'use client'
-import React, { useEffect } from 'react';
+import React from 'react';
 import { cn } from '@/shared/lib/utils';
 import { Heading, Text } from '@/shared/ui/typography';
 import Image from 'next/image';
@@ -16,23 +15,15 @@ type ErrorProps = {
 export const ErrorSection = ({
   className,
   reset,
-  error,
   title = 'Упс, произошла ошибка..',
   text = 'Мы уже знаем об этом и работаем над её устранением. \n Пожалуйста, попробуйте позже.',
 }: ErrorProps) => {
-
-
-   useEffect(() => {
-     console.error(error);
-   }, [error]);
-
-
   const handleError = () => {
     reset();
   };
 
   return (
-    <div className='h-screen flex items-center'>
+    <div className="flex h-screen items-center">
       <div
         className={cn(
           'text-deep relative m-auto flex flex-col items-center gap-5 text-center',

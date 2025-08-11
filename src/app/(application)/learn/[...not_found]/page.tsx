@@ -1,7 +1,8 @@
 import { NotFoundPage } from '@/shared/app-pages/notFound-page';
+import React from 'react';
 
-const LearnNotFoundPage = () => {
+const LearnNotFound = () => {
   return <NotFoundPage />;
 };
 
-export default LearnNotFoundPage;
+export default LearnNotFound;
