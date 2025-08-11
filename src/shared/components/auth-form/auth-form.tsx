@@ -36,11 +36,12 @@ const AuthForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mx-auto flex max-w-sm flex-col gap-4">
-      <Input id="email" placeholder="Email" {...register('email')} error={errors.email?.message} />
+      <Input label='Введите логин' id="email" placeholder="логин" {...register('email')} error={errors.email?.message} />
 
       <PasswordInput
+        label='Введите пароль'
         id="password"
-        placeholder="Пароль"
+        placeholder="пароль"
         {...register('password')}
         error={errors.password?.message}
       />
