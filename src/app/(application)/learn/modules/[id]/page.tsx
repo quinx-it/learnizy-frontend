@@ -1,15 +1,16 @@
 'use client';
+import { ModuleItemPage } from '@/shared/app-pages/modules-item-page';
 import { useParams } from 'next/navigation';
 
-const ModuleItemPage = () => {
-  const params = useParams(); // { id: string }
+type ParamsType = {
+  id: string;
+}
+
+const ModuleItem = () => {
+  const params = useParams<ParamsType>();
   const { id } = params;
 
-  return (
-    <>
-      <h1>Модуль {id}</h1>
-    </>
-  );
+  return <ModuleItemPage id={id} />;
 };
 
-export default ModuleItemPage;
+export default ModuleItem;

@@ -3,7 +3,7 @@ import { decodeToken } from '@shared/lib/utils';
 import { AuthState, DecodedToken } from './types';
 
 const initialState: AuthState = {
-  accessToken: 'awfawf',
+  accessToken: null,
   user: null,
 };
 
