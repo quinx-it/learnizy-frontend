@@ -7,16 +7,19 @@ import { Input, type InputProps } from '@ui/input';
 import { cn } from '@/shared/lib/utils';
 import './styles.css';
 import { EyeIcon } from '@ui/icons';
-
-const PasswordInput = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className,disabled, ...props }, ref) => {
+interface PasswordInputProps extends InputProps {
+  innerClassName?: string;
+}
+const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
+  ({ className, innerClassName, disabled, ...props }, ref) => {
     const [showPassword, setShowPassword] = React.useState(false);
 
     return (
-      <div className="relative">
+      <div className={cn('relative', className)}>
         <Input
           type={showPassword ? 'text' : 'password'}
-          className={cn('hide-password-toggle pr-10', className)}
+          className=''
+          innerClassName={cn(innerClassName,"hide-password-toggle pr-10")}
           ref={ref}
           {...props}
         />
@@ -24,7 +27,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, InputProps>(
           type="button"
           variant="white"
           size="small"
-          className="absolute top-0 right-0 h-full cursor-pointer border-none bg-transparent px-3 py-2 hover:bg-transparent"
+          className="absolute top-7.5 right-0 cursor-pointer border-none bg-transparent px-3 py-2 hover:bg-transparent"
           onClick={() => setShowPassword((prev) => !prev)}
           disabled={disabled}
         >

@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import { Header } from '@/shared/components/header';
+
+import StoreProvider from './StoreProvider';
+import { Toaster } from '@/shared/ui/toaster';
 
 export const metadata: Metadata = {
   title: {
@@ -27,9 +29,11 @@ export default function RootLayout({
 
   return (
     <html lang="ru" className={involve.className}>
-      <body className="bg-accent-background grid min-h-[100vh] grid-cols-[auto_1fr]">
-        <Header />
-        <main className="h-full max-h-screen w-full overflow-y-auto px-7.5 py-5">{children}</main>
+      <body>
+        <StoreProvider>
+          {children}
+          <Toaster />
+        </StoreProvider>
       </body>
     </html>
   );
