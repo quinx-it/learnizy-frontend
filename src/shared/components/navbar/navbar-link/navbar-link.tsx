@@ -14,7 +14,7 @@ interface NavbarLinkProps extends LinkProps {
 
 export const NavbarLink = ({ href, Icon, label, className }: NavbarLinkProps) => {
   const pathname = usePathname();
-  const isActive = pathname === href;
+  const isActive = pathname.split('/').slice(0, 3).join('/') === String(href).split('/').slice(0, 3).join('/');
 
   return (
     <Button variant={isActive ? 'blue' : 'white'} asChild className={className}>

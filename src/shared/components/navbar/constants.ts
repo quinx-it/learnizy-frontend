@@ -15,6 +15,6 @@ export const constants = {
     { href: routes.knowlegeBase, Icon: DiscussionIcon, label: 'База знаний' },
     { href: routes.exams, Icon: APlusIcon, label: 'Экзамены' },
     { href: routes.projects, Icon: ProjectsIcon, label: 'Проекты' },
-    { href: routes.userProfile, Icon: PersonIcon, label: 'Профиль' },
+    { href: routes.userProfilePersonalData, Icon: PersonIcon, label: 'Профиль' },
   ],
 }

@@ -6,7 +6,8 @@ export const routes = {
   knowlegeBase: '/learn/knowledge-base',
   modules: '/learn/modules',
   projects: '/learn/projects',
-  userProfile: '/learn/user-profile',
+  userProfilePersonalData: '/learn/user-profile/personal-data',
+  userProfileSecuritySettings: '/learn/user-profile/security-settings',
 };
 
 export const publicRoutes = [routes.loginPage, routes.landingPage];
