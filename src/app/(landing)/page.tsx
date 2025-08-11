@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import { HomePage } from '@/shared/app-pages/home-page';
+import { LandingPage } from '@/shared/app-pages/landing-page';
 
 export const metadata: Metadata = {};
 
 export default function Home() {
-  return <HomePage />;
+  return <LandingPage />;
 }

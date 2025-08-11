@@ -1,10 +1,8 @@
-import AuthForm from '@/shared/components/auth-form/auth-form';
+import { LoginPageDesign } from "@/shared/app-pages/login-page";
 
 function LoginPage() {
   return (
-    <div className="flex h-[100vh] items-center justify-center">
-      <AuthForm />
-    </div>
+    <LoginPageDesign />   
   );
 }
 

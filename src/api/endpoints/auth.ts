@@ -3,9 +3,12 @@ import { api } from '../api';
 import { AuthFormValues } from '@/shared/components/auth-form/validation';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 
+type LoginRequest = Pick<AuthFormValues, 'login' | 'password'>
+type RefreshResponse = { accessToken: string; }
+
 export const auth = api.injectEndpoints({
   endpoints: (builder) => ({
-    login: builder.mutation<AuthState, AuthFormValues>({
+    login: builder.mutation<AuthState, LoginRequest>({
       query: (body) => ({
         url: '/login',
         method: 'POST',
@@ -18,7 +21,7 @@ export const auth = api.injectEndpoints({
         method: 'POST',
       }),
     }),
-    refresh: builder.mutation<{ accessToken: string }, void>({
+    refresh: builder.mutation<RefreshResponse, void>({
       query: () => ({
         url: '/refresh',
         method: 'POST',
