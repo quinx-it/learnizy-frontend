@@ -1,6 +1,6 @@
 import { Heading } from '@/shared/ui/typography';
 
-export const HomePage = () => {
+export const LandingPage = () => {
   return (
     <>
       <Heading>Landing</Heading>

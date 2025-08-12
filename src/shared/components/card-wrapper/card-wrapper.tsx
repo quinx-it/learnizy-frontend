@@ -10,7 +10,7 @@ type CardWrapperProps = {
 
 export const CardWrapper = ({ children, className }: CardWrapperProps) => {
   return (
-    <div className={cn('box-shadow bg-light relative p-6 rounded-2xl w-full max-w-fit', className)}>
+    <div className={cn('box-shadow bg-light relative p-6 rounded-2xl w-full', className)}>
       {children}
     </div>
   );
