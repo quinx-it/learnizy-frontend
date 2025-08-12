@@ -1,17 +1,28 @@
 'use client';
 
-import React from 'react';
-import { useForm, SubmitHandler} from 'react-hook-form';
+import React, { useEffect } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ResetPasswordFormValues, formSchema } from './validation';
 import { PasswordInput } from '@/shared/ui/passwordInput';
 import { Button } from '@ui/button';
+import { useResetPasswordMutation } from '@/api/endpoints/auth';
+import { showToast } from '@/shared/ui/toaster';
+import { Spinner } from '@/shared/ui/spinner';
 
 interface ResetPasswordFormProps {
-    token: string
+  token: string;
 }
 
 export const ResetPasswordForm = ({ token }: ResetPasswordFormProps) => {
+  const [resetPassword, { isLoading, error }] = useResetPasswordMutation();
+
+  useEffect(() => {
+    if (error) {
+      showToast('error', 'Ошибка', 'Проверьте правильность введённых логина и пароля');
+    }
+  }, [error]);
+
   const {
     register,
     handleSubmit,
@@ -25,7 +36,17 @@ export const ResetPasswordForm = ({ token }: ResetPasswordFormProps) => {
   });
 
   const onSubmit: SubmitHandler<ResetPasswordFormValues> = async (data) => {
-    console.log(data, token)
+    try {
+      await resetPassword({
+        token,
+        newPassword: data.password,
+      }).unwrap();
+
+      showToast('success', 'Ура!', 'Пароль успешно изменён');
+    } catch (err) {
+      showToast('error', 'Ошибка!', 'Не удалось изменить пароль');
+      console.error(err);
+    }
   };
 
   return (
@@ -46,8 +67,8 @@ export const ResetPasswordForm = ({ token }: ResetPasswordFormProps) => {
         error={errors.repeatPassword?.message}
       />
 
-      <Button type="submit" className="rounded-full">
-        Сохранить
+      <Button type="submit" size="medium" className="rounded-full" disabled={isLoading}>
+        {isLoading ? <Spinner size={22} /> : 'Сохранить'}
       </Button>
     </form>
   );

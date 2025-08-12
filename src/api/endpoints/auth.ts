@@ -5,47 +5,58 @@ import { logout, setCredentials } from '@/store/slices/auth/slice';
 
 type LoginRequest = Pick<AuthFormValues, 'login' | 'password'>
 type ForgotPasswordRequest = { email: string }
+type ResetPasswordRequest = {
+    token: string;
+    newPassword: string;
+}
 type RefreshResponse = { accessToken: string; }
 
 
 export const auth = api.injectEndpoints({
-  endpoints: (builder) => ({
-    login: builder.mutation<AuthState, LoginRequest>({
-      query: (body) => ({
-        url: '/login',
-        method: 'POST',
-        body,
-      }),
+    endpoints: (builder) => ({
+        login: builder.mutation<AuthState, LoginRequest>({
+            query: (body) => ({
+                url: '/login',
+                method: 'POST',
+                body,
+            }),
+        }),
+        logout: builder.mutation({
+            query: () => ({
+                url: '/logout',
+                method: 'POST',
+            }),
+        }),
+        refresh: builder.mutation<RefreshResponse, void>({
+            query: () => ({
+                url: '/refresh',
+                method: 'POST',
+            }),
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                try {
+                    const { data } = await queryFulfilled;
+                    dispatch(setCredentials({ accessToken: data.accessToken }));
+                } catch (error) {
+                    dispatch(logout());
+                    console.error('Ошибка обновления токена: ', error)
+                }
+            },
+        }),
+        forgotPassword: builder.mutation<void, ForgotPasswordRequest>({
+            query: (body) => ({
+                url: '/forgot-password',
+                method: 'POST',
+                body,
+            }),
+        }),
+        resetPassword: builder.mutation<void, ResetPasswordRequest>({
+            query: (body) => ({
+                url: '/reset-password',
+                method: 'POST',
+                body,
+            }),
+        }),
     }),
-    logout: builder.mutation({
-      query: () => ({
-        url: '/logout',
-        method: 'POST',
-      }),
-    }),
-    refresh: builder.mutation<RefreshResponse, void>({
-      query: () => ({
-        url: '/refresh',
-        method: 'POST',
-      }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-        try {
-          const { data } = await queryFulfilled;
-          dispatch(setCredentials({ accessToken: data.accessToken }));
-        } catch (error) {
-          dispatch(logout());
-          console.error('Ошибка обновления токена: ', error)
-        }
-      },
-    }),
-    forgotPassword: builder.mutation<void, ForgotPasswordRequest>({
-      query: (body) => ({
-        url: '/forgot-password',
-        method: 'POST',
-        body,
-      }),
-    }),
-  }),
 });
 
-export const { useLoginMutation, useLogoutMutation, useRefreshMutation, useForgotPasswordMutation } = auth;
+export const { useLoginMutation, useLogoutMutation, useRefreshMutation, useForgotPasswordMutation, useResetPasswordMutation } = auth;
