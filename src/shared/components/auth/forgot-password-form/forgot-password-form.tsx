@@ -50,7 +50,7 @@ export const ForgotPasswordForm = () => {
         error={errors.email?.message}
       />
 
-      <Button type="submit" disabled={isLoading} className="rounded-full">
+      <Button type="submit" size='medium' disabled={isLoading} className="rounded-full">
         {isLoading ? <Spinner type="ring" /> : 'Отправить'}
       </Button>
     </form>
