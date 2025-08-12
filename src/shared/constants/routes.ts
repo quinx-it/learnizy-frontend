@@ -1,6 +1,8 @@
 export const routes = {
     landingPage: '/',
     loginPage: '/login',
+    forgotPassword:'/forgot-password',
+    resetPassword:'/reset-password',
     userAgreement: '#',
     privacyPolicy: '#',
 
@@ -13,4 +15,4 @@ export const routes = {
     userProfileSecuritySettings: '/learn/user-profile/security-settings',
 };
 
-export const publicRoutes = [routes.loginPage, routes.landingPage];
+export const publicRoutes = [routes.loginPage, routes.forgotPassword, routes.resetPassword, routes.landingPage];

@@ -1,34 +1,23 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { AuthFormValues, formSchema } from './validation';
-import { useLoginMutation } from '@/api/endpoints/auth';
-import { Spinner } from '@/shared/ui/spinner';
+import { RegisterFormValues, formSchema } from './validation';
 import { Input } from '@ui/input';
 import { PasswordInput } from '@/shared/ui/passwordInput';
 import { Button } from '@ui/button';
-import { showToast } from '@/shared/ui/toaster';
 import Link from 'next/link';
 import { routes } from '@/shared/constants';
 import { CheckboxWithLabel } from '@/shared/ui/checkboxWithLabel/checkboxWithLabel';
 
-export const AuthForm = () => {
-  const [loginRequest, { isLoading, error }] = useLoginMutation();
-
-  useEffect(() => {
-    if (error) {
-      showToast('error', 'Ошибка', 'Проверьте правильность введённых логина и пароля');
-    }
-  }, [error]);
-
+export const RegisterForm = () => {
   const {
     register,
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<AuthFormValues>({
+  } = useForm<RegisterFormValues>({
     resolver: yupResolver(formSchema),
     defaultValues: {
       login: '',
@@ -37,14 +26,8 @@ export const AuthForm = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<AuthFormValues> = async (data) => {
-    try {
-      const { login, password } = data;
-      await loginRequest({ login, password }).unwrap();
-    } catch (err) {
-      showToast('error', 'Ошибка авторизации', 'Чето не так');
-      console.error('Login error:', err);
-    }
+  const onSubmit: SubmitHandler<RegisterFormValues> = async (data) => {
+    console.log(data)
   };
 
   return (
@@ -63,6 +46,14 @@ export const AuthForm = () => {
         placeholder="пароль"
         {...register('password')}
         error={errors.password?.message}
+      />
+
+      <PasswordInput
+        label="Повторите пароль"
+        id="repeat-password"
+        placeholder="пароль"
+        {...register('repeatPassword')}
+        error={errors.repeatPassword?.message}
       />
 
       <div className="flex flex-col gap-1">
@@ -86,8 +77,8 @@ export const AuthForm = () => {
         {errors.agreement && <p className="text-error text-[12px]">{errors.agreement.message}</p>}
       </div>
 
-      <Button type="submit" disabled={isLoading} className="rounded-full">
-        {isLoading ? <Spinner type="ring" /> : 'Войти'}
+      <Button type="submit" className="rounded-full">
+        Войти
       </Button>
     </form>
   );

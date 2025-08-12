@@ -1,10 +1,12 @@
 import { AuthState } from '@/store/slices/auth/types';
 import { api } from '../api';
-import { AuthFormValues } from '@/shared/components/auth-form/validation';
+import { AuthFormValues } from '@/shared/components/auth/auth-form/validation';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 
 type LoginRequest = Pick<AuthFormValues, 'login' | 'password'>
+type ForgotPasswordRequest = { email: string }
 type RefreshResponse = { accessToken: string; }
+
 
 export const auth = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -36,7 +38,14 @@ export const auth = api.injectEndpoints({
         }
       },
     }),
+    forgotPassword: builder.mutation<void, ForgotPasswordRequest>({
+      query: (body) => ({
+        url: '/forgot-password',
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useLogoutMutation, useRefreshMutation } = auth;
+export const { useLoginMutation, useLogoutMutation, useRefreshMutation, useForgotPasswordMutation } = auth;
