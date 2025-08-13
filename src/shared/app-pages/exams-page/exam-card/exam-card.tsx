@@ -16,22 +16,13 @@ export const ExamCard = ({ exam, status }: ExamCardProps) => {
     [ExamStatus.Completed]: {},
     [ExamStatus.Failed]: {
       children: 'Попробовать снова',
-      variant: 'blue',
-      size: 'medium',
-      className: 'absolute right-6 top-6',
     },
     [ExamStatus.Available]: {
       children: 'Начать экзамен',
-      variant: 'blue',
-      size: 'medium',
-      className: 'absolute right-6 top-6',
     },
     [ExamStatus.Unavailable]: {
       children: 'Начать экзамен',
-      variant: 'blue',
-      size: 'medium',
       disabled: true,
-      className: 'absolute right-6 top-6',
     },
   };
 
@@ -85,7 +76,14 @@ export const ExamCard = ({ exam, status }: ExamCardProps) => {
         className="text-medium"
       />
 
-      {status !== ExamStatus.Completed && <Button {...buttonConfig[status]} />}
+      {status !== ExamStatus.Completed && (
+        <Button
+          className="absolute top-6 right-6"
+          variant="blue"
+          size="medium"
+          {...buttonConfig[status]}
+        />
+      )}
       {examStatusUi[status]}
     </CardWrapper>
   );
