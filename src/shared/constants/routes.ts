@@ -9,7 +9,7 @@ export const routes = {
   homePage: '/learn',
   exams: '/learn/exams',
   knowlegeBase: '/learn/knowledge-base',
-  faq: '/learn/knowledge-base/faq',
+  frequentlyAskedQuestions: '/learn/knowledge-base/faq',
   modules: '/learn/modules',
   projects: '/learn/projects',
   userProfilePersonalData: '/learn/user-profile/personal-data',
