@@ -1,0 +1,1 @@
+export { KnowlegeBasePage } from './knowlege-base-page'
