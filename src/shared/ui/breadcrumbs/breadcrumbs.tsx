@@ -61,6 +61,7 @@ export const Breadcrumbs = ({
         ) : (
           <li>
             <DotTitle
+              heading
               className="gap-2.5"
               firstVariant="l"
               secondVariant="l"

@@ -1,0 +1,1 @@
+export { AccordionReview } from "./accordion-review";
