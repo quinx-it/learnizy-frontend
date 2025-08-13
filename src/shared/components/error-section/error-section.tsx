@@ -4,12 +4,15 @@ import { Heading, Text } from '@/shared/ui/typography';
 import Image from 'next/image';
 import { Button } from '@/shared/ui/button';
 
+export type ErrorType = {
+  error: Error & { digest?: string };
+  reset: () => void;
+};
+
 type ErrorProps = {
   className?: string;
   text?: string;
   title?: string;
-  error: Error & { digest?: string };
-  reset: () => void;
 };
 
 export const ErrorSection = ({
@@ -17,7 +20,7 @@ export const ErrorSection = ({
   reset,
   title = 'Упс, произошла ошибка..',
   text = 'Мы уже знаем об этом и работаем над её устранением. \n Пожалуйста, попробуйте позже.',
-}: ErrorProps) => {
+}: ErrorProps & ErrorType) => {
   const handleError = () => {
     reset();
   };
