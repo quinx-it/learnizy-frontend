@@ -1,7 +1,8 @@
 import { routes } from '@/shared/constants';
+import { globalConstants } from '@/shared/constants/constants';
 
 export const constants = {
-  breadCrumbs: [{ label: routes.faqLabel, href: '' }],
+  breadCrumbs: [{ label: globalConstants.rootBreadcrumbLabels.faqLabel, href: routes.faq }],
   accordionItems: [
     {
       value: 'item-1',
