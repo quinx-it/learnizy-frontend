@@ -1,9 +1,9 @@
-const ModulesPage = () => {
+import { ModulesPage } from "@/shared/app-pages/modules-page";
+
+const Modules = () => {
   return (
-    <>
-        Modules Page
-    </>
-  )
+    <ModulesPage />
+  );
 }
 
-export default ModulesPage
+export default Modules;
