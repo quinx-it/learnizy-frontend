@@ -41,10 +41,8 @@ export const Breadcrumbs = ({
             </li>
             {items.map((crumb, index) => (
               <Fragment key={crumb.href}>
-                <li>
+                <li className='flex items-center gap-2'>
                   <ArrowRightIcon color="blue" className="size-2.5" />
-                </li>
-                <li>
                   {index === items.length - 1 ? (
                     <Text variant={'l'} className="text-medium">
                       {crumb.label}
