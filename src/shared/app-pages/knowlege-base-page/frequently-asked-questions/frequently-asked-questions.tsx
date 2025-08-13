@@ -3,10 +3,11 @@ import { routes } from '@/shared/constants';
 import { Button } from '@/shared/ui/button';
 import { Text } from '@/shared/ui/typography';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const FrequentlyAskedQuestions = () => {
   return (
-    <CardWrapper className="flex flex-col gap-4">
+    <CardWrapper className="flex flex-col gap-4 relative overflow-hidden">
       <Text variant="m" className="text-medium">
         Ответы на популярные вопросы
       </Text>
@@ -24,6 +25,8 @@ export const FrequentlyAskedQuestions = () => {
       <Button variant="blue" size="small" asChild className="w-fit">
         <Link href={routes.frequentlyAskedQuestions}>Смотреть ответы</Link>
       </Button>
+
+      <Image src='/images/blue-planet-with-moon.webp' alt='' className='absolute bottom-0 right-0 translate-x-15 translate-y-7 rotate-6' width={160} height={107} />
     </CardWrapper>
   );
 };
