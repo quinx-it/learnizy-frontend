@@ -8,12 +8,11 @@ import { renderModuleProgress } from './utils';
 import { cn } from '@/shared/lib/utils';
 import { constants } from './constants';
 import { CardWrapper } from '@/shared/components/card-wrapper';
+import { DotTitle } from '@/shared/ui/dotTitle';
 import { routes } from '@/shared/constants';
 import { useRouter } from 'next/navigation';
 
-const Dot = ({ className }: { className?: string }) => (
-  <span className={cn('bg-medium h-[3px] w-[3.2px] rounded-full', className)}></span>
-);
+
 
 const ModuleCardComponent = ({
   title,
@@ -65,22 +64,23 @@ const ModuleCardComponent = ({
       <div className="flex items-center justify-between gap-3">
         <div className="max-w-7/10 space-y-3.5">
           <div className="space-y-2">
-            <div className="flex items-center gap-1.5">
-              <Text variant={'m-bold'} className="leading-[22px]">
-                {moduleLabel}
-              </Text>
-              <Dot />
-              <Text variant={'m'} className="text-medium">
-                {title}
-              </Text>
-            </div>
+            <DotTitle
+              firstLabel={moduleLabel}
+              secondLabel={title}
+              firstVariant="m-bold"
+              secondVariant="m"
+            />
             <Text>{description}</Text>
           </div>
-          <div className={cn('text-soft flex items-center gap-1.5', { 'text-medium': bonus })}>
-            <Text>{lessonInfo}</Text>
-            <Dot className={cn('bg-soft mt-0.75 w-[3px]', { 'bg-medium': bonus })} />
-            <Text>{taskInfo}</Text>
-          </div>
+          <DotTitle
+            firstLabel={lessonInfo}
+            secondLabel={taskInfo}
+            firstVariant="m"
+            secondVariant="m"
+            className={cn('text-soft', { 'text-medium': bonus })}
+            dotClassName={cn('bg-soft mt-0.75 w-[3px]', { 'bg-medium': bonus })}
+          />
+
           <div className="flex items-end gap-3">
             <Button
               disabled={isBlocked}

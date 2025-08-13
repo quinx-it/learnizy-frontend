@@ -1,6 +1,7 @@
-const ApplicationHomePage = () => {
+import { LearnMainPage } from '@/shared/app-pages/learn-main-page';
 
-  return <>Main Page</>;
+const LearnPage = () => {
+  return <LearnMainPage />;
 };
 
-export default ApplicationHomePage;
+export default LearnPage;

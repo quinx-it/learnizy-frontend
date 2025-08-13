@@ -1,0 +1,1 @@
+export { DotTitle } from "./dotTitle";
