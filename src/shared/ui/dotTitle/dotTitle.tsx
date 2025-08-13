@@ -1,5 +1,5 @@
 import { cn } from '@/shared/lib/utils';
-import { Text } from '@/shared/ui/typography';
+import { Heading, Text } from '@/shared/ui/typography';
 import React from 'react';
 
 export const Dot = ({ className }: { className?: string }) => (
@@ -15,6 +15,7 @@ interface DotTitleProps {
   secondVariant?: 'l' | 'l-bold' | 'm' | 'm-bold';
   className?: string;
   dotClassName?: string;
+  heading?: boolean;
 }
 
 export const DotTitle = ({
@@ -26,16 +27,21 @@ export const DotTitle = ({
   firstClassName,
   secondClassName,
   dotClassName,
+  heading = false
 }: DotTitleProps) => {
   return (
     <div className={cn('flex items-center gap-1.5', className)}>
-      <Text variant={firstVariant} className={firstClassName}>
+      {heading ? <Heading variant={'2xl'} className={firstClassName}>{firstLabel}</Heading> : (
+        <Text variant={firstVariant} className={firstClassName}>
         {firstLabel}
       </Text>
+    )}
       <Dot className={dotClassName} />
-      <Text variant={secondVariant} className={secondClassName}>
+      {heading ? <Heading variant={'2xl'} className={cn('text-medium',secondClassName)}>{secondLabel}</Heading> : (
+        <Text variant={secondVariant} className={cn('text-medium',secondClassName)}>
         {secondLabel}
       </Text>
+     )}
     </div>
   );
 };

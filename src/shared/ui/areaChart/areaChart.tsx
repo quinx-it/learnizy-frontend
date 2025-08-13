@@ -12,7 +12,7 @@ const chartMargin = { left: 15, right: 15, top: 5, bottom: 0 };
 
 export function AreaChart({ data = chartData }: ChartLineProps) {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 overflow-auto">
       <ChartContainer
         config={{
           value: {

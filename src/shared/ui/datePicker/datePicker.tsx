@@ -77,7 +77,7 @@ export function DatePicker({ label, value, onChange, error }: DatePickerProps) {
           />
         }
       >
-        <div id='date-picker' className='absolute top-8 right-3 cursor-pointer'>
+        <div id='date-picker' className='absolute bottom-2 right-3 cursor-pointer'>
           <CalendarIcon type='dark' />
         </div>
       </Popover>
