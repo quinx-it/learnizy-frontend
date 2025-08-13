@@ -33,7 +33,7 @@ export const DotTitle = ({
         {firstLabel}
       </Text>
       <Dot className={dotClassName} />
-      <Text variant={secondVariant} className={secondClassName}>
+      <Text variant={secondVariant} className={cn('text-medium',secondClassName)}>
         {secondLabel}
       </Text>
     </div>

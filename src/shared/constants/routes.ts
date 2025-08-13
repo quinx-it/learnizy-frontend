@@ -10,6 +10,7 @@ export const routes = {
     exams: '/learn/exams',
     knowlegeBase: '/learn/knowledge-base',
     modules: '/learn/modules',
+    lessons: '/learn/modules/lessons',
     projects: '/learn/projects',
     userProfilePersonalData: '/learn/user-profile/personal-data',
     userProfileSecuritySettings: '/learn/user-profile/security-settings',

@@ -1,9 +1,9 @@
-const ExamsPage = () => {
+import { ExamsPage } from "@/shared/app-pages/exams-page"
+
+const Exams = () => {
   return (
-    <>
-        Exams Page
-    </>
+    <ExamsPage />
   )
 }
 
-export default ExamsPage
+export default Exams
