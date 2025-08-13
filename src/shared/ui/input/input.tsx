@@ -15,7 +15,7 @@ function Input({ innerClassName, className, type = 'text', error, label, ...prop
     <div className={className}>
       {label && (
         <Label className="mb-1.5">
-          <Text variant="m" className="text-medium">
+          <Text variant="s" className="text-medium">
             {label}
           </Text>
         </Label>
