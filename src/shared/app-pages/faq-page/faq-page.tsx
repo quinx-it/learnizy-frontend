@@ -16,8 +16,8 @@ export const FaqPage = () => {
       />
       <CardWrapper className='max-w-full'>
         <div>
-          <Text variant={'m-bold'} className='text-medium mb-5'>Ответы на популярные вопросы</Text>
-          <div className='bg-gray w-full h-[1px] mb-4' />
+          <Text variant='m-bold' className='text-medium mb-5'>Ответы на популярные вопросы</Text>
+          <hr className='border-gray mb-4' />
           <div className='w-full'>
             <CardAccordion className='w-full' items={constants.accordionItems} />
           </div>
