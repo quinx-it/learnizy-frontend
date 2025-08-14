@@ -1,8 +1,6 @@
 import { Heading } from '@/shared/ui/typography';
-import Link from 'next/link';
 import Image from 'next/image';
 import { HeroSection } from './hero-section';
-import { routes } from '@/shared/constants';
 
 export const LandingPage = () => {
   return (
