@@ -24,7 +24,7 @@ export const InterviewRecords = ({ className }: InterviewRecordsProps) => {
       </Text>
 
       <Button variant="blue" size="small" asChild className="w-fit">
-        <Link href={routes.interviewRecords}>Смотреть все записи</Link>
+        <Link href={routes.user.interviewRecords}>Смотреть все записи</Link>
       </Button>
     </CardWrapper>
   );

@@ -23,7 +23,7 @@ export const FrequentlyAskedQuestions = () => {
       </div>
 
       <Button variant="blue" size="small" asChild className="w-fit">
-        <Link href={routes.frequentlyAskedQuestions}>Смотреть ответы</Link>
+        <Link href={routes.user.frequentlyAskedQuestions}>Смотреть ответы</Link>
       </Button>
 
       <Image src='/images/blue-planet-with-moon.webp' alt='' className='absolute bottom-0 right-0 translate-x-15 translate-y-7 rotate-6' width={160} height={107} />

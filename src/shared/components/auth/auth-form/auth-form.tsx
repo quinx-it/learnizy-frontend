@@ -64,7 +64,7 @@ export const AuthForm = () => {
           error={errors.password?.message}
         />
 
-        <Link href={routes.forgotPassword} className="block text-medium !underline w-full text-right text-[12px] mt-2">
+        <Link href={routes.public.forgotPassword} className="block text-medium !underline w-full text-right text-[12px] mt-2">
           Забыли пароль?
         </Link>
       </div>

@@ -25,7 +25,7 @@ export const InterviewQuestions = () => {
         </div>
 
         <Button variant="blue" size="small" asChild className='w-fit'>
-          <Link href={routes.interviewQuestions}>Перейти к вопросам</Link>
+          <Link href={routes.user.interviewQuestions}>Перейти к вопросам</Link>
         </Button>
 
         <Image src='/images/planet-with-disc-blue.webp' alt='' className='absolute bottom-0 right-0 translate-x-12 translate-y-4' width={176} height={88} />

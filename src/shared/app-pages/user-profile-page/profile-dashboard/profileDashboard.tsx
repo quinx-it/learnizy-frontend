@@ -13,7 +13,7 @@ export const ProfileDashboard = () => {
     <CardWrapper className="max-w-full h-full">
       <div className="mb-8 w-full">
         <div className="mx-auto h-[152px] w-[152px] overflow-visible rounded-full mb-3 relative">
-          <Image src="/images/astronaut1.png" alt="Profile Image" width={152} height={152} />
+          <Image src="/images/astronaut1.webp" alt="Profile Image" width={152} height={152} />
           <button className="absolute bottom-0 right-0 -translate-x-9/10 cursor-pointer">
             <EditPhotoIcon />
           </button>
@@ -24,10 +24,10 @@ export const ProfileDashboard = () => {
         </Text>
       </div>
       <div className="flex flex-col gap-4">
-        <DashboardLink href={routes.userProfilePersonalData} Icon={PersonIcon}>
+        <DashboardLink href={routes.user.userProfilePersonalData} Icon={PersonIcon}>
           Персональные данные
         </DashboardLink>
-        <DashboardLink href={routes.userProfileSecuritySettings} Icon={LockIcon}>
+        <DashboardLink href={routes.user.userProfileSecuritySettings} Icon={LockIcon}>
           Настройки доступа
         </DashboardLink>
         <Button variant="white" className="justify-start border-0 text-[16px]">

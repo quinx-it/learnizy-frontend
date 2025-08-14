@@ -64,11 +64,11 @@ export const RegisterForm = () => {
           render={({ field }) => (
             <CheckboxWithLabel checked={field.value} onCheckedChange={field.onChange}>
               Принимаю условия{' '}
-              <Link href={routes.userAgreement} className="inline !underline">
+              <Link href={routes.public.userAgreement} className="inline !underline">
                 пользовательского соглашения
               </Link>{' '}
               и даю согласие на{' '}
-              <Link href={routes.privacyPolicy} className="inline !underline">
+              <Link href={routes.public.privacyPolicy} className="inline !underline">
                 обработку персональных данных
               </Link>
             </CheckboxWithLabel>

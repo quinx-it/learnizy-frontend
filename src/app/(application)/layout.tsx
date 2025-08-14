@@ -1,4 +1,5 @@
 'use client';
+
 import { useRefreshMutation } from '@/api/endpoints/auth';
 import { ReactNode, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
@@ -24,8 +25,8 @@ const ApplicationLayout = ({ children }: ApplicationLayoutProps) => {
   useEffect(() => {
     if (isLoading) return;
     
-    if (accessToken && pathname === routes.loginPage) {
-      router.replace(routes.homePage);
+    if (accessToken && pathname === routes.public.loginPage) {
+      router.replace(routes.user.homePage);
     }
   }, [accessToken, pathname, router, isLoading]);
 

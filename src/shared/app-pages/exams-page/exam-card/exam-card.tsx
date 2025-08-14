@@ -47,7 +47,7 @@ export const ExamCard = ({ exam, status }: ExamCardProps) => {
     [ExamStatus.Unavailable]: (
       <Text variant="l">
         Доступен после завершения всех{' '}
-        <Link href={routes.lessons} className="text-medium !underline">
+        <Link href={routes.user.lessons} className="text-medium !underline">
           уроков
         </Link>{' '}
         модуля

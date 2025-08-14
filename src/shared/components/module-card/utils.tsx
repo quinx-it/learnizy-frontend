@@ -13,7 +13,12 @@ type ProgressModuleType = {
 const ProcentContent = ({ progress }: { progress: number | null | string }) => {
   return (
     <div className="text-medium flex gap-1.5 self-center">
-      <ProgressBar size={20} variant="circular" value={progress ? Number(progress) : 1} className='text-medium stroke-medium'/>
+      <ProgressBar
+        size={20}
+        variant="circular"
+        value={progress ? Number(progress) : 1}
+        className="text-medium stroke-medium"
+      />
       <Text variant={'m'} className="">
         {' '}
         {progress}%
