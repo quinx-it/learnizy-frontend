@@ -37,12 +37,8 @@ export const DotTitle = ({
       </Text>
     )}
       <Dot className={dotClassName} />
-<<<<<<< HEAD
-      <Text variant={secondVariant} className={cn('text-medium',secondClassName)}>
-=======
       {heading ? <Heading variant={'2xl'} className={cn('text-medium',secondClassName)}>{secondLabel}</Heading> : (
         <Text variant={secondVariant} className={cn('text-medium',secondClassName)}>
->>>>>>> 473bd24b0b1a316b02b38599f63eb51b6fab2de0
         {secondLabel}
       </Text>
      )}
