@@ -1,3 +1,5 @@
+import { UserRole } from "@/store/slices/auth/types";
+
 export const routes = {
     public: {
         landingPage: '/',
@@ -29,3 +31,18 @@ export const routes = {
 export const publicRoutes = Object.values(routes.public);
 export const userRoutes = Object.values(routes.user);
 export const mentorRoutes = Object.values(routes.mentor);
+
+
+export const loginPageUrl = routes.public.loginPage;
+
+export const roleRoutes: Record<UserRole, string[]> = {
+  [UserRole.GUEST]: publicRoutes,
+  [UserRole.USER]: userRoutes,
+  [UserRole.MENTOR]: mentorRoutes,
+};
+
+export const defaultPage: Record<UserRole, string> = {
+  [UserRole.GUEST]: routes.public.loginPage,
+  [UserRole.USER]: routes.user.homePage,
+  [UserRole.MENTOR]: routes.mentor.students,
+};

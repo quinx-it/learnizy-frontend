@@ -1,21 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { decodeToken } from '@shared/lib/utils';
-import { mentorRoutes, publicRoutes, routes, userRoutes } from './shared/constants/routes';
+import { defaultPage, loginPageUrl, publicRoutes, roleRoutes } from './shared/constants/routes';
 import { UserRole, DecodedToken } from './store/slices/auth/types';
 
-const loginPageUrl = routes.public.loginPage;
-
-const roleRoutes: Record<UserRole, string[]> = {
-  [UserRole.GUEST]: publicRoutes,
-  [UserRole.USER]: userRoutes,
-  [UserRole.MENTOR]: mentorRoutes,
-};
-
-const defaultPage: Record<UserRole, string> = {
-  [UserRole.GUEST]: routes.public.loginPage,
-  [UserRole.USER]: routes.user.homePage,
-  [UserRole.MENTOR]: routes.mentor.students,
-};
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
