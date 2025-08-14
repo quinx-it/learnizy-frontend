@@ -1,4 +1,4 @@
-import { StatusKey } from "./constants";
+import { StatusKey } from './constants';
 
 export type ModuleState = StatusKey;
 
@@ -10,14 +10,22 @@ export type ModuleStatus = {
 
 type Task = {
   name: string;
-  start: number;
+  stars: number;
   total_stars: number;
   id: number | string;
 };
 
-type Lesson = {
+export const lessonStatuses = {
+  VERIFIED: 'verified',
+  ACTIVE: 'active',
+  BLOCKED: 'blocked',
+} as const;
+
+type LessonStatus = (typeof lessonStatuses)[keyof typeof lessonStatuses];
+
+export type LessonType = {
   name: string;
-  verified: boolean;
+  status: LessonStatus;
   stars: number;
   total_stars: number;
   tasks: Task[];
@@ -29,7 +37,7 @@ export type ModuleCardType = {
   id: string | number;
   module_number: number;
   description: string;
-  lessons: Lesson[];
+  lessons: LessonType[];
   total_tasks: number;
   status: ModuleStatus;
   bonus: boolean;

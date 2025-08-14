@@ -1,10 +1,11 @@
 import { ModuleCardType } from './types';
+import { lessonStatuses } from '@/shared/components/module-card/types';
 
 export const STATUS = {
   completed: 'Пройден',
   active: 'Продолжить',
   blocked: 'Заблокирован',
-  start: 'Начать',
+  stars: 'Начать',
 } as const;
 
 export type StatusKey = keyof typeof STATUS;
@@ -32,26 +33,26 @@ export const completedModule: ModuleCardType = {
   lessons: [
     {
       name: 'Типы и интерфейсы',
-      verified: true,
+      status: lessonStatuses.VERIFIED,
       stars: 10,
       total_stars: 10,
       id: 'lesson-1',
       tasks: [
         {
           name: 'Базовые типы',
-          start: 3,
+          stars: 3,
           total_stars: 3,
           id: 'task-1',
         },
         {
           name: 'Интерфейсы',
-          start: 4,
+          stars: 4,
           total_stars: 4,
           id: 'task-2',
         },
         {
           name: 'Типы объединений',
-          start: 3,
+          stars: 3,
           total_stars: 3,
           id: 'task-3',
         },
@@ -59,26 +60,26 @@ export const completedModule: ModuleCardType = {
     },
     {
       name: 'Функции',
-      verified: true,
+      status: lessonStatuses.ACTIVE,
       stars: 8,
       total_stars: 10,
       id: 'lesson-2',
       tasks: [
         {
           name: 'Типы функций',
-          start: 3,
+          stars: 3,
           total_stars: 3,
           id: 'task-4',
         },
         {
           name: 'Перегрузки',
-          start: 2,
+          stars: 2,
           total_stars: 3,
           id: 'task-5',
         },
         {
           name: 'Дженерики',
-          start: 3,
+          stars: 3,
           total_stars: 4,
           id: 'task-6',
         },
@@ -103,20 +104,20 @@ export const inProgressModule: ModuleCardType = {
   lessons: [
     {
       name: 'Декораторы',
-      verified: true,
+      status: lessonStatuses.ACTIVE,
       stars: 5,
       total_stars: 8,
       id: 'lesson-3',
       tasks: [
         {
           name: 'Декораторы классов',
-          start: 2,
+          stars: 2,
           total_stars: 3,
           id: 'task-7',
         },
         {
           name: 'Декораторы методов',
-          start: 3,
+          stars: 3,
           total_stars: 5,
           id: 'task-8',
         },
@@ -124,20 +125,20 @@ export const inProgressModule: ModuleCardType = {
     },
     {
       name: 'Миксины',
-      verified: false,
+      status: lessonStatuses.BLOCKED,
       stars: 0,
       total_stars: 6,
       id: 'lesson-4',
       tasks: [
         {
           name: 'Основы миксинов',
-          start: 0,
+          stars: 0,
           total_stars: 3,
           id: 'task-9',
         },
         {
           name: 'Продвинутые техники',
-          start: 0,
+          stars: 0,
           total_stars: 3,
           id: 'task-10',
         },
@@ -172,26 +173,26 @@ export const newModule: ModuleCardType = {
   bonus: true,
   total_tasks: 2,
   status: {
-    state: 'start',
+    state: 'stars',
     progress: 0,
   },
   lessons: [
     {
       name: 'Профилирование',
-      verified: false,
+      status: lessonStatuses.ACTIVE,
       stars: 0,
       total_stars: 4,
       id: 'lesson-5',
       tasks: [
         {
           name: 'Инструменты профилирования',
-          start: 0,
+          stars: 0,
           total_stars: 2,
           id: 'task-11',
         },
         {
           name: 'Анализ результатов',
-          start: 0,
+          stars: 0,
           total_stars: 2,
           id: 'task-12',
         },

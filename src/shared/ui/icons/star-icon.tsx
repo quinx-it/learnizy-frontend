@@ -8,7 +8,7 @@ export const colors = {
 } as const;
 
 type StarIconProps = {
-  type?: 'default' | 'gold';
+  type?: 'default' | 'gold' | 'disabled';
 };
 
 export const StarIcon = ({ className, type = 'default' }: IconProps & StarIconProps) => {
