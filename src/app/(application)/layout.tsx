@@ -7,6 +7,8 @@ import { useAppSelector } from '@/shared/hooks/redux';
 import { routes } from '@/shared/constants';
 import { selectToken } from '@/store/slices/auth/selectors';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
+import { decodeToken } from '@/shared/lib/utils';
+import { defaultPage } from '@/shared/constants/routes';
 
 interface ApplicationLayoutProps {
   children: ReactNode;
@@ -24,10 +26,15 @@ const ApplicationLayout = ({ children }: ApplicationLayoutProps) => {
 
   useEffect(() => {
     if (isLoading) return;
+
     
     if (accessToken && pathname === routes.public.loginPage) {
-      router.replace(routes.user.homePage);
+      const role = decodeToken(accessToken).user?.role;
+      if (role) {
+        router.replace(defaultPage[role]);
+      }
     }
+
   }, [accessToken, pathname, router, isLoading]);
 
   if (isLoading) {
