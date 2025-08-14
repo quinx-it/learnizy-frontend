@@ -22,3 +22,4 @@ export { HeaderLogo } from './header-logo'
 export { ProjectsIcon } from './projects-icon'
 export { CircleIcon } from './circle-icon'
 export { LockIcon } from './lock-icon'
+export { LockColorIcon } from './lock-color-icon';
