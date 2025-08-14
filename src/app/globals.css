@@ -67,6 +67,8 @@ a {
 }
 
 @theme inline {
+  --font-montserrat: var(--montserrat); 
+
   --breakpoint-xxs: 29rem;
   --breakpoint-2xl: 90rem;
 

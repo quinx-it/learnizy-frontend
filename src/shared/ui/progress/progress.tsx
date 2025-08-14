@@ -5,9 +5,9 @@ import { cn } from '@shared/lib/utils';
 export interface ProgressBarProps {
   value: number;
   className?: string;
-  variant?: 'linear' | 'circular'
-  size?: number
-  strokeWidth?: number
+  variant?: 'linear' | 'circular';
+  size?: number;
+  strokeWidth?: number;
 }
 
 export const ProgressBar = ({
@@ -18,16 +18,12 @@ export const ProgressBar = ({
   strokeWidth = 4,
 }: ProgressBarProps) => {
   if (variant === 'circular') {
-    const radius = (size - strokeWidth) / 2
-    const circumference = 2 * Math.PI * radius
-    const offset = circumference - (value / 100) * circumference
+    const radius = (size - strokeWidth) / 2;
+    const circumference = 2 * Math.PI * radius;
+    const offset = circumference - (value / 100) * circumference;
 
     return (
-      <svg
-        width={size}
-        height={size}
-        className={cn('rotate-[-90deg]', className)}
-      >
+      <svg width={size} height={size} className={cn('rotate-[-90deg]', className)}>
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -49,21 +45,22 @@ export const ProgressBar = ({
           className="transition-all duration-300"
         />
       </svg>
-    )
+    );
   }
 
   return (
     <Progress
       value={value}
       className={cn(
-        'relative h-4 w-full overflow-hidden rounded-full bg-soft',
-        className
+        'bg-soft relative w-full overflow-hidden rounded-full',
+        strokeWidth && `h-${strokeWidth}`,
+        className,
       )}
     >
       <div
-        className="h-full w-full flex-1 bg-medium transition-all duration-300"
+        className="bg-medium h-full w-full flex-1 transition-all duration-300"
         style={{ transform: `translateX(-${100 - value}%)` }}
       />
     </Progress>
-  )
-}
+  );
+};

@@ -1,9 +1,9 @@
-const KnowlegeBasePage = () => {
+import { KnowlegeBasePage } from "@/shared/app-pages/knowlege-base-page"
+
+const KnowlegeBase = () => {
   return (
-    <>
-        KnowlegeBase Page
-    </>
+    <KnowlegeBasePage />
   )
 }
 
-export default KnowlegeBasePage
+export default KnowlegeBase

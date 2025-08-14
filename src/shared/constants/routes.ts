@@ -9,11 +9,15 @@ export const routes = {
     homePage: '/learn',
     exams: '/learn/exams',
     knowlegeBase: '/learn/knowledge-base',
+    frequentlyAskedQuestions: '/learn/knowledge-base/faq',
     modules: '/learn/modules',
     lessons: '/learn/modules/lessons',
     projects: '/learn/projects',
     userProfilePersonalData: '/learn/user-profile/personal-data',
     userProfileSecuritySettings: '/learn/user-profile/security-settings',
+
+    interviewQuestions: '#',
+    interviewRecords: '#'
 };
 
 export const publicRoutes = [routes.loginPage, routes.forgotPassword, routes.resetPassword, routes.landingPage];
