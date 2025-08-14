@@ -1,14 +1,14 @@
 'use client'
 
-import React from 'react'
+import React, { ComponentProps, ReactNode } from 'react'
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
 import { cn } from '@shared/lib/utils'
 
 interface TooltipProps {
-  children: React.ReactNode
-  content: React.ReactNode
+  children: ReactNode
+  content: ReactNode
   offset?: number
-  side?: React.ComponentProps<typeof TooltipPrimitive.Content>['side']
+  side?: ComponentProps<typeof TooltipPrimitive.Content>['side']
   delay?: number
 }
 

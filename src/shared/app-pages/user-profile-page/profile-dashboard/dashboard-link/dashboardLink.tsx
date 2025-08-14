@@ -2,12 +2,12 @@ import { cn } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react';
+import React, { ElementType, ReactNode } from 'react';
 
 interface DashboardLinkProps {
   href: string;
-  Icon: React.ElementType;
-  children: React.ReactNode;
+  Icon: ElementType;
+  children: ReactNode;
 }
 
 export const DashboardLink = ({ href, Icon, children }: DashboardLinkProps) => {

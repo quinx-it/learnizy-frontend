@@ -1,12 +1,12 @@
 import { IconProps } from '@/shared/types';
-import { JSX } from 'react';
+import { JSX, ReactNode } from 'react';
 
 type NotificationStatus = 'error' | 'success' | 'info' | 'warning';
 
 const ICON_SIZE = 18;
 const VIEW_BOX = '0 0 20 18';
 
-const BaseIcon = ({ className, children }: IconProps & { children: React.ReactNode }) => (
+const BaseIcon = ({ className, children }: IconProps & { children: ReactNode }) => (
   <svg
     className={className}
     width={ICON_SIZE}

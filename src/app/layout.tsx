@@ -4,6 +4,7 @@ import './globals.css';
 
 import StoreProvider from './StoreProvider';
 import { Toaster } from '@/shared/ui/toaster';
+import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
   title: {
@@ -21,7 +22,7 @@ const involve = localFont({
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   const isXML = typeof window !== 'undefined' && window.location.pathname.endsWith('.xml');
 

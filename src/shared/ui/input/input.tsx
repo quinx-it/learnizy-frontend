@@ -3,8 +3,9 @@ import * as React from 'react';
 import { cn } from '@/shared/lib/utils';
 import { Text } from '@/shared/ui/typography';
 import { Label } from '../label';
+import { ComponentProps } from 'react';
 
-export interface InputProps extends React.ComponentProps<'input'> {
+export interface InputProps extends ComponentProps<'input'> {
   error?: string;
   label: string;
   innerClassName?: string;

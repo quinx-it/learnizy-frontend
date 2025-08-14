@@ -1,10 +1,10 @@
 'use client'
 
 import { cn } from '@/shared/lib/utils';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 type CardWrapperProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   onClick?: () => void;
 };
