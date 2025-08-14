@@ -14,6 +14,8 @@ const enum BlockType {
   SMALL_TEXT = 'SMALL_TEXT',
   ITALIC_TEXT = 'ITALIC_TEXT',
   BOXED_TEXT = 'BOXED_TEXT',
+  UL = 'UNORDERED_LIST',
+  LI = 'LIST_LINE',
   ADVICE = 'ADVICE',
   WARNING = 'WARNING',
   CODE = 'CODE',
@@ -38,24 +40,28 @@ const RenderBlock: React.FC<{ block: ContentBlock }> = ({ block }) => {
   switch (block.blockType) {
     case BlockType.H1:
       return (
-        <Heading variant="6xl" tag="h1" className='mb-2'>
+        <Heading variant="6xl" tag="h1" className="mb-2">
           {block.content}
         </Heading>
       );
     case BlockType.H2:
       return (
-        <Heading variant="4xl" tag="h2" className='mb-2'>
+        <Heading variant="4xl" tag="h2" className="mb-2">
           {block.content}
         </Heading>
       );
     case BlockType.H3:
       return (
-        <Heading variant="2xl" tag="h3" className='mb-2'>
+        <Heading variant="2xl" tag="h3" className="mb-2">
           {block.content}
         </Heading>
       );
     case BlockType.TEXT:
-      return <Text variant="l" className='mb-8'>{block.content}</Text>;
+      return (
+        <Text variant="l" className="mb-8">
+          {block.content}
+        </Text>
+      );
     case BlockType.SMALL_TEXT:
       return <Text variant="m">{block.content}</Text>;
     case BlockType.ITALIC_TEXT:
@@ -66,9 +72,21 @@ const RenderBlock: React.FC<{ block: ContentBlock }> = ({ block }) => {
       );
     case BlockType.BOXED_TEXT:
       return <div className="border-gray rounded-2xl border p-4">{block.content}</div>;
+    case BlockType.UL:
+      return (
+        <ul className="mb-4 list-disc">
+          {block.content && <Text variant="l">{block.content}</Text>}
+          {block.contentBlocks?.map((child) => (
+            <RenderBlock key={child.id} block={child} />
+          ))}
+        </ul>
+      );
+
+    case BlockType.LI:
+      return <li className="my-1 ml-10">{block.content && <>{block.content}</>}</li>;
     case BlockType.ADVICE:
       return (
-        <div className="bg-soft p-4 rounded-2xl mb-8">
+        <div className="bg-soft mb-8 rounded-2xl p-4">
           {block.content && (
             <Heading variant="2xl" tag="h3" className="text-medium flex items-center gap-2">
               <LightbulbIcon />
@@ -82,7 +100,7 @@ const RenderBlock: React.FC<{ block: ContentBlock }> = ({ block }) => {
       );
     case BlockType.WARNING:
       return (
-        <div className="bg-[#E644444D] p-4 rounded-2xl mb-8">
+        <div className="mb-8 rounded-2xl bg-[#E644444D] p-4">
           {block.content && (
             <Heading variant="2xl" tag="h3" className="text-error flex items-center gap-2">
               <NotificationIcon status="warning" />
@@ -96,7 +114,7 @@ const RenderBlock: React.FC<{ block: ContentBlock }> = ({ block }) => {
       );
     case BlockType.CODE:
       return (
-        <pre className="bg-light border-gray border p-4 rounded-2xl mb-8">
+        <pre className="bg-light border-gray mb-8 rounded-2xl border p-4">
           <code>{block.content}</code>
         </pre>
       );
@@ -168,9 +186,50 @@ const api: Lesson = {
     },
     {
       id: 11,
-      blockType: BlockType.TEXT,
-      content:
-        'В Java существует 8 примитивных типов данных:\n• byte (8 бит) — маленькие целые числа\n• short (16 бит) — целые числа средней величины\n• int (32 бита) — стандартный целочисленный тип\n• long (64 бита) — большие целые числа\n• float (32 бита) — числа с плавающей точкой\n• double (64 бита) — более точные числа с плавающей точкой\n• char (16 бит) — символы Unicode\n• boolean — логические значения (true / false)',
+      blockType: BlockType.UL,
+      content: 'В Java существует 8 примитивных типов данных: ',
+      contentBlocks: [
+        {
+          id: 18,
+          blockType: BlockType.LI,
+          content: 'byte (8 бит) — маленькие целые числа',
+        },
+        {
+          id: 19,
+          blockType: BlockType.LI,
+          content: 'short (16 бит) — целые числа средней величины',
+        },
+        {
+          id: 20,
+          blockType: BlockType.LI,
+          content: 'int (32 бита) — стандартный целочисленный тип',
+        },
+        {
+          id: 21,
+          blockType: BlockType.LI,
+          content: 'long (64 бита) — большие целые числа',
+        },
+        {
+          id: 22,
+          blockType: BlockType.LI,
+          content: 'float (32 бита) — числа с плавающей точкой',
+        },
+        {
+          id: 23,
+          blockType: BlockType.LI,
+          content: 'double (64 бита) — более точные числа с плавающей точкой',
+        },
+        {
+          id: 24,
+          blockType: BlockType.LI,
+          content: 'char (16 бит) — символы Unicode',
+        },
+        {
+          id: 25,
+          blockType: BlockType.LI,
+          content: 'boolean — логические значения (true / false)',
+        },
+      ],
     },
     {
       id: 12,
@@ -219,7 +278,7 @@ const api: Lesson = {
 
 export const LessonItemPage: React.FC<LessonItemPageProps> = ({ id }) => {
   return (
-    <div className='flex flex-col'>
+    <div className="flex flex-col">
       <h1>{id}</h1>
       {api.contentBlocks.map((block) => (
         <RenderBlock key={block.id} block={block} />
