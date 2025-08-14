@@ -1,9 +1,11 @@
-import { Heading } from '@/shared/ui/typography';
+import { AdvantagesSection } from './advantages-section';
+import { HeroSection } from './hero-section';
 
 export const LandingPage = () => {
   return (
-    <>
-      <Heading>Landing</Heading>
-    </>
+    <main className="m-0 w-full p-0">
+      <HeroSection />
+      <AdvantagesSection />
+    </main>
   );
 };
