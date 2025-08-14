@@ -1,14 +1,14 @@
 'use client'
 
-import React, { Dispatch, SetStateAction } from 'react'
+import React, { ComponentProps, Dispatch, ReactNode, SetStateAction } from 'react'
 import * as PopoverPrimitive from '@radix-ui/react-popover'
 import { cn } from '@shared/lib/utils'
 
 interface PopoverProps {
-  children: React.ReactNode;
-  content: React.ReactNode;
-  side?: React.ComponentProps<typeof PopoverPrimitive.Content>['side'];
-  align?: React.ComponentProps<typeof PopoverPrimitive.Content>['align'];
+  children: ReactNode;
+  content: ReactNode;
+  side?: ComponentProps<typeof PopoverPrimitive.Content>['side'];
+  align?: ComponentProps<typeof PopoverPrimitive.Content>['align'];
   offset?: number;
   open?: boolean;
   onOpenChange?: Dispatch<SetStateAction<boolean>>;

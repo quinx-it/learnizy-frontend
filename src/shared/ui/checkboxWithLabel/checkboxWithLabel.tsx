@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { Checkbox } from '@shared/ui/checkbox'
 import { Label } from '@shared/ui/label'
 import { CheckboxProps } from '@radix-ui/react-checkbox'
 
 interface CheckboxWithLabelProps extends CheckboxProps {
-  children: React.ReactNode
+  children: ReactNode
   checked?: boolean
   onCheckedChange?: (checked: boolean) => void
 }

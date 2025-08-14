@@ -11,6 +11,7 @@ export const routes = {
     knowlegeBase: '/learn/knowledge-base',
     frequentlyAskedQuestions: '/learn/knowledge-base/faq',
     modules: '/learn/modules',
+    lessons: '/learn/modules/lessons',
     projects: '/learn/projects',
     userProfilePersonalData: '/learn/user-profile/personal-data',
     userProfileSecuritySettings: '/learn/user-profile/security-settings',

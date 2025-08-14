@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/shared/lib/utils';
+import { forwardRef, HTMLAttributes } from 'react';
 
 
 const headingVariants = cva('leading-normal transition-colors', {
@@ -50,18 +51,18 @@ type HeadingVariants = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 type TextVariants = 'p' | 'span';
 
 interface HeadingProps
-  extends React.HTMLAttributes<HTMLHeadingElement>,
+  extends HTMLAttributes<HTMLHeadingElement>,
     VariantProps<typeof headingVariants> {
   tag?: HeadingVariants;
 }
 
 interface TextProps
-  extends React.HTMLAttributes<HTMLParagraphElement>,
+  extends HTMLAttributes<HTMLParagraphElement>,
     VariantProps<typeof textVariants> {
   tag?: TextVariants;
 }
 
-const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
+const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
   ({ tag = 'h3', variant, children, className, ...props }, ref) => {
     const Tag = tag;
     return (
@@ -72,7 +73,7 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
   },
 );
 
-const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
+const Text = forwardRef<HTMLParagraphElement, TextProps>(
   ({ tag = 'p', variant, children, className, ...props }, ref) => {
     const Tag = tag;
     return (

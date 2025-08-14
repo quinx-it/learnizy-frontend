@@ -1,8 +1,8 @@
-import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/shared/lib/utils';
 import './button.css';
+import { ComponentProps, MouseEvent } from 'react';
 
 const baseStyles = [
   'relative overflow-hidden flex items-center justify-center box-content',
@@ -36,14 +36,15 @@ function Button({
   size,
   onClick,
   asChild = false,
+  children,
   ...props
-}: React.ComponentProps<'button'> &
+}: ComponentProps<'button'> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
   }) {
   const Comp = asChild ? Slot : 'button';
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const button = e.currentTarget;
     const circle = document.createElement('span');
     circle.setAttribute('aria-hidden', 'true');
@@ -74,7 +75,9 @@ function Button({
       data-variant={variant}
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
-    />
+    >
+      {children}
+    </Comp>
   );
 }
 
