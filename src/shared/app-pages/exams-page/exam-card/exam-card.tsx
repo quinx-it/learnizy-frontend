@@ -3,7 +3,7 @@
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { Button } from '@/shared/ui/button';
 import { DotTitle } from '@/shared/ui/dotTitle';
-import React from 'react';
+import React, { ComponentProps, ReactNode } from 'react';
 import { ExamCardProps, ExamStatus } from '../types';
 import { Text } from '@/shared/ui/typography';
 import Link from 'next/link';
@@ -12,7 +12,7 @@ import { routes } from '@/shared/constants';
 export const ExamCard = ({ exam, status }: ExamCardProps) => {
   const { title, description, questions, time } = exam;
 
-  const buttonConfig: Record<ExamStatus, React.ComponentProps<typeof Button>> = {
+  const buttonConfig: Record<ExamStatus, ComponentProps<typeof Button>> = {
     [ExamStatus.Completed]: {},
     [ExamStatus.Failed]: {
       children: 'Попробовать снова',
@@ -26,7 +26,7 @@ export const ExamCard = ({ exam, status }: ExamCardProps) => {
     },
   };
 
-  const examStatusUi: Record<ExamStatus, React.ReactNode> = {
+  const examStatusUi: Record<ExamStatus, ReactNode> = {
     [ExamStatus.Completed]: (
       <div className="flex gap-4">
         <Text variant="m" className="border-soft rounded-full border bg-transparent px-6 py-2">

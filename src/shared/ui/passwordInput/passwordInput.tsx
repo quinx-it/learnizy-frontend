@@ -7,12 +7,13 @@ import { Input, type InputProps } from '@ui/input';
 import { cn } from '@/shared/lib/utils';
 import './styles.css';
 import { EyeIcon } from '@ui/icons';
+import { forwardRef, useState } from 'react';
 interface PasswordInputProps extends InputProps {
   innerClassName?: string;
 }
-const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
+const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
   ({ className, innerClassName, disabled, ...props }, ref) => {
-    const [showPassword, setShowPassword] = React.useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     return (
       <div className={cn('relative', className)}>

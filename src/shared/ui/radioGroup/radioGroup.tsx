@@ -4,11 +4,12 @@ import { CircleIcon } from "@/shared/ui/icons"
 
 import { cn } from "@shared/lib/utils"
 import { Label } from "@shared/ui/label"
+import { ComponentProps } from "react"
 
 function RadioGroup({
   className,
   ...props
-}: React.ComponentProps<typeof RadioGroupPrimitive.Root>) {
+}: ComponentProps<typeof RadioGroupPrimitive.Root>) {
   return (
     <RadioGroupPrimitive.Root
       data-slot="radio-group"
@@ -22,7 +23,7 @@ function RadioGroupItem({
   className,
   children,
   value
-}: React.ComponentProps<typeof RadioGroupPrimitive.Item>) {
+}: ComponentProps<typeof RadioGroupPrimitive.Item>) {
   return (
     <Label htmlFor={value}>{children}
       <RadioGroupPrimitive.Item

@@ -2,8 +2,9 @@ import * as React from 'react';
 
 import { cn } from '@/shared/lib/utils';
 import { Text } from '@/shared/ui/typography';
+import { ComponentProps } from 'react';
 
-interface TextareaProps extends React.ComponentProps<'textarea'> {
+interface TextareaProps extends ComponentProps<'textarea'> {
   error?: string;
 }
 

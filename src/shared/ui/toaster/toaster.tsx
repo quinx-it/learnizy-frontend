@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { FC, ReactNode } from 'react';
 import { useTheme } from 'next-themes';
 import { Toaster as Sonner, toast, ToasterProps } from 'sonner';
 import { NotificationIcon, CrossIcon } from '@ui/icons';
@@ -12,7 +12,7 @@ type NotificationVariant = 'info' | 'success' | 'warning' | 'error';
 type ColorMapEntry = {
   bg: string;
   text: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
 };
 
 const iconSize = 24;
@@ -47,7 +47,7 @@ type CustomToastProps = {
   onClose: () => void;
 };
 
-const CustomToast: React.FC<CustomToastProps> = ({ variant, title, description, onClose }) => {
+const CustomToast: FC<CustomToastProps> = ({ variant, title, description, onClose }) => {
   const { bg, text, icon } = colorMap[variant];
 
   return (
@@ -72,7 +72,7 @@ const CustomToast: React.FC<CustomToastProps> = ({ variant, title, description, 
   );
 };
 
-const Toaster: React.FC<ToasterProps> = (props) => {
+const Toaster: FC<ToasterProps> = (props) => {
   const { theme = 'system' } = useTheme();
 
   return (
