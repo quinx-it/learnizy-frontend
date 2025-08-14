@@ -1,15 +1,11 @@
-import { routes } from '@/shared/constants';
-import { Heading } from '@/shared/ui/typography';
-import Link from 'next/link';
-import Image from 'next/image';
+import { AdvantagesSection } from './advantages-section';
+import { HeroSection } from './hero-section';
 
 export const LandingPage = () => {
   return (
-    <>
-      <Heading>Landing</Heading>
-      <Link href={routes.user.homePage}>Learn</Link>
-      <Link href={routes.mentor.students}>Mentor</Link>
-      <Image src='/images/astronaut1.webp' width={100} height={100} alt='mama'/>
-    </>
+    <main className="m-0 w-full p-0">
+      <HeroSection />
+      <AdvantagesSection />
+    </main>
   );
 };
