@@ -5,10 +5,9 @@ import { ReactNode, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAppSelector } from '@/shared/hooks/redux';
 import { routes } from '@/shared/constants';
-import { selectToken, selectUser } from '@/store/slices/auth/selectors';
+import { selectToken, selectUserRole } from '@/store/slices/auth/selectors';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
-import { defaultPage, loginPageUrl } from '@/shared/constants/routes';
-import { decodeToken } from '@/shared/lib/utils';
+import { defaultPage } from '@/shared/constants/routes';
 
 interface ApplicationLayoutProps {
   children: ReactNode;
@@ -19,7 +18,7 @@ const ApplicationLayout = ({ children }: ApplicationLayoutProps) => {
   const pathname = usePathname();
   const router = useRouter();
   const accessToken = useAppSelector(selectToken);
-  const user = useAppSelector(selectUser);
+  const role = useAppSelector(selectUserRole);
 
   useEffect(() => {
     refreshAccessToken();
@@ -28,22 +27,10 @@ const ApplicationLayout = ({ children }: ApplicationLayoutProps) => {
   useEffect(() => {
     if (isLoading) return;
 
-    if (accessToken && pathname === routes.public.loginPage) {
-      if (user?.role) {
-        router.replace(defaultPage[user.role]);
-      } else {
-        try {
-          const role = decodeToken(accessToken).user?.role;
-          if (role) {
-            router.replace(defaultPage[role]);
-          }
-        } catch {
-          console.log('Failed to decode token');
-          router.replace(loginPageUrl);
-        }
-      }
+    if (accessToken && pathname === routes.public.loginPage && role) {
+      router.replace(defaultPage[role]);
     }
-  }, [accessToken, pathname, router, isLoading, user]);
+  }, [accessToken, pathname, router, isLoading, role]);
 
   if (isLoading) {
     return <FullscreenLoader />;

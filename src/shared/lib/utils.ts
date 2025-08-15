@@ -25,3 +25,13 @@ export const decodeToken = (token: string): DecodedToken => {
     const data = jwtDecode<DecodedTokenPayload>(token)
     return { user: { userName: data.sub, role: data.role} }
 }
+
+export const isMentor = (role: UserRole) => {
+    return role === UserRole.MENTOR
+}
+export const isUser = (role: UserRole) => {
+    return role === UserRole.USER
+}
+export const isGuest = (role: UserRole) => {
+    return role === UserRole.GUEST
+}
