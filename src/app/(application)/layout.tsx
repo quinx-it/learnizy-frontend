@@ -7,7 +7,8 @@ import { useAppSelector } from '@/shared/hooks/redux';
 import { routes } from '@/shared/constants';
 import { selectToken, selectUser } from '@/store/slices/auth/selectors';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
-import { defaultPage } from '@/shared/constants/routes';
+import { defaultPage, loginPageUrl } from '@/shared/constants/routes';
+import { decodeToken } from '@/shared/lib/utils';
 
 interface ApplicationLayoutProps {
   children: ReactNode;
@@ -27,15 +28,19 @@ const ApplicationLayout = ({ children }: ApplicationLayoutProps) => {
   useEffect(() => {
     if (isLoading) return;
 
-    const role = user?.role
-    
+    const role = user?.role;
+
     if (accessToken && pathname === routes.public.loginPage && role) {
-      // const role = decodeToken(accessToken).user?.role;
-      if (role) {
-        router.replace(defaultPage[role]);
+      try {
+        const role = decodeToken(accessToken).user?.role;
+        if (role) {
+          router.replace(defaultPage[role]);
+        }
+      } catch {
+        console.log('Failed to decode token')
+        router.replace(loginPageUrl)
       }
     }
-
   }, [accessToken, pathname, router, isLoading, user]);
 
   if (isLoading) {
