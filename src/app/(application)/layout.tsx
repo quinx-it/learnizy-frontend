@@ -28,17 +28,19 @@ const ApplicationLayout = ({ children }: ApplicationLayoutProps) => {
   useEffect(() => {
     if (isLoading) return;
 
-    const role = user?.role;
-
-    if (accessToken && pathname === routes.public.loginPage && role) {
-      try {
-        const role = decodeToken(accessToken).user?.role;
-        if (role) {
-          router.replace(defaultPage[role]);
+    if (accessToken && pathname === routes.public.loginPage) {
+      if (user?.role) {
+        router.replace(defaultPage[user.role]);
+      } else {
+        try {
+          const role = decodeToken(accessToken).user?.role;
+          if (role) {
+            router.replace(defaultPage[role]);
+          }
+        } catch {
+          console.log('Failed to decode token');
+          router.replace(loginPageUrl);
         }
-      } catch {
-        console.log('Failed to decode token')
-        router.replace(loginPageUrl)
       }
     }
   }, [accessToken, pathname, router, isLoading, user]);
