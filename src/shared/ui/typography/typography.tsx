@@ -4,7 +4,6 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/shared/lib/utils';
 import { forwardRef, HTMLAttributes } from 'react';
 
-
 const headingVariants = cva('leading-normal transition-colors', {
   variants: {
     variant: {
@@ -40,6 +39,14 @@ const textVariants = cva('leading-normal transition-colors', {
       's-bold': 'text-[12px] leading-[14px] font-bold',
       'm-bold': 'text-[16px] leading-[18px] font-bold',
       'l-bold': 'text-[20px] leading-[22px] font-bold',
+
+      's-italic': 'text-[12px] leading-[16px] italic font-medium',
+      'm-italic': 'text-[16px] leading-[22px] italic font-medium',
+      'l-italic': 'text-[20px] leading-[27px] italic font-medium',
+
+      's-bold-italic': 'text-[12px] leading-[16px] italic font-bold',
+      'm-bold-italic': 'text-[16px] leading-[22px] italic font-bold',
+      'l-bold-italic': 'text-[20px] leading-[27px] italic font-bold',
     },
   },
   defaultVariants: {
