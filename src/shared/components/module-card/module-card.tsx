@@ -56,7 +56,7 @@ const ModuleCardComponent = ({
   );
 
   const handleCardClick = () => {
-    router.push(`${routes.modules}/${id}`);
+    if (!isBlocked) router.push(`${routes.modules}/${id}`);
   };
 
   return (

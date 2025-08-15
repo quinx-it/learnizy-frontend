@@ -8,6 +8,7 @@ import {
 import { Plus, Minus } from 'lucide-react';
 
 import './accordion.css';
+import { Text } from '@/shared/ui/typography';
 
 interface AccordionEntry {
   value: string;
@@ -38,8 +39,10 @@ export const CardAccordion = ({ items, className }: AccordionProps) => {
               'focus:outline-none',
             )}
           >
-            <span>{heading}</span>
-            <span className="relative h-5 w-5">
+            <Text tag="span" variant={'m'}>
+              {heading}
+            </Text>
+            <Text tag="span" variant={'m'} className="relative h-5 w-5">
               <Plus
                 className={cn(
                   'absolute inset-0 h-5 w-5 transform transition-all duration-300',
@@ -54,7 +57,7 @@ export const CardAccordion = ({ items, className }: AccordionProps) => {
                   iconColor || 'text-medium',
                 )}
               />
-            </span>
+            </Text>
           </AccordionTrigger>
           <AccordionContent className={cn('accordion-content', textColor || 'text-medium')}>
             <div className="px-4 pt-0 pb-4 text-sm leading-relaxed">{content}</div>

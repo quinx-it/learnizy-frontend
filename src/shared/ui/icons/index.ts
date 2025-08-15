@@ -23,3 +23,4 @@ export { ProjectsIcon } from './projects-icon'
 export { CircleIcon } from './circle-icon'
 export { LockIcon } from './lock-icon'
 export { LightbulbIcon } from './lightbulb-icon'
+export { LockColorIcon } from './lock-color-icon';

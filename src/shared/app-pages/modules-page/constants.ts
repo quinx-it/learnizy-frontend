@@ -1,7 +1,7 @@
-import { ModuleCardType } from "@/shared/components/module-card/types";
+import { lessonStatuses, ModuleCardType } from "@/shared/components/module-card/types";
 
 export const constants = {
-    mockModules:[
+  mockModules: [
     {
       id: '1',
       title: 'Введение',
@@ -12,26 +12,26 @@ export const constants = {
         {
           id: 'l1',
           name: 'Урок 1',
-          verified: true,
+          status: lessonStatuses.VERIFIED,
           stars: 3,
           total_stars: 3,
           tasks: [
-            { id: 't1', name: 'Задача 1', start: 0, total_stars: 3 },
-            { id: 't2', name: 'Задача 2', start: 0, total_stars: 3 },
+            { id: 't1', name: 'Задача 1', stars: 0, total_stars: 3 },
+            { id: 't2', name: 'Задача 2', stars: 0, total_stars: 3 },
           ],
         },
         {
           id: 'l2',
           name: 'Урок 2',
-          verified: false,
+          status: lessonStatuses.ACTIVE,
           stars: 0,
           total_stars: 3,
-          tasks: [{ id: 't3', name: 'Задача 3', start: 0, total_stars: 3 }],
+          tasks: [{ id: 't3', name: 'Задача 3', stars: 0, total_stars: 3 }],
         },
         {
           id: 'l3',
           name: 'Урок 3',
-          verified: false,
+          status: lessonStatuses.BLOCKED,
           stars: 0,
           total_stars: 3,
           tasks: [],
@@ -53,11 +53,46 @@ export const constants = {
       description:
         'Разберём ваш профессиональный путь: от навыков и опыта до достижений. Вы поймёте, как сформулировать свои сильные стороны, на чём сделать акцент в резюме и как преподнести себя.',
       lessons: [
-        { id: 'l4', name: 'Урок 4', verified: true, stars: 3, total_stars: 3, tasks: [] },
-        { id: 'l5', name: 'Урок 5', verified: true, stars: 3, total_stars: 3, tasks: [] },
-        { id: 'l6', name: 'Урок 6', verified: true, stars: 3, total_stars: 3, tasks: [] },
-        { id: 'l7', name: 'Урок 7', verified: false, stars: 0, total_stars: 3, tasks: [] },
-        { id: 'l8', name: 'Урок 8', verified: false, stars: 0, total_stars: 3, tasks: [] },
+        {
+          id: 'l4',
+          name: 'Урок 4',
+          status: lessonStatuses.VERIFIED,
+          stars: 3,
+          total_stars: 3,
+          tasks: [],
+        },
+        {
+          id: 'l5',
+          name: 'Урок 5',
+          status: lessonStatuses.ACTIVE,
+          stars: 3,
+          total_stars: 3,
+          tasks: [],
+        },
+        {
+          id: 'l6',
+          name: 'Урок 6',
+          status: lessonStatuses.BLOCKED,
+          stars: 3,
+          total_stars: 3,
+          tasks: [],
+        },
+        {
+          id: 'l7',
+          name: 'Урок 7',
+          status: lessonStatuses.BLOCKED,
+          stars: 0,
+          total_stars: 3,
+          tasks: [],
+        },
+        {
+          id: 'l8',
+          name: 'Урок 8',
+          status: lessonStatuses.BLOCKED,
+          stars: 0,
+          total_stars: 3,
+          tasks: [],
+        },
       ],
       status: {
         state: 'active',
@@ -75,8 +110,22 @@ export const constants = {
       description:
         'В этом модуле вы научитесь составлять сильное, структурированное резюме под конкретные вакансии. Разберём, как выделить ключевые навыки, грамотно описать опыт и избежать типичных ошибок.',
       lessons: [
-        { id: 'l9', name: 'Бонус урок 1', verified: false, stars: 0, total_stars: 3, tasks: [] },
-        { id: 'l10', name: 'Бонус урок 2', verified: false, stars: 0, total_stars: 3, tasks: [] },
+        {
+          id: 'l9',
+          name: 'Бонус урок 1',
+          status: lessonStatuses.ACTIVE,
+          stars: 0,
+          total_stars: 3,
+          tasks: [],
+        },
+        {
+          id: 'l10',
+          name: 'Бонус урок 2',
+          status: lessonStatuses.BLOCKED,
+          stars: 0,
+          total_stars: 3,
+          tasks: [],
+        },
       ],
       status: {
         state: 'blocked',
@@ -97,26 +146,26 @@ export const constants = {
         {
           id: 'l1',
           name: 'Урок 1',
-          verified: true,
+          status: lessonStatuses.VERIFIED,
           stars: 3,
           total_stars: 3,
           tasks: [
-            { id: 't1', name: 'Задача 1', start: 0, total_stars: 3 },
-            { id: 't2', name: 'Задача 2', start: 0, total_stars: 3 },
+            { id: 't1', name: 'Задача 1', stars: 0, total_stars: 3 },
+            { id: 't2', name: 'Задача 2', stars: 0, total_stars: 3 },
           ],
         },
         {
           id: 'l2',
           name: 'Урок 2',
-          verified: false,
+          status: lessonStatuses.ACTIVE,
           stars: 0,
           total_stars: 3,
-          tasks: [{ id: 't3', name: 'Задача 3', start: 0, total_stars: 3 }],
+          tasks: [{ id: 't3', name: 'Задача 3', stars: 0, total_stars: 3 }],
         },
         {
           id: 'l3',
           name: 'Урок 3',
-          verified: false,
+          status: lessonStatuses.BLOCKED,
           stars: 0,
           total_stars: 3,
           tasks: [],
@@ -141,26 +190,26 @@ export const constants = {
         {
           id: 'l1',
           name: 'Урок 1',
-          verified: true,
+          status: lessonStatuses.VERIFIED,
           stars: 3,
           total_stars: 3,
           tasks: [
-            { id: 't1', name: 'Задача 1', start: 0, total_stars: 3 },
-            { id: 't2', name: 'Задача 2', start: 0, total_stars: 3 },
+            { id: 't1', name: 'Задача 1', stars: 0, total_stars: 3 },
+            { id: 't2', name: 'Задача 2', stars: 0, total_stars: 3 },
           ],
         },
         {
           id: 'l2',
           name: 'Урок 2',
-          verified: false,
+          status: lessonStatuses.ACTIVE,
           stars: 0,
           total_stars: 3,
-          tasks: [{ id: 't3', name: 'Задача 3', start: 0, total_stars: 3 }],
+          tasks: [{ id: 't3', name: 'Задача 3', stars: 0, total_stars: 3 }],
         },
         {
           id: 'l3',
           name: 'Урок 3',
-          verified: false,
+          status: lessonStatuses.BLOCKED,
           stars: 0,
           total_stars: 3,
           tasks: [],
@@ -182,11 +231,46 @@ export const constants = {
       description:
         'Разберём ваш профессиональный путь: от навыков и опыта до достижений. Вы поймёте, как сформулировать свои сильные стороны, на чём сделать акцент в резюме и как преподнести себя.',
       lessons: [
-        { id: 'l4', name: 'Урок 4', verified: true, stars: 3, total_stars: 3, tasks: [] },
-        { id: 'l5', name: 'Урок 5', verified: true, stars: 3, total_stars: 3, tasks: [] },
-        { id: 'l6', name: 'Урок 6', verified: true, stars: 3, total_stars: 3, tasks: [] },
-        { id: 'l7', name: 'Урок 7', verified: false, stars: 0, total_stars: 3, tasks: [] },
-        { id: 'l8', name: 'Урок 8', verified: false, stars: 0, total_stars: 3, tasks: [] },
+        {
+          id: 'l4',
+          name: 'Урок 4',
+          status: lessonStatuses.VERIFIED,
+          stars: 3,
+          total_stars: 3,
+          tasks: [],
+        },
+        {
+          id: 'l5',
+          name: 'Урок 5',
+          status: lessonStatuses.VERIFIED,
+          stars: 3,
+          total_stars: 3,
+          tasks: [],
+        },
+        {
+          id: 'l6',
+          name: 'Урок 6',
+          status: lessonStatuses.ACTIVE,
+          stars: 3,
+          total_stars: 3,
+          tasks: [],
+        },
+        {
+          id: 'l7',
+          name: 'Урок 7',
+          status: lessonStatuses.BLOCKED,
+          stars: 0,
+          total_stars: 3,
+          tasks: [],
+        },
+        {
+          id: 'l8',
+          name: 'Урок 8',
+          status: lessonStatuses.BLOCKED,
+          stars: 0,
+          total_stars: 3,
+          tasks: [],
+        },
       ],
       status: {
         state: 'blocked',
@@ -204,8 +288,22 @@ export const constants = {
       description:
         'В этом модуле вы научитесь составлять сильное, структурированное резюме под конкретные вакансии. Разберём, как выделить ключевые навыки, грамотно описать опыт и избежать типичных ошибок.',
       lessons: [
-        { id: 'l9', name: 'Бонус урок 1', verified: false, stars: 0, total_stars: 3, tasks: [] },
-        { id: 'l10', name: 'Бонус урок 2', verified: false, stars: 0, total_stars: 3, tasks: [] },
+        {
+          id: 'l9',
+          name: 'Бонус урок 1',
+          status: lessonStatuses.ACTIVE,
+          stars: 0,
+          total_stars: 3,
+          tasks: [],
+        },
+        {
+          id: 'l10',
+          name: 'Бонус урок 2',
+          status: lessonStatuses.BLOCKED,
+          stars: 0,
+          total_stars: 3,
+          tasks: [],
+        },
       ],
       status: {
         state: 'blocked',
@@ -226,26 +324,26 @@ export const constants = {
         {
           id: 'l1',
           name: 'Урок 1',
-          verified: true,
+          status: lessonStatuses.VERIFIED,
           stars: 3,
           total_stars: 3,
           tasks: [
-            { id: 't1', name: 'Задача 1', start: 0, total_stars: 3 },
-            { id: 't2', name: 'Задача 2', start: 0, total_stars: 3 },
+            { id: 't1', name: 'Задача 1', stars: 0, total_stars: 3 },
+            { id: 't2', name: 'Задача 2', stars: 0, total_stars: 3 },
           ],
         },
         {
           id: 'l2',
           name: 'Урок 2',
-          verified: false,
+          status: lessonStatuses.ACTIVE,
           stars: 0,
           total_stars: 3,
-          tasks: [{ id: 't3', name: 'Задача 3', start: 0, total_stars: 3 }],
+          tasks: [{ id: 't3', name: 'Задача 3', stars: 0, total_stars: 3 }],
         },
         {
           id: 'l3',
           name: 'Урок 3',
-          verified: false,
+          status: lessonStatuses.BLOCKED,
           stars: 0,
           total_stars: 3,
           tasks: [],
@@ -260,5 +358,5 @@ export const constants = {
       img_url: '/images/astronaut1.webp',
       bonus: false,
     },
-  ] as ModuleCardType[]
-}
+  ] as ModuleCardType[],
+};

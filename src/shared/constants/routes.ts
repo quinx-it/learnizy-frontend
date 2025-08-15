@@ -1,10 +1,10 @@
 export const routes = {
-    landingPage: '/',
-    loginPage: '/login',
-    forgotPassword:'/forgot-password',
-    resetPassword:'/reset-password',
-    userAgreement: '#',
-    privacyPolicy: '#',
+  landingPage: '/',
+  loginPage: '/login',
+  forgotPassword: '/forgot-password',
+  resetPassword: '/reset-password',
+  userAgreement: '#',
+  privacyPolicy: '#',
 
     homePage: '/learn',
     exams: '/learn/exams',
