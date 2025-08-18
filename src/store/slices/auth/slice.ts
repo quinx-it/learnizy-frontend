@@ -3,7 +3,8 @@ import { decodeToken } from '@shared/lib/utils';
 import { AuthState, DecodedToken } from './types';
 
 const initialState: AuthState = {
-  accessToken: 'zamenit na null',
+  accessToken:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0dXNlciIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzA0MDY3MjAwLCJleHAiOjE3MDQwNzgwMDB9.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
   user: null,
 };
 
@@ -15,6 +16,7 @@ export const authSlice = createSlice({
       try {
         const { user }: DecodedToken = decodeToken(action.payload.accessToken);
         state.accessToken = action.payload.accessToken;
+        console.log('user', user)
         state.user = user;
       } catch (e) {
         console.error('Failed to decode token', e);

@@ -5,7 +5,7 @@ export const STATUS = {
   completed: 'Пройден',
   active: 'Продолжить',
   blocked: 'Заблокирован',
-  stars: 'Начать',
+  start: 'Начать',
 } as const;
 
 export type StatusKey = keyof typeof STATUS;
@@ -173,7 +173,7 @@ export const newModule: ModuleCardType = {
   bonus: true,
   total_tasks: 2,
   status: {
-    state: 'stars',
+    state: 'start',
     progress: 0,
   },
   lessons: [

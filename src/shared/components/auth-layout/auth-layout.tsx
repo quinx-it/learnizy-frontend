@@ -12,7 +12,7 @@ export function AuthLayout({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!accessToken) {
-      router.replace(routes.loginPage);
+      router.replace(routes.public.loginPage);
     }
   }, [accessToken, router]);
 

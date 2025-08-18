@@ -27,7 +27,7 @@ export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
     <>
       <Breadcrumbs
         items={breadcrumbs(id)}
-        rootHref={routes.modules}
+        rootHref={routes.user.modules}
         rootLabel={'Структура обучения'}
       />
 
@@ -62,7 +62,7 @@ export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
               <CheckIcon color="blue" />
               <Text variant={'l'}>
                 Модуль завершён — самое время пройти{' '}
-                <Link className="text-medium !underline" href={routes.exams}>
+                <Link className="text-medium !underline" href={routes.user.exams}>
                   экзамен
                 </Link>
               </Text>
@@ -72,7 +72,7 @@ export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
               <LockColorIcon />
               <Text variant={'l'}>
                 После завершения всех уроков откроется доступ к{' '}
-                <Link className="text-medium !underline" href={routes.exams}>
+                <Link className="text-medium !underline" href={routes.user.exams}>
                   экзамену
                 </Link>
               </Text>

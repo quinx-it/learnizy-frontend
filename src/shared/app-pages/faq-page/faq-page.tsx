@@ -12,7 +12,7 @@ export const FaqPage = () => {
     <>
       <Breadcrumbs
         rootLabel={globalConstants.rootBreadcrumbLabels.knowlegeBaseLabel}
-        rootHref={routes.knowlegeBase}
+        rootHref={routes.user.knowlegeBase}
         items={constants.breadCrumbs}
       />
       <CardWrapper className="max-w-full">
