@@ -16,20 +16,20 @@ export const auth = api.injectEndpoints({
     endpoints: (builder) => ({
         login: builder.mutation<AuthState, LoginRequest>({
             query: (body) => ({
-                url: '/login',
+                url: '/auth/login',
                 method: 'POST',
                 body,
             }),
         }),
         logout: builder.mutation({
             query: () => ({
-                url: '/logout',
+                url: '/auth/logout',
                 method: 'POST',
             }),
         }),
         refresh: builder.mutation<RefreshResponse, void>({
             query: () => ({
-                url: '/refresh',
+                url: '/auth/refresh',
                 method: 'POST',
             }),
             async onQueryStarted(arg, { dispatch, queryFulfilled }) {
@@ -44,14 +44,14 @@ export const auth = api.injectEndpoints({
         }),
         forgotPassword: builder.mutation<void, ForgotPasswordRequest>({
             query: (body) => ({
-                url: '/forgot-password',
+                url: '/auth/forgot-password',
                 method: 'POST',
                 body,
             }),
         }),
         resetPassword: builder.mutation<void, ResetPasswordRequest>({
             query: (body) => ({
-                url: '/reset-password',
+                url: '/auth/reset-password',
                 method: 'POST',
                 body,
             }),

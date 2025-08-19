@@ -36,6 +36,7 @@ function Button({
   size,
   onClick,
   asChild = false,
+  type = 'button',
   children,
   ...props
 }: ComponentProps<'button'> &
@@ -47,7 +48,6 @@ function Button({
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const button = e.currentTarget;
     const circle = document.createElement('span');
-    circle.setAttribute('aria-hidden', 'true');
     const diameter = Math.max(button.clientWidth, button.clientHeight);
     const radius = diameter / 2;
 
@@ -57,22 +57,16 @@ function Button({
     circle.classList.add('ripple');
 
     const ripple = button.getElementsByClassName('ripple')[0];
-    if (ripple) {
-      ripple.remove();
-    }
-
+    if (ripple) ripple.remove();
     button.appendChild(circle);
 
-    if (typeof onClick === 'function') {
-      onClick(e);
-    }
+    if (typeof onClick === 'function') onClick(e);
   };
 
   return (
     <Comp
-      data-slot="button"
+      type={type}
       onClick={handleClick}
-      data-variant={variant}
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     >

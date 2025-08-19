@@ -37,10 +37,9 @@ export const AuthForm = () => {
 
   const onSubmit: SubmitHandler<AuthFormValues> = async (data) => {
     try {
-      const { login, password } = data;
-      await loginRequest({ login, password }).unwrap();
+      const result = await loginRequest({ login: data.login, password: data.password }).unwrap();
+      console.log('Login result:', result);
     } catch (err) {
-      showToast('error', 'Ошибка авторизации', 'Чето не так');
       console.error('Login error:', err);
     }
   };
@@ -55,21 +54,22 @@ export const AuthForm = () => {
         error={errors.login?.message}
       />
 
-      <div>
-        <PasswordInput
-          label="Введите пароль"
-          id="password"
-          placeholder="пароль"
-          {...register('password')}
-          error={errors.password?.message}
-        />
+      <PasswordInput
+        label="Введите пароль"
+        id="password"
+        placeholder="пароль"
+        {...register('password')}
+        error={errors.password?.message}
+      />
 
-        <Link href={routes.public.forgotPassword} className="block text-medium !underline w-full text-right text-[12px] mt-2">
-          Забыли пароль?
-        </Link>
-      </div>
+      <Link
+        href={routes.public.forgotPassword}
+        className="text-medium -mt-4 block w-full text-right text-[12px] !underline"
+      >
+        Забыли пароль?
+      </Link>
 
-      <Button type="submit" disabled={isLoading} className="rounded-full">
+      <Button type="submit" disabled={isLoading} size="medium" asChild={false}>
         {isLoading ? <Spinner type="ring" /> : 'Войти'}
       </Button>
     </form>
