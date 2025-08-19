@@ -24,3 +24,6 @@ export { CircleIcon } from './circle-icon'
 export { LockIcon } from './lock-icon'
 export { LightbulbIcon } from './lightbulb-icon'
 export { LockColorIcon } from './lock-color-icon';
+export { MicIcon } from './mic-icon'
+export { PlayPauseIcon } from './play-pause-icon'
+export { TrashCanIcon } from './trash-can-icon'
