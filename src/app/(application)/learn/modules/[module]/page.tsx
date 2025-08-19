@@ -3,14 +3,14 @@ import { ModuleItemPage } from '@/shared/app-pages/modules-item-page';
 import { useParams } from 'next/navigation';
 
 type ParamsType = {
-  id: string;
+  module: string;
 }
 
 const ModuleItem = () => {
   const params = useParams<ParamsType>();
-  const { id } = params;
+  const { module } = params;
 
-  return <ModuleItemPage id={id} />;
+  return <ModuleItemPage id={module} />;
 };
 
 export default ModuleItem;
