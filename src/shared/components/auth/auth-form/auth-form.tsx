@@ -12,8 +12,12 @@ import { Button } from '@ui/button';
 import { showToast } from '@/shared/ui/toaster';
 import Link from 'next/link';
 import { routes } from '@/shared/constants';
+import { setCredentials } from '@/store/slices/auth/slice';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/store/store';
 
 export const AuthForm = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const [loginRequest, { isLoading, error }] = useLoginMutation();
 
   useEffect(() => {
@@ -29,16 +33,18 @@ export const AuthForm = () => {
   } = useForm<AuthFormValues>({
     resolver: yupResolver(formSchema),
     defaultValues: {
-      login: '',
+      username: '',
       password: '',
-      agreement: false,
     },
   });
 
   const onSubmit: SubmitHandler<AuthFormValues> = async (data) => {
     try {
-      const result = await loginRequest({ login: data.login, password: data.password }).unwrap();
-      console.log('Login result:', result);
+      const { accessToken } = await loginRequest({
+        username: data.username,
+        password: data.password,
+      }).unwrap();
+      if (accessToken) dispatch(setCredentials({ accessToken: accessToken }));
     } catch (err) {
       console.error('Login error:', err);
     }
@@ -48,10 +54,10 @@ export const AuthForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col gap-6">
       <Input
         label="Введите логин"
-        id="login"
+        id="username"
         placeholder="логин"
-        {...register('login')}
-        error={errors.login?.message}
+        {...register('username')}
+        error={errors.username?.message}
       />
 
       <PasswordInput

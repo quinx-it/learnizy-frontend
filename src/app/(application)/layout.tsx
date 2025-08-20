@@ -4,10 +4,10 @@ import { useRefreshMutation } from '@/api/endpoints/auth';
 import { ReactNode, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAppSelector } from '@/shared/hooks/redux';
-import { routes } from '@/shared/constants';
+import { routes, defaultPage } from '@/shared/constants';
 import { selectToken, selectUserRole } from '@/store/slices/auth/selectors';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
-import { defaultPage } from '@/shared/constants/routes';
+import { roleRoutes } from '@/shared/constants/routes';
 
 interface ApplicationLayoutProps {
   children: ReactNode;
@@ -26,13 +26,20 @@ const ApplicationLayout = ({ children }: ApplicationLayoutProps) => {
 
   useEffect(() => {
     if (isLoading) return;
-
-    if (accessToken && pathname === routes.public.loginPage && role) {
+    if (!accessToken) {
+      router.replace(routes.public.loginPage);
+    } else if (
+      role &&
+      (pathname === routes.public.loginPage || !roleRoutes[role].includes(pathname))
+    ) {
       router.replace(defaultPage[role]);
     }
   }, [accessToken, pathname, router, isLoading, role]);
 
   if (isLoading) {
+    return <FullscreenLoader />;
+  }
+  if (role && !roleRoutes[role].includes(pathname)) {
     return <FullscreenLoader />;
   }
 

@@ -3,7 +3,7 @@ import { api } from '../api';
 import { AuthFormValues } from '@/shared/components/auth/auth-form/validation';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 
-type LoginRequest = Pick<AuthFormValues, 'login' | 'password'>
+type LoginRequest = Pick<AuthFormValues, 'username' | 'password'>
 type ForgotPasswordRequest = { email: string }
 type ResetPasswordRequest = {
     token: string;
@@ -20,6 +20,16 @@ export const auth = api.injectEndpoints({
                 method: 'POST',
                 body,
             }),
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                try {
+                    const { data } = await queryFulfilled;
+                    const accessToken = data.accessToken;
+                    if (accessToken) dispatch(setCredentials({ accessToken }));
+                } catch (error) {
+                    dispatch(logout());
+                    console.error('Ошибка обновления токена: ', error)
+                }
+            },
         }),
         logout: builder.mutation({
             query: () => ({
