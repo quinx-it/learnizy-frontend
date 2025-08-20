@@ -1,0 +1,107 @@
+name: PXEL Educational Frontend CI/CD
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - dev
+    paths-ignore:
+      - '**.md'
+      - '.gitignore'
+
+env:
+  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/pxel-educational-project-frontend
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci_checks:
+    name: Quality Checks & Build Verification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js v22 with Yarn cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'yarn'
+          cache-dependency-path: |
+            yarn.lock
+            .yarnrc.yml
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies (immutable)
+        run: yarn install --immutable
+
+      - name: Run linter
+        run: yarn lint
+
+      - name: Check formatting
+        run: yarn format --check
+
+      - name: Verify production build
+        run: yarn build
+
+  build_and_push_image:
+    name: Build and Push Docker Image
+    needs: ci_checks
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev')
+
+    permissions:
+      contents: read
+      packages: write
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          tags: |
+            # latest для ветки main
+            type=raw,value=latest,enable={{is_default_branch}}
+            # dev для ветки dev
+            type=raw,value=dev,enable=${{ github.ref_name == 'dev' }}
+            # Короткий хеш коммита
+            type=sha,format=short
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
