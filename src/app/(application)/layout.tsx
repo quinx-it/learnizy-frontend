@@ -35,8 +35,6 @@ const ApplicationLayout = ({ children }: ApplicationLayoutProps) => {
     }
   }, [accessToken, pathname, router, isLoading, role]);
 
-  if (!isRoleRoute(role, pathname)) {
-  }
   if (isLoading) {
     return <FullscreenLoader />;
   }
