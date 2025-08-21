@@ -29,18 +29,18 @@ export const AuthForm = () => {
   } = useForm<AuthFormValues>({
     resolver: yupResolver(formSchema),
     defaultValues: {
-      login: '',
+      username: '',
       password: '',
-      agreement: false,
     },
   });
 
   const onSubmit: SubmitHandler<AuthFormValues> = async (data) => {
     try {
-      const { login, password } = data;
-      await loginRequest({ login, password }).unwrap();
+      await loginRequest({
+        username: data.username,
+        password: data.password,
+      }).unwrap();
     } catch (err) {
-      showToast('error', 'Ошибка авторизации', 'Чето не так');
       console.error('Login error:', err);
     }
   };
@@ -49,27 +49,30 @@ export const AuthForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col gap-6">
       <Input
         label="Введите логин"
-        id="login"
+        id="username"
+        autoComplete='username'
         placeholder="логин"
-        {...register('login')}
-        error={errors.login?.message}
+        {...register('username')}
+        error={errors.username?.message}
       />
 
-      <div>
-        <PasswordInput
-          label="Введите пароль"
-          id="password"
-          placeholder="пароль"
-          {...register('password')}
-          error={errors.password?.message}
-        />
+      <PasswordInput
+        label="Введите пароль"
+        id="password"
+        autoComplete='current-password'
+        placeholder="пароль"
+        {...register('password')}
+        error={errors.password?.message}
+      />
 
-        <Link href={routes.public.forgotPassword} className="block text-medium !underline w-full text-right text-[12px] mt-2">
-          Забыли пароль?
-        </Link>
-      </div>
+      <Link
+        href={routes.public.forgotPassword}
+        className="text-medium -mt-4 block w-full text-right text-[12px] !underline"
+      >
+        Забыли пароль?
+      </Link>
 
-      <Button type="submit" disabled={isLoading} className="rounded-full">
+      <Button type="submit" disabled={isLoading} size="medium" asChild={false}>
         {isLoading ? <Spinner type="ring" /> : 'Войти'}
       </Button>
     </form>

@@ -1,13 +1,12 @@
 import * as yup from 'yup'
 
 export interface AuthFormValues {
-  login: string
+  username: string
   password: string
-  agreement: boolean
 }
 
 export const formSchema = yup.object().shape({
-  login: yup
+  username: yup
   .string()
   .required('Введите email или имя пользователя')
   .test('is-email-or-username', 'Неверный email или никнейм', (value) => {
@@ -17,8 +16,4 @@ export const formSchema = yup.object().shape({
     return emailRegex.test(value) || usernameRegex.test(value)
   }),
   password: yup.string().min(6, 'Минимум 6 символов').required('Введите пароль'),
-  agreement: yup
-    .boolean()
-    .oneOf([true], 'Нужно принять соглашение')
-    .required('Нужно принять соглашение'),
 })
