@@ -12,12 +12,8 @@ import { Button } from '@ui/button';
 import { showToast } from '@/shared/ui/toaster';
 import Link from 'next/link';
 import { routes } from '@/shared/constants';
-import { setCredentials } from '@/store/slices/auth/slice';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@/store/store';
 
 export const AuthForm = () => {
-  const dispatch = useDispatch<AppDispatch>();
   const [loginRequest, { isLoading, error }] = useLoginMutation();
 
   useEffect(() => {
@@ -40,11 +36,10 @@ export const AuthForm = () => {
 
   const onSubmit: SubmitHandler<AuthFormValues> = async (data) => {
     try {
-      const { accessToken } = await loginRequest({
+      await loginRequest({
         username: data.username,
         password: data.password,
       }).unwrap();
-      if (accessToken) dispatch(setCredentials({ accessToken: accessToken }));
     } catch (err) {
       console.error('Login error:', err);
     }
