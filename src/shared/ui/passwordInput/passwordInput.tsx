@@ -10,17 +10,19 @@ import { EyeIcon } from '@ui/icons';
 import { forwardRef, useState } from 'react';
 interface PasswordInputProps extends InputProps {
   innerClassName?: string;
+  autoComplete?: 'current-password' | 'new-password';
 }
 const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
-  ({ className, innerClassName, disabled, ...props }, ref) => {
+  ({ className, innerClassName, disabled, autoComplete, ...props }, ref) => {
     const [showPassword, setShowPassword] = useState(false);
 
     return (
       <div className={cn('relative', className)}>
         <Input
           type={showPassword ? 'text' : 'password'}
-          className=''
-          innerClassName={cn(innerClassName,"hide-password-toggle pr-10")}
+          className=""
+          autoComplete={autoComplete}
+          innerClassName={cn(innerClassName, 'hide-password-toggle pr-10')}
           ref={ref}
           {...props}
         />
@@ -28,7 +30,7 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           type="button"
           variant="white"
           size="small"
-          className="absolute bottom-0.5 right-0 cursor-pointer border-none bg-transparent px-3 py-2 hover:bg-transparent"
+          className="absolute right-0 top-6.25 cursor-pointer border-none bg-transparent px-3 py-2 hover:bg-transparent"
           onClick={() => setShowPassword((prev) => !prev)}
           disabled={disabled}
         >

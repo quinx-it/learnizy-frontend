@@ -55,6 +55,7 @@ export const AuthForm = () => {
       <Input
         label="Введите логин"
         id="username"
+        autoComplete='username'
         placeholder="логин"
         {...register('username')}
         error={errors.username?.message}
@@ -63,6 +64,7 @@ export const AuthForm = () => {
       <PasswordInput
         label="Введите пароль"
         id="password"
+        autoComplete='current-password'
         placeholder="пароль"
         {...register('password')}
         error={errors.password?.message}

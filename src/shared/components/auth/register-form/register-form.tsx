@@ -35,6 +35,7 @@ export const RegisterForm = () => {
       <Input
         label="Введите логин"
         id="login"
+        autoComplete='username'
         placeholder="логин"
         {...register('login')}
         error={errors.login?.message}
