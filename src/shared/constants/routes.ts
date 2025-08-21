@@ -31,8 +31,7 @@ export const publicRoutes = Object.values(routes.public);
 
 export const staticUserRoutes = Object.values(routes.user);
 export const dynamicUserRoutes = [
-  /^\/learn\/modules\/\d+$/,                  
-  /^\/learn\/modules\/\d+\/lessons$/,         
+  /^\/learn\/modules\/\d+$/,                           
   /^\/learn\/modules\/\d+\/\d+$/,             
   /^\/learn\/modules\/\d+\/\d+\/test$/,       
   /^\/learn\/modules\/\d+\/\d+\/retelling$/,

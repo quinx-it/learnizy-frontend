@@ -9,6 +9,7 @@ import { selectToken, selectUserRole } from '@/store/slices/auth/selectors';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { publicRoutes } from '@/shared/constants/routes';
 import { isRoleRoute } from '@/shared/lib/utils';
+import { NotFoundPage } from '@/shared/app-pages/notFound-page';
 
 interface ApplicationLayoutProps {
   children: ReactNode;
@@ -29,19 +30,19 @@ const ApplicationLayout = ({ children }: ApplicationLayoutProps) => {
     if (isLoading) return;
     if (!accessToken && !publicRoutes.includes(pathname)) {
       router.replace(routes.public.loginPage);
-    } else if (
-      role &&
-      (pathname === routes.public.loginPage || !isRoleRoute(role, pathname))
-    ) {
+    } else if (role && pathname === routes.public.loginPage) {
       router.replace(defaultPage[role]);
     }
   }, [accessToken, pathname, router, isLoading, role]);
 
+  if (!isRoleRoute(role, pathname)) {
+    
+  }
   if (isLoading) {
     return <FullscreenLoader />;
   }
   if (role && !isRoleRoute(role, pathname)) {
-    return <FullscreenLoader />;
+    return <NotFoundPage />;
   }
 
   return children;

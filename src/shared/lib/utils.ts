@@ -57,7 +57,8 @@ export function isPublicRoute(pathname: string) {
     )
 }
 
-export function isRoleRoute(role: UserRole, pathname: string) {
+export function isRoleRoute(role: UserRole | undefined, pathname: string) {
+    if (!role) return false
     switch(role){
         case UserRole.GUEST:
             return isPublicRoute(pathname)
