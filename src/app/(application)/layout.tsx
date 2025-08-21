@@ -41,9 +41,13 @@ const ApplicationLayout = ({ children }: ApplicationLayoutProps) => {
   if (isLoading) {
     return <FullscreenLoader />;
   }
-  if (!accessToken && role && !isRoleRoute(role, pathname)) {
+  if (!accessToken) {
     return <NotFoundPage />;
   }
+  if (role && !isRoleRoute(role, pathname)) {
+    return <NotFoundPage />;
+  }
+  
 
   return children;
 };
