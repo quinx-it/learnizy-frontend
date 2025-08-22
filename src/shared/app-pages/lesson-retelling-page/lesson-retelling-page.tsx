@@ -5,7 +5,7 @@ import { Text } from '@/shared/ui/typography';
 
 import React from 'react';
 import { CardWrapper } from '@/shared/components/card-wrapper';
-import { VoiceRecorderField } from '@/shared/components/voice-recorder';
+import { VoiceRecorderForm } from '@/shared/components/voice-recorder-form';
 
 interface LessonRetellingPageProps {
   module: string;
@@ -32,7 +32,7 @@ export const LessonRetellingPage = ({ module, lesson }: LessonRetellingPageProps
         </Text>
         <Text variant='l' className='text-medium'>Говорите свободно. Ошибки — часть обучения!</Text>
 
-        <VoiceRecorderField />
+        <VoiceRecorderForm />
       </CardWrapper>
     </div>
   );

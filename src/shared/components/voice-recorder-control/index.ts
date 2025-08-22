@@ -1,0 +1,1 @@
+export { VoiceRecorderControl } from './voice-recorder-control'
