@@ -96,14 +96,14 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
 
     case BlockType.IMAGE:
       return (
-        <figure style={baseStyle}>
+        <figure style={baseStyle} className='w-fit'>
           <Image
             src={block.content}
             width={block.properties.width}
             height={block.properties.height}
             alt={block.properties.alt ?? ''}
           />
-          {block.properties.caption && <figcaption>{block.properties.caption}</figcaption>}
+          {block.properties.caption && <figcaption className='text-center'>{block.properties.caption}</figcaption>}
           {renderChildren(block.children)}
         </figure>
       );

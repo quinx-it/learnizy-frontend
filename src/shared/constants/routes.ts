@@ -15,7 +15,6 @@ export const routes = {
         knowlegeBase: '/learn/knowledge-base',
         frequentlyAskedQuestions: '/learn/knowledge-base/faq',
         modules: '/learn/modules',
-        lessons: '/learn/modules/lessons',
         projects: '/learn/projects',
         userProfilePersonalData: '/learn/user-profile/personal-data',
         userProfileSecuritySettings: '/learn/user-profile/security-settings',
@@ -29,20 +28,25 @@ export const routes = {
 };
 
 export const publicRoutes = Object.values(routes.public);
-export const userRoutes = Object.values(routes.user);
-export const mentorRoutes = Object.values(routes.mentor);
+
+export const staticUserRoutes = Object.values(routes.user);
+export const dynamicUserRoutes = [
+  /^\/learn\/modules\/\d+$/,                           
+  /^\/learn\/modules\/\d+\/\d+$/,             
+  /^\/learn\/modules\/\d+\/\d+\/test$/,       
+  /^\/learn\/modules\/\d+\/\d+\/retelling$/,
+]
+
+export const staticMentorRoutes = Object.values(routes.mentor);
+export const dynamicMentorRoutes = [
+  /^\/mentor\/students\/\d+$/,                  
+]
 
 
 export const loginPageUrl = routes.public.loginPage;
 
-export const roleRoutes: Record<UserRole, string[]> = {
-  [UserRole.GUEST]: publicRoutes,
-  [UserRole.USER]: userRoutes,
-  [UserRole.MENTOR]: mentorRoutes,
-};
-
 export const defaultPage: Record<UserRole, string> = {
-  [UserRole.GUEST]: routes.public.loginPage,
-  [UserRole.USER]: routes.user.homePage,
-  [UserRole.MENTOR]: routes.mentor.students,
+    [UserRole.GUEST]: routes.public.loginPage,
+    [UserRole.USER]: routes.user.homePage,
+    [UserRole.MENTOR]: routes.mentor.students,
 };
