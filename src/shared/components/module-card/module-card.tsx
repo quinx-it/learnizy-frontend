@@ -1,32 +1,34 @@
 'use client'
 import React, { memo, useMemo } from 'react';
-import { ModuleCardType } from './types';
 import { Text } from '@/shared/ui/typography';
 import Image from 'next/image';
 import { Button } from '@/shared/ui/button';
 import { renderModuleProgress } from './utils';
-import { cn } from '@/shared/lib/utils';
+import { cn, pluralize } from '@/shared/lib/utils';
 import { constants } from './constants';
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { DotTitle } from '@/shared/ui/dotTitle';
 import { routes } from '@/shared/constants';
 import { useRouter } from 'next/navigation';
-
-
+import {  ModuleInfo } from '@/api/endpoints/modules/types';
 
 const ModuleCardComponent = ({
-  title,
-  module_number,
+  totalLessons,
+  completedLessons,
+  completionStatus,
   description,
-  lessons,
-  status,
-  total_tasks,
-  img_url,
-  bonus,
+  title,
   id,
+  index,
   className,
-}: ModuleCardType & { className?: string }) => {
-  const { element: progressElement, status: progressStatus } = renderModuleProgress(status);
+}: ModuleInfo & { className?: string, index: number }) => {
+  const bonus = false;
+
+  const { element: progressElement, status: progressStatus } = renderModuleProgress(
+    completionStatus,
+    completedLessons,
+    totalLessons,
+  );
   const router = useRouter();
 
   const { active, completed, blocked } = constants.status;
@@ -40,10 +42,10 @@ const ModuleCardComponent = ({
     [progressStatus, active, completed, blocked],
   );
 
-  const moduleLabel = bonus ? constants.bonus : `Модуль ${module_number}`;
+  const moduleLabel = bonus ? constants.bonus : `Модуль ${index + 1}`;
 
-  const lessonInfo = `${lessons.length} уроков`;
-  const taskInfo = `${total_tasks} заданий`;
+  const lessonInfo = pluralize(totalLessons, 'урок', 'урока', 'уроков');
+  const taskInfo = pluralize(totalLessons * 2, 'тест', 'теста', 'тестов');
 
   const cardClass = cn(
     'border border-transparent',
@@ -93,7 +95,7 @@ const ModuleCardComponent = ({
             {progressElement}
           </div>
         </div>
-        <Image width={115} height={115} src={img_url} alt="moduleimg" />
+        <Image width={115} height={115} src={'/images/astronaut1.webp'} alt="moduleimg" />
       </div>
     </CardWrapper>
   );

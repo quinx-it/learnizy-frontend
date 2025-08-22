@@ -1,16 +1,24 @@
 import { CardWrapper } from '@/shared/components/card-wrapper';
-import { cn } from '@/shared/lib/utils';
+import { cn, normalizeToFive } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';
 import { Heading } from '@/shared/ui/typography';
 import React from 'react';
-import { lessonStatuses, LessonType } from '@/shared/components/module-card/types';
 import { StarIcon } from '@/shared/ui/icons';
+import { Lesson } from '@/api/endpoints/lessons/types';
+import { CompletionStatus } from '@/api/endpoints/types';
 
-type LessonCardProps = LessonType & {index:number};
+type LessonCardProps = Lesson & { index: number };
 
-export const LessonCard = ({ id, name, status, stars, total_stars, tasks, index }: LessonCardProps) => {
-  const blocked = status === lessonStatuses.BLOCKED;
-  const active = status === lessonStatuses.ACTIVE;
+export const LessonCard = ({ id, title, progress, index }: LessonCardProps) => {
+  const status = CompletionStatus.IN_PROGRESS;
+  // const blocked = status === CompletionStatus.BLOCKED;
+  const blocked = false;
+  const active = status === CompletionStatus.IN_PROGRESS;
+  const taskProgress = [
+    { title: 'Теория', status: progress.theoryCompleted },
+    { title: 'Устное закрепление материала', status: progress.voiceTaskCompleted },
+    { title: 'Тестовое задание ', status: progress.testTaskCompleted },
+  ];
 
   return (
     <CardWrapper
@@ -30,7 +38,7 @@ export const LessonCard = ({ id, name, status, stars, total_stars, tasks, index 
                 'text-gray': blocked,
               })}
             >
-              {name}
+              {title}
             </span>
           </Heading>
           <div className="flex items-center gap-2">
@@ -47,13 +55,15 @@ export const LessonCard = ({ id, name, status, stars, total_stars, tasks, index 
             )}
             <StarIcon type={blocked ? 'disabled' : 'gold'} />
             <Heading className={cn('text-medium', { 'text-gray': blocked })}>
-              {stars}/{total_stars}
+              {!!progress.testResult ? normalizeToFive(progress.testResult) : 0}/5
             </Heading>
           </div>
         </div>
         <ul className="marker:text-medium list-disc space-y-1 pl-5">
-          {tasks.map(({ id, name }) => (
-            <li key={id}>{name}</li>
+          {taskProgress.map(({ title, status }, index) => (
+            <li className={cn(status ? "text-success" : 'text-error')} key={index}>
+              {title}
+            </li>
           ))}
         </ul>
       </div>

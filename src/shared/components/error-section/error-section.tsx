@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Button } from '@/shared/ui/button';
 
 export type ErrorType = {
-  error: Error & { digest?: string };
+  error?: Error & { digest?: string };
   reset: () => void;
 };
 
