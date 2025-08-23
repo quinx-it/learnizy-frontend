@@ -45,6 +45,7 @@ export const ForgotPasswordForm = () => {
       <Input
         label="Введите email"
         id="email"
+        autoComplete='email'
         placeholder="E-mail"
         {...register('email')}
         error={errors.email?.message}

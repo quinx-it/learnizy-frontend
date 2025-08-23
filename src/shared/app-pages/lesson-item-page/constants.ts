@@ -37,7 +37,7 @@ export const api: Block[] = [
   {
     id: 7,
     blockType: BlockType.IMAGE,
-    content: '',
+    content: '/images/astronaut4.webp',
     properties: { width: 300, height: 200, caption: 'Подпись к изображению', mb: 12 },
   },
   {

@@ -3,7 +3,7 @@ import { api } from '../api';
 import { AuthFormValues } from '@/shared/components/auth/auth-form/validation';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 
-type LoginRequest = Pick<AuthFormValues, 'login' | 'password'>
+type LoginRequest = Pick<AuthFormValues, 'username' | 'password'>
 type ForgotPasswordRequest = { email: string }
 type ResetPasswordRequest = {
     token: string;
@@ -16,20 +16,30 @@ export const auth = api.injectEndpoints({
     endpoints: (builder) => ({
         login: builder.mutation<AuthState, LoginRequest>({
             query: (body) => ({
-                url: '/login',
+                url: '/auth/login',
                 method: 'POST',
                 body,
             }),
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                try {
+                    const { data } = await queryFulfilled;
+                    const accessToken = data.accessToken;
+                    if (accessToken) dispatch(setCredentials({ accessToken }));
+                } catch (error) {
+                    dispatch(logout());
+                    console.error('Ошибка обновления токена: ', error)
+                }
+            },
         }),
         logout: builder.mutation({
             query: () => ({
-                url: '/logout',
+                url: '/auth/logout',
                 method: 'POST',
             }),
         }),
         refresh: builder.mutation<RefreshResponse, void>({
             query: () => ({
-                url: '/refresh',
+                url: '/auth/refresh',
                 method: 'POST',
             }),
             async onQueryStarted(arg, { dispatch, queryFulfilled }) {
@@ -44,14 +54,14 @@ export const auth = api.injectEndpoints({
         }),
         forgotPassword: builder.mutation<void, ForgotPasswordRequest>({
             query: (body) => ({
-                url: '/forgot-password',
+                url: '/auth/forgot-password',
                 method: 'POST',
                 body,
             }),
         }),
         resetPassword: builder.mutation<void, ResetPasswordRequest>({
             query: (body) => ({
-                url: '/reset-password',
+                url: '/auth/reset-password',
                 method: 'POST',
                 body,
             }),

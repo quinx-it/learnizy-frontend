@@ -4,6 +4,7 @@ export const globalConstants = {
         modulesLabel: 'Модули',
         moduleLabel: 'Модуль',
         lessonLabel: 'Урок',
+        retellingLabel: 'Устное закрепление материала',
         examsLabel: 'Экзамены',
         casesLabel: 'Кейсы',
         knowlegeBaseLabel: 'База знаний',

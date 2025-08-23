@@ -7,7 +7,6 @@ import React, { ComponentProps, ReactNode } from 'react';
 import { ExamCardProps, ExamStatus } from '../types';
 import { Text } from '@/shared/ui/typography';
 import Link from 'next/link';
-import { routes } from '@/shared/constants';
 
 export const ExamCard = ({ exam, status }: ExamCardProps) => {
   const { title, description, questions, time } = exam;
@@ -47,7 +46,8 @@ export const ExamCard = ({ exam, status }: ExamCardProps) => {
     [ExamStatus.Unavailable]: (
       <Text variant="l">
         Доступен после завершения всех{' '}
-        <Link href={routes.user.lessons} className="text-medium !underline">
+        {/* TODO href */}
+        <Link href={'#'} className="text-medium !underline">
           уроков
         </Link>{' '}
         модуля

@@ -1,5 +1,5 @@
 export enum UserRole {
-    MENTOR = 'MENTOR',
+    MENTOR = 'ADMIN',
     USER = 'USER',
     GUEST = 'GUEST',
 }
