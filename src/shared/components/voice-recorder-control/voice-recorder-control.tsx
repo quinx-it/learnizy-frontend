@@ -29,6 +29,11 @@ export const VoiceRecorderControl = ({ onChange }: Props) => {
     };
   }, [recording]);
 
+  const handleClear = () => {
+     reset();
+     onChange(null);
+  }
+
   return (
     <>
       {!audioUrl && !recording && (
@@ -61,14 +66,7 @@ export const VoiceRecorderControl = ({ onChange }: Props) => {
       {audioUrl && (
         <div className="flex items-center gap-3">
           <AudioPlayer src={audioUrl} />
-          <button
-            type="button"
-            onClick={() => {
-              reset();
-              onChange(null);
-            }}
-            className="max-w-fit"
-          >
+          <button type="button" onClick={handleClear} className="max-w-fit">
             <TrashCanIcon />
           </button>
         </div>

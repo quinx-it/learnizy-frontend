@@ -77,7 +77,7 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
       <div ref={containerRef} className="h-[24px] flex-1" />
 
       <div className="flex items-center gap-2">
-        <button onClick={togglePlay} className="text-medium w-6">
+        <button type="button" onClick={togglePlay} className="text-medium w-6">
           <PlayPauseIcon isPlaying={isPlaying} />
         </button>
       </div>

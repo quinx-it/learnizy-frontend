@@ -1,10 +1,10 @@
+'use client';
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { globalConstants, routes } from '@/shared/constants';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import React from 'react';
 import { constants } from './constants';
 import { Text } from '@/shared/ui/typography';
-import { showToast } from '@/shared/ui/toaster';
 import { LessonTestForm, LessonTestFormValues } from '@/shared/components/lesson-test-form';
 
 type LessonTestPageProps = {
@@ -15,9 +15,12 @@ type LessonTestPageProps = {
 export const LessonTestPage = ({ lessonId, moduleId }: LessonTestPageProps) => {
   const { breadcrumbs } = constants;
 
-  const onSubmit = (data: LessonTestFormValues) => {
-    showToast('info', 'Отлично!', 'Тест пройден');
-    console.log('Form data:', data);
+  const onSubmit = async (data: LessonTestFormValues) => {
+    try {
+      console.log(data);
+    } catch (error) {
+      console.error('Ошибка отправки данных теста: ', error);
+    }
   };
 
   return (

@@ -1,17 +1,22 @@
 'use client';
-import { Button } from '@/shared/ui/button';
 import { RadioGroup, RadioGroupItem } from '@/shared/ui/radioGroup';
 import { Textarea } from '@/shared/ui/textarea';
 import { Text } from '@/shared/ui/typography';
-import React from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
+import { Controller, FieldErrors, useFormContext, useWatch } from 'react-hook-form';
+import { VoiceRecorderControl } from '../voice-recorder-control';
+import { LessonTestFormValues } from '@/shared/components/lesson-test-form';
 
 export type LessonQuestionItemType = {
   type?: 'checkbox' | 'field';
   index: number;
   totalQuestions: number;
-  question: { text: string; options: { id: string; label: string; value: string }[] };
-  name?: string;
+  question: {
+    text: string;
+    options: { id: string; label: string; value: string }[];
+  };
+  answerFieldName: string;
+  fileFieldName: string;
+  errors: FieldErrors<LessonTestFormValues>;
 };
 
 export const LessonQuestion = ({
@@ -19,22 +24,29 @@ export const LessonQuestion = ({
   index,
   totalQuestions,
   question,
-  name,
+  answerFieldName,
+  fileFieldName,
+  errors,
 }: LessonQuestionItemType) => {
-  const { control, register } = useFormContext();
+  const { control, setValue } = useFormContext();
 
-  if (type === 'checkbox') {
-    return (
-      <div>
-        <Text variant="l" className="text-medium mb-5">
-          Вопрос {index} из {totalQuestions}
-        </Text>
-        <Text variant="l" className="mb-5">
-          {question.text}
-        </Text>
+  const answerValue = useWatch({ name: answerFieldName });
+  const fileValue = useWatch({ name: fileFieldName });
 
+  const error = errors.questions?.[index]?.answer || errors.questions?.[index]?.file;
+
+  return (
+    <div className="space-y-5">
+      <Text variant="l" className="text-medium mb-3">
+        Вопрос {index} из {totalQuestions}
+      </Text>
+      <Text variant="l" className="mb-5">
+        {question.text}
+      </Text>
+
+      {type === 'checkbox' ? (
         <Controller
-          name={name!}
+          name={answerFieldName}
           control={control}
           render={({ field }) => (
             <RadioGroup
@@ -55,22 +67,43 @@ export const LessonQuestion = ({
             </RadioGroup>
           )}
         />
-      </div>
-    );
-  }
+      ) : (
+        <>
+          {!fileValue && (
+            <Controller
+              name={answerFieldName}
+              control={control}
+              render={({ field }) => (
+                <Textarea
+                  {...field}
+                  className="min-h-[60px] max-w-[728px] resize-none py-0.5"
+                  onChange={(e) => {
+                    setValue(fileFieldName, null);
+                    field.onChange(e);
+                  }}
+                />
+              )}
+            />
+          )}
 
-  return (
-    <div className="space-y-3">
-      <Text variant="l" className="text-medium mb-5">
-        Вопрос {index} из {totalQuestions}
-      </Text>
-      <Text variant="l" className="mb-5">
-        {question.text}
-      </Text>
-      <div className="max-w-[728px]">
-        <Textarea className="min-h-[60px] resize-none py-0.5" {...register(name!)} />
-      </div>
-      <Button type="button">Ответить голосом</Button>
+          {!answerValue && (
+            <Controller
+              name={fileFieldName}
+              control={control}
+              render={({ field }) => (
+                <VoiceRecorderControl
+                  onChange={(file) => {
+                    setValue(answerFieldName, '');
+                    field.onChange(file);
+                  }}
+                />
+              )}
+            />
+          )}
+        </>
+      )}
+
+      {error?.message && <p className="text-error">{error.message}</p>}
     </div>
   );
 };
