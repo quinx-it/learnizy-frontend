@@ -7,9 +7,9 @@ import { StarIcon } from '@/shared/ui/icons';
 import { Lesson } from '@/api/endpoints/lessons/types';
 import { CompletionStatus } from '@/api/endpoints/types';
 
-type LessonCardProps = Lesson & { index: number };
+type LessonCardProps = Lesson & { index: number, onClick: (lessonId: number) => void };
 
-export const LessonCard = ({ id, title, progress, index }: LessonCardProps) => {
+export const LessonCard = ({ id, title, progress, index, onClick }: LessonCardProps) => {
   const status = CompletionStatus.IN_PROGRESS;
   // const blocked = status === CompletionStatus.BLOCKED;
   const blocked = false;
@@ -22,11 +22,11 @@ export const LessonCard = ({ id, title, progress, index }: LessonCardProps) => {
 
   return (
     <CardWrapper
-      key={id}
-      className={cn('border-soft border !shadow-none', {
+      className={cn('border-soft border !shadow-none cursor-pointer', {
         'border-medium border-2 !shadow-lg': active,
         'border-gray': blocked,
       })}
+      onClick={() => onClick(id)}
     >
       <div className="relative space-y-3">
         <div className="flex justify-between">
@@ -49,6 +49,7 @@ export const LessonCard = ({ id, title, progress, index }: LessonCardProps) => {
                 className={cn('pointer-events-none mr-2', {
                   'pointer-events-auto absolute right-0 bottom-0': active,
                 })}
+                onClick={() => onClick(id)}
               >
                 {active ? 'Начать' : 'Проверено'}
               </Button>

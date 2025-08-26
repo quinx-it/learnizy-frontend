@@ -1,5 +1,5 @@
 
 export const constants = {
-  breadcrumbs: (id: string | number) => [{ label: `Модуль ${id}`, href: '' }],
+  breadcrumbs: (sequenceNumber: number) => [{ label: `Модуль ${sequenceNumber}`, href: '' }],
   examAvailableNumber: 100,
 };

@@ -23,13 +23,13 @@ export const ModulesPage = () => {
   return (
     <>
       <Breadcrumbs
-        rootLabel={globalConstants.rootBreadcrumbLabels.knowlegeBaseLabel}
+        rootLabel={globalConstants.rootBreadcrumbLabels.modulesLabel}
         rootHref={routes.user.knowlegeBase}
         rootDescription={'Java Core'}
       />
       <div className="grid grid-cols-2 gap-4">
-        {modules?.map((module: ModuleInfo, index) => (
-          <ModuleCard className="w-full max-w-full" key={module.id} index={index} {...module} />
+        {modules?.map((module: ModuleInfo) => (
+          <ModuleCard className="w-full max-w-full" key={module.id} {...module} />
         ))}
       </div>
     </>

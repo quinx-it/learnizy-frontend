@@ -37,7 +37,7 @@ const textVariants = cva('leading-normal transition-colors', {
       l: 'text-[20px] leading-[27px] font-medium',
 
       's-bold': 'text-[12px] leading-[14px] font-bold',
-      'm-bold': 'text-[16px] leading-[18px] font-bold',
+      'm-bold': 'text-[16px] leading-[22px] font-bold',
       'l-bold': 'text-[20px] leading-[22px] font-bold',
 
       's-italic': 'text-[12px] leading-[16px] italic font-medium',

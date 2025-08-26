@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { memo, useMemo } from 'react';
 import { Text } from '@/shared/ui/typography';
 import Image from 'next/image';
@@ -10,7 +10,7 @@ import { CardWrapper } from '@/shared/components/card-wrapper';
 import { DotTitle } from '@/shared/ui/dotTitle';
 import { routes } from '@/shared/constants';
 import { useRouter } from 'next/navigation';
-import {  ModuleInfo } from '@/api/endpoints/modules/types';
+import { ModuleInfo } from '@/api/endpoints/modules/types';
 
 const ModuleCardComponent = ({
   totalLessons,
@@ -19,9 +19,9 @@ const ModuleCardComponent = ({
   description,
   title,
   id,
-  index,
+  sequenceNumber,
   className,
-}: ModuleInfo & { className?: string, index: number }) => {
+}: ModuleInfo & { className?: string; }) => {
   const bonus = false;
 
   const { element: progressElement, status: progressStatus } = renderModuleProgress(
@@ -42,7 +42,7 @@ const ModuleCardComponent = ({
     [progressStatus, active, completed, blocked],
   );
 
-  const moduleLabel = bonus ? constants.bonus : `Модуль ${index + 1}`;
+  const moduleLabel = bonus ? constants.bonus : `Модуль ${sequenceNumber}`;
 
   const lessonInfo = pluralize(totalLessons, 'урок', 'урока', 'уроков');
   const taskInfo = pluralize(totalLessons * 2, 'тест', 'теста', 'тестов');
@@ -63,8 +63,8 @@ const ModuleCardComponent = ({
 
   return (
     <CardWrapper onClick={handleCardClick} className={cardClass}>
-      <div className="flex items-center justify-between gap-3">
-        <div className="max-w-7/10 space-y-3.5">
+      <div className="flex justify-between items-start gap-3 h-full">
+        <div className="h-full flex max-w-7/10 flex-col justify-between space-y-3.5">
           <div className="space-y-2">
             <DotTitle
               firstLabel={moduleLabel}
@@ -74,25 +74,27 @@ const ModuleCardComponent = ({
             />
             <Text>{description}</Text>
           </div>
-          <DotTitle
-            firstLabel={lessonInfo}
-            secondLabel={taskInfo}
-            firstVariant="m"
-            secondVariant="m"
-            className={cn('text-soft', { 'text-medium': bonus })}
-            dotClassName={cn('bg-soft mt-0.75 w-[3px]', { 'bg-medium': bonus })}
-          />
+          <div className='space-y-2'>
+            <DotTitle
+              firstLabel={lessonInfo}
+              secondLabel={taskInfo}
+              firstVariant="m"
+              secondVariant="m"
+              className={cn('text-soft', { 'text-medium': bonus })}
+              dotClassName={cn('bg-soft mt-0.75 w-[3px]', { 'bg-medium': bonus })}
+            />
 
-          <div className="flex items-end gap-3">
-            <Button
-              disabled={isBlocked}
-              variant={isCompleted ? 'white' : 'blue'}
-              size={'small'}
-              className="cursor-pointer"
-            >
-              {progressStatus}
-            </Button>
-            {progressElement}
+            <div className="flex items-end gap-3">
+              <Button
+                disabled={isBlocked}
+                variant={isCompleted ? 'white' : 'blue'}
+                size={'small'}
+                className="cursor-pointer"
+              >
+                {progressStatus}
+              </Button>
+              {progressElement}
+            </div>
           </div>
         </div>
         <Image width={115} height={115} src={'/images/astronaut1.webp'} alt="moduleimg" />
@@ -101,4 +103,4 @@ const ModuleCardComponent = ({
   );
 };
 
-export const ModuleCard = memo(ModuleCardComponent)
+export const ModuleCard = memo(ModuleCardComponent);

@@ -16,12 +16,16 @@ import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscre
 import { ErrorSection } from '@/shared/components/error-section';
 import { pluralize } from '@/shared/lib/utils';
 import { Lesson } from '@/api/endpoints/lessons/types';
+import { usePathname, useRouter } from 'next/navigation';
 
 type ModuleItemPageProps = {
   id: string;
 };
 
 export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
+  const pathname = usePathname();
+  const router = useRouter();
+  
   const { breadcrumbs, examAvailableNumber } = constants;
 
   const {
@@ -39,17 +43,21 @@ export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
     return <ErrorSection reset={refetch} />;
   }
 
-  const { totalLessons, completedLessons, title } =
-    module.moduleInfo;
+  const { totalLessons, completedLessons, title, sequenceNumber } = module.moduleInfo;
   const lessons = module.lessons;
   const progress = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
+  console.log(module);
 
   const isAvailableExam = (progressValue: number) => progressValue > examAvailableNumber;
+
+  const handleLessonCardClick = (lessonId: number) => {
+    router.push(`${pathname}/${lessonId}`);
+  };
 
   return (
     <>
       <Breadcrumbs
-        items={breadcrumbs(id)}
+        items={breadcrumbs(sequenceNumber)}
         rootHref={routes.user.modules}
         rootLabel={'Структура обучения'}
       />
@@ -60,8 +68,9 @@ export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
             heading
             firstClassName="text-[24px]"
             secondClassName="text-[24px]"
-            firstLabel={`Модуль ${id}`}
+            firstLabel={`Модуль ${sequenceNumber}`}
             secondLabel={title}
+            dotClassName='min-w-[6px] min-h-[6px] self-center !m-0'
           />
           <DotTitle
             firstClassName="text-soft"
@@ -75,7 +84,7 @@ export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
 
         <ul className="mt-3 space-y-3">
           {lessons.map((lesson: Lesson, index) => {
-            return <LessonCard key={lesson.id} index={index} {...lesson} />;
+            return <LessonCard onClick={handleLessonCardClick} key={lesson.id} index={index} {...lesson} />;
           })}
         </ul>
 
