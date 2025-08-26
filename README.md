@@ -40,8 +40,8 @@ http://localhost:3000
 Cоберите образ и поднимите контейнер:
 
 ```bash
-docker build -t edu-frontend:latest .
-docker run --rm -p 3000:3000 edu-frontend:latest
+docker build --build-arg NEXT_PUBLIC_API_BASE_URL=https://api.edu.pxel.software -t edu-frontend:latest .
+docker run --rm -p 3015:3000 edu-frontend:latest
 ```
 
 После этого приложение будет доступно по адресу [http://localhost:3000](http://localhost:3000).

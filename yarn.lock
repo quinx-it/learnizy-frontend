@@ -11655,6 +11655,7 @@ __metadata:
     tailwindcss: "npm:^4.1.10"
     tw-animate-css: "npm:^1.3.4"
     typescript: "npm:^5"
+    wavesurfer.js: "npm:^7.10.1"
     yup: "npm:^1.7.0"
   languageName: unknown
   linkType: soft
@@ -12344,6 +12345,13 @@ __metadata:
     glob-to-regexp: "npm:^0.4.1"
     graceful-fs: "npm:^4.1.2"
   checksum: 10c0/6c0901f75ce245d33991225af915eea1c5ae4ba087f3aee2b70dd377d4cacb34bef02a48daf109da9d59b2d31ec6463d924a0d72f8618ae1643dd07b95de5275
+  languageName: node
+  linkType: hard
+
+"wavesurfer.js@npm:^7.10.1":
+  version: 7.10.1
+  resolution: "wavesurfer.js@npm:7.10.1"
+  checksum: 10c0/1508373830bbfaaf89638cd38d8d8cb96bfdf2360ddaa74f397079b792624ccc6bc5f7c4914ba26d889b60a544eb1f8a5bef114500ff8fdeb0f1b16691e67cee
   languageName: node
   linkType: hard
 
