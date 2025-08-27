@@ -11,6 +11,7 @@ import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import { routes } from '@/shared/constants';
 import { constants } from './constants';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
+import { DotTitle } from '@/shared/ui/dotTitle';
 
 interface LessonItemPageProps {
   lessonId: string;
@@ -22,10 +23,10 @@ export const LessonItemPage: React.FC<LessonItemPageProps> = ({ lessonId, module
   const pathname = usePathname();
   const router = useRouter();
 
-  const HandleRetellingClick = () => {
+  const handleRetellingClick = () => {
     router.push(`${pathname}/retelling`);
   };
-  const HandleTestClick = () => {
+  const handleTestClick = () => {
     router.push(`${pathname}/test`);
   };
 
@@ -43,9 +44,6 @@ export const LessonItemPage: React.FC<LessonItemPageProps> = ({ lessonId, module
             rootHref={routes.user.modules}
             rootLabel={'Структура обучения'}
           />
-          <h1>
-            {lessonId}, {moduleId}
-          </h1>
           {data && (
             <CardWrapper>
               <Heading>{data.title}</Heading>
@@ -63,18 +61,26 @@ export const LessonItemPage: React.FC<LessonItemPageProps> = ({ lessonId, module
               лучше запомнить ключевые моменты, структурировать знания и тренировать навык устного
               объяснения — важный для успешного прохождения собеседований.
             </Text>
-            <Button onClick={HandleRetellingClick}>Начать</Button>
+            <Button onClick={handleRetellingClick} size='medium'>Начать</Button>
           </CardWrapper>
           <CardWrapper>
             <Heading variant="2xl" className="mb-4">
               Проверь свои знания
             </Heading>
-            <Text variant="l" className="mb-6">
+            <Text variant="l" className="mb-4">
               Пройдите короткий тест, чтобы закрепить материал и проверить понимание темы. Не
               спешите — отвечайте вдумчиво, ведь именно сейчас вы формируете прочную основу для
               успешного прохождения собеседований.
             </Text>
-            <Button onClick={HandleTestClick}>Начать</Button>
+            <DotTitle
+              firstLabel={`📋${12} вопросов`}
+              secondLabel={`⏱ ${20} минут`}
+              firstVariant="m"
+              secondVariant="m"
+              dotClassName="w-1 h-1"
+              className="text-medium mb-6"
+            />
+            <Button onClick={handleTestClick} size='medium'>Начать</Button>
           </CardWrapper>
         </div>
       )}

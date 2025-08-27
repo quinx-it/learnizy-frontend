@@ -71,6 +71,7 @@ const ModuleCardComponent = ({
               secondLabel={title}
               firstVariant="m-bold"
               secondVariant="m"
+              secondClassName='font-normal'
             />
             <Text>{description}</Text>
           </div>
@@ -81,7 +82,7 @@ const ModuleCardComponent = ({
               firstVariant="m"
               secondVariant="m"
               className={cn('text-soft', { 'text-medium': bonus })}
-              dotClassName={cn('bg-soft mt-0.75 w-[3px]', { 'bg-medium': bonus })}
+              dotClassName={'text-soft'}
             />
 
             <div className="flex items-end gap-3">
