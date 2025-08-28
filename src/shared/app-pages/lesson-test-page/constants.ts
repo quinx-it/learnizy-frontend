@@ -25,6 +25,7 @@ export const constants = {
       totalQuestions: 3,
       question: {
         text: 'Выберите правильные варианты ответа',
+        questionId: 41,
         options: [
           { id: 'opt1', label: 'Вариант 1', value: 'option1' },
           { id: 'opt2', label: 'Вариант 2', value: 'option2' },
@@ -39,6 +40,7 @@ export const constants = {
       totalQuestions: 3,
       question: {
         text: 'Введите ваш ответ',
+        questionId: 42,
         options: [
           { id: 'opt5', label: 'Вариант 1', value: 'option5' },
           { id: 'opt6', label: 'Вариант 2', value: 'option6' },
@@ -52,6 +54,7 @@ export const constants = {
       totalQuestions: 3,
       question: {
         text: 'Стандартный вопрос',
+        questionId: 43,
         options: [
           { id: 'opt9', label: 'Вариант 1', value: 'option9' },
           { id: 'opt10', label: 'Вариант 2', value: 'option10' },

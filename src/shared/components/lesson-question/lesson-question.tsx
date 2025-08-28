@@ -12,6 +12,7 @@ export type LessonQuestionItemType = {
   totalQuestions: number;
   question: {
     text: string;
+    questionId: number;
     options: { id: string; label: string; value: string }[];
   };
   answerFieldName: string;
