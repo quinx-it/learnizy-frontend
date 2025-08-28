@@ -6,12 +6,23 @@ export interface LessonProgress {
     testResult?: number;
 }
 
+export enum LessonStatus {
+    NOT_STARTED = "NOT_STARTED",
+    IN_PROGRESS = "IN_PROGRESS",
+    COMPLETED = "COMPLETED",
+    BLOCKED = "BLOCKED",
+}
+
 export interface Lesson {
     id: number;
     title: string;
     description: string;
     sequenceOrder: number;
-    contentBlocks: Block[]
+    testQuestions: number;
+    moduleSequenceOrder: number;
+    status: LessonStatus;
+    progress: LessonProgress;
+    contentBlocks: Block[];
 }
 
 export enum BlockType {

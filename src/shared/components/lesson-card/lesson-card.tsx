@@ -4,20 +4,20 @@ import { Button } from '@/shared/ui/button';
 import { Heading } from '@/shared/ui/typography';
 import React from 'react';
 import { StarIcon } from '@/shared/ui/icons';
-import { Lesson } from '@/api/endpoints/lessons/types';
-import { CompletionStatus } from '@/api/endpoints/types';
+import { Lesson, LessonProgress } from '@/api/endpoints/lessons/types';
 
-type LessonCardProps = Lesson & { index: number, onClick: (lessonId: number) => void };
+type LessonCardProps = Lesson & { progress: LessonProgress, index: number, onClick: (lessonId: number) => void };
 
 export const LessonCard = ({ id, title, progress, index, onClick }: LessonCardProps) => {
-  const status = CompletionStatus.IN_PROGRESS;
-  // const blocked = status === CompletionStatus.BLOCKED;
   const blocked = false;
-  const active = status === CompletionStatus.IN_PROGRESS;
+  const active = true;
+
+  console.log(id, title, progress, index, onClick)
+
   const taskProgress = [
-    { title: 'Теория', status: progress.theoryCompleted },
-    { title: 'Устное закрепление материала', status: progress.voiceTaskCompleted },
-    { title: 'Тестовое задание ', status: progress.testTaskCompleted },
+    { title: 'Теория' },
+    { title: 'Устное закрепление материала' },
+    { title: 'Тестовое задание ' },
   ];
 
   return (
@@ -61,8 +61,8 @@ export const LessonCard = ({ id, title, progress, index, onClick }: LessonCardPr
           </div>
         </div>
         <ul className="marker:text-medium list-disc space-y-1 pl-5">
-          {taskProgress.map(({ title, status }, index) => (
-            <li className={cn(status ? "text-success" : 'text-error')} key={index}>
+          {taskProgress.map(({ title }, index) => (
+            <li key={index}>
               {title}
             </li>
           ))}

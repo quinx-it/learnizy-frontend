@@ -43,7 +43,7 @@ export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
     return <ErrorSection reset={refetch} />;
   }
 
-  const { totalLessons, completedLessons, title, sequenceNumber } = module.moduleInfo;
+  const { totalLessons, completedLessons, title, sequenceOrder } = module.moduleInfo;
   const lessons = module.lessons;
   const progress = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
   console.log(module);
@@ -57,7 +57,7 @@ export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
   return (
     <>
       <Breadcrumbs
-        items={breadcrumbs(sequenceNumber)}
+        items={breadcrumbs(sequenceOrder)}
         rootHref={routes.user.modules}
         rootLabel={'Структура обучения'}
       />
@@ -68,7 +68,7 @@ export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
             heading
             firstClassName="text-[24px]"
             secondClassName="text-[24px]"
-            firstLabel={`Модуль ${sequenceNumber}`}
+            firstLabel={`Модуль ${sequenceOrder}`}
             secondLabel={title}
             dotClassName='min-w-[6px] min-h-[6px] self-center !m-0'
           />

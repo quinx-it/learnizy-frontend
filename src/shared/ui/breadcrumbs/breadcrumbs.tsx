@@ -15,6 +15,7 @@ type BreadcrumbItem = {
 
 interface BreadcrumbsProps {
   items?: BreadcrumbItem[];
+  className?: string;
   rootLabel?: string;
   rootHref?: string;
   rootDescription?: string;
@@ -24,10 +25,11 @@ export const Breadcrumbs = ({
   items,
   rootLabel = constants.rootLabel,
   rootHref = constants.rootHref,
+  className,
   rootDescription,
 }: BreadcrumbsProps) => {
   return (
-    <nav className="mb-4">
+    <nav className={cn("mb-4", className)}>
       <ul className="text-medium flex flex-wrap items-center gap-2">
         {items ? (
           <>
