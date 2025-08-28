@@ -19,7 +19,7 @@ const ModuleCardComponent = ({
   description,
   title,
   id,
-  sequenceNumber,
+  sequenceOrder,
   className,
 }: ModuleInfo & { className?: string; }) => {
   const bonus = false;
@@ -42,7 +42,7 @@ const ModuleCardComponent = ({
     [progressStatus, active, completed, blocked],
   );
 
-  const moduleLabel = bonus ? constants.bonus : `Модуль ${sequenceNumber}`;
+  const moduleLabel = bonus ? constants.bonus : `Модуль ${sequenceOrder}`;
 
   const lessonInfo = pluralize(totalLessons, 'урок', 'урока', 'уроков');
   const taskInfo = pluralize(totalLessons * 2, 'тест', 'теста', 'тестов');
