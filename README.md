@@ -7,8 +7,8 @@
 1. Клонирование репозитория
 
 ```bash
-git clone https://github.com/pxel-pioneer/pxel-educational-project-frontend.git
-cd pxel-educational-project-frontend
+git clone https://github.com/pxel-pioneer/learnizy-frontend.git
+cd learnizy-frontend
 ```
 
 2. Установка Yarn (если не установлен)
