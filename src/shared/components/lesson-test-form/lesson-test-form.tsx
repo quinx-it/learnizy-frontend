@@ -10,6 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { LessonTestFormSchema } from './validation';
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
 import {
+  AnswerInputType,
   LessonQuestionItemType,
   LessonTestFormValues,
   LessonTestSubmit,
@@ -57,7 +58,7 @@ export const LessonTestForm = ({ questions, onSubmit, testId,loading }: LessonTe
 
             return {
               questionId: questions[index].questionId,
-              inputType: 'VOICE' as const,
+              inputType: AnswerInputType.VOICE,
               voiceFileUrl: downloadUrl,
               voiceTranscript: q.voiceTranscript ?? null,
             };
@@ -65,7 +66,7 @@ export const LessonTestForm = ({ questions, onSubmit, testId,loading }: LessonTe
 
           return {
             questionId: questions[index].questionId,
-            inputType: 'TEXT' as const,
+            inputType: AnswerInputType.TEXT,
             textAnswer: q.textAnswer ?? null,
           };
         }),

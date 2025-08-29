@@ -1,5 +1,9 @@
 export type TestType = 'LESSON_TEST';
-export type AnswerInputType = 'TEXT' | 'VOICE';
+
+export enum AnswerInputType {
+  TEXT = 'TEXT',
+  VOICE = 'VOICE',
+};
 
 export type QuestionAnswerSubmit = {
   questionId: number;

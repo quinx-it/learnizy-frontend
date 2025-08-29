@@ -28,7 +28,8 @@ export const LessonQuestion = ({
   const answerValue = useWatch({ name: answerFieldName });
   const fileValue = useWatch({ name: fileFieldName });
 
-  const error = errors.questions?.[sequenceOrder]?.textAnswer || errors.questions?.[sequenceOrder]?.file;
+  const { textAnswer, file } = errors.questions?.[sequenceOrder] ?? {};
+  const error = textAnswer ?? file;
 
   return (
     <div className="space-y-5">

@@ -38,8 +38,6 @@ export const LessonTestPage = ({ lessonId, moduleId }: LessonTestPageProps) => {
 
       const testResult = await sendTestResult(data).unwrap();
       
-      console.log(data)
-      console.log(testResult);
       showToast('info', 'Отлично!', 'Тест пройден');
     } catch (error) {
       console.error('Ошибка отправки данных теста: ', error);
