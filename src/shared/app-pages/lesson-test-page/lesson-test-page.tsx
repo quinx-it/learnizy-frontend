@@ -37,7 +37,7 @@ export const LessonTestPage = ({ lessonId, moduleId }: LessonTestPageProps) => {
     try {
 
       const testResult = await sendTestResult(data).unwrap();
-      
+      console.log(testResult);
       showToast('info', 'Отлично!', 'Тест пройден');
     } catch (error) {
       console.error('Ошибка отправки данных теста: ', error);
