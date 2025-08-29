@@ -1,6 +1,7 @@
 'use client';
+
+import React, { useMemo } from 'react';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
-import React from 'react';
 import { constants } from './constants';
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { ProgressCard } from '@/shared/components/progress-card';
@@ -8,67 +9,99 @@ import { Text } from '@/shared/ui/typography';
 import { CourseListItem } from '@/shared/components/course-list-item';
 import { AccordionReview } from '@/shared/ui/accordion-review';
 import { StatisticsChart } from '@/shared/components/statistics-chart';
+import { useGetMainProgressQuery } from '@/api/endpoints/userProgress';
+import { ErrorSection } from '@/shared/components/error-section';
+import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
+import { getModuleStatus } from './utils';
 
 export const LearnMainPage = () => {
+  const { data, isLoading, isError, refetch } = useGetMainProgressQuery();
+
+  const { courseInfo, modules } = data ?? { courseInfo: null, modules: [] };
+
+  const curModule = useMemo(() => {
+    return modules.find((m) => m.id === courseInfo?.currentModuleId) ?? modules[0];
+  }, [modules, courseInfo]);
+
+  if (isLoading) return <FullscreenLoader />;
+  if (isError || !data || !courseInfo) return <ErrorSection reset={refetch} />;
+
+  const { titles, statuses, accordionItems, testsNumber } = constants;
+
+  const moduleStatus = curModule ? statuses[curModule.completionStatus] : undefined;
+
   return (
     <>
-      <Breadcrumbs rootDescription={constants.titles.courseName} />
+      <Breadcrumbs rootDescription={titles.courseName} />
+
       <div className="grid grid-cols-2 gap-4">
         <ProgressCard
-          title={constants.titles.currentCourse}
-          subTitle={constants.titles.courseName}
-          modules={0}
-          totalLessons={36}
-          totalModules={9}
-          lessons={0}
+          title={titles.currentCourse}
+          subTitle={courseInfo.title}
+          modules={courseInfo.completedModules}
+          totalLessons={courseInfo.totalLessons}
+          totalModules={courseInfo.totalModules}
+          lessons={courseInfo.completedLessons}
           image="/images/rocket.webp"
         />
-        <ProgressCard
-          title={constants.titles.currentModule}
-          subTitle={constants.titles.moduleName}
-          totalLessons={9}
-          lessons={0}
-          status={'Продолжить'}
-        />
+        {curModule && (
+          <ProgressCard
+            title={titles.currentModule}
+            subTitle={curModule.title}
+            totalLessons={curModule.totalLessons}
+            lessons={curModule.completedLessons}
+            status={moduleStatus}
+          />
+        )}
+
         <CardWrapper>
-          <div>
-            <Text variant="m-bold" className="mb-4">
-              Курс{' '}
-              <Text tag="span" className="text-medium" variant={'m-bold'}>
-                {constants.titles.courseName}
-              </Text>
-            </Text>
-            <hr className="border-gray mb-4" />
+          <Section title={`Курс ${titles.courseName}`}>
             <ul className="space-y-4">
-              {constants.courseListItems.map(({ number, status, title }) => (
-                <li key={number}>
-                  <CourseListItem number={number} status={status} title={title} />
-                </li>
-              ))}
+              {modules.map(
+                ({ sequenceNumber, completionStatus, completedLessons, totalLessons, title }) => {
+                  const moduleItemStatus = getModuleStatus(completionStatus);
+                  return (
+                    <li key={sequenceNumber}>
+                      <CourseListItem
+                        isCompleted={moduleItemStatus.completed}
+                        sequenceNumber={sequenceNumber}
+                        status={moduleItemStatus.statusText}
+                        title={title}
+                        totalLessons={totalLessons}
+                        completedLessons={completedLessons}
+                      />
+                    </li>
+                  );
+                },
+              )}
             </ul>
-          </div>
+          </Section>
         </CardWrapper>
+
         <CardWrapper className="row-span-2">
-          <div>
-            <Text variant="m-bold" className="!font-montserrat mb-4">
-              {constants.titles.review}
-            </Text>
-            <hr className="border-gray mb-4" />
+          <Section title={titles.review}>
             <div className="overflow-auto">
-              <AccordionReview items={constants.accordionItems} />
+              <AccordionReview items={accordionItems} />
             </div>
-          </div>
+          </Section>
         </CardWrapper>
+
         <CardWrapper>
-          <div>
-            <Text variant="m-bold" className="mb-4">
-              {constants.titles.statistics}
-            </Text>
-            <hr className="border-gray mb-4" />
-            <StatisticsChart lessons={constants.lessonsNumber} tests={constants.testsNumber} />
-          </div>
+          <Section title={titles.statistics}>
+            <StatisticsChart lessons={courseInfo.completedLessons} tests={testsNumber} />
+          </Section>
         </CardWrapper>
       </div>
     </>
   );
 };
+
+const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
+  <div>
+    <Text variant="m-bold" className="mb-4">
+      {title}
+    </Text>
+    <hr className="border-gray mb-4" />
+    {children}
+  </div>
+);

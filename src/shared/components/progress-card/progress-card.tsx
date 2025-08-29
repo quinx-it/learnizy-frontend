@@ -14,8 +14,8 @@ type ProgressCardProps = {
   modules?: number;
   totalLessons: number;
   lessons: number;
-  status?: 'Продолжить' | 'Начать';
-  image?:string;
+  status?: string;
+  image?: string;
 };
 
 export const ProgressCard = ({

@@ -1,6 +1,6 @@
 import { CompletionStatus } from "../types";
 
-export type CourseInfo = {
+export type MainCourseInfo = {
   id: number;
   title: string;
   currentModuleId: number;
@@ -17,10 +17,10 @@ export type MainModuleInfo = {
   totalLessons: number;
   completedLessons: number;
   completionStatus: CompletionStatus;
-  sequenceOrder: number;
+  sequenceNumber: number;
 };
 
-export type CourseData = {
-  courseInfo: CourseInfo;
+export type MainData = {
+  courseInfo: MainCourseInfo;
   modules: MainModuleInfo[];
 };
