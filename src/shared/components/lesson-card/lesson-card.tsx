@@ -12,8 +12,6 @@ export const LessonCard = ({ id, title, progress, index, onClick }: LessonCardPr
   const blocked = false;
   const active = true;
 
-  console.log(id, title, progress, index, onClick)
-
   const taskProgress = [
     { title: 'Теория' },
     { title: 'Устное закрепление материала' },

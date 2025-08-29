@@ -4,6 +4,7 @@ import { StarIcon } from '@/shared/ui/icons';
 import { Text } from '@/shared/ui/typography';
 import { ProgressBar } from '@/shared/ui/progress';
 import { CompletionStatus } from '@/api/endpoints/types';
+import { percentage } from '@/shared/lib/utils';
 
 type ProgressModuleType = {
   element: JSX.Element | null;
@@ -32,7 +33,7 @@ export const renderModuleProgress = (
   completedLessons: number,
   totalLessons: number,
 ): ProgressModuleType => {
-  const progress = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
+  const progress = percentage(totalLessons, completedLessons);
 
   switch (completionStatus) {
     case CompletionStatus.COMPLETED:

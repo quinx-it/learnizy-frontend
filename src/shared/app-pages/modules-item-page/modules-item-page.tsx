@@ -14,7 +14,7 @@ import { LessonCard } from '@/shared/components/lesson-card';
 import { useGetModuleQuery } from '@/api/endpoints/modules/modules';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
-import { pluralize } from '@/shared/lib/utils';
+import { percentage, pluralize } from '@/shared/lib/utils';
 import { Lesson } from '@/api/endpoints/lessons/types';
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -45,8 +45,7 @@ export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
 
   const { totalLessons, completedLessons, title, sequenceOrder } = module.moduleInfo;
   const lessons = module.lessons;
-  const progress = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
-  console.log(module);
+  const progress = percentage(totalLessons, completedLessons);
 
   const isAvailableExam = (progressValue: number) => progressValue > examAvailableNumber;
 

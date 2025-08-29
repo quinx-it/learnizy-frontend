@@ -33,7 +33,7 @@ export const LessonItemPage: React.FC<LessonItemPageProps> = ({ lessonId, module
 
   const { sequenceOrder, moduleSequenceOrder, contentBlocks, testQuestions } = lesson
 
-  const handleNavigate = (path: string) => {
+  const handleNavigate = (path: string) => () => {
     router.push(`${pathname}/${path}`)
   }
 
@@ -63,7 +63,7 @@ export const LessonItemPage: React.FC<LessonItemPageProps> = ({ lessonId, module
           лучше запомнить ключевые моменты, структурировать знания и тренировать навык устного
           объяснения — важный для успешного прохождения собеседований.
         </Text>
-        <Button onClick={() => handleNavigate('retelling')} size="medium">
+        <Button onClick={handleNavigate('retelling')} size="medium">
           Начать
         </Button>
       </CardWrapper>
@@ -85,7 +85,7 @@ export const LessonItemPage: React.FC<LessonItemPageProps> = ({ lessonId, module
           dotClassName="w-1 h-1"
           className="text-medium mb-6"
         />
-        <Button onClick={() => handleNavigate('test')} size="medium">
+        <Button onClick={handleNavigate('test')} size="medium">
           Начать
         </Button>
       </CardWrapper>

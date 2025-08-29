@@ -80,3 +80,7 @@ export function isRoleRoute(role: UserRole | undefined, pathname: string) {
             return isMentorRoute(pathname)
     }
 }
+
+export function percentage(total: number, completed: number){
+    return total > 0 ? Math.round((completed / total) * 100) : 0
+}

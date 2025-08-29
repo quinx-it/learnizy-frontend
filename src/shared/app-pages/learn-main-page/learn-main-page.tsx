@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import React from 'react';
 import { constants } from './constants';
@@ -8,12 +8,8 @@ import { Text } from '@/shared/ui/typography';
 import { CourseListItem } from '@/shared/components/course-list-item';
 import { AccordionReview } from '@/shared/ui/accordion-review';
 import { StatisticsChart } from '@/shared/components/statistics-chart';
-import { useGetCourseQuery } from '@/api/endpoints/courses/courses';
 
 export const LearnMainPage = () => {
-    const { data: course, isLoading, error } = useGetCourseQuery(1);
-  
-  console.log(course, error, isLoading);
   return (
     <>
       <Breadcrumbs rootDescription={constants.titles.courseName} />
