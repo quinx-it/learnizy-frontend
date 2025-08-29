@@ -32,7 +32,7 @@ export const LearnMainPage = () => {
 
   return (
     <>
-      <Breadcrumbs rootDescription={titles.courseName} />
+      <Breadcrumbs rootDescription={courseInfo.title} />
 
       <div className="grid grid-cols-2 gap-4">
         <ProgressCard
