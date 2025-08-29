@@ -1,9 +1,10 @@
 import { JSX } from 'react';
 import { constants, StatusValue } from './constants';
-import { ModuleStatus } from './types';
 import { StarIcon } from '@/shared/ui/icons';
 import { Text } from '@/shared/ui/typography';
 import { ProgressBar } from '@/shared/ui/progress';
+import { CompletionStatus } from '@/api/endpoints/types';
+import { percentage } from '@/shared/lib/utils';
 
 type ProgressModuleType = {
   element: JSX.Element | null;
@@ -27,36 +28,42 @@ const ProcentContent = ({ progress }: { progress: number | null | string }) => {
   );
 };
 
-export const renderModuleProgress = (status: ModuleStatus): ProgressModuleType => {
-  switch (status.state) {
-    case 'completed':
+export const renderModuleProgress = (
+  completionStatus: CompletionStatus,
+  completedLessons: number,
+  totalLessons: number,
+): ProgressModuleType => {
+  const progress = percentage(totalLessons, completedLessons);
+
+  switch (completionStatus) {
+    case CompletionStatus.COMPLETED:
       return {
         element: (
           <div className="text-medium flex gap-1.5">
             <StarIcon className="size-4.5" />
-            <Text variant={'m'} className="">
-              {' '}
-              {status.progress}/{status.total_stars}
+            <Text variant={'m'}>
+              {completedLessons}/{totalLessons}
             </Text>
           </div>
         ),
         status: constants.status.completed,
       };
 
-    case 'blocked':
+    case CompletionStatus.NOT_STARTED:
+      return {
+        element: <ProcentContent progress={progress} />,
+        status: constants.status.start,
+      };
+
+    case CompletionStatus.BLOCKED:
       return {
         element: null,
         status: constants.status.blocked,
       };
-    case 'start':
-      return {
-        element: <ProcentContent progress={status.progress} />,
-        status: constants.status.start,
-      };
 
     default:
       return {
-        element: <ProcentContent progress={status.progress} />,
+        element: <ProcentContent progress={progress} />,
         status: constants.status.active,
       };
   }

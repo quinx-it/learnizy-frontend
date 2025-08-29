@@ -1,47 +1,43 @@
 'use client';
-import { RadioGroup, RadioGroupItem } from '@/shared/ui/radioGroup';
+import { RadioGroup } from '@/shared/ui/radioGroup';
 import { Textarea } from '@/shared/ui/textarea';
 import { Text } from '@/shared/ui/typography';
 import { Controller, FieldErrors, useFormContext, useWatch } from 'react-hook-form';
 import { VoiceRecorderControl } from '../voice-recorder-control';
-import { LessonTestFormValues } from '@/shared/components/lesson-test-form';
+import { LessonQuestionItemType, LessonTestFormValues } from '@/api/endpoints/test/types';
 
-export type LessonQuestionItemType = {
+type LessonQuestionProps = LessonQuestionItemType & {
   type?: 'checkbox' | 'field';
-  index: number;
-  totalQuestions: number;
-  question: {
-    text: string;
-    options: { id: string; label: string; value: string }[];
-  };
   answerFieldName: string;
   fileFieldName: string;
   errors: FieldErrors<LessonTestFormValues>;
+  totalQuestions: number;
 };
 
 export const LessonQuestion = ({
   type = 'checkbox',
-  index,
   totalQuestions,
-  question,
+  sequenceOrder,
+  text,
   answerFieldName,
   fileFieldName,
   errors,
-}: LessonQuestionItemType) => {
+}: LessonQuestionProps) => {
   const { control, setValue } = useFormContext();
 
   const answerValue = useWatch({ name: answerFieldName });
   const fileValue = useWatch({ name: fileFieldName });
 
-  const error = errors.questions?.[index]?.answer || errors.questions?.[index]?.file;
+  const { textAnswer, file } = errors.questions?.[sequenceOrder] ?? {};
+  const error = textAnswer ?? file;
 
   return (
     <div className="space-y-5">
       <Text variant="l" className="text-medium mb-3">
-        Вопрос {index} из {totalQuestions}
+        Вопрос {sequenceOrder} из {totalQuestions}
       </Text>
       <Text variant="l" className="mb-5">
-        {question.text}
+        {text}
       </Text>
 
       {type === 'checkbox' ? (
@@ -54,7 +50,7 @@ export const LessonQuestion = ({
               onValueChange={field.onChange}
               className="mx-0 flex w-fit flex-col space-y-3"
             >
-              {question.options.map((option) => (
+             {/*  {question?.options.map((option) => (
                 <RadioGroupItem
                   key={option.id}
                   className="cursor-pointer flex-row-reverse"
@@ -63,7 +59,7 @@ export const LessonQuestion = ({
                 >
                   {option.label}
                 </RadioGroupItem>
-              ))}
+              ))} */}
             </RadioGroup>
           )}
         />

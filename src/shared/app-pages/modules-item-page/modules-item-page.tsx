@@ -1,3 +1,4 @@
+'use client';
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { routes } from '@/shared/constants';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
@@ -10,23 +11,52 @@ import Link from 'next/link';
 import React from 'react';
 import { constants } from './constants';
 import { LessonCard } from '@/shared/components/lesson-card';
-import type {LessonType} from '@/shared/components/module-card/types'
+import { useGetModuleQuery } from '@/api/endpoints/modules/modules';
+import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
+import { ErrorSection } from '@/shared/components/error-section';
+import { percentage, pluralize } from '@/shared/lib/utils';
+import { Lesson } from '@/api/endpoints/lessons/types';
+import { usePathname, useRouter } from 'next/navigation';
 
 type ModuleItemPageProps = {
   id: string;
 };
 
-
 export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
-  const { breadcrumbs, examAvailableNumber, mockedModuleInfo } = constants;
+  const pathname = usePathname();
+  const router = useRouter();
+  
+  const { breadcrumbs, examAvailableNumber } = constants;
 
- 
+  const {
+    data: module,
+    isLoading,
+    isError,
+    refetch,
+  } = useGetModuleQuery({ courseId: 1, moduleId: +id });
+
+  if (isLoading) {
+    return <FullscreenLoader />;
+  }
+
+  if (isError || !module) {
+    return <ErrorSection reset={refetch} />;
+  }
+
+  const { totalLessons, completedLessons, title, sequenceOrder } = module.moduleInfo;
+  const lessons = module.lessons;
+  const progress = percentage(totalLessons, completedLessons);
+
   const isAvailableExam = (progressValue: number) => progressValue > examAvailableNumber;
+
+  const handleLessonCardClick = (lessonId: number) => {
+    router.push(`${pathname}/${lessonId}`);
+  };
 
   return (
     <>
       <Breadcrumbs
-        items={breadcrumbs(id)}
+        items={breadcrumbs(sequenceOrder)}
         rootHref={routes.user.modules}
         rootLabel={'Структура обучения'}
       />
@@ -37,27 +67,28 @@ export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
             heading
             firstClassName="text-[24px]"
             secondClassName="text-[24px]"
-            firstLabel={`Модуль ${id}`}
-            secondLabel={mockedModuleInfo.title}
+            firstLabel={`Модуль ${sequenceOrder}`}
+            secondLabel={title}
+            dotClassName='min-w-[6px] min-h-[6px] self-center !m-0'
           />
           <DotTitle
             firstClassName="text-soft"
             secondClassName="text-soft"
             firstVariant="m"
             dotClassName="bg-soft"
-            firstLabel={`${mockedModuleInfo.lessons.length} уроков`}
-            secondLabel={`${mockedModuleInfo.totalTasks} заданий`}
+            firstLabel={pluralize(totalLessons, 'урок', 'урока', 'уроков')}
+            secondLabel={pluralize(totalLessons * 2, 'тест', 'теста', 'тестов')}
           />
         </div>
 
         <ul className="mt-3 space-y-3">
-          {mockedModuleInfo.lessons.map((lesson: LessonType, index) => {
-            return <LessonCard key={lesson.id} index={index} {...lesson} />;
+          {lessons.map((lesson: Lesson, index) => {
+            return <LessonCard onClick={handleLessonCardClick} key={lesson.id} index={index} {...lesson} />;
           })}
         </ul>
 
         <div className="flex items-center gap-2">
-          {isAvailableExam(mockedModuleInfo.progress) ? (
+          {isAvailableExam(progress) ? (
             <>
               <CheckIcon color="blue" />
               <Text variant={'l'}>
@@ -80,17 +111,12 @@ export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
           )}
         </div>
         <div className="flex items-center gap-2">
-          <Button disabled={!isAvailableExam(mockedModuleInfo.progress)} className="mr-2">
+          <Button disabled={!isAvailableExam(progress)} className="mr-2">
             Начать экзамен
           </Button>
-          <ProgressBar
-            strokeWidth={6}
-            size={27}
-            value={mockedModuleInfo.progress}
-            variant="circular"
-          />
+          <ProgressBar strokeWidth={6} size={27} value={progress} variant="circular" />
           <Text variant={'l'} className="font-montserrat text-medium font-semibold">
-            {mockedModuleInfo.progress}%
+            {progress}%
           </Text>
         </div>
       </CardWrapper>

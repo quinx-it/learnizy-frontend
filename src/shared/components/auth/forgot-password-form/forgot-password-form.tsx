@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ForgotPasswordFormValues, formSchema } from './validation';
-import { useForgotPasswordMutation } from '@/api/endpoints/auth';
+import { useForgotPasswordMutation } from '@/api/endpoints/auth/auth';
 import { Spinner } from '@/shared/ui/spinner';
 import { Input } from '@ui/input';
 import { Button } from '@ui/button';
@@ -45,13 +45,13 @@ export const ForgotPasswordForm = () => {
       <Input
         label="Введите email"
         id="email"
-        autoComplete='email'
+        autoComplete="email"
         placeholder="E-mail"
         {...register('email')}
         error={errors.email?.message}
       />
 
-      <Button type="submit" size='medium' disabled={isLoading} className="rounded-full">
+      <Button type="submit" size="medium" disabled={isLoading} className="rounded-full">
         {isLoading ? <Spinner type="ring" /> : 'Отправить'}
       </Button>
     </form>

@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { AuthFormValues, formSchema } from './validation';
-import { useLoginMutation } from '@/api/endpoints/auth';
+import { useLoginMutation } from '@/api/endpoints/auth/auth';
 import { Spinner } from '@/shared/ui/spinner';
 import { Input } from '@ui/input';
 import { PasswordInput } from '@/shared/ui/passwordInput';
@@ -50,7 +50,7 @@ export const AuthForm = () => {
       <Input
         label="Введите логин"
         id="username"
-        autoComplete='username'
+        autoComplete="username"
         placeholder="логин"
         {...register('username')}
         error={errors.username?.message}
@@ -59,7 +59,7 @@ export const AuthForm = () => {
       <PasswordInput
         label="Введите пароль"
         id="password"
-        autoComplete='current-password'
+        autoComplete="current-password"
         placeholder="пароль"
         {...register('password')}
         error={errors.password?.message}

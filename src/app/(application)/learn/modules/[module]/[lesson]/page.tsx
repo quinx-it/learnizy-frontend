@@ -4,13 +4,14 @@ import { useParams } from 'next/navigation';
 
 type ParamsType = {
   lesson: string;
+  module: string;
 }
 
 const LessonItem = () => {
   const params = useParams<ParamsType>();
-  const { lesson } = params;
+  const { lesson, module } = params;
 
-  return <LessonItemPage id={lesson} />;
+  return <LessonItemPage lessonId={lesson} moduleId={module} />;
 };
 
 export default LessonItem;

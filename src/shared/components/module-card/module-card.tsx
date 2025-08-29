@@ -1,32 +1,34 @@
-'use client'
+'use client';
 import React, { memo, useMemo } from 'react';
-import { ModuleCardType } from './types';
 import { Text } from '@/shared/ui/typography';
 import Image from 'next/image';
 import { Button } from '@/shared/ui/button';
 import { renderModuleProgress } from './utils';
-import { cn } from '@/shared/lib/utils';
+import { cn, pluralize } from '@/shared/lib/utils';
 import { constants } from './constants';
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { DotTitle } from '@/shared/ui/dotTitle';
 import { routes } from '@/shared/constants';
 import { useRouter } from 'next/navigation';
-
-
+import { ModuleInfo } from '@/api/endpoints/modules/types';
 
 const ModuleCardComponent = ({
-  title,
-  module_number,
+  totalLessons,
+  completedLessons,
+  completionStatus,
   description,
-  lessons,
-  status,
-  total_tasks,
-  img_url,
-  bonus,
+  title,
   id,
+  sequenceOrder,
   className,
-}: ModuleCardType & { className?: string }) => {
-  const { element: progressElement, status: progressStatus } = renderModuleProgress(status);
+}: ModuleInfo & { className?: string; }) => {
+  const bonus = false;
+
+  const { element: progressElement, status: progressStatus } = renderModuleProgress(
+    completionStatus,
+    completedLessons,
+    totalLessons,
+  );
   const router = useRouter();
 
   const { active, completed, blocked } = constants.status;
@@ -40,10 +42,10 @@ const ModuleCardComponent = ({
     [progressStatus, active, completed, blocked],
   );
 
-  const moduleLabel = bonus ? constants.bonus : `Модуль ${module_number}`;
+  const moduleLabel = bonus ? constants.bonus : `Модуль ${sequenceOrder}`;
 
-  const lessonInfo = `${lessons.length} уроков`;
-  const taskInfo = `${total_tasks} заданий`;
+  const lessonInfo = pluralize(totalLessons, 'урок', 'урока', 'уроков');
+  const taskInfo = pluralize(totalLessons * 2, 'тест', 'теста', 'тестов');
 
   const cardClass = cn(
     'border border-transparent',
@@ -61,42 +63,45 @@ const ModuleCardComponent = ({
 
   return (
     <CardWrapper onClick={handleCardClick} className={cardClass}>
-      <div className="flex items-center justify-between gap-3">
-        <div className="max-w-7/10 space-y-3.5">
+      <div className="flex justify-between items-start gap-3 h-full">
+        <div className="h-full flex max-w-7/10 flex-col justify-between space-y-3.5">
           <div className="space-y-2">
             <DotTitle
               firstLabel={moduleLabel}
               secondLabel={title}
               firstVariant="m-bold"
               secondVariant="m"
+              secondClassName='font-normal'
             />
             <Text>{description}</Text>
           </div>
-          <DotTitle
-            firstLabel={lessonInfo}
-            secondLabel={taskInfo}
-            firstVariant="m"
-            secondVariant="m"
-            className={cn('text-soft', { 'text-medium': bonus })}
-            dotClassName={cn('bg-soft mt-0.75 w-[3px]', { 'bg-medium': bonus })}
-          />
+          <div className='space-y-2'>
+            <DotTitle
+              firstLabel={lessonInfo}
+              secondLabel={taskInfo}
+              firstVariant="m"
+              secondVariant="m"
+              className={cn('text-soft', { 'text-medium': bonus })}
+              dotClassName={'text-soft'}
+            />
 
-          <div className="flex items-end gap-3">
-            <Button
-              disabled={isBlocked}
-              variant={isCompleted ? 'white' : 'blue'}
-              size={'small'}
-              className="cursor-pointer"
-            >
-              {progressStatus}
-            </Button>
-            {progressElement}
+            <div className="flex items-end gap-3">
+              <Button
+                disabled={isBlocked}
+                variant={isCompleted ? 'white' : 'blue'}
+                size={'small'}
+                className="cursor-pointer"
+              >
+                {progressStatus}
+              </Button>
+              {progressElement}
+            </div>
           </div>
         </div>
-        <Image width={115} height={115} src={img_url} alt="moduleimg" />
+        <Image width={115} height={115} src={'/images/astronaut1.webp'} alt="moduleimg" />
       </div>
     </CardWrapper>
   );
 };
 
-export const ModuleCard = memo(ModuleCardComponent)
+export const ModuleCard = memo(ModuleCardComponent);

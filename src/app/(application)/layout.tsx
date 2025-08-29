@@ -1,6 +1,6 @@
 'use client';
 
-import { useRefreshMutation } from '@/api/endpoints/auth';
+import { useRefreshMutation } from '@/api/endpoints/auth/auth';
 import { ReactNode, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAppSelector } from '@/shared/hooks/redux';

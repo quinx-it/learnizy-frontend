@@ -1,3 +1,30 @@
+
+export interface LessonProgress {
+    theoryCompleted: boolean;
+    voiceTaskCompleted: boolean;
+    testTaskCompleted: boolean;
+    testResult?: number;
+}
+
+export enum LessonStatus {
+    NOT_STARTED = "NOT_STARTED",
+    IN_PROGRESS = "IN_PROGRESS",
+    COMPLETED = "COMPLETED",
+    BLOCKED = "BLOCKED",
+}
+
+export interface Lesson {
+    id: number;
+    title: string;
+    description: string;
+    sequenceOrder: number;
+    testQuestions: number;
+    moduleSequenceOrder: number;
+    status: LessonStatus;
+    progress: LessonProgress;
+    contentBlocks: Block[];
+}
+
 export enum BlockType {
     HEADING = 'HEADING',
     TEXT = 'TEXT',

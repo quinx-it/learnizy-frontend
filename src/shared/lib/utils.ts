@@ -5,6 +5,24 @@ export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
+export function pluralize(count: number, one: string, few: string, many: string): string {
+  const mod10 = count % 10;
+  const mod100 = count % 100;
+
+  if (mod10 === 1 && mod100 !== 11) {
+    return `${count} ${one}`;
+  }
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)) {
+    return `${count} ${few}`;
+  }
+  return `${count} ${many}`;
+}
+
+export const normalizeToFive = (value: number): number => {
+  if (value <= 0) return 0;
+  if (value >= 100) return 5;
+  return +((value / 100) * 5).toFixed(2); 
+};
 
 
 import { jwtDecode } from 'jwt-decode'
@@ -61,4 +79,8 @@ export function isRoleRoute(role: UserRole | undefined, pathname: string) {
         case UserRole.MENTOR:
             return isMentorRoute(pathname)
     }
+}
+
+export function percentage(total: number, completed: number){
+    return total > 0 ? Math.round((completed / total) * 100) : 0
 }
