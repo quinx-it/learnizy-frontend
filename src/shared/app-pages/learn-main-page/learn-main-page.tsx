@@ -1,3 +1,4 @@
+'use client';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import React from 'react';
 import { constants } from './constants';
@@ -9,7 +10,6 @@ import { AccordionReview } from '@/shared/ui/accordion-review';
 import { StatisticsChart } from '@/shared/components/statistics-chart';
 
 export const LearnMainPage = () => {
-
   return (
     <>
       <Breadcrumbs rootDescription={constants.titles.courseName} />

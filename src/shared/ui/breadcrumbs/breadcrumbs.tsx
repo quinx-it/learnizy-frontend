@@ -15,6 +15,7 @@ type BreadcrumbItem = {
 
 interface BreadcrumbsProps {
   items?: BreadcrumbItem[];
+  className?: string;
   rootLabel?: string;
   rootHref?: string;
   rootDescription?: string;
@@ -24,10 +25,11 @@ export const Breadcrumbs = ({
   items,
   rootLabel = constants.rootLabel,
   rootHref = constants.rootHref,
+  className,
   rootDescription,
 }: BreadcrumbsProps) => {
   return (
-    <nav className="mb-4">
+    <nav className={cn("mb-4", className)}>
       <ul className="text-medium flex flex-wrap items-center gap-2">
         {items ? (
           <>
@@ -65,7 +67,7 @@ export const Breadcrumbs = ({
               className="gap-2.5"
               firstVariant="l"
               secondVariant="l"
-              dotClassName="size-1.5 bg-soft"
+              dotClassName="size-1.5 bg-soft self-center !m-0 min-w-[6px] min-h-[6px] max-w-[6px] max-h-[6px]"
               secondClassName="text-soft"
               firstClassName="text-black"
               firstLabel={rootLabel}
