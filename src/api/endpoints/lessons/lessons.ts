@@ -1,5 +1,5 @@
 import { api } from '../../api';
-import { Lesson } from './types';
+import { Lesson, SequenceType } from './types';
 
 
 export const lessonsApi = api.injectEndpoints({
@@ -7,7 +7,10 @@ export const lessonsApi = api.injectEndpoints({
     getLesson: builder.query<Lesson, string>({
       query: (lessonId) => `/lesson/${lessonId}`,
     }),
+    getSequence: builder.query<SequenceType, string>({
+      query: (lessonId) => `/lesson/${lessonId}/sequence`,
+    }),
   }),
 });
 
-export const { useGetLessonQuery } = lessonsApi;
+export const { useGetLessonQuery, useGetSequenceQuery } = lessonsApi;

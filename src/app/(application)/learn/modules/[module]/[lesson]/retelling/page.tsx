@@ -10,9 +10,9 @@ type ParamsType = {
 
 const LessonRetelling = () => {
   const params = useParams<ParamsType>();
-  const { module, lesson } = params;
+  const { lesson } = params;
 
-  return <LessonRetellingPage module={module} lesson={lesson} />;
+  return <LessonRetellingPage lesson={lesson} />;
 };
 
 export default LessonRetelling;

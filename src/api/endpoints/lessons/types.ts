@@ -1,3 +1,8 @@
+export interface SequenceType {
+  lessonSequenceOrder: number;
+  moduleSequenceOrder: number;
+}
+
 
 export interface LessonProgress {
     theoryCompleted: boolean;

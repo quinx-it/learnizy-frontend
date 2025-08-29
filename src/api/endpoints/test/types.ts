@@ -28,6 +28,8 @@ export type LessonTestResponse = {
   title: string;
   passThresholdPercentage: number;
   questions: LessonQuestionItemType[];
+  lessonSequenceOrder:number;
+  moduleSequenceOrder:number;
 };
 
 export type LessonTestSubmit = {

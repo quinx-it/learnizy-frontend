@@ -6,31 +6,46 @@ import { Text } from '@/shared/ui/typography';
 import React from 'react';
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { VoiceRecorderForm } from '@/shared/components/voice-recorder-form';
+import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
+import { ErrorSection } from '@/shared/components/error-section';
+import { useGetSequenceQuery } from '@/api/endpoints/lessons/lessons';
 
 interface LessonRetellingPageProps {
-  module: string;
   lesson: string;
 }
 
-export const LessonRetellingPage = ({ module, lesson }: LessonRetellingPageProps) => {
+export const LessonRetellingPage = ({ lesson }: LessonRetellingPageProps) => {
+  const { data: sequence, isLoading, isError, refetch } = useGetSequenceQuery(lesson);
+
+
+   if (isLoading) {
+      return <FullscreenLoader />;
+    }
+  
+    if (isError || !sequence) {
+      return <ErrorSection reset={refetch} />;
+    }
+
   return (
     <div>
       <Breadcrumbs
-        items={constants.breadcrumbs(module, lesson)}
+        items={constants.breadcrumbs(sequence.moduleSequenceOrder, sequence.lessonSequenceOrder)}
         rootHref={routes.user.modules}
         rootLabel={'Модули'}
       />
-      <CardWrapper className='mt-6 flex flex-col gap-4'>
+      <CardWrapper className="mt-6 flex flex-col gap-4">
         <Text variant="l-bold" className="text-medium">
           Проговорите вслух
         </Text>
         <hr />
-        <Text variant='l'>
+        <Text variant="l">
           Нажмите кнопку записи и своими словами перескажите основные идеи урока. Говорите чётко, не
           читая текст, словно объясняете это коллеге или другу. Такой метод поможет запомнить
           информацию и увереннее чувствовать себя на собеседовании.
         </Text>
-        <Text variant='l' className='text-medium'>Говорите свободно. Ошибки — часть обучения!</Text>
+        <Text variant="l" className="text-medium">
+          Говорите свободно. Ошибки — часть обучения!
+        </Text>
 
         <VoiceRecorderForm />
       </CardWrapper>

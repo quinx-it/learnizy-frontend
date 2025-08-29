@@ -15,10 +15,9 @@ import { showToast } from '@/shared/ui/toaster';
 
 type LessonTestPageProps = {
   lessonId: string;
-  moduleId: string;
 };
 
-export const LessonTestPage = ({ lessonId, moduleId }: LessonTestPageProps) => {
+export const LessonTestPage = ({ lessonId }: LessonTestPageProps) => {
   const { breadcrumbs } = constants;
   const { data: lessonTest, isLoading, isError, refetch } = useGetTestByLessonIdQuery(+lessonId);
   const [sendTestResult, { isLoading: isLoadingResult }] = useSendTestMutation();
@@ -31,7 +30,15 @@ export const LessonTestPage = ({ lessonId, moduleId }: LessonTestPageProps) => {
     return <ErrorSection reset={refetch} />;
   }
 
-  const { questions, title, passThresholdPercentage, id } = lessonTest;
+  const {
+    questions,
+    title,
+    passThresholdPercentage,
+    id,
+    lessonSequenceOrder,
+    moduleSequenceOrder,
+  } = lessonTest;
+
 
   const onSubmit = async (data: LessonTestSubmit) => {
     try {
@@ -47,7 +54,7 @@ export const LessonTestPage = ({ lessonId, moduleId }: LessonTestPageProps) => {
   return (
     <>
       <Breadcrumbs
-        items={breadcrumbs(moduleId, lessonId)}
+        items={breadcrumbs(moduleSequenceOrder, lessonSequenceOrder)}
         rootHref={routes.user.modules}
         rootLabel={globalConstants.rootBreadcrumbLabels.modulesLabel}
       />
@@ -56,7 +63,7 @@ export const LessonTestPage = ({ lessonId, moduleId }: LessonTestPageProps) => {
         <CardWrapper className="flex flex-col gap-5">
           <div>
             <Text variant="l" className="text-medium mb-5">
-              {title} {lessonId}
+              {title} {lessonSequenceOrder}
             </Text>
             <hr className="border-gray mb-4" />
             <div className="space-y-1">
