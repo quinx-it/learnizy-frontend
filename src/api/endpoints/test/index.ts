@@ -1,0 +1,1 @@
+export { useGetTestByLessonIdQuery } from "./test";

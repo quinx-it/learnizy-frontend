@@ -5,7 +5,13 @@ import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import React from 'react';
 import { constants } from './constants';
 import { Text } from '@/shared/ui/typography';
-import { LessonTestForm, LessonTestFormValues } from '@/shared/components/lesson-test-form';
+import { LessonTestForm } from '@/shared/components/lesson-test-form';
+import { LessonTestSubmit } from '@/api/endpoints/test/types';
+import { useGetTestByLessonIdQuery } from '@/api/endpoints/test';
+import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
+import { ErrorSection } from '@/shared/components/error-section';
+import { useSendTestMutation } from '@/api/endpoints/test/test';
+import { showToast } from '@/shared/ui/toaster';
 
 type LessonTestPageProps = {
   lessonId: string;
@@ -14,10 +20,25 @@ type LessonTestPageProps = {
 
 export const LessonTestPage = ({ lessonId, moduleId }: LessonTestPageProps) => {
   const { breadcrumbs } = constants;
+  const { data: lessonTest, isLoading, isError, refetch } = useGetTestByLessonIdQuery(+lessonId);
+  const [sendTestResult, { isLoading: isLoadingResult }] = useSendTestMutation();
 
-  const onSubmit = async (data: LessonTestFormValues) => {
+  if (isLoading) {
+    return <FullscreenLoader />;
+  }
+
+  if (isError || !lessonTest) {
+    return <ErrorSection reset={refetch} />;
+  }
+
+  const { questions, title, passThresholdPercentage, id } = lessonTest;
+
+  const onSubmit = async (data: LessonTestSubmit) => {
     try {
-      console.log(data);
+
+      const testResult = await sendTestResult(data).unwrap();
+      console.log(testResult);
+      showToast('info', 'Отлично!', 'Тест пройден');
     } catch (error) {
       console.error('Ошибка отправки данных теста: ', error);
     }
@@ -26,7 +47,7 @@ export const LessonTestPage = ({ lessonId, moduleId }: LessonTestPageProps) => {
   return (
     <>
       <Breadcrumbs
-        items={breadcrumbs(lessonId, moduleId)}
+        items={breadcrumbs(moduleId, lessonId)}
         rootHref={routes.user.modules}
         rootLabel={globalConstants.rootBreadcrumbLabels.modulesLabel}
       />
@@ -35,7 +56,7 @@ export const LessonTestPage = ({ lessonId, moduleId }: LessonTestPageProps) => {
         <CardWrapper className="flex flex-col gap-5">
           <div>
             <Text variant="l" className="text-medium mb-5">
-              {constants.title} {lessonId}
+              {title} {lessonId}
             </Text>
             <hr className="border-gray mb-4" />
             <div className="space-y-1">
@@ -43,20 +64,20 @@ export const LessonTestPage = ({ lessonId, moduleId }: LessonTestPageProps) => {
                 {constants.description}
               </Text>
               <Text variant={'m'} className="text-medium">
-                {constants.questionAmount} {constants.questions.length}
+                {constants.questionAmount} {questions.length}
               </Text>
               <Text variant={'m'} className="text-medium">
-                {constants.procent} [X]%
+                {constants.procent} {passThresholdPercentage}%
               </Text>
             </div>
           </div>
         </CardWrapper>
         <CardWrapper className="flex flex-col gap-5">
           <LessonTestForm
+            loading={isLoadingResult}
             onSubmit={onSubmit}
-            moduleId={moduleId}
-            lessonId={lessonId}
-            questions={constants.questions}
+            questions={questions}
+            testId={id}
           />
         </CardWrapper>
       </div>
