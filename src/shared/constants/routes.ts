@@ -4,6 +4,7 @@ export const routes = {
     public: {
         landingPage: '/',
         loginPage: '/login',
+        registerPage: '/register',
         forgotPassword: '/forgot-password',
         resetPassword: '/reset-password',
         userAgreement: '#',

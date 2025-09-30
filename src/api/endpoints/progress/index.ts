@@ -1,0 +1,1 @@
+export { useGetMainPageProgressQuery } from './progress'

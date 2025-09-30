@@ -8,46 +8,73 @@ import { Text } from '@/shared/ui/typography';
 import { CourseListItem } from '@/shared/components/course-list-item';
 import { AccordionReview } from '@/shared/ui/accordion-review';
 import { StatisticsChart } from '@/shared/components/statistics-chart';
+import { useGetMainPageProgressQuery } from '@/api/endpoints/progress/progress';
+import { routes } from '@/shared/constants';
+import { useRouter } from 'next/navigation';
 
 export const LearnMainPage = () => {
+  const router = useRouter();
+  const { data: mainPageProgress, error } = useGetMainPageProgressQuery();
+  if (error || !mainPageProgress) return null;
+  const currentModule = mainPageProgress.modules.find(
+    (mod) => mod.id === mainPageProgress.courseInfo.currentModuleId,
+  );
+
   return (
     <>
-      <Breadcrumbs rootDescription={constants.titles.courseName} />
+      <Breadcrumbs rootDescription={mainPageProgress.courseInfo.title || ''} />
+
       <div className="grid grid-cols-2 gap-4">
         <ProgressCard
           title={constants.titles.currentCourse}
-          subTitle={constants.titles.courseName}
-          modules={0}
-          totalLessons={36}
-          totalModules={9}
-          lessons={0}
+          subTitle={mainPageProgress.courseInfo.title || ''}
+          modules={mainPageProgress.courseInfo.completedModules ?? 0}
+          totalLessons={mainPageProgress.courseInfo.totalLessons ?? 0}
+          totalModules={mainPageProgress.courseInfo.totalModules ?? 0}
+          lessons={mainPageProgress.courseInfo.completedLessons ?? 0}
           image="/images/rocket.webp"
         />
+
         <ProgressCard
           title={constants.titles.currentModule}
-          subTitle={constants.titles.moduleName}
-          totalLessons={9}
-          lessons={0}
+          subTitle={currentModule?.title || constants.titles.moduleName}
+          totalLessons={currentModule?.totalLessons ?? 0}
+          lessons={currentModule?.completedLessons ?? 0}
           status={'Продолжить'}
+          onClick={() => currentModule && router.push(`${routes.user.modules}/${currentModule.id}`)}
         />
+
         <CardWrapper>
           <div>
             <Text variant="m-bold" className="mb-4">
               Курс{' '}
               <Text tag="span" className="text-medium" variant={'m-bold'}>
-                {constants.titles.courseName}
+                {mainPageProgress.courseInfo.title}
               </Text>
             </Text>
             <hr className="border-gray mb-4" />
             <ul className="space-y-4">
-              {constants.courseListItems.map(({ number, status, title }) => (
-                <li key={number}>
-                  <CourseListItem number={number} status={status} title={title} />
-                </li>
-              ))}
+              {mainPageProgress.modules.map((module) => {
+                const moduleProgress =
+                  module.totalLessons > 0
+                    ? (module.completedLessons / module.totalLessons) * 100
+                    : 0;
+                return (
+                  <li key={module.id}>
+                    <CourseListItem
+                      number={module.sequenceNumber}
+                      title={module.title}
+                      status={module.completionStatus === 'COMPLETED' ? 'COMPLETED' : 'NOT_STARTED'}
+                      progress={moduleProgress}
+                      onClick={() => router.push(`${routes.user.modules}/${module.id}`)}
+                    />
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </CardWrapper>
+
         <CardWrapper className="row-span-2">
           <div>
             <Text variant="m-bold" className="!font-montserrat mb-4">
@@ -65,7 +92,7 @@ export const LearnMainPage = () => {
               {constants.titles.statistics}
             </Text>
             <hr className="border-gray mb-4" />
-            <StatisticsChart lessons={constants.lessonsNumber} tests={constants.testsNumber} />
+            <StatisticsChart weeklyActivity={mainPageProgress.weeklyActivity ?? []} />
           </div>
         </CardWrapper>
       </div>

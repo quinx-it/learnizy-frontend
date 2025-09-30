@@ -3,15 +3,31 @@ import { CalendarIcon } from '@/shared/ui/icons';
 import { AreaChart } from '@/shared/ui/areaChart';
 import { Text } from '@/shared/ui/typography';
 
-type StatisticsChartProps = {
-  lessons: number;
-  tests: number;
+type WeeklyActivityItem = {
+  date: string;
+  lessonsCompleted: number;
+  testsPassed: number;
 };
 
-export const StatisticsChart = ({ lessons, tests }: StatisticsChartProps) => {
+type StatisticsChartProps = {
+  weeklyActivity: WeeklyActivityItem[];
+};
+
+const WEEK_DAYS = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+
+export const StatisticsChart = ({ weeklyActivity }: StatisticsChartProps) => {
+  const totalLessons = weeklyActivity.reduce((acc, item) => acc + item.lessonsCompleted, 0);
+  const totalTests = weeklyActivity.reduce((acc, item) => acc + item.testsPassed, 0);
+
+  const chartData = weeklyActivity.map((item) => {
+    const dateObj = new Date(item.date);
+    const dayName = WEEK_DAYS[dateObj.getDay()];
+    return { day: dayName, value: item.lessonsCompleted + item.testsPassed };
+  });
+
   return (
     <div>
-      <div className="flex justify-between gap-2">
+      <div className="mb-4 flex justify-between gap-2">
         <div className="flex items-center gap-2">
           <CalendarIcon type="blue" />
           <Text variant={'m'}>За последнюю неделю</Text>
@@ -19,19 +35,19 @@ export const StatisticsChart = ({ lessons, tests }: StatisticsChartProps) => {
         <div className="flex items-center gap-3">
           <Text variant={'m'}>
             <Text tag="span" variant={'l-bold'} className="text-medium">
-              {lessons}
+              {totalLessons}
             </Text>{' '}
             уроков
           </Text>
           <Text variant={'m'}>
             <Text tag="span" variant={'l-bold'} className="text-medium">
-              {tests}
+              {totalTests}
             </Text>{' '}
             тестов
           </Text>
         </div>
       </div>
-      <AreaChart />
+      <AreaChart data={chartData} />
     </div>
   );
 };

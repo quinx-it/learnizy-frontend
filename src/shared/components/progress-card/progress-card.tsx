@@ -15,7 +15,8 @@ type ProgressCardProps = {
   totalLessons: number;
   lessons: number;
   status?: 'Продолжить' | 'Начать';
-  image?:string;
+  image?: string;
+  onClick?: () => void;
 };
 
 export const ProgressCard = ({
@@ -26,23 +27,24 @@ export const ProgressCard = ({
   lessons,
   status,
   modules,
-  image
+  image,
+  onClick,
 }: ProgressCardProps) => {
   const hasModules = totalModules !== undefined && modules !== undefined;
 
   const progressValue = (lessons / totalLessons) !== 0 ? (lessons / totalLessons)*100 : 1;
-  
+
   return (
     <CardWrapper>
       <div className="flex h-[70px] items-stretch gap-4 relative">
         {image && <Image
           width={49}
           height={58}
-          className="my-auto max-h-[58px]"
-          src={image}
-          alt="rocket"
+          className="my-auto max-h-[58px]" 
+          src={image} 
+          alt="rocket" 
         />}
-       
+
         <div className="flex flex-1 flex-col justify-between">
           <DotTitle
             firstLabel={title}
@@ -64,7 +66,16 @@ export const ProgressCard = ({
             <ProgressBar className='h-1' value={progressValue} />
           </div>
         </div>
-        {status && <Button className='absolute top-0 right-0' size={'small'}>{status}</Button>}
+
+        {status && (
+          <Button
+            className="absolute top-0 right-0"
+            size="small"
+            onClick={onClick}
+          >
+            {status}
+          </Button>
+        )}
       </div>
     </CardWrapper>
   );
