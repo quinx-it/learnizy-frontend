@@ -10,6 +10,12 @@ export const constants = {
     review: 'Ревью ментора',
     statistics: 'Статистика активности',
   },
+  statuses: {
+    NOT_STARTED: 'Не начат',
+    IN_PROGRESS: 'В процессе',
+    COMPLETED: 'Завершен',
+    BLOCKED: 'Заблокирован',
+  },
   lessonsNumber: 14,
   testsNumber: 5,
   courseListItems: [

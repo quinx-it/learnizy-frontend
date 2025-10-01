@@ -14,14 +14,14 @@ export const routes = {
         homePage: '/learn',
         exams: '/learn/exams',
         knowlegeBase: '/learn/knowledge-base',
-        frequentlyAskedQuestions: '/learn/knowledge-base/faq',
+        frequentlyAskedQuestions: '/404',
         modules: '/learn/modules',
         projects: '/learn/projects',
         userProfilePersonalData: '/learn/user-profile/personal-data',
         userProfileSecuritySettings: '/learn/user-profile/security-settings',
 
-        interviewQuestions: '#',
-        interviewRecords: '#'
+        interviewQuestions: '/404',
+        interviewRecords: '/404'
     },
     mentor: {
         students: '/mentor/students',
@@ -35,6 +35,7 @@ export const dynamicUserRoutes = [
   /^\/learn\/modules\/\d+$/,                           
   /^\/learn\/modules\/\d+\/\d+$/,             
   /^\/learn\/modules\/\d+\/\d+\/test$/,       
+  /^\/learn\/modules\/\d+\/\d+\/result$/,       
   /^\/learn\/modules\/\d+\/\d+\/retelling$/,
 ]
 

@@ -14,7 +14,7 @@ export interface ModuleInfo {
   description: string;
   totalLessons: number;
   completedLessons: number;
-  completionStatus: 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED';
+  completionStatus: 'NOT_STARTED'| 'BLOCKED' | 'IN_PROGRESS' | 'COMPLETED';
   sequenceNumber: number;
 }
 

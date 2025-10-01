@@ -1,1 +1,1 @@
-export { useGetTestByLessonIdQuery } from "./test";
+export { useGetTestByLessonIdQuery, useGetLastTestAttemptQuery } from './test';

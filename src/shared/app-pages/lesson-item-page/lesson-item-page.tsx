@@ -1,54 +1,54 @@
-'use client'
+'use client';
 
-import React from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import React from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 
-import { useGetLessonQuery } from '@/api/endpoints/lessons'
-import { BlockRenderer } from '@/shared/components/content-block-parser/content-block-parser'
-import { CardWrapper } from '@/shared/components/card-wrapper'
-import { Breadcrumbs } from '@/shared/ui/breadcrumbs'
-import { Heading, Text } from '@/shared/ui/typography'
-import { Button } from '@/shared/ui/button'
-import { DotTitle } from '@/shared/ui/dotTitle'
-import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader'
-
-import { routes } from '@/shared/constants'
-import { constants } from './constants'
+import { useGetLessonQuery } from '@/api/endpoints/lessons';
+import { BlockRenderer } from '@/shared/components/content-block-parser/content-block-parser';
+import { CardWrapper } from '@/shared/components/card-wrapper';
+import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
+import { Heading, Text } from '@/shared/ui/typography';
+import { Button } from '@/shared/ui/button';
+import { DotTitle } from '@/shared/ui/dotTitle';
+import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
+import { routes } from '@/shared/constants';
+import { constants } from './constants';
 
 interface LessonItemPageProps {
-  lessonId: string
-  moduleId: string
+  lessonId: string;
+  moduleId: string;
 }
 
 export const LessonItemPage: React.FC<LessonItemPageProps> = ({ lessonId, moduleId }) => {
-  const router = useRouter()
-  const pathname = usePathname()
-  const { breadcrumbs } = constants
+  const router = useRouter();
+  const pathname = usePathname();
+  const { breadcrumbs } = constants;
 
-  const { data: lesson, isLoading } = useGetLessonQuery(lessonId)
+  const { data: lesson, isLoading } = useGetLessonQuery(lessonId);
 
-  if (isLoading) return <FullscreenLoader />
 
-  if (!lesson) return null
+  if (isLoading) return <FullscreenLoader />;
 
-  const { sequenceOrder, moduleSequenceOrder, contentBlocks, testQuestions } = lesson
+  if (!lesson) return null;
 
+  const { sequenceOrder, moduleSequenceOrder, contentBlocks, testQuestions } = lesson;
   const handleNavigate = (path: string) => () => {
-    router.push(`${pathname}/${path}`)
-  }
+    router.push(`${pathname}/${path}`);
+  };
 
+  console.log(lesson)
   return (
     <div className="flex flex-col gap-6">
       <Breadcrumbs
         items={breadcrumbs(moduleSequenceOrder ?? 1, moduleId, sequenceOrder ?? 0)}
         rootHref={routes.user.modules}
         rootLabel="Структура обучения"
-        className='mb-0'
+        className="mb-0"
       />
 
       {contentBlocks?.length > 0 && (
         <CardWrapper>
-          {contentBlocks.map(block => (
+          {contentBlocks.map((block) => (
             <BlockRenderer key={block.id} block={block} />
           ))}
         </CardWrapper>
@@ -56,15 +56,13 @@ export const LessonItemPage: React.FC<LessonItemPageProps> = ({ lessonId, module
 
       <CardWrapper>
         <Heading variant="2xl" className="mb-4">
-          Проговорите вслух
+          Личный ИИ-помощник
         </Heading>
         <Text variant="l" className="mb-6">
-          После изучения теории закрепите материал, пересказав его своими словами. Это поможет
-          лучше запомнить ключевые моменты, структурировать знания и тренировать навык устного
-          объяснения — важный для успешного прохождения собеседований.
+          ИИ-помощник ответит на все вопросы по пройденному материалу. Он поможет тебе лучше понять тему, запомнить ключевые моменты и структурировать знания.
         </Text>
         <Button onClick={handleNavigate('retelling')} size="medium">
-          Начать
+          Задать вопрос
         </Button>
       </CardWrapper>
 
@@ -85,10 +83,15 @@ export const LessonItemPage: React.FC<LessonItemPageProps> = ({ lessonId, module
           dotClassName="w-1 h-1"
           className="text-medium mb-6"
         />
-        <Button onClick={handleNavigate('test')} size="medium">
-          Начать
-        </Button>
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <Button onClick={handleNavigate('test')} size="medium">
+            Начать
+          </Button>
+          <Button onClick={handleNavigate('result')} size="medium">
+            Результат
+          </Button>
+        </div>
       </CardWrapper>
     </div>
-  )
-}
+  );
+};

@@ -1,2 +1,14 @@
 export { useUploadVoiceMutation } from './voice'
-export type { VoiceData, FileUploadResponse, VoiceFormValues } from './types'
+export {
+  useCreateLessonAIQueryMutation,
+  useGetLessonAIQueriesQuery,
+} from './lessonAI'
+
+export type {
+  VoiceData,
+  FileUploadResponse,
+  VoiceFormValues,
+  CreateLessonAIQueryRequest,
+  LessonAIQuery,
+  LessonAIQueryPage
+} from './types'

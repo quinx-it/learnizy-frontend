@@ -9,6 +9,7 @@ import { showToast } from '@/shared/ui/toaster';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LessonTestFormSchema } from './validation';
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
+import { useRouter, usePathname } from 'next/navigation';
 import {
   AnswerInputType,
   LessonQuestionItemType,
@@ -23,14 +24,14 @@ type LessonTestFormProps = {
   onSubmit: (data: LessonTestSubmit) => void;
 };
 
-export const LessonTestForm = ({ questions, onSubmit, testId,loading }: LessonTestFormProps) => {
+export const LessonTestForm = ({ questions, onSubmit, testId, loading }: LessonTestFormProps) => {
+  const router = useRouter();
+  const pathname = usePathname();
   const [forceSubmit, setForceSubmit] = useState(false);
   const [uploadVoice] = useUploadVoiceMutation();
 
   const methods = useForm<LessonTestFormValues>({
-    defaultValues: {
-      questions: [],
-    },
+    defaultValues: { questions: [] },
     resolver: yupResolver(LessonTestFormSchema),
   });
 
@@ -39,23 +40,23 @@ export const LessonTestForm = ({ questions, onSubmit, testId,loading }: LessonTe
     formState: { errors, isSubmitting },
   } = methods;
 
-
   const handleSubmitForm = async (data: LessonTestFormValues) => {
     try {
-      const isEmpty = Object.values(data.questions).some((q) => !q?.textAnswer?.trim() && !q?.file);
+      const isEmpty = Object.values(data.questions).some(
+        (q) => !q?.textAnswer?.trim() && !q?.file
+      );
       if (!forceSubmit && isEmpty) {
         showToast('info', 'Вы уверены?', 'У вас есть незаполненные поля');
         setForceSubmit(true);
         return;
       }
+
       const uploadedQuestions = await Promise.all(
         data.questions.map(async (q, index) => {
           if (q.file) {
             const formData = new FormData();
             formData.append('file', q.file, `recording-${index}.webm`);
-
             const { downloadUrl } = await uploadVoice(formData).unwrap();
-
             return {
               questionId: questions[index].questionId,
               inputType: AnswerInputType.VOICE,
@@ -63,21 +64,22 @@ export const LessonTestForm = ({ questions, onSubmit, testId,loading }: LessonTe
               voiceTranscript: q.voiceTranscript ?? null,
             };
           }
-
           return {
             questionId: questions[index].questionId,
             inputType: AnswerInputType.TEXT,
             textAnswer: q.textAnswer ?? null,
           };
-        }),
+        })
       );
 
       const updatedData: LessonTestSubmit = {
-        testId: testId,
+        testId,
         answers: uploadedQuestions,
       };
 
       await onSubmit(updatedData);
+      const resultPath = pathname.replace(/\/test$/, '/result');
+      router.push(resultPath);
 
     } catch (error) {
       console.error(error);

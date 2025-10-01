@@ -99,14 +99,24 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
           </code>
         </pre>
       );
+    case BlockType.IMAGE: {
+      const isValidUrl = (str: string) => {
+        try {
+          const url = new URL(str);
+          return url.protocol === 'http:' || url.protocol === 'https:';
+        } catch {
+          return false;
+        }
+      };
 
-    case BlockType.IMAGE:
+      if (!isValidUrl(block.content)) return null;
+
       return (
         <figure style={baseStyle} className="w-fit">
           <Image
             src={block.content}
-            width={block.properties.width}
-            height={block.properties.height}
+            width={block.properties.width ?? 400}
+            height={block.properties.height ?? 300}
             alt={block.properties.alt ?? ''}
           />
           {block.properties.caption && (
@@ -115,6 +125,7 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
           {renderChildren(block.children)}
         </figure>
       );
+    }
 
     case BlockType.ADVICE:
       return (
