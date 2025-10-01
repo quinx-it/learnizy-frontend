@@ -4,14 +4,21 @@ import React from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { RegisterFormValues, formSchema } from './validation';
+import { useRegisterMutation } from '@/api/endpoints/auth/auth';
+import { Spinner } from '@/shared/ui/spinner';
 import { Input } from '@ui/input';
 import { PasswordInput } from '@/shared/ui/passwordInput';
 import { Button } from '@ui/button';
+import { showToast } from '@/shared/ui/toaster';
 import Link from 'next/link';
 import { routes } from '@/shared/constants';
 import { CheckboxWithLabel } from '@/shared/ui/checkboxWithLabel/checkboxWithLabel';
+import { useRouter } from 'next/navigation';
 
 export const RegisterForm = () => {
+  const router = useRouter();
+  const [registerRequest, { isLoading }] = useRegisterMutation();
+
   const {
     register,
     handleSubmit,
@@ -21,13 +28,30 @@ export const RegisterForm = () => {
     resolver: yupResolver(formSchema),
     defaultValues: {
       login: '',
+      email: '',
       password: '',
+      repeatPassword: '',
       agreement: false,
     },
   });
 
   const onSubmit: SubmitHandler<RegisterFormValues> = async (data) => {
-    console.log(data)
+    try {
+      const result = await registerRequest({
+        username: data.login,
+        email: data.email,
+        password: data.password,
+      });
+      if ('error' in result) {
+        showToast('error', 'Ошибка', 'Не удалось зарегистрироваться. Попробуйте снова.');
+      } else {
+        showToast('success', 'Успешно', 'Вы зарегистрированы!');
+        router.push(routes.user.homePage);
+      }
+    } catch (err) {
+      console.error('Register error:', err);
+      showToast('error', 'Ошибка', 'Произошла ошибка при регистрации.');
+    }
   };
 
   return (
@@ -39,6 +63,16 @@ export const RegisterForm = () => {
         placeholder="логин"
         {...register('login')}
         error={errors.login?.message}
+      />
+
+      <Input
+        label="Введите email"
+        id="email"
+        type="email"
+        autoComplete="email"
+        placeholder="email"
+        {...register('email')}
+        error={errors.email?.message}
       />
 
       <PasswordInput
@@ -78,8 +112,8 @@ export const RegisterForm = () => {
         {errors.agreement && <p className="text-error text-[12px]">{errors.agreement.message}</p>}
       </div>
 
-      <Button type="submit" className="rounded-full">
-        Войти
+      <Button type="submit" disabled={isLoading} className="rounded-full">
+        {isLoading ? <Spinner type="ring" /> : 'Зарегистрироваться'}
       </Button>
     </form>
   );

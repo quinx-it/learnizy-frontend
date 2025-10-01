@@ -6,4 +6,9 @@ export type ResetPasswordRequest = {
   token: string;
   newPassword: string;
 };
+export type RegisterRequest = {
+  username: string;
+  email: string;
+  password: string;
+};
 export type RefreshResponse = { accessToken: string };

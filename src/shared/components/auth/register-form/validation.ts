@@ -1,23 +1,30 @@
-import * as yup from 'yup'
+import * as yup from 'yup';
 
 export interface RegisterFormValues {
-  login: string
-  password: string
-  repeatPassword: string
-  agreement: boolean
+  login: string;
+  password: string;
+  email: string;
+  repeatPassword: string;
+  agreement: boolean;
 }
 
 export const formSchema = yup.object().shape({
   login: yup
-  .string()
-  .required('Введите email или имя пользователя')
-  .test('is-email-or-username', 'Неверный email или никнейм', (value) => {
-    if (!value) return false
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    const usernameRegex = /^[a-zA-Z0-9._-]{3,20}$/
-    return emailRegex.test(value) || usernameRegex.test(value)
-  }),
-  password: yup.string().min(8, 'Минимум 8 символов').required('Введите пароль'),
+    .string()
+    .required('Введите имя пользователя')
+    .matches(
+      /^[a-zA-Z0-9._-]{3,50}$/,
+      'Имя пользователя может содержать только буквы, цифры, ".", "_" и "-"',
+    ),
+  email: yup
+    .string()
+    .required('Введите email')
+    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Некорректный email'),
+  password: yup
+    .string()
+    .min(6, 'Минимум 6 символов')
+    .max(100, 'Максимум 100 символов')
+    .required('Введите пароль'),
   repeatPassword: yup
     .string()
     .oneOf([yup.ref('password')], 'Пароли должны совпадать')
@@ -26,4 +33,4 @@ export const formSchema = yup.object().shape({
     .boolean()
     .oneOf([true], 'Нужно принять соглашение')
     .required('Нужно принять соглашение'),
-})
+});

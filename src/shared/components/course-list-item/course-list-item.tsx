@@ -10,27 +10,36 @@ export type CourseListItem = {
   title: string;
   number: number;
   status?: keyof typeof constants.statuses;
+  progress?: number;
+  onClick?: () => void;
 };
 
-export const CourseListItem = ({ title, number, status }: CourseListItem) => {
-  const progressBarValue = 1;
+export const CourseListItem = ({
+  title,
+  number,
+  status,
+  progress,
+  onClick,
+}: CourseListItem) => {
+  const progressBarValue = progress ?? 0;
 
   return (
     <div className="flex justify-between">
       <div className="flex items-center gap-2">
-        <Text>Модуль {number}</Text>
+        <Text className="whitespace-nowrap">Модуль {number}</Text>
         <ProgressBar size={12} strokeWidth={2} variant="circular" value={progressBarValue} />
-        <Text variant={'m'} className="text-medium">
+        <Text variant="m" className="text-medium w-[380px]">
           {title}
         </Text>
       </div>
       {status && (
         <Button
-          variant={status === 'completed' ? 'white' : 'blue'}
-          size={'small'}
-          className={cn({
-            '!text-medium !border-transparent !bg-transparent px-3.5 py-0': status === 'completed',
+          variant={status === 'COMPLETED' ? 'white' : 'blue'}
+          size="small"
+          className={cn('!h-8 !px-5 !py-1', {
+            '!text-medium !border-transparent !bg-transparent': status === 'COMPLETED',
           })}
+          onClick={onClick}
         >
           {constants.statuses[status]}
         </Button>

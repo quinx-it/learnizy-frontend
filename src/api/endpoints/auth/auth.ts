@@ -1,8 +1,13 @@
 import { AuthState } from '@/store/slices/auth/types';
 import { api } from '../../api';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
-import { ForgotPasswordRequest, LoginRequest, RefreshResponse, ResetPasswordRequest } from './types';
-
+import {
+  ForgotPasswordRequest,
+  LoginRequest,
+  RefreshResponse,
+  ResetPasswordRequest,
+  RegisterRequest,
+} from './types';
 
 export const auth = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -23,6 +28,24 @@ export const auth = api.injectEndpoints({
         }
       },
     }),
+
+    register: builder.mutation<AuthState, RegisterRequest>({
+      query: (body) => ({
+        url: '/auth/register',
+        method: 'POST',
+        body,
+      }),
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          const accessToken = data.accessToken;
+          if (accessToken) dispatch(setCredentials({ accessToken }));
+        } catch (error) {
+          console.error('Ошибка обновления токена: ', error);
+        }
+      },
+    }),
+
     logout: builder.mutation({
       query: () => ({
         url: '/auth/logout',
@@ -63,6 +86,7 @@ export const auth = api.injectEndpoints({
 
 export const {
   useLoginMutation,
+  useRegisterMutation,
   useLogoutMutation,
   useRefreshMutation,
   useForgotPasswordMutation,

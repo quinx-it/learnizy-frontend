@@ -65,12 +65,14 @@ export const AuthForm = () => {
         error={errors.password?.message}
       />
 
-      <Link
-        href={routes.public.forgotPassword}
-        className="text-medium -mt-4 block w-full text-right text-[12px] !underline"
-      >
-        Забыли пароль?
-      </Link>
+      <div className="-mt-4 flex w-full justify-between text-[12px]">
+        <Link href={routes.public.registerPage} className="text-medium !underline">
+          Регистрация
+        </Link>
+        <Link href={routes.public.forgotPassword} className="text-medium !underline">
+          Забыли пароль?
+        </Link>
+      </div>
 
       <Button type="submit" disabled={isLoading} size="medium" asChild={false}>
         {isLoading ? <Spinner type="ring" /> : 'Войти'}
