@@ -10,15 +10,6 @@ import { useGetTestByLessonIdQuery } from '@/api/endpoints/test';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 
-type AnswerView = {
-  questionId: number;
-  questionText: string;
-  textAnswer: string | null;
-  voiceTranscript: string | null;
-  evaluation: 'CORRECT' | 'INCORRECT' | 'PARTIAL' | 'UNASSESSED';
-  notes?: string | null;
-};
-
 type LessonTestResultPageProps = {
   lessonId: string;
   moduleId: string;
@@ -37,7 +28,7 @@ const mapEvaluation = (evaluation: string) => {
   }
 };
 
-export const LessonTestResultPage = ({ lessonId, moduleId }: LessonTestResultPageProps) => {
+export const LessonTestResultPage = ({ lessonId  }: LessonTestResultPageProps) => {
   const { data: lessonTest } = useGetTestByLessonIdQuery(+lessonId);
 
   const {

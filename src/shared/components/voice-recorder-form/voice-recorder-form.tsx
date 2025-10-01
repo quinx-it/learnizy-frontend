@@ -14,6 +14,7 @@ import { CreateLessonAIQueryRequest } from '@/api/endpoints/voice/types';
 import { useState, useEffect } from 'react';
 import { Text } from '@/shared/ui/typography';
 import { CardWrapper } from '@/shared/components/card-wrapper';
+import { Resolver } from 'react-hook-form';
 
 interface AIQuestionFormValues {
   file?: Blob;
@@ -44,7 +45,7 @@ export const VoiceRecorderForm = ({ lessonId }: VoiceRecorderFormProps) => {
     setValue,
     formState: { errors },
   } = useForm<AIQuestionFormValues>({
-    resolver: yupResolver(schema) as any,
+    resolver: yupResolver(schema) as Resolver<AIQuestionFormValues>,
     defaultValues: { file: undefined },
   });
 
@@ -75,7 +76,7 @@ export const VoiceRecorderForm = ({ lessonId }: VoiceRecorderFormProps) => {
     try {
       const { downloadUrl } = await uploadVoice(formData).unwrap();
       audioUrl = downloadUrl;
-    } catch (e) {
+    } catch {
       showToast('error', 'Ошибка загрузки аудио', 'Не удалось загрузить аудиофайл.');
       return;
     }
@@ -95,7 +96,7 @@ export const VoiceRecorderForm = ({ lessonId }: VoiceRecorderFormProps) => {
       );
 
       setValue('file', undefined);
-    } catch (e) {
+    } catch {
       showToast('error', 'Ошибка', 'Не удалось создать вопрос к ИИ.');
     }
   };

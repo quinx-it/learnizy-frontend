@@ -6,7 +6,6 @@ import { CardWrapper } from '@/shared/components/card-wrapper';
 import { ProgressCard } from '@/shared/components/progress-card';
 import { Text } from '@/shared/ui/typography';
 import { CourseListItem } from '@/shared/components/course-list-item';
-import { AccordionReview } from '@/shared/ui/accordion-review';
 import { StatisticsChart } from '@/shared/components/statistics-chart';
 import { useGetMainPageProgressQuery } from '@/api/endpoints/progress/progress';
 import { routes } from '@/shared/constants';

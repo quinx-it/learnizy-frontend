@@ -47,7 +47,6 @@ const ModuleCardComponent = ({
 
   const lessonInfo = pluralize(totalLessons, 'урок', 'урока', 'уроков');
   const taskInfo = pluralize(totalLessons * 2, 'тест', 'теста', 'заданий');
-1
   const cardClass = cn(
     'border border-transparent',
     {
