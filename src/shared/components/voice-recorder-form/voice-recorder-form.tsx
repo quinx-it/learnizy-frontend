@@ -14,6 +14,7 @@ import { CreateLessonAIQueryRequest } from '@/api/endpoints/voice/types';
 import { useState, useEffect } from 'react';
 import { Text } from '@/shared/ui/typography';
 import { CardWrapper } from '@/shared/components/card-wrapper';
+import { Resolver } from 'react-hook-form';
 
 interface AIQuestionFormValues {
   file?: Blob;
@@ -44,7 +45,7 @@ export const VoiceRecorderForm = ({ lessonId }: VoiceRecorderFormProps) => {
     setValue,
     formState: { errors },
   } = useForm<AIQuestionFormValues>({
-    resolver: yupResolver(schema) as any,
+    resolver: yupResolver(schema) as Resolver<AIQuestionFormValues>,
     defaultValues: { file: undefined },
   });
 
