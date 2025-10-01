@@ -37,7 +37,7 @@ const mapEvaluation = (evaluation: string) => {
   }
 };
 
-export const LessonTestResultPage = ({ lessonId, moduleId }: LessonTestResultPageProps) => {
+export const LessonTestResultPage = ({ lessonId  }: LessonTestResultPageProps) => {
   const { data: lessonTest } = useGetTestByLessonIdQuery(+lessonId);
 
   const {
