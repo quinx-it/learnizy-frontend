@@ -29,6 +29,7 @@ const ModuleCardComponent = ({
     completedLessons,
     totalLessons,
   );
+
   const router = useRouter();
 
   const { active, completed, blocked } = constants.status;
@@ -45,8 +46,8 @@ const ModuleCardComponent = ({
   const moduleLabel = bonus ? constants.bonus : `Модуль ${sequenceOrder}`;
 
   const lessonInfo = pluralize(totalLessons, 'урок', 'урока', 'уроков');
-  const taskInfo = pluralize(totalLessons * 2, 'тест', 'теста', 'тестов');
-
+  const taskInfo = pluralize(totalLessons * 2, 'тест', 'теста', 'заданий');
+1
   const cardClass = cn(
     'border border-transparent',
     {

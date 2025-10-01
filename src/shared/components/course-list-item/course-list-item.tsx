@@ -9,37 +9,33 @@ import { cn } from '@/shared/lib/utils';
 export type CourseListItem = {
   title: string;
   number: number;
-  status?: keyof typeof constants.statuses;
+  status?: 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED' | 'BLOCKED';
   progress?: number;
   onClick?: () => void;
 };
 
-export const CourseListItem = ({
-  title,
-  number,
-  status,
-  progress,
-  onClick,
-}: CourseListItem) => {
+export const CourseListItem = ({ title, number, status, progress, onClick }: CourseListItem) => {
   const progressBarValue = progress ?? 0;
 
+  const isBlocked = status === 'BLOCKED';
+
   return (
-    <div className="flex justify-between">
+    <div className="flex items-center justify-between">
       <div className="flex items-center gap-2">
-        <Text className="whitespace-nowrap">Модуль {number}</Text>
+        <Text className="whitespace-nowrap">{`Модуль ${number}`}</Text>
         <ProgressBar size={12} strokeWidth={2} variant="circular" value={progressBarValue} />
-        <Text variant="m" className="text-medium w-[380px]">
+        <Text variant="m" className="text-medium w-[350px]">
           {title}
         </Text>
       </div>
       {status && (
         <Button
-          variant={status === 'COMPLETED' ? 'white' : 'blue'}
+          variant={'blue'}
           size="small"
-          className={cn('!h-8 !px-5 !py-1', {
-            '!text-medium !border-transparent !bg-transparent': status === 'COMPLETED',
+          className={cn('!h-8 !px-10 !py-1', {
+            'cursor-not-allowed opacity-50': isBlocked,
           })}
-          onClick={onClick}
+          onClick={isBlocked ? undefined : onClick}
         >
           {constants.statuses[status]}
         </Button>

@@ -59,31 +59,29 @@ export const LearnMainPage = () => {
                   module.totalLessons > 0
                     ? (module.completedLessons / module.totalLessons) * 100
                     : 0;
+                let status: keyof typeof constants.statuses = 'NOT_STARTED';
+                if (module.completionStatus === 'BLOCKED') {
+                  status = 'BLOCKED';
+                } else if (module.completionStatus === 'COMPLETED') {
+                  status = 'COMPLETED';
+                } else if (module.completedLessons > 0) {
+                  status = 'IN_PROGRESS';
+                }
                 return (
                   <li key={module.id}>
                     <CourseListItem
                       number={module.sequenceNumber}
                       title={module.title}
-                      status={module.completionStatus === 'COMPLETED' ? 'COMPLETED' : 'NOT_STARTED'}
+                      status={status}
                       progress={moduleProgress}
-                      onClick={() => router.push(`${routes.user.modules}/${module.id}`)}
+                      onClick={() =>
+                        status !== 'BLOCKED' && router.push(`${routes.user.modules}/${module.id}`)
+                      }
                     />
                   </li>
                 );
               })}
             </ul>
-          </div>
-        </CardWrapper>
-
-        <CardWrapper className="row-span-2">
-          <div>
-            <Text variant="m-bold" className="!font-montserrat mb-4">
-              {constants.titles.review}
-            </Text>
-            <hr className="border-gray mb-4" />
-            <div className="overflow-auto">
-              <AccordionReview items={constants.accordionItems} />
-            </div>
           </div>
         </CardWrapper>
         <CardWrapper>

@@ -1,10 +1,34 @@
+'use client';
+
 import { CircleIcon } from '@/shared/ui/icons';
 import { Heading } from '@/shared/ui/typography';
 import React from 'react';
-import { examsMock } from './constants';
 import { ExamCard } from './exam-card';
+import { useGetExamsQuery } from '@/api/endpoints/exams';
+import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
+import { ErrorSection } from '@/shared/components/error-section';
+import { ExamStatus, Exam } from './types';
 
-export const ExamsPage = ({}) => {
+const mapExamStatus = (status: string): ExamStatus => {
+  switch (status) {
+    case 'PASSED':
+      return ExamStatus.Completed;
+    case 'FAILED':
+      return ExamStatus.Failed;
+    case 'AVAILABLE':
+      return ExamStatus.Available;
+    case 'BLOCKED':
+    default:
+      return ExamStatus.Unavailable;
+  }
+};
+
+export const ExamsPage = ({ courseId = 1 }: { courseId?: number }) => {
+  const { data, isLoading, isError, refetch } = useGetExamsQuery({ courseId, page: 0, size: 10 });
+
+  if (isLoading) return <FullscreenLoader />;
+  if (isError || !data) return <ErrorSection reset={refetch} />;
+
   return (
     <div className="grid grid-cols-1 gap-6">
       <div className="color-soft text-soft flex items-center justify-baseline gap-3 align-middle">
@@ -14,9 +38,23 @@ export const ExamsPage = ({}) => {
         <CircleIcon className="block" />
         <Heading variant="2xl">Java Core</Heading>
       </div>
-      {examsMock.map(({ exam, status }) => (
-        <ExamCard key={exam.title} exam={exam} status={status} />
-      ))}
+
+      {data.content.map((examItem) => {
+        const exam: Exam = {
+          title: `Экзамен по модулю ${examItem.moduleId}`,
+          description: examItem.moduleTitle,
+          questions: examItem.questionsCount,
+          time: 20, 
+        };
+
+        return (
+          <ExamCard
+            key={examItem.testId}
+            exam={exam}
+            status={mapExamStatus("examItem.status")}
+          />
+        );
+      })}
     </div>
   );
 };

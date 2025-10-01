@@ -3,7 +3,7 @@ export type TestType = 'LESSON_TEST';
 export enum AnswerInputType {
   TEXT = 'TEXT',
   VOICE = 'VOICE',
-};
+}
 
 export type QuestionAnswerSubmit = {
   questionId: number;
@@ -46,8 +46,6 @@ export type LessonQuestionItemType = {
   maxScore?: number;
 };
 
-
-
 export enum TestStatus {
   SUBMITTED = 'SUBMITTED',
   EVALUATING = 'EVALUATING',
@@ -84,4 +82,31 @@ export interface LessonTestResult {
   updatedAt: string;
   evaluatedAt?: string | null;
   failedReason?: string | null;
+}
+
+export interface AnswerView {
+  questionId: number;
+  questionText: string;
+  inputType: 'TEXT' | 'VOICE';
+  textAnswer: string | null;
+  voiceFileUrl: string | null;
+  voiceTranscript: string | null;
+  evaluation: 'CORRECT' | 'INCORRECT' | 'PARTIAL' | 'UNASSESSED';
+  notes: string | null;
+}
+
+export interface TestAttemptResponse {
+  id: number;
+  userId: number;
+  testId: number;
+  lessonId: number;
+  moduleId: number;
+  status: 'SUBMITTED' | 'EVALUATING' | 'EVALUATED' | 'FAILED';
+  answers: AnswerView[];
+  scorePercent: number | null;
+  passed: boolean | null;
+  createdAt: string;
+  updatedAt: string;
+  evaluatedAt: string | null;
+  failedReason: string | null;
 }

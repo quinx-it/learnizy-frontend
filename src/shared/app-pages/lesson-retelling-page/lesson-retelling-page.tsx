@@ -20,19 +20,21 @@ export const LessonRetellingPage = ({ module, lesson }: LessonRetellingPageProps
         rootHref={routes.user.modules}
         rootLabel={'Модули'}
       />
-      <CardWrapper className='mt-6 flex flex-col gap-4'>
+      <CardWrapper className="mt-6 flex flex-col gap-4">
         <Text variant="l-bold" className="text-medium">
-          Проговорите вслух
+          Задайте вопрос
         </Text>
         <hr />
-        <Text variant='l'>
-          Нажмите кнопку записи и своими словами перескажите основные идеи урока. Говорите чётко, не
-          читая текст, словно объясняете это коллеге или другу. Такой метод поможет запомнить
-          информацию и увереннее чувствовать себя на собеседовании.
+        <Text variant="l">
+          Нажмите кнопку записи и задайте интересующий вопрос по пройденной теме. Говорите чётко,
+          словно задаёте вопрос коллеге или другу. Такой метод поможет лучше понять пройденный
+          материал и увереннее чувствовать себя на собеседовании.
         </Text>
-        <Text variant='l' className='text-medium'>Говорите свободно. Ошибки — часть обучения!</Text>
+        <Text variant="l" className="text-medium">
+          Говорите свободно. Вопросы — часть обучения!
+        </Text>
 
-        <VoiceRecorderForm />
+        <VoiceRecorderForm lessonId={Number(lesson)} />
       </CardWrapper>
     </div>
   );
