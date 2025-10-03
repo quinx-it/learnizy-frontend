@@ -3,7 +3,10 @@ import { globalConstants } from '@/shared/constants/constants';
 
 export const constants = {
   breadCrumbs: [
-    { label: globalConstants.rootBreadcrumbLabels.faqLabel, href: routes.user.frequentlyAskedQuestions },
+    {
+      label: globalConstants.rootBreadcrumbLabels.faqLabel,
+      href: routes.user.frequentlyAskedQuestions,
+    },
   ],
   accordionItems: [
     {

@@ -6,7 +6,11 @@ import React from 'react';
 import { StarIcon } from '@/shared/ui/icons';
 import { Lesson, LessonProgress } from '@/api/endpoints/lessons/types';
 
-type LessonCardProps = Lesson & { progress: LessonProgress, index: number, onClick: (lessonId: number) => void };
+type LessonCardProps = Lesson & {
+  progress: LessonProgress;
+  index: number;
+  onClick: (lessonId: number) => void;
+};
 
 export const LessonCard = ({ id, title, progress, index, onClick }: LessonCardProps) => {
   const blocked = false;
@@ -20,7 +24,7 @@ export const LessonCard = ({ id, title, progress, index, onClick }: LessonCardPr
 
   return (
     <CardWrapper
-      className={cn('border-soft border !shadow-none cursor-pointer', {
+      className={cn('border-soft cursor-pointer border !shadow-none', {
         'border-medium border-2 !shadow-lg': active,
         'border-gray': blocked,
       })}
@@ -60,9 +64,7 @@ export const LessonCard = ({ id, title, progress, index, onClick }: LessonCardPr
         </div>
         <ul className="marker:text-medium list-disc space-y-1 pl-5">
           {taskProgress.map(({ title }, index) => (
-            <li key={index}>
-              {title}
-            </li>
+            <li key={index}>{title}</li>
           ))}
         </ul>
       </div>

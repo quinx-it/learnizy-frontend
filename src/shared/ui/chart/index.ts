@@ -5,4 +5,4 @@ export {
   ChartLegend,
   ChartLegendContent,
   ChartStyle,
-} from './chart'
+} from './chart';

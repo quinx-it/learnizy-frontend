@@ -1,12 +1,9 @@
-import * as yup from 'yup'
+import * as yup from 'yup';
 
 export interface ForgotPasswordFormValues {
-  email: string
+  email: string;
 }
 
 export const formSchema = yup.object().shape({
-  email: yup
-    .string()
-    .required('Введите email')
-    .email('Некорректный email'),
-})
+  email: yup.string().required('Введите email').email('Некорректный email'),
+});

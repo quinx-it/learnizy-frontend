@@ -7,7 +7,7 @@ interface UserProfilePageProps {
 
 export const UserProfilePage = ({ children }: UserProfilePageProps) => {
   return (
-    <div className="grid grid-cols-[3fr_7fr] gap-4 h-full">
+    <div className="grid h-full grid-cols-[3fr_7fr] gap-4">
       <ProfileDashboard />
       {children}
     </div>

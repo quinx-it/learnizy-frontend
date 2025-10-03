@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/nextjs'
-import { ProgressBar } from './progress'
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import { ProgressBar } from './progress';
 
 const meta: Meta<typeof ProgressBar> = {
   title: 'Components/UI/ProgressBar',
@@ -27,12 +27,12 @@ const meta: Meta<typeof ProgressBar> = {
     value: 70,
     variant: 'linear',
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof ProgressBar>
+export default meta;
+type Story = StoryObj<typeof ProgressBar>;
 
-export const Default: Story = {}
+export const Default: Story = {};
 
 export const Circular: Story = {
   args: {
@@ -40,4 +40,4 @@ export const Circular: Story = {
     size: 64,
     strokeWidth: 6,
   },
-}
+};

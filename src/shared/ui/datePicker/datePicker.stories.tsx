@@ -10,7 +10,14 @@ const meta: Meta<typeof DatePicker> = {
   },
   decorators: [
     (Story) => (
-      <div style={{ backgroundColor: '#393e45ff', padding: '20px', borderRadius: '8px', position: 'relative' }}>
+      <div
+        style={{
+          backgroundColor: '#393e45ff',
+          padding: '20px',
+          borderRadius: '8px',
+          position: 'relative',
+        }}
+      >
         <Story />
       </div>
     ),

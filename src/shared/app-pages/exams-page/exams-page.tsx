@@ -44,15 +44,11 @@ export const ExamsPage = ({ courseId = 1 }: { courseId?: number }) => {
           title: `Экзамен по модулю ${examItem.moduleId}`,
           description: examItem.moduleTitle,
           questions: examItem.questionsCount,
-          time: 20, 
+          time: 20,
         };
 
         return (
-          <ExamCard
-            key={examItem.testId}
-            exam={exam}
-            status={mapExamStatus("examItem.status")}
-          />
+          <ExamCard key={examItem.testId} exam={exam} status={mapExamStatus('examItem.status')} />
         );
       })}
     </div>

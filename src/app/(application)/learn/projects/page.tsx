@@ -1,11 +1,11 @@
-import { WorkingSection } from "@/shared/components/working-section"
+import { WorkingSection } from '@/shared/components/working-section';
 
 const ProjectsPage = () => {
   return (
     <>
-        <WorkingSection />
+      <WorkingSection />
     </>
-  )
-}
+  );
+};
 
-export default ProjectsPage
+export default ProjectsPage;

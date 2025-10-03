@@ -50,7 +50,7 @@ export const LessonQuestion = ({
               onValueChange={field.onChange}
               className="mx-0 flex w-fit flex-col space-y-3"
             >
-             {/*  {question?.options.map((option) => (
+              {/*  {question?.options.map((option) => (
                 <RadioGroupItem
                   key={option.id}
                   className="cursor-pointer flex-row-reverse"

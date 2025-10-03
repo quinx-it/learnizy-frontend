@@ -1,16 +1,16 @@
-import type { Meta, StoryObj } from '@storybook/nextjs'
-import { useState } from 'react'
-import { CustomSelect } from './select'
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import { useState } from 'react';
+import { CustomSelect } from './select';
 
 const meta: Meta<typeof CustomSelect> = {
   title: 'Components/UI/CustomSelect',
   component: CustomSelect,
   tags: ['autodocs'],
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof CustomSelect>
+type Story = StoryObj<typeof CustomSelect>;
 
 const options = [
   { label: 'Option 1', value: 'opt1' },
@@ -25,11 +25,11 @@ const options = [
   { label: 'Option 10', value: 'opt10' },
   { label: 'Option 11', value: 'opt11' },
   { label: 'Option 12', value: 'opt12' },
-]
+];
 
 export const Default: Story = {
   render: () => {
-    const [value, setValue] = useState('')
+    const [value, setValue] = useState('');
     return (
       <CustomSelect
         value={value}
@@ -37,6 +37,6 @@ export const Default: Story = {
         options={options}
         placeholder="Select an option"
       />
-    )
+    );
   },
-}
+};

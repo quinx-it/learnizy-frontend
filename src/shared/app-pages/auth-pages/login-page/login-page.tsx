@@ -6,8 +6,8 @@ import React from 'react';
 export const LoginPageDesign = () => {
   return (
     <div className="flex h-[100vh] items-center justify-center">
-      <CardWrapper className='max-w-[472px] px-8 py-16'>
-        <Logo className='w-full mb-12' />
+      <CardWrapper className="max-w-[472px] px-8 py-16">
+        <Logo className="mb-12 w-full" />
         <AuthForm />
       </CardWrapper>
     </div>

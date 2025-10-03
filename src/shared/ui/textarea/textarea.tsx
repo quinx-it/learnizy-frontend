@@ -8,8 +8,7 @@ interface TextareaProps extends ComponentProps<'textarea'> {
   error?: string;
 }
 
-
-function Textarea({ className,error, ...props }: TextareaProps) {
+function Textarea({ className, error, ...props }: TextareaProps) {
   return (
     <div>
       <div className="bg-light rounded-[12px] border px-[20px] py-1 pr-4">

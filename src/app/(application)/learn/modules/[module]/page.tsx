@@ -4,7 +4,7 @@ import { useParams } from 'next/navigation';
 
 type ParamsType = {
   module: string;
-}
+};
 
 const ModuleItem = () => {
   const params = useParams<ParamsType>();

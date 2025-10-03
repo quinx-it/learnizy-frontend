@@ -20,7 +20,7 @@ export const DashboardLink = ({ href, Icon, children }: DashboardLinkProps) => {
         href={href}
         className={cn(isActive && 'bg-soft', 'justify-start border-0 !text-[16px]')}
       >
-        <Icon className="mr-2.5 text-black h-[20px] w-[20px]" />
+        <Icon className="mr-2.5 h-[20px] w-[20px] text-black" />
         {children}
       </Link>
     </Button>

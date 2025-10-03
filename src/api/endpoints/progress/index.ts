@@ -1,1 +1,1 @@
-export { useGetMainPageProgressQuery } from './progress'
+export { useGetMainPageProgressQuery } from './progress';

@@ -1,4 +1,4 @@
-import * as yup from 'yup'
+import * as yup from 'yup';
 
 export const securitySettingsSchema = yup.object({
   password: yup
@@ -20,11 +20,11 @@ export const securitySettingsSchema = yup.object({
     .string()
     .required('Введите логин')
     .test('email-or-username', 'Введите корректный email или username', (value) => {
-      if (!value) return false
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-      const usernameRegex = /^[a-zA-Z0-9_]{3,20}$/
-      return emailRegex.test(value) || usernameRegex.test(value)
+      if (!value) return false;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const usernameRegex = /^[a-zA-Z0-9_]{3,20}$/;
+      return emailRegex.test(value) || usernameRegex.test(value);
     }),
-})
+});
 
-export type SecuritySettingsFormValues = yup.InferType<typeof securitySettingsSchema>
+export type SecuritySettingsFormValues = yup.InferType<typeof securitySettingsSchema>;

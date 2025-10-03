@@ -11,5 +11,5 @@ ol > li:nth-child(3) {
 }
 
 ol:hover > li {
-    opacity: 1 !important;
+  opacity: 1 !important;
 }

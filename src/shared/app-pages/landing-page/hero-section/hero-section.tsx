@@ -1,8 +1,6 @@
-import React from 'react'
-import { SectionContent } from '../section-content'
+import React from 'react';
+import { SectionContent } from '../section-content';
 
 export const HeroSection = () => {
-  return (
-    <SectionContent className='bg-black text-light'>HeroSection</SectionContent>
-  )
-}
+  return <SectionContent className="text-light bg-black">HeroSection</SectionContent>;
+};

@@ -7,5 +7,5 @@ export type {
   VoiceFormValues,
   CreateLessonAIQueryRequest,
   LessonAIQuery,
-  LessonAIQueryPage
-} from './types'
+  LessonAIQueryPage,
+} from './types';

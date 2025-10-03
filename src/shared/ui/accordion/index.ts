@@ -1,1 +1,1 @@
-export { CardAccordion } from './accordion'
+export { CardAccordion } from './accordion';

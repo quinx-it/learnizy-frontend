@@ -1,1 +1,1 @@
-export { DotTitle } from "./dotTitle";
+export { DotTitle } from './dotTitle';

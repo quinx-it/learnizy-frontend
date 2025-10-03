@@ -25,7 +25,7 @@ type ModuleItemPageProps = {
 export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
   const pathname = usePathname();
   const router = useRouter();
-  
+
   const { breadcrumbs, examAvailableNumber } = constants;
 
   const {
@@ -69,7 +69,7 @@ export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
             secondClassName="text-[24px]"
             firstLabel={`Модуль ${sequenceOrder}`}
             secondLabel={title}
-            dotClassName='min-w-[6px] min-h-[6px] self-center !m-0'
+            dotClassName="min-w-[6px] min-h-[6px] self-center !m-0"
           />
           <DotTitle
             firstClassName="text-soft"
@@ -83,7 +83,14 @@ export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
 
         <ul className="mt-3 space-y-3">
           {lessons.map((lesson: Lesson, index) => {
-            return <LessonCard onClick={handleLessonCardClick} key={lesson.id} index={index} {...lesson} />;
+            return (
+              <LessonCard
+                onClick={handleLessonCardClick}
+                key={lesson.id}
+                index={index}
+                {...lesson}
+              />
+            );
           })}
         </ul>
 

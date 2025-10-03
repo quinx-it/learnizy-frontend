@@ -1,1 +1,1 @@
-export { AreaChart } from "./areaChart";
+export { AreaChart } from './areaChart';

@@ -1,1 +1,1 @@
-export { InterviewRecords } from './interview-records'
+export { InterviewRecords } from './interview-records';

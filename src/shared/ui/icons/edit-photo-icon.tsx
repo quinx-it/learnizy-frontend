@@ -1,7 +1,7 @@
 import { IconProps } from '@/shared/types';
-import React from 'react'
+import React from 'react';
 
-export const EditPhotoIcon = ({className}: IconProps) => {
+export const EditPhotoIcon = ({ className }: IconProps) => {
   return (
     <svg
       className={className}

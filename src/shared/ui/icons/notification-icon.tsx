@@ -1,12 +1,15 @@
-import { IconProps } from '@/shared/types'
-import { ReactNode } from 'react'
+import { IconProps } from '@/shared/types';
+import { ReactNode } from 'react';
 
-type NotificationStatus = 'error' | 'success' | 'info' | 'warning'
+type NotificationStatus = 'error' | 'success' | 'info' | 'warning';
 
-const ICON_SIZE = 18
-const VIEW_BOX = '0 0 20 18'
+const ICON_SIZE = 18;
+const VIEW_BOX = '0 0 20 18';
 
-const BaseIcon = ({ className, children }: IconProps & { children: ReactNode; className: string }) => (
+const BaseIcon = ({
+  className,
+  children,
+}: IconProps & { children: ReactNode; className: string }) => (
   <svg
     width={ICON_SIZE}
     height={ICON_SIZE}
@@ -17,7 +20,7 @@ const BaseIcon = ({ className, children }: IconProps & { children: ReactNode; cl
   >
     {children}
   </svg>
-)
+);
 
 const StatusIcons = (color: string): Record<NotificationStatus, ReactNode> => ({
   success: (
@@ -86,12 +89,12 @@ const StatusIcons = (color: string): Record<NotificationStatus, ReactNode> => ({
       />
     </>
   ),
-})
+});
 
 export const NotificationIcon = ({
   className,
   status = 'success',
-  color = '#0C0C0C'
+  color = '#0C0C0C',
 }: IconProps & { status?: NotificationStatus }) => {
-  return <BaseIcon className={className ?? ''}>{StatusIcons(color)[status]}</BaseIcon>
-}
+  return <BaseIcon className={className ?? ''}>{StatusIcons(color)[status]}</BaseIcon>;
+};

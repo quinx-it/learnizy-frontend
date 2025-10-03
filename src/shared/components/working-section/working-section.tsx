@@ -12,12 +12,7 @@ type WorkingSectionProps = {
 export const WorkingSection = ({ className }: WorkingSectionProps) => {
   return (
     <div className="flex h-full items-center">
-      <div
-        className={cn(
-          'm-auto flex flex-col items-center gap-6 text-center',
-          className,
-        )}
-      >
+      <div className={cn('m-auto flex flex-col items-center gap-6 text-center', className)}>
         <Image
           width={110}
           height={105}

@@ -5,7 +5,7 @@ import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import React, { FC } from 'react';
 import { Text } from '@/shared/ui/typography';
 import { useGetLastTestAttemptQuery } from '@/api/endpoints/test';
-import { useGetTestByLessonIdQuery } from '@/api/endpoints/test'; 
+import { useGetTestByLessonIdQuery } from '@/api/endpoints/test';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 
