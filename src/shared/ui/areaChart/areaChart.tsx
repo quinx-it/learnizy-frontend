@@ -1,7 +1,7 @@
 'use client';
 
 import { Area, AreaChart as AreaChartDefault, XAxis, YAxis } from 'recharts';
-import { ChartContainer } from '@ui/chart';
+import { ChartContainer } from '@/shared/ui/chart';
 
 export interface ChartLineProps {
   data?: { day: string; value: number }[];
@@ -11,7 +11,7 @@ const chartMargin = { left: 15, right: 15, top: 5, bottom: 0 };
 
 export function AreaChart({ data }: ChartLineProps) {
   if (!data || data.length === 0) return null;
-  
+
   const minValue = Math.min(...data.map((item) => item.value));
   const chartDataWithFake = [
     { day: 'fake-start', value: minValue },

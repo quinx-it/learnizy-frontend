@@ -3,9 +3,9 @@
 import React, { FC, ReactNode } from 'react';
 import { useTheme } from 'next-themes';
 import { Toaster as Sonner, toast, ToasterProps } from 'sonner';
-import { NotificationIcon, CrossIcon } from '@ui/icons';
+import { NotificationIcon, CrossIcon } from '@/shared/ui/icons';
 
-import './toaster.css'
+import './toaster.css';
 
 type NotificationVariant = 'info' | 'success' | 'warning' | 'error';
 
@@ -55,7 +55,9 @@ const CustomToast: FC<CustomToastProps> = ({ variant, title, description, onClos
       className="flex max-w-[400px] min-w-[320px] items-start gap-3 rounded-2xl p-4"
       style={{ backgroundColor: bg, color: text }}
     >
-      <div style={{ fontSize: iconSize }} className='mt-2'>{icon}</div>
+      <div style={{ fontSize: iconSize }} className="mt-2">
+        {icon}
+      </div>
       <div className="flex-1">
         <div className="mb-1 text-[16px] leading-[22px] font-bold">{title}</div>
         <div className="text-[12px]">{description}</div>
@@ -63,7 +65,7 @@ const CustomToast: FC<CustomToastProps> = ({ variant, title, description, onClos
       <button
         onClick={onClose}
         aria-label="Закрыть"
-        className="cursor-pointer border-0 bg-transparent mt-2"
+        className="mt-2 cursor-pointer border-0 bg-transparent"
         style={{ color: text, fontSize: iconSize }}
       >
         <CrossIcon color="black" />
@@ -81,7 +83,7 @@ const Toaster: FC<ToasterProps> = (props) => {
       toastOptions={{
         duration: 5000,
       }}
-      className=''
+      className=""
       {...props}
     />
   );

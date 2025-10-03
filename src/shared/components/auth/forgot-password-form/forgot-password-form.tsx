@@ -6,8 +6,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { ForgotPasswordFormValues, formSchema } from './validation';
 import { useForgotPasswordMutation } from '@/api/endpoints/auth/auth';
 import { Spinner } from '@/shared/ui/spinner';
-import { Input } from '@ui/input';
-import { Button } from '@ui/button';
+import { Input } from '@/shared/ui/input';
+import { Button } from '@/shared/ui/button';
 import { showToast } from '@/shared/ui/toaster';
 
 export const ForgotPasswordForm = () => {

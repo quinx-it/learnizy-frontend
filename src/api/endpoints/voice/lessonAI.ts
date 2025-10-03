@@ -1,4 +1,4 @@
-import { api } from '@api';
+import { api } from '@/api';
 import type { CreateLessonAIQueryRequest, LessonAIQuery, LessonAIQueryPage } from './types';
 
 export const lessonAI = api.injectEndpoints({

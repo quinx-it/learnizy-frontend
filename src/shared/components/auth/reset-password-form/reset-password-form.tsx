@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ResetPasswordFormValues, formSchema } from './validation';
 import { PasswordInput } from '@/shared/ui/passwordInput';
-import { Button } from '@ui/button';
+import { Button } from '@/shared/ui/button';
 import { useResetPasswordMutation } from '@/api/endpoints/auth/auth';
 import { showToast } from '@/shared/ui/toaster';
 import { Spinner } from '@/shared/ui/spinner';

@@ -1,4 +1,4 @@
-import { api } from '@api';
+import { api } from '@/api';
 import { LessonTestResponse, LessonTestSubmit, TestAttemptResponse } from './types';
 
 export const voice = api.injectEndpoints({
@@ -19,9 +19,4 @@ export const voice = api.injectEndpoints({
   }),
 });
 
-export const { 
-  useGetTestByLessonIdQuery, 
-  useSendTestMutation, 
-  useGetLastTestAttemptQuery 
-} = voice;
-  
+export const { useGetTestByLessonIdQuery, useSendTestMutation, useGetLastTestAttemptQuery } = voice;

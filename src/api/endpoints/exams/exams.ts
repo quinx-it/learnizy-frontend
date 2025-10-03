@@ -1,4 +1,4 @@
-import { api } from '@api';
+import { api } from '@/api';
 import { ExamsResponse } from './types';
 
 export const examsApi = api.injectEndpoints({

@@ -2,11 +2,11 @@
 
 import * as React from 'react';
 
-import { Button } from '@ui/button';
-import { Input, type InputProps } from '@ui/input';
+import { Button } from '@/shared/ui/button';
+import { Input, type InputProps } from '@/shared/ui/input';
 import { cn } from '@/shared/lib/utils';
 import './styles.css';
-import { EyeIcon } from '@ui/icons';
+import { EyeIcon } from '@/shared/ui/icons';
 import { forwardRef, useState } from 'react';
 interface PasswordInputProps extends InputProps {
   innerClassName?: string;
@@ -30,7 +30,7 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           type="button"
           variant="white"
           size="small"
-          className="absolute right-0 top-6.25 cursor-pointer border-none bg-transparent px-3 py-2 hover:bg-transparent"
+          className="absolute top-6.25 right-0 cursor-pointer border-none bg-transparent px-3 py-2 hover:bg-transparent"
           onClick={() => setShowPassword((prev) => !prev)}
           disabled={disabled}
         >

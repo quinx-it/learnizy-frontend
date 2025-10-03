@@ -1,30 +1,26 @@
-"use client"
+'use client';
 
-import * as React from "react"
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from "lucide-react"
-import { DayButton, DayPicker, getDefaultClassNames } from "react-day-picker"
+import * as React from 'react';
+import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
+import { DayButton, DayPicker, getDefaultClassNames } from 'react-day-picker';
 
-import { Button, buttonVariants } from "@ui/button"
-import { cn } from "@/shared/lib/utils"
-import { ComponentProps, useEffect, useRef } from "react"
+import { Button, buttonVariants } from '@/shared/ui/button';
+import { cn } from '@/shared/lib/utils';
+import { ComponentProps, useEffect, useRef } from 'react';
 
 function Calendar({
   className,
   classNames,
   showOutsideDays = true,
-  captionLayout = "label",
-  buttonVariant = "blue",
+  captionLayout = 'label',
+  buttonVariant = 'blue',
   formatters,
   components,
   ...props
 }: ComponentProps<typeof DayPicker> & {
-  buttonVariant?: ComponentProps<typeof Button>["variant"]
+  buttonVariant?: ComponentProps<typeof Button>['variant'];
 }) {
-  const defaultClassNames = getDefaultClassNames()
+  const defaultClassNames = getDefaultClassNames();
 
   return (
     <DayPicker
@@ -97,10 +93,7 @@ function Calendar({
         range_start: cn('rounded-l-md bg-accent', defaultClassNames.range_start),
         range_middle: cn('rounded-none', defaultClassNames.range_middle),
         range_end: cn('rounded-r-md bg-accent', defaultClassNames.range_end),
-        today: cn(
-          'bg-blue text-accent rounded-md',
-          defaultClassNames.today,
-        ),
+        today: cn('bg-blue text-accent rounded-md', defaultClassNames.today),
         outside: cn(
           'text-muted-foreground aria-selected:text-muted-foreground',
           defaultClassNames.outside,
@@ -147,12 +140,12 @@ function CalendarDayButton({
   modifiers,
   ...props
 }: ComponentProps<typeof DayButton>) {
-  const defaultClassNames = getDefaultClassNames()
+  const defaultClassNames = getDefaultClassNames();
 
-  const ref = useRef<HTMLButtonElement>(null)
+  const ref = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    if (modifiers.focused) ref.current?.focus()
-  }, [modifiers.focused])
+    if (modifiers.focused) ref.current?.focus();
+  }, [modifiers.focused]);
 
   return (
     <Button
@@ -179,4 +172,4 @@ function CalendarDayButton({
   );
 }
 
-export { Calendar, CalendarDayButton }
+export { Calendar, CalendarDayButton };

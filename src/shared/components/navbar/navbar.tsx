@@ -5,7 +5,7 @@ import { NavbarLink } from './navbar-link';
 
 import { routes } from '@/shared/constants';
 
-import { HeaderLogo, ExitIcon } from '@shared/ui/icons';
+import { HeaderLogo, ExitIcon } from '@/shared/ui/icons';
 import { Button } from '@/shared/ui/button';
 import { Spinner } from '@/shared/ui/spinner';
 import { Text } from '@/shared/ui/typography';
@@ -13,15 +13,15 @@ import { useLogout } from '@/shared/hooks/useLogout';
 import { ComponentType } from 'react';
 
 interface LinkType {
-  href: string
-  Icon: ComponentType<{ className?: string }>
-  label: string
+  href: string;
+  Icon: ComponentType<{ className?: string }>;
+  label: string;
 }
 interface NavbarProps {
   links: Array<LinkType>;
 }
 
-export const Navbar = ({links}: NavbarProps) => {
+export const Navbar = ({ links }: NavbarProps) => {
   const { handleLogout, isLoading } = useLogout();
 
   return (

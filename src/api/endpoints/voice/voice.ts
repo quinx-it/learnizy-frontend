@@ -1,4 +1,4 @@
-import { api } from '@api';
+import { api } from '@/api';
 import type { VoiceData, FileUploadResponse } from './index';
 
 export const voice = api.injectEndpoints({
