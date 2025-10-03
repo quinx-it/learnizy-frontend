@@ -24,7 +24,9 @@ export const SecuritySettingsForm = () => {
     },
   });
 
-  const onSubmit = (_data: SecuritySettingsFormValues) => {};
+  const onSubmit = (data: SecuritySettingsFormValues) => {
+    console.log('Security settings form data:', data);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

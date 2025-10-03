@@ -22,7 +22,7 @@ export const authSlice = createSlice({
         const { user }: DecodedToken = decodeToken(action.payload.accessToken);
         state.accessToken = action.payload.accessToken;
         state.user = user;
-      } catch (e) {
+      } catch {
         state.accessToken = null;
         state.user = null;
       }
@@ -39,7 +39,7 @@ export const authSlice = createSlice({
           const { user }: DecodedToken = decodeToken(accessToken);
           state.accessToken = accessToken;
           state.user = user;
-        } catch (e) {
+        } catch {
           state.accessToken = null;
           state.user = null;
         }
