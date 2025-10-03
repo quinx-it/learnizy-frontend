@@ -1,4 +1,4 @@
-import { api } from '../../api';
+import { api } from '@api';
 import { LessonTestResponse, LessonTestSubmit, TestAttemptResponse } from './types';
 
 export const voice = api.injectEndpoints({

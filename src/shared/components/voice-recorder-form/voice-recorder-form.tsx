@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from '@/shared/ui/button';
@@ -16,6 +17,12 @@ import { Text } from '@/shared/ui/typography';
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { Resolver } from 'react-hook-form';
 
+export enum AIQueryStatus {
+  PENDING = 'PENDING',
+  ANSWERED = 'ANSWERED',
+  FAILED = 'FAILED',
+}
+
 interface AIQuestionFormValues {
   file?: Blob;
 }
@@ -24,7 +31,7 @@ interface VoiceRecorderFormProps {
   lessonId: number;
 }
 
-export const VoiceRecorderForm = ({ lessonId }: VoiceRecorderFormProps) => {
+export const VoiceRecorderForm: FC<VoiceRecorderFormProps> = ({ lessonId }) => {
   const [uploadVoice] = useUploadVoiceMutation();
   const [createLessonAIQuery, { isLoading: isCreatingQuery }] = useCreateLessonAIQueryMutation();
   const [lastCreatedQueryId, setLastCreatedQueryId] = useState<number | null>(null);
@@ -50,11 +57,15 @@ export const VoiceRecorderForm = ({ lessonId }: VoiceRecorderFormProps) => {
   });
 
   useEffect(() => {
-    if (lastAIQuery && lastAIQuery.id === lastCreatedQueryId && lastAIQuery.status !== 'PENDING') {
-      if (lastAIQuery.status === 'ANSWERED') {
+    if (
+      lastAIQuery &&
+      lastAIQuery.id === lastCreatedQueryId &&
+      lastAIQuery.status !== AIQueryStatus.PENDING
+    ) {
+      if (lastAIQuery.status === AIQueryStatus.ANSWERED) {
         setLastAIResponse(lastAIQuery.aiResponseText || 'ИИ ответил на ваш вопрос.');
         setLastAIError(null);
-      } else if (lastAIQuery.status === 'FAILED') {
+      } else if (lastAIQuery.status === AIQueryStatus.FAILED) {
         setLastAIError(lastAIQuery.processingError || 'Не удалось получить ответ от ИИ.');
         setLastAIResponse(null);
       }

@@ -2,11 +2,10 @@
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { globalConstants, routes } from '@/shared/constants';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
-import React from 'react';
+import React, { FC } from 'react';
 import { Text } from '@/shared/ui/typography';
 import { useGetLastTestAttemptQuery } from '@/api/endpoints/test';
-import { useGetTestByLessonIdQuery } from '@/api/endpoints/test';
-
+import { useGetTestByLessonIdQuery } from '@/api/endpoints/test'; 
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 
@@ -28,7 +27,8 @@ const mapEvaluation = (evaluation: string) => {
   }
 };
 
-export const LessonTestResultPage = ({ lessonId  }: LessonTestResultPageProps) => {
+export const LessonTestResultPage: FC<LessonTestResultPageProps> = (props) => {
+  const { lessonId } = props;
   const { data: lessonTest } = useGetTestByLessonIdQuery(+lessonId);
 
   const {

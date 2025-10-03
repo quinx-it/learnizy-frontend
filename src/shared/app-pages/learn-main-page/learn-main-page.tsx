@@ -14,7 +14,9 @@ import { useRouter } from 'next/navigation';
 export const LearnMainPage = () => {
   const router = useRouter();
   const { data: mainPageProgress, error } = useGetMainPageProgressQuery();
+
   if (error || !mainPageProgress) return null;
+
   const currentModule = mainPageProgress.modules.find(
     (mod) => mod.id === mainPageProgress.courseInfo.currentModuleId,
   );
@@ -27,21 +29,21 @@ export const LearnMainPage = () => {
         <ProgressCard
           title={constants.titles.currentCourse}
           subTitle={mainPageProgress.courseInfo.title || ''}
-          modules={mainPageProgress.courseInfo.completedModules ?? 0}
-          totalLessons={mainPageProgress.courseInfo.totalLessons ?? 0}
-          totalModules={mainPageProgress.courseInfo.totalModules ?? 0}
-          lessons={mainPageProgress.courseInfo.completedLessons ?? 0}
+          modules={mainPageProgress.courseInfo.completedModules || 0}
+          totalLessons={mainPageProgress.courseInfo.totalLessons || 0}
+          totalModules={mainPageProgress.courseInfo.totalModules || 0}
+          lessons={mainPageProgress.courseInfo.completedLessons || 0}
           image="/images/rocket.webp"
         />
 
         <ProgressCard
           title={constants.titles.currentModule}
           subTitle={currentModule?.title || constants.titles.moduleName}
-          totalLessons={currentModule?.totalLessons ?? 0}
-          lessons={currentModule?.completedLessons ?? 0}
+          totalLessons={currentModule?.totalLessons || 0}
+          lessons={currentModule?.completedLessons || 0}
           status={'Продолжить'}
           onClick={() => currentModule && router.push(`${routes.user.modules}/${currentModule.id}`)}
-        />
+        />  
 
         <CardWrapper>
           <div>

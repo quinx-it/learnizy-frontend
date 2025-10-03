@@ -11,6 +11,7 @@ const chartMargin = { left: 15, right: 15, top: 5, bottom: 0 };
 
 export function AreaChart({ data }: ChartLineProps) {
   if (!data || data.length === 0) return null;
+  
   const minValue = Math.min(...data.map((item) => item.value));
   const chartDataWithFake = [
     { day: 'fake-start', value: minValue },
@@ -29,11 +30,7 @@ export function AreaChart({ data }: ChartLineProps) {
         }}
         className="max-h-[180px] w-full min-w-[500px]"
       >
-        <AreaChartDefault 
-          accessibilityLayer 
-          data={chartDataWithFake}
-          margin={chartMargin}
-         >
+        <AreaChartDefault accessibilityLayer data={chartDataWithFake} margin={chartMargin}>
           <XAxis
             scale="point"
             dataKey="day"

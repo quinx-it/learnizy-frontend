@@ -1,6 +1,5 @@
-import { api } from '../../api';
+import { api } from '@api';
 import { GetModuleRequest, ModuleData, ModuleInfo } from './types';
-
 
 export const modulesApi = api.injectEndpoints({
   endpoints: (builder) => ({
