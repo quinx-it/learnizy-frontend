@@ -22,8 +22,7 @@ export const authSlice = createSlice({
         const { user }: DecodedToken = decodeToken(action.payload.accessToken);
         state.accessToken = action.payload.accessToken;
         state.user = user;
-      } catch (e) {
-        console.error('Failed to decode token', e);
+      } catch {
         state.accessToken = null;
         state.user = null;
       }
@@ -40,8 +39,7 @@ export const authSlice = createSlice({
           const { user }: DecodedToken = decodeToken(accessToken);
           state.accessToken = accessToken;
           state.user = user;
-        } catch (e) {
-          console.error('Failed to decode token on rehydrate', e);
+        } catch {
           state.accessToken = null;
           state.user = null;
         }

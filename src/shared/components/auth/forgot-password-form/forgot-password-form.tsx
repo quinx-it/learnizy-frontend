@@ -34,9 +34,8 @@ export const ForgotPasswordForm = () => {
     try {
       const { email } = data;
       await forgotPasswordRequest({ email }).unwrap();
-    } catch (err) {
-      showToast('error', 'Ошибка смены пароля', 'Чето не так');
-      console.error('Forgot password request error:', err);
+    } catch {
+      showToast('error', 'Ошибка смены пароля', 'Что-то не так');
     }
   };
 

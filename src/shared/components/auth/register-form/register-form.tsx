@@ -48,8 +48,7 @@ export const RegisterForm = () => {
         showToast('success', 'Успешно', 'Вы зарегистрированы!');
         router.push(routes.user.homePage);
       }
-    } catch (err) {
-      console.error('Register error:', err);
+    } catch {
       showToast('error', 'Ошибка', 'Произошла ошибка при регистрации.');
     }
   };

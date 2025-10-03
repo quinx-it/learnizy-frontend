@@ -35,11 +35,10 @@ export const LessonTestPage = ({ lessonId, moduleId }: LessonTestPageProps) => {
 
   const onSubmit = async (data: LessonTestSubmit) => {
     try {
-      const testResult = await sendTestResult(data).unwrap();
-      console.log(testResult);
+      await sendTestResult(data).unwrap();
       showToast('info', 'Отлично!', 'Тест пройден');
-    } catch (error) {
-      console.error('Ошибка отправки данных теста: ', error);
+    } catch {
+      showToast('error', 'Ошибка', 'Не удалось отправить тест');
     }
   };
 

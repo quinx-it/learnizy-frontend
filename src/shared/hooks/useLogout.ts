@@ -11,9 +11,8 @@ export const useLogout = () => {
     try {
       await logoutApi({}).unwrap();
       dispatch(logout());
-    } catch (err) {
+    } catch {
       showToast('error', 'Ошибка', 'Что-то пошло не так, попробуйте снова 😭');
-      console.error('Logout error:', err);
     }
   };
 

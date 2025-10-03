@@ -43,9 +43,8 @@ export const ResetPasswordForm = ({ token }: ResetPasswordFormProps) => {
       }).unwrap();
 
       showToast('success', 'Ура!', 'Пароль успешно изменён');
-    } catch (err) {
+    } catch {
       showToast('error', 'Ошибка!', 'Не удалось изменить пароль');
-      console.error(err);
     }
   };
 
