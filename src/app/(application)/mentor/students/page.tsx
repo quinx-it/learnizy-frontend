@@ -1,11 +1,11 @@
-import { WorkingSection } from "@/shared/components/working-section"
+import { MentorStudentsPage } from "@/shared/app-pages/mentor-students-page"
 
-const StudentsPage = () => {
+const MentorStudents = () => {
   return (
     <>
-        <WorkingSection />
+        <MentorStudentsPage />
     </>
   )
 }
 
-export default StudentsPage
+export default MentorStudents
