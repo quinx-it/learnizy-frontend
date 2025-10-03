@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import React, { ComponentProps, Dispatch, ReactNode, SetStateAction } from 'react'
-import * as PopoverPrimitive from '@radix-ui/react-popover'
-import { cn } from '@shared/lib/utils'
+import React, { ComponentProps, Dispatch, ReactNode, SetStateAction } from 'react';
+import * as PopoverPrimitive from '@radix-ui/react-popover';
+import { cn } from '@/shared/lib/utils';
 
 interface PopoverProps {
   children: ReactNode;
@@ -21,7 +21,7 @@ export const Popover = ({
   align = 'center',
   offset = 4,
   open,
-  onOpenChange
+  onOpenChange,
 }: PopoverProps) => {
   return (
     <PopoverPrimitive.Root open={open} onOpenChange={onOpenChange}>
@@ -49,4 +49,4 @@ export const Popover = ({
       </PopoverPrimitive.Portal>
     </PopoverPrimitive.Root>
   );
-}
+};

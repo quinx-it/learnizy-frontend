@@ -6,9 +6,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { RegisterFormValues, formSchema } from './validation';
 import { useRegisterMutation } from '@/api/endpoints/auth/auth';
 import { Spinner } from '@/shared/ui/spinner';
-import { Input } from '@ui/input';
+import { Input } from '@/shared/ui/input';
 import { PasswordInput } from '@/shared/ui/passwordInput';
-import { Button } from '@ui/button';
+import { Button } from '@/shared/ui/button';
 import { showToast } from '@/shared/ui/toaster';
 import Link from 'next/link';
 import { routes } from '@/shared/constants';
@@ -59,7 +59,7 @@ export const RegisterForm = () => {
       <Input
         label="Введите логин"
         id="login"
-        autoComplete='username'
+        autoComplete="username"
         placeholder="логин"
         {...register('login')}
         error={errors.login?.message}

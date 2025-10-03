@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { persistStore, persistReducer } from 'redux-persist'
 import { authPersistConfig } from './persistConfig'
 import authReducer from './slices/auth/slice'
-import { api } from '@/api/api'
+import { api } from '@/api'
 
 const rootReducer = combineReducers({
     auth: persistReducer(authPersistConfig, authReducer),

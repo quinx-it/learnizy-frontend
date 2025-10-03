@@ -1,17 +1,24 @@
-import { cn } from "@shared/lib/utils"
-import React from 'react'
+import { cn } from '@/shared/lib/utils';
+import React from 'react';
 
 interface IconProps {
-    color?: string
-    className?: string
+  color?: string;
+  className?: string;
 }
 
 function CircleIcon({ color = 'currentColor', className }: IconProps) {
-    return (
-        <svg className={cn(className, '')} width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="4" cy="4" r="4" fill={color} />
-        </svg>
-    )
+  return (
+    <svg
+      className={cn(className, '')}
+      width="8"
+      height="8"
+      viewBox="0 0 8 8"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="4" cy="4" r="4" fill={color} />
+    </svg>
+  );
 }
 
-export { CircleIcon }
+export { CircleIcon };

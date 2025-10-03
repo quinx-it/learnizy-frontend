@@ -1,16 +1,16 @@
 import * as React from 'react';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { cn } from '@/shared/lib/utils';
-import { CheckIcon } from '@ui/icons';
+import { CheckIcon } from '@/shared/ui/icons';
 import { ComponentProps } from 'react';
 
 function Checkbox({ className, ...props }: ComponentProps<typeof CheckboxPrimitive.Root>) {
   return (
     <CheckboxPrimitive.Root
       className={cn(
-        'peer size-4.5 cursor-pointer rounded-full border border-medium bg-transparent transition-colors',
+        'peer border-medium size-4.5 cursor-pointer rounded-full border bg-transparent transition-colors',
         'hover:border-gray',
-        'disabled:opacity-50 disabled:cursor-not-allowed disabled:border-light',
+        'disabled:border-light disabled:cursor-not-allowed disabled:opacity-50',
         className,
       )}
       {...props}

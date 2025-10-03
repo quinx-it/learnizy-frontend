@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import React, { ComponentProps, ReactNode } from 'react'
-import * as TooltipPrimitive from '@radix-ui/react-tooltip'
-import { cn } from '@shared/lib/utils'
+import React, { ComponentProps, ReactNode } from 'react';
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import { cn } from '@/shared/lib/utils';
 
 interface TooltipProps {
-  children: ReactNode
-  content: ReactNode
-  offset?: number
-  side?: ComponentProps<typeof TooltipPrimitive.Content>['side']
-  delay?: number
+  children: ReactNode;
+  content: ReactNode;
+  offset?: number;
+  side?: ComponentProps<typeof TooltipPrimitive.Content>['side'];
+  delay?: number;
 }
 
 export const CustomTooltip = ({
@@ -22,9 +22,7 @@ export const CustomTooltip = ({
   return (
     <TooltipPrimitive.Provider delayDuration={delay}>
       <TooltipPrimitive.Root>
-        <TooltipPrimitive.Trigger asChild>
-          {children}
-        </TooltipPrimitive.Trigger>
+        <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
         <TooltipPrimitive.Portal>
           <TooltipPrimitive.Content
             sideOffset={offset}
@@ -38,7 +36,7 @@ export const CustomTooltip = ({
               'data-[side=left]:slide-in-from-right-2',
               'data-[side=right]:slide-in-from-left-2',
               'data-[side=top]:slide-in-from-bottom-2',
-              'origin-[--radix-tooltip-content-transform-origin]'
+              'origin-[--radix-tooltip-content-transform-origin]',
             )}
           >
             {content}
@@ -47,5 +45,5 @@ export const CustomTooltip = ({
         </TooltipPrimitive.Portal>
       </TooltipPrimitive.Root>
     </TooltipPrimitive.Provider>
-  )
-}
+  );
+};

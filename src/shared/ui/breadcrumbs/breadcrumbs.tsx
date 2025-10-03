@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { Fragment } from 'react';
 import { DotTitle } from '../dotTitle';
-import { ArrowRightIcon } from '@shared/ui/icons';
-import { Text } from '@shared/ui/typography';
+import { ArrowRightIcon } from '@/shared/ui/icons';
+import { Text } from '@/shared/ui/typography';
 import { cn } from '@/shared/lib/utils';
 import { constants } from './constants';
 
@@ -29,7 +29,7 @@ export const Breadcrumbs = ({
   rootDescription,
 }: BreadcrumbsProps) => {
   return (
-    <nav className={cn("mb-4", className)}>
+    <nav className={cn('mb-4', className)}>
       <ul className="text-medium flex flex-wrap items-center gap-2">
         {items ? (
           <>
@@ -43,7 +43,7 @@ export const Breadcrumbs = ({
             </li>
             {items.map((crumb, index) => (
               <Fragment key={crumb.href}>
-                <li className='flex items-center gap-2'>
+                <li className="flex items-center gap-2">
                   <ArrowRightIcon color="blue" className="size-2.5" />
                   {index === items.length - 1 ? (
                     <Text variant={'l'} className="text-medium">

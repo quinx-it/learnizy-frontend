@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Progress } from '@radix-ui/react-progress';
-import { cn } from '@shared/lib/utils';
+import { cn } from '@/shared/lib/utils';
 
 export interface ProgressBarProps {
   value: number;

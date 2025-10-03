@@ -1,5 +1,5 @@
 import { AuthState } from '@/store/slices/auth/types';
-import { api } from '@api';
+import { api } from '@/api';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 import {
   ForgotPasswordRequest,
@@ -42,7 +42,7 @@ export const auth = api.injectEndpoints({
         try {
           const { data } = await queryFulfilled;
           const accessToken = data.accessToken;
-          
+
           if (accessToken) dispatch(setCredentials({ accessToken }));
         } catch (error) {
           console.error('Ошибка обновления токена: ', error);
