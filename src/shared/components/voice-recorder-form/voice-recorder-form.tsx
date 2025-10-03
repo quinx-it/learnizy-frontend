@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from '@/shared/ui/button';
@@ -30,7 +31,7 @@ interface VoiceRecorderFormProps {
   lessonId: number;
 }
 
-export const VoiceRecorderForm: React.FC<VoiceRecorderFormProps> = ({ lessonId }) => {
+export const VoiceRecorderForm: FC<VoiceRecorderFormProps> = ({ lessonId }) => {
   const [uploadVoice] = useUploadVoiceMutation();
   const [createLessonAIQuery, { isLoading: isCreatingQuery }] = useCreateLessonAIQueryMutation();
   const [lastCreatedQueryId, setLastCreatedQueryId] = useState<number | null>(null);
