@@ -13,7 +13,6 @@ export const useLogout = () => {
       dispatch(logout());
     } catch (err) {
       showToast('error', 'Ошибка', 'Что-то пошло не так, попробуйте снова 😭');
-      console.error('Logout error:', err);
     }
   };
 

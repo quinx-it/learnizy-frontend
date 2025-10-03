@@ -40,8 +40,8 @@ export const AuthForm = () => {
         username: data.username,
         password: data.password,
       }).unwrap();
-    } catch (err) {
-      console.error('Login error:', err);
+    } catch {
+      showToast('error', 'Произошла ошибка', String(error));
     }
   };
 

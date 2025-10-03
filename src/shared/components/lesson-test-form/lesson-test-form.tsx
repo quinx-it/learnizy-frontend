@@ -78,8 +78,8 @@ export const LessonTestForm = ({ questions, onSubmit, testId, loading }: LessonT
       await onSubmit(updatedData);
       const resultPath = pathname.replace(/\/test$/, '/result');
       router.push(resultPath);
-    } catch (error) {
-      console.error(error);
+    } catch {
+      showToast('error', 'Произошла ошибка', '');
     }
   };
 

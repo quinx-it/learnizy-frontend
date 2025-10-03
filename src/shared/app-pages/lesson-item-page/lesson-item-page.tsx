@@ -35,7 +35,6 @@ export const LessonItemPage: React.FC<LessonItemPageProps> = ({ lessonId, module
     router.push(`${pathname}/${path}`);
   };
 
-  console.log(lesson);
   return (
     <div className="flex flex-col gap-6">
       <Breadcrumbs

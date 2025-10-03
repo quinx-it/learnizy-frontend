@@ -32,9 +32,7 @@ export const PersonalDataForm = () => {
     },
   });
 
-  const onSubmit = (data: PersonalDataFormValues) => {
-    console.log('Form data:', data);
-  };
+  const onSubmit = (_data: PersonalDataFormValues) => {};
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
