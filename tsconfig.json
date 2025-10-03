@@ -20,6 +20,8 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
+      "@api": ["./src/api/api"],
+      "@api/*": ["./src/api/api/*"],
       "@shared/*": ["./src/shared/*"],
       "@store/*": ["./src/store/*"],
       "@ui/*": ["./src/shared/ui/*"],

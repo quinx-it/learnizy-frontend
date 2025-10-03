@@ -1,5 +1,5 @@
 import { AuthState } from '@/store/slices/auth/types';
-import { api } from '../../api';
+import { api } from '@api';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 import {
   ForgotPasswordRequest,
@@ -9,11 +9,13 @@ import {
   RegisterRequest,
 } from './types';
 
+const AUTH_BASE_URL = '/auth';
+
 export const auth = api.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation<AuthState, LoginRequest>({
       query: (body) => ({
-        url: '/auth/login',
+        url: `${AUTH_BASE_URL}/login`,
         method: 'POST',
         body,
       }),
@@ -21,6 +23,7 @@ export const auth = api.injectEndpoints({
         try {
           const { data } = await queryFulfilled;
           const accessToken = data.accessToken;
+
           if (accessToken) dispatch(setCredentials({ accessToken }));
         } catch (error) {
           dispatch(logout());
@@ -31,7 +34,7 @@ export const auth = api.injectEndpoints({
 
     register: builder.mutation<AuthState, RegisterRequest>({
       query: (body) => ({
-        url: '/auth/register',
+        url: `${AUTH_BASE_URL}/register`,
         method: 'POST',
         body,
       }),
@@ -39,6 +42,7 @@ export const auth = api.injectEndpoints({
         try {
           const { data } = await queryFulfilled;
           const accessToken = data.accessToken;
+          
           if (accessToken) dispatch(setCredentials({ accessToken }));
         } catch (error) {
           console.error('Ошибка обновления токена: ', error);
@@ -48,13 +52,13 @@ export const auth = api.injectEndpoints({
 
     logout: builder.mutation({
       query: () => ({
-        url: '/auth/logout',
+        url: `${AUTH_BASE_URL}/logout`,
         method: 'POST',
       }),
     }),
     refresh: builder.mutation<RefreshResponse, void>({
       query: () => ({
-        url: '/auth/refresh',
+        url: `${AUTH_BASE_URL}/refresh`,
         method: 'POST',
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
@@ -69,14 +73,14 @@ export const auth = api.injectEndpoints({
     }),
     forgotPassword: builder.mutation<void, ForgotPasswordRequest>({
       query: (body) => ({
-        url: '/auth/forgot-password',
+        url: `${AUTH_BASE_URL}/forgot-password`,
         method: 'POST',
         body,
       }),
     }),
     resetPassword: builder.mutation<void, ResetPasswordRequest>({
       query: (body) => ({
-        url: '/auth/reset-password',
+        url: `${AUTH_BASE_URL}/reset-password`,
         method: 'POST',
         body,
       }),
