@@ -1,9 +1,9 @@
-'use client'
+'use client';
 import { routes } from '@/shared/constants';
 import { Button } from '@/shared/ui/button';
 import { ArrowRightIcon, PersonIcon } from '@/shared/ui/icons';
 import { Text } from '@/shared/ui/typography';
-import {Copy, Edit3 } from 'lucide-react';
+import { Copy, Edit3 } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 
@@ -73,7 +73,9 @@ export const StudentsTable = () => {
       <div className="box-shadow overflow-x-auto rounded-md border">
         <div className="grid grid-cols-[60px_minmax(140px,1fr)_minmax(250px,2fr)_minmax(120px,1fr)_minmax(200px,2fr)_minmax(160px,1fr)_minmax(208px,1fr)] text-center">
           <div className="border-light bg-soft flex items-center justify-center border-r py-3">
-            <Text variant="m"><PersonIcon className='w-4 h-4' /></Text>
+            <Text variant="m">
+              <PersonIcon className="h-4 w-4" />
+            </Text>
           </div>
           <div className="border-light bg-soft flex items-center justify-center border-r">
             <Text variant="m">ID</Text>

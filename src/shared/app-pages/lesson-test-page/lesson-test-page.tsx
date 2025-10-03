@@ -35,7 +35,6 @@ export const LessonTestPage = ({ lessonId, moduleId }: LessonTestPageProps) => {
 
   const onSubmit = async (data: LessonTestSubmit) => {
     try {
-
       const testResult = await sendTestResult(data).unwrap();
       console.log(testResult);
       showToast('info', 'Отлично!', 'Тест пройден');

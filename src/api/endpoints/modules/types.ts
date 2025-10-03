@@ -1,10 +1,10 @@
-import { Lesson } from "../lessons/types";
-import { CompletionStatus } from "../types";
+import { Lesson } from '../lessons/types';
+import { CompletionStatus } from '../types';
 
 export interface ModuleInfo {
   id: number;
   title: string;
-  sequenceOrder: number
+  sequenceOrder: number;
   description: string;
   totalLessons: number;
   completedLessons: number;
@@ -17,7 +17,6 @@ export interface ModuleData {
 }
 
 export interface GetModuleRequest {
-  courseId: number
-  moduleId: number
+  courseId: number;
+  moduleId: number;
 }
-

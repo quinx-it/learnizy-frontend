@@ -1,9 +1,7 @@
-import { ExamsPage } from "@/shared/app-pages/exams-page"
+import { ExamsPage } from '@/shared/app-pages/exams-page';
 
 const Exams = () => {
-  return (
-    <ExamsPage />
-  )
-}
+  return <ExamsPage />;
+};
 
-export default Exams
+export default Exams;

@@ -26,8 +26,5 @@ const QuestionAnswerSchema = yup
   );
 
 export const LessonTestFormSchema = yup.object({
-  questions: yup
-    .array()
-    .of(QuestionAnswerSchema)
-    .required()
+  questions: yup.array().of(QuestionAnswerSchema).required(),
 });

@@ -13,21 +13,28 @@ type CheckIconProps = {
 
 export const CheckIcon = ({ className, color = 'white' }: IconProps & CheckIconProps) => {
   return (
-    <svg className={className} width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-         <rect
-           width="2.2814"
-           height="9.12561"
-           rx="1.1407"
-           transform="matrix(0.707107 -0.707106 0.707107 0.707106 0 6.5144)"
-           fill={colors[color]}
-         />
-         <rect
-           width="2.2814"
-           height="16.1034"
-           rx="1.1407"
-           transform="matrix(0.707107 0.707106 -0.707107 0.707106 16.286 0)"
-           fill={colors[color]}
-         />
-       </svg>
+    <svg
+      className={className}
+      width="18"
+      height="13"
+      viewBox="0 0 18 13"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        width="2.2814"
+        height="9.12561"
+        rx="1.1407"
+        transform="matrix(0.707107 -0.707106 0.707107 0.707106 0 6.5144)"
+        fill={colors[color]}
+      />
+      <rect
+        width="2.2814"
+        height="16.1034"
+        rx="1.1407"
+        transform="matrix(0.707107 0.707106 -0.707107 0.707106 16.286 0)"
+        fill={colors[color]}
+      />
+    </svg>
   );
 };

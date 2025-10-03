@@ -10,9 +10,9 @@ export type Exam = {
   description: string;
   questions: number;
   time: number;
-}
+};
 
 export type ExamCardProps = {
   exam: Exam;
   status: ExamStatus;
-}
+};

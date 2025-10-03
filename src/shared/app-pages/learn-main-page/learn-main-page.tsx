@@ -43,7 +43,7 @@ export const LearnMainPage = () => {
           lessons={currentModule?.completedLessons || 0}
           status={'Продолжить'}
           onClick={() => currentModule && router.push(`${routes.user.modules}/${currentModule.id}`)}
-        />  
+        />
 
         <CardWrapper>
           <div>

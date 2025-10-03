@@ -22,7 +22,7 @@ export const StatisticsChart = ({ weeklyActivity }: StatisticsChartProps) => {
   const chartData = weeklyActivity.map((item) => {
     const dateObj = new Date(item.date);
     const dayName = WEEK_DAYS[dateObj.getDay()];
-    
+
     return { day: dayName, value: item.lessonsCompleted + item.testsPassed };
   });
 

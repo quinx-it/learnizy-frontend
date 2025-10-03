@@ -1,9 +1,7 @@
-import { KnowlegeBasePage } from "@/shared/app-pages/knowlege-base-page"
+import { KnowlegeBasePage } from '@/shared/app-pages/knowlege-base-page';
 
 const KnowlegeBase = () => {
-  return (
-    <KnowlegeBasePage />
-  )
-}
+  return <KnowlegeBasePage />;
+};
 
-export default KnowlegeBase
+export default KnowlegeBase;

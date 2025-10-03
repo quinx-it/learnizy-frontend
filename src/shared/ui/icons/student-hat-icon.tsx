@@ -4,7 +4,7 @@ import { IconProps } from '@/shared/types';
 export const StudentHatIcon = ({ className, color = 'currentColor' }: IconProps) => {
   return (
     <svg
-      className={cn(className, 'text-inherit w-[16px] h-[16px]')}
+      className={cn(className, 'h-[16px] w-[16px] text-inherit')}
       viewBox="0 0 12 10"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

@@ -1,11 +1,11 @@
-import { MentorStudentsPage } from "@/shared/app-pages/mentor-students-page"
+import { MentorStudentsPage } from '@/shared/app-pages/mentor-students-page';
 
 const MentorStudents = () => {
   return (
     <>
-        <MentorStudentsPage />
+      <MentorStudentsPage />
     </>
-  )
-}
+  );
+};
 
-export default MentorStudents
+export default MentorStudents;

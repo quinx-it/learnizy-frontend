@@ -1,17 +1,15 @@
-'use client'
+'use client';
 
-import React from 'react'
-import { ThemeProvider } from 'next-themes'
-import { Meta, StoryFn } from '@storybook/nextjs'
-import { Toaster, showToast } from './toaster'
+import React from 'react';
+import { ThemeProvider } from 'next-themes';
+import { Meta, StoryFn } from '@storybook/nextjs';
+import { Toaster, showToast } from './toaster';
 
 const Demo = () => {
   return (
-    <div className='w-[300px] flex flex-col'>
+    <div className="flex w-[300px] flex-col">
       <button
-        onClick={() =>
-          showToast('success', 'Успешно!', 'Кастомный тост работает')
-        }
+        onClick={() => showToast('success', 'Успешно!', 'Кастомный тост работает')}
         style={{
           padding: '8px 16px',
           marginBottom: 20,
@@ -26,9 +24,7 @@ const Demo = () => {
       </button>
 
       <button
-        onClick={() =>
-          showToast('warning', 'Предупреждение!', 'Кастомный тост работает')
-        }
+        onClick={() => showToast('warning', 'Предупреждение!', 'Кастомный тост работает')}
         style={{
           padding: '8px 16px',
           marginBottom: 20,
@@ -43,9 +39,7 @@ const Demo = () => {
       </button>
 
       <button
-        onClick={() =>
-          showToast('error', 'Ошибка!', 'Кастомный тост работает')
-        }
+        onClick={() => showToast('error', 'Ошибка!', 'Кастомный тост работает')}
         style={{
           padding: '8px 16px',
           marginBottom: 20,
@@ -60,9 +54,7 @@ const Demo = () => {
       </button>
 
       <button
-        onClick={() =>
-          showToast('info', 'Информация!', 'Кастомный тост работает')
-        }
+        onClick={() => showToast('info', 'Информация!', 'Кастомный тост работает')}
         style={{
           padding: '8px 16px',
           marginBottom: 20,
@@ -77,8 +69,8 @@ const Demo = () => {
       </button>
       <Toaster />
     </div>
-  )
-}
+  );
+};
 
 export default {
   title: 'Components/UI/Notification',
@@ -92,8 +84,8 @@ export default {
       </ThemeProvider>
     ),
   ],
-} as Meta
+} as Meta;
 
-const Template: StoryFn = () => <Demo />
+const Template: StoryFn = () => <Demo />;
 
-export const Default = Template.bind({})
+export const Default = Template.bind({});

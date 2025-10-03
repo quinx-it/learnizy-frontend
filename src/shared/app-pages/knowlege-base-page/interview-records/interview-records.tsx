@@ -6,12 +6,12 @@ import { Text } from '@/shared/ui/typography';
 import Link from 'next/link';
 
 interface InterviewRecordsProps {
-    className?: string
+  className?: string;
 }
 
 export const InterviewRecords = ({ className }: InterviewRecordsProps) => {
   return (
-    <CardWrapper className={cn(className, "flex flex-col gap-4")}>
+    <CardWrapper className={cn(className, 'flex flex-col gap-4')}>
       <Text variant="m" className="text-medium">
         Записи собеседований
       </Text>

@@ -15,9 +15,9 @@ type NotFoundComponentProps = {
 };
 
 export const NotFoundComponent = ({ className }: NotFoundComponentProps) => {
-  const role = useAppSelector(selectUserRole)
+  const role = useAppSelector(selectUserRole);
 
-  const defaultUrl = role && defaultPage[role] ? defaultPage[role] : routes.public.loginPage
+  const defaultUrl = role && defaultPage[role] ? defaultPage[role] : routes.public.loginPage;
 
   return (
     <div className={cn('text-deep relative mx-auto flex flex-col p-4 text-center', className)}>
@@ -38,5 +38,5 @@ export const NotFoundComponent = ({ className }: NotFoundComponentProps) => {
         <Link href={defaultUrl}>На главную</Link>
       </Button>
     </div>
-  )
-}
+  );
+};

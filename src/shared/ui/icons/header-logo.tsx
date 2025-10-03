@@ -1,8 +1,7 @@
 import { cn } from '@/shared/lib/utils';
 import { IconProps } from '@/shared/types';
 
-
-export const HeaderLogo = ({ className}: IconProps) => {
+export const HeaderLogo = ({ className }: IconProps) => {
   return (
     <>
       <svg

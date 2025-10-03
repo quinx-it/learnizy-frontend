@@ -4,7 +4,7 @@ import { SecuritySettingsForm } from './security-settings-form';
 
 export const SecuritySettings = () => {
   return (
-    <CardWrapper className="max-w-full h-fit">
+    <CardWrapper className="h-fit max-w-full">
       <Heading variant="xl" className="mb-4">
         Настройки безопасности
       </Heading>

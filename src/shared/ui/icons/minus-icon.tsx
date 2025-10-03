@@ -13,7 +13,14 @@ type MinusIconProps = {
 
 export const MinusIcon = ({ className, color = 'white' }: IconProps & MinusIconProps) => {
   return (
-    <svg className={className} width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className={className}
+      width="18"
+      height="4"
+      viewBox="0 0 18 4"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect
         y="3.25"
         width="2.5"

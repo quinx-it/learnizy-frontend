@@ -1,1 +1,1 @@
-export { VoiceRecorderForm } from './voice-recorder-form'
+export { VoiceRecorderForm } from './voice-recorder-form';

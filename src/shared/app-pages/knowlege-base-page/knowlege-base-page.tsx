@@ -19,7 +19,7 @@ export const KnowlegeBasePage = () => {
       </div>
       <InterviewQuestions />
       <FrequentlyAskedQuestions />
-      <InterviewRecords className='col-span-2 max-w-full' />
+      <InterviewRecords className="col-span-2 max-w-full" />
     </div>
   );
 };

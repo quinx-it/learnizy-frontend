@@ -1,1 +1,1 @@
-export { CustomSelect } from './select'
+export { CustomSelect } from './select';

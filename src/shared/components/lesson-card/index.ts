@@ -1,1 +1,1 @@
-export { LessonCard } from "./lesson-card";
+export { LessonCard } from './lesson-card';

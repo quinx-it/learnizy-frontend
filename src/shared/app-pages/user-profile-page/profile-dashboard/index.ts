@@ -1,1 +1,1 @@
-export { ProfileDashboard } from "./profileDashboard";
+export { ProfileDashboard } from './profileDashboard';

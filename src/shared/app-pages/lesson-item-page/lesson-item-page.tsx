@@ -26,7 +26,6 @@ export const LessonItemPage: React.FC<LessonItemPageProps> = ({ lessonId, module
 
   const { data: lesson, isLoading } = useGetLessonQuery(lessonId);
 
-
   if (isLoading) return <FullscreenLoader />;
 
   if (!lesson) return null;
@@ -36,7 +35,7 @@ export const LessonItemPage: React.FC<LessonItemPageProps> = ({ lessonId, module
     router.push(`${pathname}/${path}`);
   };
 
-  console.log(lesson)
+  console.log(lesson);
   return (
     <div className="flex flex-col gap-6">
       <Breadcrumbs
@@ -59,7 +58,8 @@ export const LessonItemPage: React.FC<LessonItemPageProps> = ({ lessonId, module
           Личный ИИ-помощник
         </Heading>
         <Text variant="l" className="mb-6">
-          ИИ-помощник ответит на все вопросы по пройденному материалу. Он поможет тебе лучше понять тему, запомнить ключевые моменты и структурировать знания.
+          ИИ-помощник ответит на все вопросы по пройденному материалу. Он поможет тебе лучше понять
+          тему, запомнить ключевые моменты и структурировать знания.
         </Text>
         <Button onClick={handleNavigate('retelling')} size="medium">
           Задать вопрос

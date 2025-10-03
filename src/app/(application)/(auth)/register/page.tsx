@@ -1,9 +1,7 @@
-import { RegisterPageDesign } from "@/shared/app-pages/auth-pages/register-page";
+import { RegisterPageDesign } from '@/shared/app-pages/auth-pages/register-page';
 
 function RegisterPage() {
-  return (
-    <RegisterPageDesign />   
-  );
+  return <RegisterPageDesign />;
 }
 
 export default RegisterPage;

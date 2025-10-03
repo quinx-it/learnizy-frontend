@@ -1,8 +1,8 @@
-import * as yup from 'yup'
+import * as yup from 'yup';
 
 export interface ResetPasswordFormValues {
-  password: string
-  repeatPassword: string
+  password: string;
+  repeatPassword: string;
 }
 
 export const formSchema = yup.object().shape({
@@ -11,4 +11,4 @@ export const formSchema = yup.object().shape({
     .string()
     .oneOf([yup.ref('password')], 'Пароли должны совпадать')
     .required('Повторите пароль'),
-})
+});

@@ -79,7 +79,7 @@ export const ExamCard = ({ exam, status }: ExamCardProps) => {
         dotClassName="w-1 h-1"
         className="text-medium"
       />
-      
+
       {status !== ExamStatus.Completed && (
         <Button
           onClick={handleNavigate('test')}

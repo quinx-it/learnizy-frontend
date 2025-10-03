@@ -1,18 +1,18 @@
 export enum UserRole {
-    MENTOR = 'ADMIN',
-    USER = 'USER',
-    GUEST = 'GUEST',
+  MENTOR = 'ADMIN',
+  USER = 'USER',
+  GUEST = 'GUEST',
 }
 
 export interface User {
-    userName: string
-    role: UserRole
+  userName: string;
+  role: UserRole;
 }
 
 export interface DecodedToken {
-    user: User | null
+  user: User | null;
 }
 
 export interface AuthState extends DecodedToken {
-    accessToken: string | null
+  accessToken: string | null;
 }

@@ -7,10 +7,14 @@ import React from 'react';
 export const ForgotPasswordPage = () => {
   return (
     <div className="flex h-[100vh] items-center justify-center">
-      <CardWrapper className='max-w-[472px] px-8 py-16'>
-        <Logo className='w-full mb-12' />
-        <Heading variant='xl' className='mb-2'>Забыли пароль?</Heading>
-        <Text variant='m' className='mb-6'>Не волнуйтесь! Просто укажите ваш email, и мы вышлем ссылку для сброса пароля.</Text>
+      <CardWrapper className="max-w-[472px] px-8 py-16">
+        <Logo className="mb-12 w-full" />
+        <Heading variant="xl" className="mb-2">
+          Забыли пароль?
+        </Heading>
+        <Text variant="m" className="mb-6">
+          Не волнуйтесь! Просто укажите ваш email, и мы вышлем ссылку для сброса пароля.
+        </Text>
         <ForgotPasswordForm />
       </CardWrapper>
     </div>

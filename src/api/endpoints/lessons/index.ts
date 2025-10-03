@@ -1,1 +1,1 @@
-export { useGetLessonQuery } from './lessons'
+export { useGetLessonQuery } from './lessons';

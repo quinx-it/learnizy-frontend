@@ -44,7 +44,7 @@ export const AllHeadingVariants: HeadingStory = {
 export const AllTextVariants: TextStory = {
   render: () => (
     <div className="space-y-2">
-      {(['s', 's-bold', 'm', 'm-bold', 'l','l-bold'] as const).map((variant) => (
+      {(['s', 's-bold', 'm', 'm-bold', 'l', 'l-bold'] as const).map((variant) => (
         <Text key={variant} variant={variant}>
           {variant} — The quick brown fox jumps over the lazy dog.
         </Text>

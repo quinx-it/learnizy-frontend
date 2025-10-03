@@ -10,11 +10,11 @@ import { Text } from '@/shared/ui/typography';
 
 export const ProfileDashboard = () => {
   return (
-    <CardWrapper className="max-w-full h-full">
+    <CardWrapper className="h-full max-w-full">
       <div className="mb-8 w-full">
-        <div className="mx-auto h-[152px] w-[152px] overflow-visible rounded-full mb-3 relative">
+        <div className="relative mx-auto mb-3 h-[152px] w-[152px] overflow-visible rounded-full">
           <Image src="/images/astronaut1.webp" alt="Profile Image" width={152} height={152} />
-          <button className="absolute bottom-0 right-0 -translate-x-9/10 cursor-pointer">
+          <button className="absolute right-0 bottom-0 -translate-x-9/10 cursor-pointer">
             <EditPhotoIcon />
           </button>
         </div>

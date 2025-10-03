@@ -30,9 +30,9 @@ export const VoiceRecorderControl = ({ onChange }: Props) => {
   }, [recording]);
 
   const handleClear = () => {
-     reset();
-     onChange(null);
-  }
+    reset();
+    onChange(null);
+  };
 
   return (
     <>

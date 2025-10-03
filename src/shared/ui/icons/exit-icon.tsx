@@ -1,13 +1,10 @@
-import { cn } from '@/shared/lib/utils'
-import { IconProps } from '@/shared/types'
+import { cn } from '@/shared/lib/utils';
+import { IconProps } from '@/shared/types';
 
-export const ExitIcon = ({
-  className,
-  color = 'currentColor',
-}: IconProps & { color?: string }) => {
+export const ExitIcon = ({ className, color = 'currentColor' }: IconProps & { color?: string }) => {
   return (
     <svg
-      className={cn(className, 'text-inherit w-[16px] h-[16px]')}
+      className={cn(className, 'h-[16px] w-[16px] text-inherit')}
       viewBox="0 0 11 12"
       fill={color}
       xmlns="http://www.w3.org/2000/svg"
@@ -17,5 +14,5 @@ export const ExitIcon = ({
         fill={color}
       />
     </svg>
-  )
-}
+  );
+};

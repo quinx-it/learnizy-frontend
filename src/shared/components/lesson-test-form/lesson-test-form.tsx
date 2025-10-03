@@ -42,9 +42,7 @@ export const LessonTestForm = ({ questions, onSubmit, testId, loading }: LessonT
 
   const handleSubmitForm = async (data: LessonTestFormValues) => {
     try {
-      const isEmpty = Object.values(data.questions).some(
-        (q) => !q?.textAnswer?.trim() && !q?.file
-      );
+      const isEmpty = Object.values(data.questions).some((q) => !q?.textAnswer?.trim() && !q?.file);
       if (!forceSubmit && isEmpty) {
         showToast('info', 'Вы уверены?', 'У вас есть незаполненные поля');
         setForceSubmit(true);
@@ -69,7 +67,7 @@ export const LessonTestForm = ({ questions, onSubmit, testId, loading }: LessonT
             inputType: AnswerInputType.TEXT,
             textAnswer: q.textAnswer ?? null,
           };
-        })
+        }),
       );
 
       const updatedData: LessonTestSubmit = {
@@ -80,7 +78,6 @@ export const LessonTestForm = ({ questions, onSubmit, testId, loading }: LessonT
       await onSubmit(updatedData);
       const resultPath = pathname.replace(/\/test$/, '/result');
       router.push(resultPath);
-
     } catch (error) {
       console.error(error);
     }

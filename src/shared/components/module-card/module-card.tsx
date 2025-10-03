@@ -21,7 +21,7 @@ const ModuleCardComponent = ({
   id,
   sequenceOrder,
   className,
-}: ModuleInfo & { className?: string; }) => {
+}: ModuleInfo & { className?: string }) => {
   const bonus = false;
 
   const { element: progressElement, status: progressStatus } = renderModuleProgress(
@@ -63,19 +63,19 @@ const ModuleCardComponent = ({
 
   return (
     <CardWrapper onClick={handleCardClick} className={cardClass}>
-      <div className="flex justify-between items-start gap-3 h-full">
-        <div className="h-full flex max-w-7/10 flex-col justify-between space-y-3.5">
+      <div className="flex h-full items-start justify-between gap-3">
+        <div className="flex h-full max-w-7/10 flex-col justify-between space-y-3.5">
           <div className="space-y-2">
             <DotTitle
               firstLabel={moduleLabel}
               secondLabel={title}
               firstVariant="m-bold"
               secondVariant="m"
-              secondClassName='font-normal'
+              secondClassName="font-normal"
             />
             <Text>{description}</Text>
           </div>
-          <div className='space-y-2'>
+          <div className="space-y-2">
             <DotTitle
               firstLabel={lessonInfo}
               secondLabel={taskInfo}

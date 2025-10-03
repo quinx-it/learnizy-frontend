@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 export default {
   title: 'Examples/Scrollbar',
-}
+};
 
 export const ScrollbarOnly = () => {
   return (
@@ -21,5 +21,5 @@ export const ScrollbarOnly = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};

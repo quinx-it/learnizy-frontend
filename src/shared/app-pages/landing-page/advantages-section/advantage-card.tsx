@@ -53,7 +53,7 @@ export const AdvantageCard = ({ type, title, text, className }: AdvantageCardPro
           height={306}
           src="/images/rocketOnBlue.webp"
           alt="rocket"
-          className="absolute -right-1/10 -bottom-1/10 scale-x-[-1] transform max-w-[305px] w-1/2 xl:w-full "
+          className="absolute -right-1/10 -bottom-1/10 w-1/2 max-w-[305px] scale-x-[-1] transform xl:w-full"
         />
       </div>
     </div>

@@ -9,7 +9,7 @@ const meta: Meta<typeof Checkbox> = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <div style={{ backgroundColor: '#393e45ff', padding: '20px', display:'flex'}}>
+      <div style={{ backgroundColor: '#393e45ff', padding: '20px', display: 'flex' }}>
         <Story />
       </div>
     ),
