@@ -11,7 +11,7 @@ export type Exam = {
   questions: number;
   time: number;
   moduleId: number;
-  testId: number; 
+  testId: number;
 };
 
 export type ExamCardProps = {
