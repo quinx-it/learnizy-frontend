@@ -41,14 +41,15 @@ export const ExamsPage = ({ courseId = 1 }: { courseId?: number }) => {
 
       {data.content.map((examItem) => {
         const exam: Exam = {
-          title: `Экзамен по модулю ${examItem.moduleId}`,
+          ...examItem,
+          title: `Экзамен по модулю ${examItem.moduleSequenceOrder}`,
           description: examItem.moduleTitle,
           questions: examItem.questionsCount,
           time: 20,
         };
 
         return (
-          <ExamCard key={examItem.testId} exam={exam} status={mapExamStatus('examItem.status')} />
+          <ExamCard key={examItem.testId} exam={exam} status={mapExamStatus(examItem.status)} />
         );
       })}
     </div>

@@ -7,31 +7,43 @@ import { constants } from './constants';
 import { Text } from '@/shared/ui/typography';
 import { LessonTestForm } from '@/shared/components/lesson-test-form';
 import { LessonTestSubmit } from '@/api/endpoints/test/types';
-import { useGetTestByLessonIdQuery } from '@/api/endpoints/test';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 import { useSendTestMutation } from '@/api/endpoints/test/test';
 import { showToast } from '@/shared/ui/toaster';
 
+type TestType = 'LESSON_TEST' | 'MODULE_EXAM';
+
 type LessonTestPageProps = {
   lessonId: string;
   moduleId: string;
+  fetchTestData: (id: number) => any;
 };
 
-export const LessonTestPage = ({ lessonId, moduleId }: LessonTestPageProps) => {
-  const { breadcrumbs } = constants;
-  const { data: lessonTest, isLoading, isError, refetch } = useGetTestByLessonIdQuery(+lessonId);
+export const LessonTestPage = ({ lessonId, moduleId, fetchTestData }: LessonTestPageProps) => {
+  const { data: lessonTest, isLoading, isError, refetch } = fetchTestData(+lessonId);
   const [sendTestResult, { isLoading: isLoadingResult }] = useSendTestMutation();
+  if (isLoading) return <FullscreenLoader />;
+  if (isError || !lessonTest) return <ErrorSection reset={refetch} />;
 
-  if (isLoading) {
-    return <FullscreenLoader />;
-  }
+  const {
+    questions,
+    moduleSequenceOrder,
+    passThresholdPercentage,
+    id,
+    testType: rawTestType,
+  } = lessonTest;
 
-  if (isError || !lessonTest) {
-    return <ErrorSection reset={refetch} />;
-  }
+  const testType = rawTestType as TestType;
 
-  const { questions, title, passThresholdPercentage, id } = lessonTest;
+  const title = constants.title[testType];
+  const description = constants.description[testType];
+  const currentBreadcrumbs = constants.breadcrumbs(
+    moduleId,
+    lessonId,
+    testType,
+    moduleSequenceOrder,
+  );
 
   const onSubmit = async (data: LessonTestSubmit) => {
     try {
@@ -45,26 +57,29 @@ export const LessonTestPage = ({ lessonId, moduleId }: LessonTestPageProps) => {
   return (
     <>
       <Breadcrumbs
-        items={breadcrumbs(moduleId, lessonId)}
-        rootHref={routes.user.modules}
-        rootLabel={globalConstants.rootBreadcrumbLabels.modulesLabel}
+        items={currentBreadcrumbs}
+        rootHref={testType === 'LESSON_TEST' ? routes.user.modules : routes.user.exams}
+        rootLabel={
+          testType === 'LESSON_TEST'
+            ? globalConstants.rootBreadcrumbLabels.modulesLabel
+            : globalConstants.rootBreadcrumbLabels.examsLabel
+        }
       />
-
       <div className="space-y-6">
         <CardWrapper className="flex flex-col gap-5">
           <div>
             <Text variant="l" className="text-medium mb-5">
-              {title} {lessonId}
+              {title} {moduleSequenceOrder}
             </Text>
             <hr className="border-gray mb-4" />
             <div className="space-y-1">
-              <Text variant={'l'} className="mb-4 whitespace-pre-wrap xl:max-w-[90%]">
-                {constants.description}
+              <Text variant="l" className="mb-4 whitespace-pre-wrap xl:max-w-[90%]">
+                {description}
               </Text>
-              <Text variant={'m'} className="text-medium">
+              <Text variant="m" className="text-medium">
                 {constants.questionAmount} {questions.length}
               </Text>
-              <Text variant={'m'} className="text-medium">
+              <Text variant="m" className="text-medium">
                 {constants.procent} {passThresholdPercentage}%
               </Text>
             </div>

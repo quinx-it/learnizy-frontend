@@ -1,5 +1,5 @@
 import { api } from '@/api';
-import { ExamsResponse } from './types';
+import { ExamsResponse, ExamTestResponse } from './types';
 
 export const examsApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -7,7 +7,10 @@ export const examsApi = api.injectEndpoints({
       query: ({ courseId, page = 0, size = 10 }) =>
         `/tests/api/v1/exams?courseId=${courseId}&page=${page}&size=${size}`,
     }),
+    getExamById: builder.query<ExamTestResponse, number>({
+      query: (testId) => `/tests/${testId}`,
+    }),
   }),
 });
 
-export const { useGetExamsQuery } = examsApi;
+export const { useGetExamsQuery, useGetExamByIdQuery } = examsApi;

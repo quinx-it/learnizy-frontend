@@ -51,7 +51,7 @@ export const ExamCard = ({ exam, status }: ExamCardProps) => {
     [ExamStatus.Unavailable]: (
       <Text variant="l">
         Доступен после завершения всех{' '}
-        <Link href={'#'} className="text-medium !underline">
+        <Link href={`modules/${exam.moduleId}`} className="text-medium !underline">
           уроков
         </Link>{' '}
         модуля
@@ -82,14 +82,21 @@ export const ExamCard = ({ exam, status }: ExamCardProps) => {
 
       {status !== ExamStatus.Completed && (
         <Button
-          onClick={handleNavigate('test')}
+          onClick={handleNavigate(`/${exam.moduleId}/${exam.testId}`)}
           className="absolute top-6 right-6"
           variant="blue"
           size="medium"
           {...buttonConfig[status]}
         />
       )}
-
+      <Button
+        onClick={handleNavigate(`/${exam.moduleId}/${exam.testId}/result`)}
+        className="absolute top-20 right-6"
+        variant="blue"
+        size="medium"
+      >
+        Результаты
+      </Button>
       {examStatusUi[status]}
     </CardWrapper>
   );

@@ -10,6 +10,8 @@ export type Exam = {
   description: string;
   questions: number;
   time: number;
+  moduleId: number;
+  testId: number; 
 };
 
 export type ExamCardProps = {
