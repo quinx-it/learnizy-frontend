@@ -6,29 +6,47 @@ import React from 'react';
 import { constants } from './constants';
 import { Text } from '@/shared/ui/typography';
 import { LessonTestForm } from '@/shared/components/lesson-test-form';
-import { LessonTestSubmit } from '@/api/endpoints/test/types';
+import { LessonTestSubmit, LessonTestResponse } from '@/api/endpoints/test/types';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 import { useSendTestMutation } from '@/api/endpoints/test/test';
 import { showToast } from '@/shared/ui/toaster';
+import { usePathname, useRouter } from 'next/navigation';
 
 type TestType = 'LESSON_TEST' | 'MODULE_EXAM';
 
-type LessonTestPageProps = {
-  lessonId: string;
-  moduleId: string;
-  fetchTestData: (id: number) => any;
+export type TestData = LessonTestResponse & {
+  moduleSequenceOrder: number;
+  lessonSequenceOrder: number;
 };
 
-export const LessonTestPage = ({ lessonId, moduleId, fetchTestData }: LessonTestPageProps) => {
-  const { data: lessonTest, isLoading, isError, refetch } = fetchTestData(+lessonId);
+type TestPageProps = {
+  lessonId: string;
+  moduleId: string;
+  lessonTest?: TestData;
+  isLoading: boolean;
+  isError: boolean;
+  refetch: () => void;
+};
+
+export const TestPage = ({
+  lessonId,
+  moduleId,
+  lessonTest,
+  isLoading,
+  isError,
+  refetch,
+}: TestPageProps) => {
+  const router = useRouter();
   const [sendTestResult, { isLoading: isLoadingResult }] = useSendTestMutation();
+
   if (isLoading) return <FullscreenLoader />;
   if (isError || !lessonTest) return <ErrorSection reset={refetch} />;
 
   const {
     questions,
     moduleSequenceOrder,
+    lessonSequenceOrder,
     passThresholdPercentage,
     id,
     testType: rawTestType,
@@ -42,6 +60,7 @@ export const LessonTestPage = ({ lessonId, moduleId, fetchTestData }: LessonTest
     moduleId,
     lessonId,
     testType,
+    lessonSequenceOrder,
     moduleSequenceOrder,
   );
 
@@ -69,8 +88,9 @@ export const LessonTestPage = ({ lessonId, moduleId, fetchTestData }: LessonTest
         <CardWrapper className="flex flex-col gap-5">
           <div>
             <Text variant="l" className="text-medium mb-5">
-              {title} {moduleSequenceOrder}
+              {title} {testType === 'LESSON_TEST' ? lessonSequenceOrder + 1 : moduleSequenceOrder}
             </Text>
+
             <hr className="border-gray mb-4" />
             <div className="space-y-1">
               <Text variant="l" className="mb-4 whitespace-pre-wrap xl:max-w-[90%]">

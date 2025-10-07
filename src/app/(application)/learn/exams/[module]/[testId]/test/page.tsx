@@ -1,23 +1,22 @@
 'use client';
 import { TestPage, TestData } from '@/shared/app-pages/test-page';
 import { useParams } from 'next/navigation';
-import { useGetTestByLessonIdQuery } from '@/api/endpoints/test';
+import { useGetExamByIdQuery } from '@/api/endpoints/exams';
 
 type ParamsType = {
   module: string;
-  lesson: string;
+  testId: string;
 };
 
-const LessonTest = () => {
+const ExamPage = () => {
   const params = useParams<ParamsType>();
-  const { module, lesson } = params;
-
-  const { data, isLoading, isError, refetch } = useGetTestByLessonIdQuery(+lesson);
+  const { module, testId } = params;
+  const { data, isLoading, isError, refetch } = useGetExamByIdQuery(+testId);
 
   return (
     <TestPage
       moduleId={module}
-      lessonId={lesson}
+      lessonId={testId}
       lessonTest={data as TestData}
       isLoading={isLoading}
       isError={isError}
@@ -26,4 +25,4 @@ const LessonTest = () => {
   );
 };
 
-export default LessonTest;
+export default ExamPage;

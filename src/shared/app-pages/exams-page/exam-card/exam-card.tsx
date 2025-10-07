@@ -82,21 +82,23 @@ export const ExamCard = ({ exam, status }: ExamCardProps) => {
 
       {status !== ExamStatus.Completed && (
         <Button
-          onClick={handleNavigate(`/${exam.moduleId}/${exam.testId}`)}
+          onClick={handleNavigate(`/${exam.moduleId}/${exam.testId}/test`)}
           className="absolute top-6 right-6"
           variant="blue"
           size="medium"
           {...buttonConfig[status]}
         />
       )}
-      <Button
-        onClick={handleNavigate(`/${exam.moduleId}/${exam.testId}/result`)}
-        className="absolute top-20 right-6"
-        variant="blue"
-        size="medium"
-      >
-        Результаты
-      </Button>
+      {(status === ExamStatus.Completed || status === ExamStatus.Failed) && (
+        <Button
+          onClick={handleNavigate(`/${exam.moduleId}/${exam.testId}/result`)}
+          className="absolute top-20 right-6"
+          variant="blue"
+          size="medium"
+        >
+          Результаты
+        </Button>
+      )}
       {examStatusUi[status]}
     </CardWrapper>
   );

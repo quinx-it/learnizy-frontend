@@ -17,17 +17,21 @@ export const constants = {
   procent: '🎯 Минимальный процент для прохождения: ',
   breadcrumbs: (
     moduleId: string,
-    lessonIdOrExamId: string,
+    lessonId: string,
     testType: string,
-    moduleSequenceOrder: string,
+    lessonSequenceOrder: number,
+    moduleSequenceOrder: number,
   ) => {
     const items =
       testType === 'LESSON_TEST'
         ? [
-            { label: `${moduleLabel} ${moduleId}`, href: `${routes.user.modules}/${moduleId}` },
             {
-              label: `${lessonLabel} ${lessonIdOrExamId}`,
-              href: `${routes.user.modules}/${moduleId}/${lessonIdOrExamId}`,
+              label: `${moduleLabel} ${moduleSequenceOrder}`,
+              href: `${routes.user.modules}/${moduleId}`,
+            },
+            {
+              label: `${lessonLabel} ${lessonSequenceOrder + 1}`,
+              href: `${routes.user.modules}/${moduleId}/${lessonId}`,
             },
             { label: 'Тест по уроку', href: '' },
           ]

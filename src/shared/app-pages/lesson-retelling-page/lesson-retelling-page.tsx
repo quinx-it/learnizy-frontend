@@ -15,7 +15,7 @@ interface LessonRetellingPageProps {
 }
 
 export const LessonRetellingPage = ({ module, lesson }: LessonRetellingPageProps) => {
-  const { data: lessonData, isLoading, error } = useGetLessonQuery(lesson);
+  const { data: lessonData, isLoading } = useGetLessonQuery(lesson);
 
   if (isLoading) return <FullscreenLoader />;
 

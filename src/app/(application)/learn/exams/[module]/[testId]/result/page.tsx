@@ -1,5 +1,5 @@
 'use client';
-import { LessonTestResultPage } from '@/shared/app-pages/lesson-test-result-page';
+import { ExamTestResultPage } from '@/shared/app-pages/exam-test-result-page';
 import { useParams } from 'next/navigation';
 
 type ParamsType = {
@@ -11,7 +11,7 @@ const LessonTestResult = () => {
   const params = useParams<ParamsType>();
   const { module, testId } = params;
 
-  return <LessonTestResultPage lessonId={testId} moduleId={module} />;
+  return <ExamTestResultPage testId={testId} moduleId={module} />;
 };
 
 export default LessonTestResult;

@@ -24,6 +24,8 @@ export type LessonTestResponse = {
   id: number;
   lessonId: number;
   moduleId: number;
+  moduleSequenceOrder: number;
+  lessonSequenceOrder: number;
   testType: TestType;
   title: string;
   passThresholdPercentage: number;
