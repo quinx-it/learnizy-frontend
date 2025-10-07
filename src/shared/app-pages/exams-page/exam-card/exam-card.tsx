@@ -13,9 +13,11 @@ export const ExamCard = ({ exam, status }: ExamCardProps) => {
   const { title, description, questions, time } = exam;
   const router = useRouter();
   const pathname = usePathname();
-  const handleNavigate = (path: string) => () => {
+
+  const handleNavigate = (path: string) => {
     router.push(`${pathname}/${path}`);
   };
+
   const buttonConfig: Record<ExamStatus, ComponentProps<typeof Button>> = {
     [ExamStatus.Completed]: {},
     [ExamStatus.Failed]: {
@@ -82,16 +84,15 @@ export const ExamCard = ({ exam, status }: ExamCardProps) => {
 
       {status !== ExamStatus.Completed && (
         <Button
-          onClick={handleNavigate(`/${exam.moduleId}/${exam.testId}/test`)}
+          onClick={() => handleNavigate(`/${exam.moduleId}/${exam.testId}/test`)}
           className="absolute top-6 right-6"
           variant="blue"
           size="medium"
-          {...buttonConfig[status]}
         />
       )}
       {(status === ExamStatus.Completed || status === ExamStatus.Failed) && (
         <Button
-          onClick={handleNavigate(`/${exam.moduleId}/${exam.testId}/result`)}
+          onClick={() => handleNavigate(`/${exam.moduleId}/${exam.testId}/result`)}
           className="absolute top-20 right-6"
           variant="blue"
           size="medium"
