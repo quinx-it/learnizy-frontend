@@ -1,2 +1,2 @@
-export { TestPage } from './test-page';
-export type { TestData } from './test-page';
+export * from './test-page';
+export type * from './test-page';

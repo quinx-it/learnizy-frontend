@@ -7,16 +7,7 @@ import { Text } from '@/shared/ui/typography';
 import { useGetLastTestAttemptQuery, useGetTestByLessonIdQuery } from '@/api/endpoints/test';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
-
-type LessonTestResultPageProps = {
-  lessonId: string;
-  moduleId: string;
-};
-
-type LessonTestResponse = {
-  moduleSequenceOrder: number;
-  lessonSequenceOrder: number;
-};
+import { LessonTestResponse, LessonTestResultPageProps } from './types';
 
 const mapEvaluation = (evaluation: string) => {
   switch (evaluation) {

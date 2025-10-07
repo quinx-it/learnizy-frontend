@@ -3,10 +3,7 @@ import { TestPage, TestData } from '@/shared/app-pages/test-page';
 import { useParams } from 'next/navigation';
 import { useGetTestByLessonIdQuery } from '@/api/endpoints/test';
 
-type ParamsType = {
-  module: string;
-  lesson: string;
-};
+import { ParamsType } from '../../../typings';
 
 const LessonTest = () => {
   const params = useParams<ParamsType>();

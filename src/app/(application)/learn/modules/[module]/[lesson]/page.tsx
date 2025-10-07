@@ -1,11 +1,7 @@
 'use client';
 import { LessonItemPage } from '@/shared/app-pages/lesson-item-page';
 import { useParams } from 'next/navigation';
-
-type ParamsType = {
-  lesson: string;
-  module: string;
-};
+import { ParamsType } from '../../typings';
 
 const LessonItem = () => {
   const params = useParams<ParamsType>();

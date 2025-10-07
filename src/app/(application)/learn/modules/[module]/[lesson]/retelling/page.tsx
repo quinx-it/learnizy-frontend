@@ -3,10 +3,7 @@
 import { LessonRetellingPage } from '@/shared/app-pages/lesson-retelling-page';
 import { useParams } from 'next/navigation';
 
-type ParamsType = {
-  module: string;
-  lesson: string;
-};
+import { ParamsType } from '../../../typings';
 
 const LessonRetelling = () => {
   const params = useParams<ParamsType>();

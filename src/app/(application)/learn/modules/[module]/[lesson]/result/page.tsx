@@ -1,11 +1,7 @@
 'use client';
 import { LessonTestResultPage } from '@/shared/app-pages/lesson-test-result-page';
 import { useParams } from 'next/navigation';
-
-type ParamsType = {
-  module: string;
-  lesson: string;
-};
+import { ParamsType } from '../../../typings';
 
 const LessonTestResult = () => {
   const params = useParams<ParamsType>();
