@@ -26,7 +26,7 @@ const mapEvaluation = (evaluation: string) => {
   }
 };
 
-export const ExamTestResultPage: FC<ExamTestResultPageProps> = ({ testId, moduleId }) => {
+export const ExamTestResultPage: FC<ExamTestResultPageProps> = ({ testId }) => {
   const {
     data: testResult,
     isLoading,

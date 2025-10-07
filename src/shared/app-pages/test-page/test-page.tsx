@@ -11,7 +11,7 @@ import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscre
 import { ErrorSection } from '@/shared/components/error-section';
 import { useSendTestMutation } from '@/api/endpoints/test/test';
 import { showToast } from '@/shared/ui/toaster';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 type TestType = 'LESSON_TEST' | 'MODULE_EXAM';
 
@@ -37,7 +37,6 @@ export const TestPage = ({
   isError,
   refetch,
 }: TestPageProps) => {
-  const router = useRouter();
   const [sendTestResult, { isLoading: isLoadingResult }] = useSendTestMutation();
 
   if (isLoading) return <FullscreenLoader />;
