@@ -31,7 +31,9 @@ const mapEvaluation = (evaluation: string) => {
   }
 };
 
-export const LessonTestResultPage: FC<LessonTestResultPageProps> = ({ lessonId, moduleId }) => {
+export const LessonTestResultPage: FC<LessonTestResultPageProps> = (props) => {
+  const { lessonId, moduleId } = props;
+
   const { data: lessonTest } = useGetTestByLessonIdQuery(+lessonId);
   const {
     data: testResult,
@@ -48,7 +50,7 @@ export const LessonTestResultPage: FC<LessonTestResultPageProps> = ({ lessonId, 
   const totalPoints = answers.reduce((sum, a) => sum + mapEvaluation(a.evaluation).value, 0);
   const scorePercent = answers.length > 0 ? Math.round((totalPoints / answers.length) * 100) : 0;
   const passed = scorePercent >= 70;
-  console.log(testResult);
+
   return (
     <>
       <Breadcrumbs

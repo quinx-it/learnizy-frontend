@@ -2,7 +2,7 @@
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { globalConstants, routes } from '@/shared/constants';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
-import React from 'react';
+import React, { FC } from 'react';
 import { constants } from './constants';
 import { Text } from '@/shared/ui/typography';
 import { LessonTestForm } from '@/shared/components/lesson-test-form';
@@ -11,7 +11,6 @@ import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscre
 import { ErrorSection } from '@/shared/components/error-section';
 import { useSendTestMutation } from '@/api/endpoints/test/test';
 import { showToast } from '@/shared/ui/toaster';
-import { useRouter } from 'next/navigation';
 
 type TestType = 'LESSON_TEST' | 'MODULE_EXAM';
 
@@ -29,14 +28,9 @@ type TestPageProps = {
   refetch: () => void;
 };
 
-export const TestPage = ({
-  lessonId,
-  moduleId,
-  lessonTest,
-  isLoading,
-  isError,
-  refetch,
-}: TestPageProps) => {
+export const TestPage: FC<TestPageProps> = (props) => {
+  const { lessonId, moduleId, lessonTest, isLoading, isError, refetch } = props;
+
   const [sendTestResult, { isLoading: isLoadingResult }] = useSendTestMutation();
 
   if (isLoading) return <FullscreenLoader />;

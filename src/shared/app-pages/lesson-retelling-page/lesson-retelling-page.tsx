@@ -4,7 +4,7 @@ import { constants } from './constants';
 import { Text } from '@/shared/ui/typography';
 import { useGetLessonQuery } from '@/api/endpoints/lessons';
 
-import React from 'react';
+import React, { FC } from 'react';
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { VoiceRecorderForm } from '@/shared/components/voice-recorder-form';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
@@ -14,7 +14,9 @@ interface LessonRetellingPageProps {
   lesson: string;
 }
 
-export const LessonRetellingPage = ({ module, lesson }: LessonRetellingPageProps) => {
+export const LessonRetellingPage: FC<LessonRetellingPageProps> = (props) => {
+  const { module, lesson } = props;
+
   const { data: lessonData, isLoading } = useGetLessonQuery(lesson);
 
   if (isLoading) return <FullscreenLoader />;
