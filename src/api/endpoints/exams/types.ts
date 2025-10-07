@@ -9,6 +9,7 @@ export interface ExamLastResult {
 export interface Exam {
   testId: number;
   moduleId: number;
+  moduleSequenceOrder: number;
   moduleTitle: string;
   questionsCount: number;
   passThresholdPercentage: number;
@@ -25,3 +26,22 @@ export interface ExamsResponse {
     totalPages: number;
   };
 }
+
+export type Question = {
+  questionId: number;
+  text: string;
+  sequenceOrder: number;
+  maxScore: number;
+};
+
+export type ExamTestResponse = {
+  id: number;
+  lessonId: number;
+  moduleId: number;
+  lessonSequenceOrder: number;
+  moduleSequenceOrder: number;
+  testType: 'LESSON_TEST' | 'MODULE_EXAM';
+  title: string;
+  passThresholdPercentage: number;
+  questions: Question[];
+};

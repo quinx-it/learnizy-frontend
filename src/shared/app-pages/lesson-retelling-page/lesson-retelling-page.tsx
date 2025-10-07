@@ -2,21 +2,33 @@ import { routes } from '@/shared/constants';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import { constants } from './constants';
 import { Text } from '@/shared/ui/typography';
+import { useGetLessonQuery } from '@/api/endpoints/lessons';
 
-import React from 'react';
+import React, { FC } from 'react';
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { VoiceRecorderForm } from '@/shared/components/voice-recorder-form';
+import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 
 interface LessonRetellingPageProps {
   module: string;
   lesson: string;
 }
 
-export const LessonRetellingPage = ({ module, lesson }: LessonRetellingPageProps) => {
+export const LessonRetellingPage: FC<LessonRetellingPageProps> = (props) => {
+  const { module, lesson } = props;
+
+  const { data: lessonData, isLoading } = useGetLessonQuery(lesson);
+
+  if (isLoading) return <FullscreenLoader />;
+
+  if (!lessonData) return null;
+
+  const { sequenceOrder, moduleSequenceOrder } = lessonData;
+
   return (
     <div>
       <Breadcrumbs
-        items={constants.breadcrumbs(module, lesson)}
+        items={constants.breadcrumbs(moduleSequenceOrder ?? 1, module, lesson, sequenceOrder + 1)}
         rootHref={routes.user.modules}
         rootLabel={'Модули'}
       />

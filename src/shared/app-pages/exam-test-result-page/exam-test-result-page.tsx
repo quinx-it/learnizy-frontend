@@ -4,10 +4,14 @@ import { globalConstants, routes } from '@/shared/constants';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import React, { FC } from 'react';
 import { Text } from '@/shared/ui/typography';
-import { useGetLastTestAttemptQuery, useGetTestByLessonIdQuery } from '@/api/endpoints/test';
+import { useGetLastTestAttemptQuery } from '@/api/endpoints/test';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
-import { LessonTestResponse, LessonTestResultPageProps } from './types';
+
+type ExamTestResultPageProps = {
+  testId: string;
+  moduleId: string;
+};
 
 const mapEvaluation = (evaluation: string) => {
   switch (evaluation) {
@@ -22,21 +26,19 @@ const mapEvaluation = (evaluation: string) => {
   }
 };
 
-export const LessonTestResultPage: FC<LessonTestResultPageProps> = (props) => {
-  const { lessonId, moduleId } = props;
+export const ExamTestResultPage: FC<ExamTestResultPageProps> = (props) => {
+  const { testId } = props;
 
-  const { data: lessonTest } = useGetTestByLessonIdQuery(+lessonId);
   const {
     data: testResult,
     isLoading,
     isError,
     refetch,
-  } = useGetLastTestAttemptQuery(Number(lessonTest?.id));
+  } = useGetLastTestAttemptQuery(Number(testId));
 
   if (isLoading) return <FullscreenLoader />;
   if (isError || !testResult) return <ErrorSection reset={refetch} />;
 
-  const { moduleSequenceOrder, lessonSequenceOrder } = lessonTest as LessonTestResponse;
   const { answers } = testResult;
   const totalPoints = answers.reduce((sum, a) => sum + mapEvaluation(a.evaluation).value, 0);
   const scorePercent = answers.length > 0 ? Math.round((totalPoints / answers.length) * 100) : 0;
@@ -45,23 +47,16 @@ export const LessonTestResultPage: FC<LessonTestResultPageProps> = (props) => {
   return (
     <>
       <Breadcrumbs
-        items={[
-          { label: `Модуль ${moduleSequenceOrder}`, href: `${routes.user.modules}/${moduleId}` },
-          {
-            label: `Урок ${lessonSequenceOrder + 1}`,
-            href: `${routes.user.modules}/${moduleId}/${lessonId}`,
-          },
-          { label: `Результаты`, href: `` },
-        ]}
-        rootHref={routes.user.modules}
-        rootLabel={globalConstants.rootBreadcrumbLabels.modulesLabel}
+        items={[{ label: `Результаты`, href: `` }]}
+        rootHref={routes.user.exams}
+        rootLabel={globalConstants.rootBreadcrumbLabels.examsLabel}
       />
 
       <div className="space-y-6">
         <CardWrapper className="flex flex-col gap-5">
           <div>
             <Text variant="l" className="text-medium mb-5">
-              Результаты теста {lessonSequenceOrder + 1}
+              Результаты экзамена
             </Text>
             <hr className="border-gray mb-4" />
             <div className="space-y-1">

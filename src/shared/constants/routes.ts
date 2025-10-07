@@ -37,6 +37,8 @@ export const dynamicUserRoutes = [
   /^\/learn\/modules\/\d+\/\d+\/test$/,
   /^\/learn\/modules\/\d+\/\d+\/result$/,
   /^\/learn\/modules\/\d+\/\d+\/retelling$/,
+  /^\/learn\/exams\/\d+\/\d+\/test$/,
+  /^\/learn\/exams\/\d+\/\d+\/result$/,
 ];
 
 export const staticMentorRoutes = Object.values(routes.mentor);
