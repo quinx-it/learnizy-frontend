@@ -88,6 +88,7 @@ export const ExamCard = ({ exam, status }: ExamCardProps) => {
           className="absolute top-6 right-6"
           variant="blue"
           size="medium"
+          {...buttonConfig[status]}
         />
       )}
       {(status === ExamStatus.Completed || status === ExamStatus.Failed) && (
