@@ -29,7 +29,7 @@ export const auth = api.injectEndpoints({
           const accessToken = data.accessToken;
 
           if (accessToken) dispatch(setCredentials({ accessToken }));
-        } catch (error) {
+        } catch {
           dispatch(logout());
         }
       },

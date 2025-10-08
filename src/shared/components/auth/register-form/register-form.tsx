@@ -79,7 +79,7 @@ export const RegisterForm = () => {
       setStep('verify');
       setTimer(30);
       setCanResend(false);
-    } catch (error) {
+    } catch {
       showToast('error', 'Ошибка', 'Не удалось зарегистрироваться. Попробуйте снова.');
     }
   };
