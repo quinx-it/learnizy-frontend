@@ -1,1 +1,1 @@
-export { InterviewQuestions } from './interview-questoins';
+export * from './interview-questoins';

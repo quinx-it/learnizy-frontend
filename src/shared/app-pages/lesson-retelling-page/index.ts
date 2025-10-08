@@ -1,1 +1,1 @@
-export { LessonRetellingPage } from './lesson-retelling-page';
+export * from './lesson-retelling-page';

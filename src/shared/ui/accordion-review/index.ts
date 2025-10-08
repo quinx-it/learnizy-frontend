@@ -1,1 +1,1 @@
-export { AccordionReview } from './accordion-review';
+export * from './accordion-review';

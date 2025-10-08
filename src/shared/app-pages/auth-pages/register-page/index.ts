@@ -1,1 +1,1 @@
-export { RegisterPageDesign } from './register-page';
+export * from './register-page';

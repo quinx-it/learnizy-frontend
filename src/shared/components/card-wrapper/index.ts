@@ -1,1 +1,1 @@
-export { CardWrapper } from './card-wrapper';
+export * from './card-wrapper';

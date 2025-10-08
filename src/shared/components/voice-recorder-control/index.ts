@@ -1,1 +1,1 @@
-export { VoiceRecorderControl } from './voice-recorder-control';
+export * from './voice-recorder-control';

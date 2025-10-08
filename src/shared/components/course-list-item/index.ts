@@ -1,1 +1,1 @@
-export { CourseListItem } from './course-list-item';
+export * from './course-list-item';

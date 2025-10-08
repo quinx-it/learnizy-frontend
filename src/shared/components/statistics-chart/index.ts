@@ -1,1 +1,1 @@
-export { StatisticsChart } from './statistics-chart';
+export * from './statistics-chart';

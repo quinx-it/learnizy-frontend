@@ -1,1 +1,1 @@
-export { KnowlegeBasePage } from './knowlege-base-page';
+export * from './knowlege-base-page';

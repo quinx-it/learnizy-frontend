@@ -1,6 +1,6 @@
 import { IconProps } from '@/shared/types';
 
-export const CalendarType = {
+const CalendarType = {
   light: '#FAFAFA',
   dark: '#0C0C0C',
   blue: '#A9DBE9',

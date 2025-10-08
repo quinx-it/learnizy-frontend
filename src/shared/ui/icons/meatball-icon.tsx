@@ -1,6 +1,6 @@
 import { IconProps } from '@/shared/types';
 
-export const colors = {
+const colors = {
   white: '#FAFAFA',
   gray: '#B9B9B9',
   blue: '#238BA7',

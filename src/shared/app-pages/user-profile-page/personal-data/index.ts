@@ -1,1 +1,1 @@
-export { PersonalData } from './personalData';
+export * from './personalData';

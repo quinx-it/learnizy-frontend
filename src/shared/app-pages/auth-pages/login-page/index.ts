@@ -1,1 +1,1 @@
-export { LoginPageDesign } from './login-page';
+export * from './login-page';

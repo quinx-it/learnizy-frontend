@@ -1,2 +1,2 @@
-export { ErrorSection } from './error-section';
-export type { ErrorType } from './error-section';
+export * from './error-section';
+export type * from './error-section';

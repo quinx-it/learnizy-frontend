@@ -1,1 +1,1 @@
-export { AdvantagesSection } from './advantages-section';
+export * from './advantages-section';
