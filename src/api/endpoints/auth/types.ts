@@ -12,3 +12,21 @@ export type RegisterRequest = {
   password: string;
 };
 export type RefreshResponse = { accessToken: string };
+
+export type AuthState = {
+  accessToken: string;
+};
+
+export type RegisterResponse = {
+  message: string;
+  email: string;
+};
+
+export type VerifyEmailRequest = {
+  email: string;
+  code: string;
+};
+
+export type ResendCodeRequest = {
+  email: string;
+};

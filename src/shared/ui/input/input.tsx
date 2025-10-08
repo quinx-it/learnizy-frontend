@@ -6,7 +6,7 @@ import { ComponentProps } from 'react';
 
 export interface InputProps extends ComponentProps<'input'> {
   error?: string;
-  label: string;
+  label?: string;
   innerClassName?: string;
   autoComplete?: 'current-password' | 'new-password' | 'username' | 'email';
 }
