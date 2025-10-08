@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { RegisterFormValues, formSchema } from './validation';
+import { RegisterFormValues, formSchema, verificationSchema } from './validation';
 import {
   useRegisterMutation,
   useVerifyEmailMutation,
@@ -19,11 +19,11 @@ import { routes } from '@/shared/constants';
 import { CheckboxWithLabel } from '@/shared/ui/checkboxWithLabel/checkboxWithLabel';
 import { useRouter } from 'next/navigation';
 import { Heading, Text } from '@/shared/ui/typography';
-import { VerificationFormValues } from './typing';
+import { VerificationFormValues, RegisterStep } from './typing';
 
 export const RegisterForm = () => {
   const router = useRouter();
-  const [step, setStep] = useState<'register' | 'verify'>('register');
+  const [step, setStep] = useState<RegisterStep>(RegisterStep.REGISTER);
   const [userEmail, setUserEmail] = useState('');
   const [timer, setTimer] = useState(30);
   const [canResend, setCanResend] = useState(false);
@@ -52,15 +52,19 @@ export const RegisterForm = () => {
     register: registerVerify,
     handleSubmit: handleSubmitVerify,
     formState: { errors: verifyErrors },
-  } = useForm<VerificationFormValues>();
+  } = useForm<VerificationFormValues>({
+    resolver: yupResolver(verificationSchema),
+    defaultValues: { code: '' },
+  });
 
   useEffect(() => {
-    if (step !== 'verify') return;
+    if (step !== RegisterStep.VERIFY) return;
 
     if (timer > 0) {
       const interval = setInterval(() => {
         setTimer((prev) => prev - 1);
       }, 1000);
+
       return () => clearInterval(interval);
     } else {
       setCanResend(true);
@@ -76,7 +80,7 @@ export const RegisterForm = () => {
       }).unwrap();
       showToast('success', 'Успешно', 'Код подтверждения отправлен на вашу почту.');
       setUserEmail(data.email);
-      setStep('verify');
+      setStep(RegisterStep.VERIFY);
       setTimer(30);
       setCanResend(false);
     } catch {
@@ -96,6 +100,7 @@ export const RegisterForm = () => {
 
   const handleResendCode = async () => {
     if (!canResend) return;
+
     try {
       await resendCode({ email: userEmail }).unwrap();
       showToast('success', 'Успешно', 'Новый код отправлен на вашу почту.');
@@ -117,21 +122,19 @@ export const RegisterForm = () => {
           <span className="font-medium text-black">{userEmail}</span>
         </Text>
 
-        <form onSubmit={handleSubmitVerify(onVerifySubmit)} className="flex w-full flex-col gap-6">
+        <form
+          onSubmit={() => handleSubmitVerify(onVerifySubmit)}
+          className="flex w-full flex-col gap-6"
+        >
           <Input
             label=""
             id="verification-code"
             placeholder="______"
-            {...registerVerify('code', {
-              required: 'Введите код',
-              minLength: { value: 6, message: 'Код должен содержать 6 цифр' },
-              maxLength: { value: 6, message: 'Код должен содержать 6 цифр' },
-            })}
+            {...registerVerify('code')}
             error={verifyErrors.code?.message}
             inputMode="numeric"
             className="text-center text-2xl tracking-[0.5em]"
           />
-
           <div className="text-sm text-gray-500">
             {timer > 0 ? (
               `Отправить код повторно через ${timer} сек.`
@@ -156,7 +159,7 @@ export const RegisterForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onRegisterSubmit)} className="flex w-full flex-col gap-6">
+    <form onSubmit={() => handleSubmit(onRegisterSubmit)} className="flex w-full flex-col gap-6">
       <Input
         label="Введите логин"
         id="login"
