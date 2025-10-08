@@ -1,1 +1,1 @@
-export { LessonTestForm } from './lesson-test-form';
+export * from './lesson-test-form';

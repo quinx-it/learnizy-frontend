@@ -1,7 +1,7 @@
 import { IconProps } from '@/shared/types';
 import React from 'react';
 
-export const colors = {
+const colors = {
   default: '#238BA7',
   gold: '#F9DD69',
   disabled: '#B9B9B9',

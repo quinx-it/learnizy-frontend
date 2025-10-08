@@ -1,1 +1,1 @@
-export { SecuritySettingsForm } from './securitySettingsForm';
+export * from './securitySettingsForm';

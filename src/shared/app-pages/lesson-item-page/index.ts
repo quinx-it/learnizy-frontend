@@ -1,1 +1,1 @@
-export { LessonItemPage } from './lesson-item-page';
+export * from './lesson-item-page';

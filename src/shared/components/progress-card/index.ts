@@ -1,1 +1,1 @@
-export { ProgressCard } from './progress-card';
+export * from './progress-card';

@@ -1,1 +1,1 @@
-export { ExamTestResultPage } from './exam-test-result-page';
+export * from './exam-test-result-page';

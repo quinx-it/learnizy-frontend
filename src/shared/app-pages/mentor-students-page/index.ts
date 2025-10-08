@@ -1,1 +1,1 @@
-export { MentorStudentsPage } from './mentor-students-page';
+export * from './mentor-students-page';

@@ -1,1 +1,1 @@
-export { LessonQuestion } from './lesson-question';
+export * from './lesson-question';
