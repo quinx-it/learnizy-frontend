@@ -8,6 +8,10 @@ export interface RegisterFormValues {
   agreement: boolean;
 }
 
+export interface VerificationFormValues {
+  code: string;
+}
+
 export const formSchema = yup.object().shape({
   login: yup
     .string()
@@ -33,4 +37,8 @@ export const formSchema = yup.object().shape({
     .boolean()
     .oneOf([true], 'Нужно принять соглашение')
     .required('Нужно принять соглашение'),
+});
+
+export const verificationSchema = yup.object().shape({
+  code: yup.string().required('Введите код').length(6, 'Код должен содержать 6 цифр'),
 });
