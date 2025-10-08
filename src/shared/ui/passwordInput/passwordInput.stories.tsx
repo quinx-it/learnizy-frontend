@@ -18,11 +18,11 @@ const meta: Meta<typeof PasswordInput> = {
 
 export default meta;
 
-type Story = StoryObj<typeof PasswordInput>;
+type StoryType = StoryObj<typeof PasswordInput>;
 
-export const Default: Story = {};
+export const Default: StoryType = {};
 
-export const Disabled: Story = {
+export const Disabled: StoryType = {
   args: {
     value: 'неактивный',
     disabled: true,

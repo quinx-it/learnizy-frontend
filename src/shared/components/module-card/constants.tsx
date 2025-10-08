@@ -5,8 +5,8 @@ export const STATUS = {
   start: 'Начать',
 } as const;
 
-export type StatusKey = keyof typeof STATUS;
-export type StatusValue = (typeof STATUS)[StatusKey];
+export type StatusKeyType = keyof typeof STATUS;
+export type StatusValueType = (typeof STATUS)[StatusKeyType];
 
 export const constants = {
   status: STATUS,

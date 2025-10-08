@@ -14,9 +14,9 @@ const meta: Meta<typeof Breadcrumbs> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Breadcrumbs>;
+type StoryType = StoryObj<typeof Breadcrumbs>;
 
-export const Default: Story = {
+export const Default: StoryType = {
   args: {
     rootLabel: 'Главная',
     rootHref: '/',
@@ -28,7 +28,7 @@ export const Default: Story = {
   },
 };
 
-export const OnlyRoot: Story = {
+export const OnlyRoot: StoryType = {
   args: {
     rootLabel: 'Главная',
     rootHref: '/',
@@ -36,7 +36,7 @@ export const OnlyRoot: Story = {
   },
 };
 
-export const CustomRoot: Story = {
+export const CustomRoot: StoryType = {
   args: {
     rootLabel: 'Home',
     rootHref: '/home',

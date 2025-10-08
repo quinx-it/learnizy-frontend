@@ -19,16 +19,16 @@ const meta: Meta<typeof CustomTooltip> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof CustomTooltip>;
+type StoryType = StoryObj<typeof CustomTooltip>;
 
-export const Default: Story = {
+export const Default: StoryType = {
   args: {
     content: 'This is a tooltip',
     children: <button className="rounded bg-gray-200 px-4 py-2">Hover me</button>,
   },
 };
 
-export const WithOffset: Story = {
+export const WithOffset: StoryType = {
   args: {
     content: 'Offset: 10px (side: right)',
     offset: 10,
@@ -37,7 +37,7 @@ export const WithOffset: Story = {
   },
 };
 
-export const WithDelay: Story = {
+export const WithDelay: StoryType = {
   args: {
     content: 'Appears with delay (500ms)',
     delay: 500,
@@ -45,7 +45,7 @@ export const WithDelay: Story = {
   },
 };
 
-export const PositionedBottom: Story = {
+export const PositionedBottom: StoryType = {
   args: {
     content: 'Tooltip on bottom',
     side: 'bottom',
@@ -53,7 +53,7 @@ export const PositionedBottom: Story = {
   },
 };
 
-export const CustomContent: Story = {
+export const CustomContent: StoryType = {
   args: {
     content: (
       <span>

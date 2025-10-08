@@ -22,16 +22,16 @@ const meta: Meta<typeof Calendar> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Calendar>;
+type StoryType = StoryObj<typeof Calendar>;
 
-export const Default: Story = {
+export const Default: StoryType = {
   args: {
     mode: 'single',
     selected: new Date(),
   },
 };
 
-export const WithRangeSelection: Story = {
+export const WithRangeSelection: StoryType = {
   args: {
     mode: 'range',
     selected: {
@@ -41,7 +41,7 @@ export const WithRangeSelection: Story = {
   },
 };
 
-export const WithCaptionDropdowns: Story = {
+export const WithCaptionDropdowns: StoryType = {
   args: {
     mode: 'single',
     selected: new Date(),
@@ -49,7 +49,7 @@ export const WithCaptionDropdowns: Story = {
   },
 };
 
-export const WithWeekNumbers: Story = {
+export const WithWeekNumbers: StoryType = {
   args: {
     mode: 'single',
     showWeekNumber: true,

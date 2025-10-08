@@ -37,11 +37,11 @@ const meta: Meta<typeof CardAccordion> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof CardAccordion>;
+type StoryType = StoryObj<typeof CardAccordion>;
 
-export const Default: Story = {};
+export const Default: StoryType = {};
 
-export const WithCustomColors: Story = {
+export const WithCustomColors: StoryType = {
   args: {
     items: [
       {

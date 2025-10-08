@@ -7,7 +7,7 @@ import { Copy, Edit3 } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 
-type Row = {
+type RowType = {
   id: string;
   name: string;
   progress: number;
@@ -16,7 +16,7 @@ type Row = {
   status: 'Проверено' | 'Тест' | 'Запись' | 'Пр. задание' | 'Экзамен';
 };
 
-const data: Row[] = [
+const data: RowType[] = [
   {
     id: '123456',
     name: 'Петров Петр Петрович',
@@ -59,7 +59,7 @@ const data: Row[] = [
   },
 ];
 
-const statusColors: Record<Row['status'], string> = {
+const statusColors: Record<RowType['status'], string> = {
   Проверено: 'text-gray-600 bg-gray-600',
   Тест: 'text-yellow-500 bg-yellow-500',
   Запись: 'text-sky-500 bg-sky-500',

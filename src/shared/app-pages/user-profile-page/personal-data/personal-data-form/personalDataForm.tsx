@@ -4,7 +4,7 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { PersonalDataFormValues, personalDataSchema } from './validation';
+import { PersonalDataFormValuesType, personalDataSchema } from './validation';
 import { RadioGroup, RadioGroupItem } from '@/shared/ui/radioGroup';
 import { Input } from '@/shared/ui/input';
 import { DatePicker } from '@/shared/ui/datePicker';
@@ -17,7 +17,7 @@ export const PersonalDataForm = () => {
     register,
     reset,
     formState: { errors },
-  } = useForm<PersonalDataFormValues>({
+  } = useForm<PersonalDataFormValuesType>({
     resolver: yupResolver(personalDataSchema),
     defaultValues: {
       gender: 'man',
@@ -32,7 +32,7 @@ export const PersonalDataForm = () => {
     },
   });
 
-  const onSubmit = (data: PersonalDataFormValues) => {
+  const onSubmit = (data: PersonalDataFormValuesType) => {
     console.log('Form data:', data);
   };
 

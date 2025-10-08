@@ -17,11 +17,11 @@ const meta: Meta<typeof AreaChart> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof AreaChart>;
+type StoryType = StoryObj<typeof AreaChart>;
 
-export const Default: Story = {};
+export const Default: StoryType = {};
 
-export const WithCustomData: Story = {
+export const WithCustomData: StoryType = {
   render: () => {
     const customData = [
       { day: 'пн', value: 150 },

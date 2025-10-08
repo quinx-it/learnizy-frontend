@@ -1,4 +1,4 @@
-import { CourseListItem } from '@/shared/components/course-list-item';
+import { CourseListItemType } from '@/shared/components/course-list-item';
 import { AccordionItemType } from '@/shared/ui/accordion-review/accordion-review';
 
 export const constants = {
@@ -24,7 +24,7 @@ export const constants = {
     { title: 'Введение', number: 3 },
     { title: 'Введение', number: 4 },
     { title: 'Введение', number: 5 },
-  ] as CourseListItem[],
+  ] as CourseListItemType[],
   accordionItems: [
     {
       value: 'item-1',

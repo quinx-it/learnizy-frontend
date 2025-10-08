@@ -7,7 +7,7 @@ import { Text } from '@/shared/ui/typography';
 import { ProgressBar } from '@/shared/ui/progress';
 import { Button } from '@/shared/ui/button';
 
-type ProgressCardProps = {
+type ProgressCardPropsType = {
   title: string;
   subTitle: string;
   totalModules?: number;
@@ -29,7 +29,7 @@ export const ProgressCard = ({
   modules,
   image,
   onClick,
-}: ProgressCardProps) => {
+}: ProgressCardPropsType) => {
   const hasModules = totalModules !== undefined && modules !== undefined;
 
   const progressValue = lessons / totalLessons !== 0 ? (lessons / totalLessons) * 100 : 1;

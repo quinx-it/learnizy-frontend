@@ -3,12 +3,12 @@
 import * as React from 'react';
 
 import { Button } from '@/shared/ui/button';
-import { Input, type InputProps } from '@/shared/ui/input';
+import { Input, type InputPropsType } from '@/shared/ui/input';
 import { cn } from '@/shared/lib/utils';
 import './styles.css';
 import { EyeIcon } from '@/shared/ui/icons';
 import { forwardRef, useState } from 'react';
-interface PasswordInputProps extends InputProps {
+interface PasswordInputProps extends InputPropsType {
   innerClassName?: string;
   autoComplete?: 'current-password' | 'new-password';
 }

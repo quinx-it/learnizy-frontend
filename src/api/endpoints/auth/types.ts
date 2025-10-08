@@ -1,32 +1,32 @@
 import { AuthFormValues } from '@/shared/components/auth/auth-form/validation';
 
-export type LoginRequest = Pick<AuthFormValues, 'username' | 'password'>;
-export type ForgotPasswordRequest = { email: string };
-export type ResetPasswordRequest = {
+export type LoginRequestType = Pick<AuthFormValues, 'username' | 'password'>;
+export type ForgotPasswordRequestType = { email: string };
+export type ResetPasswordRequestType = {
   token: string;
   newPassword: string;
 };
-export type RegisterRequest = {
+export type RegisterRequestType = {
   username: string;
   email: string;
   password: string;
 };
-export type RefreshResponse = { accessToken: string };
+export type RefreshResponseType = { accessToken: string };
 
-export type AuthState = {
+export type AuthStateType = {
   accessToken: string;
 };
 
-export type RegisterResponse = {
+export type RegisterResponseType = {
   message: string;
   email: string;
 };
 
-export type VerifyEmailRequest = {
+export type VerifyEmailRequestType = {
   email: string;
   code: string;
 };
 
-export type ResendCodeRequest = {
+export type ResendCodeRequestType = {
   email: string;
 };

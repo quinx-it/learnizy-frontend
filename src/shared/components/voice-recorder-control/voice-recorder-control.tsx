@@ -5,11 +5,11 @@ import { Text } from '@/shared/ui/typography';
 import { useEffect, useState } from 'react';
 import { useVoiceRecorder } from '@/shared/hooks';
 
-type Props = {
+type PropsType = {
   onChange: (file: Blob | null) => void;
 };
 
-export const VoiceRecorderControl = ({ onChange }: Props) => {
+export const VoiceRecorderControl = ({ onChange }: PropsType) => {
   const { recording, audioUrl, audioBlob, startRecording, stopRecording, reset } =
     useVoiceRecorder();
   const [duration, setDuration] = useState(0);

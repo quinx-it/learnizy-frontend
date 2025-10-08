@@ -27,17 +27,17 @@ const meta: Meta<typeof Button> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type StoryType = StoryObj<typeof meta>;
 
-export const Blue: Story = {};
+export const Blue: StoryType = {};
 
-export const Yellow: Story = {
+export const Yellow: StoryType = {
   args: {
     variant: 'yellow',
   },
 };
 
-export const White: Story = {
+export const White: StoryType = {
   args: {
     variant: 'white',
   },

@@ -1,11 +1,11 @@
 import { IconProps } from '@/shared/types';
 import React from 'react';
 
-type EyeIconProps = {
+type EyeIconPropsType = {
   open?: boolean;
 };
 
-export const EyeIcon = ({ className, open = false }: IconProps & EyeIconProps) => {
+export const EyeIcon = ({ className, open = false }: IconProps & EyeIconPropsType) => {
   if (open) {
     return (
       <svg

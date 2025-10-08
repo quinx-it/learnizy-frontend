@@ -7,11 +7,14 @@ const colors = {
   black: '#0C0C0C',
 } as const;
 
-type ArrowLeftIconProps = {
+type ArrowLeftIconPropsType = {
   color?: keyof typeof colors;
 };
 
-export const ArrowLeftIcon = ({ className, color = 'white' }: IconProps & ArrowLeftIconProps) => {
+export const ArrowLeftIcon = ({
+  className,
+  color = 'white',
+}: IconProps & ArrowLeftIconPropsType) => {
   return (
     <svg
       className={className}

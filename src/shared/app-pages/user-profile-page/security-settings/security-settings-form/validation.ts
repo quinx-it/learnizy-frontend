@@ -27,4 +27,4 @@ export const securitySettingsSchema = yup.object({
     }),
 });
 
-export type SecuritySettingsFormValues = yup.InferType<typeof securitySettingsSchema>;
+export type SecuritySettingsFormValuesType = yup.InferType<typeof securitySettingsSchema>;

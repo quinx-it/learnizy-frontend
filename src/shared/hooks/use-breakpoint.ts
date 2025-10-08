@@ -10,9 +10,9 @@ export const breakpoints = {
   '2xl': 1440,
 } as const;
 
-type BreakpointKey = keyof typeof breakpoints;
+type BreakpointKeyType = keyof typeof breakpoints;
 
-export function useBreakpoint<K extends BreakpointKey>(key: K) {
+export function useBreakpoint<K extends BreakpointKeyType>(key: K) {
   const minWidth = breakpoints[key];
 
   const isAbove = useMediaQuery({ query: `(min-width: ${minWidth}px)` });

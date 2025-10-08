@@ -14,7 +14,7 @@ const sizeMap = {
   small: 8,
 } as const;
 
-type CrossIconProps = {
+type CrossIconPropsType = {
   color?: keyof typeof colors;
   size?: keyof typeof sizeMap;
 };
@@ -23,7 +23,7 @@ export const CrossIcon = ({
   className,
   color = 'white',
   size = 'large',
-}: IconProps & CrossIconProps) => {
+}: IconProps & CrossIconPropsType) => {
   const pixelSize = sizeMap[size];
 
   return (

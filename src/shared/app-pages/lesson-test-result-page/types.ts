@@ -1,9 +1,9 @@
-export type LessonTestResultPageProps = {
+export type LessonTestResultPagePropsType = {
   lessonId: string;
   moduleId: string;
 };
 
-export type LessonTestResponse = {
+export type LessonTestResponseType = {
   moduleSequenceOrder: number;
   lessonSequenceOrder: number;
 };

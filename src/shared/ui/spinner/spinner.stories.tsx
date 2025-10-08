@@ -25,6 +25,6 @@ const meta: Meta<typeof Spinner> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Spinner>;
+type StoryType = StoryObj<typeof Spinner>;
 
-export const Default: Story = {};
+export const Default: StoryType = {};

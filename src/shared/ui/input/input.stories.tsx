@@ -19,17 +19,17 @@ const meta: Meta<typeof Input> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Input>;
+type StoryType = StoryObj<typeof Input>;
 
-export const Default: Story = {};
+export const Default: StoryType = {};
 
-export const Disabled: Story = {
+export const Disabled: StoryType = {
   args: {
     disabled: true,
   },
 };
 
-export const Invalid: Story = {
+export const Invalid: StoryType = {
   args: {
     'aria-invalid': true,
     error: 'Error',

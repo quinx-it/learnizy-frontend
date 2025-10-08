@@ -10,7 +10,7 @@ const meta: Meta<typeof CustomSelect> = {
 
 export default meta;
 
-type Story = StoryObj<typeof CustomSelect>;
+type StoryType = StoryObj<typeof CustomSelect>;
 
 const options = [
   { label: 'Option 1', value: 'opt1' },
@@ -27,7 +27,7 @@ const options = [
   { label: 'Option 12', value: 'opt12' },
 ];
 
-export const Default: Story = {
+export const Default: StoryType = {
   render: () => {
     const [value, setValue] = useState('');
     return (

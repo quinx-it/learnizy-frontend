@@ -19,7 +19,7 @@ import { routes } from '@/shared/constants';
 import { CheckboxWithLabel } from '@/shared/ui/checkboxWithLabel/checkboxWithLabel';
 import { useRouter } from 'next/navigation';
 import { Heading, Text } from '@/shared/ui/typography';
-import { VerificationFormValues, RegisterStep } from './typing';
+import { VerificationFormValuesType, RegisterStep } from './typing';
 
 export const RegisterForm = () => {
   const router = useRouter();
@@ -52,7 +52,7 @@ export const RegisterForm = () => {
     register: registerVerify,
     handleSubmit: handleSubmitVerify,
     formState: { errors: verifyErrors },
-  } = useForm<VerificationFormValues>({
+  } = useForm<VerificationFormValuesType>({
     resolver: yupResolver(verificationSchema),
     defaultValues: { code: '' },
   });
@@ -88,7 +88,7 @@ export const RegisterForm = () => {
     }
   };
 
-  const onVerifySubmit: SubmitHandler<VerificationFormValues> = async (data) => {
+  const onVerifySubmit: SubmitHandler<VerificationFormValuesType> = async (data) => {
     try {
       await verifyEmail({ email: userEmail, code: data.code }).unwrap();
       showToast('success', 'Успешно', 'Ваша почта подтверждена!');

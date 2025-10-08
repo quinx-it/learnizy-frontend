@@ -5,7 +5,7 @@ export enum AnswerInputType {
   VOICE = 'VOICE',
 }
 
-export type QuestionAnswerSubmit = {
+export type QuestionAnswerSubmitType = {
   questionId: number;
   inputType: AnswerInputType;
   textAnswer?: string | null;
@@ -13,14 +13,14 @@ export type QuestionAnswerSubmit = {
   voiceTranscript?: string | null;
 };
 
-export type QuestionAnswerForm = {
+export type QuestionAnswerFormType = {
   textAnswer?: string;
   file?: Blob | null;
   voiceFileUrl?: string | null;
   voiceTranscript?: string | null;
 };
 
-export type LessonTestResponse = {
+export type LessonTestResponseType = {
   id: number;
   lessonId: number;
   moduleId: number;
@@ -32,13 +32,13 @@ export type LessonTestResponse = {
   questions: LessonQuestionItemType[];
 };
 
-export type LessonTestSubmit = {
+export type LessonTestSubmitType = {
   testId: number;
-  answers: QuestionAnswerSubmit[];
+  answers: QuestionAnswerSubmitType[];
 };
 
-export type LessonTestFormValues = {
-  questions: QuestionAnswerForm[];
+export type LessonTestFormValuesType = {
+  questions: QuestionAnswerFormType[];
 };
 
 export type LessonQuestionItemType = {
@@ -62,7 +62,7 @@ export enum AnswerEvaluation {
   UNASSESSED = 'UNASSESSED',
 }
 
-export interface LessonAnswer extends QuestionAnswerSubmit {
+export interface LessonAnswer extends QuestionAnswerSubmitType {
   evaluation?: AnswerEvaluation | null;
   notes?: string | null;
 }

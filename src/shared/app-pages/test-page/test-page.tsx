@@ -6,7 +6,7 @@ import React, { FC } from 'react';
 import { constants } from './constants';
 import { Text } from '@/shared/ui/typography';
 import { LessonTestForm } from '@/shared/components/lesson-test-form';
-import { LessonTestSubmit, LessonTestResponse } from '@/api/endpoints/test/types';
+import { LessonTestSubmitType, LessonTestResponseType } from '@/api/endpoints/test/types';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 import { useSendTestMutation } from '@/api/endpoints/test/test';
@@ -14,21 +14,21 @@ import { showToast } from '@/shared/ui/toaster';
 
 type TestType = 'LESSON_TEST' | 'MODULE_EXAM';
 
-export type TestData = LessonTestResponse & {
+export type TestDataType = LessonTestResponseType & {
   moduleSequenceOrder: number;
   lessonSequenceOrder: number;
 };
 
-type TestPageProps = {
+type TestPagePropsType = {
   lessonId: string;
   moduleId: string;
-  lessonTest?: TestData;
+  lessonTest?: TestDataType;
   isLoading: boolean;
   isError: boolean;
   refetch: () => void;
 };
 
-export const TestPage: FC<TestPageProps> = (props) => {
+export const TestPage: FC<TestPagePropsType> = (props) => {
   const { lessonId, moduleId, lessonTest, isLoading, isError, refetch } = props;
 
   const [sendTestResult, { isLoading: isLoadingResult }] = useSendTestMutation();
@@ -57,7 +57,7 @@ export const TestPage: FC<TestPageProps> = (props) => {
     moduleSequenceOrder,
   );
 
-  const onSubmit = async (data: LessonTestSubmit) => {
+  const onSubmit = async (data: LessonTestSubmitType) => {
     try {
       await sendTestResult(data).unwrap();
       showToast('info', 'Отлично!', 'Тест пройден');

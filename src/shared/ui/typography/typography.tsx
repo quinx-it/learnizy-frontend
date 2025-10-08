@@ -54,19 +54,19 @@ const textVariants = cva('leading-normal transition-colors', {
   },
 });
 
-type HeadingVariants = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-type TextVariants = 'p' | 'span';
+type HeadingVariantsType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+type TextVariantsType = 'p' | 'span';
 
 interface HeadingProps
   extends HTMLAttributes<HTMLHeadingElement>,
     VariantProps<typeof headingVariants> {
-  tag?: HeadingVariants;
+  tag?: HeadingVariantsType;
 }
 
 interface TextProps
   extends HTMLAttributes<HTMLParagraphElement>,
     VariantProps<typeof textVariants> {
-  tag?: TextVariants;
+  tag?: TextVariantsType;
 }
 
 const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
