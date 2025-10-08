@@ -27,7 +27,7 @@ export const ModulesPage = () => {
         rootHref={routes.user.knowlegeBase}
         rootDescription={'Java Core'}
       />
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {modules?.map((module: ModuleInfo) => (
           <ModuleCard className="w-full max-w-full" key={module.id} {...module} />
         ))}

@@ -25,7 +25,7 @@ export const LearnMainPage = () => {
     <>
       <Breadcrumbs rootDescription={mainPageProgress.courseInfo.title || ''} />
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
         <ProgressCard
           title={constants.titles.currentCourse}
           subTitle={mainPageProgress.courseInfo.title || ''}

@@ -110,8 +110,8 @@ export const LessonTestForm = ({ questions, onSubmit, testId, loading }: LessonT
 
         <div className="mt-8 space-y-5">
           <Text variant={'l'}>
-            Проверьте, что вы довольны своими результатами, и нажмите кнопку ниже, чтобы узнать свой
-            балл и увидеть разбор вопросов.
+            Нажмите кнопку ниже, чтобы узнать свой балл и увидеть разбор вопросов. Проверка ответов
+            может занять некоторое время
           </Text>
           <Button type="submit" disabled={isSubmitting} className="mb-0">
             {isSubmitting || loading ? <Spinner variant="circle" /> : 'Отправить'}

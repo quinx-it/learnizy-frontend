@@ -62,46 +62,48 @@ export const ExamCard = ({ exam, status }: ExamCardProps) => {
   };
 
   return (
-    <CardWrapper className="relative flex max-w-full flex-col gap-4">
-      <DotTitle
-        firstLabel={title}
-        secondLabel={description}
-        firstVariant="l"
-        secondVariant="l"
-        firstClassName="text-[24px] leading-8"
-        secondClassName="text-[24px] leading-8"
-        dotClassName="w-1 h-1"
-      />
-
-      <DotTitle
-        firstLabel={`📋${questions} вопросов`}
-        secondLabel={`⏱ ${time} минут`}
-        firstVariant="m"
-        secondVariant="m"
-        dotClassName="w-1 h-1"
-        className="text-medium"
-      />
-
-      {status !== ExamStatus.Completed && (
-        <Button
-          onClick={() => handleNavigate(`/${exam.moduleId}/${exam.testId}/test`)}
-          className="absolute top-6 right-6"
-          variant="blue"
-          size="medium"
-          {...buttonConfig[status]}
+    <CardWrapper className="flex max-w-full flex-col gap-4 md:flex-row md:items-start md:justify-between">
+      <div className="flex-1 space-y-4">
+        <DotTitle
+          firstLabel={title}
+          secondLabel={description}
+          firstVariant="l"
+          secondVariant="l"
+          firstClassName="text-[24px] leading-8"
+          secondClassName="text-[24px] leading-8"
+          dotClassName="w-1 h-1"
         />
-      )}
-      {(status === ExamStatus.Completed || status === ExamStatus.Failed) && (
-        <Button
-          onClick={() => handleNavigate(`/${exam.moduleId}/${exam.testId}/result`)}
-          className="absolute top-20 right-6"
-          variant="blue"
-          size="medium"
-        >
-          Результаты
-        </Button>
-      )}
-      {examStatusUi[status]}
+
+        <DotTitle
+          firstLabel={`📋${questions} вопросов`}
+          secondLabel={`⏱ ${time} минут`}
+          firstVariant="m"
+          secondVariant="m"
+          dotClassName="w-1 h-1"
+          className="text-medium"
+        />
+        {examStatusUi[status]}
+      </div>
+
+      <div className="flex flex-row gap-2 md:w-auto md:flex-col lg:mt-0 lg:items-end">
+        {status !== ExamStatus.Completed && (
+          <Button
+            onClick={() => handleNavigate(`/${exam.moduleId}/${exam.testId}/test`)}
+            variant="blue"
+            size="medium"
+            {...buttonConfig[status]}
+          />
+        )}
+        {(status === ExamStatus.Completed || status === ExamStatus.Failed) && (
+          <Button
+            onClick={() => handleNavigate(`/${exam.moduleId}/${exam.testId}/result`)}
+            variant="blue"
+            size="medium"
+          >
+            Результаты
+          </Button>
+        )}
+      </div>
     </CardWrapper>
   );
 };

@@ -18,7 +18,7 @@ const mapEvaluation = (evaluation: string) => {
     case 'INCORRECT':
       return { text: 'Неверно', color: 'text-red-600', value: 0 };
     default:
-      return { text: 'В обработке', color: 'text-gray-600', value: 0 };
+      return { text: 'Ответ находится на проверке', color: 'text-gray-600', value: 0 };
   }
 };
 
