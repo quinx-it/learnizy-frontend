@@ -92,13 +92,17 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
 
     case BlockType.CODE:
       return (
-        <pre className="bg-light border-gray w-fit rounded-2xl border p-4" style={baseStyle}>
-          <code>
+        <pre
+          className="bg-light border-gray w-full max-w-full overflow-x-auto rounded-2xl border p-4"
+          style={baseStyle}
+        >
+          <code className="block whitespace-pre">
             {block.content}
             {renderChildren(block.children)}
           </code>
         </pre>
       );
+
     case BlockType.IMAGE: {
       const isValidUrl = (str: string) => {
         try {

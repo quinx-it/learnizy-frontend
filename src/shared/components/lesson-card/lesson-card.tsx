@@ -19,7 +19,7 @@ export const LessonCard = ({ id, title, progress, index, onClick }: LessonCardPr
   const taskProgress = [
     { title: 'Теория' },
     { title: 'Устное закрепление материала' },
-    { title: 'Тестовое задание ' },
+    { title: 'Тестовое задание' },
   ];
 
   return (
@@ -30,8 +30,8 @@ export const LessonCard = ({ id, title, progress, index, onClick }: LessonCardPr
       })}
       onClick={() => onClick(id)}
     >
-      <div className="relative space-y-3">
-        <div className="flex justify-between">
+      <div className="flex">
+        <div className="flex-1 space-y-2">
           <Heading>
             Урок {index + 1} -{' '}
             <span
@@ -43,30 +43,35 @@ export const LessonCard = ({ id, title, progress, index, onClick }: LessonCardPr
               {title}
             </span>
           </Heading>
-          <div className="flex items-center gap-2">
-            {!blocked && (
-              <Button
-                size={active ? 'medium' : 'small'}
-                variant={active ? 'blue' : 'white'}
-                className={cn('pointer-events-none mr-2', {
-                  'pointer-events-auto absolute right-0 bottom-0': active,
-                })}
-                onClick={() => onClick(id)}
-              >
-                {active ? 'Начать' : 'Проверено'}
-              </Button>
-            )}
+
+          <ul className="marker:text-medium mt-2 list-disc space-y-1 pl-5 break-words">
+            {taskProgress.map(({ title }, index) => (
+              <li key={index}>{title}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="flex flex-col items-end justify-between">
+          <div className="flex items-center gap-1 self-end">
             <StarIcon type={blocked ? 'disabled' : 'gold'} />
             <Heading className={cn('text-medium', { 'text-gray': blocked })}>
               {!!progress.testResult ? normalizeToFive(progress.testResult) : 0}/5
             </Heading>
           </div>
+
+          {!blocked && (
+            <Button
+              size={active ? 'medium' : 'small'}
+              variant={active ? 'blue' : 'white'}
+              className={cn('pointer-events-none', {
+                'pointer-events-auto': active,
+              })}
+              onClick={() => onClick(id)}
+            >
+              {active ? 'Начать' : 'Проверено'}
+            </Button>
+          )}
         </div>
-        <ul className="marker:text-medium list-disc space-y-1 pl-5">
-          {taskProgress.map(({ title }, index) => (
-            <li key={index}>{title}</li>
-          ))}
-        </ul>
       </div>
     </CardWrapper>
   );
