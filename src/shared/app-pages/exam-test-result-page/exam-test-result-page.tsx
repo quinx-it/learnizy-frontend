@@ -8,7 +8,7 @@ import { useGetLastTestAttemptQuery } from '@/api/endpoints/test';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 
-type ExamTestResultPageProps = {
+type ExamTestResultPagePropsType = {
   testId: string;
   moduleId: string;
 };
@@ -26,7 +26,7 @@ const mapEvaluation = (evaluation: string) => {
   }
 };
 
-export const ExamTestResultPage: FC<ExamTestResultPageProps> = (props) => {
+export const ExamTestResultPage: FC<ExamTestResultPagePropsType> = (props) => {
   const { testId } = props;
 
   const {

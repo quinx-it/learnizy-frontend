@@ -64,7 +64,7 @@ export const headingTags: Record<number, 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   6: 'h6',
 };
 
-type TextVariant =
+type TextVariantType =
   | 's'
   | 'm'
   | 'l'
@@ -80,16 +80,16 @@ type TextVariant =
 export const getTextVariant = (
   size: 's' | 'm' | 'l',
   style?: 'bold' | 'italic' | 'underline' | 'bold italic',
-): TextVariant => {
+): TextVariantType => {
   switch (style) {
     case 'bold':
-      return `${size}-bold` as TextVariant;
+      return `${size}-bold` as TextVariantType;
     case 'italic':
-      return `${size}-italic` as TextVariant;
+      return `${size}-italic` as TextVariantType;
     case 'bold italic':
-      return `${size}-bold-italic` as TextVariant;
+      return `${size}-bold-italic` as TextVariantType;
     default:
-      return size as TextVariant;
+      return size as TextVariantType;
   }
 };
 

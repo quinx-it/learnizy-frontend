@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import { constants, StatusValue } from './constants';
+import { constants, StatusValueType } from './constants';
 import { StarIcon } from '@/shared/ui/icons';
 import { Text } from '@/shared/ui/typography';
 import { ProgressBar } from '@/shared/ui/progress';
@@ -8,7 +8,7 @@ import { percentage } from '@/shared/lib/utils';
 
 type ProgressModuleType = {
   element: JSX.Element | null;
-  status: StatusValue;
+  status: StatusValueType;
 };
 
 const ProcentContent = ({ progress }: { progress: number | null | string }) => {

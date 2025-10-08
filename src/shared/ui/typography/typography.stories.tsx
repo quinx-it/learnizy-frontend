@@ -9,10 +9,10 @@ const meta: Meta<typeof Heading> = {
 
 export default meta;
 
-type HeadingStory = StoryObj<typeof Heading>;
-type TextStory = StoryObj<typeof Text>;
+type HeadingStoryType = StoryObj<typeof Heading>;
+type TextStoryType = StoryObj<typeof Text>;
 
-export const AllHeadingVariants: HeadingStory = {
+export const AllHeadingVariants: HeadingStoryType = {
   render: () => (
     <div className="space-y-4">
       {(
@@ -41,7 +41,7 @@ export const AllHeadingVariants: HeadingStory = {
   ),
 };
 
-export const AllTextVariants: TextStory = {
+export const AllTextVariants: TextStoryType = {
   render: () => (
     <div className="space-y-2">
       {(['s', 's-bold', 'm', 'm-bold', 'l', 'l-bold'] as const).map((variant) => (
@@ -53,7 +53,7 @@ export const AllTextVariants: TextStory = {
   ),
 };
 
-export const CustomTags: HeadingStory = {
+export const CustomTags: HeadingStoryType = {
   render: () => (
     <div className="space-y-3">
       <Heading tag="h1" variant="4xl">

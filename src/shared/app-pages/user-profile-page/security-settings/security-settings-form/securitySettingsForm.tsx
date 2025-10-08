@@ -4,7 +4,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { securitySettingsSchema, SecuritySettingsFormValues } from './validation';
+import { securitySettingsSchema, SecuritySettingsFormValuesType } from './validation';
 import { Input } from '@/shared/ui/input';
 import { Button } from '@/shared/ui/button';
 import { PasswordInput } from '@/shared/ui/passwordInput';
@@ -15,7 +15,7 @@ export const SecuritySettingsForm = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<SecuritySettingsFormValues>({
+  } = useForm<SecuritySettingsFormValuesType>({
     resolver: yupResolver(securitySettingsSchema),
     defaultValues: {
       password: '',
@@ -24,7 +24,7 @@ export const SecuritySettingsForm = () => {
     },
   });
 
-  const onSubmit = (data: SecuritySettingsFormValues) => {
+  const onSubmit = (data: SecuritySettingsFormValuesType) => {
     console.log('Security settings form data:', data);
   };
 

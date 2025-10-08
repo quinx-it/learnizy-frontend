@@ -1,5 +1,5 @@
 'use client';
-import { TestPage, TestData } from '@/shared/app-pages/test-page';
+import { TestPage, TestDataType } from '@/shared/app-pages/test-page';
 import { useParams } from 'next/navigation';
 import { useGetTestByLessonIdQuery } from '@/api/endpoints/test';
 
@@ -15,7 +15,7 @@ const LessonTest = () => {
     <TestPage
       moduleId={module}
       lessonId={lesson}
-      lessonTest={data as TestData}
+      lessonTest={data as TestDataType}
       isLoading={isLoading}
       isError={isError}
       refetch={refetch}

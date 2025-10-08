@@ -7,9 +7,9 @@ import { NotificationIcon, CrossIcon } from '@/shared/ui/icons';
 
 import './toaster.css';
 
-type NotificationVariant = 'info' | 'success' | 'warning' | 'error';
+type NotificationVariantType = 'info' | 'success' | 'warning' | 'error';
 
-type ColorMapEntry = {
+type ColorMapEntryType = {
   bg: string;
   text: string;
   icon: ReactNode;
@@ -17,7 +17,7 @@ type ColorMapEntry = {
 
 const iconSize = 24;
 
-const colorMap: Record<NotificationVariant, ColorMapEntry> = {
+const colorMap: Record<NotificationVariantType, ColorMapEntryType> = {
   info: {
     bg: 'var(--soft)',
     text: 'var(--black)',
@@ -40,14 +40,14 @@ const colorMap: Record<NotificationVariant, ColorMapEntry> = {
   },
 };
 
-type CustomToastProps = {
-  variant: NotificationVariant;
+type CustomToastPropsType = {
+  variant: NotificationVariantType;
   title: string;
   description: string;
   onClose: () => void;
 };
 
-const CustomToast: FC<CustomToastProps> = ({ variant, title, description, onClose }) => {
+const CustomToast: FC<CustomToastPropsType> = ({ variant, title, description, onClose }) => {
   const { bg, text, icon } = colorMap[variant];
 
   return (
@@ -89,7 +89,7 @@ const Toaster: FC<ToasterProps> = (props) => {
   );
 };
 
-const showToast = (variant: NotificationVariant, title: string, description: string) => {
+const showToast = (variant: NotificationVariantType, title: string, description: string) => {
   toast.custom((id) => (
     <CustomToast
       variant={variant}

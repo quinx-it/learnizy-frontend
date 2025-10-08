@@ -16,7 +16,7 @@ import * as RechartsPrimitive from 'recharts';
 
 const THEMES = { light: '', dark: '.dark' } as const;
 
-export type ChartConfig = {
+export type ChartConfigType = {
   [k in string]: {
     label?: ReactNode;
     icon?: ComponentType;
@@ -26,11 +26,11 @@ export type ChartConfig = {
   );
 };
 
-type ChartContextProps = {
-  config: ChartConfig;
+type ChartContextPropsType = {
+  config: ChartConfigType;
 };
 
-const ChartContext = createContext<ChartContextProps | null>(null);
+const ChartContext = createContext<ChartContextPropsType | null>(null);
 
 function useChart() {
   const context = useContext(ChartContext);
@@ -49,7 +49,7 @@ function ChartContainer({
   config,
   ...props
 }: ComponentProps<'div'> & {
-  config: ChartConfig;
+  config: ChartConfigType;
   children: ComponentProps<typeof RechartsPrimitive.ResponsiveContainer>['children'];
 }) {
   const uniqueId = useId();
@@ -73,7 +73,7 @@ function ChartContainer({
   );
 }
 
-const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
+const ChartStyle = ({ id, config }: { id: string; config: ChartConfigType }) => {
   const colorConfig = Object.entries(config).filter(([, config]) => config.theme || config.color);
 
   if (!colorConfig.length) {
@@ -294,7 +294,7 @@ function ChartLegendContent({
   );
 }
 
-function getPayloadConfigFromPayload(config: ChartConfig, payload: unknown, key: string) {
+function getPayloadConfigFromPayload(config: ChartConfigType, payload: unknown, key: string) {
   if (typeof payload !== 'object' || payload === null) {
     return undefined;
   }

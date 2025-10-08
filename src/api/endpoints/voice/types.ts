@@ -1,13 +1,13 @@
-export type VoiceFormValues = { file: Blob };
-export type VoiceData = FormData;
-export type FileUploadResponse = { downloadUrl: string };
+export type VoiceFormValuesType = { file: Blob };
+export type VoiceDataType = FormData;
+export type FileUploadResponseType = { downloadUrl: string };
 
-export type CreateLessonAIQueryRequest = {
+export type CreateLessonAIQueryRequestType = {
   audioUrl?: string | null;
   questionText?: string | null;
 };
 
-export type LessonAIQuery = {
+export type LessonAIQueryType = {
   id: number;
   userId: number;
   lessonId: number;
@@ -19,8 +19,8 @@ export type LessonAIQuery = {
   createdAt: string;
 };
 
-export type LessonAIQueryPage = {
-  content: LessonAIQuery[];
+export type LessonAIQueryPageType = {
+  content: LessonAIQueryType[];
   pageable: {
     pageNumber: number;
     pageSize: number;

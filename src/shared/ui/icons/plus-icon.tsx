@@ -7,11 +7,11 @@ const colors = {
   black: '#0C0C0C',
 } as const;
 
-type PlusIconProps = {
+type PlusIconPropsType = {
   color?: keyof typeof colors;
 };
 
-export const PlusIcon = ({ className, color = 'white' }: IconProps & PlusIconProps) => {
+export const PlusIcon = ({ className, color = 'white' }: IconProps & PlusIconPropsType) => {
   return (
     <svg
       className={className}

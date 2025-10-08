@@ -6,11 +6,11 @@ const CalendarType = {
   blue: '#A9DBE9',
 } as const;
 
-type CalendarIconProps = {
+type CalendarIconPropsType = {
   type?: keyof typeof CalendarType;
 };
 
-export const CalendarIcon = ({ className, type = 'light' }: IconProps & CalendarIconProps) => {
+export const CalendarIcon = ({ className, type = 'light' }: IconProps & CalendarIconPropsType) => {
   return (
     <svg
       className={className}

@@ -6,13 +6,13 @@ import React from 'react';
 import { StarIcon } from '@/shared/ui/icons';
 import { Lesson, LessonProgress } from '@/api/endpoints/lessons/types';
 
-type LessonCardProps = Lesson & {
+type LessonCardPropsType = Lesson & {
   progress: LessonProgress;
   index: number;
   onClick: (lessonId: number) => void;
 };
 
-export const LessonCard = ({ id, title, progress, index, onClick }: LessonCardProps) => {
+export const LessonCard = ({ id, title, progress, index, onClick }: LessonCardPropsType) => {
   const blocked = false;
   const active = true;
 

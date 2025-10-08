@@ -5,7 +5,7 @@ import {
   FetchBaseQueryError,
 } from '@reduxjs/toolkit/query';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
-import { RootState } from '@/store';
+import { RootStateType } from '@/store';
 interface RefreshResponse {
   data?: {
     accessToken?: string;
@@ -17,7 +17,7 @@ const baseQuery = fetchBaseQuery({
   baseUrl: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1`,
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
-    const token = (getState() as RootState).auth.accessToken;
+    const token = (getState() as RootStateType).auth.accessToken;
     if (token) {
       headers.set('Authorization', `Bearer ${token}`);
     }

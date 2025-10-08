@@ -1,4 +1,4 @@
-export type ExamStatus = 'BLOCKED' | 'AVAILABLE' | 'FAILED' | 'PASSED';
+export type ExamStatusType = 'BLOCKED' | 'AVAILABLE' | 'FAILED' | 'PASSED';
 
 export interface ExamLastResult {
   scorePercent: number;
@@ -13,7 +13,7 @@ export interface Exam {
   moduleTitle: string;
   questionsCount: number;
   passThresholdPercentage: number;
-  status: ExamStatus;
+  status: ExamStatusType;
   lastResult: ExamLastResult | null;
 }
 
@@ -27,14 +27,14 @@ export interface ExamsResponse {
   };
 }
 
-export type Question = {
+export type QuestionType = {
   questionId: number;
   text: string;
   sequenceOrder: number;
   maxScore: number;
 };
 
-export type ExamTestResponse = {
+export type ExamTestResponseType = {
   id: number;
   lessonId: number;
   moduleId: number;
@@ -43,5 +43,5 @@ export type ExamTestResponse = {
   testType: 'LESSON_TEST' | 'MODULE_EXAM';
   title: string;
   passThresholdPercentage: number;
-  questions: Question[];
+  questions: QuestionType[];
 };

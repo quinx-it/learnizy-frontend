@@ -10,11 +10,11 @@ import { useAppSelector } from '@/shared/hooks/redux';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { defaultPage, routes } from '@/shared/constants';
 
-type NotFoundComponentProps = {
+type NotFoundComponentPropsType = {
   className?: string;
 };
 
-export const NotFoundComponent = ({ className }: NotFoundComponentProps) => {
+export const NotFoundComponent = ({ className }: NotFoundComponentPropsType) => {
   const role = useAppSelector(selectUserRole);
 
   const defaultUrl = role && defaultPage[role] ? defaultPage[role] : routes.public.loginPage;

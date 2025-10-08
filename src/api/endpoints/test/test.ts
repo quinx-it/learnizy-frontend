@@ -1,12 +1,12 @@
 import { api } from '@/api';
-import { LessonTestResponse, LessonTestSubmit, TestAttemptResponse } from './types';
+import { LessonTestResponseType, LessonTestSubmitType, TestAttemptResponse } from './types';
 
 export const voice = api.injectEndpoints({
   endpoints: (builder) => ({
-    getTestByLessonId: builder.query<LessonTestResponse, number>({
+    getTestByLessonId: builder.query<LessonTestResponseType, number>({
       query: (lessonId) => `/tests/lesson/${lessonId}`,
     }),
-    sendTest: builder.mutation<LessonTestSubmit, LessonTestSubmit>({
+    sendTest: builder.mutation<LessonTestSubmitType, LessonTestSubmitType>({
       query: (body) => ({
         url: '/test-attempts',
         method: 'POST',

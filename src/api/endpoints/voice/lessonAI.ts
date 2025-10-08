@@ -1,11 +1,15 @@
 import { api } from '@/api';
-import type { CreateLessonAIQueryRequest, LessonAIQuery, LessonAIQueryPage } from './types';
+import type {
+  CreateLessonAIQueryRequestType,
+  LessonAIQueryType,
+  LessonAIQueryPageType,
+} from './types';
 
 export const lessonAI = api.injectEndpoints({
   endpoints: (builder) => ({
     createLessonAIQuery: builder.mutation<
-      LessonAIQuery,
-      { lessonId: number; body: CreateLessonAIQueryRequest }
+      LessonAIQueryType,
+      { lessonId: number; body: CreateLessonAIQueryRequestType }
     >({
       query: ({ lessonId, body }) => ({
         url: `/reflections/lessons/${lessonId}`,
@@ -15,7 +19,7 @@ export const lessonAI = api.injectEndpoints({
     }),
 
     getLessonAIQueries: builder.query<
-      LessonAIQueryPage,
+      LessonAIQueryPageType,
       { lessonId: number; page?: number; size?: number; sort?: string }
     >({
       query: ({ lessonId, page = 0, size = 20, sort = 'createdAt,desc' }) => ({

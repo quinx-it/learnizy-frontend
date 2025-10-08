@@ -3,21 +3,21 @@ import { api } from '@/api';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 import { showToast } from '@/shared/ui/toaster';
 import {
-  ForgotPasswordRequest,
-  LoginRequest,
-  RefreshResponse,
-  ResetPasswordRequest,
-  RegisterRequest,
-  RegisterResponse,
-  VerifyEmailRequest,
-  ResendCodeRequest,
+  ForgotPasswordRequestType,
+  LoginRequestType,
+  RefreshResponseType,
+  ResetPasswordRequestType,
+  RegisterRequestType,
+  RegisterResponseType,
+  VerifyEmailRequestType,
+  ResendCodeRequestType,
 } from './types';
 
 const AUTH_BASE_URL = '/auth';
 
 export const auth = api.injectEndpoints({
   endpoints: (builder) => ({
-    login: builder.mutation<AuthState, LoginRequest>({
+    login: builder.mutation<AuthState, LoginRequestType>({
       query: (body) => ({
         url: `${AUTH_BASE_URL}/login`,
         method: 'POST',
@@ -35,7 +35,7 @@ export const auth = api.injectEndpoints({
       },
     }),
 
-    register: builder.mutation<RegisterResponse, RegisterRequest>({
+    register: builder.mutation<RegisterResponseType, RegisterRequestType>({
       query: (body) => ({
         url: `${AUTH_BASE_URL}/register`,
         method: 'POST',
@@ -43,7 +43,7 @@ export const auth = api.injectEndpoints({
       }),
     }),
 
-    verifyEmail: builder.mutation<AuthState, VerifyEmailRequest>({
+    verifyEmail: builder.mutation<AuthState, VerifyEmailRequestType>({
       query: (body) => ({
         url: `${AUTH_BASE_URL}/verify-email`,
         method: 'POST',
@@ -62,7 +62,7 @@ export const auth = api.injectEndpoints({
       },
     }),
 
-    resendVerificationCode: builder.mutation<{ message: string }, ResendCodeRequest>({
+    resendVerificationCode: builder.mutation<{ message: string }, ResendCodeRequestType>({
       query: (body) => ({
         url: `${AUTH_BASE_URL}/resend-verification-code`,
         method: 'POST',
@@ -77,7 +77,7 @@ export const auth = api.injectEndpoints({
       }),
     }),
 
-    refresh: builder.mutation<RefreshResponse, void>({
+    refresh: builder.mutation<RefreshResponseType, void>({
       query: () => ({
         url: `${AUTH_BASE_URL}/refresh`,
         method: 'POST',
@@ -92,7 +92,7 @@ export const auth = api.injectEndpoints({
       },
     }),
 
-    forgotPassword: builder.mutation<void, ForgotPasswordRequest>({
+    forgotPassword: builder.mutation<void, ForgotPasswordRequestType>({
       query: (body) => ({
         url: `${AUTH_BASE_URL}/forgot-password`,
         method: 'POST',
@@ -100,7 +100,7 @@ export const auth = api.injectEndpoints({
       }),
     }),
 
-    resetPassword: builder.mutation<void, ResetPasswordRequest>({
+    resetPassword: builder.mutation<void, ResetPasswordRequestType>({
       query: (body) => ({
         url: `${AUTH_BASE_URL}/reset-password`,
         method: 'POST',

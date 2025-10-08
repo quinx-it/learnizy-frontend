@@ -27,4 +27,4 @@ export const personalDataSchema = yup.object({
   city: yup.string().required('Введите город'),
 });
 
-export type PersonalDataFormValues = yup.InferType<typeof personalDataSchema>;
+export type PersonalDataFormValuesType = yup.InferType<typeof personalDataSchema>;

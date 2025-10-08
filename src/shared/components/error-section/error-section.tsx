@@ -9,7 +9,7 @@ export type ErrorType = {
   reset: () => void;
 };
 
-type ErrorProps = {
+type ErrorPropsType = {
   className?: string;
   text?: string;
   title?: string;
@@ -20,7 +20,7 @@ export const ErrorSection = ({
   reset,
   title = 'Упс, произошла ошибка..',
   text = 'Мы уже знаем об этом и работаем над её устранением. \n Пожалуйста, попробуйте позже.',
-}: ErrorProps & ErrorType) => {
+}: ErrorPropsType & ErrorType) => {
   const handleError = () => {
     reset();
   };

@@ -6,7 +6,7 @@ import React from 'react';
 import { constants } from './constants';
 import { cn } from '@/shared/lib/utils';
 
-export type CourseListItem = {
+export type CourseListItemType = {
   title: string;
   number: number;
   status?: 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED' | 'BLOCKED';
@@ -14,7 +14,13 @@ export type CourseListItem = {
   onClick?: () => void;
 };
 
-export const CourseListItem = ({ title, number, status, progress, onClick }: CourseListItem) => {
+export const CourseListItem = ({
+  title,
+  number,
+  status,
+  progress,
+  onClick,
+}: CourseListItemType) => {
   const progressBarValue = progress ?? 0;
 
   const isBlocked = status === 'BLOCKED';

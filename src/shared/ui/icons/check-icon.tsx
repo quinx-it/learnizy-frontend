@@ -7,11 +7,11 @@ const colors = {
   black: '#0C0C0C',
 } as const;
 
-type CheckIconProps = {
+type CheckIconPropsType = {
   color?: keyof typeof colors;
 };
 
-export const CheckIcon = ({ className, color = 'white' }: IconProps & CheckIconProps) => {
+export const CheckIcon = ({ className, color = 'white' }: IconProps & CheckIconPropsType) => {
   return (
     <svg
       className={className}

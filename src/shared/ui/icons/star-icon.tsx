@@ -7,11 +7,11 @@ const colors = {
   disabled: '#B9B9B9',
 } as const;
 
-type StarIconProps = {
+type StarIconPropsType = {
   type?: 'default' | 'gold' | 'disabled';
 };
 
-export const StarIcon = ({ className, type = 'default' }: IconProps & StarIconProps) => {
+export const StarIcon = ({ className, type = 'default' }: IconProps & StarIconPropsType) => {
   return (
     <svg
       className={className}

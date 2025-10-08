@@ -4,13 +4,13 @@ import { Textarea } from '@/shared/ui/textarea';
 import { Text } from '@/shared/ui/typography';
 import { Controller, FieldErrors, useFormContext, useWatch } from 'react-hook-form';
 import { VoiceRecorderControl } from '../voice-recorder-control';
-import { LessonQuestionItemType, LessonTestFormValues } from '@/api/endpoints/test/types';
+import { LessonQuestionItemType, LessonTestFormValuesType } from '@/api/endpoints/test/types';
 
-type LessonQuestionProps = LessonQuestionItemType & {
+type LessonQuestionPropsType = LessonQuestionItemType & {
   type?: 'checkbox' | 'field';
   answerFieldName: string;
   fileFieldName: string;
-  errors: FieldErrors<LessonTestFormValues>;
+  errors: FieldErrors<LessonTestFormValuesType>;
   totalQuestions: number;
 };
 
@@ -22,7 +22,7 @@ export const LessonQuestion = ({
   answerFieldName,
   fileFieldName,
   errors,
-}: LessonQuestionProps) => {
+}: LessonQuestionPropsType) => {
   const { control, setValue } = useFormContext();
 
   const answerValue = useWatch({ name: answerFieldName });

@@ -8,13 +8,13 @@ import { Text } from '@/shared/ui/typography';
 import { cn } from '@/shared/lib/utils';
 import { constants } from './constants';
 
-type BreadcrumbItem = {
+type BreadcrumbItemType = {
   label: string;
   href: string;
 };
 
 interface BreadcrumbsProps {
-  items?: BreadcrumbItem[];
+  items?: BreadcrumbItemType[];
   className?: string;
   rootLabel?: string;
   rootHref?: string;

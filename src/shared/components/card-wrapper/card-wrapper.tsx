@@ -3,13 +3,13 @@
 import { cn } from '@/shared/lib/utils';
 import React, { ReactNode } from 'react';
 
-type CardWrapperProps = {
+type CardWrapperPropsType = {
   children: ReactNode;
   className?: string;
   onClick?: () => void;
 };
 
-export const CardWrapper = ({ children, className, onClick }: CardWrapperProps) => {
+export const CardWrapper = ({ children, className, onClick }: CardWrapperPropsType) => {
   return (
     <div
       onClick={onClick}

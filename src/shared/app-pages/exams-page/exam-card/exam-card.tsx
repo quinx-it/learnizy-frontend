@@ -4,12 +4,12 @@ import { CardWrapper } from '@/shared/components/card-wrapper';
 import { Button } from '@/shared/ui/button';
 import { DotTitle } from '@/shared/ui/dotTitle';
 import React, { ComponentProps, ReactNode } from 'react';
-import { ExamCardProps, ExamStatus } from '../types';
+import { ExamCardPropsType, ExamStatus } from '../types';
 import { Text } from '@/shared/ui/typography';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
-export const ExamCard = ({ exam, status }: ExamCardProps) => {
+export const ExamCard = ({ exam, status }: ExamCardPropsType) => {
   const { title, description, questions, time } = exam;
   const router = useRouter();
   const pathname = usePathname();

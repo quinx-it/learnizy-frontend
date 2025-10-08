@@ -3,19 +3,19 @@ import { CalendarIcon } from '@/shared/ui/icons';
 import { AreaChart } from '@/shared/ui/areaChart';
 import { Text } from '@/shared/ui/typography';
 
-type WeeklyActivityItem = {
+type WeeklyActivityItemType = {
   date: string;
   lessonsCompleted: number;
   testsPassed: number;
 };
 
-type StatisticsChartProps = {
-  weeklyActivity: WeeklyActivityItem[];
+type StatisticsChartPropsType = {
+  weeklyActivity: WeeklyActivityItemType[];
 };
 
 const WEEK_DAYS = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 
-export const StatisticsChart = ({ weeklyActivity }: StatisticsChartProps) => {
+export const StatisticsChart = ({ weeklyActivity }: StatisticsChartPropsType) => {
   const totalLessons = weeklyActivity.reduce((acc, item) => acc + item.lessonsCompleted, 0);
   const totalTests = weeklyActivity.reduce((acc, item) => acc + item.testsPassed, 0);
 

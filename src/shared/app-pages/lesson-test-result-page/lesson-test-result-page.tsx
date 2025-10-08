@@ -7,7 +7,7 @@ import { Text } from '@/shared/ui/typography';
 import { useGetLastTestAttemptQuery, useGetTestByLessonIdQuery } from '@/api/endpoints/test';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
-import { LessonTestResponse, LessonTestResultPageProps } from './types';
+import { LessonTestResponseType, LessonTestResultPagePropsType } from './types';
 
 const mapEvaluation = (evaluation: string) => {
   switch (evaluation) {
@@ -22,7 +22,7 @@ const mapEvaluation = (evaluation: string) => {
   }
 };
 
-export const LessonTestResultPage: FC<LessonTestResultPageProps> = (props) => {
+export const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) => {
   const { lessonId, moduleId } = props;
 
   const { data: lessonTest } = useGetTestByLessonIdQuery(+lessonId);
@@ -36,7 +36,7 @@ export const LessonTestResultPage: FC<LessonTestResultPageProps> = (props) => {
   if (isLoading) return <FullscreenLoader />;
   if (isError || !testResult) return <ErrorSection reset={refetch} />;
 
-  const { moduleSequenceOrder, lessonSequenceOrder } = lessonTest as LessonTestResponse;
+  const { moduleSequenceOrder, lessonSequenceOrder } = lessonTest as LessonTestResponseType;
   const { answers } = testResult;
   const totalPoints = answers.reduce((sum, a) => sum + mapEvaluation(a.evaluation).value, 0);
   const scorePercent = answers.length > 0 ? Math.round((totalPoints / answers.length) * 100) : 0;

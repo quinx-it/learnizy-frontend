@@ -11,7 +11,7 @@ import {
   useCreateLessonAIQueryMutation,
   useGetLessonAIQueriesQuery,
 } from '@/api/endpoints/voice/lessonAI';
-import { CreateLessonAIQueryRequest } from '@/api/endpoints/voice/types';
+import { CreateLessonAIQueryRequestType } from '@/api/endpoints/voice/types';
 import { useState, useEffect } from 'react';
 import { Text } from '@/shared/ui/typography';
 import { CardWrapper } from '@/shared/components/card-wrapper';
@@ -93,7 +93,7 @@ export const VoiceRecorderForm: FC<VoiceRecorderFormProps> = ({ lessonId }) => {
     }
 
     try {
-      const requestBody: CreateLessonAIQueryRequest = {
+      const requestBody: CreateLessonAIQueryRequestType = {
         audioUrl,
         questionText: null,
       };

@@ -30,11 +30,11 @@ const meta: Meta<typeof ProgressBar> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ProgressBar>;
+type StoryType = StoryObj<typeof ProgressBar>;
 
-export const Default: Story = {};
+export const Default: StoryType = {};
 
-export const Circular: Story = {
+export const Circular: StoryType = {
   args: {
     variant: 'circular',
     size: 64,

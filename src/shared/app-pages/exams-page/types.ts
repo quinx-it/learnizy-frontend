@@ -5,7 +5,7 @@ export enum ExamStatus {
   Unavailable = 'unavailable',
 }
 
-export type Exam = {
+export type ExamType = {
   title: string;
   description: string;
   questions: number;
@@ -14,7 +14,7 @@ export type Exam = {
   testId: number;
 };
 
-export type ExamCardProps = {
-  exam: Exam;
+export type ExamCardPropsType = {
+  exam: ExamType;
   status: ExamStatus;
 };

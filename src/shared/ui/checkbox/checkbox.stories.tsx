@@ -18,9 +18,9 @@ const meta: Meta<typeof Checkbox> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Checkbox>;
+type StoryType = StoryObj<typeof Checkbox>;
 
-export const Default: Story = {
+export const Default: StoryType = {
   render: (args) => (
     <div className="flex items-center gap-2">
       <Checkbox {...args} id="checkbox-default" />
@@ -29,19 +29,19 @@ export const Default: Story = {
   ),
 };
 
-export const Checked: Story = {
+export const Checked: StoryType = {
   args: {
     checked: true,
   },
 };
 
-export const Disabled: Story = {
+export const Disabled: StoryType = {
   args: {
     disabled: true,
   },
 };
 
-export const CheckedDisabled: Story = {
+export const CheckedDisabled: StoryType = {
   args: {
     checked: true,
     disabled: true,

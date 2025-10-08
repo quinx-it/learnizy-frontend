@@ -4,14 +4,14 @@ import { Text } from '@/shared/ui/typography';
 import { Label } from '../label';
 import { ComponentProps } from 'react';
 
-export interface InputProps extends ComponentProps<'input'> {
+export interface InputPropsType extends ComponentProps<'input'> {
   error?: string;
   label?: string;
   innerClassName?: string;
   autoComplete?: 'current-password' | 'new-password' | 'username' | 'email';
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const Input = React.forwardRef<HTMLInputElement, InputPropsType>(
   ({ innerClassName, className, type = 'text', error, label, autoComplete, ...props }, ref) => {
     return (
       <div className={className}>

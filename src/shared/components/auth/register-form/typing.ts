@@ -1,4 +1,4 @@
-export type VerificationFormValues = {
+export type VerificationFormValuesType = {
   code: string;
 };
 

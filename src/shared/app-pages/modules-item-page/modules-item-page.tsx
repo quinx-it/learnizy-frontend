@@ -18,11 +18,11 @@ import { percentage, pluralize } from '@/shared/lib/utils';
 import { Lesson } from '@/api/endpoints/lessons/types';
 import { usePathname, useRouter } from 'next/navigation';
 
-type ModuleItemPageProps = {
+type ModuleItemPagePropsType = {
   id: string;
 };
 
-export const ModuleItemPage = ({ id }: ModuleItemPageProps) => {
+export const ModuleItemPage = ({ id }: ModuleItemPagePropsType) => {
   const pathname = usePathname();
   const router = useRouter();
 

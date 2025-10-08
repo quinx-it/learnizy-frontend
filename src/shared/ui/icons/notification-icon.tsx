@@ -1,7 +1,7 @@
 import { IconProps } from '@/shared/types';
 import { ReactNode } from 'react';
 
-type NotificationStatus = 'error' | 'success' | 'info' | 'warning';
+type NotificationStatusType = 'error' | 'success' | 'info' | 'warning';
 
 const ICON_SIZE = 18;
 const VIEW_BOX = '0 0 20 18';
@@ -22,7 +22,7 @@ const BaseIcon = ({
   </svg>
 );
 
-const StatusIcons = (color: string): Record<NotificationStatus, ReactNode> => ({
+const StatusIcons = (color: string): Record<NotificationStatusType, ReactNode> => ({
   success: (
     <>
       <path
@@ -95,6 +95,6 @@ export const NotificationIcon = ({
   className,
   status = 'success',
   color = '#0C0C0C',
-}: IconProps & { status?: NotificationStatus }) => {
+}: IconProps & { status?: NotificationStatusType }) => {
   return <BaseIcon className={className ?? ''}>{StatusIcons(color)[status]}</BaseIcon>;
 };

@@ -3,7 +3,7 @@ import { Heading, Text } from '@/shared/ui/typography';
 import Image from 'next/image';
 import React from 'react';
 
-type AdvantageCardProps = {
+type AdvantageCardPropsType = {
   title: string;
   text: string;
   type: CardType;
@@ -28,7 +28,7 @@ const cardStyles = {
   },
 };
 
-export const AdvantageCard = ({ type, title, text, className }: AdvantageCardProps) => {
+export const AdvantageCard = ({ type, title, text, className }: AdvantageCardPropsType) => {
   const styles = cardStyles[type];
 
   return (

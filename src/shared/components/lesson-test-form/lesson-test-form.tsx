@@ -13,24 +13,29 @@ import { useRouter, usePathname } from 'next/navigation';
 import {
   AnswerInputType,
   LessonQuestionItemType,
-  LessonTestFormValues,
-  LessonTestSubmit,
+  LessonTestFormValuesType,
+  LessonTestSubmitType,
 } from '@/api/endpoints/test/types';
 
-type LessonTestFormProps = {
+type LessonTestFormPropsType = {
   testId: number;
   questions: LessonQuestionItemType[];
   loading?: boolean;
-  onSubmit: (data: LessonTestSubmit) => void;
+  onSubmit: (data: LessonTestSubmitType) => void;
 };
 
-export const LessonTestForm = ({ questions, onSubmit, testId, loading }: LessonTestFormProps) => {
+export const LessonTestForm = ({
+  questions,
+  onSubmit,
+  testId,
+  loading,
+}: LessonTestFormPropsType) => {
   const router = useRouter();
   const pathname = usePathname();
   const [forceSubmit, setForceSubmit] = useState(false);
   const [uploadVoice] = useUploadVoiceMutation();
 
-  const methods = useForm<LessonTestFormValues>({
+  const methods = useForm<LessonTestFormValuesType>({
     defaultValues: { questions: [] },
     resolver: yupResolver(LessonTestFormSchema),
   });
@@ -40,7 +45,7 @@ export const LessonTestForm = ({ questions, onSubmit, testId, loading }: LessonT
     formState: { errors, isSubmitting },
   } = methods;
 
-  const handleSubmitForm = async (data: LessonTestFormValues) => {
+  const handleSubmitForm = async (data: LessonTestFormValuesType) => {
     try {
       const isEmpty = Object.values(data.questions).some((q) => !q?.textAnswer?.trim() && !q?.file);
       if (!forceSubmit && isEmpty) {
@@ -70,7 +75,7 @@ export const LessonTestForm = ({ questions, onSubmit, testId, loading }: LessonT
         }),
       );
 
-      const updatedData: LessonTestSubmit = {
+      const updatedData: LessonTestSubmitType = {
         testId,
         answers: uploadedQuestions,
       };

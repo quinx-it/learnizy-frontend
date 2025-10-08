@@ -7,7 +7,7 @@ import { ExamCard } from './exam-card';
 import { useGetExamsQuery } from '@/api/endpoints/exams';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
-import { ExamStatus, Exam } from './types';
+import { ExamStatus, ExamType } from './types';
 
 const mapExamStatus = (status: string): ExamStatus => {
   switch (status) {
@@ -40,7 +40,7 @@ export const ExamsPage = ({ courseId = 1 }: { courseId?: number }) => {
       </div>
 
       {data.content.map((examItem) => {
-        const exam: Exam = {
+        const exam: ExamType = {
           ...examItem,
           title: `Экзамен по модулю ${examItem.moduleSequenceOrder}`,
           description: examItem.moduleTitle,

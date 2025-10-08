@@ -19,11 +19,11 @@ const meta: Meta<typeof Textarea> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Textarea>;
+type StoryType = StoryObj<typeof Textarea>;
 
-export const Default: Story = {};
+export const Default: StoryType = {};
 
-export const Disabled: Story = {
+export const Disabled: StoryType = {
   args: {
     disabled: true,
     placeholder: 'Поле отключено',
@@ -31,7 +31,7 @@ export const Disabled: Story = {
   },
 };
 
-export const Invalid: Story = {
+export const Invalid: StoryType = {
   args: {
     'aria-invalid': true,
     placeholder: 'Ошибка ввода',
@@ -40,7 +40,7 @@ export const Invalid: Story = {
   },
 };
 
-export const WithCustomHeight: Story = {
+export const WithCustomHeight: StoryType = {
   args: {
     style: {
       height: '150px',

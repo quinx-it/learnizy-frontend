@@ -18,11 +18,11 @@ export type AccordionItemType = {
   content: string;
 };
 
-type AccordionReviewProps = {
+type AccordionReviewPropsType = {
   items: AccordionItemType[];
 };
 
-export const AccordionReview = ({ items }: AccordionReviewProps) => {
+export const AccordionReview = ({ items }: AccordionReviewPropsType) => {
   return (
     <Accordion type="single" collapsible className={cn('w-full')}>
       {items.map(({ value, number, messageNumber, content }) => (

@@ -6,11 +6,11 @@ const colors = {
   blue: '#238BA7',
 } as const;
 
-type MeatballIconProps = {
+type MeatballIconPropsType = {
   color?: keyof typeof colors;
 };
 
-export const MeatballIcon = ({ className, color = 'white' }: IconProps & MeatballIconProps) => {
+export const MeatballIcon = ({ className, color = 'white' }: IconProps & MeatballIconPropsType) => {
   return (
     <svg
       className={className}
