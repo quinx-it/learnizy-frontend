@@ -2,10 +2,10 @@ export * from './voice';
 export * from './lessonAI';
 
 export type {
-  VoiceData,
-  FileUploadResponse,
-  VoiceFormValues,
-  CreateLessonAIQueryRequest,
-  LessonAIQuery,
-  LessonAIQueryPage,
+  VoiceDataType,
+  FileUploadResponseType,
+  VoiceFormValuesType,
+  CreateLessonAIQueryRequestType,
+  LessonAIQueryType,
+  LessonAIQueryPageType,
 } from './types';
