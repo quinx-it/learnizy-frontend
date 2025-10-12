@@ -122,10 +122,7 @@ export const RegisterForm = () => {
           <span className="font-medium text-black">{userEmail}</span>
         </Text>
 
-        <form
-          onSubmit={() => handleSubmitVerify(onVerifySubmit)}
-          className="flex w-full flex-col gap-6"
-        >
+        <form onSubmit={handleSubmitVerify(onVerifySubmit)} className="flex w-full flex-col gap-6">
           <Input
             label=""
             id="verification-code"
@@ -159,7 +156,7 @@ export const RegisterForm = () => {
   }
 
   return (
-    <form onSubmit={() => handleSubmit(onRegisterSubmit)} className="flex w-full flex-col gap-6">
+    <form onSubmit={handleSubmit(onRegisterSubmit)} className="flex w-full flex-col gap-6">
       <Input
         label="Введите логин"
         id="login"

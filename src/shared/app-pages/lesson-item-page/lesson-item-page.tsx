@@ -60,7 +60,7 @@ export const LessonItemPage: React.FC<LessonItemPageProps> = ({ lessonId, module
           ИИ-помощник ответит на все вопросы по пройденному материалу. Он поможет тебе лучше понять
           тему, запомнить ключевые моменты и структурировать знания.
         </Text>
-        <Button onClick={handleNavigate('retelling')} size="medium">
+        <Button onClick={() => router.push(routes.user.aiAssistant)} size="medium">
           Задать вопрос
         </Button>
       </CardWrapper>

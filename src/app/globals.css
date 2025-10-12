@@ -64,6 +64,15 @@ a {
   background-color: var(--medium);
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 @theme inline {
   --font-montserrat: var(--montserrat);
 
