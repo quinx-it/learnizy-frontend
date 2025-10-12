@@ -39,9 +39,8 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
     try {
       const response = await uploadVoice(formData).unwrap();
       onSendMessage(response.downloadUrl);
-    } catch (error) {
-      const errorMessage = (error as any)?.data?.message || 'Не удалось загрузить аудиофайл.';
-      showToast('error', 'Ошибка загрузки', errorMessage);
+    } catch {
+      showToast('error', 'Ошибка загрузки', '');
     }
   };
 
