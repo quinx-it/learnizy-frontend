@@ -20,8 +20,8 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
 
     const ws = WaveSurfer.create({
       container: containerRef.current,
-      waveColor: '#A9DBE9',
-      progressColor: '#238BA7',
+      waveColor: '#ffffffff',
+      progressColor: '#A9DBE9',
       cursorWidth: 0,
       height: 20,
       barWidth: 2,
@@ -69,8 +69,8 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
   };
 
   return (
-    <div className="border-medium bg-light flex w-full max-w-2xl items-center justify-between gap-6 rounded-full border-[1.25px] px-6 py-1.5">
-      <span className="text-medium w-fit text-[16px]">
+    <div className="border-medium flex w-100 items-center justify-between gap-4 rounded-full border-[1.25px]">
+      <span className="text-medium w-fit text-[16px] text-white">
         {formatTime(time)}/{formatTime(duration)}
       </span>
 
@@ -78,7 +78,7 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
 
       <div className="flex items-center gap-2">
         <button type="button" onClick={togglePlay} className="text-medium w-6">
-          <PlayPauseIcon isPlaying={isPlaying} />
+          <PlayPauseIcon color="white" isPlaying={isPlaying} />
         </button>
       </div>
     </div>

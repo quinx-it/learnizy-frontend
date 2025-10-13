@@ -27,3 +27,8 @@ export * from './lock-color-icon';
 export * from './mic-icon';
 export * from './play-pause-icon';
 export * from './trash-can-icon';
+export * from './four-pointed-star-icon';
+export * from './attach-icon';
+export * from './send-icon';
+export * from './mic-chat-icon';
+export * from './mic-record-icon';

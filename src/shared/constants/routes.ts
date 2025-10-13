@@ -14,6 +14,7 @@ export const routes = {
     homePage: '/learn',
     exams: '/learn/exams',
     knowlegeBase: '/learn/knowledge-base',
+    aiAssistant: '/learn/ai-assistant',
     frequentlyAskedQuestions: '/404',
     modules: '/learn/modules',
     projects: '/learn/projects',
@@ -39,6 +40,7 @@ export const dynamicUserRoutes = [
   /^\/learn\/modules\/\d+\/\d+\/retelling$/,
   /^\/learn\/exams\/\d+\/\d+\/test$/,
   /^\/learn\/exams\/\d+\/\d+\/result$/,
+  /^\/learn\/ai-assistant\/chat\/[^/]+$/,
 ];
 
 export const staticMentorRoutes = Object.values(routes.mentor);

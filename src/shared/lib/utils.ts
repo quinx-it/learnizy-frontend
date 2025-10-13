@@ -83,3 +83,12 @@ export function isRoleRoute(role: UserRole | undefined, pathname: string) {
 export function percentage(total: number, completed: number) {
   return total > 0 ? Math.round((completed / total) * 100) : 0;
 }
+
+export const isAudioUrl = (value: string): boolean => {
+  try {
+    const url = new URL(value);
+    return ['http:', 'https:', 'blob:'].includes(url.protocol);
+  } catch {
+    return false;
+  }
+};

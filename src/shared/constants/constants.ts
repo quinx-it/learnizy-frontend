@@ -20,6 +20,7 @@ import {
   DiscussionIcon,
   PersonIcon,
   StudentHatIcon,
+  FourPointedStarIcon,
 } from '@/shared/ui/icons';
 import { routes } from '@/shared/constants';
 
@@ -27,6 +28,7 @@ export const navbarLinks = {
   user: [
     { href: routes.user.homePage, Icon: CubesMainIcon, label: 'Главная' },
     { href: routes.user.modules, Icon: StudentHatIcon, label: 'Модули' },
+    { href: routes.user.aiAssistant, Icon: FourPointedStarIcon, label: 'ИИ-ассистент' },
     { href: routes.user.knowlegeBase, Icon: DiscussionIcon, label: 'База знаний' },
     { href: routes.user.exams, Icon: APlusIcon, label: 'Экзамены' },
     { href: routes.user.projects, Icon: ProjectsIcon, label: 'Проекты' },
