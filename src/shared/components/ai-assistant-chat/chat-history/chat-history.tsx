@@ -5,21 +5,12 @@ import { Text } from '@/shared/ui/typography';
 import { Plus } from 'lucide-react';
 import { Button } from '@/shared/ui/button';
 import { useGetChatsQuery } from '@/api/endpoints/ai-assistant';
-
-interface IChatHistoryProps {
-  selectedChatId: number | null;
-  onSelectChat: (chatId: number) => void;
-  onCreateChat: () => void;
-}
+import { IChatHistoryProps } from './typing';
 
 export const ChatHistory: FC<IChatHistoryProps> = (props) => {
   const { selectedChatId, onSelectChat, onCreateChat } = props;
 
   const { data: chats, isLoading, isError } = useGetChatsQuery();
-
-  const handleAddNewChat = () => {
-    onCreateChat();
-  };
 
   return (
     <div className="bg-none lg:w-[230px]">
@@ -31,7 +22,7 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
         </div>
         <div className="mb-4 border-gray-200 pb-2">
           <Button
-            onClick={handleAddNewChat}
+            onClick={onCreateChat}
             variant="blue"
             size="small"
             className="mt-auto w-full justify-start gap-2 border-0 !px-5 !py-2"

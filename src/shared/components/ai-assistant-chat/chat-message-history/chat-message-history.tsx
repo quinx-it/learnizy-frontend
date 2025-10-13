@@ -2,22 +2,15 @@
 
 import React, { useEffect, useRef, FC } from 'react';
 import { Text } from '@/shared/ui/typography';
-import { IMessage } from '@/api/endpoints/ai-assistant/typing';
 import { Spinner } from '@/shared/ui/spinner';
 import ReactMarkdown from 'react-markdown';
 import { AudioPlayer } from '../../audio-player';
-
-interface IChatMessageHistoryProps {
-  messages: IMessage[];
-  isLoading?: boolean;
-}
-
-const isAudioUrl = (text: string) => {
-  return text.startsWith('http://') || text.startsWith('https://') || text.startsWith('blob:');
-};
+import { IChatMessageHistoryProps } from './typing';
+import { isAudioUrl } from '@/shared/lib/utils';
 
 export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
   const { messages, isLoading } = props;
+
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   const scrollToBottom = () => {

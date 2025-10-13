@@ -4,7 +4,9 @@ import React from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { ChatHistory } from '@/shared/components/ai-assistant-chat';
 import { routes } from '@/shared/constants/routes';
-export default function AiAssistantLayout({ children }: { children: React.ReactNode }) {
+import { PropsWithChildren } from 'react';
+
+export default function AiAssistantLayout({ children }: PropsWithChildren) {
   const router = useRouter();
   const params = useParams();
 

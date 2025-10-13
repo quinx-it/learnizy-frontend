@@ -1,20 +1,17 @@
 'use client';
 
-import React, { useState, useRef, FC } from 'react';
+import React, { useState, useRef, FC, ChangeEvent, KeyboardEvent } from 'react';
 import { MicChatIcon, MicRecordIcon, AttachIcon, SendIcon } from '@/shared/ui/icons';
 import { Button } from '@/shared/ui/button';
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
 import { showToast } from '@/shared/ui/toaster';
 import { Spinner } from '@/shared/ui/spinner';
-
-interface IChatInputProps {
-  onSendMessage: (message: string) => void;
-  isLoading?: boolean;
-}
-const MIN_RECORDING_DURATION_MS = 500;
+import { IChatInputProps } from './typing';
+import { MIN_RECORDING_DURATION_MS } from './constants';
 
 export const ChatInput: FC<IChatInputProps> = (props) => {
   const { onSendMessage, isLoading } = props;
+
   const [inputValue, setInputValue] = useState('');
   const [isRecording, setIsRecording] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -95,14 +92,14 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
     }
   };
 
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleKeyPress = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === 'Enter' && !event.shiftKey && !isDisabled) {
       event.preventDefault();
       handleSendClick();
     }
   };
 
-  const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleInput = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(e.target.value);
     const el = e.target;
     el.style.height = 'auto';
