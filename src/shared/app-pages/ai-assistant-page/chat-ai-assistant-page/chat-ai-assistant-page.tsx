@@ -20,7 +20,6 @@ export const ChatAiAssistantPage = () => {
   const {
     data: messagesFromServer,
     isLoading: isLoadingMessages,
-    isFetching,
     refetch,
   } = useGetChatMessagesQuery(chatId!, {
     skip: !chatId,
