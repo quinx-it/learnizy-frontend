@@ -4,6 +4,6 @@ export interface IChatMessageHistoryProps {
 }
 
 export interface IMessage {
-  role: 'user' | 'assistant';
+  role: 'USER' | 'ASSISTANT';
   content: string;
 }

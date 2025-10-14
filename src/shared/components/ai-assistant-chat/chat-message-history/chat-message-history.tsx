@@ -30,24 +30,22 @@ export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
   }
 
   return (
-    <div className="no-scrollbar h-full w-full max-w-[666px] overflow-y-auto px-2 pt-6">
+    <div className="no-scrollbar h-full w-full max-w-[666px] overflow-y-auto px-4 pt-6">
       {messages.map((message, index) => (
         <div
           key={index}
-          className={`mb-8 flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+          className={`mb-8 flex ${message.role === 'USER' ? 'justify-end' : 'justify-start'}`}
         >
           <div
-            className={`max-w-2xl rounded-3xl py-2 ${
-              message.role === 'user' ? 'bg-[#238BA7] text-white' : ''
+            className={`max-w-[90%] rounded-3xl px-4 py-2 break-words md:max-w-2xl ${
+              message.role === 'USER' ? 'bg-[#238BA7] text-white' : ''
             }`}
           >
-            {message.role === 'user' ? (
+            {message.role === 'USER' ? (
               isAudioUrl(message.content) ? (
-                <div className="px-4">
-                  <AudioPlayer src={message.content} />
-                </div>
+                <AudioPlayer src={message.content} />
               ) : (
-                <Text variant="m" className="max-w-[400px] px-6 text-base">
+                <Text variant="m" className="text-base">
                   {message.content}
                 </Text>
               )

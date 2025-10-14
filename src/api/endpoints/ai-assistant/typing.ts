@@ -5,7 +5,7 @@ export interface IChat {
 }
 
 export interface IMessage {
-  role: 'user' | 'assistant';
+  role: 'USER' | 'ASSISTANT';
   content: string;
 }
 

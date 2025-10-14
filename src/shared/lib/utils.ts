@@ -92,3 +92,39 @@ export const isAudioUrl = (value: string): boolean => {
     return false;
   }
 };
+
+export const formatRelativeDate = (date: Date): string => {
+  const pluralize = (count: number, words: [string, string, string]): string => {
+    const cases = [2, 0, 1, 1, 1, 2];
+    const index = count % 100 > 4 && count % 100 < 20 ? 2 : cases[Math.min(count % 10, 5)];
+    return words[index];
+  };
+
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const chatDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+  const diffTime = today.getTime() - chatDate.getTime();
+  const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+
+  if (diffDays === 0) return 'Сегодня';
+
+  if (diffDays === 1) return 'Вчера';
+
+  if (diffDays <= 7) {
+    return `${diffDays} ${pluralize(diffDays, ['день', 'дня', 'дней'])} назад`;
+  }
+
+  const weeks = Math.floor(diffDays / 7);
+  if (diffDays <= 30) {
+    return `${weeks} ${pluralize(weeks, ['неделю', 'недели', 'недель'])} назад`;
+  }
+
+  const months = Math.floor(diffDays / 30);
+  if (diffDays <= 365) {
+    return `${months} ${pluralize(months, ['месяц', 'месяца', 'месяцев'])} назад`;
+  }
+
+  const years = Math.floor(diffDays / 365);
+  return `${years} ${pluralize(years, ['год', 'года', 'лет'])} назад`;
+};

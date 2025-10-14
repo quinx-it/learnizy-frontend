@@ -22,23 +22,24 @@ export const CourseListItem = ({
   onClick,
 }: CourseListItemType) => {
   const progressBarValue = progress ?? 0;
-
   const isBlocked = status === 'BLOCKED';
 
   return (
-    <div className="flex items-center justify-between">
-      <div className="flex items-center gap-2">
-        <Text className="whitespace-nowrap">{`Модуль ${number}`}</Text>
-        <ProgressBar size={12} strokeWidth={2} variant="circular" value={progressBarValue} />
-        <Text variant="m" className="text-medium w-[350px]">
+    <div className="flex w-full flex-col justify-between gap-2 sm:flex-row sm:items-center sm:gap-4">
+      <div className="flex w-full flex-col gap-1 sm:flex-1 sm:flex-row sm:items-center sm:gap-4">
+        <div className="flex flex-row items-center gap-2 sm:gap-4">
+          <Text className="text-sm whitespace-nowrap sm:text-base">{`Модуль ${number}`}</Text>
+          <ProgressBar size={12} strokeWidth={2} variant="circular" value={progressBarValue} />
+        </div>
+        <Text variant="m" className="text-medium w-full break-words sm:w-auto">
           {title}
         </Text>
       </div>
       {status && (
         <Button
-          variant={'blue'}
+          variant="blue"
           size="small"
-          className={cn('!h-8 !px-10 !py-1', {
+          className={cn('!h-8 !w-32 flex-shrink-0 !px-4 !py-1', {
             'cursor-not-allowed opacity-50': isBlocked,
           })}
           onClick={isBlocked ? undefined : onClick}
