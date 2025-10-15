@@ -23,7 +23,7 @@ export const AiAssistantPage = () => {
       const newChatId = newChatResponse.chatId;
       await sendMessage({
         chatId: newChatId,
-        data: data,
+        data,
       }).unwrap();
 
       router.push(`${routes.user.aiAssistant}/chat/${newChatId}`);

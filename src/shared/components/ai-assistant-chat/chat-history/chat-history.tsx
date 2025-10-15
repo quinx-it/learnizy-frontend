@@ -11,20 +11,26 @@ import { formatRelativeDate } from '@/shared/lib/utils';
 import { HistoryIcon } from '@/shared/ui/icons/history-icon';
 export const ChatHistory: FC<IChatHistoryProps> = (props) => {
   const { selectedChatId, onSelectChat, onCreateChat } = props;
+
   const [isOpen, setIsOpen] = useState(false);
 
   const { data: chats, isLoading, isError } = useGetChatsQuery();
 
-  const groupChatsByDate = (chatList: IChat[] | undefined) => {
+  const groupChatsByDate = (chatList?: IChat[] | undefined) => {
     if (!chatList) return {};
+
     const validChats = chatList.filter((chat) => chat.updatedAt);
     const sortedChats = [...validChats].sort(
       (a, b) => new Date(b.updatedAt!).getTime() - new Date(a.updatedAt!).getTime(),
     );
+
     return sortedChats.reduce((groups: { [key: string]: IChat[] }, chat) => {
       const groupKey = formatRelativeDate(new Date(chat.updatedAt!));
+
       if (!groups[groupKey]) groups[groupKey] = [];
+
       groups[groupKey].push(chat);
+
       return groups;
     }, {});
   };

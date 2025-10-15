@@ -5,14 +5,12 @@ import { Text } from '@/shared/ui/typography';
 import { Spinner } from '@/shared/ui/spinner';
 import ReactMarkdown from 'react-markdown';
 import { AudioPlayer } from '../../audio-player';
-import { IChatMessageHistoryProps } from './typing';
+import { IChatMessageHistoryProps, Role } from './typing';
 import { isAudioUrl } from '@/shared/lib/utils';
 import { Typewriter } from '../chat-typewriter';
 import { usePrevious } from '@/shared/hooks/use-previous';
 
-export const ChatMessageHistory: FC<
-  IChatMessageHistoryProps & { isWaitingForAssistant?: boolean }
-> = (props) => {
+export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
   const { messages, isLoading, isWaitingForAssistant } = props;
 
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
@@ -43,21 +41,21 @@ export const ChatMessageHistory: FC<
       {messages.map((message, index) => {
         const shouldAnimate =
           index === messages.length - 1 &&
-          message.role !== 'USER' &&
+          message.role !== Role.USER &&
           prevIsWaiting === true &&
           isWaitingForAssistant === false;
 
         return (
           <div
             key={index}
-            className={`mb-8 flex ${message.role === 'USER' ? 'justify-end' : 'justify-start'}`}
+            className={`mb-8 flex ${message.role === Role.USER ? 'justify-end' : 'justify-start'}`}
           >
             <div
               className={`max-w-[90%] rounded-3xl px-4 py-2 break-words md:max-w-2xl ${
-                message.role === 'USER' ? 'bg-[#238BA7] text-white' : ''
+                message.role === Role.USER ? 'bg-[#238BA7] text-white' : ''
               }`}
             >
-              {message.role === 'USER' ? (
+              {message.role === Role.USER ? (
                 isAudioUrl(message.audioFileUrl || '') ? (
                   <AudioPlayer
                     src={message.audioFileUrl || ''}
@@ -75,22 +73,24 @@ export const ChatMessageHistory: FC<
                   <ReactMarkdown>{message.content}</ReactMarkdown>
                 </div>
               )}
-              {message.role === 'USER' && message.attachments && message.attachments.length > 0 && (
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {message.attachments.map((att, idx) => (
-                    <a
-                      key={idx}
-                      href={att.downloadUrl}
-                      download={att.originalFilename}
-                      className="text-black-800 flex items-center gap-2 rounded-full py-1 text-sm transition-colors hover:text-gray-300"
-                    >
-                      <span className="max-w-[150px] truncate" title={att.originalFilename}>
-                        {att.originalFilename}
-                      </span>
-                    </a>
-                  ))}
-                </div>
-              )}
+              {message.role === Role.USER &&
+                message.attachments &&
+                message.attachments.length > 0 && (
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {message.attachments.map((att, idx) => (
+                      <a
+                        key={idx}
+                        href={att.downloadUrl}
+                        download={att.originalFilename}
+                        className="text-black-800 flex items-center gap-2 rounded-full py-1 text-sm transition-colors hover:text-gray-300"
+                      >
+                        <span className="max-w-[150px] truncate" title={att.originalFilename}>
+                          {att.originalFilename}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                )}
             </div>
           </div>
         );

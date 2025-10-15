@@ -15,9 +15,7 @@ export const Typewriter: FC<ITypewriterProps> = (props) => {
       if (i < text.length) {
         setDisplayedText((prev) => prev + text.charAt(i));
         i++;
-        if (onUpdate) {
-          onUpdate();
-        }
+        onUpdate?.();
       } else {
         clearInterval(timer);
       }

@@ -6,10 +6,10 @@ import { Button } from '@/shared/ui/button';
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
 import { showToast } from '@/shared/ui/toaster';
 import { Spinner } from '@/shared/ui/spinner';
-import {} from '@/shared/ui/icons';
 import { IChatInputProps, IAttachment, ILocalFile } from './typing';
 import { MIN_RECORDING_DURATION_MS } from './constants';
 import { X } from 'lucide-react';
+import { nanoid } from 'nanoid';
 
 export const ChatInput: FC<IChatInputProps> = (props) => {
   const { onSendMessage, isLoading } = props;
@@ -28,14 +28,12 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
   const [uploadVoice, { isLoading: isUploading }] = useUploadVoiceMutation();
   const isDisabled = isLoading || isUploading;
 
-  const generateId = () => Date.now() + Math.random().toString(36).substring(2, 9);
-
-  const handleFileSelect = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleFileSelect = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files || files.length === 0) return;
 
     const newFiles: ILocalFile[] = Array.from(files).map((file) => ({
-      id: generateId(),
+      id: nanoid(),
       file,
     }));
 

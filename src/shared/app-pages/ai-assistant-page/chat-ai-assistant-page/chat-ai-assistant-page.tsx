@@ -4,8 +4,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import { ChatInput, ChatMessageHistory } from '@/shared/components/ai-assistant-chat';
 import { useGetChatMessagesQuery, useSendMessageMutation } from '@/api/endpoints/ai-assistant';
-import { IMessage, ISendMessageRequest } from '@/api/endpoints/ai-assistant/typing';
+import { IMessage, ISendMessageRequest, Role } from '@/api/endpoints/ai-assistant/typing';
 import { showToast } from '@/shared/ui/toaster';
+import { POLLING_INTERVAL } from './constants';
 
 export const ChatAiAssistantPage = () => {
   const params = useParams();
@@ -31,7 +32,7 @@ export const ChatAiAssistantPage = () => {
 
       const lastMessage = messagesFromServer[messagesFromServer.length - 1];
 
-      if (!lastMessage || lastMessage.role === 'ASSISTANT') {
+      if (!lastMessage || lastMessage.role === Role.ASSISTANT) {
         setIsWaitingForAssistant(false);
         if (pollingInterval.current) {
           clearInterval(pollingInterval.current);
@@ -40,12 +41,13 @@ export const ChatAiAssistantPage = () => {
         return;
       }
 
-      if (lastMessage.role === 'USER') {
+      if (lastMessage.role === Role.USER) {
         setIsWaitingForAssistant(true);
+
         if (!pollingInterval.current) {
           pollingInterval.current = setInterval(() => {
             refetch();
-          }, 500);
+          }, POLLING_INTERVAL);
         }
       }
     }
@@ -64,7 +66,7 @@ export const ChatAiAssistantPage = () => {
     }
 
     const optimisticMessage: IMessage = {
-      role: 'USER',
+      role: Role.USER,
       content: data.text || '',
       audioFileUrl: data.audioFileUrl || null,
       voiceTranscript: data.text || null,

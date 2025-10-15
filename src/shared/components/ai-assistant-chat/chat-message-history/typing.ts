@@ -3,9 +3,13 @@ export interface IChatMessageHistoryProps {
   isLoading?: boolean;
   isWaitingForAssistant?: boolean;
 }
+export enum Role {
+  USER = 'USER',
+  ASSISTANT = 'ASSISTANT',
+}
 
 export interface IMessage {
-  role: 'USER' | 'ASSISTANT';
+  role: Role;
   content: string;
   audioFileUrl?: string | null;
   voiceTranscript?: string | null;

@@ -4,9 +4,14 @@ export interface IChat {
   updatedAt: string | null;
 }
 
+export enum Role {
+  USER = 'USER',
+  ASSISTANT = 'ASSISTANT',
+}
+
 export interface IMessage {
   content: string;
-  role: 'USER' | 'ASSISTANT';
+  role: Role;
   audioFileUrl: string | null;
   voiceTranscript: string | null;
   attachments: IAttachment[];
