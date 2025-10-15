@@ -42,7 +42,7 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
 
   return (
     <>
-      <div className="right-none fixed top-6 z-40 ml-4 md:right-4 lg:hidden">
+      <div className="right-none fixed top-4 z-40 ml-6 md:right-4 lg:hidden">
         <Button
           variant="blue"
           size="small"

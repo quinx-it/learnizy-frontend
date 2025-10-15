@@ -5,6 +5,8 @@ import {
   ISendMessageRequest,
   IGetChatsApiResponse,
   ICreateChatApiResponse,
+  IGetChatMessagesApiResponse,
+  IGetChatMessagesTransformedResponse,
 } from './typing';
 
 const AI_CHAT_URL = '/ai-companion/chats';
@@ -22,8 +24,14 @@ export const aiAssistantApi = api.injectEndpoints({
       },
     }),
 
-    getChatMessages: builder.query<IMessage[], number>({
+    getChatMessages: builder.query<IGetChatMessagesTransformedResponse, number>({
       query: (chatId) => `${AI_CHAT_URL}/${chatId}/messages`,
+      transformResponse: (response: IGetChatMessagesApiResponse) => {
+        return {
+          title: response.title,
+          messages: response.messages,
+        };
+      },
     }),
 
     createChat: builder.mutation<ICreateChatApiResponse, void>({

@@ -86,7 +86,7 @@ export const ExamTestResultPage: FC<ExamTestResultPagePropsType> = (props) => {
                 >
                   {idx + 1}. {a.questionText}
                 </Text>
-                <Text variant="m" className="text-medium">
+                <Text variant="m" className="text-medium break-words">
                   Ваш ответ: {a.textAnswer || a.voiceTranscript || '—'}
                 </Text>
                 <Text variant="m" className={evaluation.color}>
