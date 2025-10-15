@@ -5,13 +5,24 @@ export interface IChat {
 }
 
 export interface IMessage {
-  role: 'USER' | 'ASSISTANT';
   content: string;
+  role: 'USER' | 'ASSISTANT';
+  audioFileUrl: string | null;
+  voiceTranscript: string | null;
+  attachments: IAttachment[];
 }
 
 export interface ISendMessageRequest {
-  text: string;
-  audioFileUrl: string;
+  text?: string;
+  audioFileUrl?: string;
+  attachments?: IAttachment[];
+}
+
+export interface IAttachment {
+  downloadUrl: string;
+  originalFilename: string;
+  contentType: string;
+  size: number;
 }
 
 export interface IGetChatsApiResponse {

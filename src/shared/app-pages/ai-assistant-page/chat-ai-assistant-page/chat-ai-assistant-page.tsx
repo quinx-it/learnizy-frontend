@@ -2,10 +2,9 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
-import { ChatInput } from '@/shared/components/ai-assistant-chat';
-import { ChatMessageHistory } from '@/shared/components/ai-assistant-chat';
+import { ChatInput, ChatMessageHistory } from '@/shared/components/ai-assistant-chat';
 import { useGetChatMessagesQuery, useSendMessageMutation } from '@/api/endpoints/ai-assistant';
-import { IMessage } from '@/api/endpoints/ai-assistant/typing';
+import { IMessage, ISendMessageRequest } from '@/api/endpoints/ai-assistant/typing';
 import { showToast } from '@/shared/ui/toaster';
 
 export const ChatAiAssistantPage = () => {
@@ -14,7 +13,6 @@ export const ChatAiAssistantPage = () => {
 
   const pollingInterval = useRef<NodeJS.Timeout | null>(null);
   const [isWaitingForAssistant, setIsWaitingForAssistant] = useState(false);
-
   const [optimisticMessages, setOptimisticMessages] = useState<IMessage[]>([]);
 
   const {
@@ -53,14 +51,13 @@ export const ChatAiAssistantPage = () => {
     }
 
     return () => {
-      if (pollingInterval.current) {
-        clearInterval(pollingInterval.current);
-      }
+      if (pollingInterval.current) clearInterval(pollingInterval.current);
     };
   }, [messagesFromServer, refetch]);
 
-  const handleSendMessage = async (text: string) => {
+  const handleSendMessage = async (data: ISendMessageRequest) => {
     if (!chatId || isSendingMessage || isWaitingForAssistant) return;
+
     if (pollingInterval.current) {
       clearInterval(pollingInterval.current);
       pollingInterval.current = null;
@@ -68,16 +65,18 @@ export const ChatAiAssistantPage = () => {
 
     const optimisticMessage: IMessage = {
       role: 'USER',
-      content: text,
+      content: data.text || '',
+      audioFileUrl: data.audioFileUrl || null,
+      voiceTranscript: data.text || null,
+      attachments: data.attachments || [],
     };
+
     setOptimisticMessages((prev) => [...prev, optimisticMessage]);
     setIsWaitingForAssistant(true);
 
     try {
-      await sendMessage({
-        chatId: chatId,
-        data: { text: text, audioFileUrl: '' },
-      }).unwrap();
+      await sendMessage({ chatId, data }).unwrap();
+      await refetch();
     } catch {
       showToast('error', 'Не удалось отправить сообщение', '');
       setOptimisticMessages((prev) => prev.slice(0, -1));
@@ -85,9 +84,7 @@ export const ChatAiAssistantPage = () => {
     }
   };
 
-  if (!chatId) {
-    return null;
-  }
+  if (!chatId) return null;
 
   return (
     <div className="relative flex h-screen w-full flex-col items-center justify-center">
@@ -95,8 +92,10 @@ export const ChatAiAssistantPage = () => {
         <ChatMessageHistory
           messages={optimisticMessages}
           isLoading={isLoadingMessages && optimisticMessages.length === 0}
+          isWaitingForAssistant={isWaitingForAssistant}
         />
       </div>
+
       <div className="mb-4 flex h-9 w-full justify-center" />
       <div className="absolute bottom-0 flex w-full justify-center bg-none p-4">
         <ChatInput

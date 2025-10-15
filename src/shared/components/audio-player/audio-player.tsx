@@ -1,19 +1,21 @@
 'use client';
 
-import { PlayPauseIcon } from '@/shared/ui/icons';
-import React, { useEffect, useRef, useState } from 'react';
+import { PlayPauseIcon, AaIcon, ArrowCloseIcon } from '@/shared/ui/icons';
+import React, { useEffect, useRef, useState, FC } from 'react';
 import WaveSurfer from 'wavesurfer.js';
+import { Text } from '@/shared/ui/typography';
+import { IAudioPlayerProps } from './typings';
 
-interface AudioPlayerProps {
-  src: string;
-}
+export const AudioPlayer: FC<IAudioPlayerProps> = (props) => {
+  const { src, transcript } = props;
 
-export const AudioPlayer = ({ src }: AudioPlayerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const wavesurferRef = useRef<WaveSurfer | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [time, setTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [showTranscript, setShowTranscript] = useState(false);
+  const transcriptRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -60,6 +62,10 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
     setIsPlaying(wavesurferRef.current.isPlaying());
   };
 
+  const toggleTranscript = () => {
+    setShowTranscript((prev) => !prev);
+  };
+
   const formatTime = (sec: number) => {
     const m = Math.floor(sec / 60);
     const s = Math.floor(sec % 60)
@@ -69,18 +75,43 @@ export const AudioPlayer = ({ src }: AudioPlayerProps) => {
   };
 
   return (
-    <div className="border-medium flex w-100 items-center justify-between gap-4 rounded-full border-[1.25px]">
-      <span className="text-medium w-fit text-[16px] text-white">
-        {formatTime(time)}/{formatTime(duration)}
-      </span>
+    <div>
+      <div className="border-medium flex h-[24px] w-100 items-center justify-between gap-2 rounded-full p-1">
+        <span className="text-medium w-fit text-[16px] text-white">
+          {formatTime(time)}/{formatTime(duration)}
+        </span>
 
-      <div ref={containerRef} className="h-[24px] flex-1" />
+        <div ref={containerRef} className="h-[20px] flex-1" />
 
-      <div className="flex items-center gap-2">
-        <button type="button" onClick={togglePlay} className="text-medium w-6">
-          <PlayPauseIcon color="white" isPlaying={isPlaying} />
-        </button>
+        <div className="flex items-center">
+          <button type="button" onClick={togglePlay} className="text-medium mr-1.5 w-6">
+            <PlayPauseIcon color="white" isPlaying={isPlaying} />
+          </button>
+          {transcript && (
+            <button
+              type="button"
+              onClick={toggleTranscript}
+              className="rounded py-1 text-sm text-white"
+            >
+              {showTranscript ? <ArrowCloseIcon /> : <AaIcon />}
+            </button>
+          )}
+        </div>
       </div>
+
+      {transcript && (
+        <div
+          ref={transcriptRef}
+          className={`overflow-hidden transition-[max-height] duration-500 ease-in-out`}
+          style={{
+            maxHeight: showTranscript ? transcriptRef.current?.scrollHeight + 'px' : '0px',
+          }}
+        >
+          <Text variant="m" className="mt-3 text-base text-white">
+            {transcript}
+          </Text>
+        </div>
+      )}
     </div>
   );
 };
