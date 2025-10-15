@@ -28,7 +28,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
   const [uploadVoice, { isLoading: isUploading }] = useUploadVoiceMutation();
   const isDisabled = isLoading || isUploading;
 
-    const handleFileSelect = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelect = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files || files.length === 0) return;
 
