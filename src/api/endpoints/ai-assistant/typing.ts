@@ -1,12 +1,9 @@
+import { Role } from './constants';
+
 export interface IChat {
   id: number;
   title: string | null;
   updatedAt: string | null;
-}
-
-export enum Role {
-  USER = 'USER',
-  ASSISTANT = 'ASSISTANT',
 }
 
 export interface IMessage {

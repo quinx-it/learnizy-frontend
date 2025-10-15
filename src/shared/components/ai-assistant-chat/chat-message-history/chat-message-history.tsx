@@ -5,10 +5,12 @@ import { Text } from '@/shared/ui/typography';
 import { Spinner } from '@/shared/ui/spinner';
 import ReactMarkdown from 'react-markdown';
 import { AudioPlayer } from '../../audio-player';
-import { IChatMessageHistoryProps, Role } from './typing';
+import { IChatMessageHistoryProps } from './typing';
+import { Role } from './constants';
 import { isAudioUrl } from '@/shared/lib/utils';
 import { Typewriter } from '../chat-typewriter';
 import { usePrevious } from '@/shared/hooks/use-previous';
+import clsx from 'clsx';
 
 export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
   const { messages, isLoading, isWaitingForAssistant } = props;
@@ -48,12 +50,15 @@ export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
         return (
           <div
             key={index}
-            className={`mb-8 flex ${message.role === Role.USER ? 'justify-end' : 'justify-start'}`}
+            className={clsx('mb-8 flex', {
+              'justify-end': message.role === Role.USER,
+              'justify-start': message.role !== Role.USER,
+            })}
           >
             <div
-              className={`max-w-[90%] rounded-3xl px-4 py-2 break-words md:max-w-2xl ${
-                message.role === Role.USER ? 'bg-[#238BA7] text-white' : ''
-              }`}
+              className={clsx('max-w-[90%] rounded-3xl px-4 py-2 break-words md:max-w-2xl', {
+                'bg-[#238BA7] text-white': message.role === Role.USER,
+              })}
             >
               {message.role === Role.USER ? (
                 isAudioUrl(message.audioFileUrl || '') ? (

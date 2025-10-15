@@ -10,6 +10,7 @@ import { IChatInputProps, IAttachment, ILocalFile } from './typing';
 import { MIN_RECORDING_DURATION_MS } from './constants';
 import { X } from 'lucide-react';
 import { nanoid } from 'nanoid';
+import clsx from 'clsx';
 
 export const ChatInput: FC<IChatInputProps> = (props) => {
   const { onSendMessage, isLoading } = props;
@@ -30,7 +31,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
 
   const handleFileSelect = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    
+
     if (!files || files.length === 0) return;
 
     const newFiles: ILocalFile[] = Array.from(files).map((file) => ({
@@ -171,9 +172,13 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
 
   return (
     <div
-      className={`relative flex w-full max-w-[666px] border border-gray-300 bg-white p-3 shadow-lg ${
-        isComponentExpanded ? 'h-auto items-end rounded-3xl' : 'h-[48px] items-center rounded-full'
-      }`}
+      className={clsx(
+        'relative flex w-full max-w-[666px] border border-gray-300 bg-white p-3 shadow-lg',
+        {
+          'h-auto items-end rounded-3xl': isComponentExpanded,
+          'h-[48px] items-center rounded-full': !isComponentExpanded,
+        },
+      )}
     >
       {attachedFiles.length > 0 && (
         <div className="absolute top-2 left-3 z-10 flex flex-wrap gap-2">
@@ -206,9 +211,13 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       <textarea
         ref={textareaRef}
         placeholder="Напишите ваш вопрос"
-        className={`scrollbar-thin scrollbar-thumb-gray-300 scrollbar-thumb-rounded-lg flex-1 resize-none overflow-y-auto bg-transparent px-3 text-[16px] text-black placeholder-gray-400 outline-none ${
-          attachedFiles.length > 0 ? 'mt-8 mb-2' : 'mt-0 mb-0'
-        }`}
+        className={clsx(
+          'scrollbar-thin scrollbar-thumb-gray-300 scrollbar-thumb-rounded-lg flex-1 resize-none overflow-y-auto bg-transparent px-3 text-[16px] text-black placeholder-gray-400 outline-none',
+          {
+            'mt-8 mb-2': attachedFiles.length > 0,
+            'mt-0 mb-0': attachedFiles.length === 0,
+          },
+        )}
         value={inputValue}
         onChange={handleInput}
         onKeyDown={handleKeyPress}
@@ -217,9 +226,12 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       />
 
       <button
-        className={`flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition hover:bg-[#E8F8FC] ${
-          isRecording ? 'bg-red-500 text-white' : ''
-        }`}
+        className={clsx(
+          'flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition hover:bg-[#E8F8FC]',
+          {
+            'bg-red-500 text-white': isRecording,
+          },
+        )}
         onMouseDown={startRecording}
         onMouseUp={stopRecording}
         onTouchStart={startRecording}

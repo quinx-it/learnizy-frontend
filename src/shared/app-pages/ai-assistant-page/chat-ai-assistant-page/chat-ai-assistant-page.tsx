@@ -4,7 +4,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'next/navigation';
 import { ChatInput, ChatMessageHistory } from '@/shared/components/ai-assistant-chat';
 import { useGetChatMessagesQuery, useSendMessageMutation } from '@/api/endpoints/ai-assistant';
-import { IMessage, ISendMessageRequest, Role } from '@/api/endpoints/ai-assistant/typing';
+import { IMessage, ISendMessageRequest } from '@/api/endpoints/ai-assistant/typing';
+import { Role } from '@/api/endpoints/ai-assistant/constants';
 import { showToast } from '@/shared/ui/toaster';
 import { POLLING_INTERVAL } from './constants';
 
@@ -34,7 +35,7 @@ export const ChatAiAssistantPage = () => {
 
       if (!lastMessage || lastMessage.role === Role.ASSISTANT) {
         setIsWaitingForAssistant(false);
-        
+
         if (pollingInterval.current) {
           clearInterval(pollingInterval.current);
           pollingInterval.current = null;

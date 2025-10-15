@@ -13,6 +13,8 @@ import { Text } from '@/shared/ui/typography';
 import { useLogout } from '@/shared/hooks/useLogout';
 import { ComponentType } from 'react';
 import { CubesMainIcon } from '@/shared/ui/icons/cubes-main-icon';
+import clsx from 'clsx';
+
 interface LinkType {
   href: string;
   Icon: ComponentType<{ className?: string }>;
@@ -73,9 +75,13 @@ export const Navbar = ({ links }: NavbarProps) => {
             onClick={() => setIsOpen(false)}
           />
           <div
-            className={`bg-light fixed top-0 left-0 z-40 z-50 flex h-full w-[80%] max-w-[200px] transform flex-col items-start justify-start rounded-r-4xl p-6 shadow-lg transition-transform duration-300 md:hidden ${
-              isOpen ? 'translate-x-0' : '-translate-x-full'
-            }`}
+            className={clsx(
+              'bg-light fixed top-0 left-0 z-40 z-50 flex h-full w-[80%] max-w-[200px] transform flex-col items-start justify-start rounded-r-4xl p-6 shadow-lg transition-transform duration-300 md:hidden',
+              {
+                'translate-x-0': isOpen,
+                '-translate-x-full': !isOpen,
+              },
+            )}
           >
             <Link
               href={routes.user.homePage}

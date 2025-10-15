@@ -9,6 +9,8 @@ import { IChat } from '@/api/endpoints/ai-assistant/typing';
 import { IChatHistoryProps } from './typing';
 import { formatRelativeDate } from '@/shared/lib/utils';
 import { HistoryIcon } from '@/shared/ui/icons/history-icon';
+import clsx from 'clsx';
+
 export const ChatHistory: FC<IChatHistoryProps> = (props) => {
   const { selectedChatId, onSelectChat, onCreateChat } = props;
 
@@ -58,9 +60,13 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
             onClick={() => setIsOpen(false)}
           />
           <div
-            className={`bg-light fixed top-0 left-0 z-50 flex h-full w-[80%] max-w-[280px] transform flex-col rounded-r-4xl p-4 shadow-lg transition-transform duration-300 lg:hidden ${
-              isOpen ? 'translate-x-0' : '-translate-x-full'
-            }`}
+            className={clsx(
+              'bg-light fixed top-0 left-0 z-50 flex h-full w-[80%] max-w-[280px] transform flex-col rounded-r-4xl p-4 shadow-lg transition-transform duration-300 lg:hidden',
+              {
+                'translate-x-0': isOpen,
+                '-translate-x-full': !isOpen,
+              },
+            )}
           >
             <div className="relative mt-2 mb-[32px] flex items-center justify-start gap-3">
               <Button
@@ -111,9 +117,13 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
                   {groupedChats[group].map((chat) => (
                     <div
                       key={chat.id}
-                      className={`mt-2 flex cursor-pointer items-center rounded-2xl p-2 transition last:mb-[10px] ${
-                        selectedChatId === chat.id ? 'bg-gray-200' : 'hover:bg-gray-100'
-                      }`}
+                      className={clsx(
+                        'mt-2 flex cursor-pointer items-center rounded-2xl p-2 transition last:mb-[10px]',
+                        {
+                          'bg-gray-200': selectedChatId === chat.id,
+                          'hover:bg-gray-100': selectedChatId !== chat.id,
+                        },
+                      )}
                       onClick={() => {
                         onSelectChat(chat.id);
                         setIsOpen(false);
@@ -170,9 +180,13 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
                 {groupedChats[group].map((chat) => (
                   <div
                     key={chat.id}
-                    className={`mt-2 flex cursor-pointer items-center rounded-2xl p-2 transition last:mb-[10px] ${
-                      selectedChatId === chat.id ? 'bg-gray-200' : 'hover:bg-gray-100'
-                    }`}
+                    className={clsx(
+                      'mt-2 flex cursor-pointer items-center rounded-2xl p-2 transition last:mb-[10px]',
+                      {
+                        'bg-gray-200': selectedChatId === chat.id,
+                        'hover:bg-gray-100': selectedChatId !== chat.id,
+                      },
+                    )}
                     onClick={() => onSelectChat(chat.id)}
                   >
                     <Text variant={'s'} className="ml-2 truncate">
