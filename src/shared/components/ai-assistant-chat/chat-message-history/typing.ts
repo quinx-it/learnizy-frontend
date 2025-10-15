@@ -7,11 +7,12 @@ export interface IChatMessageHistoryProps {
 }
 
 export interface IMessage {
-  role: Role;
+  id: number;
   content: string;
-  audioFileUrl?: string | null;
-  voiceTranscript?: string | null;
-  attachments?: IAttachment[];
+  role: Role;
+  audioFileUrl: string | null;
+  voiceTranscript: string | null;
+  attachments: IAttachment[];
 }
 
 export interface IAttachment {

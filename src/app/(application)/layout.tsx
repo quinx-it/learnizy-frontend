@@ -65,7 +65,7 @@ const ApplicationLayout = ({ children }: ApplicationLayoutProps) => {
 
   if (role && (!isRoleRoute(role, pathname) || pathname === routes.public.loginPage))
     return <FullscreenLoader />;
-  
+
   if (!isValidRoute(pathname)) return <NotFoundPage />;
 
   return children;

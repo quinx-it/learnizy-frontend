@@ -81,21 +81,6 @@ export const LessonQuestion = ({
               )}
             />
           )}
-
-          {!answerValue && (
-            <Controller
-              name={fileFieldName}
-              control={control}
-              render={({ field }) => (
-                <VoiceRecorderControl
-                  onChange={(file) => {
-                    setValue(answerFieldName, '');
-                    field.onChange(file);
-                  }}
-                />
-              )}
-            />
-          )}
         </>
       )}
 

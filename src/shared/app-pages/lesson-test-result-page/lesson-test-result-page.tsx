@@ -2,7 +2,7 @@
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { globalConstants, routes } from '@/shared/constants';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Text } from '@/shared/ui/typography';
 import { useGetLastTestAttemptQuery, useGetTestByLessonIdQuery } from '@/api/endpoints/test';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
@@ -31,13 +31,35 @@ export const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) =
     isLoading,
     isError,
     refetch,
-  } = useGetLastTestAttemptQuery(Number(lessonTest?.id));
+  } = useGetLastTestAttemptQuery(Number(lessonTest?.id), {
+    skip: !lessonTest?.id,
+  });
 
-  if (isLoading) return <FullscreenLoader />;
-  if (isError || !testResult) return <ErrorSection reset={refetch} />;
+  useEffect(() => {
+    if (!lessonTest?.id) return;
+
+    if (!testResult) {
+      const interval = setInterval(() => {
+        refetch();
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+
+    if (testResult.status === 'SUBMITTED') {
+      const interval = setInterval(() => {
+        refetch();
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [lessonTest?.id, testResult?.status, refetch]);
+
+  if (!testResult && isLoading) return <FullscreenLoader />;
+  if (isError) return <ErrorSection reset={refetch} />;
+  if (!testResult) return <FullscreenLoader />;
 
   const { moduleSequenceOrder, lessonSequenceOrder } = lessonTest as LessonTestResponseType;
-  const { answers } = testResult;
+  const { answers, status } = testResult;
+
   const totalPoints = answers.reduce((sum, a) => sum + mapEvaluation(a.evaluation).value, 0);
   const scorePercent = answers.length > 0 ? Math.round((totalPoints / answers.length) * 100) : 0;
   const passed = scorePercent >= 70;
@@ -69,12 +91,7 @@ export const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) =
                 Результат: {scorePercent}%
               </Text>
               <Text variant="m" className="text-medium">
-                Статус: {''}
-                {testResult.status === 'SUBMITTED'
-                  ? 'В обработке'
-                  : passed
-                    ? 'Пройден'
-                    : 'Не пройден'}
+                Статус: {status === 'SUBMITTED' ? 'В обработке' : passed ? 'Пройден' : 'Не пройден'}
               </Text>
             </div>
           </div>
@@ -91,9 +108,10 @@ export const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) =
                 >
                   {idx + 1}. {a.questionText}
                 </Text>
-                <Text variant="m" className="text-medium">
+                <Text variant="m" className="text-medium break-words">
                   Ваш ответ: {a.textAnswer || a.voiceTranscript || '—'}
                 </Text>
+
                 <Text variant="m" className={evaluation.color}>
                   {evaluation.text}
                 </Text>

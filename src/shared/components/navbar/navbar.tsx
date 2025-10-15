@@ -30,7 +30,7 @@ export const Navbar = ({ links }: NavbarProps) => {
 
   return (
     <>
-      <div className="fixed top-4 right-4 z-30 md:hidden">
+      <div className="fixed top-4 right-6 z-30 md:hidden">
         <Button
           variant="blue"
           size="small"
@@ -41,7 +41,7 @@ export const Navbar = ({ links }: NavbarProps) => {
         </Button>
       </div>
 
-      <nav className="bg-light box-shadow hidden w-[100px] flex-col rounded-e-4xl px-6 py-8 md:flex lg:w-[230px]">
+      <nav className="bg-light box-shadow z-40 hidden w-[100px] flex-col rounded-e-4xl px-6 py-8 md:flex lg:w-[230px]">
         <Link href={routes.user.homePage} className="mb-15 block">
           <HeaderLogo />
         </Link>

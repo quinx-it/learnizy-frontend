@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import { ITypewriterProps } from './typing';
 
 export const Typewriter: FC<ITypewriterProps> = (props) => {
-  const { text, speed = 2, onUpdate } = props;
+  const { text, speed = 1, onUpdate } = props;
 
   const [displayedText, setDisplayedText] = useState('');
 

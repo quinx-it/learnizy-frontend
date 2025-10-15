@@ -7,6 +7,7 @@ export interface IChat {
 }
 
 export interface IMessage {
+  id: number;
   content: string;
   role: Role;
   audioFileUrl: string | null;
@@ -38,4 +39,15 @@ export interface IGetChatsApiResponse {
 
 export interface ICreateChatApiResponse {
   chatId: number;
+}
+
+export interface IGetChatMessagesApiResponse {
+  chatId: number;
+  title: string;
+  messages: IMessage[];
+}
+
+export interface IGetChatMessagesTransformedResponse {
+  title: string;
+  messages: IMessage[];
 }

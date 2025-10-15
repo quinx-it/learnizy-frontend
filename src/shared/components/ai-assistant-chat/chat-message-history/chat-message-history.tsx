@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, FC } from 'react';
+import React, { useRef, useEffect, FC } from 'react';
 import { Text } from '@/shared/ui/typography';
 import { Spinner } from '@/shared/ui/spinner';
 import ReactMarkdown from 'react-markdown';
@@ -15,20 +15,20 @@ import clsx from 'clsx';
 export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
   const { messages, isLoading, isWaitingForAssistant } = props;
 
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const prevMessages = usePrevious(messages);
   const prevIsWaiting = usePrevious(isWaitingForAssistant);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'auto' });
-  };
-
-  const smoothScrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToBottom = (behavior: ScrollBehavior = 'smooth') => {
+    messagesEndRef.current?.scrollIntoView({ behavior });
   };
 
   useEffect(() => {
-    smoothScrollToBottom();
-  }, [messages, isWaitingForAssistant]);
+    if (!prevMessages || messages.length > prevMessages.length) {
+      scrollToBottom();
+    }
+  }, [messages, prevMessages]);
 
   if (isLoading && messages.length === 0) {
     return (
@@ -39,7 +39,10 @@ export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
   }
 
   return (
-    <div className="no-scrollbar h-full w-full max-w-[666px] overflow-y-auto px-4 pt-6">
+    <div
+      ref={scrollContainerRef}
+      className="no-scrollbar mt-30 h-full w-full max-w-[690px] overflow-y-auto px-2 pt-6 lg:mt-30"
+    >
       {messages.map((message, index) => {
         const shouldAnimate =
           index === messages.length - 1 &&
@@ -49,14 +52,14 @@ export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
 
         return (
           <div
-            key={index}
+            key={message.id}
             className={clsx('mb-8 flex', {
               'justify-end': message.role === Role.USER,
               'justify-start': message.role !== Role.USER,
             })}
           >
             <div
-              className={clsx('max-w-[90%] rounded-3xl px-4 py-2 break-words md:max-w-2xl', {
+              className={clsx('mr-2 max-w-[90%] rounded-3xl px-4 py-2 break-words md:max-w-2xl', {
                 'bg-[#238BA7] text-white': message.role === Role.USER,
               })}
             >
@@ -72,7 +75,7 @@ export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
                   </Text>
                 )
               ) : shouldAnimate ? (
-                <Typewriter text={message.content} onUpdate={scrollToBottom} />
+                <Typewriter text={message.content} />
               ) : (
                 <div className="prose prose-sm max-w-none">
                   <ReactMarkdown>{message.content}</ReactMarkdown>
@@ -82,9 +85,9 @@ export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
                 message.attachments &&
                 message.attachments.length > 0 && (
                   <div className="mt-2 flex flex-wrap gap-2">
-                    {message.attachments.map((att, idx) => (
+                    {message.attachments.map((att) => (
                       <a
-                        key={idx}
+                        key={att.downloadUrl}
                         href={att.downloadUrl}
                         download={att.originalFilename}
                         className="text-black-800 flex items-center gap-2 rounded-full py-1 text-sm transition-colors hover:text-gray-300"

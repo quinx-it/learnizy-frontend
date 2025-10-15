@@ -14,60 +14,51 @@ export const ChatAiAssistantPage = () => {
   const chatId = params.id ? parseInt(params.id as string, 10) : null;
 
   const pollingInterval = useRef<NodeJS.Timeout | null>(null);
-  const [isWaitingForAssistant, setIsWaitingForAssistant] = useState(false);
   const [optimisticMessages, setOptimisticMessages] = useState<IMessage[]>([]);
 
   const {
-    data: messagesFromServer,
+    data: chatData,
     isLoading: isLoadingMessages,
     refetch,
-  } = useGetChatMessagesQuery(chatId!, {
-    skip: !chatId,
-  });
+  } = useGetChatMessagesQuery(chatId!, { skip: !chatId });
 
   const [sendMessage, { isLoading: isSendingMessage }] = useSendMessageMutation();
 
-  useEffect(() => {
-    if (messagesFromServer) {
-      setOptimisticMessages(messagesFromServer);
-
-      const lastMessage = messagesFromServer[messagesFromServer.length - 1];
-
-      if (!lastMessage || lastMessage.role === Role.ASSISTANT) {
-        setIsWaitingForAssistant(false);
-
-        if (pollingInterval.current) {
-          clearInterval(pollingInterval.current);
-          pollingInterval.current = null;
-        }
-        return;
-      }
-
-      if (lastMessage.role === Role.USER) {
-        setIsWaitingForAssistant(true);
-
-        if (!pollingInterval.current) {
-          pollingInterval.current = setInterval(() => {
-            refetch();
-          }, POLLING_INTERVAL);
-        }
-      }
+  const startPolling = () => {
+    if (!pollingInterval.current) {
+      pollingInterval.current = setInterval(() => {
+        refetch();
+      }, POLLING_INTERVAL);
     }
+  };
 
-    return () => {
-      if (pollingInterval.current) clearInterval(pollingInterval.current);
-    };
-  }, [messagesFromServer, refetch]);
-
-  const handleSendMessage = async (data: ISendMessageRequest) => {
-    if (!chatId || isSendingMessage || isWaitingForAssistant) return;
-
+  const stopPolling = () => {
     if (pollingInterval.current) {
       clearInterval(pollingInterval.current);
       pollingInterval.current = null;
     }
+  };
+
+  useEffect(() => {
+    if (!chatData?.messages) return;
+
+    setOptimisticMessages(chatData.messages);
+
+    const userCount = chatData.messages.filter((m) => m.role === Role.USER).length;
+    const assistantCount = chatData.messages.filter((m) => m.role === Role.ASSISTANT).length;
+
+    if (userCount > assistantCount) {
+      startPolling();
+    } else {
+      stopPolling();
+    }
+  }, [chatData]);
+
+  const handleSendMessage = async (data: ISendMessageRequest) => {
+    if (!chatId || isSendingMessage) return;
 
     const optimisticMessage: IMessage = {
+      id: Date.now(),
       role: Role.USER,
       content: data.text || '',
       audioFileUrl: data.audioFileUrl || null,
@@ -76,27 +67,35 @@ export const ChatAiAssistantPage = () => {
     };
 
     setOptimisticMessages((prev) => [...prev, optimisticMessage]);
-    setIsWaitingForAssistant(true);
 
     try {
       await sendMessage({ chatId, data }).unwrap();
-      await refetch();
+      startPolling();
     } catch {
       showToast('error', 'Не удалось отправить сообщение', '');
-      setOptimisticMessages((prev) => prev.slice(0, -1));
-      setIsWaitingForAssistant(false);
+      setOptimisticMessages((prev) => prev.filter((msg) => msg.id !== optimisticMessage.id));
+      stopPolling();
     }
   };
 
+  useEffect(() => {
+    return () => {
+      stopPolling();
+    };
+  }, []);
+
   if (!chatId) return null;
+
+  const userCount = optimisticMessages.filter((m) => m.role === Role.USER).length;
+  const assistantCount = optimisticMessages.filter((m) => m.role === Role.ASSISTANT).length;
 
   return (
     <div className="relative flex h-screen w-full flex-col items-center justify-center">
-      <div className="flex w-full flex-1 items-center justify-center overflow-auto">
+      <div className="no-scrollbar flex w-full flex-1 items-center justify-center overflow-auto">
         <ChatMessageHistory
           messages={optimisticMessages}
           isLoading={isLoadingMessages && optimisticMessages.length === 0}
-          isWaitingForAssistant={isWaitingForAssistant}
+          isWaitingForAssistant={userCount > assistantCount}
         />
       </div>
 
@@ -104,7 +103,7 @@ export const ChatAiAssistantPage = () => {
       <div className="absolute bottom-0 flex w-full justify-center bg-none p-4">
         <ChatInput
           onSendMessage={handleSendMessage}
-          isLoading={isSendingMessage || isWaitingForAssistant}
+          isLoading={isSendingMessage || userCount > assistantCount}
         />
       </div>
     </div>
