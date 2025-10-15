@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { RegisterFormValues, formSchema, verificationSchema } from './validation';
@@ -130,7 +130,14 @@ export const RegisterForm = () => {
             {...registerVerify('code')}
             error={verifyErrors.code?.message}
             inputMode="numeric"
-            className="text-center text-2xl tracking-[0.5em]"
+            className="text-center text-2xl tracking-[0.1em]"
+            maxLength={6}
+            onInput={(e: ChangeEvent<HTMLInputElement>) => {
+              e.currentTarget.value = e.currentTarget.value.replace(/\D/g, '');
+              if (e.currentTarget.value.length > 6) {
+                e.currentTarget.value = e.currentTarget.value.slice(0, 6);
+              }
+            }}
           />
           <div className="text-sm text-gray-500">
             {timer > 0 ? (

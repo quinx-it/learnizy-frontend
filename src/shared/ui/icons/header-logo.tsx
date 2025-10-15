@@ -5,7 +5,7 @@ export const HeaderLogo = ({ className }: IconProps) => {
   return (
     <>
       <svg
-        className={cn(className, 'block lg:hidden')}
+        className={cn(className, 'hidden md:block lg:hidden')}
         width="44"
         height="44"
         viewBox="0 0 44 44"
@@ -16,7 +16,7 @@ export const HeaderLogo = ({ className }: IconProps) => {
         <path d="M18.1462 11.308H20.8062V29.536H28.6462V32H18.1462V11.308Z" fill="#FAFAFA" />
       </svg>
       <svg
-        className={cn(className, 'hidden lg:block')}
+        className={cn(className, 'md:hidden lg:block')}
         width="127"
         height="44"
         viewBox="0 0 127 44"

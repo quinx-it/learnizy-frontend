@@ -36,14 +36,14 @@ export const ProgressCard = ({
 
   return (
     <CardWrapper>
-      <div className="relative flex h-[70px] items-stretch gap-4">
+      <div className="relative flex h-auto items-stretch gap-4">
         {image && (
           <Image width={49} height={58} className="my-auto max-h-[58px]" src={image} alt="rocket" />
         )}
 
-        <div className="flex flex-1 flex-col justify-between">
+        <div className="flex min-w-0 flex-1 flex-col justify-between">
           <DotTitle
-            className="max-w-[370px]"
+            className="mr-[150px] max-w-[370px]"
             firstLabel={title}
             secondLabel={subTitle}
             secondClassName="text-soft"
@@ -60,7 +60,7 @@ export const ProgressCard = ({
                 Уроков: {lessons}/{totalLessons}
               </Text>
             </div>
-            <ProgressBar className="h-1" value={progressValue} />
+            <ProgressBar className="h-1 w-full" value={progressValue} />
           </div>
         </div>
 

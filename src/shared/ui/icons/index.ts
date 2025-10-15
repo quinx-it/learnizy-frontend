@@ -32,3 +32,5 @@ export * from './attach-icon';
 export * from './send-icon';
 export * from './mic-chat-icon';
 export * from './mic-record-icon';
+export * from './Aa-icon';
+export * from './arrow-close-icon';

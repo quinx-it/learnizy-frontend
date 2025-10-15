@@ -8,6 +8,7 @@ import { ChatInput } from '@/shared/components/ai-assistant-chat/chat-input/chat
 import { useCreateChatMutation, useSendMessageMutation } from '@/api/endpoints/ai-assistant';
 import { routes } from '@/shared/constants';
 import { showToast } from '@/shared/ui/toaster';
+import { ISendMessageRequest } from '@/api/endpoints/ai-assistant/typing';
 
 export const AiAssistantPage = () => {
   const router = useRouter();
@@ -16,14 +17,15 @@ export const AiAssistantPage = () => {
 
   const isLoading = isCreatingChat || isSendingMessage;
 
-  const handleStartNewChat = async (text: string) => {
+  const handleStartNewChat = async (data: ISendMessageRequest) => {
     try {
       const newChatResponse = await createChat().unwrap();
       const newChatId = newChatResponse.chatId;
       await sendMessage({
         chatId: newChatId,
-        data: { text: text, audioFileUrl: '' },
+        data,
       }).unwrap();
+
       router.push(`${routes.user.aiAssistant}/chat/${newChatId}`);
     } catch {
       showToast('error', 'Не удалось создать новый чат', '');
