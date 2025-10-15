@@ -1,8 +1,9 @@
 'use client';
+
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { globalConstants, routes } from '@/shared/constants';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import { Text } from '@/shared/ui/typography';
 import { useGetLastTestAttemptQuery, useGetTestByLessonIdQuery } from '@/api/endpoints/test';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
@@ -22,9 +23,7 @@ const mapEvaluation = (evaluation: string) => {
   }
 };
 
-export const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) => {
-  const { lessonId, moduleId } = props;
-
+export const LessonTestResultPage: FC<LessonTestResultPagePropsType> = ({ lessonId, moduleId }) => {
   const { data: lessonTest } = useGetTestByLessonIdQuery(+lessonId);
   const {
     data: testResult,
@@ -35,23 +34,31 @@ export const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) =
     skip: !lessonTest?.id,
   });
 
+  const pollingRef = useRef<NodeJS.Timeout | null>(null);
+
   useEffect(() => {
     if (!lessonTest?.id) return;
 
-    if (!testResult) {
-      const interval = setInterval(() => {
-        refetch();
-      }, 1000);
-      return () => clearInterval(interval);
+    if (!testResult || testResult.status === 'SUBMITTED') {
+      if (!pollingRef.current) {
+        pollingRef.current = setInterval(() => {
+          refetch();
+        }, 1000);
+      }
+    } else {
+      if (pollingRef.current) {
+        clearInterval(pollingRef.current);
+        pollingRef.current = null;
+      }
     }
 
-    if (testResult.status === 'SUBMITTED') {
-      const interval = setInterval(() => {
-        refetch();
-      }, 1000);
-      return () => clearInterval(interval);
-    }
-  }, [lessonTest?.id, testResult?.status, refetch]);
+    return () => {
+      if (pollingRef.current) {
+        clearInterval(pollingRef.current);
+        pollingRef.current = null;
+      }
+    };
+  }, [lessonTest?.id, testResult, refetch]);
 
   if (!testResult && isLoading) return <FullscreenLoader />;
   if (isError) return <ErrorSection reset={refetch} />;

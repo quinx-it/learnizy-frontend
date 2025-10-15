@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import { ChatInput, ChatMessageHistory } from '@/shared/components/ai-assistant-chat';
 import { useGetChatMessagesQuery, useSendMessageMutation } from '@/api/endpoints/ai-assistant';
@@ -24,20 +24,20 @@ export const ChatAiAssistantPage = () => {
 
   const [sendMessage, { isLoading: isSendingMessage }] = useSendMessageMutation();
 
-  const startPolling = () => {
+  const startPolling = useCallback(() => {
     if (!pollingInterval.current) {
       pollingInterval.current = setInterval(() => {
         refetch();
       }, POLLING_INTERVAL);
     }
-  };
+  }, [refetch]);
 
-  const stopPolling = () => {
+  const stopPolling = useCallback(() => {
     if (pollingInterval.current) {
       clearInterval(pollingInterval.current);
       pollingInterval.current = null;
     }
-  };
+  }, []);
 
   useEffect(() => {
     if (!chatData?.messages) return;
@@ -52,7 +52,7 @@ export const ChatAiAssistantPage = () => {
     } else {
       stopPolling();
     }
-  }, [chatData]);
+  }, [chatData, startPolling, stopPolling]);
 
   const handleSendMessage = async (data: ISendMessageRequest) => {
     if (!chatId || isSendingMessage) return;
@@ -82,7 +82,7 @@ export const ChatAiAssistantPage = () => {
     return () => {
       stopPolling();
     };
-  }, []);
+  }, [stopPolling]);
 
   if (!chatId) return null;
 

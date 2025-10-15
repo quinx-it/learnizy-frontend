@@ -3,7 +3,6 @@ import { RadioGroup } from '@/shared/ui/radioGroup';
 import { Textarea } from '@/shared/ui/textarea';
 import { Text } from '@/shared/ui/typography';
 import { Controller, FieldErrors, useFormContext, useWatch } from 'react-hook-form';
-import { VoiceRecorderControl } from '../voice-recorder-control';
 import { LessonQuestionItemType, LessonTestFormValuesType } from '@/api/endpoints/test/types';
 
 type LessonQuestionPropsType = LessonQuestionItemType & {
@@ -25,7 +24,6 @@ export const LessonQuestion = ({
 }: LessonQuestionPropsType) => {
   const { control, setValue } = useFormContext();
 
-  const answerValue = useWatch({ name: answerFieldName });
   const fileValue = useWatch({ name: fileFieldName });
 
   const { textAnswer, file } = errors.questions?.[sequenceOrder] ?? {};
