@@ -34,6 +34,7 @@ export const ChatAiAssistantPage = () => {
 
       if (!lastMessage || lastMessage.role === Role.ASSISTANT) {
         setIsWaitingForAssistant(false);
+        
         if (pollingInterval.current) {
           clearInterval(pollingInterval.current);
           pollingInterval.current = null;

@@ -30,6 +30,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
 
   const handleFileSelect = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
+    
     if (!files || files.length === 0) return;
 
     const newFiles: ILocalFile[] = Array.from(files).map((file) => ({
