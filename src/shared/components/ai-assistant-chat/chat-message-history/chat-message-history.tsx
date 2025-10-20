@@ -41,7 +41,7 @@ export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
   return (
     <div
       ref={scrollContainerRef}
-      className="no-scrollbar mt-30 h-full w-full max-w-[690px] overflow-y-auto px-2 pt-6 lg:mt-30"
+      className="no-scrollbar h-full w-full max-w-[690px] overflow-y-auto px-2 pt-[90px]"
     >
       {messages.map((message, index) => {
         const shouldAnimate =
