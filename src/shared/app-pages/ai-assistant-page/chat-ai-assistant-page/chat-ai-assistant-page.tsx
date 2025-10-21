@@ -90,7 +90,7 @@ export const ChatAiAssistantPage = () => {
   const assistantCount = optimisticMessages.filter((m) => m.role === Role.ASSISTANT).length;
 
   return (
-    <div className="relative flex h-screen w-full flex-col items-center justify-center">
+    <div className="relative flex h-screen w-full flex-col items-center justify-center px-5">
       <div className="no-scrollbar flex w-full flex-1 items-center justify-center overflow-auto">
         <ChatMessageHistory
           messages={optimisticMessages}

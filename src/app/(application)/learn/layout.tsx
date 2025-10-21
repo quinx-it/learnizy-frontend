@@ -24,7 +24,9 @@ const LearnLayout = ({ children }: ApplicationLayoutProps) => {
 
   return (
     <AuthLayout>
-      {showChatHeader && <ChatHeader className="fixed z-30 block h-16 w-full bg-[#F2FCFF]" />}
+      {showChatHeader && (
+        <ChatHeader className="fixed z-30 block w-full bg-[#F2FCFF] md:ml-10 lg:ml-0" />
+      )}
       <div className="bg-accent-background grid min-h-screen md:grid-cols-[auto_1fr]">
         <Navbar links={navbarLinks.user} />
         <main className={mainClass}>{children}</main>

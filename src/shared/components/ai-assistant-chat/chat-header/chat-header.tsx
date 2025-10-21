@@ -25,23 +25,25 @@ export const ChatHeader: FC<ChatHeaderProps> = ({ className }) => {
   if (!chatId) return null;
 
   return (
-    <header
-      className={`flex items-center justify-center ${className}`}
-      style={{
-        borderBottom: '1px solid',
-        borderImageSlice: 1,
-        borderImageSource:
-          'linear-gradient(270deg, #F2FCFF 0%, #248EAB 35%, #248EAB 65%, #F2FCFF 100%)',
-      }}
-    >
+    <header className={`flex flex-col items-center ${className} w-full`}>
       <h1
-        className="text-center text-xl font-bold text-[#248EAB] md:text-xl"
-        style={{
-          textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
-        }}
+        className="py-5 text-center font-bold text-[#248EAB] md:text-xl"
+        style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.1)' }}
       >
         {isLoading ? 'Загрузка...' : title}
       </h1>
+      <div
+        className="w-full md:w-[80%] lg:w-[50%]"
+        style={{
+          height: '1px',
+          borderBottom: '1px solid',
+          borderImageSlice: 1,
+          borderImageSource:
+            'linear-gradient(270deg, #F2FCFF 0%, #248EAB 35%, #248EAB 65%, #F2FCFF 100%)',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+      />
     </header>
   );
 };
