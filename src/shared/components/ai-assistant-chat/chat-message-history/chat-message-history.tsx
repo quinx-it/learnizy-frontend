@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useRef, useEffect, FC } from 'react';
+import React, { useRef, useLayoutEffect, useEffect, FC } from 'react';
 import { Text } from '@/shared/ui/typography';
 import { Spinner } from '@/shared/ui/spinner';
-import ReactMarkdown from 'react-markdown';
 import { AudioPlayer } from '../../audio-player';
 import { IChatMessageHistoryProps } from './typing';
 import { Role } from './constants';
@@ -11,24 +10,38 @@ import { isAudioUrl } from '@/shared/lib/utils';
 import { Typewriter } from '../chat-typewriter';
 import { usePrevious } from '@/shared/hooks/use-previous';
 import clsx from 'clsx';
+import { MarkdownRenderer } from '@/shared/components/markdown-text';
 
 export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
-  const { messages, isLoading, isWaitingForAssistant } = props;
+  const { messages = [], isLoading, isWaitingForAssistant } = props;
 
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
-  const prevMessages = usePrevious(messages);
   const prevIsWaiting = usePrevious(isWaitingForAssistant);
 
-  const scrollToBottom = (behavior: ScrollBehavior = 'smooth') => {
-    messagesEndRef.current?.scrollIntoView({ behavior });
-  };
+  useLayoutEffect(() => {
+    if (messages.length > 0) {
+      scrollContainerRef.current?.scrollTo({
+        top: scrollContainerRef.current.scrollHeight,
+        behavior: 'auto',
+      });
+    }
+  }, [messages.length]);
 
   useEffect(() => {
-    if (!prevMessages || messages.length > prevMessages.length) {
-      scrollToBottom();
+    const lastMessage = messages[messages.length - 1];
+    if (
+      lastMessage &&
+      lastMessage.role !== Role.USER &&
+      prevIsWaiting === true &&
+      isWaitingForAssistant === false
+    ) {
+      scrollContainerRef.current?.scrollTo({
+        top: scrollContainerRef.current.scrollHeight,
+        behavior: 'smooth',
+      });
     }
-  }, [messages, prevMessages]);
+  }, [messages, isWaitingForAssistant, prevIsWaiting]);
 
   if (isLoading && messages.length === 0) {
     return (
@@ -41,7 +54,7 @@ export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
   return (
     <div
       ref={scrollContainerRef}
-      className="no-scrollbar h-full w-full max-w-[690px] overflow-y-auto px-2 pt-[90px]"
+      className="no-scrollbar h-full w-full max-w-[659px] overflow-y-auto pt-[90px]"
     >
       {messages.map((message, index) => {
         const shouldAnimate =
@@ -53,14 +66,15 @@ export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
         return (
           <div
             key={message.id}
-            className={clsx('mb-8 flex', {
+            className={clsx('mb-3 flex', {
               'justify-end': message.role === Role.USER,
               'justify-start': message.role !== Role.USER,
             })}
           >
             <div
-              className={clsx('mr-2 max-w-[90%] rounded-3xl px-4 py-2 break-words md:max-w-2xl', {
-                'bg-[#238BA7] text-white': message.role === Role.USER,
+              className={clsx('rounded-3xl py-2 break-words lg:mr-0 lg:ml-0', {
+                'ml-6 bg-[#238BA7] text-white': message.role === Role.USER,
+                'w-full': message.role !== Role.USER,
               })}
             >
               {message.role === Role.USER ? (
@@ -70,17 +84,21 @@ export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
                     transcript={message.voiceTranscript}
                   />
                 ) : (
-                  <Text variant="m" className="text-base">
+                  <Text variant="m" className="px-4 text-base">
                     {message.content}
                   </Text>
                 )
               ) : shouldAnimate ? (
-                <Typewriter text={message.content} />
+                <Typewriter key={message.id} text={message.content} />
               ) : (
-                <div className="prose prose-sm max-w-none">
-                  <ReactMarkdown>{message.content}</ReactMarkdown>
+                <div className="prose prose-sm max-w-none break-words">
+                  <MarkdownRenderer
+                    text={message.content}
+                    className="prose max-w-none break-words"
+                  />
                 </div>
               )}
+
               {message.role === Role.USER &&
                 message.attachments &&
                 message.attachments.length > 0 && (
@@ -103,6 +121,7 @@ export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
           </div>
         );
       })}
+
       {isWaitingForAssistant && (
         <div className="mb-8 flex justify-start">
           <div className="flex max-w-[90%] items-center gap-2 rounded-3xl px-4 py-2 text-gray-700">
@@ -111,6 +130,7 @@ export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
           </div>
         </div>
       )}
+
       <div ref={messagesEndRef} />
     </div>
   );

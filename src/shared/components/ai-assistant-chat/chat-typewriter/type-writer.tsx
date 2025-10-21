@@ -1,8 +1,8 @@
 'use client';
 
 import React, { FC, useState, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
 import { ITypewriterProps } from './typing';
+import { MarkdownRenderer } from '@/shared/components/markdown-text';
 
 export const Typewriter: FC<ITypewriterProps> = (props) => {
   const { text, speed = 1, onUpdate } = props;
@@ -37,7 +37,7 @@ export const Typewriter: FC<ITypewriterProps> = (props) => {
 
   return (
     <div className="prose prose-sm max-w-none">
-      <ReactMarkdown>{visibleText}</ReactMarkdown>
+      <MarkdownRenderer text={visibleText} />
     </div>
   );
 };
