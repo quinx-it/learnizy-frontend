@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { AuthFormValues, formSchema } from './validation';
@@ -14,13 +14,7 @@ import Link from 'next/link';
 import { routes } from '@/shared/constants';
 
 export const AuthForm = () => {
-  const [loginRequest, { isLoading, error }] = useLoginMutation();
-
-  useEffect(() => {
-    if (error) {
-      showToast('error', 'Ошибка', 'Проверьте правильность введённых логина и пароля');
-    }
-  }, [error]);
+  const [loginRequest, { isLoading }] = useLoginMutation();
 
   const {
     register,
@@ -41,7 +35,7 @@ export const AuthForm = () => {
         password: data.password,
       }).unwrap();
     } catch {
-      showToast('error', 'Произошла ошибка', String(error));
+      showToast('error', 'Ошибка', 'Проверьте правильность введённых логина и пароля');
     }
   };
 

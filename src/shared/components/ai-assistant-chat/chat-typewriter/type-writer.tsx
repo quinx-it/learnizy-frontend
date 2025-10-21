@@ -7,26 +7,37 @@ import { ITypewriterProps } from './typing';
 export const Typewriter: FC<ITypewriterProps> = (props) => {
   const { text, speed = 1, onUpdate } = props;
 
-  const [displayedText, setDisplayedText] = useState('');
+  const [displayedLength, setDisplayedLength] = useState(0);
 
   useEffect(() => {
-    let i = 0;
-    const timer = setInterval(() => {
-      if (i < text.length) {
-        setDisplayedText((prev) => prev + text.charAt(i));
-        i++;
-        onUpdate?.();
-      } else {
-        clearInterval(timer);
-      }
-    }, speed);
+    let cancelled = false;
 
-    return () => clearInterval(timer);
+    const typeNext = () => {
+      if (cancelled) return;
+
+      setDisplayedLength((prev) => {
+        if (prev < text.length) {
+          onUpdate?.();
+          setTimeout(typeNext, speed);
+          return prev + 1;
+        }
+        return prev;
+      });
+    };
+
+    setDisplayedLength(0);
+    typeNext();
+
+    return () => {
+      cancelled = true;
+    };
   }, [text, speed, onUpdate]);
+
+  const visibleText = text.slice(0, displayedLength);
 
   return (
     <div className="prose prose-sm max-w-none">
-      <ReactMarkdown>{displayedText}</ReactMarkdown>
+      <ReactMarkdown>{visibleText}</ReactMarkdown>
     </div>
   );
 };

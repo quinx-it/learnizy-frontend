@@ -15,9 +15,9 @@ export const ArrowCloseIcon = ({ className }: IconProps) => {
       <path
         d="M6 16L14 8L22 16"
         stroke="#FAFAFA"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
