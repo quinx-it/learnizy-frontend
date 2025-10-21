@@ -108,7 +108,7 @@ export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
                         key={att.downloadUrl}
                         href={att.downloadUrl}
                         download={att.originalFilename}
-                        className="text-black-800 flex items-center gap-2 rounded-full py-1 text-sm transition-colors hover:text-gray-300"
+                        className="flex items-center gap-2 rounded-full px-5 py-1 text-sm transition-colors hover:text-gray-300"
                       >
                         <span className="max-w-[150px] truncate" title={att.originalFilename}>
                           {att.originalFilename}
