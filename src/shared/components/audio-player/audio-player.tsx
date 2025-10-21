@@ -76,7 +76,7 @@ export const AudioPlayer: FC<IAudioPlayerProps> = (props) => {
 
   return (
     <div>
-      <div className="border-medium flex h-[24px] w-100 items-center justify-between gap-2 rounded-full p-1">
+      <div className="border-medium flex h-[24px] w-100 max-w-[250px] items-center justify-between gap-2 rounded-full p-1 px-5 md:max-w-[400px]">
         <span className="text-medium w-fit text-[16px] text-white">
           {formatTime(time)}/{formatTime(duration)}
         </span>
@@ -102,7 +102,7 @@ export const AudioPlayer: FC<IAudioPlayerProps> = (props) => {
       {transcript && (
         <div
           ref={transcriptRef}
-          className={`overflow-hidden transition-[max-height] duration-500 ease-in-out`}
+          className={`overflow-hidden px-5 transition-[max-height] duration-500 ease-in-out`}
           style={{
             maxHeight: showTranscript ? transcriptRef.current?.scrollHeight + 'px' : '0px',
           }}
