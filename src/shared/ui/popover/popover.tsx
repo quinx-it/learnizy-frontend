@@ -1,11 +1,17 @@
 'use client';
 
-import React, { ComponentProps, Dispatch, ReactNode, SetStateAction, FC } from 'react';
+import React, {
+  ComponentProps,
+  Dispatch,
+  PropsWithChildren,
+  ReactNode,
+  SetStateAction,
+  FC,
+} from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { cn } from '@/shared/lib/utils';
 
-interface IPopoverProps {
-  children: ReactNode;
+interface IPopoverProps extends PropsWithChildren {
   content: ReactNode;
   side?: ComponentProps<typeof PopoverPrimitive.Content>['side'];
   align?: ComponentProps<typeof PopoverPrimitive.Content>['align'];

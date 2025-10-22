@@ -2,12 +2,11 @@ import { cn } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { ElementType, ReactNode, FC } from 'react';
+import React, { ElementType, PropsWithChildren, FC } from 'react';
 
-interface IDashboardLinkProps {
+interface IDashboardLinkProps extends PropsWithChildren {
   href: string;
   Icon: ElementType;
-  children: ReactNode;
 }
 
 export const DashboardLink: FC<IDashboardLinkProps> = (props) => {

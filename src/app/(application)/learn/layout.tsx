@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { usePathname } from 'next/navigation';
 import { Navbar } from '@/shared/components/navbar';
 import { AuthLayout } from '@/shared/components/auth-layout';
@@ -8,11 +8,7 @@ import { navbarLinks } from '@/shared/constants/constants';
 import { routes } from '@/shared/constants/routes';
 import { ChatHeader } from '@/shared/components/ai-assistant-chat/chat-header';
 
-interface IApplicationLayoutProps {
-  children: ReactNode;
-}
-
-const LearnLayout: FC<IApplicationLayoutProps> = (props) => {
+const LearnLayout: FC<PropsWithChildren> = (props) => {
   const { children } = props;
 
   const pathname = usePathname();

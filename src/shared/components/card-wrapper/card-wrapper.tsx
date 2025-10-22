@@ -1,15 +1,14 @@
 'use client';
 
 import { cn } from '@/shared/lib/utils';
-import React, { ReactNode, FC } from 'react';
+import React, { PropsWithChildren, FC } from 'react';
 
 type CardWrapperPropsType = {
-  children: ReactNode;
   className?: string;
   onClick?: () => void;
 };
 
-export const CardWrapper: FC<CardWrapperPropsType> = (props) => {
+export const CardWrapper: FC<CardWrapperPropsType & PropsWithChildren> = (props) => {
   const { children, className, onClick } = props;
 
   return (

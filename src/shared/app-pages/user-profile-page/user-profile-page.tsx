@@ -1,11 +1,7 @@
-import { ReactNode, FC } from 'react';
+import { PropsWithChildren, FC } from 'react';
 import { ProfileDashboard } from './profile-dashboard';
 
-interface IUserProfilePageProps {
-  children: ReactNode;
-}
-
-export const UserProfilePage: FC<IUserProfilePageProps> = (props) => {
+export const UserProfilePage: FC<PropsWithChildren> = (props) => {
   const { children } = props;
 
   return (

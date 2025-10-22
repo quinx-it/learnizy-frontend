@@ -1,10 +1,9 @@
-import React, { ReactNode, FC } from 'react';
+import React, { PropsWithChildren, FC } from 'react';
 import { Checkbox } from '@/shared/ui/checkbox';
 import { Label } from '@/shared/ui/label';
 import { CheckboxProps } from '@radix-ui/react-checkbox';
 
-interface ICheckboxWithLabelProps extends CheckboxProps {
-  children: ReactNode;
+interface ICheckboxWithLabelProps extends CheckboxProps, PropsWithChildren {
   checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
 }

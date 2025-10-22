@@ -1,15 +1,11 @@
 'use client';
 
-import { ReactNode, FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { Navbar } from '@/shared/components/navbar';
 import { AuthLayout } from '@/shared/components/auth-layout';
 import { navbarLinks } from '@/shared/constants/constants';
 
-interface IApplicationLayoutProps {
-  children: ReactNode;
-}
-
-const LearnLayout: FC<IApplicationLayoutProps> = (props) => {
+const LearnLayout: FC<PropsWithChildren> = (props) => {
   const { children } = props;
 
   return (
