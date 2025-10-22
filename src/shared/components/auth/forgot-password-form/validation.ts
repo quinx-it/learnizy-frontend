@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export interface ForgotPasswordFormValues {
+export interface IForgotPasswordFormValues {
   email: string;
 }
 

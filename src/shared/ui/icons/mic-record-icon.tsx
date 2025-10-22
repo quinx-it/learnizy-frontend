@@ -1,7 +1,7 @@
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 import { cn } from '@/shared/lib/utils';
 
-export const MicRecordIcon = ({ className }: IconProps) => {
+export const MicRecordIcon = ({ className }: IIconProps) => {
   const barHeights = [5, 12, 8, 5, 11, 3];
 
   return (

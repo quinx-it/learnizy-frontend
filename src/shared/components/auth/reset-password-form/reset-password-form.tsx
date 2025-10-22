@@ -3,18 +3,18 @@
 import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { ResetPasswordFormValues, formSchema } from './validation';
+import { IResetPasswordFormValues, formSchema } from './validation';
 import { PasswordInput } from '@/shared/ui/passwordInput';
 import { Button } from '@/shared/ui/button';
 import { useResetPasswordMutation } from '@/api/endpoints/auth/auth';
 import { showToast } from '@/shared/ui/toaster';
 import { Spinner } from '@/shared/ui/spinner';
 
-interface ResetPasswordFormProps {
+interface IResetPasswordFormProps {
   token: string;
 }
 
-export const ResetPasswordForm = ({ token }: ResetPasswordFormProps) => {
+export const ResetPasswordForm = ({ token }: IResetPasswordFormProps) => {
   const [resetPassword, { isLoading, error }] = useResetPasswordMutation();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export const ResetPasswordForm = ({ token }: ResetPasswordFormProps) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ResetPasswordFormValues>({
+  } = useForm<IResetPasswordFormValues>({
     resolver: yupResolver(formSchema),
     defaultValues: {
       password: '',
@@ -35,7 +35,7 @@ export const ResetPasswordForm = ({ token }: ResetPasswordFormProps) => {
     },
   });
 
-  const onSubmit: SubmitHandler<ResetPasswordFormValues> = async (data) => {
+  const onSubmit: SubmitHandler<IResetPasswordFormValues> = async (data) => {
     try {
       await resetPassword({
         token,

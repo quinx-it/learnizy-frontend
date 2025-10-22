@@ -4,11 +4,11 @@ import { Logo } from '@/shared/ui/icons';
 import { Heading, Text } from '@/shared/ui/typography';
 import React from 'react';
 
-interface ResetPasswordPageProps {
+interface IResetPasswordPageProps {
   token: string;
 }
 
-export const ResetPasswordPage = ({ token }: ResetPasswordPageProps) => {
+export const ResetPasswordPage = ({ token }: IResetPasswordPageProps) => {
   return (
     <div className="flex h-[100vh] items-center justify-center">
       <CardWrapper className="max-w-[472px] px-8 py-16">

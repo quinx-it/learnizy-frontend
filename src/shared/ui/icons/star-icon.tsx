@@ -1,4 +1,4 @@
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 import React from 'react';
 
 const colors = {
@@ -11,7 +11,7 @@ type StarIconPropsType = {
   type?: 'default' | 'gold' | 'disabled';
 };
 
-export const StarIcon = ({ className, type = 'default' }: IconProps & StarIconPropsType) => {
+export const StarIcon = ({ className, type = 'default' }: IIconProps & StarIconPropsType) => {
   return (
     <svg
       className={className}

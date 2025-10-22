@@ -1,12 +1,8 @@
 import { cn } from '@/shared/lib/utils';
 import React from 'react';
+import { IIconProps } from '@/shared/types';
 
-interface IconProps {
-  color?: string;
-  className?: string;
-}
-
-function CircleIcon({ color = 'currentColor', className }: IconProps) {
+function CircleIcon({ color = 'currentColor', className }: IIconProps) {
   return (
     <svg
       className={cn(className, '')}

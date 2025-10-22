@@ -1,7 +1,7 @@
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 import React from 'react';
 
-export const LockColorIcon = ({ className }: IconProps) => {
+export const LockColorIcon = ({ className }: IIconProps) => {
   return (
     <svg
       className={className}

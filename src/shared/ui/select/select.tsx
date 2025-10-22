@@ -3,15 +3,15 @@
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { ChevronDownIcon, ChevronUpIcon, CheckIcon } from 'lucide-react';
 
-interface Option {
+interface IOption {
   label: string;
   value: string;
 }
 
-interface CustomSelectProps {
+interface ICustomSelectProps {
   value: string;
   onValueChange: (value: string) => void;
-  options: Option[];
+  options: IOption[];
   placeholder?: string;
   label?: string;
 }
@@ -22,7 +22,7 @@ export const CustomSelect = ({
   options,
   placeholder,
   label,
-}: CustomSelectProps) => {
+}: ICustomSelectProps) => {
   return (
     <SelectPrimitive.Root value={value} onValueChange={onValueChange}>
       <SelectPrimitive.Trigger className="focus:ring-ring inline-flex items-center justify-between gap-8 rounded-4xl border px-6 py-2 text-[20px] leading-[27px] shadow-sm focus:ring-2 focus:outline-none">

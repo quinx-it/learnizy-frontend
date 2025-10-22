@@ -15,7 +15,7 @@ import { useGetModuleQuery } from '@/api/endpoints/modules/modules';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 import { percentage, pluralize } from '@/shared/lib/utils';
-import { Lesson } from '@/api/endpoints/lessons/types';
+import { ILesson } from '@/api/endpoints/lessons/types';
 import { usePathname, useRouter } from 'next/navigation';
 
 type ModuleItemPagePropsType = {
@@ -82,7 +82,7 @@ export const ModuleItemPage = ({ id }: ModuleItemPagePropsType) => {
         </div>
 
         <ul className="mt-3 space-y-3">
-          {lessons.map((lesson: Lesson, index) => {
+          {lessons.map((lesson: ILesson, index) => {
             return (
               <LessonCard
                 onClick={handleLessonCardClick}

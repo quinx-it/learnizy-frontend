@@ -1,4 +1,4 @@
-export interface CourseInfo {
+export interface ICourseInfo {
   id: number;
   title: string;
   currentModuleId: number;
@@ -8,7 +8,7 @@ export interface CourseInfo {
   completedLessons: number;
 }
 
-export interface ModuleInfo {
+export interface IModuleInfo {
   id: number;
   title: string;
   description: string;
@@ -18,14 +18,14 @@ export interface ModuleInfo {
   sequenceNumber: number;
 }
 
-export interface WeeklyActivity {
+export interface IWeeklyActivity {
   date: string;
   lessonsCompleted: number;
   testsPassed: number;
 }
 
-export interface MainPageInfoResponse {
-  courseInfo: CourseInfo;
-  modules: ModuleInfo[];
-  weeklyActivity: WeeklyActivity[];
+export interface IMainPageInfoResponse {
+  courseInfo: ICourseInfo;
+  modules: IModuleInfo[];
+  weeklyActivity: IWeeklyActivity[];
 }

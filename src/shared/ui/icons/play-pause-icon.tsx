@@ -1,4 +1,4 @@
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 
 type PlayPauseIconPropsType = {
   color?: string;
@@ -9,7 +9,7 @@ export const PlayPauseIcon = ({
   className,
   color = 'currentColor',
   isPlaying = false,
-}: IconProps & PlayPauseIconPropsType) => {
+}: IIconProps & PlayPauseIconPropsType) => {
   return (
     <svg
       className={className}

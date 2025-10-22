@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export interface RegisterFormValues {
+export interface IRegisterFormValues {
   login: string;
   password: string;
   email: string;
@@ -8,7 +8,7 @@ export interface RegisterFormValues {
   agreement: boolean;
 }
 
-export interface VerificationFormValues {
+export interface IVerificationFormValues {
   code: string;
 }
 

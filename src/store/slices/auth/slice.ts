@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction, Action } from '@reduxjs/toolkit';
 import { decodeToken } from '@/shared/lib/utils';
-import { AuthState, DecodedToken } from './types';
+import { IAuthState, IDecodedToken } from './types';
 
-interface RehydrateAction extends Action<'persist/REHYDRATE'> {
+interface IRehydrateAction extends Action<'persist/REHYDRATE'> {
   payload?: {
     accessToken?: string;
   };
 }
 
-const initialState: AuthState = {
+const initialState: IAuthState = {
   accessToken: null,
   user: null,
 };
@@ -19,7 +19,7 @@ export const authSlice = createSlice({
   reducers: {
     setCredentials: (state, action: PayloadAction<{ accessToken: string }>) => {
       try {
-        const { user }: DecodedToken = decodeToken(action.payload.accessToken);
+        const { user }: IDecodedToken = decodeToken(action.payload.accessToken);
         state.accessToken = action.payload.accessToken;
         state.user = user;
       } catch {
@@ -30,13 +30,13 @@ export const authSlice = createSlice({
     logout: () => initialState,
   },
   extraReducers: (builder) => {
-    builder.addCase('persist/REHYDRATE', (state, action: RehydrateAction & { key: string }) => {
+    builder.addCase('persist/REHYDRATE', (state, action: IRehydrateAction & { key: string }) => {
       if (action.key !== 'auth') return;
 
       const accessToken = action?.payload?.accessToken;
       if (accessToken) {
         try {
-          const { user }: DecodedToken = decodeToken(accessToken);
+          const { user }: IDecodedToken = decodeToken(accessToken);
           state.accessToken = accessToken;
           state.user = user;
         } catch {

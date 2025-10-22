@@ -4,15 +4,15 @@ export enum UserRole {
   GUEST = 'GUEST',
 }
 
-export interface User {
+export interface IUser {
   userName: string;
   role: UserRole;
 }
 
-export interface DecodedToken {
-  user: User | null;
+export interface IDecodedToken {
+  user: IUser | null;
 }
 
-export interface AuthState extends DecodedToken {
+export interface IAuthState extends IDecodedToken {
   accessToken: string | null;
 }

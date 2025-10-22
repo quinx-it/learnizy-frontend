@@ -10,7 +10,7 @@ import { Plus, Minus } from 'lucide-react';
 import './accordion.css';
 import { Text } from '@/shared/ui/typography';
 
-interface AccordionEntry {
+interface IAccordionEntry {
   value: string;
   heading: string;
   content: string;
@@ -19,12 +19,12 @@ interface AccordionEntry {
   iconColor?: string;
 }
 
-interface AccordionProps {
-  items: AccordionEntry[];
+interface IAccordionProps {
+  items: IAccordionEntry[];
   className?: string;
 }
 
-export const CardAccordion = ({ items, className }: AccordionProps) => {
+export const CardAccordion = ({ items, className }: IAccordionProps) => {
   return (
     <Accordion type="single" collapsible className={cn('w-full', className)}>
       {items.map(({ value, heading, content, bgColor, textColor, iconColor }) => (

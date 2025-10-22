@@ -25,7 +25,7 @@ export const normalizeToFive = (value: number): number => {
 };
 
 import { jwtDecode } from 'jwt-decode';
-import { DecodedToken, UserRole } from '@/store/slices/auth/types';
+import { IDecodedToken, UserRole } from '@/store/slices/auth/types';
 import {
   dynamicMentorRoutes,
   dynamicUserRoutes,
@@ -34,13 +34,13 @@ import {
   staticUserRoutes,
 } from '../constants/routes';
 
-interface DecodedTokenPayload {
+interface IDecodedTokenPayload {
   role: UserRole;
   sub: string;
 }
 
-export const decodeToken = (token: string): DecodedToken => {
-  const data = jwtDecode<DecodedTokenPayload>(token);
+export const decodeToken = (token: string): IDecodedToken => {
+  const data = jwtDecode<IDecodedTokenPayload>(token);
   return { user: { userName: data.sub, role: data.role } };
 };
 

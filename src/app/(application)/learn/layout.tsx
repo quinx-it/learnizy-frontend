@@ -8,11 +8,11 @@ import { navbarLinks } from '@/shared/constants/constants';
 import { routes } from '@/shared/constants/routes';
 import { ChatHeader } from '@/shared/components/ai-assistant-chat/chat-header';
 
-interface ApplicationLayoutProps {
+interface IApplicationLayoutProps {
   children: ReactNode;
 }
 
-const LearnLayout = ({ children }: ApplicationLayoutProps) => {
+const LearnLayout = ({ children }: IApplicationLayoutProps) => {
   const pathname = usePathname();
 
   const showChatHeader = pathname.startsWith('/learn/ai-assistant/chat/');

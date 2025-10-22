@@ -1,6 +1,6 @@
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 
-export const CameraIcon = ({ className }: IconProps) => {
+export const CameraIcon = ({ className }: IIconProps) => {
   return (
     <svg
       className={className}

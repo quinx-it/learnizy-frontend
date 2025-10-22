@@ -14,12 +14,12 @@ import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscre
 import { routes } from '@/shared/constants';
 import { constants } from './constants';
 
-interface LessonItemPageProps {
+interface ILessonItemPageProps {
   lessonId: string;
   moduleId: string;
 }
 
-export const LessonItemPage: React.FC<LessonItemPageProps> = ({ lessonId, moduleId }) => {
+export const LessonItemPage: React.FC<ILessonItemPageProps> = ({ lessonId, moduleId }) => {
   const router = useRouter();
   const pathname = usePathname();
   const { breadcrumbs } = constants;

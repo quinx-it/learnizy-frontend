@@ -4,10 +4,10 @@ import { Button } from '@/shared/ui/button';
 import { Heading } from '@/shared/ui/typography';
 import React from 'react';
 import { StarIcon } from '@/shared/ui/icons';
-import { Lesson, LessonProgress } from '@/api/endpoints/lessons/types';
+import { ILesson, ILessonProgress } from '@/api/endpoints/lessons/types';
 
-type LessonCardPropsType = Lesson & {
-  progress: LessonProgress;
+type LessonCardPropsType = ILesson & {
+  progress: ILessonProgress;
   index: number;
   onClick: (lessonId: number) => void;
 };

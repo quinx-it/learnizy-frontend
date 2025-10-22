@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { ForgotPasswordFormValues, formSchema } from './validation';
+import { IForgotPasswordFormValues, formSchema } from './validation';
 import { useForgotPasswordMutation } from '@/api/endpoints/auth/auth';
 import { Spinner } from '@/shared/ui/spinner';
 import { Input } from '@/shared/ui/input';
@@ -23,14 +23,14 @@ export const ForgotPasswordForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ForgotPasswordFormValues>({
+  } = useForm<IForgotPasswordFormValues>({
     resolver: yupResolver(formSchema),
     defaultValues: {
       email: '',
     },
   });
 
-  const onSubmit: SubmitHandler<ForgotPasswordFormValues> = async (data) => {
+  const onSubmit: SubmitHandler<IForgotPasswordFormValues> = async (data) => {
     try {
       const { email } = data;
       await forgotPasswordRequest({ email }).unwrap();

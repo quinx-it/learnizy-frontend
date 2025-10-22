@@ -11,7 +11,7 @@ export const Dot = ({ className }: { className?: string }) => (
   ></span>
 );
 
-interface DotTitleProps {
+interface IDotTitleProps {
   firstLabel: string;
   firstClassName?: string;
   secondClassName?: string;
@@ -32,7 +32,7 @@ export const DotTitle = ({
   secondClassName,
   dotClassName,
   heading = false,
-}: DotTitleProps) => {
+}: IDotTitleProps) => {
   return (
     <div className={cn('flex items-start gap-1.5', className)}>
       {heading ? (

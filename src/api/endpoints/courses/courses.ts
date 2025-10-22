@@ -1,9 +1,9 @@
 import { api } from '@/api';
-import { Course } from './types';
+import { ICourse } from './types';
 
 export const courseApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getCourse: builder.query<Course, number>({
+    getCourse: builder.query<ICourse, number>({
       query: (id) => `/courses/${id}`,
     }),
   }),

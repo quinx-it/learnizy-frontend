@@ -10,7 +10,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { LightbulbIcon, NotificationIcon } from '@/shared/ui/icons';
 
-interface BlockRendererProps {
+interface IBlockRendererProps {
   block: Block;
 }
 
@@ -23,7 +23,7 @@ const defaultStyles = {
 const renderChildren = (children?: Block[]) =>
   children?.map((child) => <BlockRenderer key={child.id} block={child} />);
 
-export const BlockRenderer: React.FC<BlockRendererProps> = ({ block }) => {
+export const BlockRenderer: React.FC<IBlockRendererProps> = ({ block }) => {
   const baseStyle = {
     marginBottom: block.properties.mb ?? defaultStyles.marginBottom,
     color: block.properties.color ?? defaultStyles.color,

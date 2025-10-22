@@ -1,7 +1,10 @@
 import { cn } from '@/shared/lib/utils';
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 
-export const ExitIcon = ({ className, color = 'currentColor' }: IconProps & { color?: string }) => {
+export const ExitIcon = ({
+  className,
+  color = 'currentColor',
+}: IIconProps & { color?: string }) => {
   return (
     <svg
       className={cn(className, 'h-[16px] w-[16px] text-inherit')}

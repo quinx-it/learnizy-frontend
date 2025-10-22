@@ -1,11 +1,11 @@
 import { UserProfilePage } from '@/shared/app-pages/user-profile-page';
 import { ReactNode } from 'react';
 
-interface UserProfileProps {
+interface IUserProfileProps {
   children: ReactNode;
 }
 
-const UserProfile = ({ children }: UserProfileProps) => {
+const UserProfile = ({ children }: IUserProfileProps) => {
   return <UserProfilePage>{children}</UserProfilePage>;
 };
 

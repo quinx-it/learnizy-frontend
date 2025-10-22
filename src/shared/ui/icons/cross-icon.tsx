@@ -1,4 +1,4 @@
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 
 const colors = {
   white: '#FAFAFA',
@@ -23,7 +23,7 @@ export const CrossIcon = ({
   className,
   color = 'white',
   size = 'large',
-}: IconProps & CrossIconPropsType) => {
+}: IIconProps & CrossIconPropsType) => {
   const pixelSize = sizeMap[size];
 
   return (

@@ -1,5 +1,5 @@
 import { api } from '@/api';
-import { LessonTestResponseType, LessonTestSubmitType, TestAttemptResponse } from './types';
+import { LessonTestResponseType, LessonTestSubmitType, ITestAttemptResponse } from './types';
 
 export const voice = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -13,7 +13,7 @@ export const voice = api.injectEndpoints({
         body,
       }),
     }),
-    getLastTestAttempt: builder.query<TestAttemptResponse, number>({
+    getLastTestAttempt: builder.query<ITestAttemptResponse, number>({
       query: (testId) => `/test-attempts/tests/${testId}/last`,
     }),
   }),

@@ -6,14 +6,14 @@ import { Text } from '@/shared/ui/typography';
 import { Button } from '@/shared/ui/button';
 import { usePathname } from 'next/navigation';
 
-interface NavbarLinkProps extends LinkProps {
+interface INavbarLinkProps extends LinkProps {
   Icon: ComponentType<{ className?: string }>;
   label: string;
   className?: string;
   onClick?: () => void;
 }
 
-export const NavbarLink = ({ href, Icon, label, className, onClick }: NavbarLinkProps) => {
+export const NavbarLink = ({ href, Icon, label, className, onClick }: INavbarLinkProps) => {
   const pathname = usePathname();
   const isActive =
     pathname.split('/').slice(0, 3).join('/') === String(href).split('/').slice(0, 3).join('/');

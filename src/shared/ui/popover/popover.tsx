@@ -4,7 +4,7 @@ import React, { ComponentProps, Dispatch, ReactNode, SetStateAction } from 'reac
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { cn } from '@/shared/lib/utils';
 
-interface PopoverProps {
+interface IPopoverProps {
   children: ReactNode;
   content: ReactNode;
   side?: ComponentProps<typeof PopoverPrimitive.Content>['side'];
@@ -22,7 +22,7 @@ export const Popover = ({
   offset = 4,
   open,
   onOpenChange,
-}: PopoverProps) => {
+}: IPopoverProps) => {
   return (
     <PopoverPrimitive.Root open={open} onOpenChange={onOpenChange}>
       <PopoverPrimitive.Trigger asChild>{children}</PopoverPrimitive.Trigger>

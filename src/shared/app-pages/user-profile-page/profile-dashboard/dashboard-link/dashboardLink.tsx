@@ -4,13 +4,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { ElementType, ReactNode } from 'react';
 
-interface DashboardLinkProps {
+interface IDashboardLinkProps {
   href: string;
   Icon: ElementType;
   children: ReactNode;
 }
 
-export const DashboardLink = ({ href, Icon, children }: DashboardLinkProps) => {
+export const DashboardLink = ({ href, Icon, children }: IDashboardLinkProps) => {
   const pathname = usePathname();
   const isActive = pathname === href;
 
