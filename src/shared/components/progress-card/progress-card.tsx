@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import React from 'react';
+import React, { FC } from 'react';
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { DotTitle } from '@/shared/ui/dotTitle';
 import { Text } from '@/shared/ui/typography';
@@ -19,17 +19,10 @@ type ProgressCardPropsType = {
   onClick?: () => void;
 };
 
-export const ProgressCard = ({
-  title,
-  subTitle,
-  totalModules,
-  totalLessons,
-  lessons,
-  status,
-  modules,
-  image,
-  onClick,
-}: ProgressCardPropsType) => {
+export const ProgressCard: FC<ProgressCardPropsType> = (props) => {
+  const { title, subTitle, totalModules, totalLessons, lessons, status, modules, image, onClick } =
+    props;
+
   const hasModules = totalModules !== undefined && modules !== undefined;
 
   const progressValue = lessons / totalLessons !== 0 ? (lessons / totalLessons) * 100 : 1;

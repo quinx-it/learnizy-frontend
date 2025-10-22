@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ComponentProps, ReactNode } from 'react';
+import React, { ComponentProps, ReactNode, FC } from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { cn } from '@/shared/lib/utils';
 
@@ -12,13 +12,9 @@ interface ITooltipProps {
   delay?: number;
 }
 
-export const CustomTooltip = ({
-  children,
-  content,
-  offset = 0,
-  side = 'top',
-  delay = 0,
-}: ITooltipProps) => {
+export const CustomTooltip: FC<ITooltipProps> = (props) => {
+  const { children, content, offset = 0, side = 'top', delay = 0 } = props;
+
   return (
     <TooltipPrimitive.Provider delayDuration={delay}>
       <TooltipPrimitive.Root>

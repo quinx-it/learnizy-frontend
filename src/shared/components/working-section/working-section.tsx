@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { FC } from 'react';
 import { cn } from '@/shared/lib/utils';
 import { Text } from '@/shared/ui/typography';
 import Image from 'next/image';
@@ -9,7 +9,9 @@ type WorkingSectionPropsType = {
   className?: string;
 };
 
-export const WorkingSection = ({ className }: WorkingSectionPropsType) => {
+export const WorkingSection: FC<WorkingSectionPropsType> = (props) => {
+  const { className } = props;
+
   return (
     <div className="flex h-full items-center">
       <div className={cn('m-auto flex flex-col items-center gap-6 text-center', className)}>

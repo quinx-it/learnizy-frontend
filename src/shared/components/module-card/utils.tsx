@@ -1,4 +1,4 @@
-import { JSX } from 'react';
+import { JSX, FC } from 'react';
 import { constants, StatusValueType } from './constants';
 import { StarIcon } from '@/shared/ui/icons';
 import { Text } from '@/shared/ui/typography';
@@ -11,7 +11,13 @@ type ProgressModuleType = {
   status: StatusValueType;
 };
 
-const ProcentContent = ({ progress }: { progress: number | null | string }) => {
+interface ProcentContentProps {
+  progress: number | null | string;
+}
+
+const ProcentContent: FC<ProcentContentProps> = (props) => {
+  const { progress } = props;
+
   return (
     <div className="text-medium flex gap-1.5 self-center">
       <ProgressBar

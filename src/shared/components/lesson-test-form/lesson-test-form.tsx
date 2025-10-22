@@ -4,7 +4,7 @@ import { LessonQuestion } from '@/shared/components/lesson-question';
 import { Button } from '@/shared/ui/button';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Spinner } from '@/shared/ui/spinner';
-import { useState } from 'react';
+import { useState, FC } from 'react';
 import { showToast } from '@/shared/ui/toaster';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LessonTestFormSchema } from './validation';
@@ -24,12 +24,9 @@ type LessonTestFormPropsType = {
   onSubmit: (data: LessonTestSubmitType) => void;
 };
 
-export const LessonTestForm = ({
-  questions,
-  onSubmit,
-  testId,
-  loading,
-}: LessonTestFormPropsType) => {
+export const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
+  const { questions, onSubmit, testId, loading } = props;
+
   const router = useRouter();
   const pathname = usePathname();
   const [forceSubmit, setForceSubmit] = useState(false);

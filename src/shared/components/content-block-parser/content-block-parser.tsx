@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { Heading, Text } from '@/shared/ui/typography';
 import {
   Block,
@@ -23,7 +24,9 @@ const defaultStyles = {
 const renderChildren = (children?: Block[]) =>
   children?.map((child) => <BlockRenderer key={child.id} block={child} />);
 
-export const BlockRenderer: React.FC<IBlockRendererProps> = ({ block }) => {
+export const BlockRenderer: FC<IBlockRendererProps> = (props) => {
+  const { block } = props;
+
   const baseStyle = {
     marginBottom: block.properties.mb ?? defaultStyles.marginBottom,
     color: block.properties.color ?? defaultStyles.color,

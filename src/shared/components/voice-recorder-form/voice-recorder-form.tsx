@@ -31,7 +31,9 @@ interface IVoiceRecorderFormProps {
   lessonId: number;
 }
 
-export const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = ({ lessonId }) => {
+export const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = (props) => {
+  const { lessonId } = props;
+
   const [uploadVoice] = useUploadVoiceMutation();
   const [createLessonAIQuery, { isLoading: isCreatingQuery }] = useCreateLessonAIQueryMutation();
   const [lastCreatedQueryId, setLastCreatedQueryId] = useState<number | null>(null);

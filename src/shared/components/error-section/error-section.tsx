@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { cn } from '@/shared/lib/utils';
 import { Heading, Text } from '@/shared/ui/typography';
 import Image from 'next/image';
@@ -15,12 +15,14 @@ type ErrorPropsType = {
   title?: string;
 };
 
-export const ErrorSection = ({
-  className,
-  reset,
-  title = 'Упс, произошла ошибка..',
-  text = 'Мы уже знаем об этом и работаем над её устранением. \n Пожалуйста, попробуйте позже.',
-}: ErrorPropsType & ErrorType) => {
+export const ErrorSection: FC<ErrorPropsType & ErrorType> = (props) => {
+  const {
+    className,
+    reset,
+    title = 'Упс, произошла ошибка..',
+    text = 'Мы уже знаем об этом и работаем над её устранением. \n Пожалуйста, попробуйте позже.',
+  } = props;
+
   const handleError = () => {
     reset();
   };

@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, FC } from 'react';
 import { Navbar } from '@/shared/components/navbar';
 import { AuthLayout } from '@/shared/components/auth-layout';
 import { navbarLinks } from '@/shared/constants/constants';
@@ -9,7 +9,9 @@ interface IApplicationLayoutProps {
   children: ReactNode;
 }
 
-const LearnLayout = ({ children }: IApplicationLayoutProps) => {
+const LearnLayout: FC<IApplicationLayoutProps> = (props) => {
+  const { children } = props;
+
   return (
     <AuthLayout>
       <div className="bg-accent-background grid min-h-[100vh] grid-cols-[auto_1fr]">

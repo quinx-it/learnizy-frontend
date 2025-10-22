@@ -23,7 +23,9 @@ const mapEvaluation = (evaluation: string) => {
   }
 };
 
-export const LessonTestResultPage: FC<LessonTestResultPagePropsType> = ({ lessonId, moduleId }) => {
+export const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) => {
+  const { lessonId, moduleId } = props;
+
   const { data: lessonTest } = useGetTestByLessonIdQuery(+lessonId);
   const {
     data: testResult,

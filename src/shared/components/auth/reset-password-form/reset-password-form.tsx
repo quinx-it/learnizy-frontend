@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { IResetPasswordFormValues, formSchema } from './validation';
@@ -14,7 +14,9 @@ interface IResetPasswordFormProps {
   token: string;
 }
 
-export const ResetPasswordForm = ({ token }: IResetPasswordFormProps) => {
+export const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
+  const { token } = props;
+
   const [resetPassword, { isLoading, error }] = useResetPasswordMutation();
 
   useEffect(() => {

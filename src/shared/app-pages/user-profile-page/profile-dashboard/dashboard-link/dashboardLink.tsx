@@ -2,7 +2,7 @@ import { cn } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { ElementType, ReactNode } from 'react';
+import React, { ElementType, ReactNode, FC } from 'react';
 
 interface IDashboardLinkProps {
   href: string;
@@ -10,7 +10,9 @@ interface IDashboardLinkProps {
   children: ReactNode;
 }
 
-export const DashboardLink = ({ href, Icon, children }: IDashboardLinkProps) => {
+export const DashboardLink: FC<IDashboardLinkProps> = (props) => {
+  const { href, Icon, children } = props;
+
   const pathname = usePathname();
   const isActive = pathname === href;
 

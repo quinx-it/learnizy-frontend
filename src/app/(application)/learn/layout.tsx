@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, FC } from 'react';
 import { usePathname } from 'next/navigation';
 import { Navbar } from '@/shared/components/navbar';
 import { AuthLayout } from '@/shared/components/auth-layout';
@@ -12,7 +12,9 @@ interface IApplicationLayoutProps {
   children: ReactNode;
 }
 
-const LearnLayout = ({ children }: IApplicationLayoutProps) => {
+const LearnLayout: FC<IApplicationLayoutProps> = (props) => {
+  const { children } = props;
+
   const pathname = usePathname();
 
   const showChatHeader = pathname.startsWith('/learn/ai-assistant/chat/');

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
   Accordion,
   AccordionContent,
@@ -22,7 +22,9 @@ type AccordionReviewPropsType = {
   items: AccordionItemType[];
 };
 
-export const AccordionReview = ({ items }: AccordionReviewPropsType) => {
+export const AccordionReview: FC<AccordionReviewPropsType> = (props) => {
+  const { items } = props;
+
   return (
     <Accordion type="single" collapsible className={cn('w-full')}>
       {items.map(({ value, number, messageNumber, content }) => (

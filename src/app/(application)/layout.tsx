@@ -1,7 +1,7 @@
 'use client';
 
 import { useRefreshMutation } from '@/api/endpoints/auth/auth';
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, FC } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAppSelector } from '@/shared/hooks/redux';
 import {
@@ -30,7 +30,9 @@ const isValidRoute = (pathname: string) => {
   return allDynamicRoutes.some((regex) => regex.test(pathname));
 };
 
-const ApplicationLayout = ({ children }: IApplicationLayoutProps) => {
+const ApplicationLayout: FC<IApplicationLayoutProps> = (props) => {
+  const { children } = props;
+
   const [refreshAccessToken, { isLoading }] = useRefreshMutation();
   const pathname = usePathname();
   const router = useRouter();

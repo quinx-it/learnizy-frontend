@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ComponentProps, Dispatch, ReactNode, SetStateAction } from 'react';
+import React, { ComponentProps, Dispatch, ReactNode, SetStateAction, FC } from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { cn } from '@/shared/lib/utils';
 
@@ -14,15 +14,17 @@ interface IPopoverProps {
   onOpenChange?: Dispatch<SetStateAction<boolean>>;
 }
 
-export const Popover = ({
-  children,
-  content,
-  side = 'bottom',
-  align = 'center',
-  offset = 4,
-  open,
-  onOpenChange,
-}: IPopoverProps) => {
+export const Popover: FC<IPopoverProps> = (props) => {
+  const {
+    children,
+    content,
+    side = 'bottom',
+    align = 'center',
+    offset = 4,
+    open,
+    onOpenChange,
+  } = props;
+
   return (
     <PopoverPrimitive.Root open={open} onOpenChange={onOpenChange}>
       <PopoverPrimitive.Trigger asChild>{children}</PopoverPrimitive.Trigger>

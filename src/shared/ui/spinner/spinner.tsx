@@ -1,4 +1,5 @@
 import { type LucideProps } from 'lucide-react';
+import { FC } from 'react';
 
 type SpinnerVariantPropsType = Omit<SpinnerPropsType, 'variant'>;
 
@@ -89,13 +90,15 @@ export type SpinnerPropsType = LucideProps & {
   className?: string;
 };
 
-export const Spinner = ({ variant, className, ...props }: SpinnerPropsType) => {
+export const Spinner: FC<SpinnerPropsType> = (props) => {
+  const { variant, className, ...restProps } = props;
+
   switch (variant) {
     case 'ring':
-      return <Ring {...props} className={className} />;
+      return <Ring {...restProps} className={className} />;
     case 'circle':
-      return <Circle {...props} className={className} />;
+      return <Circle {...restProps} className={className} />;
     default:
-      return <Circle {...props} className={className} />;
+      return <Circle {...restProps} className={className} />;
   }
 };
