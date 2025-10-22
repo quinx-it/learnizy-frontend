@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Fragment } from 'react';
+import { Fragment, FC } from 'react';
 import { DotTitle } from '../dotTitle';
 import { ArrowRightIcon } from '@/shared/ui/icons';
 import { Text } from '@/shared/ui/typography';
@@ -21,13 +21,15 @@ interface IBreadcrumbsProps {
   rootDescription?: string;
 }
 
-export const Breadcrumbs = ({
-  items,
-  rootLabel = constants.rootLabel,
-  rootHref = constants.rootHref,
-  className,
-  rootDescription,
-}: IBreadcrumbsProps) => {
+export const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
+  const {
+    items,
+    rootLabel = constants.rootLabel,
+    rootHref = constants.rootHref,
+    className,
+    rootDescription,
+  } = props;
+
   return (
     <nav className={cn('mb-4', className)}>
       <ul className="text-medium flex flex-wrap items-center gap-2">

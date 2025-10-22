@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Progress } from '@radix-ui/react-progress';
 import { cn } from '@/shared/lib/utils';
+import { FC } from 'react';
 
 export interface IProgressBarProps {
   value: number;
@@ -10,13 +11,9 @@ export interface IProgressBarProps {
   strokeWidth?: number;
 }
 
-export const ProgressBar = ({
-  value,
-  className,
-  variant = 'linear',
-  size = 48,
-  strokeWidth = 4,
-}: IProgressBarProps) => {
+export const ProgressBar: FC<IProgressBarProps> = (props) => {
+  const { value, className, variant = 'linear', size = 48, strokeWidth = 4 } = props;
+
   if (variant === 'circular') {
     const radius = (size - strokeWidth) / 2;
     const circumference = 2 * Math.PI * radius;

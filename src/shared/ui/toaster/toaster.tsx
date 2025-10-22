@@ -47,7 +47,9 @@ type CustomToastPropsType = {
   onClose: () => void;
 };
 
-const CustomToast: FC<CustomToastPropsType> = ({ variant, title, description, onClose }) => {
+const CustomToast: FC<CustomToastPropsType> = (props) => {
+  const { variant, title, description, onClose } = props;
+
   const { bg, text, icon } = colorMap[variant];
 
   return (

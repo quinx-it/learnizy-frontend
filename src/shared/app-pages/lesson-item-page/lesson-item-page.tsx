@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { FC } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
 import { useGetLessonQuery } from '@/api/endpoints/lessons';
@@ -19,7 +19,9 @@ interface ILessonItemPageProps {
   moduleId: string;
 }
 
-export const LessonItemPage: React.FC<ILessonItemPageProps> = ({ lessonId, moduleId }) => {
+export const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
+  const { lessonId, moduleId } = props;
+
   const router = useRouter();
   const pathname = usePathname();
   const { breadcrumbs } = constants;

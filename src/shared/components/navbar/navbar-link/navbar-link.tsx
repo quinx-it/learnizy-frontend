@@ -1,7 +1,7 @@
 'use client';
 
 import Link, { LinkProps } from 'next/link';
-import { ComponentType } from 'react';
+import { ComponentType, FC } from 'react';
 import { Text } from '@/shared/ui/typography';
 import { Button } from '@/shared/ui/button';
 import { usePathname } from 'next/navigation';
@@ -13,7 +13,9 @@ interface INavbarLinkProps extends LinkProps {
   onClick?: () => void;
 }
 
-export const NavbarLink = ({ href, Icon, label, className, onClick }: INavbarLinkProps) => {
+export const NavbarLink: FC<INavbarLinkProps> = (props) => {
+  const { href, Icon, label, className, onClick } = props;
+
   const pathname = usePathname();
   const isActive =
     pathname.split('/').slice(0, 3).join('/') === String(href).split('/').slice(0, 3).join('/');

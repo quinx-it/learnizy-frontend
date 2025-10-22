@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, FC } from 'react';
 import Link from 'next/link';
 import { NavbarLink } from './navbar-link';
 
@@ -24,7 +24,9 @@ interface INavbarProps {
   links: Array<ILinkType>;
 }
 
-export const Navbar = ({ links }: INavbarProps) => {
+export const Navbar: FC<INavbarProps> = (props) => {
+  const { links } = props;
+
   const { handleLogout, isLoading } = useLogout();
   const [isOpen, setIsOpen] = useState(false);
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRefreshMutation } from '@/api/endpoints/auth/auth';
-import { ReactNode, useEffect } from 'react';
+import { PropsWithChildren, useEffect, FC } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAppSelector } from '@/shared/hooks/redux';
 import {
@@ -18,10 +18,6 @@ import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscre
 import { isRoleRoute } from '@/shared/lib/utils';
 import { NotFoundPage } from '@/shared/app-pages/notFound-page';
 
-interface IApplicationLayoutProps {
-  children: ReactNode;
-}
-
 const allStaticRoutes = [...publicRoutes, ...staticUserRoutes, ...staticMentorRoutes];
 const allDynamicRoutes = [...dynamicUserRoutes, ...dynamicMentorRoutes];
 
@@ -30,7 +26,9 @@ const isValidRoute = (pathname: string) => {
   return allDynamicRoutes.some((regex) => regex.test(pathname));
 };
 
-const ApplicationLayout = ({ children }: IApplicationLayoutProps) => {
+const ApplicationLayout: FC<PropsWithChildren> = (props) => {
+  const { children } = props;
+
   const [refreshAccessToken, { isLoading }] = useRefreshMutation();
   const pathname = usePathname();
   const router = useRouter();

@@ -2,12 +2,16 @@
 
 import { CircleIcon } from '@/shared/ui/icons';
 import { Heading } from '@/shared/ui/typography';
-import React from 'react';
+import React, { FC } from 'react';
 import { ExamCard } from './exam-card';
 import { useGetExamsQuery } from '@/api/endpoints/exams';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 import { ExamStatus, ExamType } from './types';
+
+interface ExamsPageProps {
+  courseId?: number;
+}
 
 const mapExamStatus = (status: string): ExamStatus => {
   switch (status) {
@@ -23,7 +27,9 @@ const mapExamStatus = (status: string): ExamStatus => {
   }
 };
 
-export const ExamsPage = ({ courseId = 1 }: { courseId?: number }) => {
+export const ExamsPage: FC<ExamsPageProps> = (props) => {
+  const { courseId = 1 } = props;
+
   const { data, isLoading, isError, refetch } = useGetExamsQuery({ courseId, page: 0, size: 10 });
 
   if (isLoading) return <FullscreenLoader />;

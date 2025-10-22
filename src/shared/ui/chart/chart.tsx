@@ -1,7 +1,8 @@
 'use client';
 
 import { cn } from '@/shared/lib/utils';
-import * as React from 'react';
+import React, { FC } from 'react';
+
 import {
   ComponentProps,
   ComponentType,
@@ -29,6 +30,11 @@ export type ChartConfigType = {
 type ChartContextPropsType = {
   config: ChartConfigType;
 };
+
+interface ChartStyleProps {
+  id: string;
+  config: ChartConfigType;
+}
 
 const ChartContext = createContext<ChartContextPropsType | null>(null);
 
@@ -73,7 +79,9 @@ function ChartContainer({
   );
 }
 
-const ChartStyle = ({ id, config }: { id: string; config: ChartConfigType }) => {
+const ChartStyle: FC<ChartStyleProps> = (props) => {
+  const { id, config } = props;
+
   const colorConfig = Object.entries(config).filter(([, config]) => config.theme || config.color);
 
   if (!colorConfig.length) {

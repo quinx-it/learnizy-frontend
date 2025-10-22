@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { CalendarIcon } from '@/shared/ui/icons';
 import { AreaChart } from '@/shared/ui/areaChart';
 import { Text } from '@/shared/ui/typography';
@@ -15,7 +15,9 @@ type StatisticsChartPropsType = {
 
 const WEEK_DAYS = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 
-export const StatisticsChart = ({ weeklyActivity }: StatisticsChartPropsType) => {
+export const StatisticsChart: FC<StatisticsChartPropsType> = (props) => {
+  const { weeklyActivity } = props;
+
   const totalLessons = weeklyActivity.reduce((acc, item) => acc + item.lessonsCompleted, 0);
   const totalTests = weeklyActivity.reduce((acc, item) => acc + item.testsPassed, 0);
 

@@ -8,7 +8,9 @@ interface IChatHeaderProps {
   className?: string;
 }
 
-export const ChatHeader: FC<IChatHeaderProps> = ({ className }) => {
+export const ChatHeader: FC<IChatHeaderProps> = (props) => {
+  const { className } = props;
+
   const params = useParams();
   const chatId = params.id ? parseInt(params.id as string, 10) : null;
 

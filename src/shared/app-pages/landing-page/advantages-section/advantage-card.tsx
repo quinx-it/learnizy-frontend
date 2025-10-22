@@ -1,7 +1,7 @@
 import { cn } from '@/shared/lib/utils';
 import { Heading, Text } from '@/shared/ui/typography';
 import Image from 'next/image';
-import React from 'react';
+import React, { FC } from 'react';
 
 type AdvantageCardPropsType = {
   title: string;
@@ -28,7 +28,9 @@ const cardStyles = {
   },
 };
 
-export const AdvantageCard = ({ type, title, text, className }: AdvantageCardPropsType) => {
+export const AdvantageCard: FC<AdvantageCardPropsType> = (props) => {
+  const { type, title, text, className } = props;
+
   const styles = cardStyles[type];
 
   return (

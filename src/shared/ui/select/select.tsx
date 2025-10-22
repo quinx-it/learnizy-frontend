@@ -1,5 +1,6 @@
 'use client';
 
+import { FC } from 'react';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { ChevronDownIcon, ChevronUpIcon, CheckIcon } from 'lucide-react';
 
@@ -16,13 +17,9 @@ interface ICustomSelectProps {
   label?: string;
 }
 
-export const CustomSelect = ({
-  value,
-  onValueChange,
-  options,
-  placeholder,
-  label,
-}: ICustomSelectProps) => {
+export const CustomSelect: FC<ICustomSelectProps> = (props) => {
+  const { value, onValueChange, options, placeholder, label } = props;
+
   return (
     <SelectPrimitive.Root value={value} onValueChange={onValueChange}>
       <SelectPrimitive.Trigger className="focus:ring-ring inline-flex items-center justify-between gap-8 rounded-4xl border px-6 py-2 text-[20px] leading-[27px] shadow-sm focus:ring-2 focus:outline-none">

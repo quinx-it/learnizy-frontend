@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { FC } from 'react';
 import { cn } from '@/shared/lib/utils';
 import { Heading } from '@/shared/ui/typography';
 import Image from 'next/image';
@@ -14,7 +14,9 @@ type NotFoundComponentPropsType = {
   className?: string;
 };
 
-export const NotFoundComponent = ({ className }: NotFoundComponentPropsType) => {
+export const NotFoundComponent: FC<NotFoundComponentPropsType> = (props) => {
+  const { className } = props;
+
   const role = useAppSelector(selectUserRole);
 
   const defaultUrl = role && defaultPage[role] ? defaultPage[role] : routes.public.loginPage;

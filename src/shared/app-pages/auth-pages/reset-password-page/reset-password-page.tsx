@@ -2,13 +2,15 @@ import { ResetPasswordForm } from '@/shared/components/auth/reset-password-form'
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { Logo } from '@/shared/ui/icons';
 import { Heading, Text } from '@/shared/ui/typography';
-import React from 'react';
+import React, { FC } from 'react';
 
 interface IResetPasswordPageProps {
   token: string;
 }
 
-export const ResetPasswordPage = ({ token }: IResetPasswordPageProps) => {
+export const ResetPasswordPage: FC<IResetPasswordPageProps> = (props) => {
+  const { token } = props;
+
   return (
     <div className="flex h-[100vh] items-center justify-center">
       <CardWrapper className="max-w-[472px] px-8 py-16">

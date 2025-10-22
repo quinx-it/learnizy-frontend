@@ -2,14 +2,16 @@ import { Button } from '@/shared/ui/button';
 import { MicIcon, TrashCanIcon } from '@/shared/ui/icons';
 import { AudioPlayer } from '../audio-player';
 import { Text } from '@/shared/ui/typography';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, FC } from 'react';
 import { useVoiceRecorder } from '@/shared/hooks';
 
 type PropsType = {
   onChange: (file: Blob | null) => void;
 };
 
-export const VoiceRecorderControl = ({ onChange }: PropsType) => {
+export const VoiceRecorderControl: FC<PropsType> = (props) => {
+  const { onChange } = props;
+
   const { recording, audioUrl, audioBlob, startRecording, stopRecording, reset } =
     useVoiceRecorder();
   const [duration, setDuration] = useState(0);

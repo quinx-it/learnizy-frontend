@@ -2,7 +2,7 @@
 import { Button } from '@/shared/ui/button';
 import { ProgressBar } from '@/shared/ui/progress';
 import { Text } from '@/shared/ui/typography';
-import React from 'react';
+import React, { FC } from 'react';
 import { constants } from './constants';
 import { cn } from '@/shared/lib/utils';
 
@@ -14,13 +14,9 @@ export type CourseListItemType = {
   onClick?: () => void;
 };
 
-export const CourseListItem = ({
-  title,
-  number,
-  status,
-  progress,
-  onClick,
-}: CourseListItemType) => {
+export const CourseListItem: FC<CourseListItemType> = (props) => {
+  const { title, number, status, progress, onClick } = props;
+
   const progressBarValue = progress ?? 0;
   const isBlocked = status === 'BLOCKED';
 

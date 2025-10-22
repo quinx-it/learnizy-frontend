@@ -1,4 +1,5 @@
 'use client';
+import { FC } from 'react';
 import { RadioGroup } from '@/shared/ui/radioGroup';
 import { Textarea } from '@/shared/ui/textarea';
 import { Text } from '@/shared/ui/typography';
@@ -13,15 +14,17 @@ type LessonQuestionPropsType = LessonQuestionItemType & {
   totalQuestions: number;
 };
 
-export const LessonQuestion = ({
-  type = 'checkbox',
-  totalQuestions,
-  sequenceOrder,
-  text,
-  answerFieldName,
-  fileFieldName,
-  errors,
-}: LessonQuestionPropsType) => {
+export const LessonQuestion: FC<LessonQuestionPropsType> = (props) => {
+  const {
+    type = 'checkbox',
+    totalQuestions,
+    sequenceOrder,
+    text,
+    answerFieldName,
+    fileFieldName,
+    errors,
+  } = props;
+
   const { control, setValue } = useFormContext();
 
   const fileValue = useWatch({ name: fileFieldName });

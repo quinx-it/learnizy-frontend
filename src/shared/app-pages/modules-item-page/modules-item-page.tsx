@@ -8,7 +8,7 @@ import { CheckIcon, LockColorIcon } from '@/shared/ui/icons';
 import { ProgressBar } from '@/shared/ui/progress';
 import { Text } from '@/shared/ui/typography';
 import Link from 'next/link';
-import React from 'react';
+import React, { FC } from 'react';
 import { constants } from './constants';
 import { LessonCard } from '@/shared/components/lesson-card';
 import { useGetModuleQuery } from '@/api/endpoints/modules/modules';
@@ -22,7 +22,9 @@ type ModuleItemPagePropsType = {
   id: string;
 };
 
-export const ModuleItemPage = ({ id }: ModuleItemPagePropsType) => {
+export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
+  const { id } = props;
+
   const pathname = usePathname();
   const router = useRouter();
 

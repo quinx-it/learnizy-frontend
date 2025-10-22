@@ -2,7 +2,7 @@ import { CardWrapper } from '@/shared/components/card-wrapper';
 import { cn, normalizeToFive } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';
 import { Heading } from '@/shared/ui/typography';
-import React from 'react';
+import React, { FC } from 'react';
 import { StarIcon } from '@/shared/ui/icons';
 import { ILesson, ILessonProgress } from '@/api/endpoints/lessons/types';
 
@@ -12,7 +12,9 @@ type LessonCardPropsType = ILesson & {
   onClick: (lessonId: number) => void;
 };
 
-export const LessonCard = ({ id, title, progress, index, onClick }: LessonCardPropsType) => {
+export const LessonCard: FC<LessonCardPropsType> = (props) => {
+  const { id, title, progress, index, onClick } = props;
+
   const blocked = false;
   const active = true;
 

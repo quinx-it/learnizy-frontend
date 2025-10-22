@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { cn } from '@/shared/lib/utils';
 import {
   Accordion,
@@ -6,7 +7,6 @@ import {
   AccordionContent,
 } from '@radix-ui/react-accordion';
 import { Plus, Minus } from 'lucide-react';
-
 import './accordion.css';
 import { Text } from '@/shared/ui/typography';
 
@@ -24,7 +24,9 @@ interface IAccordionProps {
   className?: string;
 }
 
-export const CardAccordion = ({ items, className }: IAccordionProps) => {
+export const CardAccordion: FC<IAccordionProps> = (props) => {
+  const { items, className } = props;
+
   return (
     <Accordion type="single" collapsible className={cn('w-full', className)}>
       {items.map(({ value, heading, content, bgColor, textColor, iconColor }) => (

@@ -4,12 +4,15 @@ import { cn } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';
 import { Text } from '@/shared/ui/typography';
 import Link from 'next/link';
+import { FC } from 'react';
 
 interface IInterviewRecordsProps {
   className?: string;
 }
 
-export const InterviewRecords = ({ className }: IInterviewRecordsProps) => {
+export const InterviewRecords: FC<IInterviewRecordsProps> = (props) => {
+  const { className } = props;
+
   return (
     <CardWrapper className={cn(className, 'flex flex-col gap-4')}>
       <Text variant="m" className="text-medium">

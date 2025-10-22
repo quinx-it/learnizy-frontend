@@ -1,5 +1,5 @@
 'use client';
-import React, { memo, useMemo } from 'react';
+import React, { memo, useMemo, FC } from 'react';
 import { Text } from '@/shared/ui/typography';
 import Image from 'next/image';
 import { Button } from '@/shared/ui/button';
@@ -12,16 +12,18 @@ import { routes } from '@/shared/constants';
 import { useRouter } from 'next/navigation';
 import { IModuleInfo } from '@/api/endpoints/modules/types';
 
-const ModuleCardComponent = ({
-  totalLessons,
-  completedLessons,
-  completionStatus,
-  description,
-  title,
-  id,
-  sequenceOrder,
-  className,
-}: IModuleInfo & { className?: string }) => {
+const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) => {
+  const {
+    totalLessons,
+    completedLessons,
+    completionStatus,
+    description,
+    title,
+    id,
+    sequenceOrder,
+    className,
+  } = props;
+
   const bonus = false;
 
   const { element: progressElement, status: progressStatus } = renderModuleProgress(

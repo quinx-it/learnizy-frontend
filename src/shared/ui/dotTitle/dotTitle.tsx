@@ -1,6 +1,6 @@
 import { cn } from '@/shared/lib/utils';
 import { Heading, Text } from '@/shared/ui/typography';
-import React from 'react';
+import React, { FC } from 'react';
 
 export const Dot = ({ className }: { className?: string }) => (
   <span
@@ -23,16 +23,18 @@ interface IDotTitleProps {
   heading?: boolean;
 }
 
-export const DotTitle = ({
-  firstLabel,
-  secondLabel,
-  firstVariant = 'm-bold',
-  className,
-  firstClassName,
-  secondClassName,
-  dotClassName,
-  heading = false,
-}: IDotTitleProps) => {
+export const DotTitle: FC<IDotTitleProps> = (props) => {
+  const {
+    firstLabel,
+    secondLabel,
+    firstVariant = 'm-bold',
+    className,
+    firstClassName,
+    secondClassName,
+    dotClassName,
+    heading = false,
+  } = props;
+
   return (
     <div className={cn('flex items-start gap-1.5', className)}>
       {heading ? (
