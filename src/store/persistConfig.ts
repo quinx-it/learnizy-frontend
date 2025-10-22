@@ -1,6 +1,6 @@
 import { PersistConfig } from 'redux-persist';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
-import { AuthState } from './slices/auth/types';
+import { IAuthState } from './slices/auth/types';
 
 const createNoopStorage = () => {
   return {
@@ -20,7 +20,7 @@ const createNoopStorage = () => {
 
 const storage = typeof window !== 'undefined' ? createWebStorage('local') : createNoopStorage();
 
-export const authPersistConfig: PersistConfig<AuthState> = {
+export const authPersistConfig: PersistConfig<IAuthState> = {
   key: 'auth',
   storage,
   whitelist: ['accessToken'],

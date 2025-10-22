@@ -1,9 +1,9 @@
 import { api } from '@/api';
-import { MainPageInfoResponse } from './types';
+import { IMainPageInfoResponse } from './types';
 
 export const progressApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getMainPageProgress: builder.query<MainPageInfoResponse, void>({
+    getMainPageProgress: builder.query<IMainPageInfoResponse, void>({
       query: () => 'progress/users/main-page',
     }),
   }),

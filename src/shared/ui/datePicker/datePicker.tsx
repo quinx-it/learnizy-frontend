@@ -8,14 +8,14 @@ import { Popover } from '@/shared/ui/popover';
 import { CalendarIcon } from '@/shared/ui/icons';
 import { formatDate, parseDateString } from './utils';
 
-interface DatePickerProps {
+interface IDatePickerProps {
   label: string;
   value: Date | null;
   onChange: (date: Date | null) => void;
   error?: string;
 }
 
-export function DatePicker({ label, value, onChange, error }: DatePickerProps) {
+export function DatePicker({ label, value, onChange, error }: IDatePickerProps) {
   const [open, setOpen] = useState(false);
 
   const [inputValue, setInputValue] = useState(formatDate(value || undefined));

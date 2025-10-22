@@ -1,6 +1,6 @@
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 
-export const MicIcon = ({ className, color = 'currentColor' }: IconProps) => {
+export const MicIcon = ({ className, color = 'currentColor' }: IIconProps) => {
   return (
     <svg
       width="16"

@@ -4,7 +4,7 @@ import React, { ComponentProps, ReactNode } from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { cn } from '@/shared/lib/utils';
 
-interface TooltipProps {
+interface ITooltipProps {
   children: ReactNode;
   content: ReactNode;
   offset?: number;
@@ -18,7 +18,7 @@ export const CustomTooltip = ({
   offset = 0,
   side = 'top',
   delay = 0,
-}: TooltipProps) => {
+}: ITooltipProps) => {
   return (
     <TooltipPrimitive.Provider delayDuration={delay}>
       <TooltipPrimitive.Root>

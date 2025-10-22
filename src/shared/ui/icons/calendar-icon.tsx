@@ -1,4 +1,4 @@
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 
 const CalendarType = {
   light: '#FAFAFA',
@@ -10,7 +10,7 @@ type CalendarIconPropsType = {
   type?: keyof typeof CalendarType;
 };
 
-export const CalendarIcon = ({ className, type = 'light' }: IconProps & CalendarIconPropsType) => {
+export const CalendarIcon = ({ className, type = 'light' }: IIconProps & CalendarIconPropsType) => {
   return (
     <svg
       className={className}

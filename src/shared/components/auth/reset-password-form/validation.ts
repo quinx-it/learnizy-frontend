@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export interface ResetPasswordFormValues {
+export interface IResetPasswordFormValues {
   password: string;
   repeatPassword: string;
 }

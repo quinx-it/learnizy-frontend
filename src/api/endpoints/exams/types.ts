@@ -1,12 +1,12 @@
 export type ExamStatusType = 'BLOCKED' | 'AVAILABLE' | 'FAILED' | 'PASSED';
 
-export interface ExamLastResult {
+export interface IExamLastResult {
   scorePercent: number;
   correct: number;
   total: number;
 }
 
-export interface Exam {
+export interface IExam {
   testId: number;
   moduleId: number;
   moduleSequenceOrder: number;
@@ -14,11 +14,11 @@ export interface Exam {
   questionsCount: number;
   passThresholdPercentage: number;
   status: ExamStatusType;
-  lastResult: ExamLastResult | null;
+  lastResult: IExamLastResult | null;
 }
 
-export interface ExamsResponse {
-  content: Exam[];
+export interface IExamsResponse {
+  content: IExam[];
   page: {
     size: number;
     number: number;

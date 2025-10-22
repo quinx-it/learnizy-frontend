@@ -1,12 +1,12 @@
 import { api } from '@/api';
-import { GetModuleRequest, ModuleData, ModuleInfo } from './types';
+import { IGetModuleRequest, IModuleData, IModuleInfo } from './types';
 
 export const modulesApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getModules: builder.query<ModuleInfo[], number>({
+    getModules: builder.query<IModuleInfo[], number>({
       query: (courseId) => `/courses/${courseId}/modules`,
     }),
-    getModule: builder.query<ModuleData, GetModuleRequest>({
+    getModule: builder.query<IModuleData, IGetModuleRequest>({
       query: ({ courseId, moduleId }) => `/modules/${courseId}/progress/${moduleId}`,
     }),
   }),

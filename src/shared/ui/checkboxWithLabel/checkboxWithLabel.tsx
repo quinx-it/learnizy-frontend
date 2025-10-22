@@ -3,7 +3,7 @@ import { Checkbox } from '@/shared/ui/checkbox';
 import { Label } from '@/shared/ui/label';
 import { CheckboxProps } from '@radix-ui/react-checkbox';
 
-interface CheckboxWithLabelProps extends CheckboxProps {
+interface ICheckboxWithLabelProps extends CheckboxProps {
   children: ReactNode;
   checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
@@ -14,7 +14,7 @@ export const CheckboxWithLabel = ({
   checked,
   onCheckedChange,
   ...props
-}: CheckboxWithLabelProps) => {
+}: ICheckboxWithLabelProps) => {
   return (
     <div className="flex shrink-0 items-center gap-3">
       <Checkbox

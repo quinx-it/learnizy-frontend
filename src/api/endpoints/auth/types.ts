@@ -1,6 +1,6 @@
-import { AuthFormValues } from '@/shared/components/auth/auth-form/validation';
+import { IAuthFormValues } from '@/shared/components/auth/auth-form/validation';
 
-export type LoginRequestType = Pick<AuthFormValues, 'username' | 'password'>;
+export type LoginRequestType = Pick<IAuthFormValues, 'username' | 'password'>;
 export type ForgotPasswordRequestType = { email: string };
 export type ResetPasswordRequestType = {
   token: string;

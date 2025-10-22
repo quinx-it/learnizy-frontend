@@ -1,7 +1,7 @@
-import { Lesson } from '../lessons/types';
+import { ILesson } from '../lessons/types';
 import { CompletionStatus } from '../types';
 
-export interface ModuleInfo {
+export interface IModuleInfo {
   id: number;
   title: string;
   sequenceOrder: number;
@@ -11,12 +11,12 @@ export interface ModuleInfo {
   completionStatus: CompletionStatus;
 }
 
-export interface ModuleData {
-  moduleInfo: ModuleInfo;
-  lessons: Lesson[];
+export interface IModuleData {
+  moduleInfo: IModuleInfo;
+  lessons: ILesson[];
 }
 
-export interface GetModuleRequest {
+export interface IGetModuleRequest {
   courseId: number;
   moduleId: number;
 }

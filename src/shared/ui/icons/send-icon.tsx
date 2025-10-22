@@ -1,7 +1,7 @@
 import { cn } from '@/shared/lib/utils';
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 
-export const SendIcon = ({ className }: IconProps) => {
+export const SendIcon = ({ className }: IIconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

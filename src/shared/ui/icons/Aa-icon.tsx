@@ -1,7 +1,7 @@
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 import { cn } from '@/shared/lib/utils';
 
-export const AaIcon = ({ className }: IconProps) => {
+export const AaIcon = ({ className }: IIconProps) => {
   return (
     <svg
       className={cn(className, 'h-[24px] w-[28px] text-inherit')}

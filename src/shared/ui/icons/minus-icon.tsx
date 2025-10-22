@@ -1,4 +1,4 @@
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 
 const colors = {
   white: '#FAFAFA',
@@ -11,7 +11,7 @@ type MinusIconPropsType = {
   color?: keyof typeof colors;
 };
 
-export const MinusIcon = ({ className, color = 'white' }: IconProps & MinusIconPropsType) => {
+export const MinusIcon = ({ className, color = 'white' }: IIconProps & MinusIconPropsType) => {
   return (
     <svg
       className={className}

@@ -1,7 +1,7 @@
 import { cn } from '@/shared/lib/utils';
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 
-export const APlusIcon = ({ className, color = 'currentColor' }: IconProps) => {
+export const APlusIcon = ({ className, color = 'currentColor' }: IIconProps) => {
   return (
     <svg
       className={cn(className, 'h-[16px] w-[16px] text-inherit')}

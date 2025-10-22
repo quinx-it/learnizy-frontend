@@ -18,7 +18,7 @@ import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscre
 import { isRoleRoute } from '@/shared/lib/utils';
 import { NotFoundPage } from '@/shared/app-pages/notFound-page';
 
-interface ApplicationLayoutProps {
+interface IApplicationLayoutProps {
   children: ReactNode;
 }
 
@@ -30,7 +30,7 @@ const isValidRoute = (pathname: string) => {
   return allDynamicRoutes.some((regex) => regex.test(pathname));
 };
 
-const ApplicationLayout = ({ children }: ApplicationLayoutProps) => {
+const ApplicationLayout = ({ children }: IApplicationLayoutProps) => {
   const [refreshAccessToken, { isLoading }] = useRefreshMutation();
   const pathname = usePathname();
   const router = useRouter();

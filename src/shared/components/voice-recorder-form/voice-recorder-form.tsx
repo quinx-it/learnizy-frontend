@@ -23,15 +23,15 @@ export enum AIQueryStatus {
   FAILED = 'FAILED',
 }
 
-interface AIQuestionFormValues {
+interface IAIQuestionFormValues {
   file?: Blob;
 }
 
-interface VoiceRecorderFormProps {
+interface IVoiceRecorderFormProps {
   lessonId: number;
 }
 
-export const VoiceRecorderForm: FC<VoiceRecorderFormProps> = ({ lessonId }) => {
+export const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = ({ lessonId }) => {
   const [uploadVoice] = useUploadVoiceMutation();
   const [createLessonAIQuery, { isLoading: isCreatingQuery }] = useCreateLessonAIQueryMutation();
   const [lastCreatedQueryId, setLastCreatedQueryId] = useState<number | null>(null);
@@ -51,8 +51,8 @@ export const VoiceRecorderForm: FC<VoiceRecorderFormProps> = ({ lessonId }) => {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm<AIQuestionFormValues>({
-    resolver: yupResolver(schema) as Resolver<AIQuestionFormValues>,
+  } = useForm<IAIQuestionFormValues>({
+    resolver: yupResolver(schema) as Resolver<IAIQuestionFormValues>,
     defaultValues: { file: undefined },
   });
 
@@ -73,7 +73,7 @@ export const VoiceRecorderForm: FC<VoiceRecorderFormProps> = ({ lessonId }) => {
     }
   }, [lastAIQuery, lastCreatedQueryId]);
 
-  const onSubmit = async (data: AIQuestionFormValues) => {
+  const onSubmit = async (data: IAIQuestionFormValues) => {
     if (!data.file) {
       showToast('error', 'Ошибка', 'Пожалуйста, запишите вопрос голосом.');
       return;

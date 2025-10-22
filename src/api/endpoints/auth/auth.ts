@@ -1,4 +1,4 @@
-import { AuthState } from '@/store/slices/auth/types';
+import { IAuthState } from '@/store/slices/auth/types';
 import { api } from '@/api';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 import { showToast } from '@/shared/ui/toaster';
@@ -17,7 +17,7 @@ const AUTH_BASE_URL = '/auth';
 
 export const auth = api.injectEndpoints({
   endpoints: (builder) => ({
-    login: builder.mutation<AuthState, LoginRequestType>({
+    login: builder.mutation<IAuthState, LoginRequestType>({
       query: (body) => ({
         url: `${AUTH_BASE_URL}/login`,
         method: 'POST',
@@ -43,7 +43,7 @@ export const auth = api.injectEndpoints({
       }),
     }),
 
-    verifyEmail: builder.mutation<AuthState, VerifyEmailRequestType>({
+    verifyEmail: builder.mutation<IAuthState, VerifyEmailRequestType>({
       query: (body) => ({
         url: `${AUTH_BASE_URL}/verify-email`,
         method: 'POST',

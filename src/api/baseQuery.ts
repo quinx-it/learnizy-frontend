@@ -6,7 +6,7 @@ import {
 } from '@reduxjs/toolkit/query';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 import { RootStateType } from '@/store';
-interface RefreshResponse {
+interface IRefreshResponse {
   data?: {
     accessToken?: string;
   };
@@ -42,7 +42,7 @@ export const baseQueryWithReauth: BaseQueryFn<
       },
       api,
       extraOptions,
-    )) as RefreshResponse;
+    )) as IRefreshResponse;
     const accessToken = refreshResult.data?.accessToken;
 
     if (accessToken) {

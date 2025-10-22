@@ -3,7 +3,7 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { RegisterFormValues, formSchema, verificationSchema } from './validation';
+import { IRegisterFormValues, formSchema, verificationSchema } from './validation';
 import {
   useRegisterMutation,
   useVerifyEmailMutation,
@@ -37,7 +37,7 @@ export const RegisterForm = () => {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<RegisterFormValues>({
+  } = useForm<IRegisterFormValues>({
     resolver: yupResolver(formSchema),
     defaultValues: {
       login: '',
@@ -71,7 +71,7 @@ export const RegisterForm = () => {
     }
   }, [timer, step]);
 
-  const onRegisterSubmit: SubmitHandler<RegisterFormValues> = async (data) => {
+  const onRegisterSubmit: SubmitHandler<IRegisterFormValues> = async (data) => {
     try {
       await registerRequest({
         username: data.login,

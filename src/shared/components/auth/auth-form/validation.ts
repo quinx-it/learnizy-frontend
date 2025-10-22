@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export interface AuthFormValues {
+export interface IAuthFormValues {
   username: string;
   password: string;
 }

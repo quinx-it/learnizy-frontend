@@ -1,7 +1,7 @@
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 import { cn } from '@/shared/lib/utils';
 
-export const MicChatIcon = ({ className }: IconProps) => {
+export const MicChatIcon = ({ className }: IIconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

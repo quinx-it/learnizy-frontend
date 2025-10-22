@@ -1,4 +1,4 @@
-export interface LessonProgress {
+export interface ILessonProgress {
   theoryCompleted: boolean;
   voiceTaskCompleted: boolean;
   testTaskCompleted: boolean;
@@ -12,7 +12,7 @@ export enum LessonStatus {
   BLOCKED = 'BLOCKED',
 }
 
-export interface Lesson {
+export interface ILesson {
   id: number;
   title: string;
   description: string;
@@ -20,7 +20,7 @@ export interface Lesson {
   testQuestions: number;
   moduleSequenceOrder: number;
   status: LessonStatus;
-  progress: LessonProgress;
+  progress: ILessonProgress;
   contentBlocks: Block[];
 }
 
@@ -37,13 +37,13 @@ export enum BlockType {
   BOXED_TEXT = 'BOXED_TEXT',
 }
 
-export interface CommonProperties {
+export interface ICommonProperties {
   color?: string;
   inline?: boolean;
   mb?: number;
 }
 
-export interface HeadingProperties extends CommonProperties {
+export interface IHeadingProperties extends ICommonProperties {
   level: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
@@ -93,80 +93,80 @@ export const getTextVariant = (
   }
 };
 
-export interface TextProperties extends CommonProperties {
+export interface ITextProperties extends ICommonProperties {
   style?: 'bold' | 'italic' | 'underline' | 'bold italic';
   size?: 's' | 'm' | 'l';
 }
 
-export interface LinkProperties extends CommonProperties {
+export interface ILinkProperties extends ICommonProperties {
   url: string;
   target?: '_self' | '_blank' | '_parent' | '_top';
 }
 
-export interface CodeProperties extends CommonProperties {
+export interface ICodeProperties extends ICommonProperties {
   language: string;
   lineNumbers?: boolean;
 }
 
-export interface ImageProperties extends CommonProperties {
+export interface ImageProperties extends ICommonProperties {
   width: number;
   height: number;
   alt?: string;
   caption?: string;
 }
 
-interface BaseBlock {
+interface IBaseBlock {
   id: number;
   blockType: BlockType;
   content: string;
-  properties: CommonProperties;
+  properties: ICommonProperties;
   children?: Block[];
 }
 
-interface HeadingBlock extends BaseBlock {
+interface IHeadingBlock extends IBaseBlock {
   blockType: BlockType.HEADING;
-  properties: HeadingProperties;
+  properties: IHeadingProperties;
 }
 
-interface TextBlock extends BaseBlock {
+interface ITextBlock extends IBaseBlock {
   blockType: BlockType.TEXT;
-  properties: TextProperties;
+  properties: ITextProperties;
 }
 
-interface LinkBlock extends BaseBlock {
+interface ILinkBlock extends IBaseBlock {
   blockType: BlockType.LINK;
-  properties: LinkProperties;
+  properties: ILinkProperties;
 }
 
-interface UlBlock extends BaseBlock {
+interface IUlBlock extends IBaseBlock {
   blockType: BlockType.UL;
 }
 
-interface LiBlock extends BaseBlock {
+interface ILiBlock extends IBaseBlock {
   blockType: BlockType.LI;
 }
 
-interface CodeBlock extends BaseBlock {
+interface ICodeBlock extends IBaseBlock {
   blockType: BlockType.CODE;
-  properties: CodeProperties;
+  properties: ICodeProperties;
 }
 
-interface ImageBlock extends BaseBlock {
+interface IImageBlock extends IBaseBlock {
   blockType: BlockType.IMAGE;
   properties: ImageProperties;
 }
 
-interface AdviceBlock extends BaseBlock {
+interface IAdviceBlock extends IBaseBlock {
   blockType: BlockType.ADVICE | BlockType.WARNING | BlockType.BOXED_TEXT;
-  properties: CommonProperties;
+  properties: ICommonProperties;
 }
 
 export type Block =
-  | HeadingBlock
-  | TextBlock
-  | LinkBlock
-  | CodeBlock
-  | ImageBlock
-  | AdviceBlock
-  | UlBlock
-  | LiBlock;
+  | IHeadingBlock
+  | ITextBlock
+  | ILinkBlock
+  | ICodeBlock
+  | IImageBlock
+  | IAdviceBlock
+  | IUlBlock
+  | ILiBlock;

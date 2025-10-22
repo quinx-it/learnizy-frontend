@@ -5,7 +5,7 @@ import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import { routes } from '@/shared/constants';
 import { globalConstants } from '@/shared/constants/constants';
 import { useGetModulesQuery } from '@/api/endpoints/modules/modules';
-import { ModuleInfo } from '@/api/endpoints/modules/types';
+import { IModuleInfo } from '@/api/endpoints/modules/types';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 
@@ -28,7 +28,7 @@ export const ModulesPage = () => {
         rootDescription={'Java Core'}
       />
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        {modules?.map((module: ModuleInfo) => (
+        {modules?.map((module: IModuleInfo) => (
           <ModuleCard className="w-full max-w-full" key={module.id} {...module} />
         ))}
       </div>

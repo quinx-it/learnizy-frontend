@@ -1,6 +1,6 @@
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 
-export const TrashCanIcon = ({ className, color = 'currentColor' }: IconProps) => {
+export const TrashCanIcon = ({ className, color = 'currentColor' }: IIconProps) => {
   return (
     <svg
       width="32"

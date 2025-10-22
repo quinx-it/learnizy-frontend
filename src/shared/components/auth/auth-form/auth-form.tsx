@@ -3,7 +3,7 @@
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { AuthFormValues, formSchema } from './validation';
+import { IAuthFormValues, formSchema } from './validation';
 import { useLoginMutation } from '@/api/endpoints/auth/auth';
 import { Spinner } from '@/shared/ui/spinner';
 import { Input } from '@/shared/ui/input';
@@ -20,7 +20,7 @@ export const AuthForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<AuthFormValues>({
+  } = useForm<IAuthFormValues>({
     resolver: yupResolver(formSchema),
     defaultValues: {
       username: '',
@@ -28,7 +28,7 @@ export const AuthForm = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<AuthFormValues> = async (data) => {
+  const onSubmit: SubmitHandler<IAuthFormValues> = async (data) => {
     try {
       await loginRequest({
         username: data.username,

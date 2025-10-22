@@ -1,7 +1,7 @@
 import { cn } from '@/shared/lib/utils';
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 
-export const FourPointedStarIcon = ({ className, color = 'currentColor' }: IconProps) => {
+export const FourPointedStarIcon = ({ className, color = 'currentColor' }: IIconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

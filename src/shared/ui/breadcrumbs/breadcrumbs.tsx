@@ -13,7 +13,7 @@ type BreadcrumbItemType = {
   href: string;
 };
 
-interface BreadcrumbsProps {
+interface IBreadcrumbsProps {
   items?: BreadcrumbItemType[];
   className?: string;
   rootLabel?: string;
@@ -27,7 +27,7 @@ export const Breadcrumbs = ({
   rootHref = constants.rootHref,
   className,
   rootDescription,
-}: BreadcrumbsProps) => {
+}: IBreadcrumbsProps) => {
   return (
     <nav className={cn('mb-4', className)}>
       <ul className="text-medium flex flex-wrap items-center gap-2">

@@ -15,16 +15,16 @@ import { ComponentType } from 'react';
 import { CubesMainIcon } from '@/shared/ui/icons/cubes-main-icon';
 import clsx from 'clsx';
 
-interface LinkType {
+interface ILinkType {
   href: string;
   Icon: ComponentType<{ className?: string }>;
   label: string;
 }
-interface NavbarProps {
-  links: Array<LinkType>;
+interface INavbarProps {
+  links: Array<ILinkType>;
 }
 
-export const Navbar = ({ links }: NavbarProps) => {
+export const Navbar = ({ links }: INavbarProps) => {
   const { handleLogout, isLoading } = useLogout();
   const [isOpen, setIsOpen] = useState(false);
 

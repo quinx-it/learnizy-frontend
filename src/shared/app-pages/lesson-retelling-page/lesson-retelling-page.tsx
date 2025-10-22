@@ -9,12 +9,12 @@ import { CardWrapper } from '@/shared/components/card-wrapper';
 import { VoiceRecorderForm } from '@/shared/components/voice-recorder-form';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 
-interface LessonRetellingPageProps {
+interface ILessonRetellingPageProps {
   module: string;
   lesson: string;
 }
 
-export const LessonRetellingPage: FC<LessonRetellingPageProps> = (props) => {
+export const LessonRetellingPage: FC<ILessonRetellingPageProps> = (props) => {
   const { module, lesson } = props;
 
   const { data: lessonData, isLoading } = useGetLessonQuery(lesson);

@@ -1,4 +1,4 @@
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 
 const colors = {
   white: '#FAFAFA',
@@ -10,7 +10,10 @@ type MeatballIconPropsType = {
   color?: keyof typeof colors;
 };
 
-export const MeatballIcon = ({ className, color = 'white' }: IconProps & MeatballIconPropsType) => {
+export const MeatballIcon = ({
+  className,
+  color = 'white',
+}: IIconProps & MeatballIconPropsType) => {
   return (
     <svg
       className={className}

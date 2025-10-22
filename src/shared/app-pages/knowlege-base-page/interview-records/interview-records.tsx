@@ -5,11 +5,11 @@ import { Button } from '@/shared/ui/button';
 import { Text } from '@/shared/ui/typography';
 import Link from 'next/link';
 
-interface InterviewRecordsProps {
+interface IInterviewRecordsProps {
   className?: string;
 }
 
-export const InterviewRecords = ({ className }: InterviewRecordsProps) => {
+export const InterviewRecords = ({ className }: IInterviewRecordsProps) => {
   return (
     <CardWrapper className={cn(className, 'flex flex-col gap-4')}>
       <Text variant="m" className="text-medium">

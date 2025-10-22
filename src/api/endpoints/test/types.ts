@@ -62,12 +62,12 @@ export enum AnswerEvaluation {
   UNASSESSED = 'UNASSESSED',
 }
 
-export interface LessonAnswer extends QuestionAnswerSubmitType {
+export interface ILessonAnswer extends QuestionAnswerSubmitType {
   evaluation?: AnswerEvaluation | null;
   notes?: string | null;
 }
 
-export interface LessonTestResult {
+export interface ILessonTestResult {
   id: number;
   userId: number;
   testId: number;
@@ -75,7 +75,7 @@ export interface LessonTestResult {
   moduleId: number;
 
   status: TestStatus;
-  answers: LessonAnswer[];
+  answers: ILessonAnswer[];
 
   scorePercent: number;
   passed: boolean;
@@ -86,7 +86,7 @@ export interface LessonTestResult {
   failedReason?: string | null;
 }
 
-export interface AnswerView {
+export interface IAnswerView {
   questionId: number;
   questionText: string;
   inputType: 'TEXT' | 'VOICE';
@@ -97,14 +97,14 @@ export interface AnswerView {
   notes: string | null;
 }
 
-export interface TestAttemptResponse {
+export interface ITestAttemptResponse {
   id: number;
   userId: number;
   testId: number;
   lessonId: number;
   moduleId: number;
   status: 'SUBMITTED' | 'EVALUATING' | 'EVALUATED' | 'FAILED';
-  answers: AnswerView[];
+  answers: IAnswerView[];
   scorePercent: number | null;
   passed: boolean | null;
   createdAt: string;

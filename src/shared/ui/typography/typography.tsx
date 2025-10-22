@@ -57,19 +57,19 @@ const textVariants = cva('leading-normal transition-colors', {
 type HeadingVariantsType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 type TextVariantsType = 'p' | 'span';
 
-interface HeadingProps
+interface IHeadingProps
   extends HTMLAttributes<HTMLHeadingElement>,
     VariantProps<typeof headingVariants> {
   tag?: HeadingVariantsType;
 }
 
-interface TextProps
+interface ITextProps
   extends HTMLAttributes<HTMLParagraphElement>,
     VariantProps<typeof textVariants> {
   tag?: TextVariantsType;
 }
 
-const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
+const Heading = forwardRef<HTMLHeadingElement, IHeadingProps>(
   ({ tag = 'h3', variant, children, className, ...props }, ref) => {
     const Tag = tag;
     return (
@@ -80,7 +80,7 @@ const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
   },
 );
 
-const Text = forwardRef<HTMLParagraphElement, TextProps>(
+const Text = forwardRef<HTMLParagraphElement, ITextProps>(
   ({ tag = 'p', variant, children, className, ...props }, ref) => {
     const Tag = tag;
     return (

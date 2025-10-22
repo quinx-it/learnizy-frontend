@@ -1,4 +1,4 @@
-import { IconProps } from '@/shared/types';
+import { IIconProps } from '@/shared/types';
 
 const colors = {
   white: '#FAFAFA',
@@ -14,7 +14,7 @@ type ArrowRightIconPropsType = {
 export const ArrowRightIcon = ({
   className,
   color = 'white',
-}: IconProps & ArrowRightIconPropsType) => {
+}: IIconProps & ArrowRightIconPropsType) => {
   return (
     <svg
       className={className}

@@ -4,11 +4,11 @@ import React, { FC, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { useGetChatMessagesQuery } from '@/api/endpoints/ai-assistant';
 
-interface ChatHeaderProps {
+interface IChatHeaderProps {
   className?: string;
 }
 
-export const ChatHeader: FC<ChatHeaderProps> = ({ className }) => {
+export const ChatHeader: FC<IChatHeaderProps> = ({ className }) => {
   const params = useParams();
   const chatId = params.id ? parseInt(params.id as string, 10) : null;
 

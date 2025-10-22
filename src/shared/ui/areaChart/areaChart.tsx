@@ -3,13 +3,13 @@
 import { Area, AreaChart as AreaChartDefault, XAxis, YAxis } from 'recharts';
 import { ChartContainer } from '@/shared/ui/chart';
 
-export interface ChartLineProps {
+export interface IChartLineProps {
   data?: { day: string; value: number }[];
 }
 
 const chartMargin = { left: 15, right: 15, top: 5, bottom: 0 };
 
-export function AreaChart({ data }: ChartLineProps) {
+export function AreaChart({ data }: IChartLineProps) {
   if (!data || data.length === 0) return null;
 
   const minValue = Math.min(...data.map((item) => item.value));

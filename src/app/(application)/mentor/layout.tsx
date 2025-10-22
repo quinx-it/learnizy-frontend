@@ -5,11 +5,11 @@ import { Navbar } from '@/shared/components/navbar';
 import { AuthLayout } from '@/shared/components/auth-layout';
 import { navbarLinks } from '@/shared/constants/constants';
 
-interface ApplicationLayoutProps {
+interface IApplicationLayoutProps {
   children: ReactNode;
 }
 
-const LearnLayout = ({ children }: ApplicationLayoutProps) => {
+const LearnLayout = ({ children }: IApplicationLayoutProps) => {
   return (
     <AuthLayout>
       <div className="bg-accent-background grid min-h-[100vh] grid-cols-[auto_1fr]">
