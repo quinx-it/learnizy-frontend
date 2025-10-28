@@ -104,13 +104,13 @@ export const ModulesPage = () => {
   };
 
   const openEditModal = (moduleId: number) => {
-    const module = modulesData?.content.find((m) => m.id === moduleId);
-    if (!module) return;
+    const mod = modulesData?.content.find((m) => m.id === moduleId);
+    if (!mod) return;
 
     setEditingModuleId(moduleId);
-    setTitle(module.title);
-    setDescription(module.description);
-    setSequenceOrder(module.sequenceOrder);
+    setTitle(mod.title);
+    setDescription(mod.description);
+    setSequenceOrder(mod.sequenceOrder);
     setModalOpen(true);
   };
 
