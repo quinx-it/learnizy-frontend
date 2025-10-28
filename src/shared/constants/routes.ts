@@ -20,12 +20,12 @@ export const routes = {
     projects: '/learn/projects',
     userProfilePersonalData: '/learn/user-profile/personal-data',
     userProfileSecuritySettings: '/learn/user-profile/security-settings',
-
     interviewQuestions: '/404',
     interviewRecords: '/404',
   },
   mentor: {
     students: '/mentor/students',
+    modules: '/mentor/modules',
   },
 };
 
@@ -44,7 +44,15 @@ export const dynamicUserRoutes = [
 ];
 
 export const staticMentorRoutes = Object.values(routes.mentor);
-export const dynamicMentorRoutes = [/^\/mentor\/students\/\d+$/];
+
+export const dynamicMentorRoutes = [
+  /^\/mentor\/students\/\d+$/,
+  /^\/mentor\/modules\/\d+$/,
+  /^\/mentor\/modules\/\d+\/\d+$/,
+  /^\/mentor\/modules\/\d+\/\d+\/test$/,
+  /^\/mentor\/modules\/\d+\/\d+\/result$/,
+  /^\/mentor\/modules\/\d+\/\d+\/retelling$/,
+];
 
 export const loginPageUrl = routes.public.loginPage;
 

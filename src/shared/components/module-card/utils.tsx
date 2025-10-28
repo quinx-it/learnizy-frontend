@@ -11,11 +11,11 @@ type ProgressModuleType = {
   status: StatusValueType;
 };
 
-interface ProcentContentProps {
+interface IProcentContentProps {
   progress: number | null | string;
 }
 
-const ProcentContent: FC<ProcentContentProps> = (props) => {
+const ProcentContent: FC<IProcentContentProps> = (props) => {
   const { progress } = props;
 
   return (

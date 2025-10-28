@@ -34,5 +34,8 @@ export const navbarLinks = {
     { href: routes.user.projects, Icon: ProjectsIcon, label: 'Проекты' },
     { href: routes.user.userProfilePersonalData, Icon: PersonIcon, label: 'Профиль' },
   ],
-  mentor: [{ href: routes.mentor.students, Icon: StudentHatIcon, label: 'Студенты' }],
+  mentor: [
+    { href: routes.mentor.students, Icon: StudentHatIcon, label: 'Главная' },
+    { href: routes.mentor.modules, Icon: StudentHatIcon, label: 'Модули' },
+  ],
 };

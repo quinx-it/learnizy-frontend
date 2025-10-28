@@ -11,6 +11,9 @@ import { DotTitle } from '@/shared/ui/dotTitle';
 import { routes } from '@/shared/constants';
 import { useRouter } from 'next/navigation';
 import { IModuleInfo } from '@/api/endpoints/modules/types';
+import { useSelector } from 'react-redux';
+import { selectUserRole } from '@/store/slices/auth/selectors';
+import { UserRole } from '@/store/slices/auth/types';
 
 const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) => {
   const {
@@ -23,6 +26,9 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
     sequenceOrder,
     className,
   } = props;
+
+  const role = useSelector(selectUserRole);
+  const isMentor = role === UserRole.MENTOR;
 
   const bonus = false;
 
@@ -54,13 +60,14 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
     {
       'border-medium border': isActive,
       'bg-soft/50 border-soft': bonus,
-      'hover:border-medium': !isBlocked,
+      'hover:border-medium': !isBlocked || isMentor,
     },
     className,
   );
 
   const handleCardClick = () => {
-    if (!isBlocked) router.push(`${routes.user.modules}/${id}`);
+    if (isBlocked && !isMentor) return;
+    router.push(isMentor ? `${routes.mentor.modules}/${id}` : `${routes.user.modules}/${id}`);
   };
 
   return (
@@ -89,12 +96,12 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
 
             <div className="flex items-end gap-3">
               <Button
-                disabled={isBlocked}
+                disabled={!isMentor && isBlocked}
                 variant={isCompleted ? 'white' : 'blue'}
                 size={'small'}
                 className="cursor-pointer"
               >
-                {progressStatus}
+                {isMentor && isBlocked ? 'Начать' : progressStatus}
               </Button>
               {progressElement}
             </div>

@@ -31,7 +31,7 @@ type ChartContextPropsType = {
   config: ChartConfigType;
 };
 
-interface ChartStyleProps {
+interface IChartStyleProps {
   id: string;
   config: ChartConfigType;
 }
@@ -79,7 +79,7 @@ function ChartContainer({
   );
 }
 
-const ChartStyle: FC<ChartStyleProps> = (props) => {
+const ChartStyle: FC<IChartStyleProps> = (props) => {
   const { id, config } = props;
 
   const colorConfig = Object.entries(config).filter(([, config]) => config.theme || config.color);
