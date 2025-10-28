@@ -65,7 +65,7 @@ export const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
 
       setEditing(false);
       showToast('success', 'Успех', 'Контент успешно сохранён');
-    } catch (error) {
+    } catch {
       showToast('error', 'Ошибка', 'Ошибка при сохранении контента');
     }
   };

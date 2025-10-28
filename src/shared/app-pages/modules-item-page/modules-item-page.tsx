@@ -110,7 +110,7 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
       }
       setModalOpen(false);
       refetch();
-    } catch (err) {
+    } catch {
       showToast('error', 'Ошибка', 'Ошибка при сохранении урока');
     }
   };
@@ -119,7 +119,7 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
     try {
       await deleteLesson(lessonId).unwrap();
       refetch();
-    } catch (err) {
+    } catch {
       showToast('error', 'Ошибка', 'Ошибка при удалении урока');
     }
   };

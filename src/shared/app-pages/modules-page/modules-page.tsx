@@ -126,7 +126,7 @@ export const ModulesPage = () => {
       }
       setModalOpen(false);
       refetch();
-    } catch (err) {
+    } catch {
       showToast('error', 'Ошибка', 'Ошибка при сохранении модуля');
     }
   };
@@ -135,7 +135,7 @@ export const ModulesPage = () => {
     try {
       await deleteModule(moduleId).unwrap();
       refetch();
-    } catch (err) {
+    } catch {
       showToast('error', 'Ошибка', 'Ошибка при удалении модуля');
     }
   };
