@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, CSSProperties } from 'react';
 import ReactMarkdown, { Components } from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -16,7 +16,7 @@ export const MarkdownRenderer: FC<IMarkdownRendererProps> = (props) => {
 
       return !inline && match ? (
         <SyntaxHighlighter
-          style={{ ...coldarkDark } as { [key: string]: React.CSSProperties }}
+          style={{ ...coldarkDark } as { [key: string]: CSSProperties }}
           language={match[1]}
           PreTag="div"
           className="my-2 overflow-x-auto rounded-lg p-4 text-sm"

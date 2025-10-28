@@ -21,6 +21,7 @@ export interface ILesson {
   moduleSequenceOrder: number;
   status: LessonStatus;
   progress: ILessonProgress;
+  content: string;
   contentBlocks: Block[];
 }
 
