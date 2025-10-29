@@ -1,6 +1,5 @@
 import * as yup from 'yup';
-
-const MAX_FILE_SIZE = 30 * 1024 * 1024; // 30 MB
+import { MAX_FILE_SIZE } from './constants';
 
 export const schema = yup.object({
   file: yup

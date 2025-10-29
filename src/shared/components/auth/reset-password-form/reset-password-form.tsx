@@ -15,6 +15,7 @@ import { routes } from '@/shared/constants';
 interface IResetPasswordFormProps {
   token: string;
 }
+import { IResetPasswordFormProps } from './typings';
 
 export const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
   const { token } = props;

@@ -1,10 +1,10 @@
 'use client';
+
 import React, { FC, useState } from 'react';
 import { ModuleCard } from '@/shared/components/module-card';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import { routes } from '@/shared/constants';
 import { globalConstants } from '@/shared/constants/constants';
-
 import {
   useGetModulesQuery,
   useGetModuleProgressQuery,
@@ -12,23 +12,16 @@ import {
   useUpdateModuleMutation,
   useDeleteModuleMutation,
 } from '@/api/endpoints/admin';
-import { IModuleInfo, IModuleResponse } from '@/api/endpoints/admin/typings';
+import { IModuleInfo } from '@/api/endpoints/admin/typings';
 import { CompletionStatus } from '@/api/endpoints/types';
-
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 import { useSelector } from 'react-redux';
 import { selectUserRole } from '@/store/slices/auth/selectors';
-import { UserRole } from '@/store/slices/auth/types';
+import { UserRole } from '@/store/slices/auth/typings';
 import { Button } from '@/shared/ui/button';
 import { showToast } from '@/shared/ui/toaster';
-
-interface IModuleProgressCardProps {
-  module: IModuleResponse;
-  isMentor: boolean;
-  openEditModal: (moduleId: number) => void;
-  handleDeleteModule: (moduleId: number) => void;
-}
+import { IModuleProgressCardProps } from './typings';
 
 const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
   const { module, isMentor, openEditModal, handleDeleteModule } = props;

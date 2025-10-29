@@ -11,18 +11,9 @@ import { Button } from '@/shared/ui/button';
 import { Spinner } from '@/shared/ui/spinner';
 import { Text } from '@/shared/ui/typography';
 import { useLogout } from '@/shared/hooks/useLogout';
-import { ComponentType } from 'react';
 import { CubesMainIcon } from '@/shared/ui/icons/cubes-main-icon';
 import clsx from 'clsx';
-
-interface ILinkType {
-  href: string;
-  Icon: ComponentType<{ className?: string }>;
-  label: string;
-}
-interface INavbarProps {
-  links: Array<ILinkType>;
-}
+import { INavbarProps } from './typings';
 
 export const Navbar: FC<INavbarProps> = (props) => {
   const { links } = props;

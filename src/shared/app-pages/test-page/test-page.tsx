@@ -6,27 +6,12 @@ import React, { FC } from 'react';
 import { constants } from './constants';
 import { Text } from '@/shared/ui/typography';
 import { LessonTestForm } from '@/shared/components/lesson-test-form';
-import { LessonTestSubmitType, LessonTestResponseType } from '@/api/endpoints/test/types';
+import { LessonTestSubmitType } from '@/api/endpoints/test/types';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 import { useSendTestMutation } from '@/api/endpoints/test/test';
 import { showToast } from '@/shared/ui/toaster';
-
-type TestType = 'LESSON_TEST' | 'MODULE_EXAM';
-
-export type TestDataType = LessonTestResponseType & {
-  moduleSequenceOrder: number;
-  lessonSequenceOrder: number;
-};
-
-type TestPagePropsType = {
-  lessonId: string;
-  moduleId: string;
-  lessonTest?: TestDataType;
-  isLoading: boolean;
-  isError: boolean;
-  refetch: () => void;
-};
+import { TestType, TestPagePropsType } from './typings';
 
 export const TestPage: FC<TestPagePropsType> = (props) => {
   const { lessonId, moduleId, lessonTest, isLoading, isError, refetch } = props;

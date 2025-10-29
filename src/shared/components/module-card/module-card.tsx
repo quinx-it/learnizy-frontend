@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 import { IModuleInfo } from '@/api/endpoints/modules/types';
 import { useSelector } from 'react-redux';
 import { selectUserRole } from '@/store/slices/auth/selectors';
-import { UserRole } from '@/store/slices/auth/types';
+import { UserRole } from '@/store/slices/auth/typings';
 
 const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) => {
   const {

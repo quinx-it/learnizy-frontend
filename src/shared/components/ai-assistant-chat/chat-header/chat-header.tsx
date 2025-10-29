@@ -3,10 +3,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { useGetChatMessagesQuery } from '@/api/endpoints/ai-assistant';
-
-interface IChatHeaderProps {
-  className?: string;
-}
+import { IChatHeaderProps } from './typings';
 
 export const ChatHeader: FC<IChatHeaderProps> = (props) => {
   const { className } = props;

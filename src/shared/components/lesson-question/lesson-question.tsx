@@ -3,16 +3,8 @@ import { FC } from 'react';
 import { RadioGroup } from '@/shared/ui/radioGroup';
 import { Textarea } from '@/shared/ui/textarea';
 import { Text } from '@/shared/ui/typography';
-import { Controller, FieldErrors, useFormContext, useWatch } from 'react-hook-form';
-import { LessonQuestionItemType, LessonTestFormValuesType } from '@/api/endpoints/test/types';
-
-type LessonQuestionPropsType = LessonQuestionItemType & {
-  type?: 'checkbox' | 'field';
-  answerFieldName: string;
-  fileFieldName: string;
-  errors: FieldErrors<LessonTestFormValuesType>;
-  totalQuestions: number;
-};
+import { Controller, useFormContext, useWatch } from 'react-hook-form';
+import { LessonQuestionPropsType } from './typings';
 
 export const LessonQuestion: FC<LessonQuestionPropsType> = (props) => {
   const {

@@ -3,16 +3,12 @@
 import * as React from 'react';
 
 import { Button } from '@/shared/ui/button';
-import { Input, type IInputProps } from '@/shared/ui/input';
+import { Input } from '@/shared/ui/input';
 import { cn } from '@/shared/lib/utils';
 import './styles.css';
 import { EyeIcon } from '@/shared/ui/icons';
 import { forwardRef, useState } from 'react';
-
-interface IPasswordInputProps extends IInputProps {
-  innerClassName?: string;
-  autoComplete?: 'current-password' | 'new-password';
-}
+import { IPasswordInputProps } from './typings';
 
 const PasswordInput = forwardRef<HTMLInputElement, IPasswordInputProps>(
   ({ className, innerClassName, disabled, autoComplete, ...props }, ref) => {

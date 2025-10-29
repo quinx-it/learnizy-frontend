@@ -17,13 +17,9 @@ import { routes } from '@/shared/constants';
 import { constants } from './constants';
 import { useSelector } from 'react-redux';
 import { selectUserRole } from '@/store/slices/auth/selectors';
-import { UserRole } from '@/store/slices/auth/types';
+import { UserRole } from '@/store/slices/auth/typings';
 import { showToast } from '@/shared/ui/toaster';
-
-interface ILessonItemPageProps {
-  lessonId: string;
-  moduleId: string;
-}
+import { ILessonItemPageProps } from './typings';
 
 export const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
   const { lessonId, moduleId } = props;

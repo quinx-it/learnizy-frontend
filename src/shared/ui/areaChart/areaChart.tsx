@@ -2,10 +2,7 @@
 
 import { Area, AreaChart as AreaChartDefault, XAxis, YAxis } from 'recharts';
 import { ChartContainer } from '@/shared/ui/chart';
-
-export interface IChartLineProps {
-  data?: { day: string; value: number }[];
-}
+import { IChartLineProps } from './typings';
 
 const chartMargin = { left: 15, right: 15, top: 5, bottom: 0 };
 

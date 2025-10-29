@@ -3,7 +3,7 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { IRegisterFormValues, formSchema, verificationSchema } from './validation';
+import { formSchema, verificationSchema } from './validation';
 import {
   useRegisterMutation,
   useVerifyEmailMutation,
@@ -20,7 +20,7 @@ import type { HttpStatusError } from '@/shared/types';
 import { CheckboxWithLabel } from '@/shared/ui/checkboxWithLabel/checkboxWithLabel';
 import { useRouter } from 'next/navigation';
 import { Heading, Text } from '@/shared/ui/typography';
-import { VerificationFormValuesType, RegisterStep } from './typing';
+import { VerificationFormValuesType, RegisterStep, IRegisterFormValues } from './typings';
 
 export const RegisterForm = () => {
   const router = useRouter();

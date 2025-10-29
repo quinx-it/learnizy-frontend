@@ -18,3 +18,7 @@ export type ExamCardPropsType = {
   exam: ExamType;
   status: ExamStatus;
 };
+
+export interface ExamsPageProps {
+  courseId?: number;
+}

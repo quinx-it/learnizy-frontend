@@ -1,9 +1,6 @@
 import { cn } from '@/shared/lib/utils';
-import React, { FC, PropsWithChildren } from 'react';
-
-interface ISectionContentProps extends PropsWithChildren {
-  className?: string;
-}
+import React, { FC } from 'react';
+import { ISectionContentProps } from './typings';
 
 export const SectionContent: FC<ISectionContentProps> = (props) => {
   const { children, className } = props;

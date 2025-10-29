@@ -9,10 +9,7 @@ import Link from 'next/link';
 import { useAppSelector } from '@/shared/hooks/redux';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { defaultPage, routes } from '@/shared/constants';
-
-type NotFoundComponentPropsType = {
-  className?: string;
-};
+import { NotFoundComponentPropsType } from './typings';
 
 export const NotFoundComponent: FC<NotFoundComponentPropsType> = (props) => {
   const { className } = props;

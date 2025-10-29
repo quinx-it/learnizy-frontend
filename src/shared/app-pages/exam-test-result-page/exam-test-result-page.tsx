@@ -7,11 +7,7 @@ import { Text } from '@/shared/ui/typography';
 import { useGetLastTestAttemptQuery } from '@/api/endpoints/test';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
-
-type ExamTestResultPagePropsType = {
-  testId: string;
-  moduleId: string;
-};
+import { ExamTestResultPagePropsType } from './typings';
 
 const mapEvaluation = (evaluation: string) => {
   switch (evaluation) {

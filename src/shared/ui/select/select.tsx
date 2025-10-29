@@ -3,19 +3,7 @@
 import { FC } from 'react';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { ChevronDownIcon, ChevronUpIcon, CheckIcon } from 'lucide-react';
-
-interface IOption {
-  label: string;
-  value: string;
-}
-
-interface ICustomSelectProps {
-  value: string;
-  onValueChange: (value: string) => void;
-  options: IOption[];
-  placeholder?: string;
-  label?: string;
-}
+import { ICustomSelectProps } from './typings';
 
 export const CustomSelect: FC<ICustomSelectProps> = (props) => {
   const { value, onValueChange, options, placeholder, label } = props;

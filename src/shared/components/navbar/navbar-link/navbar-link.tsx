@@ -1,17 +1,11 @@
 'use client';
 
-import Link, { LinkProps } from 'next/link';
-import { ComponentType, FC } from 'react';
+import Link from 'next/link';
+import { FC } from 'react';
 import { Text } from '@/shared/ui/typography';
 import { Button } from '@/shared/ui/button';
 import { usePathname } from 'next/navigation';
-
-interface INavbarLinkProps extends LinkProps {
-  Icon: ComponentType<{ className?: string }>;
-  label: string;
-  className?: string;
-  onClick?: () => void;
-}
+import { INavbarLinkProps } from './typings';
 
 export const NavbarLink: FC<INavbarLinkProps> = (props) => {
   const { href, Icon, label, className, onClick } = props;

@@ -1,5 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+'use client';
+
+import type { Meta } from '@storybook/nextjs';
 import { DatePicker } from './datePicker';
+import { StoryType } from './typings';
 
 const meta: Meta<typeof DatePicker> = {
   title: 'Components/UI/DatePicker',
@@ -25,7 +28,5 @@ const meta: Meta<typeof DatePicker> = {
 };
 
 export default meta;
-
-type StoryType = StoryObj<typeof DatePicker>;
 
 export const Default: StoryType = {};

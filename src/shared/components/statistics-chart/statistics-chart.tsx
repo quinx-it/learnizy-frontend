@@ -2,18 +2,8 @@ import React, { FC } from 'react';
 import { CalendarIcon } from '@/shared/ui/icons';
 import { AreaChart } from '@/shared/ui/areaChart';
 import { Text } from '@/shared/ui/typography';
-
-type WeeklyActivityItemType = {
-  date: string;
-  lessonsCompleted: number;
-  testsPassed: number;
-};
-
-type StatisticsChartPropsType = {
-  weeklyActivity: WeeklyActivityItemType[];
-};
-
-const WEEK_DAYS = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+import { WEEK_DAYS } from './constants';
+import { StatisticsChartPropsType } from './typings';
 
 export const StatisticsChart: FC<StatisticsChartPropsType> = (props) => {
   const { weeklyActivity } = props;

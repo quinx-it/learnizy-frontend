@@ -1,7 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta } from '@storybook/nextjs';
 import { Button } from './button';
+import { StoryType } from './typings';
 
-const meta: Meta<typeof Button> = {
+export const meta: Meta<typeof Button> = {
   title: 'Components/UI/Button',
   component: Button,
   tags: ['autodocs'],
@@ -27,7 +28,6 @@ const meta: Meta<typeof Button> = {
 };
 
 export default meta;
-type StoryType = StoryObj<typeof meta>;
 
 export const Blue: StoryType = {};
 

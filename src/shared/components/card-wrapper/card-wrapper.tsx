@@ -2,11 +2,7 @@
 
 import { cn } from '@/shared/lib/utils';
 import React, { PropsWithChildren, FC } from 'react';
-
-type CardWrapperPropsType = {
-  className?: string;
-  onClick?: () => void;
-};
+import { CardWrapperPropsType } from './typings';
 
 export const CardWrapper: FC<CardWrapperPropsType & PropsWithChildren> = (props) => {
   const { children, className, onClick } = props;
