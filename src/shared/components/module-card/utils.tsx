@@ -1,5 +1,5 @@
-import { JSX, FC } from 'react';
-import { constants, StatusValueType } from './constants';
+import { FC } from 'react';
+import { constants } from './constants';
 import { StarIcon } from '@/shared/ui/icons';
 import { Text } from '@/shared/ui/typography';
 import { ProgressBar } from '@/shared/ui/progress';
