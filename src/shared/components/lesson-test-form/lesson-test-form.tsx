@@ -12,17 +12,10 @@ import { useUploadVoiceMutation } from '@/api/endpoints/voice';
 import { useRouter, usePathname } from 'next/navigation';
 import {
   AnswerInputType,
-  LessonQuestionItemType,
   LessonTestFormValuesType,
   LessonTestSubmitType,
 } from '@/api/endpoints/test/types';
-
-type LessonTestFormPropsType = {
-  testId: number;
-  questions: LessonQuestionItemType[];
-  loading?: boolean;
-  onSubmit: (data: LessonTestSubmitType) => void;
-};
+import { LessonTestFormPropsType } from './typings';
 
 export const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
   const { questions, onSubmit, testId, loading } = props;

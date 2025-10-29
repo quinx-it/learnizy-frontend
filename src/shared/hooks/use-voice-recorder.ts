@@ -46,7 +46,7 @@ export function useVoiceRecorder() {
 
   const reset = useCallback(() => {
     if (audioUrl) {
-      URL.revokeObjectURL(audioUrl); // освободили blob-ссылку
+      URL.revokeObjectURL(audioUrl);
     }
     setAudioBlob(null);
     setAudioUrl(null);

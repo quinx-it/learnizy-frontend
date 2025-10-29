@@ -1,15 +1,10 @@
+'use client';
+
 import * as React from 'react';
 import { cn } from '@/shared/lib/utils';
 import { Text } from '@/shared/ui/typography';
 import { Label } from '../label';
-import { ComponentProps } from 'react';
-
-export interface IInputProps extends ComponentProps<'input'> {
-  error?: string;
-  label?: string;
-  innerClassName?: string;
-  autoComplete?: 'current-password' | 'new-password' | 'username' | 'email';
-}
+import { IInputProps } from './typings';
 
 const Input = React.forwardRef<HTMLInputElement, IInputProps>(
   ({ innerClassName, className, type = 'text', error, label, autoComplete, ...props }, ref) => {

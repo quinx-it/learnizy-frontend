@@ -7,13 +7,7 @@ import { Input } from '@/shared/ui/input';
 import { Popover } from '@/shared/ui/popover';
 import { CalendarIcon } from '@/shared/ui/icons';
 import { formatDate, parseDateString } from './utils';
-
-interface IDatePickerProps {
-  label: string;
-  value: Date | null;
-  onChange: (date: Date | null) => void;
-  error?: string;
-}
+import { IDatePickerProps } from './typings';
 
 export function DatePicker({ label, value, onChange, error }: IDatePickerProps) {
   const [open, setOpen] = useState(false);

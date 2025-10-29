@@ -7,19 +7,7 @@ import { ArrowRightIcon } from '@/shared/ui/icons';
 import { Text } from '@/shared/ui/typography';
 import { cn } from '@/shared/lib/utils';
 import { constants } from './constants';
-
-type BreadcrumbItemType = {
-  label: string;
-  href: string;
-};
-
-interface IBreadcrumbsProps {
-  items?: BreadcrumbItemType[];
-  className?: string;
-  rootLabel?: string;
-  rootHref?: string;
-  rootDescription?: string;
-}
+import { IBreadcrumbsProps } from './typings';
 
 export const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
   const {

@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta } from '@storybook/nextjs';
 import { Textarea } from './textarea';
+import { StoryType } from './typings';
 
 const meta: Meta<typeof Textarea> = {
   title: 'Components/UI/Textarea',
@@ -18,8 +19,6 @@ const meta: Meta<typeof Textarea> = {
 };
 
 export default meta;
-
-type StoryType = StoryObj<typeof Textarea>;
 
 export const Default: StoryType = {};
 

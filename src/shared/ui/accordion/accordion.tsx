@@ -9,20 +9,7 @@ import {
 import { Plus, Minus } from 'lucide-react';
 import './accordion.css';
 import { Text } from '@/shared/ui/typography';
-
-interface IAccordionEntry {
-  value: string;
-  heading: string;
-  content: string;
-  bgColor?: string;
-  textColor?: string;
-  iconColor?: string;
-}
-
-interface IAccordionProps {
-  items: IAccordionEntry[];
-  className?: string;
-}
+import { IAccordionProps } from './typings';
 
 export const CardAccordion: FC<IAccordionProps> = (props) => {
   const { items, className } = props;

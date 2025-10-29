@@ -7,11 +7,7 @@ import { ExamCard } from './exam-card';
 import { useGetExamsQuery } from '@/api/endpoints/exams';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
-import { ExamStatus, ExamType } from './types';
-
-interface ExamsPageProps {
-  courseId?: number;
-}
+import { ExamStatus, ExamType, ExamsPageProps } from './typings';
 
 const mapExamStatus = (status: string): ExamStatus => {
   switch (status) {

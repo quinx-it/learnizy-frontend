@@ -1,6 +1,9 @@
+'use client';
+
 import { cn } from '@/shared/lib/utils';
 import { Heading, Text } from '@/shared/ui/typography';
 import React, { FC } from 'react';
+import { IDotTitleProps } from './typings';
 
 export const Dot = ({ className }: { className?: string }) => (
   <span
@@ -10,18 +13,6 @@ export const Dot = ({ className }: { className?: string }) => (
     )}
   ></span>
 );
-
-interface IDotTitleProps {
-  firstLabel: string;
-  firstClassName?: string;
-  secondClassName?: string;
-  secondLabel: string;
-  firstVariant?: 'l' | 'l-bold' | 'm' | 'm-bold';
-  secondVariant?: 'l' | 'l-bold' | 'm' | 'm-bold';
-  className?: string;
-  dotClassName?: string;
-  heading?: boolean;
-}
 
 export const DotTitle: FC<IDotTitleProps> = (props) => {
   const {

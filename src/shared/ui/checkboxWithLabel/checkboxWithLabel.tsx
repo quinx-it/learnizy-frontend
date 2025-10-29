@@ -1,12 +1,9 @@
-import React, { PropsWithChildren, FC } from 'react';
+'use client';
+
+import React, { FC } from 'react';
 import { Checkbox } from '@/shared/ui/checkbox';
 import { Label } from '@/shared/ui/label';
-import { CheckboxProps } from '@radix-ui/react-checkbox';
-
-interface ICheckboxWithLabelProps extends CheckboxProps, PropsWithChildren {
-  checked?: boolean;
-  onCheckedChange?: (checked: boolean) => void;
-}
+import { ICheckboxWithLabelProps } from './typings';
 
 export const CheckboxWithLabel: FC<ICheckboxWithLabelProps> = (props) => {
   const { children, checked, onCheckedChange, ...restProps } = props;

@@ -4,10 +4,7 @@ import { AudioPlayer } from '../audio-player';
 import { Text } from '@/shared/ui/typography';
 import { useEffect, useState, FC } from 'react';
 import { useVoiceRecorder } from '@/shared/hooks';
-
-type PropsType = {
-  onChange: (file: Blob | null) => void;
-};
+import { PropsType } from './typings';
 
 export const VoiceRecorderControl: FC<PropsType> = (props) => {
   const { onChange } = props;

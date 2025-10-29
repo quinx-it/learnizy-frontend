@@ -3,12 +3,12 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-
-import { PersonalDataFormValuesType, personalDataSchema } from './validation';
+import { personalDataSchema } from './validations';
 import { RadioGroup, RadioGroupItem } from '@/shared/ui/radioGroup';
 import { Input } from '@/shared/ui/input';
 import { DatePicker } from '@/shared/ui/datePicker';
 import { Button } from '@/shared/ui/button';
+import { PersonalDataFormValuesType } from './typings';
 
 export const PersonalDataForm = () => {
   const {

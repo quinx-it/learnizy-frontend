@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta } from '@storybook/nextjs';
 import { Calendar } from './calendar';
+import { StoryType } from './typings';
 
 const meta: Meta<typeof Calendar> = {
   title: 'Components/UI/Calendar',
@@ -21,8 +22,6 @@ const meta: Meta<typeof Calendar> = {
 };
 
 export default meta;
-
-type StoryType = StoryObj<typeof Calendar>;
 
 export const Default: StoryType = {
   args: {

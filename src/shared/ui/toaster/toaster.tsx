@@ -1,19 +1,11 @@
 'use client';
 
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 import { useTheme } from 'next-themes';
 import { Toaster as Sonner, toast, ToasterProps } from 'sonner';
 import { NotificationIcon, CrossIcon } from '@/shared/ui/icons';
-
+import { NotificationVariantType, ColorMapEntryType, CustomToastPropsType } from './typings';
 import './toaster.css';
-
-type NotificationVariantType = 'info' | 'success' | 'warning' | 'error';
-
-type ColorMapEntryType = {
-  bg: string;
-  text: string;
-  icon: ReactNode;
-};
 
 const iconSize = 24;
 
@@ -38,13 +30,6 @@ const colorMap: Record<NotificationVariantType, ColorMapEntryType> = {
     text: 'var(--black)',
     icon: <NotificationIcon status="error" />,
   },
-};
-
-type CustomToastPropsType = {
-  variant: NotificationVariantType;
-  title: string;
-  description: string;
-  onClose: () => void;
 };
 
 const CustomToast: FC<CustomToastPropsType> = (props) => {

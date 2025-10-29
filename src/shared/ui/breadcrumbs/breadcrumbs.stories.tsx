@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta } from '@storybook/nextjs';
 import { Breadcrumbs } from './breadcrumbs';
+import { StoryType } from './typings';
 
 const meta: Meta<typeof Breadcrumbs> = {
   title: 'Components/UI/Breadcrumbs',
@@ -14,7 +15,6 @@ const meta: Meta<typeof Breadcrumbs> = {
 };
 
 export default meta;
-type StoryType = StoryObj<typeof Breadcrumbs>;
 
 export const Default: StoryType = {
   args: {

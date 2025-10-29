@@ -4,7 +4,7 @@ import { CardWrapper } from '@/shared/components/card-wrapper';
 import { Button } from '@/shared/ui/button';
 import { DotTitle } from '@/shared/ui/dotTitle';
 import React, { ComponentProps, ReactNode, FC } from 'react';
-import { ExamCardPropsType, ExamStatus } from '../types';
+import { ExamCardPropsType, ExamStatus } from '../typings';
 import { Text } from '@/shared/ui/typography';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';

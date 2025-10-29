@@ -2,14 +2,7 @@ import * as React from 'react';
 import { Progress } from '@radix-ui/react-progress';
 import { cn } from '@/shared/lib/utils';
 import { FC } from 'react';
-
-export interface IProgressBarProps {
-  value: number;
-  className?: string;
-  variant?: 'linear' | 'circular';
-  size?: number;
-  strokeWidth?: number;
-}
+import { IProgressBarProps } from './typings';
 
 export const ProgressBar: FC<IProgressBarProps> = (props) => {
   const { value, className, variant = 'linear', size = 48, strokeWidth = 4 } = props;

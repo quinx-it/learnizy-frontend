@@ -1,19 +1,11 @@
-import { JSX, FC } from 'react';
-import { constants, StatusValueType } from './constants';
+import { FC } from 'react';
+import { constants } from './constants';
 import { StarIcon } from '@/shared/ui/icons';
 import { Text } from '@/shared/ui/typography';
 import { ProgressBar } from '@/shared/ui/progress';
 import { CompletionStatus } from '@/api/endpoints/types';
 import { percentage } from '@/shared/lib/utils';
-
-type ProgressModuleType = {
-  element: JSX.Element | null;
-  status: StatusValueType;
-};
-
-interface IProcentContentProps {
-  progress: number | null | string;
-}
+import { ProgressModuleType, IProcentContentProps } from './typings';
 
 const ProcentContent: FC<IProcentContentProps> = (props) => {
   const { progress } = props;

@@ -1,12 +1,6 @@
-import { createSlice, PayloadAction, Action } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { decodeToken } from '@/shared/lib/utils';
-import { IAuthState, IDecodedToken } from './types';
-
-interface IRehydrateAction extends Action<'persist/REHYDRATE'> {
-  payload?: {
-    accessToken?: string;
-  };
-}
+import { IAuthState, IDecodedToken, IRehydrateAction } from './typings';
 
 const initialState: IAuthState = {
   accessToken: null,

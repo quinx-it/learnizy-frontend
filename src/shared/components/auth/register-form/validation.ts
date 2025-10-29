@@ -1,17 +1,5 @@
 import * as yup from 'yup';
 
-export interface IRegisterFormValues {
-  login: string;
-  password: string;
-  email: string;
-  repeatPassword: string;
-  agreement: boolean;
-}
-
-export interface IVerificationFormValues {
-  code: string;
-}
-
 export const formSchema = yup.object().shape({
   login: yup
     .string()

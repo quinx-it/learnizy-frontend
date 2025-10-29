@@ -1,6 +1,7 @@
 'use client';
 
 import { useMediaQuery } from 'react-responsive';
+import { BreakpointKeyType } from './typings';
 
 export const breakpoints = {
   sm: 640,
@@ -9,8 +10,6 @@ export const breakpoints = {
   xl: 1280,
   '2xl': 1440,
 } as const;
-
-type BreakpointKeyType = keyof typeof breakpoints;
 
 export function useBreakpoint<K extends BreakpointKeyType>(key: K) {
   const minWidth = breakpoints[key];

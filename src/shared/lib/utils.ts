@@ -1,5 +1,15 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { jwtDecode } from 'jwt-decode';
+import { IDecodedToken, UserRole } from '@/store/slices/auth/typings';
+import {
+  dynamicMentorRoutes,
+  dynamicUserRoutes,
+  publicRoutes,
+  staticMentorRoutes,
+  staticUserRoutes,
+} from '../constants/routes';
+import { IDecodedTokenPayload } from './typings';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -23,21 +33,6 @@ export const normalizeToFive = (value: number): number => {
   if (value >= 100) return 5;
   return +((value / 100) * 5).toFixed(2);
 };
-
-import { jwtDecode } from 'jwt-decode';
-import { IDecodedToken, UserRole } from '@/store/slices/auth/types';
-import {
-  dynamicMentorRoutes,
-  dynamicUserRoutes,
-  publicRoutes,
-  staticMentorRoutes,
-  staticUserRoutes,
-} from '../constants/routes';
-
-interface IDecodedTokenPayload {
-  role: UserRole;
-  sub: string;
-}
 
 export const decodeToken = (token: string): IDecodedToken => {
   const data = jwtDecode<IDecodedTokenPayload>(token);

@@ -1,4 +1,4 @@
-import { UserRole } from '@/store/slices/auth/types';
+import { UserRole } from '@/store/slices/auth/typings';
 
 export const routes = {
   public: {

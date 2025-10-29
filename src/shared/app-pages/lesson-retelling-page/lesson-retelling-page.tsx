@@ -8,11 +8,7 @@ import React, { FC } from 'react';
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { VoiceRecorderForm } from '@/shared/components/voice-recorder-form';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
-
-interface ILessonRetellingPageProps {
-  module: string;
-  lesson: string;
-}
+import { ILessonRetellingPageProps } from './typings';
 
 export const LessonRetellingPage: FC<ILessonRetellingPageProps> = (props) => {
   const { module, lesson } = props;

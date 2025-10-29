@@ -1,5 +1,5 @@
-import { CourseListItemType } from '@/shared/components/course-list-item';
-import { AccordionItemType } from '@/shared/ui/accordion-review/accordion-review';
+import { CourseListItemType } from '@/shared/components/course-list-item/typings';
+import { AccordionItemType } from '@/shared/ui/accordion-review/typings';
 
 export const constants = {
   titles: {
