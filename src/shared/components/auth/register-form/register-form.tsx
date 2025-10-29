@@ -15,7 +15,7 @@ import { PasswordInput } from '@/shared/ui/passwordInput';
 import { Button } from '@/shared/ui/button';
 import { showToast } from '@/shared/ui/toaster';
 import Link from 'next/link';
-import { routes } from '@/shared/constants';
+import { routes, STATUS } from '@/shared/constants';
 import { CheckboxWithLabel } from '@/shared/ui/checkboxWithLabel/checkboxWithLabel';
 import { useRouter } from 'next/navigation';
 import { Heading, Text } from '@/shared/ui/typography';
@@ -83,7 +83,18 @@ export const RegisterForm = () => {
       setStep(RegisterStep.VERIFY);
       setTimer(30);
       setCanResend(false);
-    } catch {
+    } catch (error: any) {
+      const isConflict = error?.status === STATUS.CONFLICT;
+
+      if (isConflict) {
+        showToast(
+          'error',
+          'Ошибка',
+          'Аккаунт с таким email уже существует. Войдите или восстановите доступ.',
+        );
+        return;
+      }
+
       showToast('error', 'Ошибка', 'Не удалось зарегистрироваться. Попробуйте снова.');
     }
   };
