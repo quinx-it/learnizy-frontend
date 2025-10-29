@@ -15,7 +15,8 @@ import { PasswordInput } from '@/shared/ui/passwordInput';
 import { Button } from '@/shared/ui/button';
 import { showToast } from '@/shared/ui/toaster';
 import Link from 'next/link';
-import { routes, STATUS } from '@/shared/constants';
+import { routes, HttpStatus } from '@/shared/constants';
+import type { HttpStatusError } from '@/shared/types';
 import { CheckboxWithLabel } from '@/shared/ui/checkboxWithLabel/checkboxWithLabel';
 import { useRouter } from 'next/navigation';
 import { Heading, Text } from '@/shared/ui/typography';
@@ -83,8 +84,9 @@ export const RegisterForm = () => {
       setStep(RegisterStep.VERIFY);
       setTimer(30);
       setCanResend(false);
-    } catch (error: any) {
-      const isConflict = error?.status === STATUS.CONFLICT;
+    } catch (error: unknown) {
+      const status = (error as HttpStatusError)?.status;
+      const isConflict = status === HttpStatus.CONFLICT;
 
       if (isConflict) {
         showToast(

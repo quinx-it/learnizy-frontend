@@ -6,6 +6,7 @@ import {
 } from '@reduxjs/toolkit/query';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 import { RootStateType } from '@/store';
+import { HttpStatus } from '@/shared/constants';
 interface IRefreshResponse {
   data?: {
     accessToken?: string;
@@ -32,7 +33,7 @@ export const baseQueryWithReauth: BaseQueryFn<
 > = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
 
-  if (result.error && result.error.status === 401) {
+  if (result.error && result.error.status === HttpStatus.UNAUTHORIZED) {
     const refreshResult = (await baseQuery(
       {
         url: '/auth/refresh',
