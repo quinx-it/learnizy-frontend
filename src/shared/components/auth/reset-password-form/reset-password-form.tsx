@@ -58,7 +58,7 @@ export const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
       <div className="flex flex-col items-center gap-6">
         <div className="text-lg font-semibold text-green-700">Пароль успешно изменён!</div>
         <Button onClick={() => router.push(routes.public.loginPage)} size="medium">
-          Вернуться к авторизации
+          Вернуться к окну авторизации
         </Button>
       </div>
     );
