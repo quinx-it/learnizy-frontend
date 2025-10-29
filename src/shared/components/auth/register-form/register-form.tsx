@@ -83,7 +83,22 @@ export const RegisterForm = () => {
       setStep(RegisterStep.VERIFY);
       setTimer(30);
       setCanResend(false);
-    } catch {
+    } catch (error) {
+      const isConflict =
+        typeof error === 'object' &&
+        error !== null &&
+        'status' in error &&
+        (error as { status?: number | string }).status === 409;
+
+      if (isConflict) {
+        showToast(
+          'error',
+          'Ошибка',
+          'Аккаунт с таким email уже существует. Войдите или восстановите доступ.',
+        );
+        return;
+      }
+
       showToast('error', 'Ошибка', 'Не удалось зарегистрироваться. Попробуйте снова.');
     }
   };
