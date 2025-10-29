@@ -9,12 +9,18 @@ import { Button } from '@/shared/ui/button';
 import { useResetPasswordMutation } from '@/api/endpoints/auth/auth';
 import { showToast } from '@/shared/ui/toaster';
 import { Spinner } from '@/shared/ui/spinner';
-import { IResetPasswordFormProps } from './typings';
+import { useRouter } from 'next/navigation';
+import { routes } from '@/shared/constants';
+
+interface IResetPasswordFormProps {
+  token: string;
+}
 
 export const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
   const { token } = props;
-
   const [resetPassword, { isLoading, error }] = useResetPasswordMutation();
+  const [isSuccess, setIsSuccess] = React.useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (error) {
@@ -40,12 +46,23 @@ export const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
         token,
         newPassword: data.password,
       }).unwrap();
-
       showToast('success', 'Ура!', 'Пароль успешно изменён');
+      setIsSuccess(true);
     } catch {
       showToast('error', 'Ошибка!', 'Не удалось изменить пароль');
     }
   };
+
+  if (isSuccess) {
+    return (
+      <div className="flex flex-col items-center gap-6">
+        <div className="text-lg font-semibold text-green-700">Пароль успешно изменён!</div>
+        <Button onClick={() => router.push(routes.public.loginPage)} size="medium">
+          Вернуться к авторизации
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col gap-6">
