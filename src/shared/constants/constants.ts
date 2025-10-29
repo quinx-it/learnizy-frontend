@@ -13,7 +13,7 @@ export const globalConstants = {
   },
 };
 
-export enum STATUS {
+export enum HttpStatus {
   OK = 200,
   CREATED = 201,
   NO_CONTENT = 204,
@@ -22,7 +22,6 @@ export enum STATUS {
   FORBIDDEN = 403,
   NOT_FOUND = 404,
   CONFLICT = 409,
-
 }
 
 import {
