@@ -15,7 +15,7 @@ import { PasswordInput } from '@/shared/ui/passwordInput';
 import { Button } from '@/shared/ui/button';
 import { showToast } from '@/shared/ui/toaster';
 import Link from 'next/link';
-import { routes } from '@/shared/constants';
+import { routes, STATUS } from '@/shared/constants';
 import { CheckboxWithLabel } from '@/shared/ui/checkboxWithLabel/checkboxWithLabel';
 import { useRouter } from 'next/navigation';
 import { Heading, Text } from '@/shared/ui/typography';
@@ -83,12 +83,8 @@ export const RegisterForm = () => {
       setStep(RegisterStep.VERIFY);
       setTimer(30);
       setCanResend(false);
-    } catch (error) {
-      const isConflict =
-        typeof error === 'object' &&
-        error !== null &&
-        'status' in error &&
-        (error as { status?: number | string }).status === 409;
+    } catch (error: any) {
+      const isConflict = error?.status === STATUS.CONFLICT;
 
       if (isConflict) {
         showToast(
