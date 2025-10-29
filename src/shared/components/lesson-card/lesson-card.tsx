@@ -4,13 +4,7 @@ import { Button } from '@/shared/ui/button';
 import { Heading } from '@/shared/ui/typography';
 import React, { FC } from 'react';
 import { StarIcon } from '@/shared/ui/icons';
-import { ILesson, ILessonProgress } from '@/api/endpoints/lessons/types';
-
-type LessonCardPropsType = ILesson & {
-  progress: ILessonProgress;
-  index: number;
-  onClick: (lessonId: number) => void;
-};
+import { LessonCardPropsType } from './typings';
 
 export const LessonCard: FC<LessonCardPropsType> = (props) => {
   const { id, title, progress, index, onClick } = props;

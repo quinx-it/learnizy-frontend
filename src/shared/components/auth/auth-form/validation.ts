@@ -1,10 +1,5 @@
 import * as yup from 'yup';
 
-export interface IAuthFormValues {
-  username: string;
-  password: string;
-}
-
 export const formSchema = yup.object().shape({
   username: yup
     .string()

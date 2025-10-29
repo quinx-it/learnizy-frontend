@@ -1,4 +1,5 @@
 'use client';
+
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { routes } from '@/shared/constants';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
@@ -24,12 +25,9 @@ import { ILesson } from '@/api/endpoints/lessons/types';
 import { usePathname, useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import { selectUserRole } from '@/store/slices/auth/selectors';
-import { UserRole } from '@/store/slices/auth/types';
+import { UserRole } from '@/store/slices/auth/typings';
 import { showToast } from '@/shared/ui/toaster';
-
-type ModuleItemPagePropsType = {
-  id: string;
-};
+import { ModuleItemPagePropsType } from './typings';
 
 export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
   const { id } = props;

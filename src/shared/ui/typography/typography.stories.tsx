@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta } from '@storybook/nextjs';
 import { Heading, Text } from './typography';
+import { HeadingStoryType, TextStoryType } from './typings';
 
 const meta: Meta<typeof Heading> = {
   title: 'Components/UI/Typography',
@@ -8,9 +9,6 @@ const meta: Meta<typeof Heading> = {
 };
 
 export default meta;
-
-type HeadingStoryType = StoryObj<typeof Heading>;
-type TextStoryType = StoryObj<typeof Text>;
 
 export const AllHeadingVariants: HeadingStoryType = {
   render: () => (

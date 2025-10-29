@@ -2,39 +2,11 @@
 
 import { cn } from '@/shared/lib/utils';
 import React, { FC } from 'react';
-
-import {
-  ComponentProps,
-  ComponentType,
-  createContext,
-  CSSProperties,
-  ReactNode,
-  useContext,
-  useId,
-  useMemo,
-} from 'react';
+import { ComponentProps, createContext, CSSProperties, useContext, useId, useMemo } from 'react';
 import * as RechartsPrimitive from 'recharts';
+import { ChartConfigType, ChartContextPropsType, IChartStyleProps } from './typings';
 
-const THEMES = { light: '', dark: '.dark' } as const;
-
-export type ChartConfigType = {
-  [k in string]: {
-    label?: ReactNode;
-    icon?: ComponentType;
-  } & (
-    | { color?: string; theme?: never }
-    | { color?: never; theme: Record<keyof typeof THEMES, string> }
-  );
-};
-
-type ChartContextPropsType = {
-  config: ChartConfigType;
-};
-
-interface IChartStyleProps {
-  id: string;
-  config: ChartConfigType;
-}
+export const THEMES = { light: '', dark: '.dark' } as const;
 
 const ChartContext = createContext<ChartContextPropsType | null>(null);
 
@@ -94,15 +66,17 @@ const ChartStyle: FC<IChartStyleProps> = (props) => {
         __html: Object.entries(THEMES)
           .map(
             ([theme, prefix]) => `
-${prefix} [data-chart=${id}] {
-${colorConfig
-  .map(([key, itemConfig]) => {
-    const color = itemConfig.theme?.[theme as keyof typeof itemConfig.theme] || itemConfig.color;
-    return color ? `  --color-${key}: ${color};` : null;
-  })
-  .join('\n')}
-}
-`,
+              ${prefix} [data-chart=${id}] {
+                ${colorConfig
+                  .map(([key, itemConfig]) => {
+                    const color =
+                      itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
+                      itemConfig.color;
+                    return color ? `  --color-${key}: ${color};` : null;
+                  })
+                  .join('\n')}
+              }
+              `,
           )
           .join('\n'),
       }}

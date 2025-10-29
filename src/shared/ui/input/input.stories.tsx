@@ -1,5 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+'use client';
+
+import type { Meta } from '@storybook/nextjs';
 import { Input } from './input';
+import { StoryType } from './typings';
 
 const meta: Meta<typeof Input> = {
   title: 'Components/UI/Input',
@@ -18,8 +21,6 @@ const meta: Meta<typeof Input> = {
 };
 
 export default meta;
-
-type StoryType = StoryObj<typeof Input>;
 
 export const Default: StoryType = {};
 

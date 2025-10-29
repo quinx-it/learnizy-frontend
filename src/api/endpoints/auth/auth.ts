@@ -1,4 +1,4 @@
-import { IAuthState } from '@/store/slices/auth/types';
+import { IAuthState } from '@/store/slices/auth/typings';
 import { api } from '@/api';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 import { showToast } from '@/shared/ui/toaster';

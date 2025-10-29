@@ -3,17 +3,7 @@ import { cn } from '@/shared/lib/utils';
 import { Heading, Text } from '@/shared/ui/typography';
 import Image from 'next/image';
 import { Button } from '@/shared/ui/button';
-
-export type ErrorType = {
-  error?: Error & { digest?: string };
-  reset: () => void;
-};
-
-type ErrorPropsType = {
-  className?: string;
-  text?: string;
-  title?: string;
-};
+import { ErrorPropsType, ErrorType } from './typings';
 
 export const ErrorSection: FC<ErrorPropsType & ErrorType> = (props) => {
   const {

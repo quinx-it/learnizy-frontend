@@ -6,18 +6,7 @@ import { DotTitle } from '@/shared/ui/dotTitle';
 import { Text } from '@/shared/ui/typography';
 import { ProgressBar } from '@/shared/ui/progress';
 import { Button } from '@/shared/ui/button';
-
-type ProgressCardPropsType = {
-  title: string;
-  subTitle: string;
-  totalModules?: number;
-  modules?: number;
-  totalLessons: number;
-  lessons: number;
-  status?: 'Продолжить' | 'Начать';
-  image?: string;
-  onClick?: () => void;
-};
+import { ProgressCardPropsType } from './typings';
 
 export const ProgressCard: FC<ProgressCardPropsType> = (props) => {
   const { title, subTitle, totalModules, totalLessons, lessons, status, modules, image, onClick } =

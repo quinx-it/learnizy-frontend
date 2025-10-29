@@ -9,10 +9,7 @@ import { Button } from '@/shared/ui/button';
 import { useResetPasswordMutation } from '@/api/endpoints/auth/auth';
 import { showToast } from '@/shared/ui/toaster';
 import { Spinner } from '@/shared/ui/spinner';
-
-interface IResetPasswordFormProps {
-  token: string;
-}
+import { IResetPasswordFormProps } from './typings';
 
 export const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
   const { token } = props;

@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta } from '@storybook/nextjs';
 import { useState } from 'react';
 import { CustomSelect } from './select';
+import { StoryType } from './typings';
 
 const meta: Meta<typeof CustomSelect> = {
   title: 'Components/UI/CustomSelect',
@@ -9,8 +10,6 @@ const meta: Meta<typeof CustomSelect> = {
 };
 
 export default meta;
-
-type StoryType = StoryObj<typeof CustomSelect>;
 
 const options = [
   { label: 'Option 1', value: 'opt1' },

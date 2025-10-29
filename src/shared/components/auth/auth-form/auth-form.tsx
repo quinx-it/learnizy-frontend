@@ -3,7 +3,7 @@
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { IAuthFormValues, formSchema } from './validation';
+import { formSchema } from './validation';
 import { useLoginMutation } from '@/api/endpoints/auth/auth';
 import { Spinner } from '@/shared/ui/spinner';
 import { Input } from '@/shared/ui/input';
@@ -12,6 +12,7 @@ import { Button } from '@/shared/ui/button';
 import { showToast } from '@/shared/ui/toaster';
 import Link from 'next/link';
 import { routes } from '@/shared/constants';
+import { IAuthFormValues } from './typings';
 
 export const AuthForm = () => {
   const [loginRequest, { isLoading }] = useLoginMutation();

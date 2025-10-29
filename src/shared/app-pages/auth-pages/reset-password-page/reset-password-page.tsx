@@ -3,10 +3,7 @@ import { CardWrapper } from '@/shared/components/card-wrapper';
 import { Logo } from '@/shared/ui/icons';
 import { Heading, Text } from '@/shared/ui/typography';
 import React, { FC } from 'react';
-
-interface IResetPasswordPageProps {
-  token: string;
-}
+import { IResetPasswordPageProps } from './typings';
 
 export const ResetPasswordPage: FC<IResetPasswordPageProps> = (props) => {
   const { token } = props;

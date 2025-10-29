@@ -2,18 +2,8 @@ import { cn } from '@/shared/lib/utils';
 import { Heading, Text } from '@/shared/ui/typography';
 import Image from 'next/image';
 import React, { FC } from 'react';
-
-type AdvantageCardPropsType = {
-  title: string;
-  text: string;
-  type: CardType;
-  className?: string;
-};
-
-export enum CardType {
-  Dark = 'dark',
-  Light = 'light',
-}
+import { AdvantageCardPropsType } from './typings';
+import { CardType } from './constants';
 
 const cardStyles = {
   [CardType.Dark]: {

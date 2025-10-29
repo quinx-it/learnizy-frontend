@@ -1,15 +1,9 @@
 'use client';
 
-import React, { ComponentProps, PropsWithChildren, ReactNode, FC } from 'react';
+import React, { FC } from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { cn } from '@/shared/lib/utils';
-
-interface ITooltipProps extends PropsWithChildren {
-  content: ReactNode;
-  offset?: number;
-  side?: ComponentProps<typeof TooltipPrimitive.Content>['side'];
-  delay?: number;
-}
+import { ITooltipProps } from './typings';
 
 export const CustomTooltip: FC<ITooltipProps> = (props) => {
   const { children, content, offset = 0, side = 'top', delay = 0 } = props;

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { ChangeEvent } from 'react';
 import { cn } from '@/shared/lib/utils';
 import { Text } from '@/shared/ui/typography';
 import { useState, useEffect } from 'react';
@@ -14,7 +14,7 @@ function Textarea({ className, error, maxLength = MAX_TEXTAREA_LENGTH, ...props 
     }
   }, [props.value]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     if (props.onChange) props.onChange(e);
     setValue(e.target.value);
   };

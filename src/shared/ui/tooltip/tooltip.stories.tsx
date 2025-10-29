@@ -1,6 +1,7 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta } from '@storybook/nextjs';
 import { CustomTooltip } from './tooltip';
+import { StoryType } from './typings';
 
 const meta: Meta<typeof CustomTooltip> = {
   title: 'Components/UI/CustomTooltip',
@@ -19,7 +20,6 @@ const meta: Meta<typeof CustomTooltip> = {
 };
 
 export default meta;
-type StoryType = StoryObj<typeof CustomTooltip>;
 
 export const Default: StoryType = {
   args: {

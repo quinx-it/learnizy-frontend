@@ -1,7 +1,9 @@
-// src/shared/ui/checkbox/Checkbox.stories.tsx
-import type { Meta, StoryObj } from '@storybook/nextjs';
+'use client';
+
+import type { Meta } from '@storybook/nextjs';
 import { Checkbox } from './checkbox';
 import { Label } from '@radix-ui/react-label';
+import { StoryType } from './typings';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Components/UI/Checkbox',
@@ -17,8 +19,6 @@ const meta: Meta<typeof Checkbox> = {
 };
 
 export default meta;
-
-type StoryType = StoryObj<typeof Checkbox>;
 
 export const Default: StoryType = {
   render: (args) => (

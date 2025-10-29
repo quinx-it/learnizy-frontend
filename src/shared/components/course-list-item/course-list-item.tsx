@@ -5,14 +5,7 @@ import { Text } from '@/shared/ui/typography';
 import React, { FC } from 'react';
 import { constants } from './constants';
 import { cn } from '@/shared/lib/utils';
-
-export type CourseListItemType = {
-  title: string;
-  number: number;
-  status?: 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED' | 'BLOCKED';
-  progress?: number;
-  onClick?: () => void;
-};
+import { CourseListItemType } from './typings';
 
 export const CourseListItem: FC<CourseListItemType> = (props) => {
   const { title, number, status, progress, onClick } = props;

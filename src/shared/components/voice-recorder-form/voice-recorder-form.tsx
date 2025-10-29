@@ -16,20 +16,8 @@ import { useState, useEffect } from 'react';
 import { Text } from '@/shared/ui/typography';
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { Resolver } from 'react-hook-form';
-
-export enum AIQueryStatus {
-  PENDING = 'PENDING',
-  ANSWERED = 'ANSWERED',
-  FAILED = 'FAILED',
-}
-
-interface IAIQuestionFormValues {
-  file?: Blob;
-}
-
-interface IVoiceRecorderFormProps {
-  lessonId: number;
-}
+import { AIQueryStatus } from './constants';
+import { IAIQuestionFormValues, IVoiceRecorderFormProps } from './typings';
 
 export const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = (props) => {
   const { lessonId } = props;

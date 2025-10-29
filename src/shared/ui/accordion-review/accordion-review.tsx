@@ -8,19 +8,8 @@ import {
 import { cn } from '@/shared/lib/utils';
 import { ArrowRightIcon } from '@/shared/ui/icons';
 import { Text } from '@/shared/ui/typography';
-
 import '@/shared/ui/accordion/accordion.css';
-
-export type AccordionItemType = {
-  value: string;
-  number: number;
-  messageNumber: number;
-  content: string;
-};
-
-type AccordionReviewPropsType = {
-  items: AccordionItemType[];
-};
+import { AccordionReviewPropsType } from './typings';
 
 export const AccordionReview: FC<AccordionReviewPropsType> = (props) => {
   const { items } = props;

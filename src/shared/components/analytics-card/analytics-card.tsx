@@ -1,12 +1,7 @@
 'use client';
 
-import React, { FC, PropsWithChildren } from 'react';
-
-interface IAnalyticsCardProps extends PropsWithChildren {
-  title: string;
-  value?: number;
-  changePercentage?: number;
-}
+import React, { FC } from 'react';
+import { IAnalyticsCardProps } from './typings';
 
 export const AnalyticsCard: FC<IAnalyticsCardProps> = (props) => {
   const { title, value, changePercentage, children } = props;

@@ -1,4 +1,7 @@
-import { CardType } from './advantage-card';
+export enum CardType {
+  Dark = 'dark',
+  Light = 'light',
+}
 
 export const constants = {
   title: 'Почему выбирают нас?',

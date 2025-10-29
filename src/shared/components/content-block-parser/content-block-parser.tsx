@@ -10,10 +10,7 @@ import {
 import Link from 'next/link';
 import Image from 'next/image';
 import { LightbulbIcon, NotificationIcon } from '@/shared/ui/icons';
-
-interface IBlockRendererProps {
-  block: Block;
-}
+import { IBlockRendererProps } from './typings';
 
 const defaultStyles = {
   color: '#0C0C0C',

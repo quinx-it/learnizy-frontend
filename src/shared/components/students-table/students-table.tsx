@@ -6,22 +6,7 @@ import { Text } from '@/shared/ui/typography';
 import { Copy, Edit3 } from 'lucide-react';
 import Link from 'next/link';
 import { useState, FC } from 'react';
-
-type StudentType = {
-  id: number;
-  fullName: string;
-  progress: string;
-  currentModule: string;
-  currentLesson: number;
-};
-
-type RowType = StudentType & {
-  status?: 'Проверено' | 'Тест' | 'Запись' | 'Пр. задание' | 'Экзамен';
-};
-
-interface IStudentsTableProps {
-  students: RowType[];
-}
+import { IStudentsTableProps } from './typings';
 
 export const StudentsTable: FC<IStudentsTableProps> = (props) => {
   const { students } = props;

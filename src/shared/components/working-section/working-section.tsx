@@ -4,10 +4,7 @@ import { cn } from '@/shared/lib/utils';
 import { Text } from '@/shared/ui/typography';
 import Image from 'next/image';
 import { constants } from './constants';
-
-type WorkingSectionPropsType = {
-  className?: string;
-};
+import { WorkingSectionPropsType } from './typings';
 
 export const WorkingSection: FC<WorkingSectionPropsType> = (props) => {
   const { className } = props;

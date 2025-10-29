@@ -5,10 +5,7 @@ import { Button } from '@/shared/ui/button';
 import { Text } from '@/shared/ui/typography';
 import Link from 'next/link';
 import { FC } from 'react';
-
-interface IInterviewRecordsProps {
-  className?: string;
-}
+import { IInterviewRecordsProps } from './typings';
 
 export const InterviewRecords: FC<IInterviewRecordsProps> = (props) => {
   const { className } = props;

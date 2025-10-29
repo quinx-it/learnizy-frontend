@@ -3,12 +3,13 @@
 import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { IForgotPasswordFormValues, formSchema } from './validation';
+import { formSchema } from './validation';
 import { useForgotPasswordMutation } from '@/api/endpoints/auth/auth';
 import { Spinner } from '@/shared/ui/spinner';
 import { Input } from '@/shared/ui/input';
 import { Button } from '@/shared/ui/button';
 import { showToast } from '@/shared/ui/toaster';
+import { IForgotPasswordFormValues } from './typings';
 
 export const ForgotPasswordForm = () => {
   const [forgotPasswordRequest, { isLoading, error }] = useForgotPasswordMutation();
