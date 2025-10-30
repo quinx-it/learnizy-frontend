@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, FC } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { IResetPasswordFormValues, formSchema } from './validation';
@@ -11,15 +11,12 @@ import { showToast } from '@/shared/ui/toaster';
 import { Spinner } from '@/shared/ui/spinner';
 import { useRouter } from 'next/navigation';
 import { routes } from '@/shared/constants';
-
-interface IResetPasswordFormProps {
-  token: string;
-}
+import { IResetPasswordFormProps } from './typings';
 
 export const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
   const { token } = props;
   const [resetPassword, { isLoading, error }] = useResetPasswordMutation();
-  const [isSuccess, setIsSuccess] = React.useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -53,11 +50,15 @@ export const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
     }
   };
 
+  const handleBackToLogin = () => {
+    router.push(routes.public.loginPage);
+  };
+
   if (isSuccess) {
     return (
       <div className="flex flex-col items-center gap-6">
         <div className="text-lg font-semibold text-green-700">Пароль успешно изменён!</div>
-        <Button onClick={() => router.push(routes.public.loginPage)} size="medium">
+        <Button onClick={handleBackToLogin} size="medium">
           Вернуться к окну авторизации
         </Button>
       </div>

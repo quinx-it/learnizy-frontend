@@ -26,6 +26,8 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
+let refreshPromise: Promise<IRefreshResponse> | null = null;
+
 export const baseQueryWithReauth: BaseQueryFn<
   string | FetchArgs,
   unknown,
@@ -34,16 +36,22 @@ export const baseQueryWithReauth: BaseQueryFn<
   let result = await baseQuery(args, api, extraOptions);
 
   if (result.error && result.error.status === HttpStatus.UNAUTHORIZED) {
-    const refreshResult = (await baseQuery(
-      {
-        url: '/auth/refresh',
-        method: 'POST',
-        body: {},
-        credentials: 'include',
-      },
-      api,
-      extraOptions,
-    )) as IRefreshResponse;
+    if (!refreshPromise) {
+      refreshPromise = baseQuery(
+        {
+          url: '/auth/refresh',
+          method: 'POST',
+          body: {},
+          credentials: 'include',
+        },
+        api,
+        extraOptions,
+      ) as Promise<IRefreshResponse>;
+    }
+
+    const refreshResult = await refreshPromise;
+    refreshPromise = null;
+
     const accessToken = refreshResult.data?.accessToken;
 
     if (accessToken) {

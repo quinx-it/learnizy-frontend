@@ -36,6 +36,7 @@ export const normalizeToFive = (value: number): number => {
 
 export const decodeToken = (token: string): IDecodedToken => {
   const data = jwtDecode<IDecodedTokenPayload>(token);
+  console.log(' JWT decoded role from backend:', data.role);
   return { user: { userName: data.sub, role: data.role } };
 };
 
