@@ -7,7 +7,6 @@ import { useGetChatMessagesQuery, useSendMessageMutation } from '@/api/endpoints
 import { IMessage, ISendMessageRequest } from '@/api/endpoints/ai-assistant/typing';
 import { Role } from '@/api/endpoints/ai-assistant/constants';
 import { showToast } from '@/shared/ui/toaster';
-import { Button } from '@/shared/ui/button';
 import { POLLING_INTERVAL } from './constants';
 
 export const ChatAiAssistantPage = () => {
@@ -24,8 +23,6 @@ export const ChatAiAssistantPage = () => {
   } = useGetChatMessagesQuery(chatId!, { skip: !chatId });
 
   const [sendMessage, { isLoading: isSendingMessage }] = useSendMessageMutation();
-  const inFlightSendRef = useRef<ReturnType<typeof sendMessage> | null>(null);
-  const [isManuallyStopped, setIsManuallyStopped] = useState(false);
 
   const startPolling = useCallback(() => {
     if (!pollingInterval.current) {
@@ -72,26 +69,13 @@ export const ChatAiAssistantPage = () => {
     setOptimisticMessages((prev) => [...prev, optimisticMessage]);
 
     try {
-      setIsManuallyStopped(false);
-      const promise = sendMessage({ chatId, data });
-      inFlightSendRef.current = promise;
-      await promise.unwrap();
+      await sendMessage({ chatId, data }).unwrap();
       startPolling();
     } catch {
       showToast('error', 'Не удалось отправить сообщение', '');
       setOptimisticMessages((prev) => prev.filter((msg) => msg.id !== optimisticMessage.id));
       stopPolling();
     }
-  };
-
-  const handleStop = () => {
-    // abort in-flight send if any
-    try {
-      inFlightSendRef.current?.abort?.();
-    } catch { }
-    inFlightSendRef.current = null;
-    setIsManuallyStopped(true);
-    stopPolling();
   };
 
   useEffect(() => {
@@ -111,22 +95,16 @@ export const ChatAiAssistantPage = () => {
         <ChatMessageHistory
           messages={optimisticMessages}
           isLoading={isLoadingMessages && optimisticMessages.length === 0}
-          isWaitingForAssistant={!isManuallyStopped && userCount > assistantCount}
+          isWaitingForAssistant={userCount > assistantCount}
         />
       </div>
 
+      <div className="mb-4 flex h-9 w-full justify-center" />
       <div className="absolute bottom-0 flex w-full justify-center bg-none p-4">
-        <div className="flex w-full max-w-[659px] flex-col items-center gap-2">
-          {!isManuallyStopped && userCount > assistantCount && (
-            <Button size="small" variant="white" onClick={handleStop}>
-              Остановить ответ
-            </Button>
-          )}
-          <ChatInput
-            onSendMessage={handleSendMessage}
-            isLoading={isSendingMessage || userCount > assistantCount}
-          />
-        </div>
+        <ChatInput
+          onSendMessage={handleSendMessage}
+          isLoading={isSendingMessage || userCount > assistantCount}
+        />
       </div>
     </div>
   );
