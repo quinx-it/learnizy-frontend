@@ -1,6 +1,6 @@
 export enum CompletionStatus {
-  NOT_STARTED = 'NOT_STARTED',
-  IN_PROGRESS = 'IN_PROGRESS',
-  COMPLETED = 'COMPLETED',
-  BLOCKED = 'BLOCKED',
+  NOT_STARTED = 'not_started',
+  IN_PROGRESS = 'in_progress',
+  COMPLETED = 'completed',
+  BLOCKED = 'blocked',
 }

@@ -3,7 +3,6 @@
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { routes } from '@/shared/constants';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
-import { Button } from '@/shared/ui/button';
 import { DotTitle } from '@/shared/ui/dotTitle';
 import { CheckIcon, LockColorIcon } from '@/shared/ui/icons';
 import { ProgressBar } from '@/shared/ui/progress';
@@ -28,6 +27,10 @@ import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
 import { showToast } from '@/shared/ui/toaster';
 import { ModuleItemPagePropsType } from './typings';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/shared/ui/dialog';
+import { Button } from '@/shared/ui/button';
+import { Textarea } from '@/shared/ui/textarea';
+import { Input } from '@/shared/ui/input';
 
 export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
   const { id } = props;
@@ -217,41 +220,45 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
       </CardWrapper>
 
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="flex w-full max-w-md flex-col gap-4 rounded bg-white p-6">
-            <h2 className="text-lg font-bold">
-              {editingLessonId ? 'Редактирование урока' : 'Создание нового урока'}
-            </h2>
+        <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle>
+                {editingLessonId ? 'Редактирование урока' : 'Создание нового урока'}
+              </DialogTitle>
+            </DialogHeader>
 
-            <input
-              className="rounded border p-2"
+            <Input
+              className="mt-2 w-full"
               placeholder="Название урока"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-            <textarea
-              className="rounded border p-2"
+
+            <Textarea
+              className="mt-2"
               placeholder="Описание урока"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
-            <textarea
-              className="h-40 rounded border p-2"
+
+            <Textarea
+              className="mt-2"
               placeholder="Контент (Markdown)"
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
 
-            <div className="flex justify-end gap-2">
+            <DialogFooter className="mt-4 flex justify-end gap-2">
               <Button variant="white" size="small" onClick={() => setModalOpen(false)}>
                 Отмена
               </Button>
               <Button variant="blue" size="small" onClick={handleSaveLesson}>
                 {editingLessonId ? 'Сохранить' : 'Создать'}
               </Button>
-            </div>
-          </div>
-        </div>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       )}
     </>
   );

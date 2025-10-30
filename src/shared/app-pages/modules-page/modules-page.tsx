@@ -19,9 +19,12 @@ import { ErrorSection } from '@/shared/components/error-section';
 import { useSelector } from 'react-redux';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
-import { Button } from '@/shared/ui/button';
 import { showToast } from '@/shared/ui/toaster';
 import { IModuleProgressCardProps } from './typings';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/shared/ui/dialog';
+import { Button } from '@/shared/ui/button';
+import { Textarea } from '@/shared/ui/textarea';
+import { Input } from '@/shared/ui/input';
 
 const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
   const { module, isMentor, openEditModal, handleDeleteModule } = props;
@@ -152,41 +155,44 @@ export const ModulesPage = () => {
       )}
 
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="flex w-full max-w-md flex-col gap-4 rounded bg-white p-6">
-            <h2 className="text-lg font-bold">
-              {editingModuleId ? 'Редактирование модуля' : 'Создание нового модуля'}
-            </h2>
-            <input
-              className="rounded border p-2"
-              placeholder="Название модуля"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <textarea
-              className="rounded border p-2"
-              placeholder="Описание модуля"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <input
-              className="rounded border p-2"
-              type="number"
-              placeholder="Порядковый номер"
-              value={sequenceOrder}
-              min={1}
-              onChange={(e) => setSequenceOrder(Number(e.target.value))}
-            />
-            <div className="flex justify-end gap-2">
+        <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+          <DialogContent className="max-w-md">
+            <DialogHeader>
+              <DialogTitle>
+                {editingModuleId ? 'Редактирование модуля' : 'Создание нового модуля'}
+              </DialogTitle>
+            </DialogHeader>
+
+            <div className="flex flex-col gap-4">
+              <Input
+                type="number"
+                placeholder="Порядковый номер"
+                value={sequenceOrder}
+                min={1}
+                onChange={(e) => setSequenceOrder(Number(e.target.value))}
+              />
+              <Input
+                placeholder="Название модуля"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              <Textarea
+                placeholder="Описание модуля"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+
+            <DialogFooter className="flex justify-end gap-2">
               <Button variant="white" size="small" onClick={() => setModalOpen(false)}>
                 Отмена
               </Button>
               <Button variant="blue" size="small" onClick={handleSaveModule}>
                 {editingModuleId ? 'Сохранить' : 'Создать'}
               </Button>
-            </div>
-          </div>
-        </div>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       )}
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
