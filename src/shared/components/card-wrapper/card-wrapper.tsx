@@ -1,10 +1,10 @@
 'use client';
 
 import { cn } from '@/shared/lib/utils';
-import React, { PropsWithChildren, FC } from 'react';
+import React, { FC } from 'react';
 import { CardWrapperPropsType } from './typings';
 
-export const CardWrapper: FC<CardWrapperPropsType & PropsWithChildren> = (props) => {
+export const CardWrapper: FC<CardWrapperPropsType> = (props) => {
   const { children, className, onClick } = props;
 
   return (
