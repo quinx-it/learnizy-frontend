@@ -7,11 +7,13 @@ import { AuthLayout } from '@/shared/components/auth-layout';
 import { navbarLinks } from '@/shared/constants/constants';
 import { routes } from '@/shared/constants/routes';
 import { ChatHeader } from '@/shared/components/ai-assistant-chat/chat-header';
+import { useTranslation } from 'react-i18next';
 
 const LearnLayout: FC<PropsWithChildren> = (props) => {
   const { children } = props;
 
   const pathname = usePathname();
+  const { t } = useTranslation();
 
   const showChatHeader = pathname.startsWith('/learn/ai-assistant/chat/');
 
@@ -20,13 +22,18 @@ const LearnLayout: FC<PropsWithChildren> = (props) => {
     ? 'h-full max-h-screen w-full overflow-y-auto'
     : 'h-full max-h-screen w-full overflow-y-auto px-4 py-5 md:px-7.5';
 
+  const userLinks = navbarLinks.user.map(({ label, ...rest }) => ({
+    ...rest,
+    label: t(label),
+  }));
+
   return (
     <AuthLayout>
       {showChatHeader && (
         <ChatHeader className="fixed z-30 block w-full bg-[#F2FCFF] md:ml-10 lg:ml-0" />
       )}
       <div className="bg-accent-background grid min-h-screen md:grid-cols-[auto_1fr]">
-        <Navbar links={navbarLinks.user} />
+        <Navbar links={userLinks} />
         <main className={mainClass}>{children}</main>
       </div>
     </AuthLayout>

@@ -1,6 +1,15 @@
+import { useTranslation } from 'react-i18next';
+
 export const constants = {
-  breadcrumbs: (moduleSeqenceNumber: number, moduleId: string, lessonSequenceNumber: number) => [
-    { label: `Модуль ${moduleSeqenceNumber}`, href: `/learn/modules/${moduleId}` },
-    { label: `Урок ${lessonSequenceNumber + 1}`, href: '' },
-  ],
+  breadcrumbs: (moduleSequenceNumber: number, moduleId: string, lessonSequenceNumber: number) => {
+    const { t } = useTranslation();
+
+    return [
+      {
+        label: `${t('MODULE')} ${moduleSequenceNumber}`,
+        href: `/learn/modules/${moduleId}`,
+      },
+      { label: `${t('LESSON.ONE')} ${lessonSequenceNumber + 1}`, href: '' },
+    ];
+  },
 };

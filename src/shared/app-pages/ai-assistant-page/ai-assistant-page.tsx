@@ -9,9 +9,11 @@ import { useCreateChatMutation, useSendMessageMutation } from '@/api/endpoints/a
 import { routes } from '@/shared/constants';
 import { showToast } from '@/shared/ui/toaster';
 import { ISendMessageRequest } from '@/api/endpoints/ai-assistant/typing';
+import { useTranslation } from 'react-i18next';
 
 export const AiAssistantPage = () => {
   const router = useRouter();
+  const { t } = useTranslation();
   const [createChat, { isLoading: isCreatingChat }] = useCreateChatMutation();
   const [sendMessage, { isLoading: isSendingMessage }] = useSendMessageMutation();
 
@@ -42,7 +44,7 @@ export const AiAssistantPage = () => {
           className="object-contain"
         />
       </div>
-      <Text className="mt-12 mb-6.5 text-center text-3xl">Чем я могу вам помочь?</Text>
+      <Text className="mt-12 mb-6.5 text-center text-3xl">{t('HELP_PROMPT')}</Text>
       <ChatInput onSendMessage={handleStartNewChat} isLoading={isLoading} />
     </div>
   );

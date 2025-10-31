@@ -11,9 +11,12 @@ import { MIN_RECORDING_DURATION_MS } from './constants';
 import { X } from 'lucide-react';
 import { nanoid } from 'nanoid';
 import clsx from 'clsx';
+import { useTranslation } from 'react-i18next';
 
 export const ChatInput: FC<IChatInputProps> = (props) => {
   const { onSendMessage, isLoading } = props;
+
+  const { t } = useTranslation();
 
   const [inputValue, setInputValue] = useState('');
   const [attachedFiles, setAttachedFiles] = useState<ILocalFile[]>([]);
@@ -210,7 +213,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       <input ref={fileInputRef} type="file" multiple hidden onChange={handleFileSelect} />
       <textarea
         ref={textareaRef}
-        placeholder="Напишите ваш вопрос"
+        placeholder={t('WRITE_YOUR_QUESTION')}
         className={clsx(
           'scrollbar-thin scrollbar-thumb-gray-300 scrollbar-thumb-rounded-lg flex-1 resize-none overflow-y-auto bg-transparent px-3 text-[16px] text-black placeholder-gray-400 outline-none',
           {

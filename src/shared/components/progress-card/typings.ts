@@ -5,7 +5,7 @@ export type ProgressCardPropsType = {
   modules?: number;
   totalLessons: number;
   lessons: number;
-  status?: 'Продолжить' | 'Начать';
+  status?: string;
   image?: string;
   onClick?: () => void;
 };

@@ -14,6 +14,7 @@ import { IModuleInfo } from '@/api/endpoints/modules/types';
 import { useSelector } from 'react-redux';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
+import { useTranslation } from 'react-i18next';
 
 const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) => {
   const {
@@ -27,6 +28,7 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
     className,
   } = props;
 
+  const { t } = useTranslation();
   const role = useSelector(selectUserRole);
   const isMentor = role === UserRole.MENTOR;
 
@@ -51,10 +53,24 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
     [progressStatus, active, completed, blocked],
   );
 
-  const moduleLabel = bonus ? constants.bonus : `Модуль ${sequenceOrder}`;
+  const moduleLabel = bonus
+    ? t('MODULES_CARD.BONUS')
+    : t('MODULES_CARD.MODULE', { number: sequenceOrder });
 
-  const lessonInfo = pluralize(totalLessons, 'урок', 'урока', 'уроков');
-  const taskInfo = pluralize(totalLessons * 2, 'тест', 'теста', 'заданий');
+  const lessonInfo = `${pluralize(
+    totalLessons,
+    t('MODULES_CARD.LESSON_ONE'),
+    t('MODULES_CARD.LESSON_TWO'),
+    t('MODULES_CARD.LESSON_MANY'),
+  )}`;
+
+  const taskInfo = `${pluralize(
+    totalLessons * 2,
+    t('MODULES_CARD.TASK_ONE'),
+    t('MODULES_CARD.TASK_TWO'),
+    t('MODULES_CARD.TASK_MANY'),
+  )}`;
+
   const cardClass = cn(
     'border border-transparent',
     {
@@ -76,7 +92,7 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
         <div className="flex h-full max-w-7/10 flex-col justify-between space-y-3.5">
           <div className="space-y-2">
             <DotTitle
-              firstLabel={moduleLabel}
+              firstLabel={t(moduleLabel)}
               secondLabel={title}
               firstVariant="m-bold"
               secondVariant="m"
@@ -101,7 +117,7 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
                 size={'small'}
                 className="cursor-pointer"
               >
-                {isMentor && isBlocked ? 'Начать' : progressStatus}
+                {isMentor && isBlocked ? t('MODULES_CARD.START') : t(progressStatus)}
               </Button>
               {progressElement}
             </div>
