@@ -13,7 +13,7 @@ import {
   ResendCodeRequestType,
 } from './types';
 
-const AUTH_BASE_URL = '/auth';
+export const AUTH_BASE_URL = '/auth';
 
 export const auth = api.injectEndpoints({
   endpoints: (builder) => ({

@@ -6,7 +6,8 @@ import {
 } from '@reduxjs/toolkit/query';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 import { RootStateType } from '@/store';
-import { HttpStatus } from '@/shared/constants';
+import { HttpStatus, REFRESH_THROTTLE as THROTTLE } from '@/shared/constants';
+import { AUTH_BASE_URL } from '@/api/endpoints/auth/auth';
 interface IRefreshResponse {
   data?: {
     accessToken?: string;
@@ -26,7 +27,7 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
-let refreshPromise: Promise<IRefreshResponse> | null = null;
+let lastRefreshAttempt: number | null = null;
 
 export const baseQueryWithReauth: BaseQueryFn<
   string | FetchArgs,
@@ -36,21 +37,23 @@ export const baseQueryWithReauth: BaseQueryFn<
   let result = await baseQuery(args, api, extraOptions);
 
   if (result.error && result.error.status === HttpStatus.UNAUTHORIZED) {
-    if (!refreshPromise) {
-      refreshPromise = baseQuery(
-        {
-          url: '/auth/refresh',
-          method: 'POST',
-          body: {},
-          credentials: 'include',
-        },
-        api,
-        extraOptions,
-      ) as Promise<IRefreshResponse>;
+    const now = Date.now();
+    const canRefresh = !lastRefreshAttempt || now - lastRefreshAttempt >= THROTTLE;
+
+    if (!canRefresh) {
+      return result;
     }
 
-    const refreshResult = await refreshPromise;
-    refreshPromise = null;
+    lastRefreshAttempt = now;
+    const refreshResult = (await baseQuery(
+      {
+        url: `${AUTH_BASE_URL}/refresh`,
+        method: 'POST',
+        credentials: 'include',
+      },
+      api,
+      extraOptions,
+    )) as IRefreshResponse;
 
     const accessToken = refreshResult.data?.accessToken;
 

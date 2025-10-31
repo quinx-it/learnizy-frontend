@@ -50,7 +50,7 @@ export const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
     }
   };
 
-  const handleBackToLogin = () => {
+  const onClick = () => {
     router.push(routes.public.loginPage);
   };
 
@@ -58,7 +58,7 @@ export const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
     return (
       <div className="flex flex-col items-center gap-6">
         <div className="text-lg font-semibold text-green-700">Пароль успешно изменён!</div>
-        <Button onClick={handleBackToLogin} size="medium">
+        <Button onClick={onClick} size="medium">
           Вернуться к окну авторизации
         </Button>
       </div>

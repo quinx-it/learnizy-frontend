@@ -24,6 +24,8 @@ export enum HttpStatus {
   CONFLICT = 409,
 }
 
+export const REFRESH_THROTTLE = 1000;
+
 import {
   ProjectsIcon,
   APlusIcon,
