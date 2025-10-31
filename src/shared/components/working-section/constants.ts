@@ -1,3 +1,3 @@
 export const constants = {
-  text: 'COMING_SOON_TEXT',
+  text: 'COMMON.COMING_SOON_TEXT',
 };

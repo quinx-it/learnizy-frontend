@@ -213,7 +213,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       <input ref={fileInputRef} type="file" multiple hidden onChange={handleFileSelect} />
       <textarea
         ref={textareaRef}
-        placeholder={t('WRITE_YOUR_QUESTION')}
+        placeholder={t('COMMON.WRITE_YOUR_QUESTION')}
         className={clsx(
           'scrollbar-thin scrollbar-thumb-gray-300 scrollbar-thumb-rounded-lg flex-1 resize-none overflow-y-auto bg-transparent px-3 text-[16px] text-black placeholder-gray-400 outline-none',
           {

@@ -23,7 +23,7 @@ export const FaqPage = () => {
       <CardWrapper className="max-w-full">
         <div>
           <Text variant="m-bold" className="text-medium mb-5">
-            {t('FAQ_ANSWERS_TO_POPULAR_QUESTIONS')}
+            {t('COMMON.FAQ_ANSWERS_TO_POPULAR_QUESTIONS')}
           </Text>
           <hr className="border-gray mb-4" />
           <div className="w-full">

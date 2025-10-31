@@ -1,4 +1,39 @@
 {
+  "COMMON": {
+    "FAQ_ANSWERS_TO_POPULAR_QUESTIONS": "Ответы на популярные вопросы",
+    "HELP_PROMPT": "Чем я могу вам помочь?",
+    "WRITE_YOUR_QUESTION": "Напишите ваш вопрос",
+    "REQUEST_HISTORY": "История запросов",
+    "NEW_CHAT": "Новый чат",
+    "CHATS": "Чаты",
+    "LOADING": "Загрузка...",
+    "FAILED_TO_LOAD_CHATS": "Не удалось загрузить чаты",
+    "COMING_SOON_TEXT": "Мы активно работаем над этим разделом.\nСкоро здесь появится что-то полезное!",
+    "GO_HOME": "На главную",
+    "NOT_FOUND_TITLE": "Не найдено",
+    "COURSE_LABEL": "Курс",
+    "STATUS_CONTINUE": "Продолжить",
+    "ADD_LESSON": "Добавить урок",
+    "EDIT": "Редактировать",
+    "DELETE": "Удалить",
+    "ERROR": "Ошибка",
+    "SAVE_ERROR": "Ошибка при сохранении урока",
+    "DELETE_ERROR": "Ошибка при удалении урока",
+    "MODULE_COMPLETED": "Модуль завершён — самое время пройти",
+    "EXAM_LOCKED": "После завершения всех уроков откроется доступ к",
+    "EXAM": "экзамену",
+    "START_EXAM": "Начать экзамен",
+    "EDIT_LESSON": "Редактирование урока",
+    "CREATE_LESSON": "Создание нового урока",
+    "LESSON_TITLE": "Название урока",
+    "LESSON_DESCRIPTION": "Описание урока",
+    "LESSON_CONTENT": "Контент (Markdown)",
+    "CANCEL": "Отмена",
+    "SAVE": "Сохранить",
+    "CREATE": "Создать",
+    "BUTTON_LOGOUT": "Выход",
+    "MODULE": "Модуль"
+  },
   "NAVBAR": {
     "HOME": "Главная",
     "MODULES": "Модули",
@@ -20,14 +55,6 @@
     "FAQ_LABEL": "FAQ",
     "INTERVIEW_LABEL": "Вопросы для собеседования"
   },
-  "FAQ_ANSWERS_TO_POPULAR_QUESTIONS": "Ответы на популярные вопросы",
-  "HELP_PROMPT": "Чем я могу вам помочь?",
-  "WRITE_YOUR_QUESTION": "Напишите ваш вопрос",
-  "REQUEST_HISTORY": "История запросов",
-  "NEW_CHAT": "Новый чат",
-  "CHATS": "Чаты",
-  "LOADING": "Загрузка...",
-  "FAILED_TO_LOAD_CHATS": "Не удалось загрузить чаты",
   "TIME": {
     "TODAY": "Сегодня",
     "YESTERDAY": "Вчера",
@@ -62,7 +89,6 @@
     "DESCRIPTION": "В этом разделе — записи интервью с выпускниками: от джунов до мидлов. Полезный опыт, живые ответы, реальные вопросы.",
     "BUTTON": "Смотреть все записи"
   },
-  "COMING_SOON_TEXT": "Мы активно работаем над этим разделом.\nСкоро здесь появится что-то полезное!",
   "EXAMS": {
     "TITLE": "Экзамены",
     "MODULE_TITLE": "Экзамен по модулю {{moduleNumber}}",
@@ -109,8 +135,6 @@
     "SUBMIT": "Сохранить изменения",
     "DATE_PLACEHOLDER": "дд.мм.гггг"
   },
-  "GO_HOME": "На главную",
-  "NOT_FOUND_TITLE": "Не найдено",
   "LEARN_MAIN_PAGE": {
     "TITLES": {
       "CURRENT_COURSE": "Текущий курс",
@@ -127,8 +151,6 @@
       "BLOCKED": "Заблокирован"
     }
   },
-  "COURSE_LABEL": "Курс",
-  "STATUS_CONTINUE": "Продолжить",
   "LESSON_ITEM_PAGE": {
     "BREADCRUMB_ROOT": "Структура обучения",
     "BUTTON_EDIT": "Изменить",
@@ -167,7 +189,6 @@
     "BLOCKED": "Заблокирован",
     "IN_PROGRESS": "В процессе"
   },
-  "BUTTON_LOGOUT": "Выход",
   "MAIN_PAGE": {
     "MODULE": "Модуль"
   },
@@ -183,27 +204,16 @@
   "MODULES": {
     "STRUCTURE": "Структура обучения"
   },
-  "MODULE": "Модуль",
-  "LESSON": { "ONE": "урок", "FEW": "урока", "MANY": "уроков" },
-  "TEST": { "ONE": "тест", "FEW": "теста", "MANY": "тестов" },
-  "ADD_LESSON": "Добавить урок",
-  "EDIT": "Редактировать",
-  "DELETE": "Удалить",
-  "ERROR": "Ошибка",
-  "SAVE_ERROR": "Ошибка при сохранении урока",
-  "DELETE_ERROR": "Ошибка при удалении урока",
-  "MODULE_COMPLETED": "Модуль завершён — самое время пройти",
-  "EXAM_LOCKED": "После завершения всех уроков откроется доступ к",
-  "EXAM": "экзамену",
-  "START_EXAM": "Начать экзамен",
-  "EDIT_LESSON": "Редактирование урока",
-  "CREATE_LESSON": "Создание нового урока",
-  "LESSON_TITLE": "Название урока",
-  "LESSON_DESCRIPTION": "Описание урока",
-  "LESSON_CONTENT": "Контент (Markdown)",
-  "CANCEL": "Отмена",
-  "SAVE": "Сохранить",
-  "CREATE": "Создать",
+  "LESSON": {
+    "ONE": "урок",
+    "FEW": "урока",
+    "MANY": "уроков"
+  },
+  "TEST": {
+    "ONE": "тест",
+    "FEW": "теста",
+    "MANY": "тестов"
+  },
   "MODULES_CARD": {
     "BONUS": "Бонусный модуль",
     "MODULE": "Модуль {{number}}",
@@ -253,7 +263,7 @@
     "MIN_PERCENT": "🎯 Минимальный процент для прохождения: "
   },
   "ERROR_SECTION": {
-    "TITLE": "Упс, произошла ошибка..",
+    "TITLE": "Упс, произошла ошибка...",
     "TEXT": "Мы уже знаем об этом и работаем над её устранением.\nПожалуйста, попробуйте позже.",
     "BUTTON": "Обновить страницу"
   }

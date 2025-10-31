@@ -5,7 +5,7 @@ export const constants = {
     moduleId: string,
     lessonSequenceNumber: number,
   ) => [
-    { label: `${t('MODULE')} ${moduleSequenceNumber}`, href: `/learn/modules/${moduleId}` },
+    { label: `${t('COMMON.MODULE')} ${moduleSequenceNumber}`, href: `/learn/modules/${moduleId}` },
     { label: `${t('LESSON.ONE')} ${lessonSequenceNumber + 1}`, href: '' },
   ],
 };

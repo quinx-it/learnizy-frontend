@@ -1,4 +1,39 @@
 {
+  "COMMON": {
+    "FAQ_ANSWERS_TO_POPULAR_QUESTIONS": "Answers to Popular Questions",
+    "HELP_PROMPT": "How can I help you?",
+    "WRITE_YOUR_QUESTION": "Write your question",
+    "REQUEST_HISTORY": "Request History",
+    "NEW_CHAT": "New Chat",
+    "CHATS": "Chats",
+    "LOADING": "Loading...",
+    "FAILED_TO_LOAD_CHATS": "Failed to load chats",
+    "COMING_SOON_TEXT": "We are actively working on this section.\nSomething useful will appear here soon!",
+    "GO_HOME": "Go to Home",
+    "NOT_FOUND_TITLE": "Not Found",
+    "COURSE_LABEL": "Course",
+    "STATUS_CONTINUE": "Continue",
+    "ADD_LESSON": "Add lesson",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "ERROR": "Error",
+    "SAVE_ERROR": "Error saving lesson",
+    "DELETE_ERROR": "Error deleting lesson",
+    "MODULE_COMPLETED": "Module completed — it's time to take the",
+    "EXAM_LOCKED": "After completing all lessons, access will open to the",
+    "EXAM": "exam",
+    "START_EXAM": "Start exam",
+    "EDIT_LESSON": "Edit lesson",
+    "CREATE_LESSON": "Create new lesson",
+    "LESSON_TITLE": "Lesson title",
+    "LESSON_DESCRIPTION": "Lesson description",
+    "LESSON_CONTENT": "Content (Markdown)",
+    "CANCEL": "Cancel",
+    "SAVE": "Save",
+    "CREATE": "Create",
+    "BUTTON_LOGOUT": "Logout",
+    "MODULE": "Module"
+  },
   "NAVBAR": {
     "HOME": "Home",
     "MODULES": "Modules",
@@ -20,14 +55,6 @@
     "FAQ_LABEL": "FAQ",
     "INTERVIEW_LABEL": "Interview Questions"
   },
-  "FAQ_ANSWERS_TO_POPULAR_QUESTIONS": "Answers to Popular Questions",
-  "HELP_PROMPT": "How can I help you?",
-  "WRITE_YOUR_QUESTION": "Write your question",
-  "REQUEST_HISTORY": "Request History",
-  "NEW_CHAT": "New Chat",
-  "CHATS": "Chats",
-  "LOADING": "Loading...",
-  "FAILED_TO_LOAD_CHATS": "Failed to load chats",
   "TIME": {
     "TODAY": "Today",
     "YESTERDAY": "Yesterday",
@@ -62,7 +89,6 @@
     "DESCRIPTION": "In this section — interviews with graduates: from juniors to middles. Useful experience, live answers, real questions.",
     "BUTTON": "View All Records"
   },
-  "COMING_SOON_TEXT": "We are actively working on this section.\nSomething useful will appear here soon!",
   "EXAMS": {
     "TITLE": "Exams",
     "MODULE_TITLE": "Module {{moduleNumber}} Exam",
@@ -109,8 +135,6 @@
     "SUBMIT": "Save Changes",
     "DATE_PLACEHOLDER": "dd.mm.yyyy"
   },
-  "GO_HOME": "Go to Home",
-  "NOT_FOUND_TITLE": "Not Found",
   "LEARN_MAIN_PAGE": {
     "TITLES": {
       "CURRENT_COURSE": "Current Course",
@@ -127,8 +151,6 @@
       "BLOCKED": "Blocked"
     }
   },
-  "COURSE_LABEL": "Course",
-  "STATUS_CONTINUE": "Continue",
   "LESSON_ITEM_PAGE": {
     "BREADCRUMB_ROOT": "Learning Structure",
     "BUTTON_EDIT": "Edit",
@@ -167,7 +189,6 @@
     "BLOCKED": "Blocked",
     "IN_PROGRESS": "In progress"
   },
-  "BUTTON_LOGOUT": "Logout",
   "MAIN_PAGE": {
     "MODULE": "Module"
   },
@@ -183,27 +204,8 @@
   "MODULES": {
     "STRUCTURE": "Learning structure"
   },
-  "MODULE": "Module",
   "LESSON": { "ONE": "lesson", "FEW": "lessons", "MANY": "lessons" },
   "TEST": { "ONE": "test", "FEW": "tests", "MANY": "tests" },
-  "ADD_LESSON": "Add lesson",
-  "EDIT": "Edit",
-  "DELETE": "Delete",
-  "ERROR": "Error",
-  "SAVE_ERROR": "Error saving lesson",
-  "DELETE_ERROR": "Error deleting lesson",
-  "MODULE_COMPLETED": "Module completed — it's time to take the",
-  "EXAM_LOCKED": "After completing all lessons, access will open to the",
-  "EXAM": "exam",
-  "START_EXAM": "Start exam",
-  "EDIT_LESSON": "Edit lesson",
-  "CREATE_LESSON": "Create new lesson",
-  "LESSON_TITLE": "Lesson title",
-  "LESSON_DESCRIPTION": "Lesson description",
-  "LESSON_CONTENT": "Content (Markdown)",
-  "CANCEL": "Cancel",
-  "SAVE": "Save",
-  "CREATE": "Create",
   "MODULES_CARD": {
     "BONUS": "Bonus module",
     "MODULE": "Module {{number}}",
@@ -253,7 +255,7 @@
     "MIN_PERCENT": "🎯 Minimum passing percentage: "
   },
   "ERROR_SECTION": {
-    "TITLE": "Oops, something went wrong..",
+    "TITLE": "Oops, something went wrong...",
     "TEXT": "We are already aware of this and are working to fix it.\nPlease try again later.",
     "BUTTON": "Reload page"
   }

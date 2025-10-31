@@ -1,5 +1,10 @@
 import { routes } from '@/shared/constants';
 
+export enum TestType {
+  LESSON = 'LESSON_TEST',
+  MODULE = 'MODULE_EXAM',
+}
+
 export const constants = {
   title: {
     LESSON_TEST: 'TITLE_TEST.LESSON_TEST',

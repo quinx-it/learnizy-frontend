@@ -44,7 +44,7 @@ export const AiAssistantPage = () => {
           className="object-contain"
         />
       </div>
-      <Text className="mt-12 mb-6.5 text-center text-3xl">{t('HELP_PROMPT')}</Text>
+      <Text className="mt-12 mb-6.5 text-center text-3xl">{t('COMMON.HELP_PROMPT')}</Text>
       <ChatInput onSendMessage={handleStartNewChat} isLoading={isLoading} />
     </div>
   );

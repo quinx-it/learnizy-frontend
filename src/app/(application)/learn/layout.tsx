@@ -22,7 +22,7 @@ const LearnLayout: FC<PropsWithChildren> = (props) => {
     ? 'h-full max-h-screen w-full overflow-y-auto'
     : 'h-full max-h-screen w-full overflow-y-auto px-4 py-5 md:px-7.5';
 
-  const userLinks = navbarLinks.user.map(({ label, ...rest }) => ({
+  const links = navbarLinks.user.map(({ label, ...rest }) => ({
     ...rest,
     label: t(label),
   }));
@@ -33,7 +33,7 @@ const LearnLayout: FC<PropsWithChildren> = (props) => {
         <ChatHeader className="fixed z-30 block w-full bg-[#F2FCFF] md:ml-10 lg:ml-0" />
       )}
       <div className="bg-accent-background grid min-h-screen md:grid-cols-[auto_1fr]">
-        <Navbar links={userLinks} />
+        <Navbar links={links} />
         <main className={mainClass}>{children}</main>
       </div>
     </AuthLayout>

@@ -1,3 +1,5 @@
+import { ProgressStatus } from './constants';
+
 export type ProgressCardPropsType = {
   title: string;
   subTitle: string;
@@ -5,7 +7,7 @@ export type ProgressCardPropsType = {
   modules?: number;
   totalLessons: number;
   lessons: number;
-  status?: string;
+  status?: ProgressStatus;
   image?: string;
   onClick?: () => void;
 };

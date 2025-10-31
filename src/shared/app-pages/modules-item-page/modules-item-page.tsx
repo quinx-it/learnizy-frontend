@@ -115,7 +115,7 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
       setModalOpen(false);
       refetch();
     } catch {
-      showToast('error', t('ERROR'), t('SAVE_ERROR'));
+      showToast('error', t('COMMON.ERROR'), t('COMMON.SAVE_ERROR'));
     }
   };
 
@@ -124,7 +124,7 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
       await deleteLesson(lessonId).unwrap();
       refetch();
     } catch {
-      showToast('error', t('ERROR'), t('DELETE_ERROR'));
+      showToast('error', t('COMMON.ERROR'), t('COMMON.DELETE_ERROR'));
     }
   };
 
@@ -144,7 +144,7 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
             heading
             firstClassName="text-[24px]"
             secondClassName="text-[24px]"
-            firstLabel={`${t('MODULE')} ${sequenceOrder}`}
+            firstLabel={`${t('COMMON.MODULE')} ${sequenceOrder}`}
             secondLabel={moduleTitle}
             dotClassName="min-w-[6px] min-h-[6px] self-center !m-0"
           />
@@ -171,14 +171,14 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
               {isMentor && (
                 <div className="mt-2 flex gap-2">
                   <Button variant="yellow" size="small" onClick={() => openEditModal(lesson)}>
-                    {t('EDIT')}
+                    {t('COMMON.EDIT')}
                   </Button>
                   <Button
                     variant="white"
                     size="small"
                     onClick={() => handleDeleteLesson(lesson.id)}
                   >
-                    {t('DELETE')}
+                    {t('COMMON.DELETE')}
                   </Button>
                 </div>
               )}
@@ -191,9 +191,9 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
             <>
               <CheckIcon color="blue" />
               <Text variant={'l'}>
-                {t('MODULE_COMPLETED')}{' '}
+                {t('COMMON.MODULE_COMPLETED')}{' '}
                 <Link className="text-medium !underline" href={routes.user.exams}>
-                  {t('EXAM')}
+                  {t('COMMON.EXAM')}
                 </Link>
               </Text>
             </>
@@ -201,9 +201,9 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
             <>
               <LockColorIcon />
               <Text variant={'l'}>
-                {t('EXAM_LOCKED')}{' '}
+                {t('COMMON.EXAM_LOCKED')}{' '}
                 <Link className="text-medium !underline" href={routes.user.exams}>
-                  {t('EXAM')}
+                  {t('COMMON.EXAM')}
                 </Link>
               </Text>
             </>
@@ -212,7 +212,7 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
         <div className="flex items-center gap-2">
           <Link className="text-medium" href={routes.user.exams}>
             <Button disabled={!isAvailableExam(progress)} className="mr-2">
-              {t('START_EXAM')}
+              {t('COMMON.START_EXAM')}
             </Button>
           </Link>
           <ProgressBar strokeWidth={6} size={27} value={progress} variant="circular" />
@@ -226,36 +226,38 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
         <Dialog open={modalOpen} onOpenChange={setModalOpen}>
           <DialogContent className="sm:max-w-md">
             <DialogHeader>
-              <DialogTitle>{editingLessonId ? t('EDIT_LESSON') : t('CREATE_LESSON')}</DialogTitle>
+              <DialogTitle>
+                {editingLessonId ? t('COMMON.EDIT_LESSON') : t('COMMON.CREATE_LESSON')}
+              </DialogTitle>
             </DialogHeader>
 
             <Input
               className="mt-2 w-full"
-              placeholder={t('LESSON_TITLE')}
+              placeholder={t('COMMON.LESSON_TITLE')}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
 
             <Textarea
               className="mt-2"
-              placeholder={t('LESSON_DESCRIPTION')}
+              placeholder={t('COMMON.LESSON_DESCRIPTION')}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
 
             <Textarea
               className="mt-2"
-              placeholder={t('LESSON_CONTENT')}
+              placeholder={t('COMMON.LESSON_CONTENT')}
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
 
             <DialogFooter className="mt-4 flex justify-end gap-2">
               <Button variant="white" size="small" onClick={() => setModalOpen(false)}>
-                {t('CANCEL')}
+                {t('COMMON.CANCEL')}
               </Button>
               <Button variant="blue" size="small" onClick={handleSaveLesson}>
-                {editingLessonId ? t('SAVE') : t('CREATE')}
+                {editingLessonId ? t('COMMON.SAVE') : t('COMMON.CREATE')}
               </Button>
             </DialogFooter>
           </DialogContent>

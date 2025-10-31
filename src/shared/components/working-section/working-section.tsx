@@ -22,7 +22,7 @@ export const WorkingSection: FC<WorkingSectionPropsType> = (props) => {
           className="md:max-w-[110px]"
         />
         <Text className="whitespace-pre-wrap" variant={'l'}>
-          {t('COMING_SOON_TEXT')}
+          {t('COMMON.COMING_SOON_TEXT')}
         </Text>
       </div>
     </div>

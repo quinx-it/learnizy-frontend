@@ -3,7 +3,7 @@ import { CardWrapper } from '@/shared/components/card-wrapper';
 import { globalConstants, routes } from '@/shared/constants';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import React, { FC } from 'react';
-import { constants } from './constants';
+import { constants, TestType } from './constants';
 import { Text } from '@/shared/ui/typography';
 import { LessonTestForm } from '@/shared/components/lesson-test-form';
 import { LessonTestSubmitType } from '@/api/endpoints/test/types';
@@ -11,7 +11,7 @@ import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscre
 import { ErrorSection } from '@/shared/components/error-section';
 import { useSendTestMutation } from '@/api/endpoints/test/test';
 import { showToast } from '@/shared/ui/toaster';
-import { TestType, TestPagePropsType } from './typings';
+import { TestPagePropsType } from './typings';
 import { useTranslation } from 'react-i18next';
 
 export const TestPage: FC<TestPagePropsType> = (props) => {
@@ -58,9 +58,9 @@ export const TestPage: FC<TestPagePropsType> = (props) => {
     <>
       <Breadcrumbs
         items={currentBreadcrumbs}
-        rootHref={testType === 'LESSON_TEST' ? routes.user.modules : routes.user.exams}
+        rootHref={testType === TestType.LESSON ? routes.user.modules : routes.user.exams}
         rootLabel={
-          testType === 'LESSON_TEST'
+          testType === TestType.LESSON
             ? t(globalConstants.rootBreadcrumbLabels.modulesLabel)
             : t(globalConstants.rootBreadcrumbLabels.examsLabel)
         }

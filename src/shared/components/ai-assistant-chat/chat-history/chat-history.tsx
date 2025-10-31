@@ -81,7 +81,7 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
                 <X />
               </Button>
 
-              <span className="text-[20px] break-words"> {t('REQUEST_HISTORY')}</span>
+              <span className="text-[20px] break-words"> {t('COMMON.REQUEST_HISTORY')}</span>
             </div>
 
             <div className="mb-4">
@@ -92,7 +92,7 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
                 className="w-full justify-start gap-2 border-0 !px-5 !py-2"
               >
                 <Plus size={16} strokeWidth={4} />
-                {t('NEW_CHAT')}
+                {t('COMMON.NEW_CHAT')}
               </Button>
             </div>
 
@@ -100,13 +100,15 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
               variant={'s'}
               className="mb-4 block text-left text-[12px] font-semibold tracking-[0.5px] text-[#238BA7]"
             >
-              {t('CHATS')}
+              {t('COMMON.CHATS')}
             </Text>
 
             <div className="no-scrollbar flex-1 overflow-y-auto">
-              {isLoading && <Text className="p-3 text-sm text-gray-500">{t('LOADING')}</Text>}
+              {isLoading && (
+                <Text className="p-3 text-sm text-gray-500">{t('COMMON.LOADING')}</Text>
+              )}
               {isError && (
-                <Text className="p-3 text-sm text-red-500">{t('FAILED_TO_LOAD_CHATS')}</Text>
+                <Text className="p-3 text-sm text-red-500">{t('COMMON.FAILED_TO_LOAD_CHATS')}</Text>
               )}
 
               {chatGroups.map((group) => (
@@ -133,7 +135,7 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
                       }}
                     >
                       <Text variant={'s'} className="ml-2 truncate">
-                        {chat.title || t('NEW_CHAT')}
+                        {chat.title || t('COMMON.NEW_CHAT')}
                       </Text>
                     </div>
                   ))}
@@ -148,7 +150,7 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
         <aside className="bg-light box-shadow fixed top-0 right-0 z-50 flex h-screen w-[230px] flex-col overflow-y-auto rounded-none rounded-l-4xl px-6">
           <div className="mt-8 mb-[61px] flex justify-end">
             <span className="block h-[48px] text-right text-[20px] break-words">
-              {t('REQUEST_HISTORY')}
+              {t('COMMON.REQUEST_HISTORY')}
             </span>
           </div>
           <div className="mb-4 border-gray-200 pb-2">
@@ -159,19 +161,19 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
               className="mt-auto w-full justify-start gap-2 border-0 !px-5 !py-2"
             >
               <Plus size={16} strokeWidth={4} />
-              {t('NEW_CHAT')}
+              {t('COMMON.NEW_CHAT')}
             </Button>
           </div>
           <Text
             variant={'s'}
             className="mb-4 block text-left text-[12px] font-semibold tracking-[0.5px] text-[#238BA7]"
           >
-            {t('CHATS')}
+            {t('COMMON.CHATS')}
           </Text>
           <div className="no-scrollbar flex-1 overflow-y-auto">
-            {isLoading && <Text className="p-3 text-sm text-gray-500">{t('LOADING')}</Text>}
+            {isLoading && <Text className="p-3 text-sm text-gray-500">{t('COMMON.LOADING')}</Text>}
             {isError && (
-              <Text className="p-3 text-sm text-red-500">{t('FAILED_TO_LOAD_CHATS')}</Text>
+              <Text className="p-3 text-sm text-red-500">{t('COMMON.FAILED_TO_LOAD_CHATS')}</Text>
             )}
 
             {chatGroups.map((group) => (
@@ -195,7 +197,7 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
                     onClick={() => onSelectChat(chat.id)}
                   >
                     <Text variant={'s'} className="ml-2 truncate">
-                      {chat.title || t('NEW_CHAT')}
+                      {chat.title || t('COMMON.NEW_CHAT')}
                     </Text>
                   </div>
                 ))}

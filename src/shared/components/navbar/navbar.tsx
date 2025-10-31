@@ -62,7 +62,7 @@ export const Navbar: FC<INavbarProps> = (props) => {
             <>
               <ExitIcon className="h-[16px] w-[16px]" />
               <Text variant="s" tag="span" className="hidden text-inherit lg:block">
-                {t('BUTTON_LOGOUT')}
+                {t('COMMON.BUTTON_LOGOUT')}
               </Text>
             </>
           )}
@@ -121,7 +121,7 @@ export const Navbar: FC<INavbarProps> = (props) => {
                   <>
                     <ExitIcon className="h-[16px] w-[16px]" />
                     <Text variant="s" tag="span" className="text-inherit md:hidden lg:block">
-                      {t('BUTTON_LOGOUT')}
+                      {t('COMMON.BUTTON_LOGOUT')}
                     </Text>
                   </>
                 )}
