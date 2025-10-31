@@ -79,7 +79,7 @@ export const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
   return (
     <div className="flex flex-col gap-6">
       <Breadcrumbs
-        items={breadcrumbs(moduleSequenceOrder ?? 1, moduleId, sequenceOrder ?? 0)}
+        items={constants.breadcrumbs(t, moduleSequenceOrder ?? 1, moduleId, sequenceOrder ?? 0)}
         rootHref={routes.user.modules}
         rootLabel={t('LESSON_ITEM_PAGE.BREADCRUMB_ROOT')}
         className="mb-0"

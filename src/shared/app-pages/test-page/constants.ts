@@ -1,6 +1,4 @@
-import { globalConstants, routes } from '@/shared/constants';
-
-const { moduleLabel, lessonLabel } = globalConstants.rootBreadcrumbLabels;
+import { routes } from '@/shared/constants';
 
 export const constants = {
   title: {
