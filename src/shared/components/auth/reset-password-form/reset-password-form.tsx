@@ -14,7 +14,7 @@ import { routes } from '@/shared/constants';
 import { IResetPasswordFormProps } from './typings';
 
 export const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
-  const { token } = props;
+  const { token, onSuccess } = props;
   const [resetPassword, { isLoading, error }] = useResetPasswordMutation();
   const [isSuccess, setIsSuccess] = useState(false);
   const router = useRouter();
@@ -45,6 +45,7 @@ export const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
       }).unwrap();
       showToast('success', 'Ура!', 'Пароль успешно изменён');
       setIsSuccess(true);
+      onSuccess?.();
     } catch {
       showToast('error', 'Ошибка!', 'Не удалось изменить пароль');
     }
