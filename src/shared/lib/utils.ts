@@ -11,7 +11,6 @@ import {
 } from '../constants/routes';
 import { IDecodedTokenPayload } from './typings';
 
-
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
