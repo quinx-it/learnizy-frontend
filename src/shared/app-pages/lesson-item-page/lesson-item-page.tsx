@@ -20,13 +20,15 @@ import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
 import { showToast } from '@/shared/ui/toaster';
 import { ILessonItemPageProps } from './typings';
+import { useTranslation } from 'react-i18next';
 
 export const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
   const { lessonId, moduleId } = props;
 
+  const { t } = useTranslation();
+
   const router = useRouter();
   const pathname = usePathname();
-  const { breadcrumbs } = constants;
 
   const { data: lesson, isLoading } = useGetLessonQuery(lessonId);
   const role = useSelector(selectUserRole);
@@ -58,27 +60,34 @@ export const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
         lessonId: Number(lessonId),
         data: { content: markdownContent },
       }).unwrap();
-
       setEditing(false);
-      showToast('success', 'Успех', 'Контент успешно сохранён');
+      showToast(
+        'success',
+        t('LESSON_ITEM_PAGE.TOAST_SUCCESS_TITLE'),
+        t('LESSON_ITEM_PAGE.TOAST_SUCCESS_MESSAGE'),
+      );
     } catch {
-      showToast('error', 'Ошибка', 'Ошибка при сохранении контента');
+      showToast(
+        'error',
+        t('LESSON_ITEM_PAGE.TOAST_ERROR_TITLE'),
+        t('LESSON_ITEM_PAGE.TOAST_ERROR_MESSAGE'),
+      );
     }
   };
 
   return (
     <div className="flex flex-col gap-6">
       <Breadcrumbs
-        items={breadcrumbs(moduleSequenceOrder ?? 1, moduleId, sequenceOrder ?? 0)}
+        items={constants.breadcrumbs(t, moduleSequenceOrder ?? 1, moduleId, sequenceOrder ?? 0)}
         rootHref={routes.user.modules}
-        rootLabel="Структура обучения"
+        rootLabel={t('LESSON_ITEM_PAGE.BREADCRUMB_ROOT')}
         className="mb-0"
       />
 
       <CardWrapper>
         {isMentor && !editing && (
           <Button variant="yellow" size="small" onClick={handleEdit} className="mb-4">
-            Изменить
+            {t('LESSON_ITEM_PAGE.BUTTON_EDIT')}
           </Button>
         )}
         {editing ? (
@@ -92,10 +101,10 @@ export const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
             </div>
             <div className="flex justify-end gap-2">
               <Button variant="white" size="small" onClick={handleCancel}>
-                Отмена
+                {t('LESSON_ITEM_PAGE.BUTTON_CANCEL')}
               </Button>
               <Button variant="blue" size="small" onClick={handleSave}>
-                Сохранить
+                {t('LESSON_ITEM_PAGE.BUTTON_SAVE')}
               </Button>
             </div>
           </div>
@@ -116,29 +125,26 @@ export const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
 
       <CardWrapper>
         <Heading variant="2xl" className="mb-4">
-          Личный ИИ-помощник
+          {t('LESSON_ITEM_PAGE.AI_ASSISTANT_TITLE')}
         </Heading>
         <Text variant="l" className="mb-6">
-          ИИ-помощник ответит на все вопросы по пройденному материалу. Он поможет тебе лучше понять
-          тему, запомнить ключевые моменты и структурировать знания.
+          {t('LESSON_ITEM_PAGE.AI_ASSISTANT_DESCRIPTION')}
         </Text>
         <Button onClick={() => router.push(routes.user.aiAssistant)} size="medium">
-          Задать вопрос
+          {t('LESSON_ITEM_PAGE.AI_ASSISTANT_ASK_QUESTION')}
         </Button>
       </CardWrapper>
 
       <CardWrapper>
         <Heading variant="2xl" className="mb-4">
-          Проверь свои знания
+          {t('LESSON_ITEM_PAGE.CHECK_YOUR_KNOWLEDGE_TITLE')}
         </Heading>
         <Text variant="l" className="mb-4">
-          Пройдите короткий тест, чтобы закрепить материал и проверить понимание темы. Не спешите —
-          отвечайте вдумчиво, ведь именно сейчас вы формируете прочную основу для успешного
-          прохождения собеседований.
+          {t('LESSON_ITEM_PAGE.CHECK_YOUR_KNOWLEDGE_DESCRIPTION')}
         </Text>
         <DotTitle
-          firstLabel={`📋 ${testQuestions ?? 0} вопросов`}
-          secondLabel="⏱ 15 минут"
+          firstLabel={`📋 ${testQuestions ?? 0} ${t('LESSON_ITEM_PAGE.TEST_QUESTIONS_LABEL')}`}
+          secondLabel={t('LESSON_ITEM_PAGE.TEST_TIME_LABEL')}
           firstVariant="m"
           secondVariant="m"
           dotClassName="w-1 h-1"
@@ -146,10 +152,10 @@ export const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
         />
         <div className="flex gap-2">
           <Button onClick={handleNavigate('test')} size="medium">
-            Начать
+            {t('LESSON_ITEM_PAGE.BUTTON_START')}
           </Button>
           <Button onClick={handleNavigate('result')} size="medium">
-            Результат
+            {t('LESSON_ITEM_PAGE.BUTTON_RESULT')}
           </Button>
         </div>
       </CardWrapper>

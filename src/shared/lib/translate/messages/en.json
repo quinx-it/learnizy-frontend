@@ -1,0 +1,262 @@
+{
+  "COMMON": {
+    "FAQ_ANSWERS_TO_POPULAR_QUESTIONS": "Answers to Popular Questions",
+    "HELP_PROMPT": "How can I help you?",
+    "WRITE_YOUR_QUESTION": "Write your question",
+    "REQUEST_HISTORY": "Request History",
+    "NEW_CHAT": "New Chat",
+    "CHATS": "Chats",
+    "LOADING": "Loading...",
+    "FAILED_TO_LOAD_CHATS": "Failed to load chats",
+    "COMING_SOON_TEXT": "We are actively working on this section.\nSomething useful will appear here soon!",
+    "GO_HOME": "Go to Home",
+    "NOT_FOUND_TITLE": "Not Found",
+    "COURSE_LABEL": "Course",
+    "STATUS_CONTINUE": "Continue",
+    "ADD_LESSON": "Add lesson",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "ERROR": "Error",
+    "SAVE_ERROR": "Error saving lesson",
+    "DELETE_ERROR": "Error deleting lesson",
+    "MODULE_COMPLETED": "Module completed — it's time to take the",
+    "EXAM_LOCKED": "After completing all lessons, access will open to the",
+    "EXAM": "exam",
+    "START_EXAM": "Start exam",
+    "EDIT_LESSON": "Edit lesson",
+    "CREATE_LESSON": "Create new lesson",
+    "LESSON_TITLE": "Lesson title",
+    "LESSON_DESCRIPTION": "Lesson description",
+    "LESSON_CONTENT": "Content (Markdown)",
+    "CANCEL": "Cancel",
+    "SAVE": "Save",
+    "CREATE": "Create",
+    "BUTTON_LOGOUT": "Logout",
+    "MODULE": "Module"
+  },
+  "NAVBAR": {
+    "HOME": "Home",
+    "MODULES": "Modules",
+    "AI_ASSISTANT": "AI Assistant",
+    "KNOWLEDGE_BASE": "Knowledge Base",
+    "EXAMS": "Exams",
+    "PROJECTS": "Projects",
+    "PROFILE": "Profile"
+  },
+  "BREADCRUMB_LABELS": {
+    "MODULES_MAIN_LABEL": "Learning Structure",
+    "MODULES_LABEL": "Modules",
+    "MODULE_LABEL": "Module",
+    "LESSON_LABEL": "Lesson",
+    "RETELLING_LABEL": "Personal AI Assistant",
+    "EXAMS_LABEL": "Exams",
+    "CASES_LABEL": "Cases",
+    "KNOWLEGE_BASE_LABEL": "Knowledge Base",
+    "FAQ_LABEL": "FAQ",
+    "INTERVIEW_LABEL": "Interview Questions"
+  },
+  "TIME": {
+    "TODAY": "Today",
+    "YESTERDAY": "Yesterday",
+    "DAY_ONE": "day",
+    "DAY_TWO": "days",
+    "DAY_MANY": "days",
+    "WEEK_ONE": "week",
+    "WEEK_TWO": "weeks",
+    "WEEK_MANY": "weeks",
+    "MONTH_ONE": "month",
+    "MONTH_TWO": "months",
+    "MONTH_MANY": "months",
+    "YEAR_ONE": "year",
+    "YEAR_TWO": "years",
+    "YEAR_MANY": "years",
+    "AGO": "ago"
+  },
+  "INTERVIEW": {
+    "TITLE": "Interview Questions",
+    "DESCRIPTION_1": "Prepare for the interview in advance — we collected the most common and important questions asked to both junior and experienced specialists.",
+    "DESCRIPTION_2": "Go to the section to practice and feel more confident during a real interview.",
+    "BUTTON": "Go to Questions"
+  },
+  "FAQ": {
+    "TITLE": "Answers to Popular Questions",
+    "DESCRIPTION_1": "Everything you wanted to ask is already collected in one place. How the training goes, where to find homework, how to get a certificate, and much more.",
+    "DESCRIPTION_2": "Go to the section to find the information you need or quickly understand something unclear.",
+    "BUTTON": "View Answers"
+  },
+  "INTERVIEW_RECORDS": {
+    "TITLE": "Interview Records",
+    "DESCRIPTION": "In this section — interviews with graduates: from juniors to middles. Useful experience, live answers, real questions.",
+    "BUTTON": "View All Records"
+  },
+  "EXAMS": {
+    "TITLE": "Exams",
+    "MODULE_TITLE": "Module {{moduleNumber}} Exam",
+    "QUESTIONS_COUNT": "📋{{count}} questions",
+    "DURATION": "⏱ {{time}} minutes",
+    "BUTTONS": {
+      "RETRY": "Try again",
+      "START": "Start exam"
+    },
+    "STATUS": {
+      "COMPLETED": "Exam passed",
+      "FAILED": "Exam failed",
+      "AVAILABLE": "You completed all lessons — now you can take the exam",
+      "UNAVAILABLE": "Available after completing all ",
+      "LESSONS": "lessons"
+    },
+    "LESSON_TEST_FORM": {
+      "SUBMISSION_TEXT": "Click the button below to see your score and review the questions. Answer checking may take some time",
+      "SUBMIT_BUTTON": "Submit",
+      "SUBMIT_ERROR": "Error! Please try again."
+    }
+  },
+  "PROFILE": {
+    "ALT_IMAGE": "Profile Image",
+    "NAME": "First Last",
+    "PERSONAL_DATA": "Personal Data",
+    "SECURITY_SETTINGS": "Security Settings",
+    "LOGOUT": "Logout"
+  },
+  "PERSONAL_DATA_FORM": {
+    "GENDER": {
+      "MAN": "Male",
+      "WOMAN": "Female"
+    },
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "EMAIL": "Email",
+    "ADDRESS": "Address",
+    "PHONE": "Phone",
+    "BIRTH_DATE": "Birth Date",
+    "COUNTRY": "Country",
+    "CITY": "City",
+    "RESET": "Do not save",
+    "SUBMIT": "Save Changes",
+    "DATE_PLACEHOLDER": "dd.mm.yyyy"
+  },
+  "LEARN_MAIN_PAGE": {
+    "TITLES": {
+      "CURRENT_COURSE": "Current Course",
+      "CURRENT_MODULE": "Current Module",
+      "COURSE_NAME": "Java Core",
+      "MODULE_NAME": "Introduction",
+      "REVIEW": "Mentor Review",
+      "STATISTICS": "Activity Statistics"
+    },
+    "STATUSES": {
+      "NOT_STARTED": "Not Started",
+      "IN_PROGRESS": "In Progress",
+      "COMPLETED": "Completed",
+      "BLOCKED": "Blocked"
+    }
+  },
+  "LESSON_ITEM_PAGE": {
+    "BREADCRUMB_ROOT": "Learning Structure",
+    "BUTTON_EDIT": "Edit",
+    "BUTTON_CANCEL": "Cancel",
+    "BUTTON_SAVE": "Save",
+    "AI_ASSISTANT_TITLE": "Personal AI Assistant",
+    "AI_ASSISTANT_DESCRIPTION": "The AI assistant will answer all questions about the material you studied. It will help you better understand the topic, remember key points, and organize your knowledge.",
+    "AI_ASSISTANT_ASK_QUESTION": "Ask a question",
+    "CHECK_YOUR_KNOWLEDGE_TITLE": "Check Your Knowledge",
+    "CHECK_YOUR_KNOWLEDGE_DESCRIPTION": "Take a short test to reinforce the material and check your understanding of the topic. Take your time — answering thoughtfully now builds a solid foundation for successful interviews.",
+    "TEST_QUESTIONS_LABEL": "questions",
+    "TEST_TIME_LABEL": "15 minutes",
+    "BUTTON_START": "Start",
+    "BUTTON_RESULT": "Result",
+    "TOAST_SUCCESS_TITLE": "Success",
+    "TOAST_SUCCESS_MESSAGE": "Content successfully saved",
+    "TOAST_ERROR_TITLE": "Error",
+    "TOAST_ERROR_MESSAGE": "Error saving content"
+  },
+  "PROGRESS_CARD": {
+    "MODULES_LABEL": "Modules",
+    "LESSONS_LABEL": "Lessons"
+  },
+  "STATISTICS_CHART": {
+    "LAST_WEEK": "Last week",
+    "LESSONS": "lessons",
+    "TESTS": "tests"
+  },
+  "ACCORDION_REVIEW": {
+    "MODULE": "Module",
+    "NEW_MESSAGES": "new"
+  },
+  "PROGRESS_STATUSES": {
+    "COMPLETED": "Completed",
+    "NOT_STARTED": "started",
+    "BLOCKED": "Blocked",
+    "IN_PROGRESS": "In progress"
+  },
+  "MAIN_PAGE": {
+    "MODULE": "Module"
+  },
+  "WEEK_DAYS": {
+    "SUN": "Sun",
+    "MON": "Mon",
+    "TUE": "Tue",
+    "WED": "Wed",
+    "THU": "Thu",
+    "FRI": "Fri",
+    "SAT": "Sat"
+  },
+  "MODULES": {
+    "STRUCTURE": "Learning structure"
+  },
+  "LESSON": { "ONE": "lesson", "FEW": "lessons", "MANY": "lessons" },
+  "TEST": { "ONE": "test", "FEW": "tests", "MANY": "tests" },
+  "MODULES_CARD": {
+    "BONUS": "Bonus module",
+    "MODULE": "Module {{number}}",
+    "LESSON_ONE": "lesson",
+    "LESSON_TWO": "lessons",
+    "LESSON_MANY": "lessons",
+    "TASK_ONE": "test",
+    "TASK_TWO": "tests",
+    "TASK_MANY": "tasks",
+    "START": "Start",
+    "COMPLETED": "Checked"
+  },
+  "STATUS": {
+    "COMPLETED": "Completed",
+    "ACTIVE": "Continue",
+    "BLOCKED": "Blocked",
+    "START": "Start"
+  },
+  "LESSON_CARD": {
+    "LESSON": "Lesson",
+    "THEORY": "Theory",
+    "ORAL_PRACTICE": "Oral practice",
+    "TEST_TASK": "Test task"
+  },
+  "LESSON_TEST": {
+    "CONFIRM_TITLE": "Are you sure?",
+    "CONFIRM_TEXT": "You have unfilled fields",
+    "ERROR_TITLE": "An error occurred",
+    "ERROR_TEXT": "",
+    "INFO_TEXT": "Click the button below to see your score and review the questions. Answer checking may take some time",
+    "SUBMIT": "Submit",
+    "ERROR_FIELD": "Error! Please try again."
+  },
+  "LESSON_QUESTION": {
+    "QUESTION_NUMBER": "Question {{current}} of {{total}}"
+  },
+  "TITLE_TEST": {
+    "LESSON_TEST": "Lesson Test",
+    "MODULE_EXAM": "Module Exam"
+  },
+  "DESCRIPTION": {
+    "LESSON_TEST": "Take a short test to consolidate the material and check your understanding of the topic.\nTake your time — read the questions carefully, as this is when you consolidate knowledge that will be useful in an interview.",
+    "MODULE_EXAM": "Take the exam to test your knowledge of the entire module and assess your progress."
+  },
+  "QUESTIONS": {
+    "AMOUNT": "📋 Number of questions: ",
+    "MIN_PERCENT": "🎯 Minimum passing percentage: "
+  },
+  "ERROR_SECTION": {
+    "TITLE": "Oops, something went wrong...",
+    "TEXT": "We are already aware of this and are working to fix it.\nPlease try again later.",
+    "BUTTON": "Reload page"
+  }
+}

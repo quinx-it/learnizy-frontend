@@ -8,6 +8,7 @@ import { useGetExamsQuery } from '@/api/endpoints/exams';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 import { ExamStatus, ExamType, ExamsPageProps } from './typings';
+import { useTranslation } from 'react-i18next';
 
 const mapExamStatus = (status: string): ExamStatus => {
   switch (status) {
@@ -26,6 +27,8 @@ const mapExamStatus = (status: string): ExamStatus => {
 export const ExamsPage: FC<ExamsPageProps> = (props) => {
   const { courseId = 1 } = props;
 
+  const { t } = useTranslation();
+
   const { data, isLoading, isError, refetch } = useGetExamsQuery({ courseId, page: 0, size: 10 });
 
   if (isLoading) return <FullscreenLoader />;
@@ -35,7 +38,7 @@ export const ExamsPage: FC<ExamsPageProps> = (props) => {
     <div className="grid grid-cols-1 gap-6">
       <div className="color-soft text-soft flex items-center justify-baseline gap-3 align-middle">
         <Heading variant="2xl" className="text-black">
-          Экзамены
+          {t('EXAMS.TITLE')}
         </Heading>
         <CircleIcon className="block" />
         <Heading variant="2xl">Java Core</Heading>
@@ -44,7 +47,7 @@ export const ExamsPage: FC<ExamsPageProps> = (props) => {
       {data.content.map((examItem) => {
         const exam: ExamType = {
           ...examItem,
-          title: `Экзамен по модулю ${examItem.moduleSequenceOrder}`,
+          title: t('EXAMS.MODULE_TITLE', { moduleNumber: examItem.moduleSequenceOrder }),
           description: examItem.moduleTitle,
           questions: examItem.questionsCount,
           time: 20,

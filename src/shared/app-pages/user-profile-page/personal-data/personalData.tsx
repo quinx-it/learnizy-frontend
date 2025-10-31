@@ -1,12 +1,17 @@
+'use client';
+
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { Heading } from '@/shared/ui/typography';
 import { PersonalDataForm } from './personal-data-form';
+import { useTranslation } from 'react-i18next';
 
 export const PersonalData = () => {
+  const { t } = useTranslation();
+
   return (
     <CardWrapper className="h-fit max-w-full">
       <Heading variant="xl" className="mb-4">
-        Персональные данные
+        {t('PROFILE.PERSONAL_DATA')}
       </Heading>
       <hr className="mb-8" />
       <PersonalDataForm />

@@ -3,19 +3,20 @@ import { AccordionItemType } from '@/shared/ui/accordion-review/typings';
 
 export const constants = {
   titles: {
-    currentCourse: 'Текущий курс',
-    currentModule: 'Текущий модуль',
-    courseName: 'Java Core',
-    moduleName: 'Введение',
-    review: 'Ревью ментора',
-    statistics: 'Статистика активности',
+    currentCourse: 'LEARN_MAIN_PAGE.TITLES.CURRENT_COURSE',
+    currentModule: 'LEARN_MAIN_PAGE.TITLES.CURRENT_MODULE',
+    courseName: 'LEARN_MAIN_PAGE.TITLES.COURSE_NAME',
+    moduleName: 'LEARN_MAIN_PAGE.TITLES.MODULE_NAME',
+    review: 'LEARN_MAIN_PAGE.TITLES.REVIEW',
+    statistics: 'LEARN_MAIN_PAGE.TITLES.STATISTICS',
   },
   statuses: {
-    NOT_STARTED: 'Не начат',
-    IN_PROGRESS: 'В процессе',
-    COMPLETED: 'Завершен',
-    BLOCKED: 'Заблокирован',
+    NOT_STARTED: 'LEARN_MAIN_PAGE.STATUSES.NOT_STARTED',
+    IN_PROGRESS: 'LEARN_MAIN_PAGE.STATUSES.IN_PROGRESS',
+    COMPLETED: 'LEARN_MAIN_PAGE.STATUSES.COMPLETED',
+    BLOCKED: 'LEARN_MAIN_PAGE.STATUSES.BLOCKED',
   },
+
   lessonsNumber: 14,
   testsNumber: 5,
   courseListItems: [

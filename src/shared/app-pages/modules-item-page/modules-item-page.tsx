@@ -31,9 +31,12 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '
 import { Button } from '@/shared/ui/button';
 import { Textarea } from '@/shared/ui/textarea';
 import { Input } from '@/shared/ui/input';
+import { useTranslation } from 'react-i18next';
 
 export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
   const { id } = props;
+
+  const { t } = useTranslation();
 
   const pathname = usePathname();
   const router = useRouter();
@@ -112,7 +115,7 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
       setModalOpen(false);
       refetch();
     } catch {
-      showToast('error', 'Ошибка', 'Ошибка при сохранении урока');
+      showToast('error', t('COMMON.ERROR'), t('COMMON.SAVE_ERROR'));
     }
   };
 
@@ -121,7 +124,7 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
       await deleteLesson(lessonId).unwrap();
       refetch();
     } catch {
-      showToast('error', 'Ошибка', 'Ошибка при удалении урока');
+      showToast('error', t('COMMON.ERROR'), t('COMMON.DELETE_ERROR'));
     }
   };
 
@@ -132,7 +135,7 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
       <Breadcrumbs
         items={breadcrumbs(sequenceOrder)}
         rootHref={routes.user.modules}
-        rootLabel={'Структура обучения'}
+        rootLabel={t('MODULES.STRUCTURE')}
       />
 
       <CardWrapper className="flex flex-col gap-5">
@@ -141,7 +144,7 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
             heading
             firstClassName="text-[24px]"
             secondClassName="text-[24px]"
-            firstLabel={`Модуль ${sequenceOrder}`}
+            firstLabel={`${t('COMMON.MODULE')} ${sequenceOrder}`}
             secondLabel={moduleTitle}
             dotClassName="min-w-[6px] min-h-[6px] self-center !m-0"
           />
@@ -150,14 +153,14 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
             secondClassName="text-soft"
             firstVariant="m"
             dotClassName="bg-soft"
-            firstLabel={pluralize(totalLessons, 'урок', 'урока', 'уроков')}
-            secondLabel={pluralize(totalLessons * 2, 'тест', 'теста', 'тестов')}
+            firstLabel={pluralize(totalLessons, t('LESSON.ONE'), t('LESSON.FEW'), t('LESSON.MANY'))}
+            secondLabel={pluralize(totalLessons * 2, t('TEST.ONE'), t('TEST.FEW'), t('TEST.MANY'))}
           />
         </div>
 
         {isMentor && (
           <Button className="text-[16px]" variant="blue" size="small" onClick={openCreateModal}>
-            Добавить урок
+            {t('ADD_LESSON')}
           </Button>
         )}
 
@@ -168,14 +171,14 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
               {isMentor && (
                 <div className="mt-2 flex gap-2">
                   <Button variant="yellow" size="small" onClick={() => openEditModal(lesson)}>
-                    Редактировать
+                    {t('COMMON.EDIT')}
                   </Button>
                   <Button
                     variant="white"
                     size="small"
                     onClick={() => handleDeleteLesson(lesson.id)}
                   >
-                    Удалить
+                    {t('COMMON.DELETE')}
                   </Button>
                 </div>
               )}
@@ -188,9 +191,9 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
             <>
               <CheckIcon color="blue" />
               <Text variant={'l'}>
-                Модуль завершён — самое время пройти{' '}
+                {t('COMMON.MODULE_COMPLETED')}{' '}
                 <Link className="text-medium !underline" href={routes.user.exams}>
-                  экзамен
+                  {t('COMMON.EXAM')}
                 </Link>
               </Text>
             </>
@@ -198,9 +201,9 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
             <>
               <LockColorIcon />
               <Text variant={'l'}>
-                После завершения всех уроков откроется доступ к{' '}
+                {t('COMMON.EXAM_LOCKED')}{' '}
                 <Link className="text-medium !underline" href={routes.user.exams}>
-                  экзамену
+                  {t('COMMON.EXAM')}
                 </Link>
               </Text>
             </>
@@ -209,7 +212,7 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
         <div className="flex items-center gap-2">
           <Link className="text-medium" href={routes.user.exams}>
             <Button disabled={!isAvailableExam(progress)} className="mr-2">
-              Начать экзамен
+              {t('COMMON.START_EXAM')}
             </Button>
           </Link>
           <ProgressBar strokeWidth={6} size={27} value={progress} variant="circular" />
@@ -224,37 +227,37 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
           <DialogContent className="sm:max-w-md">
             <DialogHeader>
               <DialogTitle>
-                {editingLessonId ? 'Редактирование урока' : 'Создание нового урока'}
+                {editingLessonId ? t('COMMON.EDIT_LESSON') : t('COMMON.CREATE_LESSON')}
               </DialogTitle>
             </DialogHeader>
 
             <Input
               className="mt-2 w-full"
-              placeholder="Название урока"
+              placeholder={t('COMMON.LESSON_TITLE')}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
 
             <Textarea
               className="mt-2"
-              placeholder="Описание урока"
+              placeholder={t('COMMON.LESSON_DESCRIPTION')}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
 
             <Textarea
               className="mt-2"
-              placeholder="Контент (Markdown)"
+              placeholder={t('COMMON.LESSON_CONTENT')}
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
 
             <DialogFooter className="mt-4 flex justify-end gap-2">
               <Button variant="white" size="small" onClick={() => setModalOpen(false)}>
-                Отмена
+                {t('COMMON.CANCEL')}
               </Button>
               <Button variant="blue" size="small" onClick={handleSaveLesson}>
-                {editingLessonId ? 'Сохранить' : 'Создать'}
+                {editingLessonId ? t('COMMON.SAVE') : t('COMMON.CREATE')}
               </Button>
             </DialogFooter>
           </DialogContent>

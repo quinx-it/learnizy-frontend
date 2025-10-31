@@ -5,27 +5,28 @@ import { Text } from '@/shared/ui/typography';
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const InterviewQuestions = () => {
+  const { t } = useTranslation();
+
   return (
     <CardWrapper className="relative flex flex-col gap-4 overflow-hidden">
       <Text variant="m" className="text-medium">
-        Вопросы для собеседования
+        {t('INTERVIEW.TITLE')}
       </Text>
       <hr />
       <div>
         <Text variant="m" className="mb-2">
-          Подготовьтесь к интервью заранее — мы собрали самые частые и важные вопросы, которые
-          задают начинающим и опытным специалистам.
+          {t('INTERVIEW.DESCRIPTION_1')}
         </Text>
         <Text variant="s" className="text-medium w-3/4">
-          Перейдите в раздел, чтобы попрактиковаться и почувствовать себя увереннее на реальном
-          собеседовании.
+          {t('INTERVIEW.DESCRIPTION_2')}
         </Text>
       </div>
 
       <Button variant="blue" size="small" asChild className="w-fit">
-        <Link href={routes.user.interviewQuestions}>Перейти к вопросам</Link>
+        <Link href={routes.user.interviewQuestions}>{t('INTERVIEW.BUTTON')}</Link>
       </Button>
 
       <Image
