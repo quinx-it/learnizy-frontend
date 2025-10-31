@@ -1,8 +1,14 @@
 import { FC } from 'react';
 import HeadBase from 'next/head';
 import { IHeadProps } from './typings';
+import { useTranslation } from 'react-i18next';
 
 const Head: FC<IHeadProps> = (props) => {
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language || 'ru';
+
+  const localized = props.seo?.[currentLang] ?? props;
+
   const {
     title,
     description,
@@ -13,7 +19,7 @@ const Head: FC<IHeadProps> = (props) => {
     fullUrl,
     baseUrLClean,
     ogLocale,
-  } = props;
+  } = localized;
 
   return (
     <HeadBase>

@@ -27,7 +27,7 @@ export const LearnMainPage = () => {
   );
 
   return (
-    <Page {...MAIN_PAGE_SEO}>
+    <Page seo={MAIN_PAGE_SEO}>
       <Breadcrumbs rootDescription={mainPageProgress.courseInfo.title || ''} />
 
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
