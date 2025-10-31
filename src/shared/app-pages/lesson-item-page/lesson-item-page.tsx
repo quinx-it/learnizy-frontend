@@ -29,7 +29,6 @@ export const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
 
   const router = useRouter();
   const pathname = usePathname();
-  const { breadcrumbs } = constants;
 
   const { data: lesson, isLoading } = useGetLessonQuery(lessonId);
   const role = useSelector(selectUserRole);
