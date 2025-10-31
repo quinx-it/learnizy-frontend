@@ -4,6 +4,7 @@ import React from 'react';
 import { constants } from './constants';
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { ProgressCard } from '@/shared/components/progress-card';
+import { ProgressStatus } from '@/shared/components/progress-card/constants';
 import { Text } from '@/shared/ui/typography';
 import { CourseListItem } from '@/shared/components/course-list-item';
 import { StatisticsChart } from '@/shared/components/statistics-chart';
@@ -44,7 +45,7 @@ export const LearnMainPage = () => {
           subTitle={currentModule?.title || t(constants.titles.moduleName)}
           totalLessons={currentModule?.totalLessons || 0}
           lessons={currentModule?.completedLessons || 0}
-          status={t('STATUS_CONTINUE')}
+          status={ProgressStatus.CONTINUE}
           onClick={() => currentModule && router.push(`${routes.user.modules}/${currentModule.id}`)}
         />
 

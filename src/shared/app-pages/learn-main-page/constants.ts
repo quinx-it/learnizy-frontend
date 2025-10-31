@@ -1,6 +1,11 @@
 import { CourseListItemType } from '@/shared/components/course-list-item/typings';
 import { AccordionItemType } from '@/shared/ui/accordion-review/typings';
 
+export enum ProgressStatus {
+  CONTINUE = 'CONTINUE',
+  START = 'START',
+}
+
 export const constants = {
   titles: {
     currentCourse: 'LEARN_MAIN_PAGE.TITLES.CURRENT_COURSE',
