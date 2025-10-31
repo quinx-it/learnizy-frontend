@@ -4,16 +4,12 @@ import {
   fetchBaseQuery,
   FetchBaseQueryError,
 } from '@reduxjs/toolkit/query';
+import { throttle } from 'lodash';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 import { RootStateType } from '@/store';
 import { HttpStatus, REFRESH_THROTTLE } from '@/shared/constants';
 import { AUTH_BASE_URL } from './constants';
-interface IRefreshResponse {
-  data?: {
-    accessToken?: string;
-  };
-  error?: FetchBaseQueryError;
-}
+import { IRefreshResponse } from './types';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1`,
@@ -27,6 +23,27 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
+const performRefresh = async (
+  api: Parameters<BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError>>[1],
+  extraOptions: Parameters<BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError>>[2],
+): Promise<IRefreshResponse> => {
+  return (await baseQuery(
+    {
+      url: `${AUTH_BASE_URL}/refresh`,
+      method: 'POST',
+      body: {},
+      credentials: 'include',
+    },
+    api,
+    extraOptions,
+  )) as IRefreshResponse;
+};
+
+const throttledRefresh = throttle(performRefresh, REFRESH_THROTTLE, {
+  leading: true,
+  trailing: false,
+}) as typeof performRefresh;
+
 export const baseQueryWithReauth: BaseQueryFn<
   string | FetchArgs,
   unknown,
@@ -35,26 +52,7 @@ export const baseQueryWithReauth: BaseQueryFn<
   let result = await baseQuery(args, api, extraOptions);
 
   if (result.error && result.error.status === HttpStatus.UNAUTHORIZED) {
-    const now = Date.now();
-    let lastRefreshTime = 0;
-    const timeSinceLastRefresh = now - lastRefreshTime;
-
-    if (timeSinceLastRefresh < REFRESH_THROTTLE) {
-      return result;
-    }
-
-    lastRefreshTime = now;
-
-    const refreshResult = (await baseQuery(
-      {
-        url: `${AUTH_BASE_URL}/refresh`,
-        method: 'POST',
-        body: {},
-        credentials: 'include',
-      },
-      api,
-      extraOptions,
-    )) as IRefreshResponse;
+    const refreshResult = await throttledRefresh(api, extraOptions);
 
     const accessToken = refreshResult.data?.accessToken;
 
