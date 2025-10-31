@@ -15,9 +15,9 @@ const LearnLayout: FC<PropsWithChildren> = (props) => {
   const pathname = usePathname();
   const { t } = useTranslation();
 
-  const showChatHeader = pathname.startsWith('/learn/ai-assistant/chat/');
+  const showChatHeader = pathname?.startsWith('/learn/ai-assistant/chat/');
 
-  const isAiAssistantPage = pathname.startsWith(routes.user.aiAssistant);
+  const isAiAssistantPage = pathname?.startsWith(routes.user.aiAssistant);
   const mainClass = isAiAssistantPage
     ? 'h-full max-h-screen w-full overflow-y-auto'
     : 'h-full max-h-screen w-full overflow-y-auto px-4 py-5 md:px-7.5';

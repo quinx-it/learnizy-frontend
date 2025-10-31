@@ -16,7 +16,7 @@ import {
 import { selectToken, selectUserRole } from '@/store/slices/auth/selectors';
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { isRoleRoute } from '@/shared/lib/utils';
-import { NotFoundPage } from '@/shared/app-pages/notFound-page';
+import { NotFoundPage } from '@/pages/notFound-page';
 
 const allStaticRoutes = [...publicRoutes, ...staticUserRoutes, ...staticMentorRoutes];
 const allDynamicRoutes = [...dynamicUserRoutes, ...dynamicMentorRoutes];
@@ -31,6 +31,9 @@ const ApplicationLayout: FC<PropsWithChildren> = (props) => {
 
   const [refreshAccessToken, { isLoading }] = useRefreshMutation();
   const pathname = usePathname();
+
+  if (!pathname) return <FullscreenLoader />;
+
   const router = useRouter();
   const accessToken = useAppSelector(selectToken);
   const role = useAppSelector(selectUserRole);

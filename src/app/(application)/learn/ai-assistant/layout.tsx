@@ -10,7 +10,7 @@ export default function AiAssistantLayout({ children }: PropsWithChildren) {
   const router = useRouter();
   const params = useParams();
 
-  const selectedChatId = params.id ? parseInt(params.id as string, 10) : null;
+  const selectedChatId = params?.id ? parseInt(params.id as string, 10) : null;
 
   const handleSelectChat = (chatId: number) => {
     router.push(`${routes.user.aiAssistant}/chat/${chatId}`);

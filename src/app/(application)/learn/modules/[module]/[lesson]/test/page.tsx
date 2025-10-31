@@ -1,16 +1,20 @@
 'use client';
 
-import { TestPage } from '@/shared/app-pages/test-page';
-import { TestDataType } from '@/shared/app-pages/test-page/typings';
+import { TestPage } from '@/pages/test-page';
+import { TestDataType } from '@/pages/test-page/typings';
+import { NotFoundPage } from '@/pages/notFound-page';
 import { useParams } from 'next/navigation';
 import { useGetTestByLessonIdQuery } from '@/api/endpoints/test';
-
 import { ParamsType } from '../../../typings';
 
 const LessonTest = () => {
   const params = useParams<ParamsType>();
-  const { module, lesson } = params;
 
+  if (!params || !params.module || !params.lesson) {
+    return <NotFoundPage />;
+  }
+
+  const { module, lesson } = params;
   const { data, isLoading, isError, refetch } = useGetTestByLessonIdQuery(+lesson);
 
   return (

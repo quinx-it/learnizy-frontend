@@ -1,4 +1,4 @@
-import { UserProfilePage } from '@/shared/app-pages/user-profile-page';
+import { UserProfilePage } from '@/pages/user-profile-page';
 import { FC, PropsWithChildren } from 'react';
 
 const UserProfile: FC<PropsWithChildren> = (props) => {
