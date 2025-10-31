@@ -1,0 +1,23 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /learn
+Disallow: /learn/exams
+Disallow: /learn/knowledge-base
+Disallow: /learn/ai-assistant
+Disallow: /learn/modules
+Disallow: /learn/projects
+Disallow: /learn/user-profile/personal-data
+Disallow: /learn/user-profile/security-settings
+Disallow: /mentor/students
+Disallow: /mentor/modules
+
+# Host
+Host: https://learnizy-frontend.vercel.app
+
+# Sitemaps
+Sitemap: https://learnizy-frontend.vercel.app/sitemap.xml

@@ -1,3 +1,5 @@
+'use client';
+
 import { AuthForm } from '@/shared/components/auth/auth-form';
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { Logo } from '@/shared/ui/icons';
