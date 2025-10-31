@@ -1,5 +1,3 @@
-'use client';
-
 import { CircleIcon } from '@/shared/ui/icons';
 import { Heading } from '@/shared/ui/typography';
 import React from 'react';

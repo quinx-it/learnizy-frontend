@@ -1,3 +1,5 @@
+'use client';
+
 import { FaqPage } from '@/pages/faq-page';
 
 const Faq = () => {

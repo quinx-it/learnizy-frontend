@@ -1,5 +1,3 @@
-'use client';
-
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { routes } from '@/shared/constants';
 import { EditPhotoIcon, ExitIcon, LockIcon, PersonIcon } from '@/shared/ui/icons';

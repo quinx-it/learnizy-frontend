@@ -30,8 +30,7 @@ const ApplicationLayout: FC<PropsWithChildren> = (props) => {
   const { children } = props;
 
   const [refreshAccessToken, { isLoading }] = useRefreshMutation();
-  const pathname = usePathname();
-
+  const pathname = usePathname() ?? '/';
   if (!pathname) return <FullscreenLoader />;
 
   const router = useRouter();

@@ -1,10 +1,11 @@
 'use client';
+
 import { Text } from '@/shared/ui/typography';
 import { LessonQuestion } from '@/shared/components/lesson-question';
 import { Button } from '@/shared/ui/button';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Spinner } from '@/shared/ui/spinner';
-import { useState, FC } from 'react';
+import { useState, FC, useEffect } from 'react';
 import { showToast } from '@/shared/ui/toaster';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LessonTestFormSchema } from './validation';
@@ -24,6 +25,7 @@ export const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
 
   const router = useRouter();
   const pathname = usePathname();
+
   const [forceSubmit, setForceSubmit] = useState(false);
   const [uploadVoice] = useUploadVoiceMutation();
 
@@ -37,7 +39,15 @@ export const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
     formState: { errors, isSubmitting },
   } = methods;
 
+  useEffect(() => {
+    if (!pathname) {
+      router.push('/404');
+    }
+  }, [pathname, router]);
+
   const handleSubmitForm = async (data: LessonTestFormValuesType) => {
+    if (!pathname) return;
+
     try {
       const isEmpty = Object.values(data.questions).some((q) => !q?.textAnswer?.trim() && !q?.file);
       if (!forceSubmit && isEmpty) {

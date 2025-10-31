@@ -52,7 +52,7 @@ export const LearnMainPage = () => {
         <CardWrapper>
           <div>
             <Text variant="m-bold" className="mb-4">
-              {t('COURSE_LABEL')}{' '}
+              {t('COMMON.COURSE_LABEL')}{' '}
               <Text tag="span" className="text-medium" variant={'m-bold'}>
                 {mainPageProgress.courseInfo.title}
               </Text>

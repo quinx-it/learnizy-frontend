@@ -1,4 +1,5 @@
 'use client';
+
 import { Button } from '@/shared/ui/button';
 import { ProgressBar } from '@/shared/ui/progress';
 import { Text } from '@/shared/ui/typography';

@@ -1,3 +1,5 @@
+'use client';
+
 import { KnowlegeBasePage } from '@/pages/knowlege-base-page';
 
 const KnowlegeBase = () => {

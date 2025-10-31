@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { StudentsTable } from '@/shared/components/students-table/students-table';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';

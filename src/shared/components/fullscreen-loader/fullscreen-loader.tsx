@@ -1,3 +1,5 @@
+'use client';
+
 import { Spinner } from '@/shared/ui/spinner';
 import React from 'react';
 

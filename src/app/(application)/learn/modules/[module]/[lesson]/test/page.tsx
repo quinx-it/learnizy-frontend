@@ -10,17 +10,24 @@ import { ParamsType } from '../../../typings';
 const LessonTest = () => {
   const params = useParams<ParamsType>();
 
-  if (!params || !params.module || !params.lesson) {
+  const moduleId = params?.module ?? '';
+  const lessonId = params?.lesson ?? '';
+
+  const { data, isLoading, isError, refetch } = useGetTestByLessonIdQuery(
+    lessonId ? +lessonId : 0,
+    {
+      skip: !lessonId,
+    },
+  );
+
+  if (!params || !moduleId || !lessonId) {
     return <NotFoundPage />;
   }
 
-  const { module, lesson } = params;
-  const { data, isLoading, isError, refetch } = useGetTestByLessonIdQuery(+lesson);
-
   return (
     <TestPage
-      moduleId={module}
-      lessonId={lesson}
+      moduleId={moduleId}
+      lessonId={lessonId}
       lessonTest={data as TestDataType}
       isLoading={isLoading}
       isError={isError}

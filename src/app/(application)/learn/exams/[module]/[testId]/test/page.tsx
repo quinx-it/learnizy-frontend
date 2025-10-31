@@ -10,16 +10,20 @@ import { NotFoundPage } from '@/pages/notFound-page';
 const ExamPage = () => {
   const params = useParams<ParamsType>();
 
-  if (!params || !params.module || !params.testId) {
+  const moduleId = params?.module ?? '';
+  const testId = params?.testId ?? '';
+
+  const { data, isLoading, isError, refetch } = useGetExamByIdQuery(testId ? +testId : 0, {
+    skip: !testId,
+  });
+
+  if (!params || !moduleId || !testId) {
     return <NotFoundPage />;
   }
 
-  const { module, testId } = params;
-  const { data, isLoading, isError, refetch } = useGetExamByIdQuery(+testId);
-
   return (
     <TestPage
-      moduleId={module}
+      moduleId={moduleId}
       lessonId={testId}
       lessonTest={data as TestDataType}
       isLoading={isLoading}

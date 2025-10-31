@@ -1,5 +1,3 @@
-'use client';
-
 import React, { FC, useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import MDEditor from '@uiw/react-md-editor';

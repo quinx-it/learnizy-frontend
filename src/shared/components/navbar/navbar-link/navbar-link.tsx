@@ -10,7 +10,7 @@ import { INavbarLinkProps } from './typings';
 export const NavbarLink: FC<INavbarLinkProps> = (props) => {
   const { href, Icon, label, className, onClick } = props;
 
-  const pathname = usePathname();
+  const pathname = usePathname() || '/';
   const isActive =
     pathname.split('/').slice(0, 3).join('/') === String(href).split('/').slice(0, 3).join('/');
 
