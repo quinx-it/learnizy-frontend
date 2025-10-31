@@ -1,7 +1,7 @@
 'use client';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import React from 'react';
-import { constants } from './constants';
+import { constants, MAIN_PAGE_SEO } from './constants';
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { ProgressCard } from '@/shared/components/progress-card';
 import { ProgressStatus } from '@/shared/components/progress-card/constants';
@@ -12,6 +12,7 @@ import { useGetMainPageProgressQuery } from '@/api/endpoints/progress/progress';
 import { routes } from '@/shared/constants';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
+import Page from '@/shared/components/Page';
 
 export const LearnMainPage = () => {
   const router = useRouter();
@@ -26,7 +27,7 @@ export const LearnMainPage = () => {
   );
 
   return (
-    <>
+    <Page {...MAIN_PAGE_SEO}>
       <Breadcrumbs rootDescription={mainPageProgress.courseInfo.title || ''} />
 
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
@@ -99,6 +100,6 @@ export const LearnMainPage = () => {
           </div>
         </CardWrapper>
       </div>
-    </>
+    </Page>
   );
 };
