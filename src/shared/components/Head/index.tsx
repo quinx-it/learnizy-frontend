@@ -3,23 +3,25 @@ import HeadBase from 'next/head';
 import { IHeadProps } from './typings';
 import { useTranslation } from 'react-i18next';
 
-const Head: FC<IHeadProps> = (props) => {
-  const { i18n } = useTranslation();
+const Head: FC<IHeadProps> = ({ seo, ...props }) => {
+  const { t, i18n } = useTranslation();
   const currentLang = i18n.language || 'ru';
 
-  const localized = props.seo?.[currentLang] ?? props;
+  const seoKeyToUse = seo || 'DEFAULT';
 
-  const {
-    title,
-    description,
-    keywords,
-    ogTitle,
-    ogDescription,
-    noIndex = false,
-    fullUrl,
-    baseUrLClean,
-    ogLocale,
-  } = localized;
+  const title = t(`SEO.${seoKeyToUse}.TITLE`) || 'Learnizy';
+  const description = t(`SEO.${seoKeyToUse}.DESCRIPTION`) || '';
+  const keywords = t(`SEO.${seoKeyToUse}.KEYWORDS`) || '';
+  const ogTitle = t(`SEO.${seoKeyToUse}.OG_TITLE`) || title;
+  const ogDescription = t(`SEO.${seoKeyToUse}.OG_DESCRIPTION`) || description;
+  const fullUrl =
+    props.fullUrl || t(`SEO.${seoKeyToUse}.FULL_URL`) || 'https://learnizy-frontend.vercel.app';
+  const baseUrLClean =
+    props.baseUrLClean ||
+    t(`SEO.${seoKeyToUse}.BASE_URL_CLEAN`) ||
+    'https://learnizy-frontend.vercel.app';
+  const ogLocale = props.ogLocale || t(`SEO.${seoKeyToUse}.OG_LOCALE`) || currentLang;
+  const noIndex = props.noIndex || false;
 
   return (
     <HeadBase>
@@ -32,12 +34,7 @@ const Head: FC<IHeadProps> = (props) => {
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <meta name="generator" content="Next.js" />
-
-      {noIndex ? (
-        <meta name="robots" content="noindex, nofollow" />
-      ) : (
-        <meta name="robots" content="index, follow" />
-      )}
+      <meta name="robots" content={noIndex ? 'noindex, nofollow' : 'index, follow'} />
 
       {fullUrl && <link rel="canonical" href={fullUrl} />}
       {fullUrl && <link rel="alternate" href={fullUrl} hrefLang="x-default" />}
@@ -51,20 +48,20 @@ const Head: FC<IHeadProps> = (props) => {
 
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-      <meta name="apple-mobile-web-app-title" content="Best Spin" />
+      <meta name="apple-mobile-web-app-title" content="Learnizy" />
       <meta name="format-detection" content="telephone=no" />
 
-      <meta property="og:title" content={ogTitle ?? title} />
-      <meta property="og:site_name" content="Best Spin" />
+      <meta property="og:title" content={ogTitle} />
+      <meta property="og:site_name" content="Learnizy" />
       <meta property="og:url" content={fullUrl} />
-      <meta property="og:description" content={ogDescription ?? description} />
+      <meta property="og:description" content={ogDescription} />
       <meta property="og:image" content={`${baseUrLClean}/img/logo.png`} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content={ogLocale} />
 
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={ogTitle ?? title} />
-      <meta name="twitter:description" content={ogDescription ?? description} />
+      <meta name="twitter:title" content={ogTitle} />
+      <meta name="twitter:description" content={ogDescription} />
       <meta name="twitter:image" content={`${baseUrLClean}/img/logo.png`} />
 
       <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />

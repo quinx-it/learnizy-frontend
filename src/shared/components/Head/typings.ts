@@ -15,5 +15,5 @@ export interface IHeadProps {
     };
   };
   ogLocale?: string;
-  seo?: Record<string, Omit<IHeadProps, 'seo'>>;
+  seo?: string;
 }
