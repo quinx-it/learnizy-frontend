@@ -1,7 +1,7 @@
 'use client';
 
 import type { Meta } from '@storybook/nextjs';
-import { Input } from './input';
+import { Input } from './Input';
 import { StoryType } from './typings';
 
 const meta: Meta<typeof Input> = {

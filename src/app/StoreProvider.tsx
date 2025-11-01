@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import { store, persistor } from '@/store';
 import { PersistGate } from 'redux-persist/integration/react';
-import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
+import { FullscreenLoader } from '@/shared/components/FullscreenLoader/FullscreenLoader';
 
 export default function StoreProvider({ children }: { children: ReactNode }) {
   return (

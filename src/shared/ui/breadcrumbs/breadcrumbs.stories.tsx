@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/nextjs';
-import { Breadcrumbs } from './breadcrumbs';
+import { Breadcrumbs } from './Breadcrumbs';
 import { StoryType } from './typings';
 
 const meta: Meta<typeof Breadcrumbs> = {

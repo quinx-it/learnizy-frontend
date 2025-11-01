@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import { Fragment, FC } from 'react';
-import { DotTitle } from '../dotTitle';
+import { DotTitle } from '../DotTitle';
 import { ArrowRightIcon } from '@/shared/ui/icons';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import { cn } from '@/shared/lib/utils';
 import { constants } from './constants';
 import { IBreadcrumbsProps } from './typings';

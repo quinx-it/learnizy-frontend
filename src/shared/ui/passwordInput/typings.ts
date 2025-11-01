@@ -1,6 +1,6 @@
 import type { StoryObj } from '@storybook/nextjs';
-import { PasswordInput } from './passwordInput';
-import { type IInputProps } from '@/shared/ui/input/typings';
+import { PasswordInput } from './PasswordInput';
+import { type IInputProps } from '@/shared/ui/Input/typings';
 
 export type StoryType = StoryObj<typeof PasswordInput>;
 

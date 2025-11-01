@@ -1,4 +1,4 @@
-import { KnowlegeBasePage } from '@/shared/app-pages/knowlege-base-page';
+import { KnowlegeBasePage } from '@/shared/AppPages/KnowlegeBasePage';
 
 const KnowlegeBase = () => {
   return <KnowlegeBasePage />;

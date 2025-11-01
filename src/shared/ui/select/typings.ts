@@ -1,6 +1,6 @@
 import type { StoryObj } from '@storybook/nextjs';
 
-import { CustomSelect } from './select';
+import { CustomSelect } from './Select';
 
 export interface IOption {
   label: string;

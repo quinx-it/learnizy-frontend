@@ -1,7 +1,7 @@
 import { IAuthState } from '@/store/slices/auth/typings';
 import { api } from '@/api';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
-import { showToast } from '@/shared/ui/toaster';
+import { showToast } from '@/shared/ui/Toaster';
 import {
   ForgotPasswordRequestType,
   LoginRequestType,

@@ -1,4 +1,4 @@
-import { PersonalData } from '@/shared/app-pages/user-profile-page/personal-data';
+import { PersonalData } from '@/shared/AppPages/UserProfilePage/PersonalData';
 
 const PersonalDataPage = () => {
   return <PersonalData />;

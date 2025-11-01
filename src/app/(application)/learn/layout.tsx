@@ -2,11 +2,11 @@
 
 import { FC, PropsWithChildren } from 'react';
 import { usePathname } from 'next/navigation';
-import { Navbar } from '@/shared/components/navbar';
-import { AuthLayout } from '@/shared/components/auth-layout';
+import { Navbar } from '@/shared/components/Navbar';
+import { AuthLayout } from '@/shared/components/AuthLayout';
 import { navbarLinks } from '@/shared/constants/constants';
 import { routes } from '@/shared/constants/routes';
-import { ChatHeader } from '@/shared/components/ai-assistant-chat/chat-header';
+import { ChatHeader } from '@/shared/components/AiAssistantChat/ChatHeader';
 import { useTranslation } from 'react-i18next';
 
 const LearnLayout: FC<PropsWithChildren> = (props) => {

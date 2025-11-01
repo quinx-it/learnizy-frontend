@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/shared/lib/utils';
-import { Heading, Text } from '@/shared/ui/typography';
+import { Heading, Text } from '@/shared/ui/Typography';
 import React, { FC } from 'react';
 import { IDotTitleProps } from './typings';
 

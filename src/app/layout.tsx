@@ -3,7 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 
 import StoreProvider from './StoreProvider';
-import { Toaster } from '@/shared/ui/toaster';
+import { Toaster } from '@/shared/ui/Toaster';
 import { ReactNode } from 'react';
 
 import '@/shared/lib/translate';

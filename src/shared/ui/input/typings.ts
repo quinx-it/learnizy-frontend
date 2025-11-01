@@ -1,5 +1,5 @@
 import type { StoryObj } from '@storybook/nextjs';
-import { Input } from './input';
+import { Input } from './Input';
 import { ComponentProps } from 'react';
 
 export type StoryType = StoryObj<typeof Input>;

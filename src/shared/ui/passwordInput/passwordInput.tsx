@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 
-import { Button } from '@/shared/ui/button';
-import { Input } from '@/shared/ui/input';
+import { Button } from '@/shared/ui/Button';
+import { Input } from '@/shared/ui/Input';
 import { cn } from '@/shared/lib/utils';
 import './styles.css';
 import { EyeIcon } from '@/shared/ui/icons';

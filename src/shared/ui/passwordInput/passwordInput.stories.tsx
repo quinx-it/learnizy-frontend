@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/nextjs';
-import { PasswordInput } from './passwordInput';
+import { PasswordInput } from './PasswordInput';
 import { StoryType } from './typings';
 
 const meta: Meta<typeof PasswordInput> = {

@@ -1,7 +1,7 @@
 'use client';
 
 import type { Meta } from '@storybook/nextjs';
-import { DatePicker } from './datePicker';
+import { DatePicker } from './DatePicker';
 import { StoryType } from './typings';
 
 const meta: Meta<typeof DatePicker> = {

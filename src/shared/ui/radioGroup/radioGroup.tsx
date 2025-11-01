@@ -3,7 +3,7 @@ import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 import { CircleIcon } from '@/shared/ui/icons';
 
 import { cn } from '@/shared/lib/utils';
-import { Label } from '@/shared/ui/label';
+import { Label } from '@/shared/ui/Label';
 import { ComponentProps } from 'react';
 
 function RadioGroup({ className, ...props }: ComponentProps<typeof RadioGroupPrimitive.Root>) {

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { ChatHistory } from '@/shared/components/ai-assistant-chat';
+import { ChatHistory } from '@/shared/components/AiAssistantChat';
 import { routes } from '@/shared/constants/routes';
 import { PropsWithChildren } from 'react';
 

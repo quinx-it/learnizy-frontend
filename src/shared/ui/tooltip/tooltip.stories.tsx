@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta } from '@storybook/nextjs';
-import { CustomTooltip } from './tooltip';
+import { CustomTooltip } from './Tooltip';
 import { StoryType } from './typings';
 
 const meta: Meta<typeof CustomTooltip> = {

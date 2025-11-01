@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/nextjs';
-import { ProgressBar } from './progress';
+import { ProgressBar } from './Progress';
 import { StoryType } from './typings';
 
 const meta: Meta<typeof ProgressBar> = {

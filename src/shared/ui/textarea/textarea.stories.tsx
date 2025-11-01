@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/nextjs';
-import { Textarea } from './textarea';
+import { Textarea } from './Textarea';
 import { StoryType } from './typings';
 
 const meta: Meta<typeof Textarea> = {

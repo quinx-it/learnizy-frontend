@@ -1,4 +1,4 @@
-import { SecuritySettings } from '@/shared/app-pages/user-profile-page/security-settings';
+import { SecuritySettings } from '@/shared/AppPages/UserProfilePage/SecuritySettings';
 
 const SecuritySettingsPage = () => {
   return <SecuritySettings />;

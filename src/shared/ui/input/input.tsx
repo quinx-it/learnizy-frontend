@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { cn } from '@/shared/lib/utils';
-import { Text } from '@/shared/ui/typography';
-import { Label } from '../label';
+import { Text } from '@/shared/ui/Typography';
+import { Label } from '../Label';
 import { IInputProps } from './typings';
 
 const Input = React.forwardRef<HTMLInputElement, IInputProps>(

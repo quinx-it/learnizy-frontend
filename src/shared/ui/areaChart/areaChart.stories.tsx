@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/nextjs';
-import { AreaChart } from './areaChart';
+import { AreaChart } from './AreaChart';
 import { StoryType } from './typings';
 
 const meta: Meta<typeof AreaChart> = {

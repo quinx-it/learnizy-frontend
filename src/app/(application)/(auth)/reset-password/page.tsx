@@ -1,7 +1,7 @@
 'use client';
 
-import { NotFoundPage } from '@/shared/app-pages/notFound-page';
-import { ResetPasswordPage } from '@/shared/app-pages/auth-pages/reset-password-page';
+import { NotFoundPage } from '@/shared/AppPages/NotFoundPage';
+import { ResetPasswordPage } from '@/shared/AppPages/AuthPages/ResetPasswordPage';
 import { useSearchParams } from 'next/navigation';
 
 export default function ResetPassword() {

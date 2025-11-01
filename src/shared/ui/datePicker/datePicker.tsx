@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 
-import { Calendar } from '@/shared/ui/calendar';
-import { Input } from '@/shared/ui/input';
-import { Popover } from '@/shared/ui/popover';
+import { Calendar } from '@/shared/ui/Calendar';
+import { Input } from '@/shared/ui/Input';
+import { Popover } from '@/shared/ui/Popover';
 import { CalendarIcon } from '@/shared/ui/icons';
 import { formatDate, parseDateString } from './utils';
 import { IDatePickerProps } from './typings';

@@ -1,8 +1,8 @@
 'use client';
 
 import { FC, PropsWithChildren } from 'react';
-import { Navbar } from '@/shared/components/navbar';
-import { AuthLayout } from '@/shared/components/auth-layout';
+import { Navbar } from '@/shared/components/Navbar';
+import { AuthLayout } from '@/shared/components/AuthLayout';
 import { navbarLinks } from '@/shared/constants/constants';
 
 const LearnLayout: FC<PropsWithChildren> = (props) => {

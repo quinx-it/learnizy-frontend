@@ -1,4 +1,4 @@
-import { LoginPageDesign } from '@/shared/app-pages/auth-pages/login-page';
+import { LoginPageDesign } from '@/shared/AppPages/AuthPages/LoginPage';
 
 function LoginPage() {
   return <LoginPageDesign />;

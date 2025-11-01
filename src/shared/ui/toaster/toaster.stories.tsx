@@ -3,7 +3,7 @@
 import React from 'react';
 import { ThemeProvider } from 'next-themes';
 import { Meta, StoryFn } from '@storybook/nextjs';
-import { Toaster, showToast } from './toaster';
+import { Toaster, showToast } from './Toaster';
 
 const Demo = () => {
   return (

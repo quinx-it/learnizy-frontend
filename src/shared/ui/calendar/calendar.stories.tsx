@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/nextjs';
-import { Calendar } from './calendar';
+import { Calendar } from './Calendar';
 import { StoryType } from './typings';
 
 const meta: Meta<typeof Calendar> = {

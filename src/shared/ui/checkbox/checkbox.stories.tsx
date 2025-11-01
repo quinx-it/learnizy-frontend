@@ -1,7 +1,7 @@
 'use client';
 
 import type { Meta } from '@storybook/nextjs';
-import { Checkbox } from './checkbox';
+import { Checkbox } from './Checkbox';
 import { Label } from '@radix-ui/react-label';
 import { StoryType } from './typings';
 
