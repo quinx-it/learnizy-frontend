@@ -2,26 +2,25 @@ import { FC } from 'react';
 import HeadBase from 'next/head';
 import { IHeadProps } from './typings';
 import { useTranslation } from 'react-i18next';
+import { getOgLocale } from '@/shared/utils/getOgLocale';
 
 const Head: FC<IHeadProps> = ({ seo, ...props }) => {
-  const { t, i18n } = useTranslation();
-  const currentLang = i18n.language || 'ru';
+  const { t } = useTranslation();
 
   const seoKeyToUse = seo || 'DEFAULT';
 
-  const title = t(`SEO.${seoKeyToUse}.TITLE`) || 'Learnizy';
-  const description = t(`SEO.${seoKeyToUse}.DESCRIPTION`) || '';
-  const keywords = t(`SEO.${seoKeyToUse}.KEYWORDS`) || '';
-  const ogTitle = t(`SEO.${seoKeyToUse}.OG_TITLE`) || title;
-  const ogDescription = t(`SEO.${seoKeyToUse}.OG_DESCRIPTION`) || description;
-  const fullUrl =
-    props.fullUrl || t(`SEO.${seoKeyToUse}.FULL_URL`) || 'https://learnizy-frontend.vercel.app';
-  const baseUrLClean =
-    props.baseUrLClean ||
-    t(`SEO.${seoKeyToUse}.BASE_URL_CLEAN`) ||
-    'https://learnizy-frontend.vercel.app';
-  const ogLocale = props.ogLocale || t(`SEO.${seoKeyToUse}.OG_LOCALE`) || currentLang;
-  const noIndex = props.noIndex || false;
+  const {
+    fullUrl = t(`SEO.${seoKeyToUse}.FULL_URL`),
+    baseUrLClean = t(`SEO.${seoKeyToUse}.BASE_URL_CLEAN`),
+    noIndex = false,
+  } = props;
+
+  const title = t(`SEO.${seoKeyToUse}.TITLE`);
+  const description = t(`SEO.${seoKeyToUse}.DESCRIPTION`);
+  const keywords = t(`SEO.${seoKeyToUse}.KEYWORDS`);
+  const ogTitle = t(`SEO.${seoKeyToUse}.OG_TITLE`);
+  const ogDescription = t(`SEO.${seoKeyToUse}.OG_DESCRIPTION`);
+  const ogLocale = getOgLocale();
 
   return (
     <HeadBase>

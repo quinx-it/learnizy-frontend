@@ -275,8 +275,7 @@
       "OG_TITLE": "Плати за обучение только после трудоустройства. AI-тренажер собеседований и менторы из топовых компаний.",
       "OG_DESCRIPTION": "Платите за обучение только после устройства на работу. AI-тренажер, менторы из топ-компаний, 87% выпускников получают оффер. Персональный подход к обучению. Курсы по программированию.",
       "FULL_URL": "https://learnizy-frontend.vercel.app",
-      "BASE_URL_CLEAN": "https://learnizy-frontend.vercel.app",
-      "OG_LOCALE": "ru_RU"
+      "BASE_URL_CLEAN": "https://learnizy-frontend.vercel.app"
     },
     "MAIN_PAGE_SEO": {
       "TITLE": "Learnizy - Подготовка IT-разработчиков к собеседованиям с гарантией трудоустройства",
@@ -285,8 +284,7 @@
       "OG_TITLE": "Плати за обучение только после трудоустройства. AI-тренажер собеседований и менторы из топовых компаний.",
       "OG_DESCRIPTION": "Платите за обучение только после устройства на работу. AI-тренажер, менторы из топ-компаний, 87% выпускников получают оффер. Персональный подход к обучению. Курсы по программированию.",
       "FULL_URL": "https://learnizy-frontend.vercel.app/learn",
-      "BASE_URL_CLEAN": "https://learnizy-frontend.vercel.app/learn",
-      "OG_LOCALE": "ru_RU"
+      "BASE_URL_CLEAN": "https://learnizy-frontend.vercel.app/learn"
     },
     "FAQ_PAGE_SEO": {
       "TITLE": "Частые вопросы о подготовке к собеседованиям и гарантии трудоустройства",
@@ -295,8 +293,7 @@
       "OG_TITLE": "Узнай все о процессе обучения, гарантиях трудоустройства и модели ISA. Прозрачные условия и ответы на частые вопросы.",
       "OG_DESCRIPTION": "Всё о модели ISA, гарантии трудоустройства, AI-тренажере и поддержке менторов в Learnizy",
       "FULL_URL": "https://learnizy-frontend.vercel.app/learn/faq",
-      "BASE_URL_CLEAN": "https://learnizy-frontend.vercel.app/learn/faq",
-      "OG_LOCALE": "ru_RU"
+      "BASE_URL_CLEAN": "https://learnizy-frontend.vercel.app/learn/faq"
     },
     "LOGIN_PAGE_SEO": {
       "TITLE": "Вход в Learnizy - Личный кабинет",
@@ -305,8 +302,7 @@
       "OG_TITLE": "Вернись к подготовке к IT-собеседованию. Твой персональный AI-тренер ждет. Вход в Learnizy - Продолжить обучение",
       "OG_DESCRIPTION": "Доступ к вашим курсам и учебным материалам на образовательной платформе Learnizy",
       "FULL_URL": "https://learnizy-frontend.vercel.app/login",
-      "BASE_URL_CLEAN": "https://learnizy-frontend.vercel.app/login",
-      "OG_LOCALE": "ru_RU"
+      "BASE_URL_CLEAN": "https://learnizy-frontend.vercel.app/login"
     }
   }
 }
