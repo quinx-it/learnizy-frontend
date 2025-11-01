@@ -5,10 +5,10 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Text } from '@/shared/ui/Typography';
 import { ChatInput } from '@/shared/components/AiAssistantChat/ChatInput/ChatInput';
-import { useCreateChatMutation, useSendMessageMutation } from '@/api/endpoints/ai-assistant';
+import { useCreateChatMutation, useSendMessageMutation } from '@/api/endpoints/aiAssistant';
 import { routes } from '@/shared/constants';
 import { showToast } from '@/shared/ui/Toaster';
-import { ISendMessageRequest } from '@/api/endpoints/ai-assistant/typing';
+import { ISendMessageRequest } from '@/api/endpoints/aiAssistant/typing';
 import { useTranslation } from 'react-i18next';
 import Page from '@/shared/components/Page';
 

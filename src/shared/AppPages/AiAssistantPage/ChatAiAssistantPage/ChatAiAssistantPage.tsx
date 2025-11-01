@@ -3,9 +3,9 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import { ChatInput, ChatMessageHistory } from '@/shared/components/AiAssistantChat';
-import { useGetChatMessagesQuery, useSendMessageMutation } from '@/api/endpoints/ai-assistant';
-import { IMessage, ISendMessageRequest } from '@/api/endpoints/ai-assistant/typing';
-import { Role } from '@/api/endpoints/ai-assistant/constants';
+import { useGetChatMessagesQuery, useSendMessageMutation } from '@/api/endpoints/aiAssistant';
+import { IMessage, ISendMessageRequest } from '@/api/endpoints/aiAssistant/typing';
+import { Role } from '@/api/endpoints/aiAssistant/constants';
 import { showToast } from '@/shared/ui/Toaster';
 import { POLLING_INTERVAL } from './constants';
 import Page from '@/shared/components/Page';
