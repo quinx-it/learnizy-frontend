@@ -1,7 +1,10 @@
 /** @type {import('next-sitemap').IConfig} */
 
-const publicRoutes = ['/', '/login', '/register', '/forgot-password', '/reset-password'];
-const staticUserRoutes = [
+const excludedRoutes = [
+  '/login',
+  '/register',
+  '/forgot-password',
+  '/reset-password',
   '/learn',
   '/learn/exams',
   '/learn/knowledge-base',
@@ -10,23 +13,20 @@ const staticUserRoutes = [
   '/learn/projects',
   '/learn/user-profile/personal-data',
   '/learn/user-profile/security-settings',
+  '/mentor/students',
+  '/mentor/modules',
 ];
-const staticMentorRoutes = ['/mentor/students', '/mentor/modules'];
 
 const config = {
   siteUrl: process.env.NEXT_PUBLIC_BASE_URL,
   generateRobotsTxt: true,
   sitemapSize: 5000,
-  exclude: [...publicRoutes.filter((r) => r !== '/'), ...staticUserRoutes, ...staticMentorRoutes],
+  exclude: excludedRoutes,
   robotsTxtOptions: {
     policies: [
       {
         userAgent: '*',
-        disallow: [
-          ...publicRoutes.filter((r) => r !== '/'),
-          ...staticUserRoutes,
-          ...staticMentorRoutes,
-        ],
+        disallow: excludedRoutes,
         allow: '/',
       },
     ],
@@ -38,19 +38,10 @@ const config = {
       '/mentor': { priority: 0.8, changefreq: 'daily' },
     };
 
-    if (customSettings[path]) {
-      return {
-        loc: path,
-        changefreq: customSettings[path].changefreq,
-        priority: customSettings[path].priority,
-        lastmod: new Date().toISOString(),
-      };
-    }
-
     return {
       loc: path,
-      changefreq: 'weekly',
-      priority: 0.7,
+      changefreq: customSettings[path]?.changefreq || 'weekly',
+      priority: customSettings[path]?.priority || 0.7,
       lastmod: new Date().toISOString(),
     };
   },
