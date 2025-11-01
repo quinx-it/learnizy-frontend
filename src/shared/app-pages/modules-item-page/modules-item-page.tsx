@@ -32,6 +32,7 @@ import { Button } from '@/shared/ui/button';
 import { Textarea } from '@/shared/ui/textarea';
 import { Input } from '@/shared/ui/input';
 import { useTranslation } from 'react-i18next';
+import Page from '@/shared/components/Page';
 
 export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
   const { id } = props;
@@ -131,7 +132,7 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
   const isAvailableExam = (progressValue: number) => progressValue >= examAvailableNumber;
 
   return (
-    <>
+    <Page noIndex>
       <Breadcrumbs
         items={breadcrumbs(sequenceOrder)}
         rootHref={routes.user.modules}
@@ -263,6 +264,6 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
           </DialogContent>
         </Dialog>
       )}
-    </>
+    </Page>
   );
 };

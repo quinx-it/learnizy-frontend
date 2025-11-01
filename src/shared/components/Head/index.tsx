@@ -4,14 +4,14 @@ import { IHeadProps } from './typings';
 import { useTranslation } from 'react-i18next';
 import { getOgLocale } from '@/shared/utils/getOgLocale';
 
-const Head: FC<IHeadProps> = ({ seo, ...props }) => {
+const Head: FC<IHeadProps> = ({ key = 'DEFAULT', ...props }) => {
   const { t } = useTranslation();
 
-  const seoKeyToUse = seo || 'DEFAULT';
+  const seoKeyToUse = key;
 
   const {
-    fullUrl = t(`SEO.${seoKeyToUse}.FULL_URL`),
-    baseUrLClean = t(`SEO.${seoKeyToUse}.BASE_URL_CLEAN`),
+    fullUrl = 'https://learnizy-frontend.vercel.app',
+    baseUrlClean = 'https://learnizy-frontend.vercel.app',
     noIndex = false,
   } = props;
 
@@ -54,14 +54,14 @@ const Head: FC<IHeadProps> = ({ seo, ...props }) => {
       <meta property="og:site_name" content="Learnizy" />
       <meta property="og:url" content={fullUrl} />
       <meta property="og:description" content={ogDescription} />
-      <meta property="og:image" content={`${baseUrLClean}/img/logo.png`} />
+      <meta property="og:image" content={`${baseUrlClean}/img/logo.png`} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content={ogLocale} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={ogTitle} />
       <meta name="twitter:description" content={ogDescription} />
-      <meta name="twitter:image" content={`${baseUrLClean}/img/logo.png`} />
+      <meta name="twitter:image" content={`${baseUrlClean}/img/logo.png`} />
 
       <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 

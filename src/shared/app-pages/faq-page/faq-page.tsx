@@ -15,7 +15,7 @@ export const FaqPage = () => {
   const { t } = useTranslation();
 
   return (
-    <Page seo="FAQ_PAGE_SEO">
+    <Page key="FAQ_PAGE_SEO">
       <Breadcrumbs
         rootLabel={t(globalConstants.rootBreadcrumbLabels.knowlegeBaseLabel)}
         rootHref={routes.user.knowlegeBase}

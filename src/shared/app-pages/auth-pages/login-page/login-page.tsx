@@ -8,7 +8,7 @@ import Page from '@/shared/components/Page';
 
 export const LoginPageDesign = () => {
   return (
-    <Page seo="LOGIN_PAGE_SEO">
+    <Page key="LOGIN_PAGE_SEO">
       <div className="flex h-[100vh] items-center justify-center">
         <CardWrapper className="max-w-[472px] px-8 py-16">
           <Logo className="mb-12 w-full" />

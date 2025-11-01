@@ -7,5 +7,6 @@ const localeMap: Record<string, string> = {
 
 export const getOgLocale = (): string => {
   const lang = i18n.language;
+
   return localeMap[lang];
 };

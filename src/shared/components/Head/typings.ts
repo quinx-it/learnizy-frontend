@@ -7,7 +7,7 @@ export interface IHeadProps {
   noIndex?: boolean;
   fullUrl?: string;
   supportedLanguages?: string[];
-  baseUrLClean?: string;
+  baseUrlClean?: string;
   theme?: {
     palette: {
       background: { default: string };
@@ -15,5 +15,5 @@ export interface IHeadProps {
     };
   };
   ogLocale?: string;
-  seo?: string;
+  key?: string;
 }
