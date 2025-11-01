@@ -1,7 +1,7 @@
 'use client';
 import React, { FC } from 'react';
 import { cn } from '@/shared/lib/utils';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import Image from 'next/image';
 import { WorkingSectionPropsType } from './typings';
 import { useTranslation } from 'react-i18next';

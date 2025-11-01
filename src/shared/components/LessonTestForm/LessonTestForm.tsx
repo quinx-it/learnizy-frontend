@@ -1,5 +1,5 @@
 'use client';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import { LessonQuestion } from '@/shared/components/LessonQuestion';
 import { Button } from '@/shared/ui/Button';
 import { FormProvider, useForm } from 'react-hook-form';

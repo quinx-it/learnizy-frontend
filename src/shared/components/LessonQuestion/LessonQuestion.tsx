@@ -2,7 +2,7 @@
 import { FC } from 'react';
 import { RadioGroup } from '@/shared/ui/RadioGroup';
 import { Textarea } from '@/shared/ui/Textarea';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import { Controller, useFormContext, useWatch } from 'react-hook-form';
 import { LessonQuestionPropsType } from './typings';
 import { useTranslation } from 'react-i18next';

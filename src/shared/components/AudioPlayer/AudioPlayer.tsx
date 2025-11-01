@@ -3,7 +3,7 @@
 import { PlayPauseIcon, AaIcon, ArrowCloseIcon } from '@/shared/ui/icons';
 import React, { useEffect, useRef, useState, FC } from 'react';
 import WaveSurfer from 'wavesurfer.js';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import { IAudioPlayerProps } from './typings';
 
 export const AudioPlayer: FC<IAudioPlayerProps> = (props) => {

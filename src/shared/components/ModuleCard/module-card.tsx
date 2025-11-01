@@ -1,6 +1,6 @@
 'use client';
 import React, { memo, useMemo, FC } from 'react';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import Image from 'next/image';
 import { Button } from '@/shared/ui/Button';
 import { renderModuleProgress } from './utils';

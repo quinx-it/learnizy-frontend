@@ -7,7 +7,7 @@ import {
 } from '@radix-ui/react-accordion';
 import { cn } from '@/shared/lib/utils';
 import { ArrowRightIcon } from '@/shared/ui/icons';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import '@/shared/ui/accordion/accordion.css';
 import { AccordionReviewPropsType } from './typings';
 import { useTranslation } from 'react-i18next';

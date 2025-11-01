@@ -1,7 +1,7 @@
 import { routes } from '@/shared/constants';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
 import { constants } from './constants';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import { useGetLessonQuery } from '@/api/endpoints/lessons';
 import React, { FC } from 'react';
 import { CardWrapper } from '@/shared/components/CardWrapper';

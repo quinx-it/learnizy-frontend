@@ -8,7 +8,7 @@ import {
 } from '@radix-ui/react-accordion';
 import { Plus, Minus } from 'lucide-react';
 import './accordion.css';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import { IAccordionProps } from './typings';
 
 export const CardAccordion: FC<IAccordionProps> = (props) => {

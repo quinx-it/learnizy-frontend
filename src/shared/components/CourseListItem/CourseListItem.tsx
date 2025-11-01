@@ -1,7 +1,7 @@
 'use client';
 import { Button } from '@/shared/ui/Button';
 import { ProgressBar } from '@/shared/ui/Progress';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import React, { FC } from 'react';
 import { constants } from './constants';
 import { cn } from '@/shared/lib/utils';

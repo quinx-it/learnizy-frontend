@@ -2,7 +2,7 @@
 
 import React, { FC } from 'react';
 import { cn } from '@/shared/lib/utils';
-import { Heading } from '@/shared/ui/typography';
+import { Heading } from '@/shared/ui/Typography';
 import Image from 'next/image';
 import { Button } from '@/shared/ui/Button';
 import Link from 'next/link';

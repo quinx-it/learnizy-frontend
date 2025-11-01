@@ -13,7 +13,7 @@ import {
 } from '@/api/endpoints/voice/lessonAI';
 import { CreateLessonAIQueryRequestType } from '@/api/endpoints/voice/types';
 import { useState, useEffect } from 'react';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import { CardWrapper } from '@/shared/components/CardWrapper';
 import { Resolver } from 'react-hook-form';
 import { AIQueryStatus } from './constants';

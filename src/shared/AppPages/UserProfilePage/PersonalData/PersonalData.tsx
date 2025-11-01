@@ -1,7 +1,7 @@
 'use client';
 
 import { CardWrapper } from '@/shared/components/CardWrapper';
-import { Heading } from '@/shared/ui/typography';
+import { Heading } from '@/shared/ui/Typography';
 import { PersonalDataForm } from './PersonalDataForm';
 import { useTranslation } from 'react-i18next';
 

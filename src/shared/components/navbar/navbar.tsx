@@ -8,7 +8,7 @@ import { routes } from '@/shared/constants';
 import { HeaderLogo, ExitIcon, CubesMainIcon } from '@/shared/ui/icons';
 import { Button } from '@/shared/ui/Button';
 import { Spinner } from '@/shared/ui/Spinner';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import { useLogout } from '@/shared/hooks/useLogout';
 import clsx from 'clsx';
 import { INavbarProps } from './typings';

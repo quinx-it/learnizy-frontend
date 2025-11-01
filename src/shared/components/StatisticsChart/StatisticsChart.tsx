@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CalendarIcon } from '@/shared/ui/icons';
 import { AreaChart } from '@/shared/ui/AreaChart';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import { WEEK_DAYS } from './constants';
 import { StatisticsChartPropsType } from './typings';
 

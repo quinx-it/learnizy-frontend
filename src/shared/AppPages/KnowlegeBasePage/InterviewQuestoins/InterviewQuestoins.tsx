@@ -1,7 +1,7 @@
 import { CardWrapper } from '@/shared/components/CardWrapper';
 import { routes } from '@/shared/constants';
 import { Button } from '@/shared/ui/Button';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';

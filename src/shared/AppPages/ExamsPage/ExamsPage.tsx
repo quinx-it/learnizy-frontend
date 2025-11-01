@@ -1,7 +1,7 @@
 'use client';
 
 import { CircleIcon } from '@/shared/ui/icons';
-import { Heading } from '@/shared/ui/typography';
+import { Heading } from '@/shared/ui/Typography';
 import React, { FC } from 'react';
 import { ExamCard } from './ExamCard';
 import { useGetExamsQuery } from '@/api/endpoints/exams';

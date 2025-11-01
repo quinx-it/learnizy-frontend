@@ -3,7 +3,7 @@ import { CardWrapper } from '@/shared/components/CardWrapper';
 import { globalConstants, routes } from '@/shared/constants';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
 import React, { FC } from 'react';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import { useGetLastTestAttemptQuery } from '@/api/endpoints/test';
 import { FullscreenLoader } from '@/shared/components/FullscreenLoader/FullscreenLoader';
 import { ErrorSection } from '@/shared/components/ErrorSection';

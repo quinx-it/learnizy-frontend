@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import { ChatInput } from '@/shared/components/AiAssistantChat/ChatInput/ChatInput';
 import { useCreateChatMutation, useSendMessageMutation } from '@/api/endpoints/aiAssistant';
 import { routes } from '@/shared/constants';

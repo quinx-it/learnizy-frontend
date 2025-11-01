@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useLayoutEffect, useEffect, FC } from 'react';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import { Spinner } from '@/shared/ui/Spinner';
 import { AudioPlayer } from '../../AudioPlayer';
 import { IChatMessageHistoryProps } from './typing';

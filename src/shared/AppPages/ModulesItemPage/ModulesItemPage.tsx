@@ -6,7 +6,7 @@ import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
 import { DotTitle } from '@/shared/ui/DotTitle';
 import { CheckIcon, LockColorIcon } from '@/shared/ui/icons';
 import { ProgressBar } from '@/shared/ui/Progress';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import Link from 'next/link';
 import React, { FC, useState } from 'react';
 import { constants } from './constants';

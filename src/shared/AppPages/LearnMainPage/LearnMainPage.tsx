@@ -5,7 +5,7 @@ import { constants } from './constants';
 import { CardWrapper } from '@/shared/components/CardWrapper';
 import { ProgressCard } from '@/shared/components/ProgressCard';
 import { ProgressStatus } from '@/shared/components/ProgressCard/constants';
-import { Text } from '@/shared/ui/typography';
+import { Text } from '@/shared/ui/Typography';
 import { CourseListItem } from '@/shared/components/CourseListItem';
 import { StatisticsChart } from '@/shared/components/StatisticsChart';
 import { useGetMainPageProgressQuery } from '@/api/endpoints/progress/progress';
