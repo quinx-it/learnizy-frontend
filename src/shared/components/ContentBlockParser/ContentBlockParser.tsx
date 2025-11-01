@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Heading, Text } from '@/shared/ui/Typography';
+import { Heading, Text } from '@/shared/ui/typography';
 import {
   Block,
   BlockType,

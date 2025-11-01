@@ -1,7 +1,7 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import { Text } from '@/shared/ui/Typography';
+import { Text } from '@/shared/ui/typography';
 import { Plus, X } from 'lucide-react';
 import { Button } from '@/shared/ui/Button';
 import { useGetChatsQuery } from '@/api/endpoints/aiAssistant';

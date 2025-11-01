@@ -8,7 +8,7 @@ import { useUpdateLessonContentMarkdownMutation } from '@/api/endpoints/admin';
 import { BlockRenderer } from '@/shared/components/ContentBlockParser/ContentBlockParser';
 import { CardWrapper } from '@/shared/components/CardWrapper';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
-import { Heading, Text } from '@/shared/ui/Typography';
+import { Heading, Text } from '@/shared/ui/typography';
 import { Button } from '@/shared/ui/Button';
 import { DotTitle } from '@/shared/ui/DotTitle';
 import { FullscreenLoader } from '@/shared/components/FullscreenLoader/FullscreenLoader';

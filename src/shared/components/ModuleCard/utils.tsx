@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { constants } from './constants';
 import { StarIcon } from '@/shared/ui/icons';
-import { Text } from '@/shared/ui/Typography';
+import { Text } from '@/shared/ui/typography';
 import { ProgressBar } from '@/shared/ui/Progress';
 import { CompletionStatus } from '@/api/endpoints/types';
 import { percentage } from '@/shared/lib/utils';

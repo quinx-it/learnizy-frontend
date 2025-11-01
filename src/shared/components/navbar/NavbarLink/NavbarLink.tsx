@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { FC } from 'react';
-import { Text } from '@/shared/ui/Typography';
+import { Text } from '@/shared/ui/typography';
 import { Button } from '@/shared/ui/Button';
 import { usePathname } from 'next/navigation';
 import { INavbarLinkProps } from './typings';

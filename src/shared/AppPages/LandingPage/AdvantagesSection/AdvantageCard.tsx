@@ -1,5 +1,5 @@
 import { cn } from '@/shared/lib/utils';
-import { Heading, Text } from '@/shared/ui/Typography';
+import { Heading, Text } from '@/shared/ui/typography';
 import Image from 'next/image';
 import React, { FC } from 'react';
 import { AdvantageCardPropsType } from './typings';

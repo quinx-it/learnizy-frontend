@@ -1,7 +1,7 @@
 'use client';
 
 import { CircleIcon } from '@/shared/ui/icons';
-import { Heading } from '@/shared/ui/Typography';
+import { Heading } from '@/shared/ui/typography';
 import React from 'react';
 import { InterviewQuestions } from './InterviewQuestoins';
 import { FrequentlyAskedQuestions } from './FrequentlyAskedQuestions';

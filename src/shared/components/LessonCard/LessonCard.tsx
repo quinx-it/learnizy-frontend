@@ -1,7 +1,7 @@
 import { CardWrapper } from '@/shared/components/CardWrapper';
 import { cn, normalizeToFive } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/Button';
-import { Heading } from '@/shared/ui/Typography';
+import { Heading } from '@/shared/ui/typography';
 import React, { FC } from 'react';
 import { StarIcon } from '@/shared/ui/icons';
 import { LessonCardPropsType } from './typings';

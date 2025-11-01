@@ -6,7 +6,7 @@ import { EditPhotoIcon, ExitIcon, LockIcon, PersonIcon } from '@/shared/ui/icons
 import { DashboardLink } from './DashboardLink';
 import { Button } from '@/shared/ui/Button';
 import Image from 'next/image';
-import { Text } from '@/shared/ui/Typography';
+import { Text } from '@/shared/ui/typography';
 import { useTranslation } from 'react-i18next';
 
 export const ProfileDashboard = () => {

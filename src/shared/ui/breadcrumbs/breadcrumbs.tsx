@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Fragment, FC } from 'react';
 import { DotTitle } from '../DotTitle';
 import { ArrowRightIcon } from '@/shared/ui/icons';
-import { Text } from '@/shared/ui/Typography';
+import { Text } from '@/shared/ui/typography';
 import { cn } from '@/shared/lib/utils';
 import { constants } from './constants';
 import { IBreadcrumbsProps } from './typings';

@@ -5,7 +5,7 @@ import { Button } from '@/shared/ui/Button';
 import { DotTitle } from '@/shared/ui/DotTitle';
 import React, { ComponentProps, ReactNode, FC } from 'react';
 import { ExamCardPropsType, ExamStatus } from '../typings';
-import { Text } from '@/shared/ui/Typography';
+import { Text } from '@/shared/ui/typography';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';

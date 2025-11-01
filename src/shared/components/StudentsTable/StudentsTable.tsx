@@ -2,7 +2,7 @@
 import { routes } from '@/shared/constants';
 import { Button } from '@/shared/ui/Button';
 import { ArrowRightIcon, PersonIcon } from '@/shared/ui/icons';
-import { Text } from '@/shared/ui/Typography';
+import { Text } from '@/shared/ui/typography';
 import { Copy, Edit3 } from 'lucide-react';
 import Link from 'next/link';
 import { useState, FC } from 'react';

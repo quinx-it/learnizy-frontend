@@ -3,7 +3,7 @@ import Image from 'next/image';
 import React, { FC } from 'react';
 import { CardWrapper } from '@/shared/components/CardWrapper';
 import { DotTitle } from '@/shared/ui/DotTitle';
-import { Text } from '@/shared/ui/Typography';
+import { Text } from '@/shared/ui/typography';
 import { ProgressBar } from '@/shared/ui/Progress';
 import { Button } from '@/shared/ui/Button';
 import { ProgressCardPropsType } from './typings';

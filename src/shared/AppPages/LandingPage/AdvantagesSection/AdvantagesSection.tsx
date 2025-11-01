@@ -1,4 +1,4 @@
-import { Heading } from '@/shared/ui/Typography';
+import { Heading } from '@/shared/ui/typography';
 import React from 'react';
 import { AdvantageCard } from './AdvantageCard';
 import { SectionContent } from '../SectionContent';

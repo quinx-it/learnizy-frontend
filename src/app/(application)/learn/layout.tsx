@@ -2,7 +2,7 @@
 
 import { FC, PropsWithChildren } from 'react';
 import { usePathname } from 'next/navigation';
-import { Navbar } from '@/shared/components/Navbar';
+import { Navbar } from '@/shared/components/navbar';
 import { AuthLayout } from '@/shared/components/AuthLayout';
 import { navbarLinks } from '@/shared/constants/constants';
 import { routes } from '@/shared/constants/routes';

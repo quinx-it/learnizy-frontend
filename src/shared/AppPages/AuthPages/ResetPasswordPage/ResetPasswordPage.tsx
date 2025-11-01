@@ -1,7 +1,7 @@
 import { ResetPasswordForm } from '@/shared/components/Auth/ResetPasswordForm';
 import { CardWrapper } from '@/shared/components/CardWrapper';
 import { Logo } from '@/shared/ui/icons';
-import { Heading, Text } from '@/shared/ui/Typography';
+import { Heading, Text } from '@/shared/ui/typography';
 import React, { FC } from 'react';
 import { IResetPasswordPageProps } from './typings';
 import Page from '@/shared/components/Page';

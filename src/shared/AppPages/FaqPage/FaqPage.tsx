@@ -4,7 +4,7 @@ import { CardWrapper } from '@/shared/components/CardWrapper';
 import { routes } from '@/shared/constants';
 import { CardAccordion } from '@/shared/ui/Accordion';
 import { Breadcrumbs } from '@/shared/ui/Breadcrumbs';
-import { Text } from '@/shared/ui/Typography';
+import { Text } from '@/shared/ui/typography';
 import React from 'react';
 import { globalConstants } from '@/shared/constants/constants';
 import { useTranslation } from 'react-i18next';

@@ -2,7 +2,7 @@ import { CardWrapper } from '@/shared/components/CardWrapper';
 import { routes } from '@/shared/constants';
 import { cn } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/Button';
-import { Text } from '@/shared/ui/Typography';
+import { Text } from '@/shared/ui/typography';
 import Link from 'next/link';
 import { FC } from 'react';
 import { IInterviewRecordsProps } from './typings';

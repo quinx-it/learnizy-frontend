@@ -19,7 +19,7 @@ import { routes, HttpStatus } from '@/shared/constants';
 import type { HttpStatusError } from '@/shared/types';
 import { CheckboxWithLabel } from '@/shared/ui/CheckboxWithLabel/CheckboxWithLabel';
 import { useRouter } from 'next/navigation';
-import { Heading, Text } from '@/shared/ui/Typography';
+import { Heading, Text } from '@/shared/ui/typography';
 import { VerificationFormValuesType, RegisterStep, IRegisterFormValues } from './typings';
 
 export const RegisterForm = () => {
