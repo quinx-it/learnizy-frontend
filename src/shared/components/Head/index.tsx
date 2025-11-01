@@ -1,25 +1,22 @@
+'use client';
+
 import { FC } from 'react';
 import HeadBase from 'next/head';
-import { IHeadProps } from './typings';
+import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
+import { IHeadProps } from './typings';
 import { getOgLocale } from '@/shared/utils/getOgLocale';
 
-const Head: FC<IHeadProps> = ({ key = 'DEFAULT', ...props }) => {
+const Head: FC<IHeadProps> = (props) => {
   const { t } = useTranslation();
+  const router = useRouter();
 
-  const seoKeyToUse = key;
+  const { key = 'DEFAULT', noIndex = false } = props;
 
-  const {
-    fullUrl = 'https://learnizy-frontend.vercel.app',
-    baseUrlClean = 'https://learnizy-frontend.vercel.app',
-    noIndex = false,
-  } = props;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL?.replace(/\/$/, '') || '';
+  const cleanPath = router.asPath.startsWith('/') ? router.asPath.slice(1) : router.asPath;
+  const fullUrl = cleanPath ? `${baseUrl}/${cleanPath}` : baseUrl;
 
-  const title = t(`SEO.${seoKeyToUse}.TITLE`);
-  const description = t(`SEO.${seoKeyToUse}.DESCRIPTION`);
-  const keywords = t(`SEO.${seoKeyToUse}.KEYWORDS`);
-  const ogTitle = t(`SEO.${seoKeyToUse}.OG_TITLE`);
-  const ogDescription = t(`SEO.${seoKeyToUse}.OG_DESCRIPTION`);
   const ogLocale = getOgLocale();
 
   return (
@@ -30,8 +27,8 @@ const Head: FC<IHeadProps> = ({ key = 'DEFAULT', ...props }) => {
         name="viewport"
         content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
       />
-      <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
+      <meta name="description" content={t(`SEO.${key}.DESCRIPTION`)} />
+      <meta name="keywords" content={t(`SEO.${key}.KEYWORDS`)} />
       <meta name="generator" content="Next.js" />
       <meta name="robots" content={noIndex ? 'noindex, nofollow' : 'index, follow'} />
 
@@ -50,22 +47,22 @@ const Head: FC<IHeadProps> = ({ key = 'DEFAULT', ...props }) => {
       <meta name="apple-mobile-web-app-title" content="Learnizy" />
       <meta name="format-detection" content="telephone=no" />
 
-      <meta property="og:title" content={ogTitle} />
+      <meta property="og:title" content={t(`SEO.${key}.OG_TITLE`)} />
       <meta property="og:site_name" content="Learnizy" />
       <meta property="og:url" content={fullUrl} />
-      <meta property="og:description" content={ogDescription} />
-      <meta property="og:image" content={`${baseUrlClean}/img/logo.png`} />
+      <meta property="og:description" content={t(`SEO.${key}.OG_DESCRIPTION`)} />
+      <meta property="og:image" content={`${baseUrl}/img/logo.png`} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content={ogLocale} />
 
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={ogTitle} />
-      <meta name="twitter:description" content={ogDescription} />
-      <meta name="twitter:image" content={`${baseUrlClean}/img/logo.png`} />
+      <meta name="twitter:title" content={t(`SEO.${key}.OG_TITLE`)} />
+      <meta name="twitter:description" content={t(`SEO.${key}.OG_DESCRIPTION`)} />
+      <meta name="twitter:image" content={`${baseUrl}/img/logo.png`} />
 
       <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 
-      <title>{title}</title>
+      <title>{t(`SEO.${key}.TITLE`)}</title>
     </HeadBase>
   );
 };
