@@ -258,5 +258,35 @@
     "TITLE": "Oops, something went wrong...",
     "TEXT": "We are already aware of this and are working to fix it.\nPlease try again later.",
     "BUTTON": "Reload page"
+  },
+  "SEO": {
+    "DEFAULT": {
+      "TITLE": "Learnizy - IT Developer Interview Preparation with Employment Guarantee",
+      "DESCRIPTION": "Guaranteed employment for Frontend, Backend, DevOps, and Java developers under the ISA model. AI simulator, pay only after getting a job. 87% of graduates receive an offer.",
+      "KEYWORDS": "java developer interview, employment guarantee, technical interview preparation, ai interview simulator, java courses with employment, interview preparation, isa training, it employment, tech interviews, career in it, frontend backend courses, learnizy, online school, training courses, distance learning, learning platform, online tutors",
+      "OG_TITLE": "Pay for training only after employment. AI interview simulator and mentors from top companies.",
+      "OG_DESCRIPTION": "Pay for training only after getting a job. AI simulator, top-company mentors, 87% of graduates receive an offer. Personalized approach to learning. Programming courses."
+    },
+    "MAIN_PAGE_SEO": {
+      "TITLE": "Learnizy - IT Developer Interview Preparation with Employment Guarantee",
+      "DESCRIPTION": "Guaranteed employment for Frontend, Backend, DevOps, and Java developers under the ISA model. AI simulator, pay only after getting a job. 87% of graduates receive an offer.",
+      "KEYWORDS": "java developer interview, employment guarantee, technical interview preparation, ai interview simulator, java courses with employment, interview preparation, isa training, it employment, tech interviews, career in it, frontend backend courses, learnizy, online school, training courses, distance learning, learning platform, online tutors",
+      "OG_TITLE": "Pay for training only after employment. AI interview simulator and mentors from top companies.",
+      "OG_DESCRIPTION": "Pay for training only after getting a job. AI simulator, top-company mentors, 87% of graduates receive an offer. Personalized approach to learning. Programming courses."
+    },
+    "FAQ_PAGE_SEO": {
+      "TITLE": "Frequently Asked Questions About Interview Preparation and Employment Guarantee",
+      "DESCRIPTION": "Answers to questions about IT interview preparation at Learnizy: training duration, employment guarantees, ISA model, working with mentors, AI simulator.",
+      "KEYWORDS": "learnizy faq, isa payment model, java employment guarantee, ai interview simulator, java development mentor, java training duration",
+      "OG_TITLE": "Learn everything about the training process, employment guarantees, and the ISA model. Transparent conditions and answers to common questions.",
+      "OG_DESCRIPTION": "Everything about the ISA model, employment guarantee, AI simulator, and mentor support at Learnizy"
+    },
+    "LOGIN_PAGE_SEO": {
+      "TITLE": "Login to Learnizy - Personal Account",
+      "DESCRIPTION": "Log in to your Learnizy account to continue IT interview preparation. Access courses, simulators, and your personal progress.",
+      "KEYWORDS": "personal account, login, my progress, it platform, course access, learnizy login, learnizy, online school, training courses, distance learning, learning platform, online tutors",
+      "OG_TITLE": "Return to IT interview preparation. Your personal AI trainer is waiting. Login to Learnizy - Continue learning",
+      "OG_DESCRIPTION": "Access your courses and learning materials on the Learnizy educational platform"
+    }
   }
 }

@@ -9,6 +9,7 @@ import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscre
 import { ErrorSection } from '@/shared/components/error-section';
 import { ExamStatus, ExamType, ExamsPageProps } from './typings';
 import { useTranslation } from 'react-i18next';
+import Page from '@/shared/components/Page';
 
 const mapExamStatus = (status: string): ExamStatus => {
   switch (status) {
@@ -35,28 +36,30 @@ export const ExamsPage: FC<ExamsPageProps> = (props) => {
   if (isError || !data) return <ErrorSection reset={refetch} />;
 
   return (
-    <div className="grid grid-cols-1 gap-6">
-      <div className="color-soft text-soft flex items-center justify-baseline gap-3 align-middle">
-        <Heading variant="2xl" className="text-black">
-          {t('EXAMS.TITLE')}
-        </Heading>
-        <CircleIcon className="block" />
-        <Heading variant="2xl">Java Core</Heading>
+    <Page noIndex>
+      <div className="grid grid-cols-1 gap-6">
+        <div className="color-soft text-soft flex items-center justify-baseline gap-3 align-middle">
+          <Heading variant="2xl" className="text-black">
+            {t('EXAMS.TITLE')}
+          </Heading>
+          <CircleIcon className="block" />
+          <Heading variant="2xl">Java Core</Heading>
+        </div>
+
+        {data.content.map((examItem) => {
+          const exam: ExamType = {
+            ...examItem,
+            title: t('EXAMS.MODULE_TITLE', { moduleNumber: examItem.moduleSequenceOrder }),
+            description: examItem.moduleTitle,
+            questions: examItem.questionsCount,
+            time: 20,
+          };
+
+          return (
+            <ExamCard key={examItem.testId} exam={exam} status={mapExamStatus(examItem.status)} />
+          );
+        })}
       </div>
-
-      {data.content.map((examItem) => {
-        const exam: ExamType = {
-          ...examItem,
-          title: t('EXAMS.MODULE_TITLE', { moduleNumber: examItem.moduleSequenceOrder }),
-          description: examItem.moduleTitle,
-          questions: examItem.questionsCount,
-          time: 20,
-        };
-
-        return (
-          <ExamCard key={examItem.testId} exam={exam} status={mapExamStatus(examItem.status)} />
-        );
-      })}
-    </div>
+    </Page>
   );
 };

@@ -10,6 +10,7 @@ import { routes } from '@/shared/constants';
 import { showToast } from '@/shared/ui/toaster';
 import { ISendMessageRequest } from '@/api/endpoints/ai-assistant/typing';
 import { useTranslation } from 'react-i18next';
+import Page from '@/shared/components/Page';
 
 export const AiAssistantPage = () => {
   const router = useRouter();
@@ -35,17 +36,19 @@ export const AiAssistantPage = () => {
   };
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center p-4">
-      <div className="relative h-[178px] w-[264px]">
-        <Image
-          src="/images/blue-planet-with-moon.webp"
-          alt="Planet"
-          fill
-          className="object-contain"
-        />
+    <Page noIndex>
+      <div className="flex flex-1 flex-col items-center justify-center p-4">
+        <div className="relative h-[178px] w-[264px]">
+          <Image
+            src="/images/blue-planet-with-moon.webp"
+            alt="Planet"
+            fill
+            className="object-contain"
+          />
+        </div>
+        <Text className="mt-12 mb-6.5 text-center text-3xl">{t('COMMON.HELP_PROMPT')}</Text>
+        <ChatInput onSendMessage={handleStartNewChat} isLoading={isLoading} />
       </div>
-      <Text className="mt-12 mb-6.5 text-center text-3xl">{t('COMMON.HELP_PROMPT')}</Text>
-      <ChatInput onSendMessage={handleStartNewChat} isLoading={isLoading} />
-    </div>
+    </Page>
   );
 };

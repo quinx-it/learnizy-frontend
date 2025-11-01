@@ -13,6 +13,7 @@ import { useSendTestMutation } from '@/api/endpoints/test/test';
 import { showToast } from '@/shared/ui/toaster';
 import { TestPagePropsType } from './typings';
 import { useTranslation } from 'react-i18next';
+import Page from '@/shared/components/Page';
 
 export const TestPage: FC<TestPagePropsType> = (props) => {
   const { lessonId, moduleId, lessonTest, isLoading, isError, refetch } = props;
@@ -55,7 +56,7 @@ export const TestPage: FC<TestPagePropsType> = (props) => {
   };
 
   return (
-    <>
+    <Page noIndex>
       <Breadcrumbs
         items={currentBreadcrumbs}
         rootHref={testType === TestType.LESSON ? routes.user.modules : routes.user.exams}
@@ -96,6 +97,6 @@ export const TestPage: FC<TestPagePropsType> = (props) => {
           />
         </CardWrapper>
       </div>
-    </>
+    </Page>
   );
 };

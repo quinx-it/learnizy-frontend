@@ -6,15 +6,16 @@ import { CardAccordion } from '@/shared/ui/accordion';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import { Text } from '@/shared/ui/typography';
 import React from 'react';
-import { constants } from './constants';
 import { globalConstants } from '@/shared/constants/constants';
 import { useTranslation } from 'react-i18next';
+import { constants } from './constants';
+import Page from '@/shared/components/Page';
 
 export const FaqPage = () => {
   const { t } = useTranslation();
 
   return (
-    <>
+    <Page key="FAQ_PAGE_SEO">
       <Breadcrumbs
         rootLabel={t(globalConstants.rootBreadcrumbLabels.knowlegeBaseLabel)}
         rootHref={routes.user.knowlegeBase}
@@ -31,6 +32,6 @@ export const FaqPage = () => {
           </div>
         </div>
       </CardWrapper>
-    </>
+    </Page>
   );
 };

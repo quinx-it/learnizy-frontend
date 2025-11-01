@@ -9,6 +9,7 @@ import { useGetLastTestAttemptQuery, useGetTestByLessonIdQuery } from '@/api/end
 import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 import { LessonTestResponseType, LessonTestResultPagePropsType } from './types';
+import Page from '@/shared/components/Page';
 
 const mapEvaluation = (evaluation: string) => {
   switch (evaluation) {
@@ -74,7 +75,7 @@ export const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) =
   const passed = scorePercent >= 70;
 
   return (
-    <>
+    <Page noIndex>
       <Breadcrumbs
         items={[
           { label: `Модуль ${moduleSequenceOrder}`, href: `${routes.user.modules}/${moduleId}` },
@@ -134,6 +135,6 @@ export const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) =
           })}
         </div>
       </div>
-    </>
+    </Page>
   );
 };
