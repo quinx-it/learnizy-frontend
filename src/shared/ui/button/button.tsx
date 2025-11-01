@@ -17,11 +17,15 @@ const buttonVariants = cva(baseStyles, {
       yellow: 'bg-yellow-pale text-black hover:bg-yellow',
       white:
         'bg-light border border-medium text-black hover:bg-medium hover:text-light active:border-medium md:active:text-light disabled:border-gray disabled:text-gray',
+      red: 'bg-medium hover:bg-dark text-white',
+      green: 'bg-medium hover:bg-dark text-white',
+      gray: 'bg-soft hover:bg-medium text-white',
     },
     size: {
       large: 'px-8 py-3 text-[20px] leading-[27px]',
       medium: 'px-6 py-2 text-[16px] leading-[22px]',
       small: 'px-5 py-1.5 text-[12px] leading-[16px]',
+      icon: 'w-9 h-9 p-0',
     },
   },
   defaultVariants: {
