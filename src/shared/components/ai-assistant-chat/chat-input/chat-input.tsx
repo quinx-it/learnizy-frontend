@@ -18,8 +18,6 @@ import { MIN_RECORDING_DURATION_MS } from './constants';
 export const ChatInput: FC<IChatInputProps> = (props) => {
   const { onSendMessage, isLoading } = props;
 
-  const { t } = useTranslation();
-
   const [inputValue, setInputValue] = useState('');
   const [attachedFiles, setAttachedFiles] = useState<ILocalFile[]>([]);
   const [isRecording, setIsRecording] = useState(false);

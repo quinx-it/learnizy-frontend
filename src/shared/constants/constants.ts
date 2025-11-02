@@ -1,13 +1,3 @@
-import {
-  ProjectsIcon,
-  APlusIcon,
-  CubesMainIcon,
-  DiscussionIcon,
-  PersonIcon,
-  StudentHatIcon,
-  FourPointedStarIcon,
-} from '@/shared/ui/icons';
-import { routes } from '@/shared/constants';
 
 export const globalConstants = {
   rootBreadcrumbLabels: {
