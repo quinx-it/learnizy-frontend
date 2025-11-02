@@ -12,9 +12,9 @@ import {
   useCallback,
 } from 'react';
 import WaveSurfer from 'wavesurfer.js';
-import { X, Check, ArrowUp } from 'lucide-react';
 import { nanoid } from 'nanoid';
 import clsx from 'clsx';
+import { X, Check, ArrowUp } from 'lucide-react';
 
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
 import { Button } from '@/shared/ui/button';
