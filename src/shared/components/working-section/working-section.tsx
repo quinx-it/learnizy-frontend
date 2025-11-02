@@ -3,11 +3,13 @@ import React, { FC } from 'react';
 import { cn } from '@/shared/lib/utils';
 import { Text } from '@/shared/ui/typography';
 import Image from 'next/image';
-import { constants } from './constants';
 import { WorkingSectionPropsType } from './typings';
+import { useTranslation } from 'react-i18next';
 
 export const WorkingSection: FC<WorkingSectionPropsType> = (props) => {
   const { className } = props;
+
+  const { t } = useTranslation();
 
   return (
     <div className="flex h-full items-center">
@@ -20,7 +22,7 @@ export const WorkingSection: FC<WorkingSectionPropsType> = (props) => {
           className="md:max-w-[110px]"
         />
         <Text className="whitespace-pre-wrap" variant={'l'}>
-          {constants.text}
+          {t('COMMON.COMING_SOON_TEXT')}
         </Text>
       </div>
     </div>

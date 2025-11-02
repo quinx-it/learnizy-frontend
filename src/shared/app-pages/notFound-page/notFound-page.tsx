@@ -1,10 +1,13 @@
 import { NotFoundComponent } from '@/shared/components/notFound-component';
+import Page from '@/shared/components/Page';
 import React from 'react';
 
 export const NotFoundPage = () => {
   return (
-    <div className="flex h-[100vh] items-center justify-center">
-      <NotFoundComponent />
-    </div>
+    <Page noIndex>
+      <div className="flex h-[100vh] items-center justify-center">
+        <NotFoundComponent />
+      </div>
+    </Page>
   );
 };
