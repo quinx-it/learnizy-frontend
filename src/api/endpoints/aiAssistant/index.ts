@@ -1,1 +1,1 @@
-export * from './AiCompanion';
+export * from './aiCompanion';
