@@ -1,4 +1,3 @@
-
 export const globalConstants = {
   rootBreadcrumbLabels: {
     modulesMainLabel: 'BREADCRUMB_LABELS.MODULES_MAIN_LABEL',

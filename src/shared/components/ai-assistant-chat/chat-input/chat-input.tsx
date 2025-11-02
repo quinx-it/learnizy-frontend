@@ -113,7 +113,6 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
         audioFileUrl: response.downloadUrl,
       });
 
-      // Сброс состояния
       setAudioBlob(null);
       if (waveformRef.current) {
         waveformRef.current.destroy();
@@ -133,7 +132,9 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       audioChunksRef.current = [];
 
       // Создаем AudioContext для визуализации
-      const audioContext = new (window.AudioContext || (window as typeof window & { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
+      const audioContext = new (window.AudioContext ||
+        (window as typeof window & { webkitAudioContext: typeof AudioContext })
+          .webkitAudioContext)();
       const analyser = audioContext.createAnalyser();
       analyser.fftSize = 256;
       const source = audioContext.createMediaStreamSource(stream);
@@ -148,7 +149,6 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       mediaRecorder.onstop = () => {
         const blob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
         setAudioBlob(blob);
-
 
         if (audioContextRef.current) {
           audioContextRef.current.close();
@@ -172,7 +172,6 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
 
         const dataArray = new Uint8Array(analyserRef.current.frequencyBinCount);
         analyserRef.current.getByteFrequencyData(dataArray);
-
 
         const levels = Array.from(dataArray.slice(0, 10)).map((value) => value / 255);
         setAudioLevels(levels);
@@ -254,7 +253,6 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
 
   const isComponentExpanded = isExpanded || attachedFiles.length > 0;
 
-  // Таймер записи
   useEffect(() => {
     let interval: NodeJS.Timeout | undefined;
     if (isRecording) {
@@ -267,7 +265,6 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
     };
   }, [isRecording]);
 
-  // Создание waveform при наличии аудио
   useEffect(() => {
     if (audioBlob && waveformContainerRef.current && !waveformRef.current) {
       const audioUrl = URL.createObjectURL(audioBlob);
@@ -301,7 +298,6 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
     }
   }, [attachedFiles]);
 
-  // Обработчики жестов
   const handleMouseDown = (e: React.MouseEvent) => {
     if (isLocked) return;
     setDragStart({ x: e.clientX, y: e.clientY });
@@ -384,7 +380,6 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       window.removeEventListener('touchmove', handleGlobalTouchMove);
       window.removeEventListener('touchend', handleGlobalTouchEnd);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dragStart, isRecording, isLocked]);
 
   const formatTime = (seconds: number) => {
@@ -504,8 +499,8 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
           title="Остановить запись"
         >
           <div className="flex items-center justify-center gap-0.5">
-            <div className="w-1 h-4 bg-black rounded-sm" />
-            <div className="w-1 h-4 bg-black rounded-sm" />
+            <div className="h-4 w-1 rounded-sm bg-black" />
+            <div className="h-4 w-1 rounded-sm bg-black" />
           </div>
         </Button>
       )}
