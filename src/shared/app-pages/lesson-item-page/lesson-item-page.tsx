@@ -20,13 +20,16 @@ import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
 import { showToast } from '@/shared/ui/toaster';
 import { ILessonItemPageProps } from './typings';
+import { useTranslation } from 'react-i18next';
+import Page from '@/shared/components/Page';
 
 export const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
   const { lessonId, moduleId } = props;
 
+  const { t } = useTranslation();
+
   const router = useRouter();
   const pathname = usePathname();
-  const { breadcrumbs } = constants;
 
   const { data: lesson, isLoading } = useGetLessonQuery(lessonId);
   const role = useSelector(selectUserRole);
@@ -58,101 +61,107 @@ export const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
         lessonId: Number(lessonId),
         data: { content: markdownContent },
       }).unwrap();
-
       setEditing(false);
-      showToast('success', 'Успех', 'Контент успешно сохранён');
+      showToast(
+        'success',
+        t('LESSON_ITEM_PAGE.TOAST_SUCCESS_TITLE'),
+        t('LESSON_ITEM_PAGE.TOAST_SUCCESS_MESSAGE'),
+      );
     } catch {
-      showToast('error', 'Ошибка', 'Ошибка при сохранении контента');
+      showToast(
+        'error',
+        t('LESSON_ITEM_PAGE.TOAST_ERROR_TITLE'),
+        t('LESSON_ITEM_PAGE.TOAST_ERROR_MESSAGE'),
+      );
     }
   };
 
   return (
-    <div className="flex flex-col gap-6">
-      <Breadcrumbs
-        items={breadcrumbs(moduleSequenceOrder ?? 1, moduleId, sequenceOrder ?? 0)}
-        rootHref={routes.user.modules}
-        rootLabel="Структура обучения"
-        className="mb-0"
-      />
-
-      <CardWrapper>
-        {isMentor && !editing && (
-          <Button variant="yellow" size="small" onClick={handleEdit} className="mb-4">
-            Изменить
-          </Button>
-        )}
-        {editing ? (
-          <div className="flex flex-col gap-4">
-            <div data-color-mode="light" className="wmde-markdown-light">
-              <MDEditor
-                value={markdownContent}
-                onChange={(val) => setMarkdownContent(val || '')}
-                height={400}
-              />
-            </div>
-            <div className="flex justify-end gap-2">
-              <Button variant="white" size="small" onClick={handleCancel}>
-                Отмена
-              </Button>
-              <Button variant="blue" size="small" onClick={handleSave}>
-                Сохранить
-              </Button>
-            </div>
-          </div>
-        ) : (
-          <div className="prose max-w-full break-words">
-            <MarkdownRenderer text={markdownContent} className="lesson-markdown" />
-          </div>
-        )}
-      </CardWrapper>
-
-      {lesson.contentBlocks?.length > 0 && (
-        <CardWrapper>
-          {contentBlocks.map((block) => (
-            <BlockRenderer key={block.id} block={block} />
-          ))}
-        </CardWrapper>
-      )}
-
-      <CardWrapper>
-        <Heading variant="2xl" className="mb-4">
-          Личный ИИ-помощник
-        </Heading>
-        <Text variant="l" className="mb-6">
-          ИИ-помощник ответит на все вопросы по пройденному материалу. Он поможет тебе лучше понять
-          тему, запомнить ключевые моменты и структурировать знания.
-        </Text>
-        <Button onClick={() => router.push(routes.user.aiAssistant)} size="medium">
-          Задать вопрос
-        </Button>
-      </CardWrapper>
-
-      <CardWrapper>
-        <Heading variant="2xl" className="mb-4">
-          Проверь свои знания
-        </Heading>
-        <Text variant="l" className="mb-4">
-          Пройдите короткий тест, чтобы закрепить материал и проверить понимание темы. Не спешите —
-          отвечайте вдумчиво, ведь именно сейчас вы формируете прочную основу для успешного
-          прохождения собеседований.
-        </Text>
-        <DotTitle
-          firstLabel={`📋 ${testQuestions ?? 0} вопросов`}
-          secondLabel="⏱ 15 минут"
-          firstVariant="m"
-          secondVariant="m"
-          dotClassName="w-1 h-1"
-          className="text-medium mb-6"
+    <Page noIndex>
+      <div className="flex flex-col gap-6">
+        <Breadcrumbs
+          items={constants.breadcrumbs(t, moduleSequenceOrder ?? 1, moduleId, sequenceOrder ?? 0)}
+          rootHref={routes.user.modules}
+          rootLabel={t('LESSON_ITEM_PAGE.BREADCRUMB_ROOT')}
+          className="mb-0"
         />
-        <div className="flex gap-2">
-          <Button onClick={handleNavigate('test')} size="medium">
-            Начать
+
+        <CardWrapper>
+          {isMentor && !editing && (
+            <Button variant="yellow" size="small" onClick={handleEdit} className="mb-4">
+              {t('LESSON_ITEM_PAGE.BUTTON_EDIT')}
+            </Button>
+          )}
+          {editing ? (
+            <div className="flex flex-col gap-4">
+              <div data-color-mode="light" className="wmde-markdown-light">
+                <MDEditor
+                  value={markdownContent}
+                  onChange={(val) => setMarkdownContent(val || '')}
+                  height={400}
+                />
+              </div>
+              <div className="flex justify-end gap-2">
+                <Button variant="white" size="small" onClick={handleCancel}>
+                  {t('LESSON_ITEM_PAGE.BUTTON_CANCEL')}
+                </Button>
+                <Button variant="blue" size="small" onClick={handleSave}>
+                  {t('LESSON_ITEM_PAGE.BUTTON_SAVE')}
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="prose max-w-full break-words">
+              <MarkdownRenderer text={markdownContent} className="lesson-markdown" />
+            </div>
+          )}
+        </CardWrapper>
+
+        {lesson.contentBlocks?.length > 0 && (
+          <CardWrapper>
+            {contentBlocks.map((block) => (
+              <BlockRenderer key={block.id} block={block} />
+            ))}
+          </CardWrapper>
+        )}
+
+        <CardWrapper>
+          <Heading variant="2xl" className="mb-4">
+            {t('LESSON_ITEM_PAGE.AI_ASSISTANT_TITLE')}
+          </Heading>
+          <Text variant="l" className="mb-6">
+            {t('LESSON_ITEM_PAGE.AI_ASSISTANT_DESCRIPTION')}
+          </Text>
+          <Button onClick={() => router.push(routes.user.aiAssistant)} size="medium">
+            {t('LESSON_ITEM_PAGE.AI_ASSISTANT_ASK_QUESTION')}
           </Button>
-          <Button onClick={handleNavigate('result')} size="medium">
-            Результат
-          </Button>
-        </div>
-      </CardWrapper>
-    </div>
+        </CardWrapper>
+
+        <CardWrapper>
+          <Heading variant="2xl" className="mb-4">
+            {t('LESSON_ITEM_PAGE.CHECK_YOUR_KNOWLEDGE_TITLE')}
+          </Heading>
+          <Text variant="l" className="mb-4">
+            {t('LESSON_ITEM_PAGE.CHECK_YOUR_KNOWLEDGE_DESCRIPTION')}
+          </Text>
+          <DotTitle
+            firstLabel={`📋 ${testQuestions ?? 0} ${t('LESSON_ITEM_PAGE.TEST_QUESTIONS_LABEL')}`}
+            secondLabel={t('LESSON_ITEM_PAGE.TEST_TIME_LABEL')}
+            firstVariant="m"
+            secondVariant="m"
+            dotClassName="w-1 h-1"
+            className="text-medium mb-6"
+          />
+          <div className="flex gap-2">
+            <Button onClick={handleNavigate('test')} size="medium">
+              {t('LESSON_ITEM_PAGE.BUTTON_START')}
+            </Button>
+            <Button onClick={handleNavigate('result')} size="medium">
+              {t('LESSON_ITEM_PAGE.BUTTON_RESULT')}
+            </Button>
+          </div>
+        </CardWrapper>
+      </div>
+    </Page>
   );
 };

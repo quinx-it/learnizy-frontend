@@ -5,6 +5,7 @@ import { Textarea } from '@/shared/ui/textarea';
 import { Text } from '@/shared/ui/typography';
 import { Controller, useFormContext, useWatch } from 'react-hook-form';
 import { LessonQuestionPropsType } from './typings';
+import { useTranslation } from 'react-i18next';
 
 export const LessonQuestion: FC<LessonQuestionPropsType> = (props) => {
   const {
@@ -17,6 +18,8 @@ export const LessonQuestion: FC<LessonQuestionPropsType> = (props) => {
     errors,
   } = props;
 
+  const { t } = useTranslation();
+
   const { control, setValue } = useFormContext();
 
   const fileValue = useWatch({ name: fileFieldName });
@@ -27,7 +30,7 @@ export const LessonQuestion: FC<LessonQuestionPropsType> = (props) => {
   return (
     <div className="space-y-5">
       <Text variant="l" className="text-medium mb-3">
-        Вопрос {sequenceOrder} из {totalQuestions}
+        {t('LESSON_QUESTION.QUESTION_NUMBER', { current: sequenceOrder, total: totalQuestions })}
       </Text>
       <Text variant="l" className="mb-5">
         {text}

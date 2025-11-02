@@ -10,6 +10,7 @@ import {
   staticUserRoutes,
 } from '../constants/routes';
 import { IDecodedTokenPayload } from './typings';
+import i18n from './translate';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -102,24 +103,39 @@ export const formatRelativeDate = (date: Date): string => {
   const diffTime = today.getTime() - chatDate.getTime();
   const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
 
-  if (diffDays === 0) return 'Сегодня';
-
-  if (diffDays === 1) return 'Вчера';
+  if (diffDays === 0) return i18n.t('TIME.TODAY');
+  if (diffDays === 1) return i18n.t('TIME.YESTERDAY');
 
   if (diffDays <= 7) {
-    return `${diffDays} ${pluralize(diffDays, ['день', 'дня', 'дней'])} назад`;
+    return `${diffDays} ${pluralize(diffDays, [
+      i18n.t('TIME.DAY_ONE'),
+      i18n.t('TIME.DAY_TWO'),
+      i18n.t('TIME.DAY_MANY'),
+    ])} ${i18n.t('TIME.AGO')}`;
   }
 
   const weeks = Math.floor(diffDays / 7);
   if (diffDays <= 30) {
-    return `${weeks} ${pluralize(weeks, ['неделю', 'недели', 'недель'])} назад`;
+    return `${weeks} ${pluralize(weeks, [
+      i18n.t('TIME.WEEK_ONE'),
+      i18n.t('TIME.WEEK_TWO'),
+      i18n.t('TIME.WEEK_MANY'),
+    ])} ${i18n.t('TIME.AGO')}`;
   }
 
   const months = Math.floor(diffDays / 30);
   if (diffDays <= 365) {
-    return `${months} ${pluralize(months, ['месяц', 'месяца', 'месяцев'])} назад`;
+    return `${months} ${pluralize(months, [
+      i18n.t('TIME.MONTH_ONE'),
+      i18n.t('TIME.MONTH_TWO'),
+      i18n.t('TIME.MONTH_MANY'),
+    ])} ${i18n.t('TIME.AGO')}`;
   }
 
   const years = Math.floor(diffDays / 365);
-  return `${years} ${pluralize(years, ['год', 'года', 'лет'])} назад`;
+  return `${years} ${pluralize(years, [
+    i18n.t('TIME.YEAR_ONE'),
+    i18n.t('TIME.YEAR_TWO'),
+    i18n.t('TIME.YEAR_MANY'),
+  ])} ${i18n.t('TIME.AGO')}`;
 };

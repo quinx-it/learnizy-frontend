@@ -1,8 +1,8 @@
 export const constants = {
   statuses: {
-    COMPLETED: 'Пройден',
-    NOT_STARTED: 'Начать',
-    BLOCKED: 'Заблокирован',
-    IN_PROGRESS: 'В процессе',
+    COMPLETED: 'PROGRESS_STATUSES.COMPLETED',
+    NOT_STARTED: 'PROGRESS_STATUSES.NOT_STARTED',
+    BLOCKED: 'PROGRESS_STATUSES.BLOCKED',
+    IN_PROGRESS: 'PROGRESS_STATUSES.IN_PROGRESS',
   },
 };

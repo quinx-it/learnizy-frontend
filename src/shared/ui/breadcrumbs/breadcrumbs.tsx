@@ -8,11 +8,14 @@ import { Text } from '@/shared/ui/typography';
 import { cn } from '@/shared/lib/utils';
 import { constants } from './constants';
 import { IBreadcrumbsProps } from './typings';
+import { useTranslation } from 'react-i18next';
 
 export const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
+  const { t } = useTranslation();
+
   const {
     items,
-    rootLabel = constants.rootLabel,
+    rootLabel = t(constants.rootLabel),
     rootHref = constants.rootHref,
     className,
     rootDescription,
@@ -28,7 +31,7 @@ export const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
                 href={rootHref}
                 className={cn('hover:text-medium', { 'text-soft hover:text-medium': items })}
               >
-                <Text variant={'l'}> {rootLabel}</Text>
+                <Text variant={'l'}> {t(rootLabel)}</Text>
               </Link>
             </li>
             {items.map((crumb, index) => (
@@ -37,12 +40,12 @@ export const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
                   <ArrowRightIcon color="blue" className="size-2.5" />
                   {index === items.length - 1 ? (
                     <Text variant={'l'} className="text-medium">
-                      {crumb.label}
+                      {t(crumb.label)}
                     </Text>
                   ) : (
                     <Link href={crumb.href}>
                       <Text variant={'l'} className="text-soft hover:text-medium">
-                        {crumb.label}
+                        {t(crumb.label)}
                       </Text>
                     </Link>
                   )}
@@ -60,7 +63,7 @@ export const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
               dotClassName="size-1.5 bg-soft self-center !m-0 min-w-[6px] min-h-[6px] max-w-[6px] max-h-[6px]"
               secondClassName="text-soft"
               firstClassName="text-black"
-              firstLabel={rootLabel}
+              firstLabel={t(rootLabel)}
               secondLabel={rootDescription || ''}
             />
           </li>

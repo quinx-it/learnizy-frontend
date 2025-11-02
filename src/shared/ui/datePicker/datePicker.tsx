@@ -8,8 +8,11 @@ import { Popover } from '@/shared/ui/popover';
 import { CalendarIcon } from '@/shared/ui/icons';
 import { formatDate, parseDateString } from './utils';
 import { IDatePickerProps } from './typings';
+import { useTranslation } from 'react-i18next';
 
 export function DatePicker({ label, value, onChange, error }: IDatePickerProps) {
+  const { t } = useTranslation();
+
   const [open, setOpen] = useState(false);
 
   const [inputValue, setInputValue] = useState(formatDate(value || undefined));
@@ -26,7 +29,7 @@ export function DatePicker({ label, value, onChange, error }: IDatePickerProps) 
         id="date"
         value={inputValue}
         label={label}
-        placeholder="дд.мм.гггг"
+        placeholder={t('PERSONAL_DATA_FORM.DATE_PLACEHOLDER')}
         innerClassName="bg-background rounded-4xl px-4 py-2 pr-10"
         maxLength={10}
         error={error}
