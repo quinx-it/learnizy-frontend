@@ -25,6 +25,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '
 import { Button } from '@/shared/ui/button';
 import { Textarea } from '@/shared/ui/textarea';
 import { Input } from '@/shared/ui/input';
+import { useTranslation } from 'react-i18next';
+import Page from '@/shared/components/Page';
 
 const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
   const { module, isMentor, openEditModal, handleDeleteModule } = props;
@@ -73,6 +75,7 @@ const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
 export const ModulesPage = () => {
   const role = useSelector(selectUserRole);
   const isMentor = role === UserRole.MENTOR;
+  const { t } = useTranslation();
 
   const {
     data: modulesData,
@@ -84,7 +87,6 @@ export const ModulesPage = () => {
   const [updateModule] = useUpdateModuleMutation();
   const [deleteModule] = useDeleteModuleMutation();
 
-  console.log(modulesData);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingModuleId, setEditingModuleId] = useState<number | null>(null);
   const [title, setTitle] = useState('');
@@ -140,9 +142,9 @@ export const ModulesPage = () => {
   if (isError) return <ErrorSection reset={refetch} />;
 
   return (
-    <>
+    <Page noIndex>
       <Breadcrumbs
-        rootLabel={globalConstants.rootBreadcrumbLabels.modulesLabel}
+        rootLabel={t(globalConstants.rootBreadcrumbLabels.modulesLabel)}
         rootHref={routes.user.knowlegeBase}
         rootDescription={'Java Core'}
       />
@@ -209,6 +211,6 @@ export const ModulesPage = () => {
             />
           ))}
       </div>
-    </>
+    </Page>
   );
 };
