@@ -5,17 +5,19 @@ import { Heading } from '@/shared/ui/typography';
 import React, { FC } from 'react';
 import { StarIcon } from '@/shared/ui/icons';
 import { LessonCardPropsType } from './typings';
+import { useTranslation } from 'react-i18next';
 
 export const LessonCard: FC<LessonCardPropsType> = (props) => {
   const { id, title, progress, index, onClick } = props;
+  const { t } = useTranslation();
 
   const blocked = false;
   const active = true;
 
   const taskProgress = [
-    { title: 'Теория' },
-    { title: 'Устное закрепление материала' },
-    { title: 'Тестовое задание' },
+    { title: t('LESSON_CARD.THEORY') },
+    { title: t('LESSON_CARD.ORAL_PRACTICE') },
+    { title: t('LESSON_CARD.TEST_TASK') },
   ];
 
   return (
@@ -29,7 +31,7 @@ export const LessonCard: FC<LessonCardPropsType> = (props) => {
       <div className="flex">
         <div className="flex-1 space-y-2">
           <Heading>
-            Урок {index + 1} -{' '}
+            {t('LESSON_CARD.LESSON')} {index + 1} -{' '}
             <span
               className={cn('text-soft', {
                 'text-medium': active,
@@ -64,7 +66,7 @@ export const LessonCard: FC<LessonCardPropsType> = (props) => {
               })}
               onClick={() => onClick(id)}
             >
-              {active ? 'Начать' : 'Проверено'}
+              {t(active ? 'MODULES_CARD.START' : 'MODULES_CARD.COMPLETED')}
             </Button>
           )}
         </div>

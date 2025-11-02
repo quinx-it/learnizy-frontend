@@ -1,1 +1,9 @@
-export const WEEK_DAYS = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+export const WEEK_DAYS = [
+  'WEEK_DAYS.SUN',
+  'WEEK_DAYS.MON',
+  'WEEK_DAYS.TUE',
+  'WEEK_DAYS.WED',
+  'WEEK_DAYS.THU',
+  'WEEK_DAYS.FRI',
+  'WEEK_DAYS.SAT',
+];

@@ -1,20 +1,21 @@
-import { globalConstants, routes } from '@/shared/constants';
+import { routes } from '@/shared/constants';
 
-const { moduleLabel, lessonLabel } = globalConstants.rootBreadcrumbLabels;
+export enum TestType {
+  LESSON = 'LESSON_TEST',
+  MODULE = 'MODULE_EXAM',
+}
 
 export const constants = {
   title: {
-    LESSON_TEST: 'Тест по уроку',
-    MODULE_EXAM: 'Экзамен по модулю',
+    LESSON_TEST: 'TITLE_TEST.LESSON_TEST',
+    MODULE_EXAM: 'TITLE_TEST.MODULE_EXAM',
   },
   description: {
-    LESSON_TEST:
-      'Пройдите короткий тест, чтобы закрепить материал и проверить понимание темы.\nНе спешите — внимательно читайте вопросы, ведь именно сейчас вы закрепляете знания,которые пригодятся на собеседовании.',
-    MODULE_EXAM:
-      'Пройдите экзамен, чтобы проверить знания по всему модулю и оценить свой прогресс.',
+    LESSON_TEST: 'DESCRIPTION.LESSON_TEST',
+    MODULE_EXAM: 'DESCRIPTION.MODULE_EXAM',
   },
-  questionAmount: '📋 Количество вопросов: ',
-  procent: '🎯 Минимальный процент для прохождения: ',
+  questionAmount: 'QUESTIONS.AMOUNT',
+  procent: 'QUESTIONS.MIN_PERCENT',
   breadcrumbs: (
     moduleId: string,
     lessonId: string,
@@ -26,16 +27,24 @@ export const constants = {
       testType === 'LESSON_TEST'
         ? [
             {
-              label: `${moduleLabel} ${moduleSequenceOrder}`,
+              label: 'BREADCRUMB_LABELS.MODULE_LABEL',
+              number: moduleSequenceOrder,
               href: `${routes.user.modules}/${moduleId}`,
             },
             {
-              label: `${lessonLabel} ${lessonSequenceOrder + 1}`,
+              label: 'BREADCRUMB_LABELS.LESSON_LABEL',
+              number: lessonSequenceOrder + 1,
               href: `${routes.user.modules}/${moduleId}/${lessonId}`,
             },
-            { label: 'Тест по уроку', href: '' },
+            { label: 'TITLE_TEST.LESSON_TEST', href: '' },
           ]
-        : [{ label: `${moduleLabel} ${moduleSequenceOrder}`, href: `${routes.user.exams}` }];
+        : [
+            {
+              label: 'BREADCRUMB_LABELS.MODULE_LABEL',
+              number: moduleSequenceOrder,
+              href: `${routes.user.exams}`,
+            },
+          ];
     return items;
   },
 };

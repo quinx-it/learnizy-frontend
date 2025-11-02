@@ -1,8 +1,8 @@
 export const STATUS = {
-  completed: 'Пройден',
-  active: 'Продолжить',
-  blocked: 'Заблокирован',
-  start: 'Начать',
+  completed: 'STATUS.COMPLETED',
+  active: 'STATUS.ACTIVE',
+  blocked: 'STATUS.BLOCKED',
+  start: 'STATUS.START',
 } as const;
 
 export type StatusKeyType = keyof typeof STATUS;

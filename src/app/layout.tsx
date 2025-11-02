@@ -6,6 +6,8 @@ import StoreProvider from './StoreProvider';
 import { Toaster } from '@/shared/ui/toaster';
 import { ReactNode } from 'react';
 
+import '@/shared/lib/translate';
+
 export const metadata: Metadata = {
   title: {
     template: '',

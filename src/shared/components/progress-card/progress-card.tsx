@@ -7,10 +7,13 @@ import { Text } from '@/shared/ui/typography';
 import { ProgressBar } from '@/shared/ui/progress';
 import { Button } from '@/shared/ui/button';
 import { ProgressCardPropsType } from './typings';
+import { useTranslation } from 'react-i18next';
 
 export const ProgressCard: FC<ProgressCardPropsType> = (props) => {
   const { title, subTitle, totalModules, totalLessons, lessons, status, modules, image, onClick } =
     props;
+
+  const { t } = useTranslation();
 
   const hasModules = totalModules !== undefined && modules !== undefined;
 
@@ -35,11 +38,11 @@ export const ProgressCard: FC<ProgressCardPropsType> = (props) => {
             <div className="flex gap-2">
               {hasModules && (
                 <Text className="text-[10px]">
-                  Модулей: {modules}/{totalModules}
+                  {t('PROGRESS_CARD.MODULES_LABEL')}: {modules}/{totalModules}
                 </Text>
               )}
               <Text className="text-[10px]">
-                Уроков: {lessons}/{totalLessons}
+                {t('PROGRESS_CARD.LESSONS_LABEL')}: {lessons}/{totalLessons}
               </Text>
             </div>
             <ProgressBar className="h-1 w-full" value={progressValue} />

@@ -1,6 +1,11 @@
 export const constants = {
-  breadcrumbs: (moduleSeqenceNumber: number, moduleId: string, lessonSequenceNumber: number) => [
-    { label: `Модуль ${moduleSeqenceNumber}`, href: `/learn/modules/${moduleId}` },
-    { label: `Урок ${lessonSequenceNumber + 1}`, href: '' },
+  breadcrumbs: (
+    t: (key: string) => string,
+    moduleSequenceNumber: number,
+    moduleId: string,
+    lessonSequenceNumber: number,
+  ) => [
+    { label: `${t('COMMON.MODULE')} ${moduleSequenceNumber}`, href: `/learn/modules/${moduleId}` },
+    { label: `${t('LESSON.ONE')} ${lessonSequenceNumber + 1}`, href: '' },
   ],
 };

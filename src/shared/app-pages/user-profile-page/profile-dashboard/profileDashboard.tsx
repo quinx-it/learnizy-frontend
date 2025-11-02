@@ -7,8 +7,11 @@ import { DashboardLink } from './dashboard-link';
 import { Button } from '@/shared/ui/button';
 import Image from 'next/image';
 import { Text } from '@/shared/ui/typography';
+import { useTranslation } from 'react-i18next';
 
 export const ProfileDashboard = () => {
+  const { t } = useTranslation();
+
   return (
     <CardWrapper className="h-full max-w-full">
       <div className="mb-8 w-full">
@@ -20,18 +23,18 @@ export const ProfileDashboard = () => {
         </div>
 
         <Text variant="m-bold" className="text-center">
-          Имя Фамилия
+          {t('PROFILE.NAME')}
         </Text>
       </div>
       <div className="flex flex-col gap-4">
         <DashboardLink href={routes.user.userProfilePersonalData} Icon={PersonIcon}>
-          Персональные данные
+          {t('PROFILE.PERSONAL_DATA')}
         </DashboardLink>
         <DashboardLink href={routes.user.userProfileSecuritySettings} Icon={LockIcon}>
-          Настройки доступа
+          {t('PROFILE.SECURITY_SETTINGS')}
         </DashboardLink>
         <Button variant="white" className="justify-start border-0 text-[16px]">
-          <ExitIcon className="mr-2.5" /> Выход
+          <ExitIcon className="mr-2.5" /> {t('PROFILE.LOGOUT')}
         </Button>
       </div>
     </CardWrapper>

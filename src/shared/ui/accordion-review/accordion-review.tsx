@@ -10,9 +10,12 @@ import { ArrowRightIcon } from '@/shared/ui/icons';
 import { Text } from '@/shared/ui/typography';
 import '@/shared/ui/accordion/accordion.css';
 import { AccordionReviewPropsType } from './typings';
+import { useTranslation } from 'react-i18next';
 
 export const AccordionReview: FC<AccordionReviewPropsType> = (props) => {
   const { items } = props;
+
+  const { t } = useTranslation();
 
   return (
     <Accordion type="single" collapsible className={cn('w-full')}>
@@ -25,9 +28,9 @@ export const AccordionReview: FC<AccordionReviewPropsType> = (props) => {
             )}
           >
             <Text>
-              Модуль {number} -{' '}
+              {t('ACCORDION_REVIEW.MODULE')} {number} -{' '}
               <Text tag="span" className="text-medium">
-                {messageNumber} новое
+                {messageNumber} {t('ACCORDION_REVIEW.NEW_MESSAGES')}
               </Text>
             </Text>
             <Text className="relative h-5 w-5">
