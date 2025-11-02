@@ -1,8 +1,18 @@
 'use client';
 
-import { useState, useRef, FC, ChangeEvent, KeyboardEvent, useEffect } from 'react';
+import {
+  useState,
+  useRef,
+  FC,
+  ChangeEvent,
+  KeyboardEvent,
+  MouseEvent as ReactMouseEvent,
+  TouchEvent as ReactTouchEvent,
+  useEffect,
+  useCallback,
+} from 'react';
 import WaveSurfer from 'wavesurfer.js';
-import { X, Check, ArrowUp, Pause } from 'lucide-react';
+import { X, Check, ArrowUp } from 'lucide-react';
 import { nanoid } from 'nanoid';
 import clsx from 'clsx';
 
@@ -113,7 +123,6 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
         audioFileUrl: response.downloadUrl,
       });
 
-      // Сброс состояния
       setAudioBlob(null);
       if (waveformRef.current) {
         waveformRef.current.destroy();
@@ -132,8 +141,9 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       mediaRecorderRef.current = mediaRecorder;
       audioChunksRef.current = [];
 
-      // Создаем AudioContext для визуализации
-      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const audioContext = new (window.AudioContext ||
+        (window as unknown as Window & { webkitAudioContext: typeof AudioContext })
+          .webkitAudioContext)();
       const analyser = audioContext.createAnalyser();
       analyser.fftSize = 256;
       const source = audioContext.createMediaStreamSource(stream);
@@ -149,7 +159,6 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
         const blob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
         setAudioBlob(blob);
 
-        // Останавливаем AudioContext
         if (audioContextRef.current) {
           audioContextRef.current.close();
           audioContextRef.current = null;
@@ -167,18 +176,15 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       setRecordingDuration(0);
       recordingStartTimeRef.current = Date.now();
 
-      // Запускаем визуализацию
       const visualizeAudio = () => {
         if (!analyserRef.current || !mediaRecorderRef.current) return;
 
         const dataArray = new Uint8Array(analyserRef.current.frequencyBinCount);
         analyserRef.current.getByteFrequencyData(dataArray);
 
-        // Берем первые 10 значений для визуализации
         const levels = Array.from(dataArray.slice(0, 10)).map((value) => value / 255);
         setAudioLevels(levels);
 
-        // Продолжаем анимацию только если запись активна
         if (mediaRecorderRef.current.state === 'recording') {
           animationFrameRef.current = requestAnimationFrame(visualizeAudio);
         }
@@ -189,7 +195,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
     }
   };
 
-  const stopRecording = () => {
+  const stopRecording = useCallback(() => {
     if (mediaRecorderRef.current && isRecording) {
       const duration = Date.now() - (recordingStartTimeRef.current || 0);
       if (duration < MIN_RECORDING_DURATION_MS) {
@@ -210,9 +216,9 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       setIsRecording(false);
       setIsLocked(false);
     }
-  };
+  }, [isRecording]);
 
-  const cancelRecording = () => {
+  const cancelRecording = useCallback(() => {
     if (mediaRecorderRef.current && isRecording) {
       mediaRecorderRef.current.stream.getTracks().forEach((t) => t.stop());
       if (audioContextRef.current) {
@@ -228,7 +234,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       setRecordingDuration(0);
       setAudioLevels([]);
     }
-  };
+  }, [isRecording]);
 
   const discardRecording = () => {
     setAudioBlob(null);
@@ -256,20 +262,16 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
 
   const isComponentExpanded = isExpanded || attachedFiles.length > 0;
 
-  // Таймер записи
   useEffect(() => {
-    let interval: NodeJS.Timeout | undefined;
-    if (isRecording) {
-      interval = setInterval(() => {
-        setRecordingDuration((prev) => prev + 0.1);
-      }, 100);
-    }
-    return () => {
-      if (interval) clearInterval(interval);
-    };
+    if (!isRecording) return;
+
+    const interval = setInterval(() => {
+      setRecordingDuration((prev) => prev + 0.1);
+    }, 100);
+
+    return () => clearInterval(interval);
   }, [isRecording]);
 
-  // Создание waveform при наличии аудио
   useEffect(() => {
     if (audioBlob && waveformContainerRef.current && !waveformRef.current) {
       const audioUrl = URL.createObjectURL(audioBlob);
@@ -303,15 +305,14 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
     }
   }, [attachedFiles]);
 
-  // Обработчики жестов
-  const handleMouseDown = (e: React.MouseEvent) => {
+  const handleMouseDown = (e: ReactMouseEvent<HTMLButtonElement>) => {
     if (isLocked) return;
     setDragStart({ x: e.clientX, y: e.clientY });
     startRecording();
     e.preventDefault();
   };
 
-  const handleTouchStart = (e: React.TouchEvent) => {
+  const handleTouchStart = (e: ReactTouchEvent<HTMLButtonElement>) => {
     if (isLocked) return;
     const touch = e.touches[0];
     setDragStart({ x: touch.clientX, y: touch.clientY });
@@ -319,21 +320,27 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
     e.preventDefault();
   };
 
-  const handleMouseUp = (e?: React.MouseEvent) => {
-    if (!isLocked) {
-      stopRecording();
-    }
-    setDragStart(null);
-    if (e) e.preventDefault();
-  };
+  const handleMouseUp = useCallback(
+    (e?: ReactMouseEvent<HTMLButtonElement>) => {
+      if (!isLocked) {
+        stopRecording();
+      }
+      setDragStart(null);
+      if (e) e.preventDefault();
+    },
+    [isLocked, stopRecording],
+  );
 
-  const handleTouchEnd = (e?: React.TouchEvent) => {
-    if (!isLocked) {
-      stopRecording();
-    }
-    setDragStart(null);
-    if (e) e.preventDefault();
-  };
+  const handleTouchEnd = useCallback(
+    (e?: ReactTouchEvent<HTMLButtonElement>) => {
+      if (!isLocked) {
+        stopRecording();
+      }
+      setDragStart(null);
+      if (e) e.preventDefault();
+    },
+    [isLocked, stopRecording],
+  );
 
   useEffect(() => {
     if (!dragStart) return;
@@ -361,7 +368,6 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       const deltaY = touch.clientY - dragStart.y;
       const deltaX = dragStart.x - touch.clientX;
 
-      // для lock
       if (deltaY < -50 && !isLocked) {
         setIsLocked(true);
       }
@@ -386,8 +392,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       window.removeEventListener('touchmove', handleGlobalTouchMove);
       window.removeEventListener('touchend', handleGlobalTouchEnd);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dragStart, isRecording, isLocked]);
+  }, [dragStart, isRecording, isLocked, cancelRecording, handleMouseUp, handleTouchEnd]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -479,16 +484,16 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
           ) : isRecording ? (
             <div className="flex items-center justify-center gap-[1.5px]">
               {(audioLevels.length > 0 ? audioLevels : [0.3, 0.5, 0.4, 0.3, 0.6, 0.2]).map(
-                (level, index) => (
-                  <div
-                    key={index}
-                    className="w-[1.5px] rounded bg-white"
-                    style={{
-                      height: `${4 + level * 16}px`,
-                      transition: 'height 0.1s ease-out',
-                    }}
-                  />
-                ),
+                (level, index) => {
+                  const barHeight = 4 + level * 16;
+                  return (
+                    <div
+                      key={index}
+                      className="w-[1.5px] rounded bg-white transition-[height] duration-100 ease-out"
+                      style={{ height: `${barHeight}px` }}
+                    />
+                  );
+                },
               )}
             </div>
           ) : (
@@ -498,13 +503,18 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       </div>
 
       {isRecording && !audioBlob && (
-        <button
+        <Button
           onClick={stopRecording}
-          className="ml-0.5 flex h-9 w-9 items-center justify-center rounded-full transition hover:bg-gray-100"
+          variant="blue"
+          size="icon"
+          className="ml-0.5 !rounded-full"
           title="Остановить запись"
         >
-          <Pause size={18} className="text-black" />
-        </button>
+          <div className="flex items-center gap-1">
+            <div className="h-4 w-1 rounded-sm bg-current" />
+            <div className="h-4 w-1 rounded-sm bg-current" />
+          </div>
+        </Button>
       )}
 
       {audioBlob && (

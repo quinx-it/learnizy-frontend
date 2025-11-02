@@ -9,7 +9,7 @@ import { logout, setCredentials } from '@/store/slices/auth/slice';
 import { RootStateType } from '@/store';
 import { HttpStatus, REFRESH_THROTTLE } from '@/shared/constants';
 import { AUTH_BASE_URL } from './constants';
-import { IRefreshResponse } from './types';
+import { IRefreshResponse, BaseQueryApi, BaseQueryExtraOptions } from './types';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1`,
@@ -24,8 +24,8 @@ const baseQuery = fetchBaseQuery({
 });
 
 const performRefresh = async (
-  api: Parameters<BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError>>[1],
-  extraOptions: Parameters<BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError>>[2],
+  api: BaseQueryApi,
+  extraOptions: BaseQueryExtraOptions,
 ): Promise<IRefreshResponse> => {
   return (await baseQuery(
     {
