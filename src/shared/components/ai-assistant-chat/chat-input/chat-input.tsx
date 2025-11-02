@@ -499,8 +499,8 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
           title="Остановить запись"
         >
           <div className="flex items-center justify-center gap-0.5">
-            <div className="h-4 w-1 rounded-sm bg-black" />
-            <div className="h-4 w-1 rounded-sm bg-black" />
+            <div className="h-4 w-1 rounded-sm bg-white" />
+            <div className="h-4 w-1 rounded-sm bg-white" />
           </div>
         </Button>
       )}
