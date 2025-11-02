@@ -4,11 +4,11 @@ import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Text } from '@/shared/ui/typography';
-import { ChatInput } from '@/shared/components/ai-assistant-chat/chat-input/chat-input';
+import { ChatInput } from '@/shared/components/ai-assistant-chat/chat-input';
 import { useCreateChatMutation, useSendMessageMutation } from '@/api/endpoints/ai-assistant';
 import { routes } from '@/shared/constants';
 import { showToast } from '@/shared/ui/toaster';
-import { ISendMessageRequest } from '@/api/endpoints/ai-assistant/typing';
+import { ISendMessageRequest } from '@/api/endpoints/ai-assistant';
 import { useTranslation } from 'react-i18next';
 import Page from '@/shared/components/Page';
 

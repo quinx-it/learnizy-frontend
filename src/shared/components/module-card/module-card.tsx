@@ -10,7 +10,7 @@ import { CardWrapper } from '@/shared/components/card-wrapper';
 import { DotTitle } from '@/shared/ui/dotTitle';
 import { routes } from '@/shared/constants';
 import { useRouter } from 'next/navigation';
-import { IModuleInfo } from '@/api/endpoints/modules/types';
+import { IModuleInfo } from '@/api/endpoints/modules';
 import { useSelector } from 'react-redux';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';

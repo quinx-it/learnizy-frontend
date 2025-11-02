@@ -4,7 +4,7 @@ import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { formSchema } from './validation';
-import { useLoginMutation } from '@/api/endpoints/auth/auth';
+import { useLoginMutation } from '@/api/endpoints/auth';
 import { Spinner } from '@/shared/ui/spinner';
 import { Input } from '@/shared/ui/input';
 import { PasswordInput } from '@/shared/ui/passwordInput';

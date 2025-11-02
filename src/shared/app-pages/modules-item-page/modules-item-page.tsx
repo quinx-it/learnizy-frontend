@@ -11,16 +11,16 @@ import Link from 'next/link';
 import React, { FC, useState } from 'react';
 import { constants } from './constants';
 import { LessonCard } from '@/shared/components/lesson-card';
-import { useGetModuleQuery } from '@/api/endpoints/modules/modules';
+import { useGetModuleQuery } from '@/api/endpoints/modules';
 import {
   useCreateLessonMutation,
   useUpdateLessonMutation,
   useDeleteLessonMutation,
 } from '@/api/endpoints/admin';
-import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
+import { FullscreenLoader } from '@/shared/components/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 import { percentage, pluralize } from '@/shared/lib/utils';
-import { ILesson } from '@/api/endpoints/lessons/types';
+import { ILesson } from '@/api/endpoints/lessons';
 import { usePathname, useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import { selectUserRole } from '@/store/slices/auth/selectors';

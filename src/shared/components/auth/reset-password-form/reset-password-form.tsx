@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { IResetPasswordFormValues, formSchema } from './validation';
 import { PasswordInput } from '@/shared/ui/passwordInput';
 import { Button } from '@/shared/ui/button';
-import { useResetPasswordMutation } from '@/api/endpoints/auth/auth';
+import { useResetPasswordMutation } from '@/api/endpoints/auth';
 import { showToast } from '@/shared/ui/toaster';
 import { Spinner } from '@/shared/ui/spinner';
 import { useRouter } from 'next/navigation';
