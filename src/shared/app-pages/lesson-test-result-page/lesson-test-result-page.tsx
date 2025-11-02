@@ -6,7 +6,7 @@ import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import React, { FC, useEffect, useRef } from 'react';
 import { Text } from '@/shared/ui/typography';
 import { useGetLastTestAttemptQuery, useGetTestByLessonIdQuery } from '@/api/endpoints/test';
-import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
+import { FullscreenLoader } from '@/shared/components/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 import { LessonTestResponseType, LessonTestResultPagePropsType } from './types';
 

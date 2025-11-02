@@ -17,7 +17,7 @@ import {
   useUpdateLessonMutation,
   useDeleteLessonMutation,
 } from '@/api/endpoints/admin';
-import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
+import { FullscreenLoader } from '@/shared/components/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 import { percentage, pluralize } from '@/shared/lib/utils';
 import { ILesson } from '@/api/endpoints/lessons/types';

@@ -7,7 +7,7 @@ import { useGetLessonQuery } from '@/api/endpoints/lessons';
 import React, { FC } from 'react';
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { VoiceRecorderForm } from '@/shared/components/voice-recorder-form';
-import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
+import { FullscreenLoader } from '@/shared/components/fullscreen-loader';
 import { ILessonRetellingPageProps } from './typings';
 
 export const LessonRetellingPage: FC<ILessonRetellingPageProps> = (props) => {

@@ -14,7 +14,7 @@ import {
 } from '@/api/endpoints/admin';
 import { IModuleInfo } from '@/api/endpoints/admin/typings';
 import { CompletionStatus } from '@/api/endpoints/types';
-import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
+import { FullscreenLoader } from '@/shared/components/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 import { useSelector } from 'react-redux';
 import { selectUserRole } from '@/store/slices/auth/selectors';
