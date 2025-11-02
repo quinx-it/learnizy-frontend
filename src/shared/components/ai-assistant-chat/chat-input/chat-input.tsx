@@ -22,6 +22,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
   const [attachedFiles, setAttachedFiles] = useState<ILocalFile[]>([]);
   const [isRecording, setIsRecording] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [recordingDuration, setRecordingDuration] = useState(0);
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
@@ -126,6 +127,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
 
       mediaRecorder.start();
       setIsRecording(true);
+      setRecordingDuration(0);
       recordingStartTimeRef.current = Date.now();
     } catch {
       showToast('error', 'Ошибка', 'Не удалось получить доступ к микрофону.');
@@ -144,6 +146,8 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
         mediaRecorderRef.current.stop();
       }
       setIsRecording(false);
+      setRecordingDuration(0);
+      recordingStartTimeRef.current = null;
     }
   };
 
@@ -163,6 +167,27 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
   };
 
   const isComponentExpanded = isExpanded || attachedFiles.length > 0;
+
+  const formatTime = (seconds: number): string => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout | undefined;
+    if (isRecording) {
+      interval = setInterval(() => {
+        if (recordingStartTimeRef.current) {
+          const duration = Math.floor((Date.now() - recordingStartTimeRef.current) / 1000);
+          setRecordingDuration(duration);
+        }
+      }, 1000);
+    }
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [isRecording]);
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -213,7 +238,9 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       <input ref={fileInputRef} type="file" multiple hidden onChange={handleFileSelect} />
       <textarea
         ref={textareaRef}
-        placeholder={t('COMMON.WRITE_YOUR_QUESTION')}
+        placeholder={
+          isRecording ? formatTime(recordingDuration) : t('CHAT_INPUT.WRITE_YOUR_QUESTION')
+        }
         className={clsx(
           'scrollbar-thin scrollbar-thumb-gray-300 scrollbar-thumb-rounded-lg flex-1 resize-none overflow-y-auto bg-transparent px-3 text-[16px] text-black placeholder-gray-400 outline-none',
           {

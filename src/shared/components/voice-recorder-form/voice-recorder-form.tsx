@@ -7,11 +7,8 @@ import { showToast } from '@/shared/ui/toaster';
 import { VoiceRecorderControl } from '../voice-recorder-control';
 import { schema } from './validation';
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
-import {
-  useCreateLessonAIQueryMutation,
-  useGetLessonAIQueriesQuery,
-} from '@/api/endpoints/voice/lessonAI';
-import { CreateLessonAIQueryRequestType } from '@/api/endpoints/voice/types';
+import { useCreateLessonAIQueryMutation, useGetLessonAIQueriesQuery } from '@/api/endpoints/voice';
+import { CreateLessonAIQueryRequestType } from '@/api/endpoints/voice';
 import { useState, useEffect } from 'react';
 import { Text } from '@/shared/ui/typography';
 import { CardWrapper } from '@/shared/components/card-wrapper';

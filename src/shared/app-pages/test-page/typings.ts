@@ -1,4 +1,4 @@
-import { LessonTestResponseType } from '@/api/endpoints/test/types';
+import { LessonTestResponseType } from '@/api/endpoints/test';
 
 export type TestDataType = LessonTestResponseType & {
   moduleSequenceOrder: number;

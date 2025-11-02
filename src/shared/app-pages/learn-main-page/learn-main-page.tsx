@@ -8,7 +8,7 @@ import { ProgressStatus } from '@/shared/components/progress-card/constants';
 import { Text } from '@/shared/ui/typography';
 import { CourseListItem } from '@/shared/components/course-list-item';
 import { StatisticsChart } from '@/shared/components/statistics-chart';
-import { useGetMainPageProgressQuery } from '@/api/endpoints/progress/progress';
+import { useGetMainPageProgressQuery } from '@/api/endpoints/progress';
 import { routes } from '@/shared/constants';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';

@@ -41,6 +41,8 @@ export enum HttpStatus {
   CONFLICT = 409,
 }
 
+export const REFRESH_THROTTLE = 1000;
+
 export const navbarLinks = {
   user: [
     { href: routes.user.homePage, Icon: CubesMainIcon, label: 'NAVBAR.HOME' },
