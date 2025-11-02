@@ -149,7 +149,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
         const blob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
         setAudioBlob(blob);
 
-        // Останавливаем AudioContext
+
         if (audioContextRef.current) {
           audioContextRef.current.close();
           audioContextRef.current = null;
@@ -167,18 +167,16 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       setRecordingDuration(0);
       recordingStartTimeRef.current = Date.now();
 
-      // Запускаем визуализацию
       const visualizeAudio = () => {
         if (!analyserRef.current || !mediaRecorderRef.current) return;
 
         const dataArray = new Uint8Array(analyserRef.current.frequencyBinCount);
         analyserRef.current.getByteFrequencyData(dataArray);
 
-        // Берем первые 10 значений для визуализации
+
         const levels = Array.from(dataArray.slice(0, 10)).map((value) => value / 255);
         setAudioLevels(levels);
 
-        // Продолжаем анимацию только если запись активна
         if (mediaRecorderRef.current.state === 'recording') {
           animationFrameRef.current = requestAnimationFrame(visualizeAudio);
         }
@@ -498,13 +496,18 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       </div>
 
       {isRecording && !audioBlob && (
-        <button
+        <Button
           onClick={stopRecording}
-          className="ml-0.5 flex h-9 w-9 items-center justify-center rounded-full transition hover:bg-gray-100"
+          variant="blue"
+          size="icon"
+          className="ml-0.5 !rounded-full"
           title="Остановить запись"
         >
-          <Pause size={18} className="text-black" />
-        </button>
+          <div className="flex items-center justify-center gap-0.5">
+            <div className="w-1 h-4 bg-black rounded-sm" />
+            <div className="w-1 h-4 bg-black rounded-sm" />
+          </div>
+        </Button>
       )}
 
       {audioBlob && (
