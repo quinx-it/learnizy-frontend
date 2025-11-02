@@ -265,6 +265,27 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
 
   const isComponentExpanded = isExpanded || attachedFiles.length > 0;
 
+  const formatTime = (seconds: number): string => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout | undefined;
+    if (isRecording) {
+      interval = setInterval(() => {
+        if (recordingStartTimeRef.current) {
+          const duration = Math.floor((Date.now() - recordingStartTimeRef.current) / 1000);
+          setRecordingDuration(duration);
+        }
+      }, 1000);
+    }
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [isRecording]);
+
   useEffect(() => {
     if (!isRecording) return;
 
