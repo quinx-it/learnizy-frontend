@@ -5,21 +5,22 @@ import Link from 'next/link';
 import { NavbarLink } from './navbar-link';
 
 import { routes } from '@/shared/constants';
-
-import { HeaderLogo, ExitIcon } from '@/shared/ui/icons';
+import { HeaderLogo, ExitIcon, CubesMainIcon } from '@/shared/ui/icons';
 import { Button } from '@/shared/ui/button';
 import { Spinner } from '@/shared/ui/spinner';
 import { Text } from '@/shared/ui/typography';
 import { useLogout } from '@/shared/hooks/useLogout';
-import { CubesMainIcon } from '@/shared/ui/icons/cubes-main-icon';
 import clsx from 'clsx';
 import { INavbarProps } from './typings';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '@/shared/components/language-switcher';
 
 export const Navbar: FC<INavbarProps> = (props) => {
   const { links } = props;
 
   const { handleLogout, isLoading } = useLogout();
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -38,11 +39,17 @@ export const Navbar: FC<INavbarProps> = (props) => {
         <Link href={routes.user.homePage} className="mb-15 block">
           <HeaderLogo />
         </Link>
+
         <div className="flex flex-col gap-6 lg:gap-3">
-          {links.map(({ href, Icon, label }) => {
-            return <NavbarLink key={label} href={href} Icon={Icon} label={label} />;
-          })}
+          {links.map(({ href, Icon, label }) => (
+            <NavbarLink key={label} href={href} Icon={Icon} label={t(label)} />
+          ))}
         </div>
+
+        <div className="mt-6">
+          <LanguageSwitcher />
+        </div>
+
         <Button
           onClick={handleLogout}
           variant="white"
@@ -55,12 +62,13 @@ export const Navbar: FC<INavbarProps> = (props) => {
             <>
               <ExitIcon className="h-[16px] w-[16px]" />
               <Text variant="s" tag="span" className="hidden text-inherit lg:block">
-                Выход
+                {t('COMMON.BUTTON_LOGOUT')}
               </Text>
             </>
           )}
         </Button>
       </nav>
+
       {isOpen && (
         <>
           <div
@@ -96,6 +104,10 @@ export const Navbar: FC<INavbarProps> = (props) => {
               ))}
             </div>
 
+            <div className="mt-6 w-full">
+              <LanguageSwitcher />
+            </div>
+
             <div className="mt-auto w-full pt-6">
               <Button
                 onClick={handleLogout}
@@ -109,7 +121,7 @@ export const Navbar: FC<INavbarProps> = (props) => {
                   <>
                     <ExitIcon className="h-[16px] w-[16px]" />
                     <Text variant="s" tag="span" className="text-inherit md:hidden lg:block">
-                      Выход
+                      {t('COMMON.BUTTON_LOGOUT')}
                     </Text>
                   </>
                 )}

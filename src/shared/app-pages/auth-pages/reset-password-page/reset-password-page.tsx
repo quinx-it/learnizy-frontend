@@ -4,6 +4,7 @@ import { Logo } from '@/shared/ui/icons';
 import { Heading, Text } from '@/shared/ui/typography';
 import React, { FC, useState } from 'react';
 import { IResetPasswordPageProps } from './typings';
+import Page from '@/shared/components/Page';
 
 export const ResetPasswordPage: FC<IResetPasswordPageProps> = (props) => {
   const { token } = props;

@@ -9,8 +9,11 @@ import { Input } from '@/shared/ui/input';
 import { DatePicker } from '@/shared/ui/datePicker';
 import { Button } from '@/shared/ui/button';
 import { PersonalDataFormValuesType } from './typings';
+import { useTranslation } from 'react-i18next';
 
 export const PersonalDataForm = () => {
+  const { t } = useTranslation();
+
   const {
     handleSubmit,
     control,
@@ -43,49 +46,69 @@ export const PersonalDataForm = () => {
         control={control}
         render={({ field }) => (
           <RadioGroup value={field.value} onValueChange={field.onChange} className="mb-8">
-            <RadioGroupItem value="man">Мужчина</RadioGroupItem>
-            <RadioGroupItem value="woman">Женщина</RadioGroupItem>
+            <RadioGroupItem value="man">{t('PERSONAL_DATA_FORM.GENDER.MAN')}</RadioGroupItem>
+            <RadioGroupItem value="woman">{t('PERSONAL_DATA_FORM.GENDER.WOMAN')}</RadioGroupItem>
           </RadioGroup>
         )}
       />
       {errors.gender && <p className="text-red-500">{errors.gender.message}</p>}
 
       <div className="grid grid-cols-2 grid-rows-[repeat(5,1fr)_auto] gap-x-4 gap-y-8">
-        <Input label="Имя" {...register('firstName')} error={errors.firstName?.message} />
-        <Input label="Фамилия" {...register('lastName')} error={errors.lastName?.message} />
         <Input
-          label="Email"
+          label={t('PERSONAL_DATA_FORM.FIRST_NAME')}
+          {...register('firstName')}
+          error={errors.firstName?.message}
+        />
+        <Input
+          label={t('PERSONAL_DATA_FORM.LAST_NAME')}
+          {...register('lastName')}
+          error={errors.lastName?.message}
+        />
+        <Input
+          label={t('PERSONAL_DATA_FORM.EMAIL')}
           className="col-span-2"
           {...register('email')}
           error={errors.email?.message}
         />
         <Input
-          label="Адрес"
+          label={t('PERSONAL_DATA_FORM.ADDRESS')}
           className="col-span-2"
           {...register('address')}
           error={errors.address?.message}
         />
-        <Input label="Номер" {...register('phone')} error={errors.phone?.message} />
+        <Input
+          label={t('PERSONAL_DATA_FORM.PHONE')}
+          {...register('phone')}
+          error={errors.phone?.message}
+        />
         <Controller
           name="birthDate"
           control={control}
           render={({ field }) => (
             <DatePicker
-              label="Дата рождения"
+              label={t('PERSONAL_DATA_FORM.BIRTH_DATE')}
               value={field.value}
               onChange={field.onChange}
               error={errors.birthDate?.message}
             />
           )}
         />
-        <Input label="Страна" {...register('country')} error={errors.country?.message} />
-        <Input label="Город" {...register('city')} error={errors.city?.message} />
+        <Input
+          label={t('PERSONAL_DATA_FORM.COUNTRY')}
+          {...register('country')}
+          error={errors.country?.message}
+        />
+        <Input
+          label={t('PERSONAL_DATA_FORM.CITY')}
+          {...register('city')}
+          error={errors.city?.message}
+        />
 
         <Button type="reset" variant="white" className="flex-1 text-[16px]" onClick={() => reset()}>
-          Не сохранять
+          {t('PERSONAL_DATA_FORM.RESET')}
         </Button>
         <Button type="submit" variant="blue" className="flex-1 text-[16px]">
-          Сохранить изменения
+          {t('PERSONAL_DATA_FORM.SUBMIT')}
         </Button>
       </div>
     </form>

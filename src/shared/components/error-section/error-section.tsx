@@ -4,14 +4,12 @@ import { Heading, Text } from '@/shared/ui/typography';
 import Image from 'next/image';
 import { Button } from '@/shared/ui/button';
 import { ErrorPropsType, ErrorType } from './typings';
+import { useTranslation } from 'react-i18next';
 
 export const ErrorSection: FC<ErrorPropsType & ErrorType> = (props) => {
-  const {
-    className,
-    reset,
-    title = 'Упс, произошла ошибка..',
-    text = 'Мы уже знаем об этом и работаем над её устранением. \n Пожалуйста, попробуйте позже.',
-  } = props;
+  const { t } = useTranslation();
+
+  const { className, reset } = props;
 
   const handleError = () => {
     reset();
@@ -33,12 +31,12 @@ export const ErrorSection: FC<ErrorPropsType & ErrorType> = (props) => {
           className="md:max-w-[110px]"
         />
         <div className="space-y-3">
-          <Heading variant={'xl-bold'}>{title}</Heading>
+          <Heading variant={'xl-bold'}>{t('ERROR_SECTION.TITLE')}</Heading>
           <Text className="whitespace-pre-wrap" variant={'m'}>
-            {text}
+            {t('ERROR_SECTION.TEXT')}
           </Text>
         </div>
-        <Button onClick={handleError}>Обновить страницу</Button>
+        <Button onClick={handleError}>{t('ERROR_SECTION.BUTTON')}</Button>
       </div>
     </div>
   );
