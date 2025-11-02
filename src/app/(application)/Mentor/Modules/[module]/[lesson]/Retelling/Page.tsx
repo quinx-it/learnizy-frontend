@@ -1,6 +1,6 @@
 'use client';
 
-import { LessonRetellingPage } from '@/shared/AppPages/LessonRetellingPage';
+import { LessonRetellingPage } from '@/shared/appPages/lessonRetellingPage';
 import { useParams } from 'next/navigation';
 
 import { ParamsType } from '../../../typings';

@@ -1,4 +1,4 @@
-import { RegisterPageDesign } from '@/shared/AppPages/AuthPages/RegisterPage';
+import { RegisterPageDesign } from '@/shared/appPages/authPages/RegisterPage';
 
 function RegisterPage() {
   return <RegisterPageDesign />;

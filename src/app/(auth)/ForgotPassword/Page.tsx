@@ -1,4 +1,4 @@
-import { ForgotPasswordPage } from '@/shared/AppPages/AuthPages/ForgotPasswordPage';
+import { ForgotPasswordPage } from '@/shared/appPages/authPages/ForgotPasswordPage';
 import React from 'react';
 
 function ForgotPassword() {

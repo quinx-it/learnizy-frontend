@@ -1,4 +1,4 @@
-import { MentorStudentsPage } from '@/shared/AppPages/MentorStudentsPage';
+import { MentorStudentsPage } from '@/shared/appPages/mentorStudentsPage';
 
 const MentorStudents = () => {
   return (

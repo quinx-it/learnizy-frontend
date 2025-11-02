@@ -1,4 +1,4 @@
-import { LearnMainPage } from '@/shared/AppPages/LearnMainPage';
+import { LearnMainPage } from '@/shared/appPages/learnMainPage';
 
 const LearnPage = () => {
   return <LearnMainPage />;

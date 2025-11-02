@@ -1,4 +1,4 @@
-import { WorkingSection } from '@/shared/components/WorkingSection';
+import { WorkingSection } from '@/shared/components/workingSection';
 
 const ProjectsPage = () => {
   return (

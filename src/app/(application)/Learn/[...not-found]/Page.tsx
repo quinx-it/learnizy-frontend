@@ -1,4 +1,4 @@
-import { NotFoundPage } from '@/shared/AppPages/NotFoundPage';
+import { NotFoundPage } from '@/shared/appPages/notFoundPage';
 import React from 'react';
 
 const LearnNotFound = () => {
