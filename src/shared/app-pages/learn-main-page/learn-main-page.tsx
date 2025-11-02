@@ -4,15 +4,20 @@ import React from 'react';
 import { constants } from './constants';
 import { CardWrapper } from '@/shared/components/card-wrapper';
 import { ProgressCard } from '@/shared/components/progress-card';
+import { ProgressStatus } from '@/shared/components/progress-card/constants';
 import { Text } from '@/shared/ui/typography';
 import { CourseListItem } from '@/shared/components/course-list-item';
 import { StatisticsChart } from '@/shared/components/statistics-chart';
 import { useGetMainPageProgressQuery } from '@/api/endpoints/progress/progress';
 import { routes } from '@/shared/constants';
 import { useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
+import Page from '@/shared/components/Page';
 
 export const LearnMainPage = () => {
   const router = useRouter();
+  const { t } = useTranslation();
+
   const { data: mainPageProgress, error } = useGetMainPageProgressQuery();
 
   if (error || !mainPageProgress) return null;
@@ -22,12 +27,12 @@ export const LearnMainPage = () => {
   );
 
   return (
-    <>
+    <Page key="MAIN_PAGE_SEO">
       <Breadcrumbs rootDescription={mainPageProgress.courseInfo.title || ''} />
 
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
         <ProgressCard
-          title={constants.titles.currentCourse}
+          title={t(constants.titles.currentCourse)}
           subTitle={mainPageProgress.courseInfo.title || ''}
           modules={mainPageProgress.courseInfo.completedModules || 0}
           totalLessons={mainPageProgress.courseInfo.totalLessons || 0}
@@ -37,18 +42,18 @@ export const LearnMainPage = () => {
         />
 
         <ProgressCard
-          title={constants.titles.currentModule}
-          subTitle={currentModule?.title || constants.titles.moduleName}
+          title={t(constants.titles.currentModule)}
+          subTitle={currentModule?.title || t(constants.titles.moduleName)}
           totalLessons={currentModule?.totalLessons || 0}
           lessons={currentModule?.completedLessons || 0}
-          status={'Продолжить'}
+          status={ProgressStatus.CONTINUE}
           onClick={() => currentModule && router.push(`${routes.user.modules}/${currentModule.id}`)}
         />
 
         <CardWrapper>
           <div>
             <Text variant="m-bold" className="mb-4">
-              Курс{' '}
+              {t('COURSE_LABEL')}{' '}
               <Text tag="span" className="text-medium" variant={'m-bold'}>
                 {mainPageProgress.courseInfo.title}
               </Text>
@@ -88,13 +93,13 @@ export const LearnMainPage = () => {
         <CardWrapper>
           <div>
             <Text variant="m-bold" className="mb-4">
-              {constants.titles.statistics}
+              {t(constants.titles.statistics)}
             </Text>
             <hr className="border-gray mb-4" />
             <StatisticsChart weeklyActivity={mainPageProgress.weeklyActivity ?? []} />
           </div>
         </CardWrapper>
       </div>
-    </>
+    </Page>
   );
 };

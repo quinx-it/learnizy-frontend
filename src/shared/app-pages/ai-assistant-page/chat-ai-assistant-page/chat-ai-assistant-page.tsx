@@ -8,6 +8,7 @@ import { IMessage, ISendMessageRequest } from '@/api/endpoints/ai-assistant/typi
 import { Role } from '@/api/endpoints/ai-assistant/constants';
 import { showToast } from '@/shared/ui/toaster';
 import { POLLING_INTERVAL } from './constants';
+import Page from '@/shared/components/Page';
 
 export const ChatAiAssistantPage = () => {
   const params = useParams();
@@ -90,22 +91,24 @@ export const ChatAiAssistantPage = () => {
   const assistantCount = optimisticMessages.filter((m) => m.role === Role.ASSISTANT).length;
 
   return (
-    <div className="relative flex h-screen w-full flex-col items-center justify-center px-5">
-      <div className="no-scrollbar flex w-full flex-1 items-center justify-center overflow-auto">
-        <ChatMessageHistory
-          messages={optimisticMessages}
-          isLoading={isLoadingMessages && optimisticMessages.length === 0}
-          isWaitingForAssistant={userCount > assistantCount}
-        />
-      </div>
+    <Page noIndex>
+      <div className="relative flex h-screen w-full flex-col items-center justify-center px-5">
+        <div className="no-scrollbar flex w-full flex-1 items-center justify-center overflow-auto">
+          <ChatMessageHistory
+            messages={optimisticMessages}
+            isLoading={isLoadingMessages && optimisticMessages.length === 0}
+            isWaitingForAssistant={userCount > assistantCount}
+          />
+        </div>
 
-      <div className="mb-4 flex h-9 w-full justify-center" />
-      <div className="absolute bottom-0 flex w-full justify-center bg-none p-4">
-        <ChatInput
-          onSendMessage={handleSendMessage}
-          isLoading={isSendingMessage || userCount > assistantCount}
-        />
+        <div className="mb-4 flex h-9 w-full justify-center" />
+        <div className="absolute bottom-0 flex w-full justify-center bg-none p-4">
+          <ChatInput
+            onSendMessage={handleSendMessage}
+            isLoading={isSendingMessage || userCount > assistantCount}
+          />
+        </div>
       </div>
-    </div>
+    </Page>
   );
 };

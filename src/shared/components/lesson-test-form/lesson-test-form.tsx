@@ -16,9 +16,11 @@ import {
   LessonTestSubmitType,
 } from '@/api/endpoints/test/types';
 import { LessonTestFormPropsType } from './typings';
+import { useTranslation } from 'react-i18next';
 
 export const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
   const { questions, onSubmit, testId, loading } = props;
+  const { t } = useTranslation();
 
   const router = useRouter();
   const pathname = usePathname();
@@ -39,7 +41,7 @@ export const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
     try {
       const isEmpty = Object.values(data.questions).some((q) => !q?.textAnswer?.trim() && !q?.file);
       if (!forceSubmit && isEmpty) {
-        showToast('info', 'Вы уверены?', 'У вас есть незаполненные поля');
+        showToast('info', t('LESSON_TEST.CONFIRM_TITLE'), t('LESSON_TEST.CONFIRM_TEXT'));
         setForceSubmit(true);
         return;
       }
@@ -74,7 +76,7 @@ export const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
       const resultPath = pathname.replace(/\/test$/, '/result');
       router.push(resultPath);
     } catch {
-      showToast('error', 'Произошла ошибка', '');
+      showToast('error', t('LESSON_TEST.ERROR_TITLE'), t('LESSON_TEST.ERROR_TEXT'));
     }
   };
 
@@ -104,16 +106,13 @@ export const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
         </ul>
 
         <div className="mt-8 space-y-5">
-          <Text variant={'l'}>
-            Нажмите кнопку ниже, чтобы узнать свой балл и увидеть разбор вопросов. Проверка ответов
-            может занять некоторое время
-          </Text>
+          <Text variant={'l'}>{t('LESSON_TEST.INFO_TEXT')}</Text>
           <Button type="submit" disabled={isSubmitting} className="mb-0">
-            {isSubmitting || loading ? <Spinner variant="circle" /> : 'Отправить'}
+            {isSubmitting || loading ? <Spinner variant="circle" /> : t('LESSON_TEST.SUBMIT')}
           </Button>
           {Object.keys(errors).length > 0 && (
             <Text tag="span" className="text-error ml-8">
-              Ошибка! Попробуйте еще раз.
+              {t('LESSON_TEST.ERROR_FIELD')}
             </Text>
           )}
         </div>
