@@ -12,8 +12,7 @@ import {
   VerifyEmailRequestType,
   ResendCodeRequestType,
 } from './types';
-
-const AUTH_BASE_URL = '/auth';
+import { AUTH_BASE_URL } from '@/api/constants';
 
 export const auth = api.injectEndpoints({
   endpoints: (builder) => ({

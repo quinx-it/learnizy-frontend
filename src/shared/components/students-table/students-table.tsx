@@ -59,7 +59,7 @@ export const StudentsTable: FC<IStudentsTableProps> = (props) => {
 
           {filteredStudents.length > 0 ? (
             filteredStudents.map((row) => (
-              <>
+              <div key={row.id} className="contents">
                 <div className="flex items-center justify-center border-t border-r py-3">
                   <Button
                     variant="white"
@@ -96,7 +96,7 @@ export const StudentsTable: FC<IStudentsTableProps> = (props) => {
                   <div className="flex cursor-pointer items-center gap-2"></div>
                   <ArrowRightIcon color="blue" />
                 </Link>
-              </>
+              </div>
             ))
           ) : (
             <div className="col-span-full border-t py-8 text-center text-gray-500">

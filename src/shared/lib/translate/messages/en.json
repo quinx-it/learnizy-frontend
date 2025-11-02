@@ -43,6 +43,20 @@
     "PROJECTS": "Projects",
     "PROFILE": "Profile"
   },
+  "CHAT_INPUT": {
+    "WRITE_YOUR_QUESTION": "Write your question",
+    "ERROR": "Error",
+    "ERROR_SENDING_FILES": "Error sending files",
+    "NO_DATA_TO_SEND": "No data to send",
+    "ERROR_UPLOADING_AUDIO": "Error uploading audio",
+    "ERROR_MICROPHONE_ACCESS": "Failed to access microphone",
+    "RECORDING_TOO_SHORT": "Recording too short",
+    "HOLD_TO_RECORD": "Hold the button to record voice",
+    "SWIPE_UP": "Swipe up",
+    "STOP_RECORDING": "Stop recording",
+    "CANCEL": "Cancel",
+    "SEND": "Send"
+  },
   "BREADCRUMB_LABELS": {
     "MODULES_MAIN_LABEL": "Learning Structure",
     "MODULES_LABEL": "Modules",
@@ -204,8 +218,16 @@
   "MODULES": {
     "STRUCTURE": "Learning structure"
   },
-  "LESSON": { "ONE": "lesson", "FEW": "lessons", "MANY": "lessons" },
-  "TEST": { "ONE": "test", "FEW": "tests", "MANY": "tests" },
+  "LESSON": {
+    "ONE": "lesson",
+    "FEW": "lessons",
+    "MANY": "lessons"
+  },
+  "TEST": {
+    "ONE": "test",
+    "FEW": "tests",
+    "MANY": "tests"
+  },
   "MODULES_CARD": {
     "BONUS": "Bonus module",
     "MODULE": "Module {{number}}",

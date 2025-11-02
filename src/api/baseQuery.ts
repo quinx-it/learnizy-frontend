@@ -4,15 +4,12 @@ import {
   fetchBaseQuery,
   FetchBaseQueryError,
 } from '@reduxjs/toolkit/query';
+import { throttle } from 'lodash';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 import { RootStateType } from '@/store';
-import { HttpStatus } from '@/shared/constants';
-interface IRefreshResponse {
-  data?: {
-    accessToken?: string;
-  };
-  error?: FetchBaseQueryError;
-}
+import { HttpStatus, REFRESH_THROTTLE } from '@/shared/constants';
+import { AUTH_BASE_URL } from './constants';
+import { IRefreshResponse, BaseQueryApi, BaseQueryExtraOptions } from './types';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1`,
@@ -26,6 +23,27 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
+const performRefresh = async (
+  api: BaseQueryApi,
+  extraOptions: BaseQueryExtraOptions,
+): Promise<IRefreshResponse> => {
+  return (await baseQuery(
+    {
+      url: `${AUTH_BASE_URL}/refresh`,
+      method: 'POST',
+      body: {},
+      credentials: 'include',
+    },
+    api,
+    extraOptions,
+  )) as IRefreshResponse;
+};
+
+const throttledRefresh = throttle(performRefresh, REFRESH_THROTTLE, {
+  leading: true,
+  trailing: false,
+}) as typeof performRefresh;
+
 export const baseQueryWithReauth: BaseQueryFn<
   string | FetchArgs,
   unknown,
@@ -34,16 +52,8 @@ export const baseQueryWithReauth: BaseQueryFn<
   let result = await baseQuery(args, api, extraOptions);
 
   if (result.error && result.error.status === HttpStatus.UNAUTHORIZED) {
-    const refreshResult = (await baseQuery(
-      {
-        url: '/auth/refresh',
-        method: 'POST',
-        body: {},
-        credentials: 'include',
-      },
-      api,
-      extraOptions,
-    )) as IRefreshResponse;
+    const refreshResult = await throttledRefresh(api, extraOptions);
+
     const accessToken = refreshResult.data?.accessToken;
 
     if (accessToken) {
