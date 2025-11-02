@@ -15,6 +15,7 @@ import WaveSurfer from 'wavesurfer.js';
 import { nanoid } from 'nanoid';
 import clsx from 'clsx';
 import { X, Check, ArrowUp } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
 import { Button } from '@/shared/ui/button';
@@ -105,13 +106,13 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
         setIsExpanded(false);
       }
     } catch {
-      showToast('error', 'Ошибка при отправке файлов', '');
+      showToast('error', t('CHAT_INPUT.ERROR_SENDING_FILES'), '');
     }
   };
 
   const handleUploadAudio = async () => {
     if (!audioBlob) {
-      showToast('error', 'Нет данных для отправки', '');
+      showToast('error', t('CHAT_INPUT.NO_DATA_TO_SEND'), '');
       return;
     }
 
@@ -131,7 +132,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
         waveformRef.current = null;
       }
     } catch {
-      showToast('error', 'Ошибка загрузки аудио', '');
+      showToast('error', t('CHAT_INPUT.ERROR_UPLOADING_AUDIO'), '');
     }
   };
 
@@ -193,7 +194,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       };
       visualizeAudio();
     } catch {
-      showToast('error', 'Ошибка', 'Не удалось получить доступ к микрофону.');
+      showToast('error', t('CHAT_INPUT.ERROR'), t('CHAT_INPUT.ERROR_MICROPHONE_ACCESS'));
     }
   };
 
@@ -201,7 +202,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
     if (mediaRecorderRef.current && isRecording) {
       const duration = Date.now() - (recordingStartTimeRef.current || 0);
       if (duration < MIN_RECORDING_DURATION_MS) {
-        showToast('info', 'Запись слишком короткая', 'Удерживайте кнопку для записи голоса.');
+        showToast('info', t('CHAT_INPUT.RECORDING_TOO_SHORT'), t('CHAT_INPUT.HOLD_TO_RECORD'));
         mediaRecorderRef.current.stream.getTracks().forEach((t) => t.stop());
         if (audioContextRef.current) {
           audioContextRef.current.close();
@@ -218,7 +219,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       setIsRecording(false);
       setIsLocked(false);
     }
-  }, [isRecording]);
+  }, [isRecording, t]);
 
   const cancelRecording = useCallback(() => {
     if (mediaRecorderRef.current && isRecording) {
@@ -443,7 +444,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       <input ref={fileInputRef} type="file" multiple hidden onChange={handleFileSelect} />
       <textarea
         ref={textareaRef}
-        placeholder={isRecording ? formatTime(recordingDuration) : 'Напишите ваш вопрос'}
+        placeholder={isRecording ? formatTime(recordingDuration) : t('CHAT_INPUT.WRITE_YOUR_QUESTION')}
         className={clsx(
           'scrollbar-thin scrollbar-thumb-gray-300 scrollbar-thumb-rounded-lg flex-1 resize-none overflow-y-auto bg-transparent px-3 text-[16px] text-black outline-none',
           {
@@ -464,7 +465,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
         {isRecording && !isLocked && (
           <div className="absolute -top-6 left-1/2 flex -translate-x-1/2 animate-bounce items-center gap-1 text-xs text-gray-600">
             <ArrowUp size={17} />
-            <span>Свайп вверх </span>
+            <span>{t('CHAT_INPUT.SWIPE_UP')} </span>
           </div>
         )}
         <button
@@ -510,7 +511,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
           variant="blue"
           size="icon"
           className="ml-0.5 !rounded-full"
-          title="Остановить запись"
+          title={t('CHAT_INPUT.STOP_RECORDING')}
         >
           <div className="flex items-center gap-1">
             <div className="h-4 w-1 rounded-sm bg-current" />
@@ -526,7 +527,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
             variant="gray"
             size="icon"
             className="ml-0.5 !rounded-full"
-            title="Отменить"
+            title={t('CHAT_INPUT.CANCEL')}
           >
             <X size={18} />
           </Button>
@@ -535,7 +536,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
             variant="green"
             size="icon"
             className="ml-0.5 !rounded-full"
-            title="Отправить"
+            title={t('CHAT_INPUT.SEND')}
           >
             <Check size={18} />
           </Button>
