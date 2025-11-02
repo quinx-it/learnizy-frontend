@@ -41,6 +41,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
   const [audioLevels, setAudioLevels] = useState<number[]>([]);
   const [dragStart, setDragStart] = useState<{ x: number; y: number } | null>(null);
 
+
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const recordingStartTimeRef = useRef<number | null>(null);
@@ -264,12 +265,6 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
   };
 
   const isComponentExpanded = isExpanded || attachedFiles.length > 0;
-
-  const formatTime = (seconds: number): string => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  };
 
   useEffect(() => {
     let interval: NodeJS.Timeout | undefined;
