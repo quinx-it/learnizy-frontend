@@ -2,7 +2,7 @@
 
 import { useState, useRef, FC, ChangeEvent, KeyboardEvent, useEffect } from 'react';
 import WaveSurfer from 'wavesurfer.js';
-import { X, Check, ArrowUp, Pause } from 'lucide-react';
+import { X, Check, ArrowUp } from 'lucide-react';
 import { nanoid } from 'nanoid';
 import clsx from 'clsx';
 
@@ -133,7 +133,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       audioChunksRef.current = [];
 
       // Создаем AudioContext для визуализации
-      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const audioContext = new (window.AudioContext || (window as typeof window & { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
       const analyser = audioContext.createAnalyser();
       analyser.fftSize = 256;
       const source = audioContext.createMediaStreamSource(stream);
