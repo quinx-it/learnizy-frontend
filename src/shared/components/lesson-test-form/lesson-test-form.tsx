@@ -14,7 +14,7 @@ import {
   AnswerInputType,
   LessonTestFormValuesType,
   LessonTestSubmitType,
-} from '@/api/endpoints/test/types';
+} from '@/api/endpoints/test';
 import { LessonTestFormPropsType } from './typings';
 import { useTranslation } from 'react-i18next';
 

@@ -5,7 +5,7 @@ import { Heading } from '@/shared/ui/typography';
 import React, { FC } from 'react';
 import { ExamCard } from './exam-card';
 import { useGetExamsQuery } from '@/api/endpoints/exams';
-import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
+import { FullscreenLoader } from '@/shared/components/fullscreen-loader';
 import { ErrorSection } from '@/shared/components/error-section';
 import { ExamStatus, ExamType, ExamsPageProps } from './typings';
 import { useTranslation } from 'react-i18next';
