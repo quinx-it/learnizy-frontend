@@ -380,6 +380,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       window.removeEventListener('touchmove', handleGlobalTouchMove);
       window.removeEventListener('touchend', handleGlobalTouchEnd);
     };
+
   }, [dragStart, isRecording, isLocked]);
 
   const formatTime = (seconds: number) => {
