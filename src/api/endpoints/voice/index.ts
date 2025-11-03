@@ -1,5 +1,5 @@
 export * from './voice';
-export * from './lessonAI';
+export * from './lessonAi';
 
 export type {
   VoiceDataType,

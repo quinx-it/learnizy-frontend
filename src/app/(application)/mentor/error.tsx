@@ -1,6 +1,5 @@
 'use client';
-import { ErrorSection } from '@/shared/components/error-section';
-import { ErrorType } from '@/shared/components/error-section/typings';
+import { ErrorSection, ErrorType } from '@/shared/components/ErrorSection';
 
 export default function Error({ error, reset }: ErrorType) {
   return <ErrorSection error={error} reset={reset} />;

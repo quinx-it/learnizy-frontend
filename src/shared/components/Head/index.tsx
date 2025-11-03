@@ -68,3 +68,4 @@ const Head: FC<IHeadProps> = (props) => {
 };
 
 export default Head;
+export type * from './typings';

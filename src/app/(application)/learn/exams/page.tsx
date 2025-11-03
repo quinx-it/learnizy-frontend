@@ -1,4 +1,4 @@
-import { ExamsPage } from '@/shared/app-pages/exams-page';
+import { ExamsPage } from '@/shared/appPages/examsPage';
 
 const Exams = () => {
   return <ExamsPage />;
