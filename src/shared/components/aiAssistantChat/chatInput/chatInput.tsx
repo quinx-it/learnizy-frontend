@@ -14,7 +14,7 @@ import {
 import WaveSurfer from 'wavesurfer.js';
 import { nanoid } from 'nanoid';
 import clsx from 'clsx';
-import { X, Check, ArrowUp } from 'lucide-react';
+import { X, Check, ArrowUp, Square } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
@@ -27,7 +27,7 @@ import { IChatInputProps, IAttachment, ILocalFile } from './typings';
 import { MIN_RECORDING_DURATION_MS } from './constants';
 
 export const ChatInput: FC<IChatInputProps> = (props) => {
-  const { onSendMessage, isLoading } = props;
+  const { onSendMessage, isLoading, onStopResponse, isWaitingResponse } = props;
 
   const { t } = useTranslation();
 
@@ -561,12 +561,25 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       )}
 
       {!isRecording && !audioBlob && (
-        <Button
-          className="ml-0.5 cursor-pointer bg-white p-2 text-gray-400 transition hover:bg-[#E8F8FC]"
-          onClick={handleSendClick}
-        >
-          <SendIcon />
-        </Button>
+        <>
+          {isWaitingResponse && onStopResponse && (
+            <Button
+              onClick={onStopResponse}
+              variant="blue"
+              size="icon"
+              className="ml-0.5 !rounded-full"
+              title="Остановить ответ"
+            >
+              <Square size={16} fill="currentColor" />
+            </Button>
+          )}
+          <Button
+            className="ml-0.5 cursor-pointer bg-white p-2 text-gray-400 transition hover:bg-[#E8F8FC]"
+            onClick={handleSendClick}
+          >
+            <SendIcon />
+          </Button>
+        </>
       )}
     </div>
   );

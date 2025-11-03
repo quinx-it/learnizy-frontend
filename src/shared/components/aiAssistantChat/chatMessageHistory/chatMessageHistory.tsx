@@ -13,7 +13,7 @@ import clsx from 'clsx';
 import { MarkdownRenderer } from '@/shared/components/markdownText';
 
 export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
-  const { messages = [], isLoading, isWaitingForAssistant } = props;
+  const { messages = [], isLoading, isWaitingForAssistant, isCancelled } = props;
 
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
@@ -122,7 +122,15 @@ export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
         );
       })}
 
-      {isWaitingForAssistant && (
+      {isCancelled && (
+        <div className="mb-8 flex justify-start">
+          <div className="flex max-w-[90%] items-center gap-2 rounded-3xl px-4 py-2 text-gray-700">
+            <span>Ответ отменен. Введите новый запрос.</span>
+          </div>
+        </div>
+      )}
+
+      {isWaitingForAssistant && !isCancelled && (
         <div className="mb-8 flex justify-start">
           <div className="flex max-w-[90%] items-center gap-2 rounded-3xl px-4 py-2 text-gray-700">
             <Spinner size={16} className="text-[#238BA7]" />

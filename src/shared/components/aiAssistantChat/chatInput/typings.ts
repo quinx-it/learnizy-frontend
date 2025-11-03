@@ -1,6 +1,8 @@
 export interface IChatInputProps {
   onSendMessage: (data: ISendMessageRequest) => void;
   isLoading?: boolean;
+  onStopResponse?: () => void;
+  isWaitingResponse?: boolean;
 }
 
 export interface IAttachment {

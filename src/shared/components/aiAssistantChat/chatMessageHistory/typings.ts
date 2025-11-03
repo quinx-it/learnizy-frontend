@@ -4,6 +4,7 @@ export interface IChatMessageHistoryProps {
   messages: IMessage[];
   isLoading?: boolean;
   isWaitingForAssistant?: boolean;
+  isCancelled?: boolean;
 }
 
 export interface IMessage {
