@@ -9,11 +9,11 @@ export const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['blue', 'yellow', 'white'],
+      options: ['blue', 'yellow', 'white', 'red', 'green', 'gray'],
     },
     size: {
       control: 'select',
-      options: ['small', 'medium', 'large'],
+      options: ['small', 'medium', 'large', 'icon'],
     },
     disabled: {
       control: 'boolean',

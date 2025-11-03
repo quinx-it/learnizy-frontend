@@ -43,6 +43,20 @@
     "PROJECTS": "Проекты",
     "PROFILE": "Профиль"
   },
+  "CHAT_INPUT": {
+    "WRITE_YOUR_QUESTION": "Напишите ваш вопрос",
+    "ERROR": "Ошибка",
+    "ERROR_SENDING_FILES": "Ошибка при отправке файлов",
+    "NO_DATA_TO_SEND": "Нет данных для отправки",
+    "ERROR_UPLOADING_AUDIO": "Ошибка загрузки аудио",
+    "ERROR_MICROPHONE_ACCESS": "Не удалось получить доступ к микрофону",
+    "RECORDING_TOO_SHORT": "Запись слишком короткая",
+    "HOLD_TO_RECORD": "Удерживайте кнопку для записи голоса",
+    "SWIPE_UP": "Свайп вверх",
+    "STOP_RECORDING": "Остановить запись",
+    "CANCEL": "Отменить",
+    "SEND": "Отправить"
+  },
   "BREADCRUMB_LABELS": {
     "MODULES_MAIN_LABEL": "Структура обучения",
     "MODULES_LABEL": "Модули",

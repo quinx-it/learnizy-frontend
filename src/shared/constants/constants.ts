@@ -43,17 +43,6 @@ export enum HttpStatus {
 
 export const REFRESH_THROTTLE = 1000;
 
-import {
-  ProjectsIcon,
-  APlusIcon,
-  CubesMainIcon,
-  DiscussionIcon,
-  PersonIcon,
-  StudentHatIcon,
-  FourPointedStarIcon,
-} from '@/shared/ui/icons';
-import { routes } from '@/shared/constants';
-
 export const navbarLinks = {
   user: [
     { href: routes.user.homePage, Icon: CubesMainIcon, label: 'NAVBAR.HOME' },

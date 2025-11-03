@@ -6,7 +6,7 @@ import {
   getTextVariant,
   headingTags,
   headingVariants,
-} from '@/api/endpoints/lessons/types';
+} from '@/api/endpoints/lessons';
 import Link from 'next/link';
 import Image from 'next/image';
 import { LightbulbIcon, NotificationIcon } from '@/shared/ui/icons';

@@ -5,7 +5,7 @@ import { Text } from '@/shared/ui/typography';
 import { Plus, X } from 'lucide-react';
 import { Button } from '@/shared/ui/button';
 import { useGetChatsQuery } from '@/api/endpoints/ai-assistant';
-import { IChat } from '@/api/endpoints/ai-assistant/typing';
+import { IChat } from '@/api/endpoints/ai-assistant';
 import { IChatHistoryProps } from './typing';
 import { formatRelativeDate } from '@/shared/lib/utils';
 import { HistoryIcon } from '@/shared/ui/icons/history-icon';

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRefreshMutation } from '@/api/endpoints/auth/auth';
+import { useRefreshMutation } from '@/api/endpoints/auth';
 import { PropsWithChildren, useEffect, FC } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAppSelector } from '@/shared/hooks/redux';
@@ -14,7 +14,7 @@ import {
   dynamicMentorRoutes,
 } from '@/shared/constants/routes';
 import { selectToken, selectUserRole } from '@/store/slices/auth/selectors';
-import { FullscreenLoader } from '@/shared/components/fullscreen-loader/fullscreen-loader';
+import { FullscreenLoader } from '@/shared/components/fullscreen-loader';
 import { isRoleRoute } from '@/shared/lib/utils';
 import { NotFoundPage } from '@/shared/app-pages/notFound-page';
 
