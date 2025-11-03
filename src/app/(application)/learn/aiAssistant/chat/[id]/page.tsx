@@ -1,4 +1,4 @@
-import { ChatAiAssistantPage } from '@/shared/appPages/aiАssistantPage/chatAiAssistantPage';
+import { ChatAiAssistantPage } from '@/shared/appPages/aiАssistantPage';
 
 const ChatAiAssistant = () => {
   return <ChatAiAssistantPage />;

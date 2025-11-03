@@ -1,4 +1,4 @@
 import { PropsWithChildren } from 'react';
-import { IHeadProps } from '@/shared/components/Head/typings';
+import type { IHeadProps } from '@/shared/components/Head';
 
 export interface IPageProps extends PropsWithChildren, IHeadProps {}
