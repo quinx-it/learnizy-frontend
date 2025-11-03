@@ -1,6 +1,5 @@
 'use client';
-import { TestPage } from '@/shared/app-pages/test-page';
-import { TestDataType } from '@/shared/app-pages/test-page/typings';
+import { TestPage, TestDataType } from '@/shared/appPages/testPage';
 import { useParams } from 'next/navigation';
 import { useGetTestByLessonIdQuery } from '@/api/endpoints/test';
 

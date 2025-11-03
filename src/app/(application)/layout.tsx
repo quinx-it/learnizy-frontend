@@ -14,9 +14,9 @@ import {
   dynamicMentorRoutes,
 } from '@/shared/constants/routes';
 import { selectToken, selectUserRole } from '@/store/slices/auth/selectors';
-import { FullscreenLoader } from '@/shared/components/fullscreen-loader';
+import { FullscreenLoader } from '@/shared/components/fullscreenLoader';
 import { isRoleRoute } from '@/shared/lib/utils';
-import { NotFoundPage } from '@/shared/app-pages/notFound-page';
+import { NotFoundPage } from '@/shared/appPages/notFoundPage';
 
 const allStaticRoutes = [...publicRoutes, ...staticUserRoutes, ...staticMentorRoutes];
 const allDynamicRoutes = [...dynamicUserRoutes, ...dynamicMentorRoutes];
