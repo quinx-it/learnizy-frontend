@@ -1,14 +1,14 @@
 'use client';
-import { CardWrapper } from '@/shared/components/cardWrapper';
+import { CardWrapper } from '@/shared/components/CardWrapper';
 import { globalConstants, routes } from '@/shared/constants';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import React, { FC } from 'react';
 import { constants, TestType } from './constants';
 import { Text } from '@/shared/ui/typography';
-import { LessonTestForm } from '@/shared/components/lessonTestForm';
+import { LessonTestForm } from '@/shared/components/LessonTestForm';
 import { LessonTestSubmitType } from '@/api/endpoints/test';
-import { FullscreenLoader } from '@/shared/components/fullscreenLoader';
-import { ErrorSection } from '@/shared/components/errorSection';
+import { FullscreenLoader } from '@/shared/components/FullscreenLoader';
+import { ErrorSection } from '@/shared/components/ErrorSection';
 import { useSendTestMutation } from '@/api/endpoints/test';
 import { showToast } from '@/shared/ui/toaster';
 import { TestPagePropsType } from './typings';

@@ -1,5 +1,5 @@
-import { ForgotPasswordForm } from '@/shared/components/auth/forgotPasswordForm';
-import { CardWrapper } from '@/shared/components/cardWrapper';
+import { ForgotPasswordForm } from '@/shared/components/Auth/ForgotPasswordForm';
+import { CardWrapper } from '@/shared/components/CardWrapper';
 import { Logo } from '@/shared/ui/icons';
 import { Heading, Text } from '@/shared/ui/typography';
 import React from 'react';

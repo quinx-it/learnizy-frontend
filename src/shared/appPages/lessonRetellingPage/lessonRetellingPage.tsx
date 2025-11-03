@@ -4,9 +4,9 @@ import { constants } from './constants';
 import { Text } from '@/shared/ui/typography';
 import { useGetLessonQuery } from '@/api/endpoints/lessons';
 import React, { FC } from 'react';
-import { CardWrapper } from '@/shared/components/cardWrapper';
-import { VoiceRecorderForm } from '@/shared/components/voiceRecorderForm';
-import { FullscreenLoader } from '@/shared/components/fullscreenLoader';
+import { CardWrapper } from '@/shared/components/CardWrapper';
+import { VoiceRecorderForm } from '@/shared/components/VoiceRecorderForm';
+import { FullscreenLoader } from '@/shared/components/FullscreenLoader';
 import { ILessonRetellingPageProps } from './typings';
 import Page from '@/shared/components/Page';
 

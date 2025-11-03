@@ -1,7 +1,7 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import { ModuleCard } from '@/shared/components/moduleCard';
+import { ModuleCard } from '@/shared/components/ModuleCard';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import { routes } from '@/shared/constants';
 import { globalConstants } from '@/shared/constants/constants';
@@ -14,8 +14,8 @@ import {
 } from '@/api/endpoints/admin';
 import { IModuleInfo } from '@/api/endpoints/admin';
 import { CompletionStatus } from '@/api/endpoints/types';
-import { FullscreenLoader } from '@/shared/components/fullscreenLoader';
-import { ErrorSection } from '@/shared/components/errorSection';
+import { FullscreenLoader } from '@/shared/components/FullscreenLoader';
+import { ErrorSection } from '@/shared/components/ErrorSection';
 import { useSelector } from 'react-redux';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';

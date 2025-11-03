@@ -2,11 +2,11 @@
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import React from 'react';
 import { constants } from './constants';
-import { CardWrapper } from '@/shared/components/cardWrapper';
-import { ProgressCard, ProgressStatus } from '@/shared/components/progressCard';
+import { CardWrapper } from '@/shared/components/CardWrapper';
+import { ProgressCard, ProgressStatus } from '@/shared/components/ProgressCard';
 import { Text } from '@/shared/ui/typography';
-import { CourseListItem } from '@/shared/components/courseListItem';
-import { StatisticsChart } from '@/shared/components/statisticsChart';
+import { CourseListItem } from '@/shared/components/CourseListItem';
+import { StatisticsChart } from '@/shared/components/StatisticsChart';
 import { useGetMainPageProgressQuery } from '@/api/endpoints/progress';
 import { routes } from '@/shared/constants';
 import { useRouter } from 'next/navigation';

@@ -1,4 +1,4 @@
-import { CardWrapper } from '@/shared/components/cardWrapper';
+import { CardWrapper } from '@/shared/components/CardWrapper';
 import { routes } from '@/shared/constants';
 import { cn } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';

@@ -1,6 +1,6 @@
 'use client';
 
-import { CardWrapper } from '@/shared/components/cardWrapper';
+import { CardWrapper } from '@/shared/components/CardWrapper';
 import { routes } from '@/shared/constants';
 import { CardAccordion } from '@/shared/ui/accordion';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';

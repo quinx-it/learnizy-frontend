@@ -1,6 +1,6 @@
 'use client';
 
-import { CardWrapper } from '@/shared/components/cardWrapper';
+import { CardWrapper } from '@/shared/components/CardWrapper';
 import { routes } from '@/shared/constants';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import { DotTitle } from '@/shared/ui/dotTitle';
@@ -10,15 +10,15 @@ import { Text } from '@/shared/ui/typography';
 import Link from 'next/link';
 import React, { FC, useState } from 'react';
 import { constants } from './constants';
-import { LessonCard } from '@/shared/components/lessonCard';
+import { LessonCard } from '@/shared/components/LessonCard';
 import { useGetModuleQuery } from '@/api/endpoints/modules';
 import {
   useCreateLessonMutation,
   useUpdateLessonMutation,
   useDeleteLessonMutation,
 } from '@/api/endpoints/admin';
-import { FullscreenLoader } from '@/shared/components/fullscreenLoader';
-import { ErrorSection } from '@/shared/components/errorSection';
+import { FullscreenLoader } from '@/shared/components/FullscreenLoader';
+import { ErrorSection } from '@/shared/components/ErrorSection';
 import { percentage, pluralize } from '@/shared/lib/utils';
 import { ILesson } from '@/api/endpoints/lessons';
 import { usePathname, useRouter } from 'next/navigation';

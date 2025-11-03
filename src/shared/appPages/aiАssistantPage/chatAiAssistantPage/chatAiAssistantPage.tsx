@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams } from 'next/navigation';
-import { ChatInput, ChatMessageHistory } from '@/shared/components/aiAssistantChat';
+import { ChatInput, ChatMessageHistory } from '@/shared/components/AiAssistantChat';
 import {
   useGetChatMessagesQuery,
   useSendMessageMutation,

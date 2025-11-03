@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import React, { FC } from 'react';
-import { CardWrapper } from '@/shared/components/cardWrapper';
+import { CardWrapper } from '@/shared/components/CardWrapper';
 import { DotTitle } from '@/shared/ui/dotTitle';
 import { Text } from '@/shared/ui/typography';
 import { ProgressBar } from '@/shared/ui/progress';

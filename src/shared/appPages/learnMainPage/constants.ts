@@ -1,4 +1,4 @@
-import { CourseListItemType } from '@/shared/components/courseListItem';
+import { CourseListItemType } from '@/shared/components/CourseListItem';
 import { AccordionItemType } from '@/shared/ui/accordionReview';
 
 export const constants = {

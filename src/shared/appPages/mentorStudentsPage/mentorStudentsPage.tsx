@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import { StudentsTable } from '@/shared/components/studentsTable';
+import { StudentsTable } from '@/shared/components/StudentsTable';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import { useGetDashboardAnalyticsQuery } from '@/api/endpoints/admin';
-import { AnalyticsCard } from '@/shared/components/analyticsCard';
+import { AnalyticsCard } from '@/shared/components/AnalyticsCard';
 import { ProgressBar } from '@/shared/ui/progress';
 import Page from '@/shared/components/Page';
 

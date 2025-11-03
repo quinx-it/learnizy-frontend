@@ -1,6 +1,6 @@
 'use client';
 
-import { CardWrapper } from '@/shared/components/cardWrapper';
+import { CardWrapper } from '@/shared/components/CardWrapper';
 import { routes } from '@/shared/constants';
 import { EditPhotoIcon, ExitIcon, LockIcon, PersonIcon } from '@/shared/ui/icons';
 import { DashboardLink } from './dashboardLink';

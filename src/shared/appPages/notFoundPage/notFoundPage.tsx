@@ -1,4 +1,4 @@
-import { NotFoundComponent } from '@/shared/components/notFoundComponent';
+import { NotFoundComponent } from '@/shared/components/NotFoundComponent';
 import Page from '@/shared/components/Page';
 import React from 'react';
 

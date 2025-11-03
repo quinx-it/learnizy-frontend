@@ -3,14 +3,14 @@
 import React, { useRef, useLayoutEffect, useEffect, FC } from 'react';
 import { Text } from '@/shared/ui/typography';
 import { Spinner } from '@/shared/ui/spinner';
-import { AudioPlayer } from '../../audioPlayer';
+import { AudioPlayer } from '../../AudioPlayer';
 import { IChatMessageHistoryProps } from './typings';
 import { Role } from './constants';
 import { isAudioUrl } from '@/shared/lib/utils';
-import { Typewriter } from '../chatTypewriter';
+import { Typewriter } from '../ChatTypewriter';
 import { usePrevious } from '@/shared/hooks/usePrevious';
 import clsx from 'clsx';
-import { MarkdownRenderer } from '@/shared/components/markdownText';
+import { MarkdownRenderer } from '@/shared/components/MarkdownText';
 
 export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
   const { messages = [], isLoading, isWaitingForAssistant } = props;

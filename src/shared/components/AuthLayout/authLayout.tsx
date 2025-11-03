@@ -3,7 +3,7 @@ import { ReactNode, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppSelector } from '@/shared/hooks/redux';
 import { routes } from '@/shared/constants';
-import { FullscreenLoader } from '../fullscreenLoader';
+import { FullscreenLoader } from '../FullscreenLoader';
 import { selectToken } from '@/store/slices/auth/selectors';
 
 export function AuthLayout({ children }: { children: ReactNode }) {

@@ -1,6 +1,6 @@
 'use client';
 
-import { CardWrapper } from '@/shared/components/cardWrapper';
+import { CardWrapper } from '@/shared/components/CardWrapper';
 import { Button } from '@/shared/ui/button';
 import { DotTitle } from '@/shared/ui/dotTitle';
 import React, { ComponentProps, ReactNode, FC } from 'react';

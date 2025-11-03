@@ -1,6 +1,6 @@
 import { Button } from '@/shared/ui/button';
 import { MicIcon, TrashCanIcon } from '@/shared/ui/icons';
-import { AudioPlayer } from '../audioPlayer';
+import { AudioPlayer } from '../AudioPlayer';
 import { Text } from '@/shared/ui/typography';
 import { useEffect, useState, FC } from 'react';
 import { useVoiceRecorder } from '@/shared/hooks';

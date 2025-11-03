@@ -1,13 +1,13 @@
 'use client';
 
-import { CardWrapper } from '@/shared/components/cardWrapper';
+import { CardWrapper } from '@/shared/components/CardWrapper';
 import { globalConstants, routes } from '@/shared/constants';
 import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import React, { FC, useEffect, useRef } from 'react';
 import { Text } from '@/shared/ui/typography';
 import { useGetLastTestAttemptQuery, useGetTestByLessonIdQuery } from '@/api/endpoints/test';
-import { FullscreenLoader } from '@/shared/components/fullscreenLoader';
-import { ErrorSection } from '@/shared/components/errorSection';
+import { FullscreenLoader } from '@/shared/components/FullscreenLoader';
+import { ErrorSection } from '@/shared/components/ErrorSection';
 import { LessonTestResponseType, LessonTestResultPagePropsType } from './types';
 import Page from '@/shared/components/Page';
 

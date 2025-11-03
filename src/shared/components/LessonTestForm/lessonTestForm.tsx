@@ -1,6 +1,6 @@
 'use client';
 import { Text } from '@/shared/ui/typography';
-import { LessonQuestion } from '@/shared/components/lessonQuestion';
+import { LessonQuestion } from '@/shared/components/LessonQuestion';
 import { Button } from '@/shared/ui/button';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Spinner } from '@/shared/ui/spinner';

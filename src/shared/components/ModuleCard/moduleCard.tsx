@@ -6,7 +6,7 @@ import { Button } from '@/shared/ui/button';
 import { renderModuleProgress } from './utils';
 import { cn, pluralize } from '@/shared/lib/utils';
 import { constants } from './constants';
-import { CardWrapper } from '@/shared/components/cardWrapper';
+import { CardWrapper } from '@/shared/components/CardWrapper';
 import { DotTitle } from '@/shared/ui/dotTitle';
 import { routes } from '@/shared/constants';
 import { useRouter } from 'next/navigation';

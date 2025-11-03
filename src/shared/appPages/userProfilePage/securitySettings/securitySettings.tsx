@@ -1,4 +1,4 @@
-import { CardWrapper } from '@/shared/components/cardWrapper';
+import { CardWrapper } from '@/shared/components/CardWrapper';
 import { Heading } from '@/shared/ui/typography';
 import { SecuritySettingsForm } from './securitySettingsForm';
 

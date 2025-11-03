@@ -2,7 +2,7 @@
 
 import { useState, FC } from 'react';
 import Link from 'next/link';
-import { NavbarLink } from './navbarLink';
+import { NavbarLink } from './NavbarLink/navbarLink';
 
 import { routes } from '@/shared/constants';
 import { HeaderLogo, ExitIcon, CubesMainIcon } from '@/shared/ui/icons';
@@ -11,9 +11,9 @@ import { Spinner } from '@/shared/ui/spinner';
 import { Text } from '@/shared/ui/typography';
 import { useLogout } from '@/shared/hooks/useLogout';
 import clsx from 'clsx';
-import { INavbarProps } from './typings';
+import { INavbarProps } from '@/shared/components/Navbar/typings';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from '@/shared/components/languageSwitcher';
+import LanguageSwitcher from '@/shared/components/LanguageSwitcher';
 
 export const Navbar: FC<INavbarProps> = (props) => {
   const { links } = props;

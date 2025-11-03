@@ -1,5 +1,5 @@
-import { RegisterForm } from '@/shared/components/auth/registerForm';
-import { CardWrapper } from '@/shared/components/cardWrapper';
+import { RegisterForm } from '@/shared/components/Auth/RegisterForm';
+import { CardWrapper } from '@/shared/components/CardWrapper';
 import { Logo } from '@/shared/ui/icons';
 import React from 'react';
 import Page from '@/shared/components/Page';

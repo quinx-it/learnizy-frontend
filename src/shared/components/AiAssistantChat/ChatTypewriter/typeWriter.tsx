@@ -2,7 +2,7 @@
 
 import React, { FC, useState, useEffect } from 'react';
 import { ITypewriterProps } from './typings';
-import { MarkdownRenderer } from '@/shared/components/markdownText';
+import { MarkdownRenderer } from '@/shared/components/MarkdownText';
 
 export const Typewriter: FC<ITypewriterProps> = (props) => {
   const { text, speed = 1, onUpdate } = props;

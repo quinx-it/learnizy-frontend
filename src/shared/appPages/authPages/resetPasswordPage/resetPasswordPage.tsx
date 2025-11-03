@@ -1,5 +1,5 @@
-import { ResetPasswordForm } from '@/shared/components/auth/resetPasswordForm';
-import { CardWrapper } from '@/shared/components/cardWrapper';
+import { ResetPasswordForm } from '@/shared/components/Auth/ResetPasswordForm';
+import { CardWrapper } from '@/shared/components/CardWrapper';
 import { Logo } from '@/shared/ui/icons';
 import { Heading, Text } from '@/shared/ui/typography';
 import React, { FC, useState } from 'react';
