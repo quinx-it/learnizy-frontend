@@ -1,7 +1,7 @@
 import { Heading } from '@/shared/ui/typography';
 import React from 'react';
 import { AdvantageCard } from './advantageCard';
-import { SectionContent } from '../sectionContent';
+import { SectionContent } from '../SectionContent';
 import { constants } from './constants';
 
 export const AdvantagesSection = () => {

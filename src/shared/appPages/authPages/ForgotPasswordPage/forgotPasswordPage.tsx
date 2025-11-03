@@ -1,4 +1,4 @@
-import { ForgotPasswordForm } from '@/shared/components/Auth/ForgotPasswordForm';
+import { ForgotPasswordForm } from '@/shared/components/auth/ForgotPasswordForm';
 import { CardWrapper } from '@/shared/components/CardWrapper';
 import { Logo } from '@/shared/ui/icons';
 import { Heading, Text } from '@/shared/ui/typography';

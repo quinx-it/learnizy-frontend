@@ -3,7 +3,7 @@
 import { CircleIcon } from '@/shared/ui/icons';
 import { Heading } from '@/shared/ui/typography';
 import React, { FC } from 'react';
-import { ExamCard } from './examCard';
+import { ExamCard } from './ExamCard';
 import { useGetExamsQuery } from '@/api/endpoints/exams';
 import { FullscreenLoader } from '@/shared/components/FullscreenLoader';
 import { ErrorSection } from '@/shared/components/ErrorSection';

@@ -1,4 +1,4 @@
-import type { IAuthFormValues } from '@/shared/components/Auth/AuthForm';
+import type { IAuthFormValues } from '@/shared/components/auth/AuthForm';
 
 export type LoginRequestType = Pick<IAuthFormValues, 'username' | 'password'>;
 export type ForgotPasswordRequestType = { email: string };

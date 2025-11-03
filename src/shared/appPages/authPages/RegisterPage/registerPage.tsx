@@ -1,4 +1,4 @@
-import { RegisterForm } from '@/shared/components/Auth/RegisterForm';
+import { RegisterForm } from '@/shared/components/auth/RegisterForm';
 import { CardWrapper } from '@/shared/components/CardWrapper';
 import { Logo } from '@/shared/ui/icons';
 import React from 'react';

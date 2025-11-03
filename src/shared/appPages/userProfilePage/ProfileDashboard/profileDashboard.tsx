@@ -3,7 +3,7 @@
 import { CardWrapper } from '@/shared/components/CardWrapper';
 import { routes } from '@/shared/constants';
 import { EditPhotoIcon, ExitIcon, LockIcon, PersonIcon } from '@/shared/ui/icons';
-import { DashboardLink } from './dashboardLink';
+import { DashboardLink } from './DashBoardLink';
 import { Button } from '@/shared/ui/button';
 import Image from 'next/image';
 import { Text } from '@/shared/ui/typography';

@@ -16,7 +16,7 @@ import {
 import { selectToken, selectUserRole } from '@/store/slices/auth/selectors';
 import { FullscreenLoader } from '@/shared/components/FullscreenLoader';
 import { isRoleRoute } from '@/shared/lib/utils';
-import { NotFoundPage } from '@/shared/appPages/notFoundPage';
+import { NotFoundPage } from '@/shared/appPages/NotFoundPage';
 
 const allStaticRoutes = [...publicRoutes, ...staticUserRoutes, ...staticMentorRoutes];
 const allDynamicRoutes = [...dynamicUserRoutes, ...dynamicMentorRoutes];

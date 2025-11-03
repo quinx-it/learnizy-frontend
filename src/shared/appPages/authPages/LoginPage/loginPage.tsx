@@ -1,6 +1,6 @@
 'use client';
 
-import { AuthForm } from '@/shared/components/Auth/AuthForm';
+import { AuthForm } from '@/shared/components/auth/AuthForm';
 import { CardWrapper } from '@/shared/components/CardWrapper';
 import { Logo } from '@/shared/ui/icons';
 import React from 'react';

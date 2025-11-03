@@ -2,7 +2,7 @@
 
 import { CardWrapper } from '@/shared/components/CardWrapper';
 import { Heading } from '@/shared/ui/typography';
-import { PersonalDataForm } from './personalDataForm';
+import { PersonalDataForm } from './PersonalDataForm';
 import { useTranslation } from 'react-i18next';
 
 export const PersonalData = () => {

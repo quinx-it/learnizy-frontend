@@ -11,7 +11,7 @@ import { Spinner } from '@/shared/ui/spinner';
 import { Text } from '@/shared/ui/typography';
 import { useLogout } from '@/shared/hooks/useLogout';
 import clsx from 'clsx';
-import { INavbarProps } from '@/shared/components/Navbar/typings';
+import { INavbarProps } from '@/shared/components/navbar/typings';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '@/shared/components/LanguageSwitcher';
 

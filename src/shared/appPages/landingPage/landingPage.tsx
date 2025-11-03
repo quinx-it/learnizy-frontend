@@ -1,5 +1,5 @@
-import { AdvantagesSection } from './advantagesSection';
-import { HeroSection } from './heroSection';
+import { AdvantagesSection } from './AdvantagesSection';
+import { HeroSection } from './HeroSection';
 import Page from '@/shared/components/Page';
 
 export const LandingPage = () => {

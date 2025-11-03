@@ -3,9 +3,9 @@
 import { CircleIcon } from '@/shared/ui/icons';
 import { Heading } from '@/shared/ui/typography';
 import React from 'react';
-import { InterviewQuestions } from './interviewQuestoins';
-import { FrequentlyAskedQuestions } from './frequentlyAskedQuestions';
-import { InterviewRecords } from './interviewRecords';
+import { InterviewQuestions } from './InterviewQuestoins';
+import { FrequentlyAskedQuestions } from './FrequentlyAskedQuestions';
+import { InterviewRecords } from './InterviewRecords';
 import { useTranslation } from 'react-i18next';
 import Page from '@/shared/components/Page';
 

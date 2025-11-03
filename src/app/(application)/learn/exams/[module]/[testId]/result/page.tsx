@@ -1,5 +1,5 @@
 'use client';
-import { ExamTestResultPage } from '@/shared/appPages/examTestResultPage';
+import { ExamTestResultPage } from '@/shared/appPages/ExamTestResultPage';
 import { useParams } from 'next/navigation';
 import { ParamsType } from '../../../typings';
 

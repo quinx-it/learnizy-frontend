@@ -1,5 +1,5 @@
 import { PropsWithChildren, FC } from 'react';
-import { ProfileDashboard } from './profileDashboard/profileDashboard';
+import { ProfileDashboard } from './ProfileDashboard/profileDashboard';
 import Page from '@/shared/components/Page';
 
 export const UserProfilePage: FC<PropsWithChildren> = (props) => {

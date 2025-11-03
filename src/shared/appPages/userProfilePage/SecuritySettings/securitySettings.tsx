@@ -1,6 +1,6 @@
 import { CardWrapper } from '@/shared/components/CardWrapper';
 import { Heading } from '@/shared/ui/typography';
-import { SecuritySettingsForm } from './securitySettingsForm';
+import { SecuritySettingsForm } from './SecuritySettingsForm';
 
 export const SecuritySettings = () => {
   return (

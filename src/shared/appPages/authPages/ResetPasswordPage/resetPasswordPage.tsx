@@ -1,4 +1,4 @@
-import { ResetPasswordForm } from '@/shared/components/Auth/ResetPasswordForm';
+import { ResetPasswordForm } from '@/shared/components/auth/ResetPasswordForm';
 import { CardWrapper } from '@/shared/components/CardWrapper';
 import { Logo } from '@/shared/ui/icons';
 import { Heading, Text } from '@/shared/ui/typography';
