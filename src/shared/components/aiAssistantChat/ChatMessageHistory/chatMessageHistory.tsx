@@ -16,6 +16,7 @@ import { MarkdownRenderer } from '@/shared/components/MarkdownText';
 export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
   const { messages = [], isLoading, isWaitingForAssistant, isCancelled } = props;
   const { t } = useTranslation();
+  const { messages = [], isLoading, isWaitingForAssistant } = props;
 
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
@@ -137,6 +138,11 @@ export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
           <div className="flex max-w-[90%] items-center gap-2 rounded-3xl px-4 py-2 text-gray-700">
             <Spinner size={16} className="text-[#238BA7]" />
             <span>{t('CHAT.AI_THINKING')}</span>
+      {isWaitingForAssistant && (
+        <div className="mb-8 flex justify-start">
+          <div className="flex max-w-[90%] items-center gap-2 rounded-3xl px-4 py-2 text-gray-700">
+            <Spinner size={16} className="text-[#238BA7]" />
+            <span>ИИ думает...</span>
           </div>
         </div>
       )}

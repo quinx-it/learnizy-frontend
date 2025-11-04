@@ -15,6 +15,7 @@ import WaveSurfer from 'wavesurfer.js';
 import { nanoid } from 'nanoid';
 import clsx from 'clsx';
 import { X, Check, ArrowUp, Square } from 'lucide-react';
+import { X, Check, ArrowUp } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
@@ -28,6 +29,7 @@ import { MIN_RECORDING_DURATION_MS } from './constants';
 
 export const ChatInput: FC<IChatInputProps> = (props) => {
   const { onSendMessage, isLoading, onStopResponse, isWaitingResponse } = props;
+  const { onSendMessage, isLoading } = props;
 
   const { t } = useTranslation();
 
@@ -531,6 +533,13 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
           title={t('CHAT_INPUT.STOP_RECORDING')}
         >
           <Square size={12} fill="currentColor" />
+          className="ml-0.5 !rounded-full"
+          title={t('CHAT_INPUT.STOP_RECORDING')}
+        >
+          <div className="flex items-center gap-1">
+            <div className="h-4 w-1 rounded-sm bg-current" />
+            <div className="h-4 w-1 rounded-sm bg-current" />
+          </div>
         </Button>
       )}
 
@@ -577,6 +586,12 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
             <SendIcon />
           </Button>
         </>
+        <Button
+          className="ml-0.5 cursor-pointer bg-white p-2 text-gray-400 transition hover:bg-[#E8F8FC]"
+          onClick={handleSendClick}
+        >
+          <SendIcon />
+        </Button>
       )}
     </div>
   );

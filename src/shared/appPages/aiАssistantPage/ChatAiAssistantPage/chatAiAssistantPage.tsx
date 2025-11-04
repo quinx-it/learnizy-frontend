@@ -28,6 +28,15 @@ export const ChatAiAssistantPage = () => {
 
   const [optimisticMessages, setOptimisticMessages] = useState<IMessage[]>([]);
   const [isCancelled, setIsCancelled] = useState(false);
+import { POLLING_INTERVAL } from './constants';
+import Page from '@/shared/components/Page';
+
+export const ChatAiAssistantPage = () => {
+  const params = useParams();
+  const chatId = params.id ? parseInt(params.id as string, 10) : null;
+
+  const pollingInterval = useRef<NodeJS.Timeout | null>(null);
+  const [optimisticMessages, setOptimisticMessages] = useState<IMessage[]>([]);
 
   const {
     data: chatData,
@@ -40,6 +49,8 @@ export const ChatAiAssistantPage = () => {
   const startPolling = useCallback(() => {
     if (!pollingIntervalRef.current) {
       pollingIntervalRef.current = setInterval(() => {
+    if (!pollingInterval.current) {
+      pollingInterval.current = setInterval(() => {
         refetch();
       }, POLLING_INTERVAL);
     }
@@ -68,6 +79,26 @@ export const ChatAiAssistantPage = () => {
 
     return messages.filter((m) => m.role !== Role.ASSISTANT || validIds.has(m.id));
   }, []);
+    if (pollingInterval.current) {
+      clearInterval(pollingInterval.current);
+      pollingInterval.current = null;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!chatData?.messages) return;
+
+    setOptimisticMessages(chatData.messages);
+
+    const userCount = chatData.messages.filter((m) => m.role === Role.USER).length;
+    const assistantCount = chatData.messages.filter((m) => m.role === Role.ASSISTANT).length;
+
+    if (userCount > assistantCount) {
+      startPolling();
+    } else {
+      stopPolling();
+    }
+  }, [chatData, startPolling, stopPolling]);
 
   const handleSendMessage = async (data: ISendMessageRequest) => {
     if (!chatId || isSendingMessage) return;
@@ -93,6 +124,9 @@ export const ChatAiAssistantPage = () => {
       }, POLLING_DELAY_MS);
     } catch {
       showToast('error', t('CHAT_INPUT.ERROR_SENDING_MESSAGE'), '');
+      startPolling();
+    } catch {
+      showToast('error', 'Не удалось отправить сообщение', '');
       setOptimisticMessages((prev) => prev.filter((msg) => msg.id !== optimisticMessage.id));
       stopPolling();
     }
@@ -140,6 +174,7 @@ export const ChatAiAssistantPage = () => {
             isLoading={isLoadingMessages && optimisticMessages.length === 0}
             isWaitingForAssistant={isWaitingForAssistant}
             isCancelled={isCancelled}
+            isWaitingForAssistant={userCount > assistantCount}
           />
         </div>
 
@@ -150,6 +185,7 @@ export const ChatAiAssistantPage = () => {
             isLoading={isSendingMessage || isWaitingForAssistant}
             onStopResponse={handleStopResponse}
             isWaitingResponse={isWaitingForAssistant}
+            isLoading={isSendingMessage || userCount > assistantCount}
           />
         </div>
       </div>
