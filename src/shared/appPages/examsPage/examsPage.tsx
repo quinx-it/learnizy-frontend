@@ -3,10 +3,10 @@
 import { CircleIcon } from '@/shared/ui/icons';
 import { Heading } from '@/shared/ui/typography';
 import React, { FC } from 'react';
-import { ExamCard } from './examCard';
+import { ExamCard } from './ExamCard';
 import { useGetExamsQuery } from '@/api/endpoints/exams';
-import { FullscreenLoader } from '@/shared/components/fullscreenLoader';
-import { ErrorSection } from '@/shared/components/errorSection';
+import { FullscreenLoader } from '@/shared/components/FullscreenLoader';
+import { ErrorSection } from '@/shared/components/ErrorSection';
 import { ExamStatus, ExamType, ExamsPageProps } from './typings';
 import { useTranslation } from 'react-i18next';
 import Page from '@/shared/components/Page';

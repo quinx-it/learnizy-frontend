@@ -47,6 +47,7 @@
     "WRITE_YOUR_QUESTION": "Write your question",
     "ERROR": "Error",
     "ERROR_SENDING_FILES": "Error sending files",
+    "ERROR_SENDING_MESSAGE": "Failed to send message",
     "NO_DATA_TO_SEND": "No data to send",
     "ERROR_UPLOADING_AUDIO": "Error uploading audio",
     "ERROR_MICROPHONE_ACCESS": "Failed to access microphone",
@@ -54,8 +55,13 @@
     "HOLD_TO_RECORD": "Hold the button to record voice",
     "SWIPE_UP": "Swipe up",
     "STOP_RECORDING": "Stop recording",
+    "STOP_RESPONSE": "Stop response",
     "CANCEL": "Cancel",
     "SEND": "Send"
+  },
+  "CHAT": {
+    "RESPONSE_CANCELLED": "Response cancelled. Enter a new query.",
+    "AI_THINKING": "AI is thinking..."
   },
   "BREADCRUMB_LABELS": {
     "MODULES_MAIN_LABEL": "Learning Structure",

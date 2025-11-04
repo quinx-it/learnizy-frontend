@@ -47,6 +47,7 @@
     "WRITE_YOUR_QUESTION": "Напишите ваш вопрос",
     "ERROR": "Ошибка",
     "ERROR_SENDING_FILES": "Ошибка при отправке файлов",
+    "ERROR_SENDING_MESSAGE": "Не удалось отправить сообщение",
     "NO_DATA_TO_SEND": "Нет данных для отправки",
     "ERROR_UPLOADING_AUDIO": "Ошибка загрузки аудио",
     "ERROR_MICROPHONE_ACCESS": "Не удалось получить доступ к микрофону",
@@ -54,8 +55,13 @@
     "HOLD_TO_RECORD": "Удерживайте кнопку для записи голоса",
     "SWIPE_UP": "Свайп вверх",
     "STOP_RECORDING": "Остановить запись",
+    "STOP_RESPONSE": "Остановить ответ",
     "CANCEL": "Отменить",
     "SEND": "Отправить"
+  },
+  "CHAT": {
+    "RESPONSE_CANCELLED": "Ответ отменен. Введите новый запрос.",
+    "AI_THINKING": "ИИ думает..."
   },
   "BREADCRUMB_LABELS": {
     "MODULES_MAIN_LABEL": "Структура обучения",

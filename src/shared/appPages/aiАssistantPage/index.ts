@@ -1,2 +1,2 @@
 export * from './aiAssistantPage';
-export * from './chatAiAssistantPage';
+export * from './ChatAiAssistantPage';

@@ -2,7 +2,7 @@
 
 import { FC, PropsWithChildren } from 'react';
 import { Navbar } from '@/shared/components/navbar';
-import { AuthLayout } from '@/shared/components/authLayout';
+import { AuthLayout } from '@/shared/components/AuthLayout';
 import { navbarLinks } from '@/shared/constants/constants';
 
 const LearnLayout: FC<PropsWithChildren> = (props) => {
