@@ -3,7 +3,7 @@
 import { useRefreshMutation } from '@/api/endpoints/auth';
 import { PropsWithChildren, useEffect, FC } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { useAppSelector } from '@/shared/hooks/redux';
+import { useAppSelector } from '@/hooks/redux';
 import {
   routes,
   defaultPage,
@@ -12,11 +12,11 @@ import {
   dynamicUserRoutes,
   staticMentorRoutes,
   dynamicMentorRoutes,
-} from '@/shared/constants/routes';
+} from '@/constants/routes';
 import { selectToken, selectUserRole } from '@/store/slices/auth/selectors';
-import { FullscreenLoader } from '@/shared/components/FullscreenLoader';
-import { isRoleRoute } from '@/shared/lib/utils';
-import { NotFoundPage } from '@/shared/appPages/NotFoundPage';
+import { FullscreenLoader } from '@/components/FullscreenLoader';
+import { isRoleRoute } from '@/lib/utils';
+import { NotFoundPage } from '@/appPages/NotFoundPage';
 
 const allStaticRoutes = [...publicRoutes, ...staticUserRoutes, ...staticMentorRoutes];
 const allDynamicRoutes = [...dynamicUserRoutes, ...dynamicMentorRoutes];

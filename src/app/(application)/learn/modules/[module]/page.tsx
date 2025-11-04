@@ -1,5 +1,5 @@
 'use client';
-import { ModuleItemPage } from '@/shared/appPages/ModulesItemPage';
+import { ModuleItemPage } from '@/appPages/ModulesItemPage';
 import { useParams } from 'next/navigation';
 import { ParamsType } from '../typings';
 

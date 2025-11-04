@@ -7,7 +7,7 @@ import {
 import { throttle } from 'lodash';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 import { RootStateType } from '@/store';
-import { HttpStatus, REFRESH_THROTTLE } from '@/shared/constants';
+import { HttpStatus, REFRESH_THROTTLE } from '@/constants';
 import { AUTH_BASE_URL } from './constants';
 import { IRefreshResponse, BaseQueryApi, BaseQueryExtraOptions } from './types';
 

@@ -18,7 +18,7 @@ const excludedRoutes = [
 ];
 
 const config = {
-  siteUrl: process.env.NEXT_PUBLIC_BASE_URL,
+  siteUrl: process.env.NEXT_PUBLIC_BASE_URL || 'https://example.com',
   generateRobotsTxt: true,
   sitemapSize: 5000,
   exclude: excludedRoutes,
