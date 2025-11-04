@@ -1,5 +1,5 @@
 'use client';
-import { LessonItemPage } from '@/shared/appPages/LessonItemPage';
+import { LessonItemPage } from '@/appPages/LessonItemPage';
 import { useParams } from 'next/navigation';
 import { ParamsType } from '../../typings';
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { TestPage, TestDataType } from '@/shared/appPages/TestPage';
+import { TestPage, TestDataType } from '@/appPages/TestPage';
 import { useParams } from 'next/navigation';
 import { useGetExamByIdQuery } from '@/api/endpoints/exams';
 import { ParamsType } from '../../../typings';

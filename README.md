@@ -179,7 +179,7 @@ src/shared/ui/icons
 ### Пример использования
 
 ```tsx
-import { Heading, Text } from '@/shared/ui/typography';
+import { Heading, Text } from '@/ui/typography';
 
 <Heading tag="h1" variant="minor-6xl">
   Заголовок первого уровня

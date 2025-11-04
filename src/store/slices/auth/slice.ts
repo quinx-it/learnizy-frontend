@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { decodeToken } from '@/shared/lib/utils';
+import { decodeToken } from '@/lib/utils';
 import { IAuthState, IDecodedToken, IRehydrateAction } from './typings';
 
 const initialState: IAuthState = {

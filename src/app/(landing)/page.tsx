@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { LandingPage } from '@/shared/appPages/landingPage';
+import { LandingPage } from '@/appPages/landingPage';
 
 export const metadata: Metadata = {};
 

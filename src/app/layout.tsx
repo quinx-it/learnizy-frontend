@@ -3,10 +3,10 @@ import localFont from 'next/font/local';
 import './globals.css';
 
 import StoreProvider from './StoreProvider';
-import { Toaster } from '@/shared/ui/toaster';
+import { Toaster } from '@/ui/toaster';
 import { ReactNode } from 'react';
 
-import '@/shared/lib/translate';
+import '@/lib/translate';
 
 export const metadata: Metadata = {
   title: {

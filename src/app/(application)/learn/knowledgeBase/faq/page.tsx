@@ -1,4 +1,4 @@
-import { FaqPage } from '@/shared/appPages/FaqPage';
+import { FaqPage } from '@/appPages/FaqPage';
 
 const Faq = () => {
   return <FaqPage />;

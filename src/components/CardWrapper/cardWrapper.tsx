@@ -1,0 +1,18 @@
+'use client';
+
+import { cn } from '@/lib/utils';
+import React, { FC } from 'react';
+import { CardWrapperPropsType } from './typings';
+
+export const CardWrapper: FC<CardWrapperPropsType> = (props) => {
+  const { children, className, onClick } = props;
+
+  return (
+    <div
+      onClick={onClick}
+      className={cn('box-shadow bg-light relative w-full rounded-2xl p-6', className)}
+    >
+      {children}
+    </div>
+  );
+};
