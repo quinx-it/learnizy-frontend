@@ -1,29 +1,35 @@
+# --- Stage 1: deps ---
 FROM node:22-alpine AS deps
 WORKDIR /app
 
-COPY package.json yarn.lock* .yarnrc.yml* ./
-COPY .yarn ./.yarn
+RUN npm install -g pnpm
 
-RUN corepack enable && yarn install --immutable --frozen-lockfile
+COPY package.json pnpm-lock.yaml .npmrc* ./
 
+RUN pnpm install --frozen-lockfile
+
+# --- Stage 2: builder ---
 FROM node:22-alpine AS builder
 WORKDIR /app
 
 ARG NEXT_PUBLIC_API_BASE_URL
 ENV NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL}
 
+RUN npm install -g pnpm
+
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/.yarn ./.yarn
 
 ENV NODE_OPTIONS="--max-old-space-size=2048"
-RUN corepack enable && yarn build
 
+RUN pnpm build
+
+# --- Stage 3: runner ---
 FROM node:22-alpine AS runner
 WORKDIR /app
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+RUN addgroup --system --gid 1001 nodejs \
+  && adduser --system --uid 1001 nextjs
 
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./

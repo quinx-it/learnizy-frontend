@@ -11,22 +11,22 @@ git clone https://github.com/pxel-pioneer/learnizy-frontend.git
 cd learnizy-frontend
 ```
 
-2. Установка Yarn (если не установлен)
+2. Установка pnpm (если не установлен)
 
 ```bash
-npm install -g yarn
+npm install -g pnpm
 ```
 
 3. Установка зависимостей
 
 ```bash
-yarn install
+pnpm install
 ```
 
 4. Запуск проекта в режиме разработки
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 Приложение будет доступно по адресу:
