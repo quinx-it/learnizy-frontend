@@ -11,7 +11,6 @@ import {
   useVerifyEmailMutation,
   useResendVerificationCodeMutation,
 } from '@/api/endpoints/auth';
-import { routes, HttpStatus } from '@/constants';
 import { Button } from '@/components/ui/Button';
 import { CheckboxWithLabel } from '@/components/ui/CheckboxWithLabel/checkboxWithLabel';
 import { Input } from '@/components/ui/Input';
@@ -19,6 +18,7 @@ import { PasswordInput } from '@/components/ui/PasswordInput';
 import { Spinner } from '@/components/ui/Spinner';
 import { showToast } from '@/components/ui/Toaster';
 import { Heading, Text } from '@/components/ui/Typography';
+import { routes, HttpStatus } from '@/constants';
 
 import { VerificationFormValuesType, RegisterStep, IRegisterFormValues } from './typings';
 import { formSchema, verificationSchema } from './validation';

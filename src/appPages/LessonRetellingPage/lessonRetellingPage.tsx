@@ -4,10 +4,10 @@ import { useGetLessonQuery } from '@/api/endpoints/lessons';
 import { CardWrapper } from '@/components/CardWrapper';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
 import Page from '@/components/Page';
-import { VoiceRecorderForm } from '@/components/VoiceRecorderForm';
-import { routes } from '@/constants';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Text } from '@/components/ui/Typography';
+import { VoiceRecorderForm } from '@/components/VoiceRecorderForm';
+import { routes } from '@/constants';
 
 import { constants } from './constants';
 import { ILessonRetellingPageProps } from './typings';

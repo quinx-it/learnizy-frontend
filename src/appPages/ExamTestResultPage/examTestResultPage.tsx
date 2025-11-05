@@ -7,9 +7,9 @@ import { CardWrapper } from '@/components/CardWrapper';
 import { ErrorSection } from '@/components/ErrorSection';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
 import Page from '@/components/Page';
-import { globalConstants, routes } from '@/constants';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Text } from '@/components/ui/Typography';
+import { globalConstants, routes } from '@/constants';
 
 import { ExamTestResultPagePropsType } from './typings';
 
@@ -66,11 +66,13 @@ export const ExamTestResultPage: FC<ExamTestResultPagePropsType> = (props) => {
               </Text>
               <Text variant="m" className="text-medium">
                 Статус:
-                {testResult.status === 'SUBMITTED'
-                  ? 'В обработке'
-                  : passed
-                    ? 'Пройден'
-                    : 'Не пройден'}
+                {(() => {
+                  if (testResult.status === 'SUBMITTED') return 'В обработке';
+
+                  if (passed) return 'Пройден';
+
+                  return 'Не пройден';
+                })()}
               </Text>
             </div>
           </div>

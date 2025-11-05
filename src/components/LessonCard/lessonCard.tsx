@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { CardWrapper } from '@/components/CardWrapper';
-import { cn, normalizeToFive } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
 import { StarIcon } from '@/components/ui/Icons';
 import { Heading } from '@/components/ui/Typography';
+import { cn, normalizeToFive } from '@/lib/utils';
 
 import { LessonCardPropsType } from './typings';
 

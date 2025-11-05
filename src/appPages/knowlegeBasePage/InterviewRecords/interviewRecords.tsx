@@ -3,10 +3,10 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { CardWrapper } from '@/components/CardWrapper';
-import { routes } from '@/constants';
-import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
 import { Text } from '@/components/ui/Typography';
+import { routes } from '@/constants';
+import { cn } from '@/lib/utils';
 
 import { IInterviewRecordsProps } from './typings';
 

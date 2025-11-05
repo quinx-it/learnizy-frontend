@@ -26,7 +26,11 @@ export default meta;
 export const Default: StoryType = {
   args: {
     content: 'This is a tooltip',
-    children: <button className="rounded bg-gray-200 px-4 py-2">Hover me</button>,
+    children: (
+      <button type="button" className="rounded bg-gray-200 px-4 py-2">
+        Hover me
+      </button>
+    ),
   },
 };
 
@@ -35,7 +39,11 @@ export const WithOffset: StoryType = {
     content: 'Offset: 10px (side: right)',
     offset: 10,
     side: 'right',
-    children: <button className="rounded bg-gray-200 px-4 py-2">Hover with offset</button>,
+    children: (
+      <button type="button" className="rounded bg-gray-200 px-4 py-2">
+        Hover with offset
+      </button>
+    ),
   },
 };
 
@@ -43,7 +51,11 @@ export const WithDelay: StoryType = {
   args: {
     content: 'Appears with delay (500ms)',
     delay: 500,
-    children: <button className="rounded bg-gray-200 px-4 py-2">Hover with delay</button>,
+    children: (
+      <button type="button" className="rounded bg-gray-200 px-4 py-2">
+        Hover with delay
+      </button>
+    ),
   },
 };
 
@@ -51,7 +63,11 @@ export const PositionedBottom: StoryType = {
   args: {
     content: 'Tooltip on bottom',
     side: 'bottom',
-    children: <button className="rounded bg-gray-200 px-4 py-2">Hover (bottom)</button>,
+    children: (
+      <button type="button" className="rounded bg-gray-200 px-4 py-2">
+        Hover (bottom)
+      </button>
+    ),
   },
 };
 

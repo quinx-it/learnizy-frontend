@@ -29,37 +29,29 @@ function useChart() {
   return context;
 }
 
-function ChartContainer({
-  id,
-  className,
-  children,
-  config,
-  ...props
-}: ComponentProps<'div'> & {
-  config: ChartConfigType;
-  children: ComponentProps<typeof RechartsPrimitive.ResponsiveContainer>['children'];
-}) {
-  const uniqueId = useId();
-  const chartId = `chart-${id || uniqueId.replace(/:/g, '')}`;
+function getPayloadConfigFromPayload(config: ChartConfigType, payload: unknown, key: string) {
+  if (typeof payload !== 'object' || payload === null) {
+    return undefined;
+  }
 
-  const memoizedValue = useMemo(() => ({ config }), [config]);
+  const payloadPayload =
+    'payload' in payload && typeof payload.payload === 'object' && payload.payload !== null
+      ? payload.payload
+      : undefined;
 
-  return (
-    <ChartContext.Provider value={memoizedValue}>
-      <div
-        data-slot="chart"
-        data-chart={chartId}
-        className={cn(
-          "[&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border flex aspect-video justify-center text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-sector]:outline-hidden [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-hidden",
-          className,
-        )}
-        {...props}
-      >
-        <ChartStyle id={chartId} config={config} />
-        <RechartsPrimitive.ResponsiveContainer>{children}</RechartsPrimitive.ResponsiveContainer>
-      </div>
-    </ChartContext.Provider>
-  );
+  let configLabelKey: string = key;
+
+  if (key in payload && typeof payload[key as keyof typeof payload] === 'string') {
+    configLabelKey = payload[key as keyof typeof payload] as string;
+  } else if (
+    payloadPayload &&
+    key in payloadPayload &&
+    typeof payloadPayload[key as keyof typeof payloadPayload] === 'string'
+  ) {
+    configLabelKey = payloadPayload[key as keyof typeof payloadPayload] as string;
+  }
+
+  return configLabelKey in config ? config[configLabelKey] : config[key as keyof typeof config];
 }
 
 const ChartStyle: FC<IChartStyleProps> = (props) => {
@@ -95,6 +87,39 @@ const ChartStyle: FC<IChartStyleProps> = (props) => {
     />
   );
 };
+
+function ChartContainer({
+  id,
+  className,
+  children,
+  config,
+  ...props
+}: ComponentProps<'div'> & {
+  config: ChartConfigType;
+  children: ComponentProps<typeof RechartsPrimitive.ResponsiveContainer>['children'];
+}) {
+  const uniqueId = useId();
+  const chartId = `chart-${id || uniqueId.replace(/:/g, '')}`;
+
+  const memoizedValue = useMemo(() => ({ config }), [config]);
+
+  return (
+    <ChartContext.Provider value={memoizedValue}>
+      <div
+        data-slot="chart"
+        data-chart={chartId}
+        className={cn(
+          "[&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border flex aspect-video justify-center text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-sector]:outline-hidden [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-hidden",
+          className,
+        )}
+        {...props}
+      >
+        <ChartStyle id={chartId} config={config} />
+        <RechartsPrimitive.ResponsiveContainer>{children}</RechartsPrimitive.ResponsiveContainer>
+      </div>
+    </ChartContext.Provider>
+  );
+}
 
 const ChartTooltip = RechartsPrimitive.Tooltip;
 
@@ -286,31 +311,6 @@ function ChartLegendContent({
       })}
     </div>
   );
-}
-
-function getPayloadConfigFromPayload(config: ChartConfigType, payload: unknown, key: string) {
-  if (typeof payload !== 'object' || payload === null) {
-    return undefined;
-  }
-
-  const payloadPayload =
-    'payload' in payload && typeof payload.payload === 'object' && payload.payload !== null
-      ? payload.payload
-      : undefined;
-
-  let configLabelKey: string = key;
-
-  if (key in payload && typeof payload[key as keyof typeof payload] === 'string') {
-    configLabelKey = payload[key as keyof typeof payload] as string;
-  } else if (
-    payloadPayload &&
-    key in payloadPayload &&
-    typeof payloadPayload[key as keyof typeof payloadPayload] === 'string'
-  ) {
-    configLabelKey = payloadPayload[key as keyof typeof payloadPayload] as string;
-  }
-
-  return configLabelKey in config ? config[configLabelKey] : config[key as keyof typeof config];
 }
 
 export {

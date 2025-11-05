@@ -6,10 +6,10 @@ import React, { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useGetChatsQuery, IChat } from '@/api/endpoints/aiAssistant';
-import { formatRelativeDate } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
 import { HistoryIcon } from '@/components/ui/Icons';
 import { Text } from '@/components/ui/Typography';
+import { formatRelativeDate } from '@/lib/utils';
 
 import { IChatHistoryProps } from './typings';
 

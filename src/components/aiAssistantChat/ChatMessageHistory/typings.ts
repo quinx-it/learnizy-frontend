@@ -1,9 +1,10 @@
 import { Role } from './constants';
 
-export interface IChatMessageHistoryProps {
-  messages: IMessage[];
-  isLoading?: boolean;
-  isWaitingForAssistant?: boolean;
+export interface IAttachment {
+  downloadUrl: string;
+  originalFilename: string;
+  contentType: string;
+  size: number;
 }
 
 export interface IMessage {
@@ -15,9 +16,8 @@ export interface IMessage {
   attachments: IAttachment[];
 }
 
-export interface IAttachment {
-  downloadUrl: string;
-  originalFilename: string;
-  contentType: string;
-  size: number;
+export interface IChatMessageHistoryProps {
+  messages: IMessage[];
+  isLoading?: boolean;
+  isWaitingForAssistant?: boolean;
 }

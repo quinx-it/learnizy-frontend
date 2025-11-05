@@ -12,19 +12,6 @@ export enum LessonStatus {
   BLOCKED = 'BLOCKED',
 }
 
-export interface ILesson {
-  id: number;
-  title: string;
-  description: string;
-  sequenceOrder: number;
-  testQuestions: number;
-  moduleSequenceOrder: number;
-  status: LessonStatus;
-  progress: ILessonProgress;
-  content: string;
-  contentBlocks: Block[];
-}
-
 export enum BlockType {
   HEADING = 'HEADING',
   TEXT = 'TEXT',
@@ -116,6 +103,19 @@ export interface ImageProperties extends ICommonProperties {
   caption?: string;
 }
 
+// Forward declaration for recursive type
+/* eslint-disable no-use-before-define */
+type Block =
+  | IHeadingBlock
+  | ITextBlock
+  | ILinkBlock
+  | ICodeBlock
+  | IImageBlock
+  | IAdviceBlock
+  | IUlBlock
+  | ILiBlock;
+/* eslint-enable no-use-before-define */
+
 interface IBaseBlock {
   id: number;
   blockType: BlockType;
@@ -162,12 +162,17 @@ interface IAdviceBlock extends IBaseBlock {
   properties: ICommonProperties;
 }
 
-export type Block =
-  | IHeadingBlock
-  | ITextBlock
-  | ILinkBlock
-  | ICodeBlock
-  | IImageBlock
-  | IAdviceBlock
-  | IUlBlock
-  | ILiBlock;
+export type { Block };
+
+export interface ILesson {
+  id: number;
+  title: string;
+  description: string;
+  sequenceOrder: number;
+  testQuestions: number;
+  moduleSequenceOrder: number;
+  status: LessonStatus;
+  progress: ILessonProgress;
+  content: string;
+  contentBlocks: Block[];
+}

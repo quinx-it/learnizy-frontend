@@ -6,11 +6,11 @@ import React, { useState, useEffect, FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { useResetPasswordMutation } from '@/api/endpoints/auth';
-import { routes } from '@/constants';
 import { Button } from '@/components/ui/Button';
 import { PasswordInput } from '@/components/ui/PasswordInput';
 import { Spinner } from '@/components/ui/Spinner';
 import { showToast } from '@/components/ui/Toaster';
+import { routes } from '@/constants';
 
 import { IResetPasswordFormProps } from './typings';
 import { IResetPasswordFormValues, formSchema } from './validation';

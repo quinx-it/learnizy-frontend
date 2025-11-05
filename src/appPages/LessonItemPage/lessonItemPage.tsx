@@ -13,14 +13,14 @@ import { BlockRenderer } from '@/components/ContentBlockParser';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
 import { MarkdownRenderer } from '@/components/MarkdownText';
 import Page from '@/components/Page';
-import { routes } from '@/constants';
-import { selectUserRole } from '@/store/slices/auth/selectors';
-import { UserRole } from '@/store/slices/auth/typings';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Button } from '@/components/ui/Button';
 import { DotTitle } from '@/components/ui/DotTitle';
 import { showToast } from '@/components/ui/Toaster';
 import { Heading, Text } from '@/components/ui/Typography';
+import { routes } from '@/constants';
+import { selectUserRole } from '@/store/slices/auth/selectors';
+import { UserRole } from '@/store/slices/auth/typings';
 
 import { constants } from './constants';
 import { ILessonItemPageProps } from './typings';

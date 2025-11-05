@@ -1,8 +1,3 @@
-export interface IChatInputProps {
-  onSendMessage: (data: ISendMessageRequest) => void;
-  isLoading?: boolean;
-}
-
 export interface IAttachment {
   downloadUrl: string;
   originalFilename: string;
@@ -14,6 +9,11 @@ export interface ISendMessageRequest {
   text?: string;
   audioFileUrl?: string;
   attachments?: IAttachment[];
+}
+
+export interface IChatInputProps {
+  onSendMessage: (data: ISendMessageRequest) => void;
+  isLoading?: boolean;
 }
 
 export interface ILocalFile {

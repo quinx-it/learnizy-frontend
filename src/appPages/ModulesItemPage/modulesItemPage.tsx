@@ -18,10 +18,6 @@ import { ErrorSection } from '@/components/ErrorSection';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
 import { LessonCard } from '@/components/LessonCard';
 import Page from '@/components/Page';
-import { routes } from '@/constants';
-import { percentage, pluralize } from '@/lib/utils';
-import { selectUserRole } from '@/store/slices/auth/selectors';
-import { UserRole } from '@/store/slices/auth/typings';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Button } from '@/components/ui/Button';
 import {
@@ -38,6 +34,10 @@ import { ProgressBar } from '@/components/ui/Progress';
 import { Textarea } from '@/components/ui/Textarea';
 import { showToast } from '@/components/ui/Toaster';
 import { Text } from '@/components/ui/Typography';
+import { routes } from '@/constants';
+import { percentage, pluralize } from '@/lib/utils';
+import { selectUserRole } from '@/store/slices/auth/selectors';
+import { UserRole } from '@/store/slices/auth/typings';
 
 import { constants } from './constants';
 import { ModuleItemPagePropsType } from './typings';

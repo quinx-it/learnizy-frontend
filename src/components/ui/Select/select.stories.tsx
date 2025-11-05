@@ -29,7 +29,7 @@ const options = [
 ];
 
 export const Default: StoryType = {
-  render: () => {
+  render: function DefaultStory() {
     const [value, setValue] = useState('');
 
     return (

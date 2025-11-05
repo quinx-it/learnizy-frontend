@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 
-import { cn } from '@/lib/utils';
 import { Text } from '@/components/ui/Typography';
+import { cn } from '@/lib/utils';
 
 import { Label } from '../Label';
 

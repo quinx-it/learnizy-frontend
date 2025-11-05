@@ -7,9 +7,9 @@ import { CardWrapper } from '@/components/CardWrapper';
 import { ErrorSection } from '@/components/ErrorSection';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
 import Page from '@/components/Page';
-import { globalConstants, routes } from '@/constants';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Text } from '@/components/ui/Typography';
+import { globalConstants, routes } from '@/constants';
 
 import { LessonTestResponseType, LessonTestResultPagePropsType } from './types';
 
@@ -103,7 +103,14 @@ export const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) =
                 Результат: {scorePercent}%
               </Text>
               <Text variant="m" className="text-medium">
-                Статус: {status === 'SUBMITTED' ? 'В обработке' : passed ? 'Пройден' : 'Не пройден'}
+                Статус:{' '}
+                {(() => {
+                  if (status === 'SUBMITTED') return 'В обработке';
+
+                  if (passed) return 'Пройден';
+
+                  return 'Не пройден';
+                })()}
               </Text>
             </div>
           </div>

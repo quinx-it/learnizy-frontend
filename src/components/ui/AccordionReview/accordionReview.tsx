@@ -5,15 +5,14 @@ import {
   AccordionTrigger,
 } from '@radix-ui/react-accordion';
 import React, { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { cn } from '@/lib/utils';
 import { ArrowRightIcon } from '@/components/ui/Icons';
 import { Text } from '@/components/ui/Typography';
+import { cn } from '@/lib/utils';
 
 import '@/components/ui/Accordion/accordion.css';
 import { AccordionReviewPropsType } from './typings';
-
-import { useTranslation } from 'react-i18next';
 
 export const AccordionReview: FC<AccordionReviewPropsType> = (props) => {
   const { items } = props;

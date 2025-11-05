@@ -82,6 +82,8 @@ export function isRoleRoute(role: UserRole | undefined, pathname: string) {
       return isUserRoute(pathname);
     case UserRole.MENTOR:
       return isMentorRoute(pathname);
+    default:
+      return false;
   }
 }
 

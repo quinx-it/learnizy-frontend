@@ -2,9 +2,9 @@ import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 import * as React from 'react';
 import { ComponentProps } from 'react';
 
-import { cn } from '@/lib/utils';
 import { CircleIcon } from '@/components/ui/Icons';
 import { Label } from '@/components/ui/Label';
+import { cn } from '@/lib/utils';
 
 function RadioGroup({ className, ...props }: ComponentProps<typeof RadioGroupPrimitive.Root>) {
   return (

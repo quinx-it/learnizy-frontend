@@ -37,9 +37,7 @@ export const PersonalDataForm = () => {
     },
   });
 
-  const onSubmit = (data: PersonalDataFormValuesType) => {
-    console.log('Form data:', data);
-  };
+  const onSubmit = () => {};
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

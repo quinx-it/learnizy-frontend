@@ -5,11 +5,11 @@ import { useTranslation } from 'react-i18next';
 
 import { CardWrapper } from '@/components/CardWrapper';
 import Page from '@/components/Page';
-import { routes } from '@/constants';
-import { globalConstants } from '@/constants/constants';
 import { CardAccordion } from '@/components/ui/Accordion';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Text } from '@/components/ui/Typography';
+import { routes } from '@/constants';
+import { globalConstants } from '@/constants/constants';
 
 import { constants } from './constants';
 

@@ -9,10 +9,10 @@ import { ErrorSection } from '@/components/ErrorSection';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
 import { LessonTestForm } from '@/components/LessonTestForm';
 import Page from '@/components/Page';
-import { globalConstants, routes } from '@/constants';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { showToast } from '@/components/ui/Toaster';
 import { Text } from '@/components/ui/Typography';
+import { globalConstants, routes } from '@/constants';
 
 import { constants, TestType } from './constants';
 import { TestPagePropsType } from './typings';

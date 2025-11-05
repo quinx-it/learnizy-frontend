@@ -10,6 +10,7 @@ const Demo = () => {
   return (
     <div className="flex w-[300px] flex-col">
       <button
+        type="button"
         onClick={() => showToast('success', 'Успешно!', 'Кастомный тост работает')}
         style={{
           padding: '8px 16px',
@@ -25,6 +26,7 @@ const Demo = () => {
       </button>
 
       <button
+        type="button"
         onClick={() => showToast('warning', 'Предупреждение!', 'Кастомный тост работает')}
         style={{
           padding: '8px 16px',
@@ -40,6 +42,7 @@ const Demo = () => {
       </button>
 
       <button
+        type="button"
         onClick={() => showToast('error', 'Ошибка!', 'Кастомный тост работает')}
         style={{
           padding: '8px 16px',
@@ -55,6 +58,7 @@ const Demo = () => {
       </button>
 
       <button
+        type="button"
         onClick={() => showToast('info', 'Информация!', 'Кастомный тост работает')}
         style={{
           padding: '8px 16px',

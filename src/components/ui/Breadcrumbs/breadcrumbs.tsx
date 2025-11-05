@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { Fragment, FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { cn } from '@/lib/utils';
 import { ArrowRightIcon } from '@/components/ui/Icons';
 import { Text } from '@/components/ui/Typography';
+import { cn } from '@/lib/utils';
 
 import { DotTitle } from '../DotTitle';
 

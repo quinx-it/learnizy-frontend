@@ -52,6 +52,7 @@ const CustomToast: FC<CustomToastPropsType> = (props) => {
         <div className="text-[12px]">{description}</div>
       </div>
       <button
+        type="button"
         onClick={onClose}
         aria-label="Закрыть"
         className="mt-2 cursor-pointer border-0 bg-transparent"

@@ -17,10 +17,6 @@ import { ErrorSection } from '@/components/ErrorSection';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
 import { ModuleCard } from '@/components/ModuleCard';
 import Page from '@/components/Page';
-import { routes } from '@/constants';
-import { globalConstants } from '@/constants/constants';
-import { selectUserRole } from '@/store/slices/auth/selectors';
-import { UserRole } from '@/store/slices/auth/typings';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Button } from '@/components/ui/Button';
 import {
@@ -33,6 +29,10 @@ import {
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { showToast } from '@/components/ui/Toaster';
+import { routes } from '@/constants';
+import { globalConstants } from '@/constants/constants';
+import { selectUserRole } from '@/store/slices/auth/selectors';
+import { UserRole } from '@/store/slices/auth/typings';
 
 import { IModuleProgressCardProps } from './typings';
 

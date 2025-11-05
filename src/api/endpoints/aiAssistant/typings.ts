@@ -6,6 +6,13 @@ export interface IChat {
   updatedAt: string | null;
 }
 
+export interface IAttachment {
+  downloadUrl: string;
+  originalFilename: string;
+  contentType: string;
+  size: number;
+}
+
 export interface IMessage {
   id: number;
   content: string;
@@ -19,13 +26,6 @@ export interface ISendMessageRequest {
   text?: string;
   audioFileUrl?: string;
   attachments?: IAttachment[];
-}
-
-export interface IAttachment {
-  downloadUrl: string;
-  originalFilename: string;
-  contentType: string;
-  size: number;
 }
 
 export interface IGetChatsApiResponse {

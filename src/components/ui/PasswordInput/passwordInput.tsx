@@ -1,14 +1,14 @@
 'use client';
 
 import * as React from 'react';
-
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/Button';
-import { Input } from '@/components/ui/Input';
-import './styles.css';
-import { EyeIcon } from '@/components/ui/Icons';
-
 import { forwardRef, useState } from 'react';
+
+import { Button } from '@/components/ui/Button';
+import { EyeIcon } from '@/components/ui/Icons';
+import { Input } from '@/components/ui/Input';
+import { cn } from '@/lib/utils';
+
+import './styles.css';
 
 import { IPasswordInputProps } from './typings';
 

@@ -7,11 +7,10 @@ import {
 import { Plus, Minus } from 'lucide-react';
 import { FC } from 'react';
 
+import { Text } from '@/components/ui/Typography';
 import { cn } from '@/lib/utils';
 
 import './accordion.css';
-import { Text } from '@/components/ui/Typography';
-
 import { IAccordionProps } from './typings';
 
 export const CardAccordion: FC<IAccordionProps> = (props) => {

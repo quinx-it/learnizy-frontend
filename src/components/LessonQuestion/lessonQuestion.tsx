@@ -63,24 +63,22 @@ export const LessonQuestion: FC<LessonQuestionPropsType> = (props) => {
           )}
         />
       ) : (
-        <>
-          {!fileValue && (
-            <Controller
-              name={answerFieldName}
-              control={control}
-              render={({ field }) => (
-                <Textarea
-                  {...field}
-                  className="min-h-[60px] max-w-[728px] resize-none py-0.5"
-                  onChange={(e) => {
-                    setValue(fileFieldName, null);
-                    field.onChange(e);
-                  }}
-                />
-              )}
-            />
-          )}
-        </>
+        !fileValue && (
+          <Controller
+            name={answerFieldName}
+            control={control}
+            render={({ field }) => (
+              <Textarea
+                {...field}
+                className="min-h-[60px] max-w-[728px] resize-none py-0.5"
+                onChange={(e) => {
+                  setValue(fileFieldName, null);
+                  field.onChange(e);
+                }}
+              />
+            )}
+          />
+        )
       )}
 
       {error?.message && <p className="text-error">{error.message}</p>}

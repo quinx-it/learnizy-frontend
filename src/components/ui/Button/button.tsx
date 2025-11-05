@@ -1,10 +1,10 @@
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
+import { ComponentProps, MouseEvent } from 'react';
 
 import { cn } from '@/lib/utils';
 
 import './button.css';
-import { ComponentProps, MouseEvent } from 'react';
 
 const baseStyles = [
   'relative overflow-hidden flex items-center justify-center box-content',
@@ -57,7 +57,8 @@ function Button({
     const diameter = Math.max(button.clientWidth, button.clientHeight);
     const radius = diameter / 2;
 
-    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.width = `${diameter}px`;
+    circle.style.height = `${diameter}px`;
     circle.style.left = `${e.clientX - button.getBoundingClientRect().left - radius}px`;
     circle.style.top = `${e.clientY - button.getBoundingClientRect().top - radius}px`;
     circle.classList.add('ripple');
