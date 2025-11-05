@@ -1,4 +1,4 @@
-import { CustomSelect } from './select';
+import CustomSelect from '.';
 
 import type { StoryObj } from '@storybook/nextjs';
 

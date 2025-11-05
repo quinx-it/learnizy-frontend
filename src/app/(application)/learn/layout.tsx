@@ -5,8 +5,8 @@ import { FC, PropsWithChildren } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ChatHeader } from '@/components/aiAssistantChat';
-import { AuthLayout } from '@/components/AuthLayout';
-import { Navbar } from '@/components/navbar';
+import AuthLayout from '@/components/AuthLayout/authLayout';
+import Navbar from '@/components/navbar';
 import { navbarLinks } from '@/constants/constants';
 import { routes } from '@/constants/routes';
 

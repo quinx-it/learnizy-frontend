@@ -3,10 +3,10 @@
 import { FC, useEffect, useRef } from 'react';
 
 import { useGetLastTestAttemptQuery, useGetTestByLessonIdQuery } from '@/api/endpoints/test';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { CardWrapper } from '@/components/CardWrapper';
-import { ErrorSection } from '@/components/ErrorSection';
-import { FullscreenLoader } from '@/components/FullscreenLoader';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import CardWrapper from '@/components/CardWrapper';
+import ErrorSection from '@/components/ErrorSection';
+import FullscreenLoader from '@/components/FullscreenLoader';
 import Page from '@/components/Page';
 import { Text } from '@/components/Typography';
 import { globalConstants, routes } from '@/constants';

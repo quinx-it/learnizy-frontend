@@ -4,7 +4,7 @@ import { FC, PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/es/integration/react';
 
-import { FullscreenLoader } from '@/components/FullscreenLoader';
+import FullscreenLoader from '@/components/FullscreenLoader';
 import { store, persistor } from '@/store';
 
 const StoreProvider: FC<PropsWithChildren> = ({ children }) => {

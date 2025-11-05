@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react';
 
-import { Textarea } from './textarea';
+import Textarea from '.';
 
 import type { StoryObj } from '@storybook/nextjs';
 

@@ -5,7 +5,7 @@ import { PropsWithChildren, useEffect, FC } from 'react';
 
 import { useRefreshMutation } from '@/api/endpoints/auth';
 import NotFoundPage from '@/appPages/NotFoundPage';
-import { FullscreenLoader } from '@/components/FullscreenLoader';
+import FullscreenLoader from '@/components/FullscreenLoader';
 import {
   routes,
   defaultPage,

@@ -1,7 +1,8 @@
 'use client';
 
-import { DatePicker } from './datePicker';
 import { StoryType } from './typings';
+
+import DatePicker from '.';
 
 import type { Meta } from '@storybook/nextjs';
 

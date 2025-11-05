@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 
-import { ResetPasswordForm } from '@/components/auth/ResetPasswordForm';
-import { CardWrapper } from '@/components/CardWrapper';
+import ResetPasswordForm from '@/components/auth/ResetPasswordForm';
+import CardWrapper from '@/components/CardWrapper';
 import { Logo } from '@/components/Icons';
 import { Heading, Text } from '@/components/Typography';
 

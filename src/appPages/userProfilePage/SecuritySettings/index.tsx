@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { CardWrapper } from '@/components/CardWrapper';
+import CardWrapper from '@/components/CardWrapper';
 import { Heading } from '@/components/Typography';
 
 import SecuritySettingsForm from './SecuritySettingsForm';

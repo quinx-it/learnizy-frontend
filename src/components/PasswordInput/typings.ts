@@ -1,6 +1,6 @@
 import { type IInputProps } from '@/components/Input/typings';
 
-import { PasswordInput } from './passwordInput';
+import { PasswordInput } from '.';
 
 import type { StoryObj } from '@storybook/nextjs';
 

@@ -1,4 +1,4 @@
-import { Checkbox } from './checkbox';
+import Checkbox from '.';
 
 import type { StoryObj } from '@storybook/nextjs';
 

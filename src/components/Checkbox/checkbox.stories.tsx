@@ -2,8 +2,9 @@
 
 import { Label } from '@radix-ui/react-label';
 
-import { Checkbox } from './checkbox';
 import { StoryType } from './typings';
+
+import Checkbox from '.';
 
 import type { Meta } from '@storybook/nextjs';
 

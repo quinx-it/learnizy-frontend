@@ -1,4 +1,4 @@
-import { ProgressBar } from './progress';
+import ProgressBar from '.';
 
 import type { StoryObj } from '@storybook/nextjs';
 

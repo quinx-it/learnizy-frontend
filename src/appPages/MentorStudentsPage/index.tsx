@@ -3,11 +3,11 @@
 import { FC } from 'react';
 
 import { useGetDashboardAnalyticsQuery } from '@/api/endpoints/admin';
-import { AnalyticsCard } from '@/components/AnalyticsCard';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
+import AnalyticsCard from '@/components/AnalyticsCard';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import Page from '@/components/Page';
-import { ProgressBar } from '@/components/Progress';
-import { StudentsTable } from '@/components/StudentsTable';
+import ProgressBar from '@/components/Progress';
+import StudentsTable from '@/components/StudentsTable';
 
 const MentorStudentsPage: FC = () => {
   const { data } = useGetDashboardAnalyticsQuery();

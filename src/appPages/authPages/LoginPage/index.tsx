@@ -2,8 +2,8 @@
 
 import { FC } from 'react';
 
-import { AuthForm } from '@/components/auth/AuthForm';
-import { CardWrapper } from '@/components/CardWrapper';
+import AuthForm from '@/components/auth/AuthForm';
+import CardWrapper from '@/components/CardWrapper';
 import { Logo } from '@/components/Icons';
 import Page from '@/components/Page';
 

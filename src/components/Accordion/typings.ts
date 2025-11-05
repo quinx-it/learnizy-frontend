@@ -1,4 +1,4 @@
-import { CardAccordion } from './accordion';
+import CardAccordion from '.';
 
 import type { StoryObj } from '@storybook/nextjs';
 

@@ -3,9 +3,9 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { CardAccordion } from '@/components/Accordion';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { CardWrapper } from '@/components/CardWrapper';
+import CardAccordion from '@/components/Accordion';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import CardWrapper from '@/components/CardWrapper';
 import Page from '@/components/Page';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';

@@ -13,9 +13,9 @@ import {
 } from '@/api/endpoints/admin';
 import { ILesson } from '@/api/endpoints/lessons';
 import { useGetModuleQuery } from '@/api/endpoints/modules';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { Button } from '@/components/Button';
-import { CardWrapper } from '@/components/CardWrapper';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import Button from '@/components/Button';
+import CardWrapper from '@/components/CardWrapper';
 import {
   Dialog,
   DialogContent,
@@ -23,15 +23,15 @@ import {
   DialogTitle,
   DialogFooter,
 } from '@/components/Dialog';
-import { DotTitle } from '@/components/DotTitle';
-import { ErrorSection } from '@/components/ErrorSection';
-import { FullscreenLoader } from '@/components/FullscreenLoader';
+import DotTitle from '@/components/DotTitle';
+import ErrorSection from '@/components/ErrorSection';
+import FullscreenLoader from '@/components/FullscreenLoader';
 import { CheckIcon, LockColorIcon } from '@/components/Icons';
-import { Input } from '@/components/Input';
-import { LessonCard } from '@/components/LessonCard';
+import Input from '@/components/Input';
+import LessonCard from '@/components/LessonCard';
 import Page from '@/components/Page';
-import { ProgressBar } from '@/components/Progress';
-import { Textarea } from '@/components/Textarea';
+import ProgressBar from '@/components/Progress';
+import Textarea from '@/components/Textarea';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';

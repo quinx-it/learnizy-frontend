@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@/components/Button';
-import { CardWrapper } from '@/components/CardWrapper';
+import Button from '@/components/Button';
+import CardWrapper from '@/components/CardWrapper';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
 

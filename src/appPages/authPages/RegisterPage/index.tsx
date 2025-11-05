@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import { RegisterForm } from '@/components/auth/RegisterForm';
-import { CardWrapper } from '@/components/CardWrapper';
+import RegisterForm from '@/components/auth/RegisterForm';
+import CardWrapper from '@/components/CardWrapper';
 import { Logo } from '@/components/Icons';
 import Page from '@/components/Page';
 

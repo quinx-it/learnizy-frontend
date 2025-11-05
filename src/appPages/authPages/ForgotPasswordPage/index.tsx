@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import { ForgotPasswordForm } from '@/components/auth/ForgotPasswordForm';
-import { CardWrapper } from '@/components/CardWrapper';
+import ForgotPasswordForm from '@/components/auth/ForgotPasswordForm';
+import CardWrapper from '@/components/CardWrapper';
 import { Logo } from '@/components/Icons';
 import Page from '@/components/Page';
 import { Heading, Text } from '@/components/Typography';

@@ -1,5 +1,6 @@
-import { Breadcrumbs } from './breadcrumbs';
 import { StoryType } from './typings';
+
+import Breadcrumbs from '.';
 
 import type { Meta } from '@storybook/nextjs';
 

@@ -5,12 +5,13 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useGetMainPageProgressQuery } from '@/api/endpoints/progress';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { CardWrapper } from '@/components/CardWrapper';
-import { CourseListItem } from '@/components/CourseListItem';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import CardWrapper from '@/components/CardWrapper';
+import CourseListItem from '@/components/CourseListItem';
 import Page from '@/components/Page';
-import { ProgressCard, ProgressStatus } from '@/components/ProgressCard';
-import { StatisticsChart } from '@/components/StatisticsChart';
+import ProgressCard from '@/components/ProgressCard';
+import { ProgressStatus } from '@/components/ProgressCard/constants';
+import StatisticsChart from '@/components/StatisticsChart';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
 

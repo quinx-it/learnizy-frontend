@@ -1,5 +1,6 @@
 import { HeadingStoryType, TextStoryType } from './typings';
-import { Heading, Text } from './typography';
+
+import { Heading, Text } from '.';
 
 import type { Meta } from '@storybook/nextjs';
 

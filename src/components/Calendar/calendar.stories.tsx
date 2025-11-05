@@ -1,5 +1,6 @@
-import { Calendar } from './calendar';
 import { StoryType } from './typings';
+
+import { Calendar } from '.';
 
 import type { Meta } from '@storybook/nextjs';
 

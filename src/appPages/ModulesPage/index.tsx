@@ -13,8 +13,8 @@ import {
   IModuleInfo,
 } from '@/api/endpoints/admin';
 import { CompletionStatus } from '@/api/endpoints/types';
-import { Breadcrumbs } from '@/components/Breadcrumbs';
-import { Button } from '@/components/Button';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import Button from '@/components/Button';
 import {
   Dialog,
   DialogContent,
@@ -22,12 +22,12 @@ import {
   DialogTitle,
   DialogFooter,
 } from '@/components/Dialog';
-import { ErrorSection } from '@/components/ErrorSection';
-import { FullscreenLoader } from '@/components/FullscreenLoader';
-import { Input } from '@/components/Input';
+import ErrorSection from '@/components/ErrorSection';
+import FullscreenLoader from '@/components/FullscreenLoader';
+import Input from '@/components/Input';
 import { ModuleCard } from '@/components/ModuleCard';
 import Page from '@/components/Page';
-import { Textarea } from '@/components/Textarea';
+import Textarea from '@/components/Textarea';
 import { showToast } from '@/components/Toaster';
 import { routes } from '@/constants';
 import { globalConstants } from '@/constants/constants';

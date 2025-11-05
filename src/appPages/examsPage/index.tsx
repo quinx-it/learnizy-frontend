@@ -4,8 +4,8 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useGetExamsQuery } from '@/api/endpoints/exams';
-import { ErrorSection } from '@/components/ErrorSection';
-import { FullscreenLoader } from '@/components/FullscreenLoader';
+import ErrorSection from '@/components/ErrorSection';
+import FullscreenLoader from '@/components/FullscreenLoader';
 import { CircleIcon } from '@/components/Icons';
 import Page from '@/components/Page';
 import { Heading } from '@/components/Typography';

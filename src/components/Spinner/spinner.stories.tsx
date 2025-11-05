@@ -1,4 +1,4 @@
-import { Spinner } from './spinner';
+import Spinner from '.';
 
 import type { Meta, StoryObj } from '@storybook/nextjs';
 
