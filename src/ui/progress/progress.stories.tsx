@@ -1,6 +1,7 @@
-import type { Meta } from '@storybook/nextjs';
 import { ProgressBar } from './progress';
 import { StoryType } from './typings';
+
+import type { Meta } from '@storybook/nextjs';
 
 const meta: Meta<typeof ProgressBar> = {
   title: 'Components/UI/ProgressBar',

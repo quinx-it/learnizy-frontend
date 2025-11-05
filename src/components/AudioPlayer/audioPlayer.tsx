@@ -1,9 +1,11 @@
 'use client';
 
-import { PlayPauseIcon, AaIcon, ArrowCloseIcon } from '@/ui/icons';
 import React, { useEffect, useRef, useState, FC } from 'react';
 import WaveSurfer from 'wavesurfer.js';
+
+import { PlayPauseIcon, AaIcon, ArrowCloseIcon } from '@/ui/icons';
 import { Text } from '@/ui/typography';
+
 import { IAudioPlayerProps } from './typings';
 
 export const AudioPlayer: FC<IAudioPlayerProps> = (props) => {
@@ -58,6 +60,7 @@ export const AudioPlayer: FC<IAudioPlayerProps> = (props) => {
 
   const togglePlay = () => {
     if (!wavesurferRef.current) return;
+
     wavesurferRef.current.playPause();
     setIsPlaying(wavesurferRef.current.isPlaying());
   };
@@ -71,6 +74,7 @@ export const AudioPlayer: FC<IAudioPlayerProps> = (props) => {
     const s = Math.floor(sec % 60)
       .toString()
       .padStart(2, '0');
+
     return `${m}:${s}`;
   };
 
@@ -102,9 +106,9 @@ export const AudioPlayer: FC<IAudioPlayerProps> = (props) => {
       {transcript && (
         <div
           ref={transcriptRef}
-          className={`overflow-hidden px-5 transition-[max-height] duration-500 ease-in-out`}
+          className="overflow-hidden px-5 transition-[max-height] duration-500 ease-in-out"
           style={{
-            maxHeight: showTranscript ? transcriptRef.current?.scrollHeight + 'px' : '0px',
+            maxHeight: showTranscript ? `${transcriptRef.current?.scrollHeight}px` : '0px',
           }}
         >
           <Text variant="m" className="mt-3 text-base text-white">

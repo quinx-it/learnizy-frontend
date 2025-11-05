@@ -1,10 +1,12 @@
-import React, { FC } from 'react';
-import { cn } from '@/lib/utils';
-import { Heading, Text } from '@/ui/typography';
 import Image from 'next/image';
-import { Button } from '@/ui/button';
-import { ErrorPropsType, ErrorType } from './typings';
+import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { cn } from '@/lib/utils';
+import { Button } from '@/ui/button';
+import { Heading, Text } from '@/ui/typography';
+
+import { ErrorPropsType, ErrorType } from './typings';
 
 export const ErrorSection: FC<ErrorPropsType & ErrorType> = (props) => {
   const { t } = useTranslation();
@@ -31,8 +33,8 @@ export const ErrorSection: FC<ErrorPropsType & ErrorType> = (props) => {
           className="md:max-w-[110px]"
         />
         <div className="space-y-3">
-          <Heading variant={'xl-bold'}>{t('ERROR_SECTION.TITLE')}</Heading>
-          <Text className="whitespace-pre-wrap" variant={'m'}>
+          <Heading variant="xl-bold">{t('ERROR_SECTION.TITLE')}</Heading>
+          <Text className="whitespace-pre-wrap" variant="m">
             {t('ERROR_SECTION.TEXT')}
           </Text>
         </div>

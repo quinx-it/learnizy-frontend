@@ -1,11 +1,14 @@
 'use client';
+
 import { FC } from 'react';
+import { Controller, useFormContext, useWatch } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+
 import { RadioGroup } from '@/ui/radioGroup';
 import { Textarea } from '@/ui/textarea';
 import { Text } from '@/ui/typography';
-import { Controller, useFormContext, useWatch } from 'react-hook-form';
+
 import { LessonQuestionPropsType } from './typings';
-import { useTranslation } from 'react-i18next';
 
 export const LessonQuestion: FC<LessonQuestionPropsType> = (props) => {
   const {

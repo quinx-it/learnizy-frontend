@@ -1,13 +1,16 @@
 'use client';
+
 import Image from 'next/image';
 import React, { FC } from 'react';
-import { CardWrapper } from '@/components/CardWrapper';
-import { DotTitle } from '@/ui/dotTitle';
-import { Text } from '@/ui/typography';
-import { ProgressBar } from '@/ui/progress';
-import { Button } from '@/ui/button';
-import { ProgressCardPropsType } from './typings';
 import { useTranslation } from 'react-i18next';
+
+import { CardWrapper } from '@/components/CardWrapper';
+import { Button } from '@/ui/button';
+import { DotTitle } from '@/ui/dotTitle';
+import { ProgressBar } from '@/ui/progress';
+import { Text } from '@/ui/typography';
+
+import { ProgressCardPropsType } from './typings';
 
 export const ProgressCard: FC<ProgressCardPropsType> = (props) => {
   const { title, subTitle, totalModules, totalLessons, lessons, status, modules, image, onClick } =

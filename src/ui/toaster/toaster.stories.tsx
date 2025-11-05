@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
-import { ThemeProvider } from 'next-themes';
 import { Meta, StoryFn } from '@storybook/nextjs';
+import { ThemeProvider } from 'next-themes';
+import React from 'react';
+
 import { Toaster, showToast } from './toaster';
 
 const Demo = () => {

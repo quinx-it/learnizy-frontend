@@ -48,6 +48,7 @@ export function useVoiceRecorder() {
     if (audioUrl) {
       URL.revokeObjectURL(audioUrl);
     }
+
     setAudioBlob(null);
     setAudioUrl(null);
   }, [audioUrl]);

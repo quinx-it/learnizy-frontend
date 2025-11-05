@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { decodeToken } from '@/lib/utils';
+
 import { IAuthState, IDecodedToken, IRehydrateAction } from './typings';
 
 const initialState: IAuthState = {
@@ -28,6 +30,7 @@ export const authSlice = createSlice({
       if (action.key !== 'auth') return;
 
       const accessToken = action?.payload?.accessToken;
+
       if (accessToken) {
         try {
           const { user }: IDecodedToken = decodeToken(accessToken);

@@ -1,20 +1,23 @@
 'use client';
-import React, { memo, useMemo, FC } from 'react';
-import { Text } from '@/ui/typography';
+
 import Image from 'next/image';
-import { Button } from '@/ui/button';
-import { renderModuleProgress } from './utils';
-import { cn, pluralize } from '@/lib/utils';
-import { constants } from './constants';
-import { CardWrapper } from '@/components/CardWrapper';
-import { DotTitle } from '@/ui/dotTitle';
-import { routes } from '@/constants';
 import { useRouter } from 'next/navigation';
-import { IModuleInfo } from '@/api/endpoints/modules';
+import React, { memo, useMemo, FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+
+import { IModuleInfo } from '@/api/endpoints/modules';
+import { CardWrapper } from '@/components/CardWrapper';
+import { routes } from '@/constants';
+import { cn, pluralize } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
-import { useTranslation } from 'react-i18next';
+import { Button } from '@/ui/button';
+import { DotTitle } from '@/ui/dotTitle';
+import { Text } from '@/ui/typography';
+
+import { constants } from './constants';
+import { renderModuleProgress } from './utils';
 
 const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) => {
   const {
@@ -83,6 +86,7 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
 
   const handleCardClick = () => {
     if (isBlocked && !isMentor) return;
+
     router.push(isMentor ? `${routes.mentor.modules}/${id}` : `${routes.user.modules}/${id}`);
   };
 
@@ -107,14 +111,14 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
               firstVariant="m"
               secondVariant="m"
               className={cn('text-soft', { 'text-medium': bonus })}
-              dotClassName={'text-soft'}
+              dotClassName="text-soft"
             />
 
             <div className="flex items-end gap-3">
               <Button
                 disabled={!isMentor && isBlocked}
                 variant={isCompleted ? 'white' : 'blue'}
-                size={'small'}
+                size="small"
                 className="cursor-pointer"
               >
                 {isMentor && isBlocked ? t('MODULES_CARD.START') : t(progressStatus)}
@@ -123,7 +127,7 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
             </div>
           </div>
         </div>
-        <Image width={115} height={115} src={'/images/astronaut1.webp'} alt="moduleimg" />
+        <Image width={115} height={115} src="/images/astronaut1.webp" alt="moduleimg" />
       </div>
     </CardWrapper>
   );

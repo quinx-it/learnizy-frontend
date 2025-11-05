@@ -1,8 +1,9 @@
 'use client';
 
-import { FC } from 'react';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { ChevronDownIcon, ChevronUpIcon, CheckIcon } from 'lucide-react';
+import { FC } from 'react';
+
 import { ICustomSelectProps } from './typings';
 
 export const CustomSelect: FC<ICustomSelectProps> = (props) => {

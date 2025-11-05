@@ -1,15 +1,17 @@
 'use client';
 
+import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { personalDataSchema } from './validations';
-import { RadioGroup, RadioGroupItem } from '@/ui/radioGroup';
-import { Input } from '@/ui/input';
-import { DatePicker } from '@/ui/datePicker';
-import { Button } from '@/ui/button';
-import { PersonalDataFormValuesType } from './typings';
 import { useTranslation } from 'react-i18next';
+
+import { Button } from '@/ui/button';
+import { DatePicker } from '@/ui/datePicker';
+import { Input } from '@/ui/input';
+import { RadioGroup, RadioGroupItem } from '@/ui/radioGroup';
+
+import { PersonalDataFormValuesType } from './typings';
+import { personalDataSchema } from './validations';
 
 export const PersonalDataForm = () => {
   const { t } = useTranslation();

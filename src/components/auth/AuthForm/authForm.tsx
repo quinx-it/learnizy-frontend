@@ -1,18 +1,20 @@
 'use client';
 
+import { yupResolver } from '@hookform/resolvers/yup';
+import Link from 'next/link';
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { formSchema } from './validation';
+
 import { useLoginMutation } from '@/api/endpoints/auth';
-import { Spinner } from '@/ui/spinner';
+import { routes } from '@/constants';
+import { Button } from '@/ui/button';
 import { Input } from '@/ui/input';
 import { PasswordInput } from '@/ui/passwordInput';
-import { Button } from '@/ui/button';
+import { Spinner } from '@/ui/spinner';
 import { showToast } from '@/ui/toaster';
-import Link from 'next/link';
-import { routes } from '@/constants';
+
 import { IAuthFormValues } from './typings';
+import { formSchema } from './validation';
 
 export const AuthForm = () => {
   const [loginRequest, { isLoading }] = useLoginMutation();

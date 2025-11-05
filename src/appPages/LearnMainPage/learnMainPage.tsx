@@ -1,17 +1,20 @@
 'use client';
-import { Breadcrumbs } from '@/ui/breadcrumbs';
-import React from 'react';
-import { constants } from './constants';
-import { CardWrapper } from '@/components/CardWrapper';
-import { ProgressCard, ProgressStatus } from '@/components/ProgressCard';
-import { Text } from '@/ui/typography';
-import { CourseListItem } from '@/components/CourseListItem';
-import { StatisticsChart } from '@/components/StatisticsChart';
-import { useGetMainPageProgressQuery } from '@/api/endpoints/progress';
-import { routes } from '@/constants';
+
 import { useRouter } from 'next/navigation';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { useGetMainPageProgressQuery } from '@/api/endpoints/progress';
+import { CardWrapper } from '@/components/CardWrapper';
+import { CourseListItem } from '@/components/CourseListItem';
 import Page from '@/components/Page';
+import { ProgressCard, ProgressStatus } from '@/components/ProgressCard';
+import { StatisticsChart } from '@/components/StatisticsChart';
+import { routes } from '@/constants';
+import { Breadcrumbs } from '@/ui/breadcrumbs';
+import { Text } from '@/ui/typography';
+
+import { constants } from './constants';
 
 export const LearnMainPage = () => {
   const router = useRouter();
@@ -53,7 +56,7 @@ export const LearnMainPage = () => {
           <div>
             <Text variant="m-bold" className="mb-4">
               {t('COURSE_LABEL')}{' '}
-              <Text tag="span" className="text-medium" variant={'m-bold'}>
+              <Text tag="span" className="text-medium" variant="m-bold">
                 {mainPageProgress.courseInfo.title}
               </Text>
             </Text>
@@ -65,6 +68,7 @@ export const LearnMainPage = () => {
                     ? (module.completedLessons / module.totalLessons) * 100
                     : 0;
                 let status: keyof typeof constants.statuses = 'NOT_STARTED';
+
                 if (module.completionStatus === 'BLOCKED') {
                   status = 'BLOCKED';
                 } else if (module.completionStatus === 'COMPLETED') {
@@ -72,6 +76,7 @@ export const LearnMainPage = () => {
                 } else if (module.completedLessons > 0) {
                   status = 'IN_PROGRESS';
                 }
+
                 return (
                   <li key={module.id}>
                     <CourseListItem

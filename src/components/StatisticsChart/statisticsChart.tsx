@@ -1,8 +1,10 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { CalendarIcon } from '@/ui/icons';
+
 import { AreaChart } from '@/ui/areaChart';
+import { CalendarIcon } from '@/ui/icons';
 import { Text } from '@/ui/typography';
+
 import { WEEK_DAYS } from './constants';
 import { StatisticsChartPropsType } from './typings';
 
@@ -29,14 +31,14 @@ export const StatisticsChart: FC<StatisticsChartPropsType> = (props) => {
           <Text variant="m">{t('STATISTICS_CHART.LAST_WEEK')}</Text>
         </div>
         <div className="flex items-center gap-3">
-          <Text variant={'m'}>
-            <Text tag="span" variant={'l-bold'} className="text-medium">
+          <Text variant="m">
+            <Text tag="span" variant="l-bold" className="text-medium">
               {totalLessons}
             </Text>{' '}
             {t('STATISTICS_CHART.LESSONS')}
           </Text>
-          <Text variant={'m'}>
-            <Text tag="span" variant={'l-bold'} className="text-medium">
+          <Text variant="m">
+            <Text tag="span" variant="l-bold" className="text-medium">
               {totalTests}
             </Text>{' '}
             {t('STATISTICS_CHART.TESTS')}

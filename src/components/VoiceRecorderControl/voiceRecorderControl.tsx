@@ -1,9 +1,12 @@
+import { useEffect, useState, FC } from 'react';
+
+import { useVoiceRecorder } from '@/hooks';
 import { Button } from '@/ui/button';
 import { MicIcon, TrashCanIcon } from '@/ui/icons';
-import { AudioPlayer } from '../AudioPlayer';
 import { Text } from '@/ui/typography';
-import { useEffect, useState, FC } from 'react';
-import { useVoiceRecorder } from '@/hooks';
+
+import { AudioPlayer } from '../AudioPlayer';
+
 import { PropsType } from './typings';
 
 export const VoiceRecorderControl: FC<PropsType> = (props) => {
@@ -19,10 +22,12 @@ export const VoiceRecorderControl: FC<PropsType> = (props) => {
 
   useEffect(() => {
     let interval: NodeJS.Timeout | undefined;
+
     if (recording) {
       setDuration(0);
       interval = setInterval(() => setDuration((d) => d + 1), 1000);
     }
+
     return () => {
       if (interval) clearInterval(interval);
     };

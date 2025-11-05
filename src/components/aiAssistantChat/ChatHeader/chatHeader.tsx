@@ -1,8 +1,10 @@
 'use client';
 
-import React, { FC, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
+import React, { FC, useEffect, useState } from 'react';
+
 import { useGetChatMessagesQuery } from '@/api/endpoints/aiAssistant';
+
 import { IChatHeaderProps } from './typings';
 
 export const ChatHeader: FC<IChatHeaderProps> = (props) => {

@@ -1,8 +1,10 @@
 'use client';
 
 import React, { FC, useState, useEffect } from 'react';
-import { ITypewriterProps } from './typings';
+
 import { MarkdownRenderer } from '@/components/MarkdownText';
+
+import { ITypewriterProps } from './typings';
 
 export const Typewriter: FC<ITypewriterProps> = (props) => {
   const { text, speed = 1, onUpdate } = props;
@@ -19,8 +21,10 @@ export const Typewriter: FC<ITypewriterProps> = (props) => {
         if (prev < text.length) {
           onUpdate?.();
           setTimeout(typeNext, speed);
+
           return prev + 1;
         }
+
         return prev;
       });
     };

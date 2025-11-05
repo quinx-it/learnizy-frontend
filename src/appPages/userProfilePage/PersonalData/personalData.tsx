@@ -1,9 +1,11 @@
 'use client';
 
+import { useTranslation } from 'react-i18next';
+
 import { CardWrapper } from '@/components/CardWrapper';
 import { Heading } from '@/ui/typography';
+
 import { PersonalDataForm } from './PersonalDataForm';
-import { useTranslation } from 'react-i18next';
 
 export const PersonalData = () => {
   const { t } = useTranslation();

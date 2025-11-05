@@ -1,20 +1,24 @@
-import { FC } from 'react';
-import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { FC, useState, useEffect } from 'react';
+import { Controller, useForm, Resolver } from 'react-hook-form';
+
+import {
+  useUploadVoiceMutation,
+  useCreateLessonAIQueryMutation,
+  useGetLessonAIQueriesQuery,
+  CreateLessonAIQueryRequestType,
+} from '@/api/endpoints/voice';
+import { CardWrapper } from '@/components/CardWrapper';
 import { Button } from '@/ui/button';
 import { Spinner } from '@/ui/spinner';
 import { showToast } from '@/ui/toaster';
-import { VoiceRecorderControl } from '../VoiceRecorderControl';
-import { schema } from './validation';
-import { useUploadVoiceMutation } from '@/api/endpoints/voice';
-import { useCreateLessonAIQueryMutation, useGetLessonAIQueriesQuery } from '@/api/endpoints/voice';
-import { CreateLessonAIQueryRequestType } from '@/api/endpoints/voice';
-import { useState, useEffect } from 'react';
 import { Text } from '@/ui/typography';
-import { CardWrapper } from '@/components/CardWrapper';
-import { Resolver } from 'react-hook-form';
+
+import { VoiceRecorderControl } from '../VoiceRecorderControl';
+
 import { AIQueryStatus } from './constants';
 import { IAIQuestionFormValues, IVoiceRecorderFormProps } from './typings';
+import { schema } from './validation';
 
 export const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = (props) => {
   const { lessonId } = props;
@@ -56,6 +60,7 @@ export const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = (props) => {
         setLastAIError(lastAIQuery.processingError || 'Не удалось получить ответ от ИИ.');
         setLastAIResponse(null);
       }
+
       setLastCreatedQueryId(null);
     }
   }, [lastAIQuery, lastCreatedQueryId]);
@@ -63,6 +68,7 @@ export const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = (props) => {
   const onSubmit = async (data: IAIQuestionFormValues) => {
     if (!data.file) {
       showToast('error', 'Ошибка', 'Пожалуйста, запишите вопрос голосом.');
+
       return;
     }
 
@@ -76,6 +82,7 @@ export const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = (props) => {
       audioUrl = downloadUrl;
     } catch {
       showToast('error', 'Ошибка загрузки аудио', 'Не удалось загрузить аудиофайл.');
+
       return;
     }
 

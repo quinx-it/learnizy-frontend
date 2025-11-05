@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import i18n from '@/lib/translate';
+
 import { DEFAULT_LANGUAGE } from '@/constants';
+import i18n from '@/lib/translate';
 
 export default function LanguageSwitcher() {
   const [open, setOpen] = useState(false);
@@ -16,7 +17,7 @@ export default function LanguageSwitcher() {
   const getCookie = (name: string) => {
     return document.cookie
       .split('; ')
-      .find((row) => row.startsWith(name + '='))
+      .find((row) => row.startsWith(`${name}=`))
       ?.split('=')[1];
   };
 
@@ -29,6 +30,7 @@ export default function LanguageSwitcher() {
 
   useEffect(() => {
     const savedLang = getCookie('language');
+
     if (savedLang) {
       i18n.changeLanguage(savedLang);
     } else {
@@ -41,6 +43,7 @@ export default function LanguageSwitcher() {
       }
     };
     document.addEventListener('click', handleClickOutside);
+
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 

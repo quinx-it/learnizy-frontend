@@ -1,10 +1,11 @@
 'use client';
 
+import React from 'react';
+
 import { AuthForm } from '@/components/auth/AuthForm';
 import { CardWrapper } from '@/components/CardWrapper';
-import { Logo } from '@/ui/icons';
-import React from 'react';
 import Page from '@/components/Page';
+import { Logo } from '@/ui/icons';
 
 export const LoginPageDesign = () => {
   return (

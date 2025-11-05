@@ -1,7 +1,9 @@
-import { IAuthState } from '@/store/slices/auth/typings';
 import { api } from '@/api';
+import { AUTH_BASE_URL } from '@/api/constants';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
+import { IAuthState } from '@/store/slices/auth/typings';
 import { showToast } from '@/ui/toaster';
+
 import {
   ForgotPasswordRequestType,
   LoginRequestType,
@@ -12,7 +14,6 @@ import {
   VerifyEmailRequestType,
   ResendCodeRequestType,
 } from './types';
-import { AUTH_BASE_URL } from '@/api/constants';
 
 export const auth = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -25,7 +26,7 @@ export const auth = api.injectEndpoints({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          const accessToken = data.accessToken;
+          const { accessToken } = data;
 
           if (accessToken) dispatch(setCredentials({ accessToken }));
         } catch {
@@ -51,7 +52,8 @@ export const auth = api.injectEndpoints({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          const accessToken = data.accessToken;
+          const { accessToken } = data;
+
           if (accessToken) {
             dispatch(setCredentials({ accessToken }));
           }

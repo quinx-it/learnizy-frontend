@@ -1,10 +1,12 @@
 import { FC } from 'react';
-import { constants } from './constants';
-import { StarIcon } from '@/ui/icons';
-import { Text } from '@/ui/typography';
-import { ProgressBar } from '@/ui/progress';
+
 import { CompletionStatus } from '@/api/endpoints/types';
 import { percentage } from '@/lib/utils';
+import { StarIcon } from '@/ui/icons';
+import { ProgressBar } from '@/ui/progress';
+import { Text } from '@/ui/typography';
+
+import { constants } from './constants';
 import { ProgressModuleType, IProcentContentProps } from './typings';
 
 const ProcentContent: FC<IProcentContentProps> = (props) => {
@@ -18,7 +20,7 @@ const ProcentContent: FC<IProcentContentProps> = (props) => {
         value={progress ? Number(progress) : 1}
         className="text-medium stroke-medium"
       />
-      <Text variant={'m'} className="">
+      <Text variant="m" className="">
         {' '}
         {progress}%
       </Text>
@@ -39,7 +41,7 @@ export const renderModuleProgress = (
         element: (
           <div className="text-medium flex gap-1.5">
             <StarIcon className="size-4.5" />
-            <Text variant={'m'}>
+            <Text variant="m">
               {completedLessons}/{totalLessons}
             </Text>
           </div>

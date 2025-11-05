@@ -1,38 +1,40 @@
 'use client';
 
-import { CardWrapper } from '@/components/CardWrapper';
-import { routes } from '@/constants';
-import { Breadcrumbs } from '@/ui/breadcrumbs';
-import { DotTitle } from '@/ui/dotTitle';
-import { CheckIcon, LockColorIcon } from '@/ui/icons';
-import { ProgressBar } from '@/ui/progress';
-import { Text } from '@/ui/typography';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import React, { FC, useState } from 'react';
-import { constants } from './constants';
-import { LessonCard } from '@/components/LessonCard';
-import { useGetModuleQuery } from '@/api/endpoints/modules';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+
 import {
   useCreateLessonMutation,
   useUpdateLessonMutation,
   useDeleteLessonMutation,
 } from '@/api/endpoints/admin';
-import { FullscreenLoader } from '@/components/FullscreenLoader';
-import { ErrorSection } from '@/components/ErrorSection';
-import { percentage, pluralize } from '@/lib/utils';
 import { ILesson } from '@/api/endpoints/lessons';
-import { usePathname, useRouter } from 'next/navigation';
-import { useSelector } from 'react-redux';
+import { useGetModuleQuery } from '@/api/endpoints/modules';
+import { CardWrapper } from '@/components/CardWrapper';
+import { ErrorSection } from '@/components/ErrorSection';
+import { FullscreenLoader } from '@/components/FullscreenLoader';
+import { LessonCard } from '@/components/LessonCard';
+import Page from '@/components/Page';
+import { routes } from '@/constants';
+import { percentage, pluralize } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
-import { showToast } from '@/ui/toaster';
-import { ModuleItemPagePropsType } from './typings';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/ui/dialog';
+import { Breadcrumbs } from '@/ui/breadcrumbs';
 import { Button } from '@/ui/button';
-import { Textarea } from '@/ui/textarea';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/ui/dialog';
+import { DotTitle } from '@/ui/dotTitle';
+import { CheckIcon, LockColorIcon } from '@/ui/icons';
 import { Input } from '@/ui/input';
-import { useTranslation } from 'react-i18next';
-import Page from '@/components/Page';
+import { ProgressBar } from '@/ui/progress';
+import { Textarea } from '@/ui/textarea';
+import { showToast } from '@/ui/toaster';
+import { Text } from '@/ui/typography';
+
+import { constants } from './constants';
+import { ModuleItemPagePropsType } from './typings';
 
 export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
   const { id } = props;
@@ -65,10 +67,11 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
   const [content, setContent] = useState('');
 
   if (isLoading) return <FullscreenLoader />;
+
   if (isError || !module) return <ErrorSection reset={refetch} />;
 
   const { totalLessons, completedLessons, title: moduleTitle, sequenceOrder } = module.moduleInfo;
-  const lessons = module.lessons;
+  const { lessons } = module;
   const progress = percentage(totalLessons, completedLessons);
 
   const handleLessonCardClick = (lessonId: number) => {
@@ -113,6 +116,7 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
           contentBlocks: null,
         }).unwrap();
       }
+
       setModalOpen(false);
       refetch();
     } catch {
@@ -191,7 +195,7 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
           {isAvailableExam(progress) ? (
             <>
               <CheckIcon color="blue" />
-              <Text variant={'l'}>
+              <Text variant="l">
                 {t('COMMON.MODULE_COMPLETED')}{' '}
                 <Link className="text-medium !underline" href={routes.user.exams}>
                   {t('COMMON.EXAM')}
@@ -201,7 +205,7 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
           ) : (
             <>
               <LockColorIcon />
-              <Text variant={'l'}>
+              <Text variant="l">
                 {t('COMMON.EXAM_LOCKED')}{' '}
                 <Link className="text-medium !underline" href={routes.user.exams}>
                   {t('COMMON.EXAM')}
@@ -217,7 +221,7 @@ export const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
             </Button>
           </Link>
           <ProgressBar strokeWidth={6} size={27} value={progress} variant="circular" />
-          <Text variant={'l'} className="font-montserrat text-medium font-semibold">
+          <Text variant="l" className="font-montserrat text-medium font-semibold">
             {progress}%
           </Text>
         </div>

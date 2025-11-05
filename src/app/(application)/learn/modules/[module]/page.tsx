@@ -1,6 +1,9 @@
 'use client';
-import { ModuleItemPage } from '@/appPages/ModulesItemPage';
+
 import { useParams } from 'next/navigation';
+
+import { ModuleItemPage } from '@/appPages/ModulesItemPage';
+
 import { ParamsType } from '../typings';
 
 const ModuleItem = () => {

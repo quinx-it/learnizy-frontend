@@ -1,4 +1,5 @@
 import { api } from '@/api';
+
 import { ICourse } from './types';
 
 export const courseApi = api.injectEndpoints({

@@ -1,4 +1,5 @@
 import { JSX } from 'react';
+
 import { StatusValueType } from './constants';
 
 export type ProgressModuleType = {

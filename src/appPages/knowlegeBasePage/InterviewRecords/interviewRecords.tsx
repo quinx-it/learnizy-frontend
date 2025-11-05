@@ -1,12 +1,14 @@
+import Link from 'next/link';
+import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { CardWrapper } from '@/components/CardWrapper';
 import { routes } from '@/constants';
 import { cn } from '@/lib/utils';
 import { Button } from '@/ui/button';
 import { Text } from '@/ui/typography';
-import Link from 'next/link';
-import { FC } from 'react';
+
 import { IInterviewRecordsProps } from './typings';
-import { useTranslation } from 'react-i18next';
 
 export const InterviewRecords: FC<IInterviewRecordsProps> = (props) => {
   const { className } = props;

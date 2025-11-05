@@ -1,9 +1,11 @@
-import { cn } from '@/lib/utils';
-import { Heading, Text } from '@/ui/typography';
 import Image from 'next/image';
 import React, { FC } from 'react';
-import { AdvantageCardPropsType } from './typings';
+
+import { cn } from '@/lib/utils';
+import { Heading, Text } from '@/ui/typography';
+
 import { CardType } from './constants';
+import { AdvantageCardPropsType } from './typings';
 
 const cardStyles = {
   [CardType.Dark]: {
@@ -32,10 +34,10 @@ export const AdvantageCard: FC<AdvantageCardPropsType> = (props) => {
       )}
     >
       <div>
-        <Heading variant={'5xl'} className={`mb-3 ${styles.heading}`}>
+        <Heading variant="5xl" className={`mb-3 ${styles.heading}`}>
           {title}
         </Heading>
-        <Text variant={'l'} className={`${styles.text}`}>
+        <Text variant="l" className={`${styles.text}`}>
           {text}
         </Text>
       </div>

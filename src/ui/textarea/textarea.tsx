@@ -1,6 +1,8 @@
 import React, { ChangeEvent, useState, useEffect } from 'react';
+
 import { cn } from '@/lib/utils';
 import { Text } from '@/ui/typography';
+
 import { MAX_TEXTAREA_LENGTH } from './constants';
 import { ITextareaProps } from './typings';
 
@@ -15,6 +17,7 @@ function Textarea({ className, error, maxLength = MAX_TEXTAREA_LENGTH, ...props 
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     if (props.onChange) props.onChange(e);
+
     setValue(e.target.value);
   };
 

@@ -1,11 +1,7 @@
 import { WorkingSection } from '@/components/WorkingSection';
 
 const ProjectsPage = () => {
-  return (
-    <>
-      <WorkingSection />
-    </>
-  );
+  return <WorkingSection />;
 };
 
 export default ProjectsPage;

@@ -1,7 +1,9 @@
-import type { Meta } from '@storybook/nextjs';
 import { useState } from 'react';
+
 import { CustomSelect } from './select';
 import { StoryType } from './typings';
+
+import type { Meta } from '@storybook/nextjs';
 
 const meta: Meta<typeof CustomSelect> = {
   title: 'Components/UI/CustomSelect',
@@ -29,6 +31,7 @@ const options = [
 export const Default: StoryType = {
   render: () => {
     const [value, setValue] = useState('');
+
     return (
       <CustomSelect
         value={value}

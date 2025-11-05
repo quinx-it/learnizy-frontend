@@ -1,5 +1,6 @@
-import { RootStateType } from '@/store';
 import { createSelector } from 'reselect';
+
+import { RootStateType } from '@/store';
 
 export const selectAuth = (state: RootStateType) => state.auth;
 

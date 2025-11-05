@@ -1,13 +1,17 @@
 'use client';
+
 import * as React from 'react';
-import { cn } from '@/lib/utils';
 import { forwardRef } from 'react';
-import { IHeadingProps, ITextProps } from './typings';
+
+import { cn } from '@/lib/utils';
+
 import { headingVariants, textVariants } from './constants';
+import { IHeadingProps, ITextProps } from './typings';
 
 const Heading = forwardRef<HTMLHeadingElement, IHeadingProps>(
   ({ tag = 'h3', variant, children, className, ...props }, ref) => {
     const Tag = tag;
+
     return (
       <Tag className={cn(headingVariants({ variant, className }))} ref={ref} {...props}>
         {children}
@@ -19,6 +23,7 @@ const Heading = forwardRef<HTMLHeadingElement, IHeadingProps>(
 const Text = forwardRef<HTMLParagraphElement, ITextProps>(
   ({ tag = 'p', variant, children, className, ...props }, ref) => {
     const Tag = tag;
+
     return (
       <Tag className={cn(textVariants({ variant, className }))} ref={ref} {...props}>
         {children}

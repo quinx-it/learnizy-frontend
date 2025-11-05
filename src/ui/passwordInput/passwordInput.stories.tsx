@@ -1,6 +1,7 @@
-import type { Meta } from '@storybook/nextjs';
 import { PasswordInput } from './passwordInput';
 import { StoryType } from './typings';
+
+import type { Meta } from '@storybook/nextjs';
 
 const meta: Meta<typeof PasswordInput> = {
   title: 'Components/UI/PasswordInput',

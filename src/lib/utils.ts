@@ -1,7 +1,9 @@
 import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
 import { jwtDecode } from 'jwt-decode';
+import { twMerge } from 'tailwind-merge';
+
 import { IDecodedToken, UserRole } from '@/store/slices/auth/typings';
+
 import {
   dynamicMentorRoutes,
   dynamicUserRoutes,
@@ -9,8 +11,9 @@ import {
   staticMentorRoutes,
   staticUserRoutes,
 } from '../constants/routes';
-import { IDecodedTokenPayload } from './typings';
+
 import i18n from './translate';
+import { IDecodedTokenPayload } from './typings';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -23,20 +26,25 @@ export function pluralize(count: number, one: string, few: string, many: string)
   if (mod10 === 1 && mod100 !== 11) {
     return `${count} ${one}`;
   }
+
   if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)) {
     return `${count} ${few}`;
   }
+
   return `${count} ${many}`;
 }
 
 export const normalizeToFive = (value: number): number => {
   if (value <= 0) return 0;
+
   if (value >= 100) return 5;
+
   return +((value / 100) * 5).toFixed(2);
 };
 
 export const decodeToken = (token: string): IDecodedToken => {
   const data = jwtDecode<IDecodedTokenPayload>(token);
+
   return { user: { userName: data.sub, role: data.role } };
 };
 
@@ -66,6 +74,7 @@ export function isPublicRoute(pathname: string) {
 
 export function isRoleRoute(role: UserRole | undefined, pathname: string) {
   if (!role) return false;
+
   switch (role) {
     case UserRole.GUEST:
       return isPublicRoute(pathname);
@@ -83,6 +92,7 @@ export function percentage(total: number, completed: number) {
 export const isAudioUrl = (value: string): boolean => {
   try {
     const url = new URL(value);
+
     return ['http:', 'https:', 'blob:'].includes(url.protocol);
   } catch {
     return false;
@@ -93,6 +103,7 @@ export const formatRelativeDate = (date: Date): string => {
   const pluralize = (count: number, words: [string, string, string]): string => {
     const cases = [2, 0, 1, 1, 1, 2];
     const index = count % 100 > 4 && count % 100 < 20 ? 2 : cases[Math.min(count % 10, 5)];
+
     return words[index];
   };
 
@@ -104,6 +115,7 @@ export const formatRelativeDate = (date: Date): string => {
   const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
 
   if (diffDays === 0) return i18n.t('TIME.TODAY');
+
   if (diffDays === 1) return i18n.t('TIME.YESTERDAY');
 
   if (diffDays <= 7) {
@@ -115,6 +127,7 @@ export const formatRelativeDate = (date: Date): string => {
   }
 
   const weeks = Math.floor(diffDays / 7);
+
   if (diffDays <= 30) {
     return `${weeks} ${pluralize(weeks, [
       i18n.t('TIME.WEEK_ONE'),
@@ -124,6 +137,7 @@ export const formatRelativeDate = (date: Date): string => {
   }
 
   const months = Math.floor(diffDays / 30);
+
   if (diffDays <= 365) {
     return `${months} ${pluralize(months, [
       i18n.t('TIME.MONTH_ONE'),
@@ -133,6 +147,7 @@ export const formatRelativeDate = (date: Date): string => {
   }
 
   const years = Math.floor(diffDays / 365);
+
   return `${years} ${pluralize(years, [
     i18n.t('TIME.YEAR_ONE'),
     i18n.t('TIME.YEAR_TWO'),

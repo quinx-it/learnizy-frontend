@@ -1,8 +1,10 @@
 'use client';
 
-import React, { FC } from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import React, { FC } from 'react';
+
 import { cn } from '@/lib/utils';
+
 import { ITooltipProps } from './typings';
 
 export const CustomTooltip: FC<ITooltipProps> = (props) => {

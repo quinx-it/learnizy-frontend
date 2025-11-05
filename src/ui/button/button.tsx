@@ -1,6 +1,8 @@
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
+
 import { cn } from '@/lib/utils';
+
 import './button.css';
 import { ComponentProps, MouseEvent } from 'react';
 
@@ -61,7 +63,9 @@ function Button({
     circle.classList.add('ripple');
 
     const ripple = button.getElementsByClassName('ripple')[0];
+
     if (ripple) ripple.remove();
+
     button.appendChild(circle);
 
     if (typeof onClick === 'function') onClick(e);

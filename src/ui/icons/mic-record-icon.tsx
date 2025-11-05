@@ -1,5 +1,5 @@
-import { IIconProps } from '@/types';
 import { cn } from '@/lib/utils';
+import { IIconProps } from '@/types';
 
 export const MicRecordIcon = ({ className }: IIconProps) => {
   const barHeights = [5, 12, 8, 5, 11, 3];

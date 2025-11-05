@@ -1,32 +1,34 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-import { ModuleCard } from '@/components/ModuleCard';
-import { Breadcrumbs } from '@/ui/breadcrumbs';
-import { routes } from '@/constants';
-import { globalConstants } from '@/constants/constants';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+
 import {
   useGetModulesQuery,
   useGetModuleProgressQuery,
   useCreateModuleMutation,
   useUpdateModuleMutation,
   useDeleteModuleMutation,
+  IModuleInfo,
 } from '@/api/endpoints/admin';
-import { IModuleInfo } from '@/api/endpoints/admin';
 import { CompletionStatus } from '@/api/endpoints/types';
-import { FullscreenLoader } from '@/components/FullscreenLoader';
 import { ErrorSection } from '@/components/ErrorSection';
-import { useSelector } from 'react-redux';
+import { FullscreenLoader } from '@/components/FullscreenLoader';
+import { ModuleCard } from '@/components/ModuleCard';
+import Page from '@/components/Page';
+import { routes } from '@/constants';
+import { globalConstants } from '@/constants/constants';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
-import { showToast } from '@/ui/toaster';
-import { IModuleProgressCardProps } from './typings';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/ui/dialog';
+import { Breadcrumbs } from '@/ui/breadcrumbs';
 import { Button } from '@/ui/button';
-import { Textarea } from '@/ui/textarea';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/ui/dialog';
 import { Input } from '@/ui/input';
-import { useTranslation } from 'react-i18next';
-import Page from '@/components/Page';
+import { Textarea } from '@/ui/textarea';
+import { showToast } from '@/ui/toaster';
+
+import { IModuleProgressCardProps } from './typings';
 
 const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
   const { module, isMentor, openEditModal, handleDeleteModule } = props;
@@ -103,6 +105,7 @@ export const ModulesPage = () => {
 
   const openEditModal = (moduleId: number) => {
     const mod = modulesData?.content.find((m) => m.id === moduleId);
+
     if (!mod) return;
 
     setEditingModuleId(moduleId);
@@ -122,6 +125,7 @@ export const ModulesPage = () => {
       } else {
         await createModule({ title, description, courseId: 1, sequenceOrder }).unwrap();
       }
+
       setModalOpen(false);
       refetch();
     } catch {
@@ -139,6 +143,7 @@ export const ModulesPage = () => {
   };
 
   if (isLoading) return <FullscreenLoader />;
+
   if (isError) return <ErrorSection reset={refetch} />;
 
   return (
@@ -146,7 +151,7 @@ export const ModulesPage = () => {
       <Breadcrumbs
         rootLabel={t(globalConstants.rootBreadcrumbLabels.modulesLabel)}
         rootHref={routes.user.knowlegeBase}
-        rootDescription={'Java Core'}
+        rootDescription="Java Core"
       />
       {isMentor && (
         <div className="mb-4">

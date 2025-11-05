@@ -1,26 +1,29 @@
 'use client';
 
+import { yupResolver } from '@hookform/resolvers/yup';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { formSchema, verificationSchema } from './validation';
+
 import {
   useRegisterMutation,
   useVerifyEmailMutation,
   useResendVerificationCodeMutation,
 } from '@/api/endpoints/auth';
-import { Spinner } from '@/ui/spinner';
+import { routes, HttpStatus } from '@/constants';
+import { Button } from '@/ui/button';
+import { CheckboxWithLabel } from '@/ui/checkboxWithLabel/checkboxWithLabel';
 import { Input } from '@/ui/input';
 import { PasswordInput } from '@/ui/passwordInput';
-import { Button } from '@/ui/button';
+import { Spinner } from '@/ui/spinner';
 import { showToast } from '@/ui/toaster';
-import Link from 'next/link';
-import { routes, HttpStatus } from '@/constants';
-import type { HttpStatusError } from '@/types';
-import { CheckboxWithLabel } from '@/ui/checkboxWithLabel/checkboxWithLabel';
-import { useRouter } from 'next/navigation';
 import { Heading, Text } from '@/ui/typography';
+
 import { VerificationFormValuesType, RegisterStep, IRegisterFormValues } from './typings';
+import { formSchema, verificationSchema } from './validation';
+
+import type { HttpStatusError } from '@/types';
 
 export const RegisterForm = () => {
   const router = useRouter();
@@ -67,9 +70,9 @@ export const RegisterForm = () => {
       }, 1000);
 
       return () => clearInterval(interval);
-    } else {
-      setCanResend(true);
     }
+
+    setCanResend(true);
   }, [timer, step]);
 
   const onRegisterSubmit: SubmitHandler<IRegisterFormValues> = async (data) => {
@@ -94,6 +97,7 @@ export const RegisterForm = () => {
           'Ошибка',
           'Аккаунт с таким email уже существует. Войдите или восстановите доступ.',
         );
+
         return;
       }
 
@@ -147,6 +151,7 @@ export const RegisterForm = () => {
             maxLength={6}
             onInput={(e: ChangeEvent<HTMLInputElement>) => {
               e.currentTarget.value = e.currentTarget.value.replace(/\D/g, '');
+
               if (e.currentTarget.value.length > 6) {
                 e.currentTarget.value = e.currentTarget.value.slice(0, 6);
               }

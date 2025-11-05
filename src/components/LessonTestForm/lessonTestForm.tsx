@@ -1,22 +1,25 @@
 'use client';
-import { Text } from '@/ui/typography';
-import { LessonQuestion } from '@/components/LessonQuestion';
-import { Button } from '@/ui/button';
-import { FormProvider, useForm } from 'react-hook-form';
-import { Spinner } from '@/ui/spinner';
-import { useState, FC } from 'react';
-import { showToast } from '@/ui/toaster';
+
 import { yupResolver } from '@hookform/resolvers/yup';
-import { LessonTestFormSchema } from './validation';
-import { useUploadVoiceMutation } from '@/api/endpoints/voice';
 import { useRouter, usePathname } from 'next/navigation';
+import { useState, FC } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+
 import {
   AnswerInputType,
   LessonTestFormValuesType,
   LessonTestSubmitType,
 } from '@/api/endpoints/test';
+import { useUploadVoiceMutation } from '@/api/endpoints/voice';
+import { LessonQuestion } from '@/components/LessonQuestion';
+import { Button } from '@/ui/button';
+import { Spinner } from '@/ui/spinner';
+import { showToast } from '@/ui/toaster';
+import { Text } from '@/ui/typography';
+
 import { LessonTestFormPropsType } from './typings';
-import { useTranslation } from 'react-i18next';
+import { LessonTestFormSchema } from './validation';
 
 export const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
   const { questions, onSubmit, testId, loading } = props;
@@ -40,9 +43,11 @@ export const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
   const handleSubmitForm = async (data: LessonTestFormValuesType) => {
     try {
       const isEmpty = Object.values(data.questions).some((q) => !q?.textAnswer?.trim() && !q?.file);
+
       if (!forceSubmit && isEmpty) {
         showToast('info', t('LESSON_TEST.CONFIRM_TITLE'), t('LESSON_TEST.CONFIRM_TEXT'));
         setForceSubmit(true);
+
         return;
       }
 
@@ -52,6 +57,7 @@ export const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
             const formData = new FormData();
             formData.append('file', q.file, `recording-${index}.webm`);
             const { downloadUrl } = await uploadVoice(formData).unwrap();
+
             return {
               questionId: questions[index].questionId,
               inputType: AnswerInputType.VOICE,
@@ -59,6 +65,7 @@ export const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
               voiceTranscript: q.voiceTranscript ?? null,
             };
           }
+
           return {
             questionId: questions[index].questionId,
             inputType: AnswerInputType.TEXT,
@@ -106,7 +113,7 @@ export const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
         </ul>
 
         <div className="mt-8 space-y-5">
-          <Text variant={'l'}>{t('LESSON_TEST.INFO_TEXT')}</Text>
+          <Text variant="l">{t('LESSON_TEST.INFO_TEXT')}</Text>
           <Button type="submit" disabled={isSubmitting} className="mb-0">
             {isSubmitting || loading ? <Spinner variant="circle" /> : t('LESSON_TEST.SUBMIT')}
           </Button>

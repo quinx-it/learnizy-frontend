@@ -1,8 +1,10 @@
 'use client';
 
+import React, { FC } from 'react';
+
 import { cn } from '@/lib/utils';
 import { Heading, Text } from '@/ui/typography';
-import React, { FC } from 'react';
+
 import { IDotTitleProps } from './typings';
 
 export const Dot = ({ className }: { className?: string }) => (
@@ -11,7 +13,7 @@ export const Dot = ({ className }: { className?: string }) => (
       'bg-medium !mt-2.5 h-[3px] max-h-[3px] min-h-[3px] w-[3px] max-w-[3px] min-w-[3px] rounded-full',
       className,
     )}
-  ></span>
+  />
 );
 
 export const DotTitle: FC<IDotTitleProps> = (props) => {
@@ -29,7 +31,7 @@ export const DotTitle: FC<IDotTitleProps> = (props) => {
   return (
     <div className={cn('flex items-start gap-1.5', className)}>
       {heading ? (
-        <Heading variant={'2xl'} className={cn('min-w-fit', firstClassName)}>
+        <Heading variant="2xl" className={cn('min-w-fit', firstClassName)}>
           {firstLabel}
 
           <span className={cn('text-medium inline', secondClassName)}>

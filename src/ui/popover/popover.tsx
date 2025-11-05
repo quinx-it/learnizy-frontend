@@ -1,8 +1,10 @@
 'use client';
 
-import React, { FC } from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
+import React, { FC } from 'react';
+
 import { cn } from '@/lib/utils';
+
 import { IPopoverProps } from './typings';
 
 export const Popover: FC<IPopoverProps> = (props) => {

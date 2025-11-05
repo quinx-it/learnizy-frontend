@@ -1,15 +1,17 @@
 'use client';
 
+import React, { FC, useEffect, useRef } from 'react';
+
+import { useGetLastTestAttemptQuery, useGetTestByLessonIdQuery } from '@/api/endpoints/test';
 import { CardWrapper } from '@/components/CardWrapper';
+import { ErrorSection } from '@/components/ErrorSection';
+import { FullscreenLoader } from '@/components/FullscreenLoader';
+import Page from '@/components/Page';
 import { globalConstants, routes } from '@/constants';
 import { Breadcrumbs } from '@/ui/breadcrumbs';
-import React, { FC, useEffect, useRef } from 'react';
 import { Text } from '@/ui/typography';
-import { useGetLastTestAttemptQuery, useGetTestByLessonIdQuery } from '@/api/endpoints/test';
-import { FullscreenLoader } from '@/components/FullscreenLoader';
-import { ErrorSection } from '@/components/ErrorSection';
+
 import { LessonTestResponseType, LessonTestResultPagePropsType } from './types';
-import Page from '@/components/Page';
 
 const mapEvaluation = (evaluation: string) => {
   switch (evaluation) {
@@ -48,11 +50,9 @@ export const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) =
           refetch();
         }, 1000);
       }
-    } else {
-      if (pollingRef.current) {
-        clearInterval(pollingRef.current);
-        pollingRef.current = null;
-      }
+    } else if (pollingRef.current) {
+      clearInterval(pollingRef.current);
+      pollingRef.current = null;
     }
 
     return () => {
@@ -64,7 +64,9 @@ export const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) =
   }, [lessonTest?.id, testResult, refetch]);
 
   if (!testResult && isLoading) return <FullscreenLoader />;
+
   if (isError) return <ErrorSection reset={refetch} />;
+
   if (!testResult) return <FullscreenLoader />;
 
   const { moduleSequenceOrder, lessonSequenceOrder } = lessonTest as LessonTestResponseType;
@@ -110,6 +112,7 @@ export const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) =
         <div className="space-y-4">
           {answers.map((a, idx) => {
             const evaluation = mapEvaluation(a.evaluation);
+
             return (
               <CardWrapper key={a.questionId} className="flex flex-col gap-3">
                 <Text

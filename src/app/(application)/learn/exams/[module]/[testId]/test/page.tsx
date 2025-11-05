@@ -1,8 +1,10 @@
 'use client';
 
-import { TestPage, TestDataType } from '@/appPages/TestPage';
 import { useParams } from 'next/navigation';
+
 import { useGetExamByIdQuery } from '@/api/endpoints/exams';
+import { TestPage, TestDataType } from '@/appPages/TestPage';
+
 import { ParamsType } from '../../../typings';
 
 const ExamPage = () => {

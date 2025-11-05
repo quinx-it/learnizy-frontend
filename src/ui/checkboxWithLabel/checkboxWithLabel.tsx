@@ -1,8 +1,10 @@
 'use client';
 
 import React, { FC } from 'react';
+
 import { Checkbox } from '@/ui/checkbox';
 import { Label } from '@/ui/label';
+
 import { ICheckboxWithLabelProps } from './typings';
 
 export const CheckboxWithLabel: FC<ICheckboxWithLabelProps> = (props) => {

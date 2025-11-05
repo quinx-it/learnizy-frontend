@@ -1,8 +1,10 @@
-import { HTMLAttributes } from 'react';
 import { VariantProps } from 'class-variance-authority';
+import { HTMLAttributes } from 'react';
+
 import { headingVariants, textVariants } from './constants';
-import type { StoryObj } from '@storybook/nextjs';
 import { Heading, Text } from './typography';
+
+import type { StoryObj } from '@storybook/nextjs';
 
 export type HeadingVariantsType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export type TextVariantsType = 'p' | 'span';

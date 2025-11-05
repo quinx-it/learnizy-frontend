@@ -1,13 +1,15 @@
 'use client';
 
+import Image from 'next/image';
+import { useTranslation } from 'react-i18next';
+
 import { CardWrapper } from '@/components/CardWrapper';
 import { routes } from '@/constants';
-import { EditPhotoIcon, ExitIcon, LockIcon, PersonIcon } from '@/ui/icons';
-import { DashboardLink } from './DashBoardLink';
 import { Button } from '@/ui/button';
-import Image from 'next/image';
+import { EditPhotoIcon, ExitIcon, LockIcon, PersonIcon } from '@/ui/icons';
 import { Text } from '@/ui/typography';
-import { useTranslation } from 'react-i18next';
+
+import { DashboardLink } from './DashBoardLink';
 
 export const ProfileDashboard = () => {
   const { t } = useTranslation();

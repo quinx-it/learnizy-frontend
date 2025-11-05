@@ -1,6 +1,7 @@
-import type { Meta } from '@storybook/nextjs';
 import { AreaChart } from './areaChart';
 import { StoryType } from './typings';
+
+import type { Meta } from '@storybook/nextjs';
 
 const meta: Meta<typeof AreaChart> = {
   title: 'Components/UI/LineChart',

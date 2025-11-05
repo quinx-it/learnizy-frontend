@@ -1,6 +1,7 @@
 'use client';
 
 import React, { FC } from 'react';
+
 import { IAnalyticsCardProps } from './typings';
 
 export const AnalyticsCard: FC<IAnalyticsCardProps> = (props) => {

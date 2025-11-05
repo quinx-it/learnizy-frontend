@@ -1,8 +1,10 @@
-import { cn } from '@/lib/utils';
-import { Button } from '@/ui/button';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { FC } from 'react';
+
+import { cn } from '@/lib/utils';
+import { Button } from '@/ui/button';
+
 import { IDashboardLinkProps } from './typings';
 
 export const DashboardLink: FC<IDashboardLinkProps> = (props) => {

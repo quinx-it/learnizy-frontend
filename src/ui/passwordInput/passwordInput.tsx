@@ -2,12 +2,14 @@
 
 import * as React from 'react';
 
+import { cn } from '@/lib/utils';
 import { Button } from '@/ui/button';
 import { Input } from '@/ui/input';
-import { cn } from '@/lib/utils';
 import './styles.css';
 import { EyeIcon } from '@/ui/icons';
+
 import { forwardRef, useState } from 'react';
+
 import { IPasswordInputProps } from './typings';
 
 const PasswordInput = forwardRef<HTMLInputElement, IPasswordInputProps>(

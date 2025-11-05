@@ -1,6 +1,7 @@
-import type { Meta } from '@storybook/nextjs';
 import { Calendar } from './calendar';
 import { StoryType } from './typings';
+
+import type { Meta } from '@storybook/nextjs';
 
 const meta: Meta<typeof Calendar> = {
   title: 'Components/UI/Calendar',

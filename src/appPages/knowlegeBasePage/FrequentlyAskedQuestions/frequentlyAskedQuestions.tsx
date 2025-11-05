@@ -1,10 +1,11 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
+
 import { CardWrapper } from '@/components/CardWrapper';
 import { routes } from '@/constants';
 import { Button } from '@/ui/button';
 import { Text } from '@/ui/typography';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useTranslation } from 'react-i18next';
 
 export const FrequentlyAskedQuestions = () => {
   const { t } = useTranslation();

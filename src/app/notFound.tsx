@@ -1,5 +1,6 @@
-import { NotFoundPage } from '@/appPages/NotFoundPage';
 import { Metadata } from 'next';
+
+import { NotFoundPage } from '@/appPages/NotFoundPage';
 
 export const metadata: Metadata = {
   title: '404 - Not Found',

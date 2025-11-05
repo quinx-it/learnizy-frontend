@@ -1,12 +1,15 @@
 'use client';
+
+import React, { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import { cn } from '@/lib/utils';
 import { Button } from '@/ui/button';
 import { ProgressBar } from '@/ui/progress';
 import { Text } from '@/ui/typography';
-import React, { FC } from 'react';
+
 import { constants } from './constants';
-import { cn } from '@/lib/utils';
 import { CourseListItemType } from './typings';
-import { useTranslation } from 'react-i18next';
 
 export const CourseListItem: FC<CourseListItemType> = (props) => {
   const { title, number, status, progress, onClick } = props;

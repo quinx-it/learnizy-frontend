@@ -1,6 +1,7 @@
 'use client';
 
 import { useMediaQuery } from 'react-responsive';
+
 import { BreakpointKeyType } from './typings';
 
 export const breakpoints = {

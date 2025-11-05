@@ -1,11 +1,14 @@
 'use client';
+
+import { Copy, Edit3 } from 'lucide-react';
+import Link from 'next/link';
+import { useState, FC } from 'react';
+
 import { routes } from '@/constants';
 import { Button } from '@/ui/button';
 import { ArrowRightIcon, PersonIcon } from '@/ui/icons';
 import { Text } from '@/ui/typography';
-import { Copy, Edit3 } from 'lucide-react';
-import Link from 'next/link';
-import { useState, FC } from 'react';
+
 import { IStudentsTableProps } from './typings';
 
 export const StudentsTable: FC<IStudentsTableProps> = (props) => {
@@ -71,10 +74,10 @@ export const StudentsTable: FC<IStudentsTableProps> = (props) => {
                 <div className="flex items-center justify-center gap-1 border-t border-r">
                   <Text variant="m">{row.id}</Text>
                   <Button
-                    variant={'white'}
+                    variant="white"
                     className="cursor-pointer border-none p-1 hover:bg-transparent hover:text-black active:text-black!"
                   >
-                    <Copy cursor={'pointer'} size={16} />
+                    <Copy cursor="pointer" size={16} />
                   </Button>
                 </div>
                 <div className="flex items-center justify-center border-t border-r px-4">
@@ -93,7 +96,7 @@ export const StudentsTable: FC<IStudentsTableProps> = (props) => {
                   href={`${routes.mentor.students}/${row.id}`}
                   className="flex items-center justify-between gap-2 border-t px-4"
                 >
-                  <div className="flex cursor-pointer items-center gap-2"></div>
+                  <div className="flex cursor-pointer items-center gap-2" />
                   <ArrowRightIcon color="blue" />
                 </Link>
               </div>

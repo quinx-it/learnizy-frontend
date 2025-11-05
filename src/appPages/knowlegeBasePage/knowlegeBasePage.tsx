@@ -1,13 +1,15 @@
 'use client';
 
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+
+import Page from '@/components/Page';
 import { CircleIcon } from '@/ui/icons';
 import { Heading } from '@/ui/typography';
-import React from 'react';
-import { InterviewQuestions } from './InterviewQuestoins';
+
 import { FrequentlyAskedQuestions } from './FrequentlyAskedQuestions';
+import { InterviewQuestions } from './InterviewQuestoins';
 import { InterviewRecords } from './InterviewRecords';
-import { useTranslation } from 'react-i18next';
-import Page from '@/components/Page';
 
 export const KnowlegeBasePage = () => {
   const { t } = useTranslation();

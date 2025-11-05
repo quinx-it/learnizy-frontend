@@ -1,5 +1,6 @@
-import { IIconProps } from '@/types';
 import { ReactNode } from 'react';
+
+import { IIconProps } from '@/types';
 
 type NotificationStatusType = 'error' | 'success' | 'info' | 'warning';
 
