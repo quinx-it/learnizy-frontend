@@ -5,12 +5,12 @@ import Link from 'next/link';
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { Button } from '@/components/Button';
+import { Heading } from '@/components/Typography';
 import { defaultPage, routes } from '@/constants';
 import { useAppSelector } from '@/hooks/redux';
 import { cn } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';
-import { Button } from '@/ui/button';
-import { Heading } from '@/ui/typography';
 
 import { NotFoundComponentPropsType } from './typings';
 

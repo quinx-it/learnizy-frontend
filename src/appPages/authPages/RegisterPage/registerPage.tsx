@@ -2,8 +2,8 @@ import React from 'react';
 
 import { RegisterForm } from '@/components/auth/RegisterForm';
 import { CardWrapper } from '@/components/CardWrapper';
+import { Logo } from '@/components/Icons';
 import Page from '@/components/Page';
-import { Logo } from '@/ui/icons';
 
 export const RegisterPageDesign = () => {
   return (

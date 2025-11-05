@@ -4,10 +4,10 @@ import clsx from 'clsx';
 import React, { useRef, useLayoutEffect, useEffect, FC } from 'react';
 
 import { MarkdownRenderer } from '@/components/MarkdownText';
+import { Spinner } from '@/components/Spinner';
+import { Text } from '@/components/Typography';
 import { usePrevious } from '@/hooks/usePrevious';
 import { isAudioUrl } from '@/lib/utils';
-import { Spinner } from '@/ui/spinner';
-import { Text } from '@/ui/typography';
 
 import { AudioPlayer } from '../../AudioPlayer';
 import { Typewriter } from '../ChatTypewriter';
@@ -81,27 +81,37 @@ export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
                 'w-full': message.role !== Role.USER,
               })}
             >
-              {message.role === Role.USER ? (
-                isAudioUrl(message.audioFileUrl || '') ? (
-                  <AudioPlayer
-                    src={message.audioFileUrl || ''}
-                    transcript={message.voiceTranscript}
-                  />
-                ) : (
-                  <Text variant="m" className="px-4 text-base">
-                    {message.content}
-                  </Text>
-                )
-              ) : shouldAnimate ? (
-                <Typewriter key={message.id} text={message.content} />
-              ) : (
-                <div className="prose prose-sm max-w-none break-words">
-                  <MarkdownRenderer
-                    text={message.content}
-                    className="prose max-w-none break-words"
-                  />
-                </div>
-              )}
+              {(() => {
+                if (message.role === Role.USER) {
+                  if (isAudioUrl(message.audioFileUrl || '')) {
+                    return (
+                      <AudioPlayer
+                        src={message.audioFileUrl || ''}
+                        transcript={message.voiceTranscript}
+                      />
+                    );
+                  }
+
+                  return (
+                    <Text variant="m" className="px-4 text-base">
+                      {message.content}
+                    </Text>
+                  );
+                }
+
+                if (shouldAnimate) {
+                  return <Typewriter key={message.id} text={message.content} />;
+                }
+
+                return (
+                  <div className="prose prose-sm max-w-none break-words">
+                    <MarkdownRenderer
+                      text={message.content}
+                      className="prose max-w-none break-words"
+                    />
+                  </div>
+                );
+              })()}
 
               {message.role === Role.USER &&
                 message.attachments &&

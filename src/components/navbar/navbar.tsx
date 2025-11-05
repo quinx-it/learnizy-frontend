@@ -5,14 +5,14 @@ import Link from 'next/link';
 import { useState, FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { Button } from '@/components/Button';
+import { HeaderLogo, ExitIcon, CubesMainIcon } from '@/components/Icons';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { INavbarProps } from '@/components/navbar/typings';
+import { Spinner } from '@/components/Spinner';
+import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
 import { useLogout } from '@/hooks/useLogout';
-import { Button } from '@/ui/button';
-import { HeaderLogo, ExitIcon, CubesMainIcon } from '@/ui/icons';
-import { Spinner } from '@/ui/spinner';
-import { Text } from '@/ui/typography';
 
 import { NavbarLink } from './NavbarLink/navbarLink';
 

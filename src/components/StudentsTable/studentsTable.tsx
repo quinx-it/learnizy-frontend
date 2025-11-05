@@ -4,10 +4,10 @@ import { Copy, Edit3 } from 'lucide-react';
 import Link from 'next/link';
 import { useState, FC } from 'react';
 
+import { Button } from '@/components/Button';
+import { ArrowRightIcon, PersonIcon } from '@/components/Icons';
+import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
-import { Button } from '@/ui/button';
-import { ArrowRightIcon, PersonIcon } from '@/ui/icons';
-import { Text } from '@/ui/typography';
 
 import { IStudentsTableProps } from './typings';
 

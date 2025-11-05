@@ -4,15 +4,15 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { LessonTestSubmitType, useSendTestMutation } from '@/api/endpoints/test';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { CardWrapper } from '@/components/CardWrapper';
 import { ErrorSection } from '@/components/ErrorSection';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
 import { LessonTestForm } from '@/components/LessonTestForm';
 import Page from '@/components/Page';
+import { showToast } from '@/components/Toaster';
+import { Text } from '@/components/Typography';
 import { globalConstants, routes } from '@/constants';
-import { Breadcrumbs } from '@/ui/breadcrumbs';
-import { showToast } from '@/ui/toaster';
-import { Text } from '@/ui/typography';
 
 import { constants, TestType } from './constants';
 import { TestPagePropsType } from './typings';

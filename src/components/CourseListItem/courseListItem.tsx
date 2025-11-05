@@ -3,10 +3,10 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { Button } from '@/components/Button';
+import { ProgressBar } from '@/components/Progress';
+import { Text } from '@/components/Typography';
 import { cn } from '@/lib/utils';
-import { Button } from '@/ui/button';
-import { ProgressBar } from '@/ui/progress';
-import { Text } from '@/ui/typography';
 
 import { constants } from './constants';
 import { CourseListItemType } from './typings';

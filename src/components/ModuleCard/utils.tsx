@@ -1,10 +1,10 @@
 import { FC } from 'react';
 
 import { CompletionStatus } from '@/api/endpoints/types';
+import { StarIcon } from '@/components/Icons';
+import { ProgressBar } from '@/components/Progress';
+import { Text } from '@/components/Typography';
 import { percentage } from '@/lib/utils';
-import { StarIcon } from '@/ui/icons';
-import { ProgressBar } from '@/ui/progress';
-import { Text } from '@/ui/typography';
 
 import { constants } from './constants';
 import { ProgressModuleType, IProcentContentProps } from './typings';

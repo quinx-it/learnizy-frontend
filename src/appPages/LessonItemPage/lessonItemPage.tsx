@@ -8,19 +8,19 @@ import { useSelector } from 'react-redux';
 
 import { useUpdateLessonContentMarkdownMutation } from '@/api/endpoints/admin';
 import { useGetLessonQuery } from '@/api/endpoints/lessons';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { Button } from '@/components/Button';
 import { CardWrapper } from '@/components/CardWrapper';
 import { BlockRenderer } from '@/components/ContentBlockParser';
+import { DotTitle } from '@/components/DotTitle';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
 import { MarkdownRenderer } from '@/components/MarkdownText';
 import Page from '@/components/Page';
+import { showToast } from '@/components/Toaster';
+import { Heading, Text } from '@/components/Typography';
 import { routes } from '@/constants';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
-import { Breadcrumbs } from '@/ui/breadcrumbs';
-import { Button } from '@/ui/button';
-import { DotTitle } from '@/ui/dotTitle';
-import { showToast } from '@/ui/toaster';
-import { Heading, Text } from '@/ui/typography';
 
 import { constants } from './constants';
 import { ILessonItemPageProps } from './typings';

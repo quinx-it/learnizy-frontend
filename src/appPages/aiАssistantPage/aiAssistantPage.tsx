@@ -12,9 +12,9 @@ import {
 } from '@/api/endpoints/aiAssistant';
 import { ChatInput } from '@/components/aiAssistantChat/ChatInput';
 import Page from '@/components/Page';
+import { showToast } from '@/components/Toaster';
+import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
-import { showToast } from '@/ui/toaster';
-import { Text } from '@/ui/typography';
 
 export const AiAssistantPage = () => {
   const router = useRouter();

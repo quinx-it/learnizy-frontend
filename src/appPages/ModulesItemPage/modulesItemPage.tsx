@@ -13,25 +13,31 @@ import {
 } from '@/api/endpoints/admin';
 import { ILesson } from '@/api/endpoints/lessons';
 import { useGetModuleQuery } from '@/api/endpoints/modules';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { Button } from '@/components/Button';
 import { CardWrapper } from '@/components/CardWrapper';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from '@/components/Dialog';
+import { DotTitle } from '@/components/DotTitle';
 import { ErrorSection } from '@/components/ErrorSection';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
+import { CheckIcon, LockColorIcon } from '@/components/Icons';
+import { Input } from '@/components/Input';
 import { LessonCard } from '@/components/LessonCard';
 import Page from '@/components/Page';
+import { ProgressBar } from '@/components/Progress';
+import { Textarea } from '@/components/Textarea';
+import { showToast } from '@/components/Toaster';
+import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
 import { percentage, pluralize } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
-import { Breadcrumbs } from '@/ui/breadcrumbs';
-import { Button } from '@/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/ui/dialog';
-import { DotTitle } from '@/ui/dotTitle';
-import { CheckIcon, LockColorIcon } from '@/ui/icons';
-import { Input } from '@/ui/input';
-import { ProgressBar } from '@/ui/progress';
-import { Textarea } from '@/ui/textarea';
-import { showToast } from '@/ui/toaster';
-import { Text } from '@/ui/typography';
 
 import { constants } from './constants';
 import { ModuleItemPagePropsType } from './typings';

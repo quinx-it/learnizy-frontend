@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Spinner } from '@/ui/spinner';
+import { Spinner } from '@/components/Spinner';
 
 export const FullscreenLoader = () => {
   return (

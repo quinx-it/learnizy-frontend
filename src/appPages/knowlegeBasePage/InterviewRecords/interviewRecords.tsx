@@ -2,11 +2,11 @@ import Link from 'next/link';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { Button } from '@/components/Button';
 import { CardWrapper } from '@/components/CardWrapper';
+import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
 import { cn } from '@/lib/utils';
-import { Button } from '@/ui/button';
-import { Text } from '@/ui/typography';
 
 import { IInterviewRecordsProps } from './typings';
 

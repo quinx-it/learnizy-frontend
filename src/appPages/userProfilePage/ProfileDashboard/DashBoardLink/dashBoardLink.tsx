@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { FC } from 'react';
 
+import { Button } from '@/components/Button';
 import { cn } from '@/lib/utils';
-import { Button } from '@/ui/button';
 
 import { IDashboardLinkProps } from './typings';
 

@@ -4,9 +4,9 @@ import { FC } from 'react';
 import { Controller, useFormContext, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { RadioGroup } from '@/ui/radioGroup';
-import { Textarea } from '@/ui/textarea';
-import { Text } from '@/ui/typography';
+import { RadioGroup } from '@/components/RadioGroup';
+import { Textarea } from '@/components/Textarea';
+import { Text } from '@/components/Typography';
 
 import { LessonQuestionPropsType } from './typings';
 
@@ -63,24 +63,22 @@ export const LessonQuestion: FC<LessonQuestionPropsType> = (props) => {
           )}
         />
       ) : (
-        <>
-          {!fileValue && (
-            <Controller
-              name={answerFieldName}
-              control={control}
-              render={({ field }) => (
-                <Textarea
-                  {...field}
-                  className="min-h-[60px] max-w-[728px] resize-none py-0.5"
-                  onChange={(e) => {
-                    setValue(fileFieldName, null);
-                    field.onChange(e);
-                  }}
-                />
-              )}
-            />
-          )}
-        </>
+        !fileValue && (
+          <Controller
+            name={answerFieldName}
+            control={control}
+            render={({ field }) => (
+              <Textarea
+                {...field}
+                className="min-h-[60px] max-w-[728px] resize-none py-0.5"
+                onChange={(e) => {
+                  setValue(fileFieldName, null);
+                  field.onChange(e);
+                }}
+              />
+            )}
+          />
+        )
       )}
 
       {error?.message && <p className="text-error">{error.message}</p>}

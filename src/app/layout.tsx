@@ -1,15 +1,14 @@
-import type { Metadata } from 'next';
-
 import localFont from 'next/font/local';
-import './globals.css';
-
 import { ReactNode } from 'react';
 
-import { Toaster } from '@/ui/toaster';
+import { Toaster } from '@/components/Toaster';
 
 import StoreProvider from './StoreProvider';
 
+import type { Metadata } from 'next';
+
 import '@/lib/translate';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: {
@@ -31,7 +30,7 @@ export default function RootLayout({
 }>) {
   const isXML = typeof window !== 'undefined' && window.location.pathname.endsWith('.xml');
 
-  if (isXML) return <>{children}</>;
+  if (isXML) return children;
 
   return (
     <html lang="ru" className={involve.className}>

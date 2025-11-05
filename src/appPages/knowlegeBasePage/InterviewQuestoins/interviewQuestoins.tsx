@@ -3,10 +3,10 @@ import Link from 'next/link';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { Button } from '@/components/Button';
 import { CardWrapper } from '@/components/CardWrapper';
+import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
-import { Button } from '@/ui/button';
-import { Text } from '@/ui/typography';
 
 export const InterviewQuestions = () => {
   const { t } = useTranslation();

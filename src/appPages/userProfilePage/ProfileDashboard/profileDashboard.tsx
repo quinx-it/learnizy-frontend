@@ -3,11 +3,11 @@
 import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
 
+import { Button } from '@/components/Button';
 import { CardWrapper } from '@/components/CardWrapper';
+import { EditPhotoIcon, ExitIcon, LockIcon, PersonIcon } from '@/components/Icons';
+import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
-import { Button } from '@/ui/button';
-import { EditPhotoIcon, ExitIcon, LockIcon, PersonIcon } from '@/ui/icons';
-import { Text } from '@/ui/typography';
 
 import { DashboardLink } from './DashBoardLink';
 
@@ -19,7 +19,10 @@ export const ProfileDashboard = () => {
       <div className="mb-8 w-full">
         <div className="relative mx-auto mb-3 h-[152px] w-[152px] overflow-visible rounded-full">
           <Image src="/images/astronaut1.webp" alt="Profile Image" width={152} height={152} />
-          <button className="absolute right-0 bottom-0 -translate-x-9/10 cursor-pointer">
+          <button
+            type="button"
+            className="absolute right-0 bottom-0 -translate-x-9/10 cursor-pointer"
+          >
             <EditPhotoIcon />
           </button>
         </div>

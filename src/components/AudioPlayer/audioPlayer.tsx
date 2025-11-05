@@ -3,8 +3,8 @@
 import React, { useEffect, useRef, useState, FC } from 'react';
 import WaveSurfer from 'wavesurfer.js';
 
-import { PlayPauseIcon, AaIcon, ArrowCloseIcon } from '@/ui/icons';
-import { Text } from '@/ui/typography';
+import { PlayPauseIcon, AaIcon, ArrowCloseIcon } from '@/components/Icons';
+import { Text } from '@/components/Typography';
 
 import { IAudioPlayerProps } from './typings';
 

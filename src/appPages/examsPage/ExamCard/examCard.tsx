@@ -5,10 +5,10 @@ import { usePathname, useRouter } from 'next/navigation';
 import React, { ComponentProps, ReactNode, FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { Button } from '@/components/Button';
 import { CardWrapper } from '@/components/CardWrapper';
-import { Button } from '@/ui/button';
-import { DotTitle } from '@/ui/dotTitle';
-import { Text } from '@/ui/typography';
+import { DotTitle } from '@/components/DotTitle';
+import { Text } from '@/components/Typography';
 
 import { ExamCardPropsType, ExamStatus } from '../typings';
 

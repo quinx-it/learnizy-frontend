@@ -50,6 +50,7 @@ export default function LanguageSwitcher() {
   return (
     <div className="relative flex w-full justify-end pr-4" ref={menuRef}>
       <button
+        type="button"
         onClick={() => setOpen((prev) => !prev)}
         className="flex items-center gap-2 rounded-md border border-gray-300 px-3 py-1 text-sm hover:bg-gray-100"
       >
@@ -64,12 +65,14 @@ export default function LanguageSwitcher() {
         }`}
       >
         <button
+          type="button"
           onClick={() => changeLanguage('en')}
           className="block w-full px-3 py-2 text-left text-sm hover:bg-gray-100"
         >
           English
         </button>
         <button
+          type="button"
           onClick={() => changeLanguage('ru')}
           className="block w-full px-3 py-2 text-left text-sm hover:bg-gray-100"
         >

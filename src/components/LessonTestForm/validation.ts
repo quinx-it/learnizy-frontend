@@ -10,7 +10,7 @@ const QuestionAnswerSchema = yup
   .test(
     'answer-or-file',
     'Нужно заполнить ответ или прикрепить файл (но не оба сразу)',
-    function (value) {
+    function testAnswerOrFile(value) {
       const hasAnswer = !!value?.textAnswer?.trim();
       const hasFile = !!value?.file;
 

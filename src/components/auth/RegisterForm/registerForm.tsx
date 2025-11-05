@@ -11,14 +11,14 @@ import {
   useVerifyEmailMutation,
   useResendVerificationCodeMutation,
 } from '@/api/endpoints/auth';
+import { Button } from '@/components/Button';
+import { CheckboxWithLabel } from '@/components/CheckboxWithLabel/checkboxWithLabel';
+import { Input } from '@/components/Input';
+import { PasswordInput } from '@/components/PasswordInput';
+import { Spinner } from '@/components/Spinner';
+import { showToast } from '@/components/Toaster';
+import { Heading, Text } from '@/components/Typography';
 import { routes, HttpStatus } from '@/constants';
-import { Button } from '@/ui/button';
-import { CheckboxWithLabel } from '@/ui/checkboxWithLabel/checkboxWithLabel';
-import { Input } from '@/ui/input';
-import { PasswordInput } from '@/ui/passwordInput';
-import { Spinner } from '@/ui/spinner';
-import { showToast } from '@/ui/toaster';
-import { Heading, Text } from '@/ui/typography';
 
 import { VerificationFormValuesType, RegisterStep, IRegisterFormValues } from './typings';
 import { formSchema, verificationSchema } from './validation';

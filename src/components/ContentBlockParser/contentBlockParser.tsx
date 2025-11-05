@@ -9,8 +9,8 @@ import {
   headingTags,
   headingVariants,
 } from '@/api/endpoints/lessons';
-import { LightbulbIcon, NotificationIcon } from '@/ui/icons';
-import { Heading, Text } from '@/ui/typography';
+import { LightbulbIcon, NotificationIcon } from '@/components/Icons';
+import { Heading, Text } from '@/components/Typography';
 
 import { IBlockRendererProps } from './typings';
 
@@ -20,10 +20,7 @@ const defaultStyles = {
   marginBottom: 0,
 };
 
-const renderChildren = (children?: Block[]) =>
-  children?.map((child) => <BlockRenderer key={child.id} block={child} />);
-
-export const BlockRenderer: FC<IBlockRendererProps> = (props) => {
+const BlockRenderer: FC<IBlockRendererProps> = (props) => {
   const { block } = props;
 
   const baseStyle = {
@@ -31,6 +28,9 @@ export const BlockRenderer: FC<IBlockRendererProps> = (props) => {
     color: block.properties.color ?? defaultStyles.color,
     display: block.properties.inline ? 'inline' : defaultStyles.display,
   };
+
+  const renderChildren = (children?: Block[]) =>
+    children?.map((child) => <BlockRenderer key={child.id} block={child} />);
 
   switch (block.blockType) {
     case BlockType.HEADING:
@@ -80,7 +80,7 @@ export const BlockRenderer: FC<IBlockRendererProps> = (props) => {
         </ul>
       );
 
-    case BlockType.LI:
+    case BlockType.LI: {
       const liStyle = {
         marginBottom: block.properties.mb ?? 0,
         color: block.properties.color ?? defaultStyles.color,
@@ -92,6 +92,7 @@ export const BlockRenderer: FC<IBlockRendererProps> = (props) => {
           {renderChildren(block.children)}
         </li>
       );
+    }
 
     case BlockType.CODE:
       return (
@@ -172,3 +173,5 @@ export const BlockRenderer: FC<IBlockRendererProps> = (props) => {
       return null;
   }
 };
+
+export { BlockRenderer };

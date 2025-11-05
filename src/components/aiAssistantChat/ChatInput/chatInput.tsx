@@ -18,13 +18,13 @@ import { useTranslation } from 'react-i18next';
 import WaveSurfer from 'wavesurfer.js';
 
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
-import { Button } from '@/ui/button';
-import { MicChatIcon, AttachIcon, SendIcon } from '@/ui/icons';
-import { Spinner } from '@/ui/spinner';
-import { showToast } from '@/ui/toaster';
+import { Button } from '@/components/Button';
+import { MicChatIcon, AttachIcon, SendIcon } from '@/components/Icons';
+import { Spinner } from '@/components/Spinner';
+import { showToast } from '@/components/Toaster';
 
 import { MIN_RECORDING_DURATION_MS } from './constants';
-import { IChatInputProps, IAttachment, ILocalFile } from './typings';
+import { IChatInputProps, ILocalFile } from './typings';
 
 export const ChatInput: FC<IChatInputProps> = (props) => {
   const { onSendMessage, isLoading } = props;
@@ -79,20 +79,20 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
     if (!inputValue.trim() && attachedFiles.length === 0) return;
 
     try {
-      const uploadedAttachments: IAttachment[] = [];
-
-      for (const localFile of attachedFiles) {
+      const uploadPromises = attachedFiles.map(async (localFile) => {
         const formData = new FormData();
         formData.append('file', localFile.file);
         const response = await uploadVoice(formData).unwrap();
 
-        uploadedAttachments.push({
+        return {
           downloadUrl: response.downloadUrl,
           originalFilename: localFile.file.name,
           contentType: localFile.file.type,
           size: localFile.file.size,
-        });
-      }
+        };
+      });
+
+      const uploadedAttachments = await Promise.all(uploadPromises);
 
       await onSendMessage({
         text: inputValue,
@@ -463,6 +463,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
                 {att.file.name}
               </span>
               <button
+                type="button"
                 onClick={() => handleRemoveFile(att.id)}
                 className="flex h-5 w-5 items-center justify-center rounded-full hover:bg-[#238BA7] hover:text-white"
               >
@@ -473,6 +474,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
         </div>
       )}
       <button
+        type="button"
         className="cursor-pointer p-2 text-gray-400 transition hover:text-gray-500"
         disabled={isDisabled}
         onClick={() => fileInputRef.current?.click()}
@@ -510,6 +512,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
         )}
         <button
           ref={microphoneRef}
+          type="button"
           className={clsx(
             'flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-all duration-300 hover:bg-[#E8F8FC]',
             {
@@ -522,27 +525,31 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
           onTouchEnd={handleTouchEnd}
           disabled={isDisabled}
         >
-          {isUploading ? (
-            <Spinner />
-          ) : isRecording ? (
-            <div className="flex items-center justify-center gap-[1.5px]">
-              {(audioLevels.length > 0 ? audioLevels : [0.3, 0.5, 0.4, 0.3, 0.6, 0.2]).map(
-                (level, index) => {
-                  const barHeight = 4 + level * 16;
+          {(() => {
+            if (isUploading) return <Spinner />;
 
-                  return (
-                    <div
-                      key={index}
-                      className="w-[1.5px] rounded bg-white transition-[height] duration-100 ease-out"
-                      style={{ height: `${barHeight}px` }}
-                    />
-                  );
-                },
-              )}
-            </div>
-          ) : (
-            <MicChatIcon />
-          )}
+            if (isRecording) {
+              return (
+                <div className="flex items-center justify-center gap-[1.5px]">
+                  {(audioLevels.length > 0 ? audioLevels : [0.3, 0.5, 0.4, 0.3, 0.6, 0.2]).map(
+                    (level, index) => {
+                      const barHeight = 4 + level * 16;
+
+                      return (
+                        <div
+                          key={index}
+                          className="w-[1.5px] rounded bg-white transition-[height] duration-100 ease-out"
+                          style={{ height: `${barHeight}px` }}
+                        />
+                      );
+                    },
+                  )}
+                </div>
+              );
+            }
+
+            return <MicChatIcon />;
+          })()}
         </button>
       </div>
 

@@ -3,9 +3,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { CircleIcon } from '@/components/Icons';
 import Page from '@/components/Page';
-import { CircleIcon } from '@/ui/icons';
-import { Heading } from '@/ui/typography';
+import { Heading } from '@/components/Typography';
 
 import { FrequentlyAskedQuestions } from './FrequentlyAskedQuestions';
 import { InterviewQuestions } from './InterviewQuestoins';

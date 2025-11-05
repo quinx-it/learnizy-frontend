@@ -5,10 +5,10 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@/ui/button';
-import { DatePicker } from '@/ui/datePicker';
-import { Input } from '@/ui/input';
-import { RadioGroup, RadioGroupItem } from '@/ui/radioGroup';
+import { Button } from '@/components/Button';
+import { DatePicker } from '@/components/DatePicker';
+import { Input } from '@/components/Input';
+import { RadioGroup, RadioGroupItem } from '@/components/RadioGroup';
 
 import { PersonalDataFormValuesType } from './typings';
 import { personalDataSchema } from './validations';
@@ -37,9 +37,7 @@ export const PersonalDataForm = () => {
     },
   });
 
-  const onSubmit = (data: PersonalDataFormValuesType) => {
-    console.log('Form data:', data);
-  };
+  const onSubmit = () => {};
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

@@ -13,20 +13,26 @@ import {
   IModuleInfo,
 } from '@/api/endpoints/admin';
 import { CompletionStatus } from '@/api/endpoints/types';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { Button } from '@/components/Button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from '@/components/Dialog';
 import { ErrorSection } from '@/components/ErrorSection';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
+import { Input } from '@/components/Input';
 import { ModuleCard } from '@/components/ModuleCard';
 import Page from '@/components/Page';
+import { Textarea } from '@/components/Textarea';
+import { showToast } from '@/components/Toaster';
 import { routes } from '@/constants';
 import { globalConstants } from '@/constants/constants';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
-import { Breadcrumbs } from '@/ui/breadcrumbs';
-import { Button } from '@/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/ui/dialog';
-import { Input } from '@/ui/input';
-import { Textarea } from '@/ui/textarea';
-import { showToast } from '@/ui/toaster';
 
 import { IModuleProgressCardProps } from './typings';
 

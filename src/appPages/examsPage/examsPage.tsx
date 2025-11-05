@@ -6,9 +6,9 @@ import { useTranslation } from 'react-i18next';
 import { useGetExamsQuery } from '@/api/endpoints/exams';
 import { ErrorSection } from '@/components/ErrorSection';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
+import { CircleIcon } from '@/components/Icons';
 import Page from '@/components/Page';
-import { CircleIcon } from '@/ui/icons';
-import { Heading } from '@/ui/typography';
+import { Heading } from '@/components/Typography';
 
 import { ExamCard } from './ExamCard';
 import { ExamStatus, ExamType, ExamsPageProps } from './typings';

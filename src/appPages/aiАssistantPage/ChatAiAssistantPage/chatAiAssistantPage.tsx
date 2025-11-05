@@ -12,7 +12,7 @@ import {
 } from '@/api/endpoints/aiAssistant';
 import { ChatInput, ChatMessageHistory } from '@/components/aiAssistantChat';
 import Page from '@/components/Page';
-import { showToast } from '@/ui/toaster';
+import { showToast } from '@/components/Toaster';
 
 import { POLLING_INTERVAL } from './constants';
 

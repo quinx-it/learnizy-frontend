@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 
 import { useGetLessonQuery } from '@/api/endpoints/lessons';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { CardWrapper } from '@/components/CardWrapper';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
 import Page from '@/components/Page';
+import { Text } from '@/components/Typography';
 import { VoiceRecorderForm } from '@/components/VoiceRecorderForm';
 import { routes } from '@/constants';
-import { Breadcrumbs } from '@/ui/breadcrumbs';
-import { Text } from '@/ui/typography';
 
 import { constants } from './constants';
 import { ILessonRetellingPageProps } from './typings';

@@ -20,6 +20,13 @@ export type QuestionAnswerFormType = {
   voiceTranscript?: string | null;
 };
 
+export type LessonQuestionItemType = {
+  questionId: number;
+  text: string;
+  sequenceOrder: number;
+  maxScore?: number;
+};
+
 export type LessonTestResponseType = {
   id: number;
   lessonId: number;
@@ -39,13 +46,6 @@ export type LessonTestSubmitType = {
 
 export type LessonTestFormValuesType = {
   questions: QuestionAnswerFormType[];
-};
-
-export type LessonQuestionItemType = {
-  questionId: number;
-  text: string;
-  sequenceOrder: number;
-  maxScore?: number;
 };
 
 export enum TestStatus {

@@ -4,8 +4,8 @@ import Image from 'next/image';
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { Text } from '@/components/Typography';
 import { cn } from '@/lib/utils';
-import { Text } from '@/ui/typography';
 
 import { WorkingSectionPropsType } from './typings';
 
