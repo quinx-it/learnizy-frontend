@@ -9,8 +9,8 @@ import { defaultPage, routes } from '@/constants';
 import { useAppSelector } from '@/hooks/redux';
 import { cn } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';
-import { Button } from '@/ui/button';
-import { Heading } from '@/ui/typography';
+import { Button } from '@/components/ui/Button';
+import { Heading } from '@/components/ui/Typography';
 
 import { NotFoundComponentPropsType } from './typings';
 

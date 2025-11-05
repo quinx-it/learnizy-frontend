@@ -4,9 +4,9 @@ import { FC } from 'react';
 import { Controller, useFormContext, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { RadioGroup } from '@/ui/radioGroup';
-import { Textarea } from '@/ui/textarea';
-import { Text } from '@/ui/typography';
+import { RadioGroup } from '@/components/ui/RadioGroup';
+import { Textarea } from '@/components/ui/Textarea';
+import { Text } from '@/components/ui/Typography';
 
 import { LessonQuestionPropsType } from './typings';
 

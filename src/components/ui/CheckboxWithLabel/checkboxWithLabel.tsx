@@ -2,8 +2,8 @@
 
 import React, { FC } from 'react';
 
-import { Checkbox } from '@/ui/checkbox';
-import { Label } from '@/ui/label';
+import { Checkbox } from '@/components/ui/Checkbox';
+import { Label } from '@/components/ui/Label';
 
 import { ICheckboxWithLabelProps } from './typings';
 

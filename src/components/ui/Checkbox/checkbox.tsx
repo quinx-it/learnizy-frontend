@@ -5,7 +5,7 @@ import * as React from 'react';
 import { ComponentProps } from 'react';
 
 import { cn } from '@/lib/utils';
-import { CheckIcon } from '@/ui/icons';
+import { CheckIcon } from '@/components/ui/Icons';
 
 function Checkbox({ className, ...props }: ComponentProps<typeof CheckboxPrimitive.Root>) {
   return (

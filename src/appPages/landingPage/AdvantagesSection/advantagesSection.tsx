@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Heading } from '@/ui/typography';
+import { Heading } from '@/components/ui/Typography';
 
 import { SectionContent } from '../SectionContent';
 

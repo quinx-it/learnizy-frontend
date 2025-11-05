@@ -21,12 +21,18 @@ import { routes } from '@/constants';
 import { globalConstants } from '@/constants/constants';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
-import { Breadcrumbs } from '@/ui/breadcrumbs';
-import { Button } from '@/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/ui/dialog';
-import { Input } from '@/ui/input';
-import { Textarea } from '@/ui/textarea';
-import { showToast } from '@/ui/toaster';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { Button } from '@/components/ui/Button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from '@/components/ui/Dialog';
+import { Input } from '@/components/ui/Input';
+import { Textarea } from '@/components/ui/Textarea';
+import { showToast } from '@/components/ui/Toaster';
 
 import { IModuleProgressCardProps } from './typings';
 

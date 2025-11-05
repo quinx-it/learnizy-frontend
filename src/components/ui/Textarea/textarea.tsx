@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState, useEffect } from 'react';
 
 import { cn } from '@/lib/utils';
-import { Text } from '@/ui/typography';
+import { Text } from '@/components/ui/Typography';
 
 import { MAX_TEXTAREA_LENGTH } from './constants';
 import { ITextareaProps } from './typings';

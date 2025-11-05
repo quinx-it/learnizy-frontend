@@ -5,8 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { CardWrapper } from '@/components/CardWrapper';
 import { routes } from '@/constants';
 import { cn } from '@/lib/utils';
-import { Button } from '@/ui/button';
-import { Text } from '@/ui/typography';
+import { Button } from '@/components/ui/Button';
+import { Text } from '@/components/ui/Typography';
 
 import { IInterviewRecordsProps } from './typings';
 

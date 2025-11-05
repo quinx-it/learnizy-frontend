@@ -1,9 +1,9 @@
 import { useEffect, useState, FC } from 'react';
 
 import { useVoiceRecorder } from '@/hooks';
-import { Button } from '@/ui/button';
-import { MicIcon, TrashCanIcon } from '@/ui/icons';
-import { Text } from '@/ui/typography';
+import { Button } from '@/components/ui/Button';
+import { MicIcon, TrashCanIcon } from '@/components/ui/Icons';
+import { Text } from '@/components/ui/Typography';
 
 import { AudioPlayer } from '../AudioPlayer';
 

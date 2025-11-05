@@ -1,7 +1,7 @@
 import { useLogoutMutation } from '@/api/endpoints/auth';
 import { useAppDispatch } from '@/hooks/redux';
 import { logout } from '@/store/slices/auth/slice';
-import { showToast } from '@/ui/toaster';
+import { showToast } from '@/components/ui/Toaster';
 
 export const useLogout = () => {
   const [logoutApi, { isLoading }] = useLogoutMutation();

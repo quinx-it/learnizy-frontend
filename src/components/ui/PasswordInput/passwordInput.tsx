@@ -3,10 +3,10 @@
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
-import { Button } from '@/ui/button';
-import { Input } from '@/ui/input';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
 import './styles.css';
-import { EyeIcon } from '@/ui/icons';
+import { EyeIcon } from '@/components/ui/Icons';
 
 import { forwardRef, useState } from 'react';
 

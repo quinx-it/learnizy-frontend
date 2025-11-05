@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React, { FC } from 'react';
 
 import { cn } from '@/lib/utils';
-import { Heading, Text } from '@/ui/typography';
+import { Heading, Text } from '@/components/ui/Typography';
 
 import { CardType } from './constants';
 import { AdvantageCardPropsType } from './typings';

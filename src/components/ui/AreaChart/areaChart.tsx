@@ -2,7 +2,7 @@
 
 import { Area, AreaChart as AreaChartDefault, XAxis, YAxis } from 'recharts';
 
-import { ChartContainer } from '@/ui/chart';
+import { ChartContainer } from '@/components/ui/Chart';
 
 import { IChartLineProps } from './typings';
 

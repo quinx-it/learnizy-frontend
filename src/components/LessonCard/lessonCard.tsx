@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 
 import { CardWrapper } from '@/components/CardWrapper';
 import { cn, normalizeToFive } from '@/lib/utils';
-import { Button } from '@/ui/button';
-import { StarIcon } from '@/ui/icons';
-import { Heading } from '@/ui/typography';
+import { Button } from '@/components/ui/Button';
+import { StarIcon } from '@/components/ui/Icons';
+import { Heading } from '@/components/ui/Typography';
 
 import { LessonCardPropsType } from './typings';
 

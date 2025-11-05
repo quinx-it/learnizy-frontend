@@ -4,7 +4,7 @@ import { useTheme } from 'next-themes';
 import React, { FC } from 'react';
 import { Toaster as Sonner, toast, ToasterProps } from 'sonner';
 
-import { NotificationIcon, CrossIcon } from '@/ui/icons';
+import { NotificationIcon, CrossIcon } from '@/components/ui/Icons';
 
 import { NotificationVariantType, ColorMapEntryType, CustomToastPropsType } from './typings';
 import './toaster.css';

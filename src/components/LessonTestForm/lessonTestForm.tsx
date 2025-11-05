@@ -13,10 +13,10 @@ import {
 } from '@/api/endpoints/test';
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
 import { LessonQuestion } from '@/components/LessonQuestion';
-import { Button } from '@/ui/button';
-import { Spinner } from '@/ui/spinner';
-import { showToast } from '@/ui/toaster';
-import { Text } from '@/ui/typography';
+import { Button } from '@/components/ui/Button';
+import { Spinner } from '@/components/ui/Spinner';
+import { showToast } from '@/components/ui/Toaster';
+import { Text } from '@/components/ui/Typography';
 
 import { LessonTestFormPropsType } from './typings';
 import { LessonTestFormSchema } from './validation';

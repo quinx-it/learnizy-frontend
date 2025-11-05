@@ -9,10 +9,10 @@ import {
   CreateLessonAIQueryRequestType,
 } from '@/api/endpoints/voice';
 import { CardWrapper } from '@/components/CardWrapper';
-import { Button } from '@/ui/button';
-import { Spinner } from '@/ui/spinner';
-import { showToast } from '@/ui/toaster';
-import { Text } from '@/ui/typography';
+import { Button } from '@/components/ui/Button';
+import { Spinner } from '@/components/ui/Spinner';
+import { showToast } from '@/components/ui/Toaster';
+import { Text } from '@/components/ui/Typography';
 
 import { VoiceRecorderControl } from '../VoiceRecorderControl';
 

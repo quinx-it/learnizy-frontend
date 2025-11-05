@@ -12,13 +12,13 @@ import {
   useResendVerificationCodeMutation,
 } from '@/api/endpoints/auth';
 import { routes, HttpStatus } from '@/constants';
-import { Button } from '@/ui/button';
-import { CheckboxWithLabel } from '@/ui/checkboxWithLabel/checkboxWithLabel';
-import { Input } from '@/ui/input';
-import { PasswordInput } from '@/ui/passwordInput';
-import { Spinner } from '@/ui/spinner';
-import { showToast } from '@/ui/toaster';
-import { Heading, Text } from '@/ui/typography';
+import { Button } from '@/components/ui/Button';
+import { CheckboxWithLabel } from '@/components/ui/CheckboxWithLabel/checkboxWithLabel';
+import { Input } from '@/components/ui/Input';
+import { PasswordInput } from '@/components/ui/PasswordInput';
+import { Spinner } from '@/components/ui/Spinner';
+import { showToast } from '@/components/ui/Toaster';
+import { Heading, Text } from '@/components/ui/Typography';
 
 import { VerificationFormValuesType, RegisterStep, IRegisterFormValues } from './typings';
 import { formSchema, verificationSchema } from './validation';

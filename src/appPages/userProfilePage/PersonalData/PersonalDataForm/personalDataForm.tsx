@@ -5,10 +5,10 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@/ui/button';
-import { DatePicker } from '@/ui/datePicker';
-import { Input } from '@/ui/input';
-import { RadioGroup, RadioGroupItem } from '@/ui/radioGroup';
+import { Button } from '@/components/ui/Button';
+import { DatePicker } from '@/components/ui/DatePicker';
+import { Input } from '@/components/ui/Input';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/RadioGroup';
 
 import { PersonalDataFormValuesType } from './typings';
 import { personalDataSchema } from './validations';

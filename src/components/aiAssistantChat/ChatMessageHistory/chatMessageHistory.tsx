@@ -6,8 +6,8 @@ import React, { useRef, useLayoutEffect, useEffect, FC } from 'react';
 import { MarkdownRenderer } from '@/components/MarkdownText';
 import { usePrevious } from '@/hooks/usePrevious';
 import { isAudioUrl } from '@/lib/utils';
-import { Spinner } from '@/ui/spinner';
-import { Text } from '@/ui/typography';
+import { Spinner } from '@/components/ui/Spinner';
+import { Text } from '@/components/ui/Typography';
 
 import { AudioPlayer } from '../../AudioPlayer';
 import { Typewriter } from '../ChatTypewriter';

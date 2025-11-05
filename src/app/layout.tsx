@@ -5,7 +5,7 @@ import './globals.css';
 
 import { ReactNode } from 'react';
 
-import { Toaster } from '@/ui/toaster';
+import { Toaster } from '@/components/ui/Toaster';
 
 import StoreProvider from './StoreProvider';
 

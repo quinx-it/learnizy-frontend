@@ -6,9 +6,9 @@ import React, { ComponentProps, ReactNode, FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { CardWrapper } from '@/components/CardWrapper';
-import { Button } from '@/ui/button';
-import { DotTitle } from '@/ui/dotTitle';
-import { Text } from '@/ui/typography';
+import { Button } from '@/components/ui/Button';
+import { DotTitle } from '@/components/ui/DotTitle';
+import { Text } from '@/components/ui/Typography';
 
 import { ExamCardPropsType, ExamStatus } from '../typings';
 

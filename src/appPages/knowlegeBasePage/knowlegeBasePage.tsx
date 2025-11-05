@@ -4,8 +4,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Page from '@/components/Page';
-import { CircleIcon } from '@/ui/icons';
-import { Heading } from '@/ui/typography';
+import { CircleIcon } from '@/components/ui/Icons';
+import { Heading } from '@/components/ui/Typography';
 
 import { FrequentlyAskedQuestions } from './FrequentlyAskedQuestions';
 import { InterviewQuestions } from './InterviewQuestoins';

@@ -7,7 +7,7 @@ import {
   PersonIcon,
   StudentHatIcon,
   FourPointedStarIcon,
-} from '@/ui/icons';
+} from '@/components/ui/Icons';
 
 export const globalConstants = {
   rootBreadcrumbLabels: {

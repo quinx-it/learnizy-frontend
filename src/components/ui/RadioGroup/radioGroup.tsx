@@ -3,8 +3,8 @@ import * as React from 'react';
 import { ComponentProps } from 'react';
 
 import { cn } from '@/lib/utils';
-import { CircleIcon } from '@/ui/icons';
-import { Label } from '@/ui/label';
+import { CircleIcon } from '@/components/ui/Icons';
+import { Label } from '@/components/ui/Label';
 
 function RadioGroup({ className, ...props }: ComponentProps<typeof RadioGroupPrimitive.Root>) {
   return (

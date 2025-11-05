@@ -3,8 +3,8 @@ import React from 'react';
 import { ForgotPasswordForm } from '@/components/auth/ForgotPasswordForm';
 import { CardWrapper } from '@/components/CardWrapper';
 import Page from '@/components/Page';
-import { Logo } from '@/ui/icons';
-import { Heading, Text } from '@/ui/typography';
+import { Logo } from '@/components/ui/Icons';
+import { Heading, Text } from '@/components/ui/Typography';
 
 export const ForgotPasswordPage = () => {
   return (

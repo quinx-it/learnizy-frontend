@@ -10,7 +10,7 @@ import { FC } from 'react';
 import { cn } from '@/lib/utils';
 
 import './accordion.css';
-import { Text } from '@/ui/typography';
+import { Text } from '@/components/ui/Typography';
 
 import { IAccordionProps } from './typings';
 

@@ -9,8 +9,8 @@ import {
   headingTags,
   headingVariants,
 } from '@/api/endpoints/lessons';
-import { LightbulbIcon, NotificationIcon } from '@/ui/icons';
-import { Heading, Text } from '@/ui/typography';
+import { LightbulbIcon, NotificationIcon } from '@/components/ui/Icons';
+import { Heading, Text } from '@/components/ui/Typography';
 
 import { IBlockRendererProps } from './typings';
 

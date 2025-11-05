@@ -4,9 +4,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-import { Button } from '@/ui/button';
-import { Input } from '@/ui/input';
-import { PasswordInput } from '@/ui/passwordInput';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { PasswordInput } from '@/components/ui/PasswordInput';
 
 import { securitySettingsSchema, SecuritySettingsFormValuesType } from './validation';
 

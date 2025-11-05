@@ -5,10 +5,10 @@ import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { useForgotPasswordMutation } from '@/api/endpoints/auth';
-import { Button } from '@/ui/button';
-import { Input } from '@/ui/input';
-import { Spinner } from '@/ui/spinner';
-import { showToast } from '@/ui/toaster';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { Spinner } from '@/components/ui/Spinner';
+import { showToast } from '@/components/ui/Toaster';
 
 import { IForgotPasswordFormValues } from './typings';
 import { formSchema } from './validation';

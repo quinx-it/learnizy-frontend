@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Calendar } from '@/ui/calendar';
-import { CalendarIcon } from '@/ui/icons';
-import { Input } from '@/ui/input';
-import { Popover } from '@/ui/popover';
+import { Calendar } from '@/components/ui/Calendar';
+import { CalendarIcon } from '@/components/ui/Icons';
+import { Input } from '@/components/ui/Input';
+import { Popover } from '@/components/ui/Popover';
 
 import { IDatePickerProps } from './typings';
 import { formatDate, parseDateString } from './utils';

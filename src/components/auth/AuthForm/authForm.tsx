@@ -7,11 +7,11 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { useLoginMutation } from '@/api/endpoints/auth';
 import { routes } from '@/constants';
-import { Button } from '@/ui/button';
-import { Input } from '@/ui/input';
-import { PasswordInput } from '@/ui/passwordInput';
-import { Spinner } from '@/ui/spinner';
-import { showToast } from '@/ui/toaster';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { PasswordInput } from '@/components/ui/PasswordInput';
+import { Spinner } from '@/components/ui/Spinner';
+import { showToast } from '@/components/ui/Toaster';
 
 import { IAuthFormValues } from './typings';
 import { formSchema } from './validation';

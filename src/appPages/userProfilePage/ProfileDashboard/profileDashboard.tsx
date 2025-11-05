@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next';
 
 import { CardWrapper } from '@/components/CardWrapper';
 import { routes } from '@/constants';
-import { Button } from '@/ui/button';
-import { EditPhotoIcon, ExitIcon, LockIcon, PersonIcon } from '@/ui/icons';
-import { Text } from '@/ui/typography';
+import { Button } from '@/components/ui/Button';
+import { EditPhotoIcon, ExitIcon, LockIcon, PersonIcon } from '@/components/ui/Icons';
+import { Text } from '@/components/ui/Typography';
 
 import { DashboardLink } from './DashBoardLink';
 

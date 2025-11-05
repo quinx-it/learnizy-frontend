@@ -8,8 +8,8 @@ import { ErrorSection } from '@/components/ErrorSection';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
 import Page from '@/components/Page';
 import { globalConstants, routes } from '@/constants';
-import { Breadcrumbs } from '@/ui/breadcrumbs';
-import { Text } from '@/ui/typography';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { Text } from '@/components/ui/Typography';
 
 import { LessonTestResponseType, LessonTestResultPagePropsType } from './types';
 

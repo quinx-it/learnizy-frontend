@@ -3,7 +3,7 @@ import React from 'react';
 import { RegisterForm } from '@/components/auth/RegisterForm';
 import { CardWrapper } from '@/components/CardWrapper';
 import Page from '@/components/Page';
-import { Logo } from '@/ui/icons';
+import { Logo } from '@/components/ui/Icons';
 
 export const RegisterPageDesign = () => {
   return (

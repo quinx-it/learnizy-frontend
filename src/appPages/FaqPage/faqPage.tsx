@@ -7,9 +7,9 @@ import { CardWrapper } from '@/components/CardWrapper';
 import Page from '@/components/Page';
 import { routes } from '@/constants';
 import { globalConstants } from '@/constants/constants';
-import { CardAccordion } from '@/ui/accordion';
-import { Breadcrumbs } from '@/ui/breadcrumbs';
-import { Text } from '@/ui/typography';
+import { CardAccordion } from '@/components/ui/Accordion';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { Text } from '@/components/ui/Typography';
 
 import { constants } from './constants';
 

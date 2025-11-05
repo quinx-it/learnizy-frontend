@@ -12,9 +12,9 @@ import { routes } from '@/constants';
 import { cn, pluralize } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
-import { Button } from '@/ui/button';
-import { DotTitle } from '@/ui/dotTitle';
-import { Text } from '@/ui/typography';
+import { Button } from '@/components/ui/Button';
+import { DotTitle } from '@/components/ui/DotTitle';
+import { Text } from '@/components/ui/Typography';
 
 import { constants } from './constants';
 import { renderModuleProgress } from './utils';

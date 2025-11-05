@@ -9,10 +9,10 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { INavbarProps } from '@/components/navbar/typings';
 import { routes } from '@/constants';
 import { useLogout } from '@/hooks/useLogout';
-import { Button } from '@/ui/button';
-import { HeaderLogo, ExitIcon, CubesMainIcon } from '@/ui/icons';
-import { Spinner } from '@/ui/spinner';
-import { Text } from '@/ui/typography';
+import { Button } from '@/components/ui/Button';
+import { HeaderLogo, ExitIcon, CubesMainIcon } from '@/components/ui/Icons';
+import { Spinner } from '@/components/ui/Spinner';
+import { Text } from '@/components/ui/Typography';
 
 import { NavbarLink } from './NavbarLink/navbarLink';
 

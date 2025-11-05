@@ -5,7 +5,7 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { cn } from '@/lib/utils';
-import { Text } from '@/ui/typography';
+import { Text } from '@/components/ui/Typography';
 
 import { WorkingSectionPropsType } from './typings';
 

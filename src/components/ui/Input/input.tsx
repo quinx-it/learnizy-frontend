@@ -3,9 +3,9 @@
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
-import { Text } from '@/ui/typography';
+import { Text } from '@/components/ui/Typography';
 
-import { Label } from '../label';
+import { Label } from '../Label';
 
 import { IInputProps } from './typings';
 

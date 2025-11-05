@@ -7,8 +7,8 @@ import { useGetExamsQuery } from '@/api/endpoints/exams';
 import { ErrorSection } from '@/components/ErrorSection';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
 import Page from '@/components/Page';
-import { CircleIcon } from '@/ui/icons';
-import { Heading } from '@/ui/typography';
+import { CircleIcon } from '@/components/ui/Icons';
+import { Heading } from '@/components/ui/Typography';
 
 import { ExamCard } from './ExamCard';
 import { ExamStatus, ExamType, ExamsPageProps } from './typings';

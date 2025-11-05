@@ -1,5 +1,5 @@
 import { CardWrapper } from '@/components/CardWrapper';
-import { Heading } from '@/ui/typography';
+import { Heading } from '@/components/ui/Typography';
 
 import { SecuritySettingsForm } from './SecuritySettingsForm';
 

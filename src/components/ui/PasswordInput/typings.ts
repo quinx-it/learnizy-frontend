@@ -1,4 +1,4 @@
-import { type IInputProps } from '@/ui/input/typings';
+import { type IInputProps } from '@/components/ui/Input/typings';
 
 import { PasswordInput } from './passwordInput';
 

@@ -11,8 +11,8 @@ import Page from '@/components/Page';
 import { ProgressCard, ProgressStatus } from '@/components/ProgressCard';
 import { StatisticsChart } from '@/components/StatisticsChart';
 import { routes } from '@/constants';
-import { Breadcrumbs } from '@/ui/breadcrumbs';
-import { Text } from '@/ui/typography';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { Text } from '@/components/ui/Typography';
 
 import { constants } from './constants';
 

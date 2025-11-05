@@ -16,11 +16,11 @@ import Page from '@/components/Page';
 import { routes } from '@/constants';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
-import { Breadcrumbs } from '@/ui/breadcrumbs';
-import { Button } from '@/ui/button';
-import { DotTitle } from '@/ui/dotTitle';
-import { showToast } from '@/ui/toaster';
-import { Heading, Text } from '@/ui/typography';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import { Button } from '@/components/ui/Button';
+import { DotTitle } from '@/components/ui/DotTitle';
+import { showToast } from '@/components/ui/Toaster';
+import { Heading, Text } from '@/components/ui/Typography';
 
 import { constants } from './constants';
 import { ILessonItemPageProps } from './typings';
