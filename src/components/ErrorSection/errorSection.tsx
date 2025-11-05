@@ -2,8 +2,8 @@ import Image from 'next/image';
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@/components/ui/Button';
-import { Heading, Text } from '@/components/ui/Typography';
+import { Button } from '@/components/Button';
+import { Heading, Text } from '@/components/Typography';
 import { cn } from '@/lib/utils';
 
 import { ErrorPropsType, ErrorType } from './typings';

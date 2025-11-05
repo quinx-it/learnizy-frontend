@@ -5,8 +5,8 @@ import Link from 'next/link';
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@/components/ui/Button';
-import { Heading } from '@/components/ui/Typography';
+import { Button } from '@/components/Button';
+import { Heading } from '@/components/Typography';
 import { defaultPage, routes } from '@/constants';
 import { useAppSelector } from '@/hooks/redux';
 import { cn } from '@/lib/utils';

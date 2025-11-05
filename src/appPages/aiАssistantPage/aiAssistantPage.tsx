@@ -12,8 +12,8 @@ import {
 } from '@/api/endpoints/aiAssistant';
 import { ChatInput } from '@/components/aiAssistantChat/ChatInput';
 import Page from '@/components/Page';
-import { showToast } from '@/components/ui/Toaster';
-import { Text } from '@/components/ui/Typography';
+import { showToast } from '@/components/Toaster';
+import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
 
 export const AiAssistantPage = () => {

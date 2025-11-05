@@ -75,19 +75,6 @@ module.exports = {
       { blankLine: 'always', prev: 'import', next: '*' },
       { blankLine: 'any', prev: 'import', next: 'import' },
     ],
-    // need to fix and re-enable
-    // 'no-use-before-define': 'off',
-    // 'no-await-in-loop': 'off',
-    // 'no-restricted-syntax': 'off',
-    // 'react-hooks/rules-of-hooks': 'off',
-    // 'default-case': 'off',
-    // 'no-nested-ternary': 'off',
-    // 'react/button-has-type': 'off',
-    // 'no-multi-assign': 'off',
-    // 'react/jsx-no-useless-fragment': 'off',
-    // 'no-case-declarations': 'off',
-    // 'no-restricted-exports': 'off',
-    // 'react/prop-types': 'off',
   },
   settings: {
     'import/resolver': {

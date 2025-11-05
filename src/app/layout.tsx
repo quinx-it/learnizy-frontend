@@ -1,7 +1,7 @@
 import localFont from 'next/font/local';
 import { ReactNode } from 'react';
 
-import { Toaster } from '@/components/ui/Toaster';
+import { Toaster } from '@/components/Toaster';
 
 import StoreProvider from './StoreProvider';
 

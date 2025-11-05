@@ -13,27 +13,27 @@ import {
 } from '@/api/endpoints/admin';
 import { ILesson } from '@/api/endpoints/lessons';
 import { useGetModuleQuery } from '@/api/endpoints/modules';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { Button } from '@/components/Button';
 import { CardWrapper } from '@/components/CardWrapper';
-import { ErrorSection } from '@/components/ErrorSection';
-import { FullscreenLoader } from '@/components/FullscreenLoader';
-import { LessonCard } from '@/components/LessonCard';
-import Page from '@/components/Page';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import { Button } from '@/components/ui/Button';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from '@/components/ui/Dialog';
-import { DotTitle } from '@/components/ui/DotTitle';
-import { CheckIcon, LockColorIcon } from '@/components/ui/Icons';
-import { Input } from '@/components/ui/Input';
-import { ProgressBar } from '@/components/ui/Progress';
-import { Textarea } from '@/components/ui/Textarea';
-import { showToast } from '@/components/ui/Toaster';
-import { Text } from '@/components/ui/Typography';
+} from '@/components/Dialog';
+import { DotTitle } from '@/components/DotTitle';
+import { ErrorSection } from '@/components/ErrorSection';
+import { FullscreenLoader } from '@/components/FullscreenLoader';
+import { CheckIcon, LockColorIcon } from '@/components/Icons';
+import { Input } from '@/components/Input';
+import { LessonCard } from '@/components/LessonCard';
+import Page from '@/components/Page';
+import { ProgressBar } from '@/components/Progress';
+import { Textarea } from '@/components/Textarea';
+import { showToast } from '@/components/Toaster';
+import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
 import { percentage, pluralize } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';

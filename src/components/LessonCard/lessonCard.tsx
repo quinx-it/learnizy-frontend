@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { Button } from '@/components/Button';
 import { CardWrapper } from '@/components/CardWrapper';
-import { Button } from '@/components/ui/Button';
-import { StarIcon } from '@/components/ui/Icons';
-import { Heading } from '@/components/ui/Typography';
+import { StarIcon } from '@/components/Icons';
+import { Heading } from '@/components/Typography';
 import { cn, normalizeToFive } from '@/lib/utils';
 
 import { LessonCardPropsType } from './typings';

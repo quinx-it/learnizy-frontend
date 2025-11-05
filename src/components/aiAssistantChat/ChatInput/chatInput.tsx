@@ -18,10 +18,10 @@ import { useTranslation } from 'react-i18next';
 import WaveSurfer from 'wavesurfer.js';
 
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
-import { Button } from '@/components/ui/Button';
-import { MicChatIcon, AttachIcon, SendIcon } from '@/components/ui/Icons';
-import { Spinner } from '@/components/ui/Spinner';
-import { showToast } from '@/components/ui/Toaster';
+import { Button } from '@/components/Button';
+import { MicChatIcon, AttachIcon, SendIcon } from '@/components/Icons';
+import { Spinner } from '@/components/Spinner';
+import { showToast } from '@/components/Toaster';
 
 import { MIN_RECORDING_DURATION_MS } from './constants';
 import { IChatInputProps, ILocalFile } from './typings';

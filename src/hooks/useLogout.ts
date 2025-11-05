@@ -1,5 +1,5 @@
 import { useLogoutMutation } from '@/api/endpoints/auth';
-import { showToast } from '@/components/ui/Toaster';
+import { showToast } from '@/components/Toaster';
 import { useAppDispatch } from '@/hooks/redux';
 import { logout } from '@/store/slices/auth/slice';
 

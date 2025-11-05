@@ -3,12 +3,12 @@
 import React, { FC, useEffect, useRef } from 'react';
 
 import { useGetLastTestAttemptQuery, useGetTestByLessonIdQuery } from '@/api/endpoints/test';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { CardWrapper } from '@/components/CardWrapper';
 import { ErrorSection } from '@/components/ErrorSection';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
 import Page from '@/components/Page';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import { Text } from '@/components/ui/Typography';
+import { Text } from '@/components/Typography';
 import { globalConstants, routes } from '@/constants';
 
 import { LessonTestResponseType, LessonTestResultPagePropsType } from './types';
@@ -24,6 +24,14 @@ const mapEvaluation = (evaluation: string) => {
     default:
       return { text: 'Ответ находится на проверке', color: 'text-gray-600', value: 0 };
   }
+};
+
+const getStatus = (status: string, passed: boolean) => {
+  if (status === 'SUBMITTED') return 'В обработке';
+
+  if (passed) return 'Пройден';
+
+  return 'Не пройден';
 };
 
 export const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) => {
@@ -103,14 +111,7 @@ export const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) =
                 Результат: {scorePercent}%
               </Text>
               <Text variant="m" className="text-medium">
-                Статус:{' '}
-                {(() => {
-                  if (status === 'SUBMITTED') return 'В обработке';
-
-                  if (passed) return 'Пройден';
-
-                  return 'Не пройден';
-                })()}
+                Статус: {getStatus(status, passed)}
               </Text>
             </div>
           </div>

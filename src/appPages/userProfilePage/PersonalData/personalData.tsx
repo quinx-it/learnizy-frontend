@@ -3,7 +3,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { CardWrapper } from '@/components/CardWrapper';
-import { Heading } from '@/components/ui/Typography';
+import { Heading } from '@/components/Typography';
 
 import { PersonalDataForm } from './PersonalDataForm';
 

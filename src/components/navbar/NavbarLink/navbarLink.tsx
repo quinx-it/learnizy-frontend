@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FC } from 'react';
 
-import { Button } from '@/components/ui/Button';
-import { Text } from '@/components/ui/Typography';
+import { Button } from '@/components/Button';
+import { Text } from '@/components/Typography';
 
 import { INavbarLinkProps } from './typings';
 

@@ -2,9 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 
+import { Button } from '@/components/Button';
 import { CardWrapper } from '@/components/CardWrapper';
-import { Button } from '@/components/ui/Button';
-import { Text } from '@/components/ui/Typography';
+import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
 
 export const FrequentlyAskedQuestions = () => {

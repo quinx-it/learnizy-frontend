@@ -8,11 +8,11 @@ import {
   useGetLessonAIQueriesQuery,
   CreateLessonAIQueryRequestType,
 } from '@/api/endpoints/voice';
+import { Button } from '@/components/Button';
 import { CardWrapper } from '@/components/CardWrapper';
-import { Button } from '@/components/ui/Button';
-import { Spinner } from '@/components/ui/Spinner';
-import { showToast } from '@/components/ui/Toaster';
-import { Text } from '@/components/ui/Typography';
+import { Spinner } from '@/components/Spinner';
+import { showToast } from '@/components/Toaster';
+import { Text } from '@/components/Typography';
 
 import { VoiceRecorderControl } from '../VoiceRecorderControl';
 

@@ -12,11 +12,11 @@ import {
   LessonTestSubmitType,
 } from '@/api/endpoints/test';
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
+import { Button } from '@/components/Button';
 import { LessonQuestion } from '@/components/LessonQuestion';
-import { Button } from '@/components/ui/Button';
-import { Spinner } from '@/components/ui/Spinner';
-import { showToast } from '@/components/ui/Toaster';
-import { Text } from '@/components/ui/Typography';
+import { Spinner } from '@/components/Spinner';
+import { showToast } from '@/components/Toaster';
+import { Text } from '@/components/Typography';
 
 import { LessonTestFormPropsType } from './typings';
 import { LessonTestFormSchema } from './validation';

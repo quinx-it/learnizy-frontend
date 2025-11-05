@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { FC } from 'react';
 
-import { Heading, Text } from '@/components/ui/Typography';
+import { Heading, Text } from '@/components/Typography';
 import { cn } from '@/lib/utils';
 
 import { CardType } from './constants';

@@ -6,7 +6,7 @@ import {
   PersonIcon,
   StudentHatIcon,
   FourPointedStarIcon,
-} from '@/components/ui/Icons';
+} from '@/components/Icons';
 import { routes } from '@/constants';
 
 export const globalConstants = {

@@ -4,8 +4,8 @@ import clsx from 'clsx';
 import React, { useRef, useLayoutEffect, useEffect, FC } from 'react';
 
 import { MarkdownRenderer } from '@/components/MarkdownText';
-import { Spinner } from '@/components/ui/Spinner';
-import { Text } from '@/components/ui/Typography';
+import { Spinner } from '@/components/Spinner';
+import { Text } from '@/components/Typography';
 import { usePrevious } from '@/hooks/usePrevious';
 import { isAudioUrl } from '@/lib/utils';
 

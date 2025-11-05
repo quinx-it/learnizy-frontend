@@ -4,10 +4,10 @@ import React from 'react';
 
 import { useGetDashboardAnalyticsQuery } from '@/api/endpoints/admin';
 import { AnalyticsCard } from '@/components/AnalyticsCard';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 import Page from '@/components/Page';
+import { ProgressBar } from '@/components/Progress';
 import { StudentsTable } from '@/components/StudentsTable';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import { ProgressBar } from '@/components/ui/Progress';
 
 export const MentorStudentsPage = () => {
   const { data } = useGetDashboardAnalyticsQuery();

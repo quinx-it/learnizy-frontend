@@ -3,9 +3,9 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from '@/components/ui/Button';
-import { ProgressBar } from '@/components/ui/Progress';
-import { Text } from '@/components/ui/Typography';
+import { Button } from '@/components/Button';
+import { ProgressBar } from '@/components/Progress';
+import { Text } from '@/components/Typography';
 import { cn } from '@/lib/utils';
 
 import { constants } from './constants';

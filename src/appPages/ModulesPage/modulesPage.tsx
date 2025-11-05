@@ -13,22 +13,22 @@ import {
   IModuleInfo,
 } from '@/api/endpoints/admin';
 import { CompletionStatus } from '@/api/endpoints/types';
-import { ErrorSection } from '@/components/ErrorSection';
-import { FullscreenLoader } from '@/components/FullscreenLoader';
-import { ModuleCard } from '@/components/ModuleCard';
-import Page from '@/components/Page';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import { Button } from '@/components/ui/Button';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { Button } from '@/components/Button';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from '@/components/ui/Dialog';
-import { Input } from '@/components/ui/Input';
-import { Textarea } from '@/components/ui/Textarea';
-import { showToast } from '@/components/ui/Toaster';
+} from '@/components/Dialog';
+import { ErrorSection } from '@/components/ErrorSection';
+import { FullscreenLoader } from '@/components/FullscreenLoader';
+import { Input } from '@/components/Input';
+import { ModuleCard } from '@/components/ModuleCard';
+import Page from '@/components/Page';
+import { Textarea } from '@/components/Textarea';
+import { showToast } from '@/components/Toaster';
 import { routes } from '@/constants';
 import { globalConstants } from '@/constants/constants';
 import { selectUserRole } from '@/store/slices/auth/selectors';

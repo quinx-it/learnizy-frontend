@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 
 import { useGetLessonQuery } from '@/api/endpoints/lessons';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { CardWrapper } from '@/components/CardWrapper';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
 import Page from '@/components/Page';
-import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
-import { Text } from '@/components/ui/Typography';
+import { Text } from '@/components/Typography';
 import { VoiceRecorderForm } from '@/components/VoiceRecorderForm';
 import { routes } from '@/constants';
 

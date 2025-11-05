@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { AreaChart } from '@/components/ui/AreaChart';
-import { CalendarIcon } from '@/components/ui/Icons';
-import { Text } from '@/components/ui/Typography';
+import { AreaChart } from '@/components/AreaChart';
+import { CalendarIcon } from '@/components/Icons';
+import { Text } from '@/components/Typography';
 
 import { WEEK_DAYS } from './constants';
 import { StatisticsChartPropsType } from './typings';

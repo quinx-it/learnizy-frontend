@@ -1,9 +1,9 @@
 import { FC } from 'react';
 
 import { CompletionStatus } from '@/api/endpoints/types';
-import { StarIcon } from '@/components/ui/Icons';
-import { ProgressBar } from '@/components/ui/Progress';
-import { Text } from '@/components/ui/Typography';
+import { StarIcon } from '@/components/Icons';
+import { ProgressBar } from '@/components/Progress';
+import { Text } from '@/components/Typography';
 import { percentage } from '@/lib/utils';
 
 import { constants } from './constants';

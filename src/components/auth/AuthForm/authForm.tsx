@@ -6,11 +6,11 @@ import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { useLoginMutation } from '@/api/endpoints/auth';
-import { Button } from '@/components/ui/Button';
-import { Input } from '@/components/ui/Input';
-import { PasswordInput } from '@/components/ui/PasswordInput';
-import { Spinner } from '@/components/ui/Spinner';
-import { showToast } from '@/components/ui/Toaster';
+import { Button } from '@/components/Button';
+import { Input } from '@/components/Input';
+import { PasswordInput } from '@/components/PasswordInput';
+import { Spinner } from '@/components/Spinner';
+import { showToast } from '@/components/Toaster';
 import { routes } from '@/constants';
 
 import { IAuthFormValues } from './typings';

@@ -4,11 +4,11 @@ import Image from 'next/image';
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { Button } from '@/components/Button';
 import { CardWrapper } from '@/components/CardWrapper';
-import { Button } from '@/components/ui/Button';
-import { DotTitle } from '@/components/ui/DotTitle';
-import { ProgressBar } from '@/components/ui/Progress';
-import { Text } from '@/components/ui/Typography';
+import { DotTitle } from '@/components/DotTitle';
+import { ProgressBar } from '@/components/Progress';
+import { Text } from '@/components/Typography';
 
 import { ProgressCardPropsType } from './typings';
 
