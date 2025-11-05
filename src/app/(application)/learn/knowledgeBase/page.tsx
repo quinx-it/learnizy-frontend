@@ -1,6 +1,8 @@
-import { KnowlegeBasePage } from '@/appPages/knowlegeBasePage';
+import { FC } from 'react';
 
-const KnowlegeBase = () => {
+import KnowlegeBasePage from '@/appPages/knowlegeBasePage';
+
+const KnowlegeBase: FC = () => {
   return <KnowlegeBasePage />;
 };
 

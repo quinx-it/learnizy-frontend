@@ -1,12 +1,13 @@
 'use client';
 
 import { useParams } from 'next/navigation';
+import { FC } from 'react';
 
-import { ExamTestResultPage } from '@/appPages/ExamTestResultPage';
+import ExamTestResultPage from '@/appPages/ExamTestResultPage';
 
 import { ParamsType } from '../../../typings';
 
-const LessonTestResult = () => {
+const LessonTestResult: FC = () => {
   const params = useParams<ParamsType>();
   const { module, testId } = params;
 

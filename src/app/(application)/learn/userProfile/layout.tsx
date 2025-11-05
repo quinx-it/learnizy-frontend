@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
 
-import { UserProfilePage } from '@/appPages/userProfilePage';
+import UserProfilePage from '@/appPages/userProfilePage';
 
 const UserProfile: FC<PropsWithChildren> = (props) => {
   const { children } = props;

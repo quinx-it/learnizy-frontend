@@ -1,7 +1,7 @@
-import { RegisterPageDesign } from '@/appPages/authPages/RegisterPage';
+import RegisterPageDesign from '@/appPages/authPages/RegisterPage';
 
-function RegisterPage() {
+const RegisterPage = () => {
   return <RegisterPageDesign />;
-}
+};
 
 export default RegisterPage;

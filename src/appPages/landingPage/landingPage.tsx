@@ -1,7 +1,7 @@
 import Page from '@/components/Page';
 
 import { AdvantagesSection } from './AdvantagesSection';
-import { HeroSection } from './HeroSection';
+import HeroSection from './HeroSection';
 
 export const LandingPage = () => {
   return (

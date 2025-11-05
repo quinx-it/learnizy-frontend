@@ -1,6 +1,8 @@
+import { FC } from 'react';
+
 import { AiAssistantPage } from '@/appPages/aiАssistantPage';
 
-const AiAssistant = () => {
+const AiAssistant: FC = () => {
   return <AiAssistantPage />;
 };
 

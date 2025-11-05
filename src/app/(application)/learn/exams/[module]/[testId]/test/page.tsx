@@ -1,13 +1,15 @@
 'use client';
 
 import { useParams } from 'next/navigation';
+import { FC } from 'react';
 
 import { useGetExamByIdQuery } from '@/api/endpoints/exams';
-import { TestPage, TestDataType } from '@/appPages/TestPage';
+import TestPage from '@/appPages/TestPage';
+import { TestDataType } from '@/appPages/TestPage/typings';
 
 import { ParamsType } from '../../../typings';
 
-const ExamPage = () => {
+const ExamPage: FC = () => {
   const params = useParams<ParamsType>();
   const { module, testId } = params;
   const { data, isLoading, isError, refetch } = useGetExamByIdQuery(+testId);

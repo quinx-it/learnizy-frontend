@@ -1,6 +1,8 @@
-import { MentorStudentsPage } from '@/appPages/MentorStudentsPage';
+import { FC } from 'react';
 
-const MentorStudents = () => {
+import MentorStudentsPage from '@/appPages/MentorStudentsPage';
+
+const MentorStudents: FC = () => {
   return <MentorStudentsPage />;
 };
 

@@ -1,6 +1,8 @@
+import { FC } from 'react';
+
 import { WorkingSection } from '@/components/WorkingSection';
 
-const ProjectsPage = () => {
+const ProjectsPage: FC = () => {
   return <WorkingSection />;
 };
 

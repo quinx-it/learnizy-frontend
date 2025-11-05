@@ -1,12 +1,12 @@
 'use client';
 
 import { useRouter, useParams } from 'next/navigation';
-import React, { PropsWithChildren } from 'react';
+import { FC, PropsWithChildren } from 'react';
 
 import { ChatHistory } from '@/components/aiAssistantChat';
 import { routes } from '@/constants/routes';
 
-export default function AiAssistantLayout({ children }: PropsWithChildren) {
+const AiAssistantLayout: FC<PropsWithChildren> = ({ children }) => {
   const router = useRouter();
   const params = useParams();
 
@@ -30,4 +30,6 @@ export default function AiAssistantLayout({ children }: PropsWithChildren) {
       />
     </div>
   );
-}
+};
+
+export default AiAssistantLayout;

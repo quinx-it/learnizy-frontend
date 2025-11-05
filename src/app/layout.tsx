@@ -1,5 +1,5 @@
 import localFont from 'next/font/local';
-import { ReactNode } from 'react';
+import { FC, PropsWithChildren } from 'react';
 
 import { Toaster } from '@/components/Toaster';
 
@@ -19,15 +19,11 @@ export const metadata: Metadata = {
 };
 
 const involve = localFont({
-  src: './fonts/Involve-Medium.ttf',
+  src: '../assets/fonts/Involve-Medium.ttf',
   display: 'swap',
 });
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: ReactNode;
-}>) {
+const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   const isXML = typeof window !== 'undefined' && window.location.pathname.endsWith('.xml');
 
   if (isXML) return children;
@@ -42,4 +38,6 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

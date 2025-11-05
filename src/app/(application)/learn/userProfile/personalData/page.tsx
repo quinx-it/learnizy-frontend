@@ -1,6 +1,8 @@
-import { PersonalData } from '@/appPages/userProfilePage/PersonalData';
+import { FC } from 'react';
 
-const PersonalDataPage = () => {
+import PersonalData from '@/appPages/userProfilePage/PersonalData';
+
+const PersonalDataPage: FC = () => {
   return <PersonalData />;
 };
 

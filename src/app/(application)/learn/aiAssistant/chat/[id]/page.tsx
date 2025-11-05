@@ -1,6 +1,8 @@
+import { FC } from 'react';
+
 import { ChatAiAssistantPage } from '@/appPages/aiАssistantPage';
 
-const ChatAiAssistant = () => {
+const ChatAiAssistant: FC = () => {
   return <ChatAiAssistantPage />;
 };
 

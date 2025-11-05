@@ -1,6 +1,8 @@
-import { FaqPage } from '@/appPages/FaqPage';
+import { FC } from 'react';
 
-const Faq = () => {
+import FaqPage from '@/appPages/FaqPage';
+
+const Faq: FC = () => {
   return <FaqPage />;
 };
 

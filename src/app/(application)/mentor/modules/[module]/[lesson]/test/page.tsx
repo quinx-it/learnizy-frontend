@@ -1,13 +1,15 @@
 'use client';
 
 import { useParams } from 'next/navigation';
+import { FC } from 'react';
 
 import { useGetTestByLessonIdQuery } from '@/api/endpoints/test';
-import { TestPage, TestDataType } from '@/appPages/TestPage';
+import TestPage from '@/appPages/TestPage';
+import { TestDataType } from '@/appPages/TestPage/typings';
 
 import { ParamsType } from '../../../typings';
 
-const LessonTest = () => {
+const LessonTest: FC = () => {
   const params = useParams<ParamsType>();
   const { module, lesson } = params;
 

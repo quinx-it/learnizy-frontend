@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Heading } from '@/components/Typography';
 
-import { SectionContent } from '../SectionContent';
+import SectionContent from '../SectionContent';
 
 import { AdvantageCard } from './advantageCard';
 import { constants } from './constants';

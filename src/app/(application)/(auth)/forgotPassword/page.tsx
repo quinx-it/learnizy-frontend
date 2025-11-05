@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-import { ForgotPasswordPage } from '@/appPages/authPages/ForgotPasswordPage';
+import ForgotPasswordPage from '@/appPages/authPages/ForgotPasswordPage';
 
-function ForgotPassword() {
+const ForgotPassword: FC = () => {
   return <ForgotPasswordPage />;
-}
+};
 
 export default ForgotPassword;
