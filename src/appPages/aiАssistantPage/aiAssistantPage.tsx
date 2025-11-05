@@ -1,16 +1,20 @@
 'use client';
 
-import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { Text } from '@/ui/typography';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+
+import {
+  useCreateChatMutation,
+  useSendMessageMutation,
+  ISendMessageRequest,
+} from '@/api/endpoints/aiAssistant';
 import { ChatInput } from '@/components/aiAssistantChat/ChatInput';
-import { useCreateChatMutation, useSendMessageMutation } from '@/api/endpoints/aiAssistant';
+import Page from '@/components/Page';
 import { routes } from '@/constants';
 import { showToast } from '@/ui/toaster';
-import { ISendMessageRequest } from '@/api/endpoints/aiAssistant';
-import { useTranslation } from 'react-i18next';
-import Page from '@/components/Page';
+import { Text } from '@/ui/typography';
 
 export const AiAssistantPage = () => {
   const router = useRouter();

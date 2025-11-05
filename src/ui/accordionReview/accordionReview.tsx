@@ -1,15 +1,18 @@
-import React, { FC } from 'react';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@radix-ui/react-accordion';
+import React, { FC } from 'react';
+
 import { cn } from '@/lib/utils';
 import { ArrowRightIcon } from '@/ui/icons';
 import { Text } from '@/ui/typography';
+
 import '@/ui/accordion/accordion.css';
 import { AccordionReviewPropsType } from './typings';
+
 import { useTranslation } from 'react-i18next';
 
 export const AccordionReview: FC<AccordionReviewPropsType> = (props) => {
@@ -20,7 +23,7 @@ export const AccordionReview: FC<AccordionReviewPropsType> = (props) => {
   return (
     <Accordion type="single" collapsible className={cn('w-full')}>
       {items.map(({ value, number, messageNumber, content }) => (
-        <AccordionItem key={value} value={value} className={'mb-2 rounded-xl transition-colors'}>
+        <AccordionItem key={value} value={value} className="mb-2 rounded-xl transition-colors">
           <AccordionTrigger
             className={cn(
               'group flex w-full cursor-pointer items-center justify-between transition-all',
@@ -50,7 +53,7 @@ export const AccordionReview: FC<AccordionReviewPropsType> = (props) => {
               />
             </Text>
           </AccordionTrigger>
-          <AccordionContent className={'accordion-content'}>
+          <AccordionContent className="accordion-content">
             <Text className="px-1 py-2">{content}</Text>
           </AccordionContent>
         </AccordionItem>

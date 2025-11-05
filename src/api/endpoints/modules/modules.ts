@@ -1,4 +1,5 @@
 import { api } from '@/api';
+
 import { IGetModuleRequest, IModuleData, IModuleInfo } from './types';
 
 export const modulesApi = api.injectEndpoints({

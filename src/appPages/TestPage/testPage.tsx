@@ -1,19 +1,21 @@
 'use client';
+
+import React, { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import { LessonTestSubmitType, useSendTestMutation } from '@/api/endpoints/test';
 import { CardWrapper } from '@/components/CardWrapper';
+import { ErrorSection } from '@/components/ErrorSection';
+import { FullscreenLoader } from '@/components/FullscreenLoader';
+import { LessonTestForm } from '@/components/LessonTestForm';
+import Page from '@/components/Page';
 import { globalConstants, routes } from '@/constants';
 import { Breadcrumbs } from '@/ui/breadcrumbs';
-import React, { FC } from 'react';
-import { constants, TestType } from './constants';
-import { Text } from '@/ui/typography';
-import { LessonTestForm } from '@/components/LessonTestForm';
-import { LessonTestSubmitType } from '@/api/endpoints/test';
-import { FullscreenLoader } from '@/components/FullscreenLoader';
-import { ErrorSection } from '@/components/ErrorSection';
-import { useSendTestMutation } from '@/api/endpoints/test';
 import { showToast } from '@/ui/toaster';
+import { Text } from '@/ui/typography';
+
+import { constants, TestType } from './constants';
 import { TestPagePropsType } from './typings';
-import { useTranslation } from 'react-i18next';
-import Page from '@/components/Page';
 
 export const TestPage: FC<TestPagePropsType> = (props) => {
   const { lessonId, moduleId, lessonTest, isLoading, isError, refetch } = props;
@@ -23,6 +25,7 @@ export const TestPage: FC<TestPagePropsType> = (props) => {
   const [sendTestResult, { isLoading: isLoadingResult }] = useSendTestMutation();
 
   if (isLoading) return <FullscreenLoader />;
+
   if (isError || !lessonTest) return <ErrorSection reset={refetch} />;
 
   const {

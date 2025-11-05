@@ -1,15 +1,17 @@
 'use client';
 
+import React, { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import { useGetExamsQuery } from '@/api/endpoints/exams';
+import { ErrorSection } from '@/components/ErrorSection';
+import { FullscreenLoader } from '@/components/FullscreenLoader';
+import Page from '@/components/Page';
 import { CircleIcon } from '@/ui/icons';
 import { Heading } from '@/ui/typography';
-import React, { FC } from 'react';
+
 import { ExamCard } from './ExamCard';
-import { useGetExamsQuery } from '@/api/endpoints/exams';
-import { FullscreenLoader } from '@/components/FullscreenLoader';
-import { ErrorSection } from '@/components/ErrorSection';
 import { ExamStatus, ExamType, ExamsPageProps } from './typings';
-import { useTranslation } from 'react-i18next';
-import Page from '@/components/Page';
 
 const mapExamStatus = (status: string): ExamStatus => {
   switch (status) {
@@ -33,6 +35,7 @@ export const ExamsPage: FC<ExamsPageProps> = (props) => {
   const { data, isLoading, isError, refetch } = useGetExamsQuery({ courseId, page: 0, size: 10 });
 
   if (isLoading) return <FullscreenLoader />;
+
   if (isError || !data) return <ErrorSection reset={refetch} />;
 
   return (

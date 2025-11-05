@@ -1,6 +1,7 @@
-import type { Meta } from '@storybook/nextjs';
 import { CardAccordion } from './accordion';
 import { StoryType } from './typings';
+
+import type { Meta } from '@storybook/nextjs';
 
 const meta: Meta<typeof CardAccordion> = {
   title: 'Components/UI/CardAccordion',

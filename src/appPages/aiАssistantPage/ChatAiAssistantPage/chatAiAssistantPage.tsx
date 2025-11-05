@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams } from 'next/navigation';
-import { ChatInput, ChatMessageHistory } from '@/components/aiAssistantChat';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+
 import {
   useGetChatMessagesQuery,
   useSendMessageMutation,
@@ -10,9 +10,11 @@ import {
   ISendMessageRequest,
   Role,
 } from '@/api/endpoints/aiAssistant';
-import { showToast } from '@/ui/toaster';
-import { POLLING_INTERVAL } from './constants';
+import { ChatInput, ChatMessageHistory } from '@/components/aiAssistantChat';
 import Page from '@/components/Page';
+import { showToast } from '@/ui/toaster';
+
+import { POLLING_INTERVAL } from './constants';
 
 export const ChatAiAssistantPage = () => {
   const params = useParams();

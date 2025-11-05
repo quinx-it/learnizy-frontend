@@ -1,10 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { FC } from 'react';
-import { Text } from '@/ui/typography';
-import { Button } from '@/ui/button';
 import { usePathname } from 'next/navigation';
+import { FC } from 'react';
+
+import { Button } from '@/ui/button';
+import { Text } from '@/ui/typography';
+
 import { INavbarLinkProps } from './typings';
 
 export const NavbarLink: FC<INavbarLinkProps> = (props) => {

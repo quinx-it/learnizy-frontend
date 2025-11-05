@@ -1,8 +1,9 @@
 'use client';
 
-import type { Meta } from '@storybook/nextjs';
 import { DatePicker } from './datePicker';
 import { StoryType } from './typings';
+
+import type { Meta } from '@storybook/nextjs';
 
 const meta: Meta<typeof DatePicker> = {
   title: 'Components/UI/DatePicker',

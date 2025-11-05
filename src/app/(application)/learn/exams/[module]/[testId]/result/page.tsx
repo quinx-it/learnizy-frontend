@@ -1,6 +1,9 @@
 'use client';
-import { ExamTestResultPage } from '@/appPages/ExamTestResultPage';
+
 import { useParams } from 'next/navigation';
+
+import { ExamTestResultPage } from '@/appPages/ExamTestResultPage';
+
 import { ParamsType } from '../../../typings';
 
 const LessonTestResult = () => {

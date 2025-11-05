@@ -1,10 +1,13 @@
 'use client';
-import { ReactNode, useEffect } from 'react';
+
 import { useRouter } from 'next/navigation';
-import { useAppSelector } from '@/hooks/redux';
+import { ReactNode, useEffect } from 'react';
+
 import { routes } from '@/constants';
-import { FullscreenLoader } from '../FullscreenLoader';
+import { useAppSelector } from '@/hooks/redux';
 import { selectToken } from '@/store/slices/auth/selectors';
+
+import { FullscreenLoader } from '../FullscreenLoader';
 
 export function AuthLayout({ children }: { children: ReactNode }) {
   const router = useRouter();

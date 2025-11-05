@@ -1,6 +1,9 @@
 'use client';
-import { LessonItemPage } from '@/appPages/LessonItemPage';
+
 import { useParams } from 'next/navigation';
+
+import { LessonItemPage } from '@/appPages/LessonItemPage';
+
 import { ParamsType } from '../../typings';
 
 const LessonItem = () => {

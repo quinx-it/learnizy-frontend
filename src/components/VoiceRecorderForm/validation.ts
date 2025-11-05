@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+
 import { MAX_FILE_SIZE } from './constants';
 
 export const schema = yup.object({

@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 import { SpinnerVariantPropsType, SpinnerPropsType } from './typings';
 
 const Circle = ({ size = 24, className = '', ...props }: SpinnerVariantPropsType) => (

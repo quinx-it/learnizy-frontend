@@ -1,6 +1,7 @@
+import React from 'react';
+
 import { NotFoundComponent } from '@/components/NotFoundComponent';
 import Page from '@/components/Page';
-import React from 'react';
 
 export const NotFoundPage = () => {
   return (

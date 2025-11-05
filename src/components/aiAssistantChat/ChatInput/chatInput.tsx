@@ -1,5 +1,8 @@
 'use client';
 
+import clsx from 'clsx';
+import { X, Check, ArrowUp } from 'lucide-react';
+import { nanoid } from 'nanoid';
 import {
   useState,
   useRef,
@@ -11,20 +14,17 @@ import {
   useEffect,
   useCallback,
 } from 'react';
-import WaveSurfer from 'wavesurfer.js';
-import { nanoid } from 'nanoid';
-import clsx from 'clsx';
-import { X, Check, ArrowUp } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import WaveSurfer from 'wavesurfer.js';
 
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
 import { Button } from '@/ui/button';
-import { showToast } from '@/ui/toaster';
-import { Spinner } from '@/ui/spinner';
 import { MicChatIcon, AttachIcon, SendIcon } from '@/ui/icons';
+import { Spinner } from '@/ui/spinner';
+import { showToast } from '@/ui/toaster';
 
-import { IChatInputProps, IAttachment, ILocalFile } from './typings';
 import { MIN_RECORDING_DURATION_MS } from './constants';
+import { IChatInputProps, IAttachment, ILocalFile } from './typings';
 
 export const ChatInput: FC<IChatInputProps> = (props) => {
   const { onSendMessage, isLoading } = props;
@@ -57,7 +57,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
   const isDisabled = isLoading || isUploading;
 
   const handleFileSelect = (e: ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
+    const { files } = e.target;
 
     if (!files || files.length === 0) return;
 
@@ -101,6 +101,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
 
       setInputValue('');
       setAttachedFiles([]);
+
       if (textareaRef.current) {
         textareaRef.current.style.height = 'auto';
         setIsExpanded(false);
@@ -113,6 +114,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
   const handleUploadAudio = async () => {
     if (!audioBlob) {
       showToast('error', t('CHAT_INPUT.NO_DATA_TO_SEND'), '');
+
       return;
     }
 
@@ -127,6 +129,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       });
 
       setAudioBlob(null);
+
       if (waveformRef.current) {
         waveformRef.current.destroy();
         waveformRef.current = null;
@@ -138,6 +141,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
 
   const startRecording = async () => {
     if (isUploading) return;
+
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       const mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm' });
@@ -166,6 +170,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
           audioContextRef.current.close();
           audioContextRef.current = null;
         }
+
         if (animationFrameRef.current) {
           cancelAnimationFrame(animationFrameRef.current);
         }
@@ -201,21 +206,26 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
   const stopRecording = useCallback(() => {
     if (mediaRecorderRef.current && isRecording) {
       const duration = Date.now() - (recordingStartTimeRef.current || 0);
+
       if (duration < MIN_RECORDING_DURATION_MS) {
         showToast('info', t('CHAT_INPUT.RECORDING_TOO_SHORT'), t('CHAT_INPUT.HOLD_TO_RECORD'));
         mediaRecorderRef.current.stream.getTracks().forEach((t) => t.stop());
+
         if (audioContextRef.current) {
           audioContextRef.current.close();
           audioContextRef.current = null;
         }
+
         if (animationFrameRef.current) {
           cancelAnimationFrame(animationFrameRef.current);
         }
+
         mediaRecorderRef.current.onstop = null;
         mediaRecorderRef.current.stop();
       } else {
         mediaRecorderRef.current.stop();
       }
+
       setIsRecording(false);
       setIsLocked(false);
     }
@@ -224,13 +234,16 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
   const cancelRecording = useCallback(() => {
     if (mediaRecorderRef.current && isRecording) {
       mediaRecorderRef.current.stream.getTracks().forEach((t) => t.stop());
+
       if (audioContextRef.current) {
         audioContextRef.current.close();
         audioContextRef.current = null;
       }
+
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
+
       audioChunksRef.current = [];
       setIsRecording(false);
       setIsLocked(false);
@@ -242,6 +255,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
   const discardRecording = () => {
     setAudioBlob(null);
     audioChunksRef.current = [];
+
     if (waveformRef.current) {
       waveformRef.current.destroy();
       waveformRef.current = null;
@@ -267,6 +281,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
 
   useEffect(() => {
     let interval: NodeJS.Timeout | undefined;
+
     if (isRecording) {
       interval = setInterval(() => {
         if (recordingStartTimeRef.current) {
@@ -275,6 +290,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
         }
       }, 1000);
     }
+
     return () => {
       if (interval) clearInterval(interval);
     };
@@ -325,6 +341,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
 
   const handleMouseDown = (e: ReactMouseEvent<HTMLButtonElement>) => {
     if (isLocked) return;
+
     setDragStart({ x: e.clientX, y: e.clientY });
     startRecording();
     e.preventDefault();
@@ -332,6 +349,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
 
   const handleTouchStart = (e: ReactTouchEvent<HTMLButtonElement>) => {
     if (isLocked) return;
+
     const touch = e.touches[0];
     setDragStart({ x: touch.clientX, y: touch.clientY });
     startRecording();
@@ -343,7 +361,9 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       if (!isLocked) {
         stopRecording();
       }
+
       setDragStart(null);
+
       if (e) e.preventDefault();
     },
     [isLocked, stopRecording],
@@ -354,7 +374,9 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
       if (!isLocked) {
         stopRecording();
       }
+
       setDragStart(null);
+
       if (e) e.preventDefault();
     },
     [isLocked, stopRecording],
@@ -416,6 +438,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     const millis = Math.floor((seconds % 1) * 100);
+
     return `${mins}:${secs.toString().padStart(2, '0')}.${millis.toString().padStart(2, '0')}`;
   };
 
@@ -506,6 +529,7 @@ export const ChatInput: FC<IChatInputProps> = (props) => {
               {(audioLevels.length > 0 ? audioLevels : [0.3, 0.5, 0.4, 0.3, 0.6, 0.2]).map(
                 (level, index) => {
                   const barHeight = 4 + level * 16;
+
                   return (
                     <div
                       key={index}

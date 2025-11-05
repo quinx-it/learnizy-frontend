@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
+
 import localFont from 'next/font/local';
 import './globals.css';
 
-import StoreProvider from './StoreProvider';
-import { Toaster } from '@/ui/toaster';
 import { ReactNode } from 'react';
+
+import { Toaster } from '@/ui/toaster';
+
+import StoreProvider from './StoreProvider';
 
 import '@/lib/translate';
 

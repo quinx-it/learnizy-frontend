@@ -1,15 +1,17 @@
 'use client';
 
+import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { formSchema } from './validation';
+
 import { useForgotPasswordMutation } from '@/api/endpoints/auth';
-import { Spinner } from '@/ui/spinner';
-import { Input } from '@/ui/input';
 import { Button } from '@/ui/button';
+import { Input } from '@/ui/input';
+import { Spinner } from '@/ui/spinner';
 import { showToast } from '@/ui/toaster';
+
 import { IForgotPasswordFormValues } from './typings';
+import { formSchema } from './validation';
 
 export const ForgotPasswordForm = () => {
   const [forgotPasswordRequest, { isLoading, error }] = useForgotPasswordMutation();

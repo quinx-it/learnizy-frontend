@@ -1,27 +1,29 @@
 'use client';
 
-import React, { FC, useState, useEffect } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
 import MDEditor from '@uiw/react-md-editor';
-import { useGetLessonQuery } from '@/api/endpoints/lessons';
+import { usePathname, useRouter } from 'next/navigation';
+import React, { FC, useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+
 import { useUpdateLessonContentMarkdownMutation } from '@/api/endpoints/admin';
-import { BlockRenderer } from '@/components/ContentBlockParser';
+import { useGetLessonQuery } from '@/api/endpoints/lessons';
 import { CardWrapper } from '@/components/CardWrapper';
-import { Breadcrumbs } from '@/ui/breadcrumbs';
-import { Heading, Text } from '@/ui/typography';
-import { Button } from '@/ui/button';
-import { DotTitle } from '@/ui/dotTitle';
+import { BlockRenderer } from '@/components/ContentBlockParser';
 import { FullscreenLoader } from '@/components/FullscreenLoader';
 import { MarkdownRenderer } from '@/components/MarkdownText';
+import Page from '@/components/Page';
 import { routes } from '@/constants';
-import { constants } from './constants';
-import { useSelector } from 'react-redux';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
+import { Breadcrumbs } from '@/ui/breadcrumbs';
+import { Button } from '@/ui/button';
+import { DotTitle } from '@/ui/dotTitle';
 import { showToast } from '@/ui/toaster';
+import { Heading, Text } from '@/ui/typography';
+
+import { constants } from './constants';
 import { ILessonItemPageProps } from './typings';
-import { useTranslation } from 'react-i18next';
-import Page from '@/components/Page';
 
 export const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
   const { lessonId, moduleId } = props;

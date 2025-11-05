@@ -1,4 +1,5 @@
 import { ComponentType, ReactNode } from 'react';
+
 import { THEMES } from './chart';
 
 export type ChartConfigType = {

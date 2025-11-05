@@ -1,13 +1,14 @@
 'use client';
 
+import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+
+import { Button } from '@/ui/button';
+import { Input } from '@/ui/input';
+import { PasswordInput } from '@/ui/passwordInput';
 
 import { securitySettingsSchema, SecuritySettingsFormValuesType } from './validation';
-import { Input } from '@/ui/input';
-import { Button } from '@/ui/button';
-import { PasswordInput } from '@/ui/passwordInput';
 
 export const SecuritySettingsForm = () => {
   const {

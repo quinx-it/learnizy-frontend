@@ -1,5 +1,6 @@
-import { IIconProps } from '@/types';
 import React from 'react';
+
+import { IIconProps } from '@/types';
 
 export const EditPhotoIcon = ({ className }: IIconProps) => {
   return (

@@ -1,7 +1,9 @@
 'use client';
 
 import { Area, AreaChart as AreaChartDefault, XAxis, YAxis } from 'recharts';
+
 import { ChartContainer } from '@/ui/chart';
+
 import { IChartLineProps } from './typings';
 
 const chartMargin = { left: 15, right: 15, top: 5, bottom: 0 };

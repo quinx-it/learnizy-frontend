@@ -1,6 +1,7 @@
-import type { Meta } from '@storybook/nextjs';
 import { Textarea } from './textarea';
 import { StoryType } from './typings';
+
+import type { Meta } from '@storybook/nextjs';
 
 const meta: Meta<typeof Textarea> = {
   title: 'Components/UI/Textarea',

@@ -2,13 +2,16 @@
 
 import Link from 'next/link';
 import { Fragment, FC } from 'react';
-import { DotTitle } from '../dotTitle';
+import { useTranslation } from 'react-i18next';
+
+import { cn } from '@/lib/utils';
 import { ArrowRightIcon } from '@/ui/icons';
 import { Text } from '@/ui/typography';
-import { cn } from '@/lib/utils';
+
+import { DotTitle } from '../dotTitle';
+
 import { constants } from './constants';
 import { IBreadcrumbsProps } from './typings';
-import { useTranslation } from 'react-i18next';
 
 export const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
   const { t } = useTranslation();
@@ -31,7 +34,7 @@ export const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
                 href={rootHref}
                 className={cn('hover:text-medium', { 'text-soft hover:text-medium': items })}
               >
-                <Text variant={'l'}> {t(rootLabel)}</Text>
+                <Text variant="l"> {t(rootLabel)}</Text>
               </Link>
             </li>
             {items.map((crumb, index) => (
@@ -39,12 +42,12 @@ export const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
                 <li className="flex items-center gap-2">
                   <ArrowRightIcon color="blue" className="size-2.5" />
                   {index === items.length - 1 ? (
-                    <Text variant={'l'} className="text-medium">
+                    <Text variant="l" className="text-medium">
                       {t(crumb.label)}
                     </Text>
                   ) : (
                     <Link href={crumb.href}>
-                      <Text variant={'l'} className="text-soft hover:text-medium">
+                      <Text variant="l" className="text-soft hover:text-medium">
                         {t(crumb.label)}
                       </Text>
                     </Link>

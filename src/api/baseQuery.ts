@@ -5,9 +5,11 @@ import {
   FetchBaseQueryError,
 } from '@reduxjs/toolkit/query';
 import { throttle } from 'lodash';
-import { logout, setCredentials } from '@/store/slices/auth/slice';
-import { RootStateType } from '@/store';
+
 import { HttpStatus, REFRESH_THROTTLE } from '@/constants';
+import { RootStateType } from '@/store';
+import { logout, setCredentials } from '@/store/slices/auth/slice';
+
 import { AUTH_BASE_URL } from './constants';
 import { IRefreshResponse, BaseQueryApi, BaseQueryExtraOptions } from './types';
 
@@ -16,9 +18,11 @@ const baseQuery = fetchBaseQuery({
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootStateType).auth.accessToken;
+
     if (token) {
       headers.set('Authorization', `Bearer ${token}`);
     }
+
     return headers;
   },
 });

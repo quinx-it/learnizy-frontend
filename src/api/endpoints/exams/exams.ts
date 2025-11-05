@@ -1,4 +1,5 @@
 import { api } from '@/api';
+
 import { IExamsResponse, ExamTestResponseType } from './types';
 
 const TESTS_PATH = '/tests';

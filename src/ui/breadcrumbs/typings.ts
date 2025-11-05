@@ -1,5 +1,6 @@
-import type { StoryObj } from '@storybook/nextjs';
 import { Breadcrumbs } from './breadcrumbs';
+
+import type { StoryObj } from '@storybook/nextjs';
 
 export type StoryType = StoryObj<typeof Breadcrumbs>;
 

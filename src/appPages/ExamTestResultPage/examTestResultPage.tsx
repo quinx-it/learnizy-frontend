@@ -1,14 +1,17 @@
 'use client';
+
+import React, { FC } from 'react';
+
+import { useGetLastTestAttemptQuery } from '@/api/endpoints/test';
 import { CardWrapper } from '@/components/CardWrapper';
+import { ErrorSection } from '@/components/ErrorSection';
+import { FullscreenLoader } from '@/components/FullscreenLoader';
+import Page from '@/components/Page';
 import { globalConstants, routes } from '@/constants';
 import { Breadcrumbs } from '@/ui/breadcrumbs';
-import React, { FC } from 'react';
 import { Text } from '@/ui/typography';
-import { useGetLastTestAttemptQuery } from '@/api/endpoints/test';
-import { FullscreenLoader } from '@/components/FullscreenLoader';
-import { ErrorSection } from '@/components/ErrorSection';
+
 import { ExamTestResultPagePropsType } from './typings';
-import Page from '@/components/Page';
 
 const mapEvaluation = (evaluation: string) => {
   switch (evaluation) {
@@ -34,6 +37,7 @@ export const ExamTestResultPage: FC<ExamTestResultPagePropsType> = (props) => {
   } = useGetLastTestAttemptQuery(Number(testId));
 
   if (isLoading) return <FullscreenLoader />;
+
   if (isError || !testResult) return <ErrorSection reset={refetch} />;
 
   const { answers } = testResult;
@@ -42,65 +46,64 @@ export const ExamTestResultPage: FC<ExamTestResultPagePropsType> = (props) => {
   const passed = scorePercent >= 70;
 
   return (
-    <>
-      <Page noIndex>
-        <Breadcrumbs
-          items={[{ label: `Результаты`, href: `` }]}
-          rootHref={routes.user.exams}
-          rootLabel={globalConstants.rootBreadcrumbLabels.examsLabel}
-        />
+    <Page noIndex>
+      <Breadcrumbs
+        items={[{ label: `Результаты`, href: `` }]}
+        rootHref={routes.user.exams}
+        rootLabel={globalConstants.rootBreadcrumbLabels.examsLabel}
+      />
 
-        <div className="space-y-6">
-          <CardWrapper className="flex flex-col gap-5">
-            <div>
-              <Text variant="l" className="text-medium mb-5">
-                Результаты экзамена
+      <div className="space-y-6">
+        <CardWrapper className="flex flex-col gap-5">
+          <div>
+            <Text variant="l" className="text-medium mb-5">
+              Результаты экзамена
+            </Text>
+            <hr className="border-gray mb-4" />
+            <div className="space-y-1">
+              <Text variant="m" className="text-medium">
+                Результат: {scorePercent}%
               </Text>
-              <hr className="border-gray mb-4" />
-              <div className="space-y-1">
-                <Text variant="m" className="text-medium">
-                  Результат: {scorePercent}%
-                </Text>
-                <Text variant="m" className="text-medium">
-                  Статус: {''}
-                  {testResult.status === 'SUBMITTED'
-                    ? 'В обработке'
-                    : passed
-                      ? 'Пройден'
-                      : 'Не пройден'}
-                </Text>
-              </div>
+              <Text variant="m" className="text-medium">
+                Статус:
+                {testResult.status === 'SUBMITTED'
+                  ? 'В обработке'
+                  : passed
+                    ? 'Пройден'
+                    : 'Не пройден'}
+              </Text>
             </div>
-          </CardWrapper>
-
-          <div className="space-y-4">
-            {answers.map((a, idx) => {
-              const evaluation = mapEvaluation(a.evaluation);
-              return (
-                <CardWrapper key={a.questionId} className="flex flex-col gap-3">
-                  <Text
-                    variant="m"
-                    className="mb-5 text-[20px] leading-[27px] font-medium transition-colors"
-                  >
-                    {idx + 1}. {a.questionText}
-                  </Text>
-                  <Text variant="m" className="text-medium break-words">
-                    Ваш ответ: {a.textAnswer || a.voiceTranscript || '—'}
-                  </Text>
-                  <Text variant="m" className={evaluation.color}>
-                    {evaluation.text}
-                  </Text>
-                  {a.notes && (
-                    <Text variant="m" className="text-gray-500">
-                      Примечание: {a.notes}
-                    </Text>
-                  )}
-                </CardWrapper>
-              );
-            })}
           </div>
+        </CardWrapper>
+
+        <div className="space-y-4">
+          {answers.map((a, idx) => {
+            const evaluation = mapEvaluation(a.evaluation);
+
+            return (
+              <CardWrapper key={a.questionId} className="flex flex-col gap-3">
+                <Text
+                  variant="m"
+                  className="mb-5 text-[20px] leading-[27px] font-medium transition-colors"
+                >
+                  {idx + 1}. {a.questionText}
+                </Text>
+                <Text variant="m" className="text-medium break-words">
+                  Ваш ответ: {a.textAnswer || a.voiceTranscript || '—'}
+                </Text>
+                <Text variant="m" className={evaluation.color}>
+                  {evaluation.text}
+                </Text>
+                {a.notes && (
+                  <Text variant="m" className="text-gray-500">
+                    Примечание: {a.notes}
+                  </Text>
+                )}
+              </CardWrapper>
+            );
+          })}
         </div>
-      </Page>
-    </>
+      </div>
+    </Page>
   );
 };

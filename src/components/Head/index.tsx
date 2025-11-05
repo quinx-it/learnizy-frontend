@@ -1,11 +1,13 @@
 'use client';
 
-import { FC } from 'react';
 import HeadBase from 'next/head';
 import { useRouter } from 'next/router';
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { IHeadProps } from './typings';
+
 import { getOgLocale } from '@/utils/getOgLocale';
+
+import { IHeadProps } from './typings';
 
 const Head: FC<IHeadProps> = (props) => {
   const { t } = useTranslation();

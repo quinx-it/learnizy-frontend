@@ -1,8 +1,9 @@
 'use client';
 
-import type { Meta } from '@storybook/nextjs';
 import { Input } from './input';
 import { StoryType } from './typings';
+
+import type { Meta } from '@storybook/nextjs';
 
 const meta: Meta<typeof Input> = {
   title: 'Components/UI/Input',

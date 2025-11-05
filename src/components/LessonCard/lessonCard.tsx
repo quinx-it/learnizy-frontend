@@ -1,11 +1,13 @@
+import React, { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { CardWrapper } from '@/components/CardWrapper';
 import { cn, normalizeToFive } from '@/lib/utils';
 import { Button } from '@/ui/button';
-import { Heading } from '@/ui/typography';
-import React, { FC } from 'react';
 import { StarIcon } from '@/ui/icons';
+import { Heading } from '@/ui/typography';
+
 import { LessonCardPropsType } from './typings';
-import { useTranslation } from 'react-i18next';
 
 export const LessonCard: FC<LessonCardPropsType> = (props) => {
   const { id, title, progress, index, onClick } = props;
@@ -53,7 +55,7 @@ export const LessonCard: FC<LessonCardPropsType> = (props) => {
           <div className="flex items-center gap-1 self-end">
             <StarIcon type={blocked ? 'disabled' : 'gold'} />
             <Heading className={cn('text-medium', { 'text-gray': blocked })}>
-              {!!progress.testResult ? normalizeToFive(progress.testResult) : 0}/5
+              {progress.testResult ? normalizeToFive(progress.testResult) : 0}/5
             </Heading>
           </div>
 

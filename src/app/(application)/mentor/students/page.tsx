@@ -1,11 +1,7 @@
 import { MentorStudentsPage } from '@/appPages/MentorStudentsPage';
 
 const MentorStudents = () => {
-  return (
-    <>
-      <MentorStudentsPage />
-    </>
-  );
+  return <MentorStudentsPage />;
 };
 
 export default MentorStudents;

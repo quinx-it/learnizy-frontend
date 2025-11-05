@@ -1,9 +1,11 @@
 'use client';
 
-import type { Meta } from '@storybook/nextjs';
-import { Checkbox } from './checkbox';
 import { Label } from '@radix-ui/react-label';
+
+import { Checkbox } from './checkbox';
 import { StoryType } from './typings';
+
+import type { Meta } from '@storybook/nextjs';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Components/UI/Checkbox',

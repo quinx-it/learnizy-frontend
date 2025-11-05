@@ -1,9 +1,18 @@
 'use client';
 
-import { cn } from '@/lib/utils';
-import React, { FC } from 'react';
-import { ComponentProps, createContext, CSSProperties, useContext, useId, useMemo } from 'react';
+import React, {
+  FC,
+  ComponentProps,
+  createContext,
+  CSSProperties,
+  useContext,
+  useId,
+  useMemo,
+} from 'react';
 import * as RechartsPrimitive from 'recharts';
+
+import { cn } from '@/lib/utils';
+
 import { ChartConfigType, ChartContextPropsType, IChartStyleProps } from './typings';
 
 export const THEMES = { light: '', dark: '.dark' } as const;
@@ -33,8 +42,10 @@ function ChartContainer({
   const uniqueId = useId();
   const chartId = `chart-${id || uniqueId.replace(/:/g, '')}`;
 
+  const memoizedValue = useMemo(() => ({ config }), [config]);
+
   return (
-    <ChartContext.Provider value={{ config }}>
+    <ChartContext.Provider value={memoizedValue}>
       <div
         data-slot="chart"
         data-chart={chartId}
@@ -72,6 +83,7 @@ const ChartStyle: FC<IChartStyleProps> = (props) => {
                     const color =
                       itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
                       itemConfig.color;
+
                     return color ? `  --color-${key}: ${color};` : null;
                   })
                   .join('\n')}

@@ -1,5 +1,3 @@
-import { FC } from 'react';
-import { cn } from '@/lib/utils';
 import {
   Accordion,
   AccordionItem,
@@ -7,8 +5,13 @@ import {
   AccordionContent,
 } from '@radix-ui/react-accordion';
 import { Plus, Minus } from 'lucide-react';
+import { FC } from 'react';
+
+import { cn } from '@/lib/utils';
+
 import './accordion.css';
 import { Text } from '@/ui/typography';
+
 import { IAccordionProps } from './typings';
 
 export const CardAccordion: FC<IAccordionProps> = (props) => {
@@ -28,10 +31,10 @@ export const CardAccordion: FC<IAccordionProps> = (props) => {
               'focus:outline-none',
             )}
           >
-            <Text tag="span" variant={'m'}>
+            <Text tag="span" variant="m">
               {heading}
             </Text>
-            <Text tag="span" variant={'m'} className="relative h-5 w-5">
+            <Text tag="span" variant="m" className="relative h-5 w-5">
               <Plus
                 className={cn(
                   'absolute inset-0 h-5 w-5 transform transition-all duration-300',

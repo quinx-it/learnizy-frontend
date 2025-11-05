@@ -1,14 +1,15 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Calendar } from '@/ui/calendar';
+import { CalendarIcon } from '@/ui/icons';
 import { Input } from '@/ui/input';
 import { Popover } from '@/ui/popover';
-import { CalendarIcon } from '@/ui/icons';
-import { formatDate, parseDateString } from './utils';
+
 import { IDatePickerProps } from './typings';
-import { useTranslation } from 'react-i18next';
+import { formatDate, parseDateString } from './utils';
 
 export function DatePicker({ label, value, onChange, error }: IDatePickerProps) {
   const { t } = useTranslation();
@@ -35,11 +36,15 @@ export function DatePicker({ label, value, onChange, error }: IDatePickerProps) 
         error={error}
         onChange={(e) => {
           let val = e.target.value.replace(/[^\d.]/g, '');
-          if (val.length > 2 && val[2] !== '.') val = val.slice(0, 2) + '.' + val.slice(2);
-          if (val.length > 5 && val[5] !== '.') val = val.slice(0, 5) + '.' + val.slice(5);
+
+          if (val.length > 2 && val[2] !== '.') val = `${val.slice(0, 2)}.${val.slice(2)}`;
+
+          if (val.length > 5 && val[5] !== '.') val = `${val.slice(0, 5)}.${val.slice(5)}`;
+
           setInputValue(val);
 
           const parsed = parseDateString(val);
+
           if (parsed) {
             setMonth(parsed);
             onChange(parsed);

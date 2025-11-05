@@ -1,15 +1,17 @@
 'use client';
 
-import React, { FC, useState } from 'react';
-import { Text } from '@/ui/typography';
-import { Plus, X } from 'lucide-react';
-import { Button } from '@/ui/button';
-import { useGetChatsQuery, IChat } from '@/api/endpoints/aiAssistant';
-import { IChatHistoryProps } from './typings';
-import { formatRelativeDate } from '@/lib/utils';
-import { HistoryIcon } from '@/ui/icons';
 import clsx from 'clsx';
+import { Plus, X } from 'lucide-react';
+import React, { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { useGetChatsQuery, IChat } from '@/api/endpoints/aiAssistant';
+import { formatRelativeDate } from '@/lib/utils';
+import { Button } from '@/ui/button';
+import { HistoryIcon } from '@/ui/icons';
+import { Text } from '@/ui/typography';
+
+import { IChatHistoryProps } from './typings';
 
 export const ChatHistory: FC<IChatHistoryProps> = (props) => {
   const { selectedChatId, onSelectChat, onCreateChat } = props;
@@ -58,8 +60,14 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
       {isOpen && (
         <>
           <div
+            role="button"
+            tabIndex={0}
+            aria-label="Закрыть"
             className="fixed inset-0 z-40 bg-black/50 transition-opacity duration-300"
             onClick={() => setIsOpen(false)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') setIsOpen(false);
+            }}
           />
           <div
             className={clsx(
@@ -96,7 +104,7 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
             </div>
 
             <Text
-              variant={'s'}
+              variant="s"
               className="mb-4 block text-left text-[12px] font-semibold tracking-[0.5px] text-[#238BA7]"
             >
               {t('COMMON.CHATS')}
@@ -113,13 +121,15 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
               {chatGroups.map((group) => (
                 <div key={group}>
                   <Text
-                    variant={'s'}
+                    variant="s"
                     className="block text-left text-[12px] tracking-[0.5px] text-[#B9B9B9]"
                   >
                     {group}
                   </Text>
                   {groupedChats[group].map((chat) => (
                     <div
+                      role="button"
+                      tabIndex={0}
                       key={chat.id}
                       className={clsx(
                         'mt-2 flex cursor-pointer items-center rounded-2xl p-2 transition last:mb-[10px]',
@@ -132,8 +142,14 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
                         onSelectChat(chat.id);
                         setIsOpen(false);
                       }}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          onSelectChat(chat.id);
+                          setIsOpen(false);
+                        }
+                      }}
                     >
-                      <Text variant={'s'} className="ml-2 truncate">
+                      <Text variant="s" className="ml-2 truncate">
                         {chat.title || t('COMMON.NEW_CHAT')}
                       </Text>
                     </div>
@@ -164,7 +180,7 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
             </Button>
           </div>
           <Text
-            variant={'s'}
+            variant="s"
             className="mb-4 block text-left text-[12px] font-semibold tracking-[0.5px] text-[#238BA7]"
           >
             {t('COMMON.CHATS')}
@@ -178,13 +194,15 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
             {chatGroups.map((group) => (
               <div key={group}>
                 <Text
-                  variant={'s'}
+                  variant="s"
                   className="block text-left text-[12px] tracking-[0.5px] text-[#B9B9B9]"
                 >
                   {group}
                 </Text>
                 {groupedChats[group].map((chat) => (
                   <div
+                    role="button"
+                    tabIndex={0}
                     key={chat.id}
                     className={clsx(
                       'mt-2 flex cursor-pointer items-center rounded-2xl p-2 transition last:mb-[10px]',
@@ -194,8 +212,11 @@ export const ChatHistory: FC<IChatHistoryProps> = (props) => {
                       },
                     )}
                     onClick={() => onSelectChat(chat.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') onSelectChat(chat.id);
+                    }}
                   >
-                    <Text variant={'s'} className="ml-2 truncate">
+                    <Text variant="s" className="ml-2 truncate">
                       {chat.title || t('COMMON.NEW_CHAT')}
                     </Text>
                   </div>

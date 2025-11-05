@@ -1,6 +1,7 @@
-import type { Meta } from '@storybook/nextjs';
-import { Heading, Text } from './typography';
 import { HeadingStoryType, TextStoryType } from './typings';
+import { Heading, Text } from './typography';
+
+import type { Meta } from '@storybook/nextjs';
 
 const meta: Meta<typeof Heading> = {
   title: 'Components/UI/Typography',

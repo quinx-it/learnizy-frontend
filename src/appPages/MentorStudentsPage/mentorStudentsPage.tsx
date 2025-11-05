@@ -1,12 +1,13 @@
 'use client';
 
 import React from 'react';
-import { StudentsTable } from '@/components/StudentsTable';
-import { Breadcrumbs } from '@/ui/breadcrumbs';
+
 import { useGetDashboardAnalyticsQuery } from '@/api/endpoints/admin';
 import { AnalyticsCard } from '@/components/AnalyticsCard';
-import { ProgressBar } from '@/ui/progress';
 import Page from '@/components/Page';
+import { StudentsTable } from '@/components/StudentsTable';
+import { Breadcrumbs } from '@/ui/breadcrumbs';
+import { ProgressBar } from '@/ui/progress';
 
 export const MentorStudentsPage = () => {
   const { data } = useGetDashboardAnalyticsQuery();
@@ -43,7 +44,7 @@ export const MentorStudentsPage = () => {
 
         {data?.userGrowthChart && (
           <div className="my-6 w-[400px]">
-            <AnalyticsCard title={`Рост новых пользователей`}>
+            <AnalyticsCard title="Рост новых пользователей">
               <div className="flex items-center gap-4">
                 <ProgressBar
                   value={growthPercentage}

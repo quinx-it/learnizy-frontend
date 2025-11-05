@@ -1,5 +1,7 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import { FC } from 'react';
-import { Heading, Text } from '@/ui/typography';
+
 import {
   Block,
   BlockType,
@@ -7,9 +9,9 @@ import {
   headingTags,
   headingVariants,
 } from '@/api/endpoints/lessons';
-import Link from 'next/link';
-import Image from 'next/image';
 import { LightbulbIcon, NotificationIcon } from '@/ui/icons';
+import { Heading, Text } from '@/ui/typography';
+
 import { IBlockRendererProps } from './typings';
 
 const defaultStyles = {
@@ -83,6 +85,7 @@ export const BlockRenderer: FC<IBlockRendererProps> = (props) => {
         marginBottom: block.properties.mb ?? 0,
         color: block.properties.color ?? defaultStyles.color,
       };
+
       return (
         <li style={liStyle}>
           {block.content}
@@ -107,6 +110,7 @@ export const BlockRenderer: FC<IBlockRendererProps> = (props) => {
       const isValidUrl = (str: string) => {
         try {
           const url = new URL(str);
+
           return url.protocol === 'http:' || url.protocol === 'https:';
         } catch {
           return false;

@@ -1,14 +1,16 @@
 'use client';
 
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import React, { ComponentProps, ReactNode, FC } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { CardWrapper } from '@/components/CardWrapper';
 import { Button } from '@/ui/button';
 import { DotTitle } from '@/ui/dotTitle';
-import React, { ComponentProps, ReactNode, FC } from 'react';
-import { ExamCardPropsType, ExamStatus } from '../typings';
 import { Text } from '@/ui/typography';
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { useTranslation } from 'react-i18next';
+
+import { ExamCardPropsType, ExamStatus } from '../typings';
 
 export const ExamCard: FC<ExamCardPropsType> = (props) => {
   const { exam, status } = props;

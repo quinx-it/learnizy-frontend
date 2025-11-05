@@ -1,15 +1,17 @@
 'use client';
 
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { CardWrapper } from '@/components/CardWrapper';
+import Page from '@/components/Page';
 import { routes } from '@/constants';
+import { globalConstants } from '@/constants/constants';
 import { CardAccordion } from '@/ui/accordion';
 import { Breadcrumbs } from '@/ui/breadcrumbs';
 import { Text } from '@/ui/typography';
-import React from 'react';
-import { globalConstants } from '@/constants/constants';
-import { useTranslation } from 'react-i18next';
+
 import { constants } from './constants';
-import Page from '@/components/Page';
 
 export const FaqPage = () => {
   const { t } = useTranslation();

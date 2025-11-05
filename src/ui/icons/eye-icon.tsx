@@ -1,5 +1,6 @@
-import { IIconProps } from '@/types';
 import React from 'react';
+
+import { IIconProps } from '@/types';
 
 type EyeIconPropsType = {
   open?: boolean;

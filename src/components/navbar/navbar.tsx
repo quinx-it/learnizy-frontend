@@ -1,19 +1,20 @@
 'use client';
 
-import { useState, FC } from 'react';
+import clsx from 'clsx';
 import Link from 'next/link';
-import { NavbarLink } from './NavbarLink/navbarLink';
+import { useState, FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { INavbarProps } from '@/components/navbar/typings';
 import { routes } from '@/constants';
-import { HeaderLogo, ExitIcon, CubesMainIcon } from '@/ui/icons';
+import { useLogout } from '@/hooks/useLogout';
 import { Button } from '@/ui/button';
+import { HeaderLogo, ExitIcon, CubesMainIcon } from '@/ui/icons';
 import { Spinner } from '@/ui/spinner';
 import { Text } from '@/ui/typography';
-import { useLogout } from '@/hooks/useLogout';
-import clsx from 'clsx';
-import { INavbarProps } from '@/components/navbar/typings';
-import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from '@/components/LanguageSwitcher';
+
+import { NavbarLink } from './NavbarLink/navbarLink';
 
 export const Navbar: FC<INavbarProps> = (props) => {
   const { links } = props;
@@ -72,8 +73,14 @@ export const Navbar: FC<INavbarProps> = (props) => {
       {isOpen && (
         <>
           <div
+            role="button"
+            tabIndex={0}
+            aria-label="Закрыть"
             className="fixed inset-0 z-30 bg-black/50 transition-opacity duration-300"
             onClick={() => setIsOpen(false)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') setIsOpen(false);
+            }}
           />
           <div
             className={clsx(

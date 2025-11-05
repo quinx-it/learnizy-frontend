@@ -1,9 +1,11 @@
 'use client';
 
-import { useRefreshMutation } from '@/api/endpoints/auth';
-import { PropsWithChildren, useEffect, FC } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { useAppSelector } from '@/hooks/redux';
+import { PropsWithChildren, useEffect, FC } from 'react';
+
+import { useRefreshMutation } from '@/api/endpoints/auth';
+import { NotFoundPage } from '@/appPages/NotFoundPage';
+import { FullscreenLoader } from '@/components/FullscreenLoader';
 import {
   routes,
   defaultPage,
@@ -13,16 +15,16 @@ import {
   staticMentorRoutes,
   dynamicMentorRoutes,
 } from '@/constants/routes';
-import { selectToken, selectUserRole } from '@/store/slices/auth/selectors';
-import { FullscreenLoader } from '@/components/FullscreenLoader';
+import { useAppSelector } from '@/hooks/redux';
 import { isRoleRoute } from '@/lib/utils';
-import { NotFoundPage } from '@/appPages/NotFoundPage';
+import { selectToken, selectUserRole } from '@/store/slices/auth/selectors';
 
 const allStaticRoutes = [...publicRoutes, ...staticUserRoutes, ...staticMentorRoutes];
 const allDynamicRoutes = [...dynamicUserRoutes, ...dynamicMentorRoutes];
 
 const isValidRoute = (pathname: string) => {
   if (allStaticRoutes.includes(pathname)) return true;
+
   return allDynamicRoutes.some((regex) => regex.test(pathname));
 };
 
@@ -44,11 +46,13 @@ const ApplicationLayout: FC<PropsWithChildren> = (props) => {
 
     if (!accessToken && !publicRoutes.includes(pathname)) {
       router.replace(routes.public.loginPage);
+
       return;
     }
 
     if (role && pathname === routes.public.loginPage) {
       router.replace(defaultPage[role]);
+
       return;
     }
 

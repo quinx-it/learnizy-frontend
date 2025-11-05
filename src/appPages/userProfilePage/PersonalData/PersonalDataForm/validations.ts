@@ -13,9 +13,12 @@ export const personalDataSchema = yup.object({
     .string()
     .transform((value) => {
       if (!value) return '';
+
       const cleaned = value.trim().replace(/[^\d+]/g, '');
+
       if (cleaned.startsWith('+')) return cleaned;
-      return '+' + cleaned;
+
+      return `+${cleaned}`;
     })
     .matches(
       /^(\+375|80)(25|29|33|44)\d{7}$|^\+7\d{10}$/,

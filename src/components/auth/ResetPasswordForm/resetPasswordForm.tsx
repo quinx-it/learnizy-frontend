@@ -1,17 +1,19 @@
 'use client';
 
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useRouter } from 'next/navigation';
 import React, { useState, useEffect, FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { IResetPasswordFormValues, formSchema } from './validation';
-import { PasswordInput } from '@/ui/passwordInput';
-import { Button } from '@/ui/button';
+
 import { useResetPasswordMutation } from '@/api/endpoints/auth';
-import { showToast } from '@/ui/toaster';
-import { Spinner } from '@/ui/spinner';
-import { useRouter } from 'next/navigation';
 import { routes } from '@/constants';
+import { Button } from '@/ui/button';
+import { PasswordInput } from '@/ui/passwordInput';
+import { Spinner } from '@/ui/spinner';
+import { showToast } from '@/ui/toaster';
+
 import { IResetPasswordFormProps } from './typings';
+import { IResetPasswordFormValues, formSchema } from './validation';
 
 export const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
   const { token, onSuccess } = props;

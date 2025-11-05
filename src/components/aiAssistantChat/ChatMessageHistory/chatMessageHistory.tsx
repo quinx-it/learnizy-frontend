@@ -1,16 +1,19 @@
 'use client';
 
-import React, { useRef, useLayoutEffect, useEffect, FC } from 'react';
-import { Text } from '@/ui/typography';
-import { Spinner } from '@/ui/spinner';
-import { AudioPlayer } from '../../AudioPlayer';
-import { IChatMessageHistoryProps } from './typings';
-import { Role } from './constants';
-import { isAudioUrl } from '@/lib/utils';
-import { Typewriter } from '../ChatTypewriter';
-import { usePrevious } from '@/hooks/usePrevious';
 import clsx from 'clsx';
+import React, { useRef, useLayoutEffect, useEffect, FC } from 'react';
+
 import { MarkdownRenderer } from '@/components/MarkdownText';
+import { usePrevious } from '@/hooks/usePrevious';
+import { isAudioUrl } from '@/lib/utils';
+import { Spinner } from '@/ui/spinner';
+import { Text } from '@/ui/typography';
+
+import { AudioPlayer } from '../../AudioPlayer';
+import { Typewriter } from '../ChatTypewriter';
+
+import { Role } from './constants';
+import { IChatMessageHistoryProps } from './typings';
 
 export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
   const { messages = [], isLoading, isWaitingForAssistant } = props;
@@ -30,6 +33,7 @@ export const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
 
   useEffect(() => {
     const lastMessage = messages[messages.length - 1];
+
     if (
       lastMessage &&
       lastMessage.role !== Role.USER &&

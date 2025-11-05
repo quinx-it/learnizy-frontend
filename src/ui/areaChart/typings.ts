@@ -1,5 +1,6 @@
-import type { StoryObj } from '@storybook/nextjs';
 import { AreaChart } from './areaChart';
+
+import type { StoryObj } from '@storybook/nextjs';
 
 export type StoryType = StoryObj<typeof AreaChart>;
 

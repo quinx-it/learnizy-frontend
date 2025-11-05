@@ -1,8 +1,10 @@
+import React, { FC, useState } from 'react';
+
 import { ResetPasswordForm } from '@/components/auth/ResetPasswordForm';
 import { CardWrapper } from '@/components/CardWrapper';
 import { Logo } from '@/ui/icons';
 import { Heading, Text } from '@/ui/typography';
-import React, { FC, useState } from 'react';
+
 import { IResetPasswordPageProps } from './typings';
 
 export const ResetPasswordPage: FC<IResetPasswordPageProps> = (props) => {

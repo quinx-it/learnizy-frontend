@@ -1,5 +1,5 @@
-import { IIconProps } from '@/types';
 import { cn } from '@/lib/utils';
+import { IIconProps } from '@/types';
 
 export const ArrowCloseIcon = ({ className }: IIconProps) => {
   return (

@@ -1,5 +1,4 @@
-import { routes } from '@/constants';
-import { globalConstants } from '@/constants';
+import { routes, globalConstants } from '@/constants';
 
 const { moduleLabel, lessonLabel, retellingLabel } = globalConstants.rootBreadcrumbLabels;
 

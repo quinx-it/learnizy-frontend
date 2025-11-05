@@ -1,5 +1,7 @@
-import { cn } from '@/lib/utils';
 import React, { FC } from 'react';
+
+import { cn } from '@/lib/utils';
+
 import { ISectionContentProps } from './typings';
 
 export const SectionContent: FC<ISectionContentProps> = (props) => {

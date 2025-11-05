@@ -1,14 +1,16 @@
+import React, { FC } from 'react';
+
+import { useGetLessonQuery } from '@/api/endpoints/lessons';
+import { CardWrapper } from '@/components/CardWrapper';
+import { FullscreenLoader } from '@/components/FullscreenLoader';
+import Page from '@/components/Page';
+import { VoiceRecorderForm } from '@/components/VoiceRecorderForm';
 import { routes } from '@/constants';
 import { Breadcrumbs } from '@/ui/breadcrumbs';
-import { constants } from './constants';
 import { Text } from '@/ui/typography';
-import { useGetLessonQuery } from '@/api/endpoints/lessons';
-import React, { FC } from 'react';
-import { CardWrapper } from '@/components/CardWrapper';
-import { VoiceRecorderForm } from '@/components/VoiceRecorderForm';
-import { FullscreenLoader } from '@/components/FullscreenLoader';
+
+import { constants } from './constants';
 import { ILessonRetellingPageProps } from './typings';
-import Page from '@/components/Page';
 
 export const LessonRetellingPage: FC<ILessonRetellingPageProps> = (props) => {
   const { module, lesson } = props;
@@ -27,7 +29,7 @@ export const LessonRetellingPage: FC<ILessonRetellingPageProps> = (props) => {
         <Breadcrumbs
           items={constants.breadcrumbs(moduleSequenceOrder ?? 1, module, lesson, sequenceOrder + 1)}
           rootHref={routes.user.modules}
-          rootLabel={'Модули'}
+          rootLabel="Модули"
         />
         <CardWrapper className="mt-6 flex flex-col gap-4">
           <Text variant="l-bold" className="text-medium">
