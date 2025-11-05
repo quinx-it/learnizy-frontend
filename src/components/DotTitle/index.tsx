@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 import { Heading, Text } from '@/components/Typography';
 import { cn } from '@/lib/utils';

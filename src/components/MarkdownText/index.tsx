@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, ReactNode, CSSProperties } from 'react';
+import { FC, ReactNode, CSSProperties } from 'react';
 import ReactMarkdown, { Components } from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';

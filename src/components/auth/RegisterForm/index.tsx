@@ -3,7 +3,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React, { useState, useEffect, ChangeEvent, FC } from 'react';
+import { useState, useEffect, ChangeEvent, FC } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 
 import {

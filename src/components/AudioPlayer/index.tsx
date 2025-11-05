@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState, FC } from 'react';
+import { useEffect, useRef, useState, FC } from 'react';
 import WaveSurfer from 'wavesurfer.js';
 
 import { PlayPauseIcon, AaIcon, ArrowCloseIcon } from '@/components/Icons';

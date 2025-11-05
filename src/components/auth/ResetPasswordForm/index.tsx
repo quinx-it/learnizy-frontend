@@ -2,7 +2,7 @@
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';
-import React, { useState, useEffect, FC } from 'react';
+import { useState, useEffect, FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { useResetPasswordMutation } from '@/api/endpoints/auth';

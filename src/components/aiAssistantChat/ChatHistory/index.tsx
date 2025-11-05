@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import { Plus, X } from 'lucide-react';
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useGetChatsQuery, IChat } from '@/api/endpoints/aiAssistant';

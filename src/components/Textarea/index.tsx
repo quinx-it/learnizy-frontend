@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState, useEffect, FC } from 'react';
+import { ChangeEvent, useState, useEffect, FC } from 'react';
 
 import { Text } from '@/components/Typography';
 import { cn } from '@/lib/utils';

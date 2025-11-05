@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import { forwardRef } from 'react';
 
 import Label from '@/components/Label';
 import { Text } from '@/components/Typography';
@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 
 import { IInputProps } from './typings';
 
-const Input = React.forwardRef<HTMLInputElement, IInputProps>(
+const Input = forwardRef<HTMLInputElement, IInputProps>(
   ({ innerClassName, className, type = 'text', error, label, autoComplete, ...props }, ref) => {
     return (
       <div className={className}>

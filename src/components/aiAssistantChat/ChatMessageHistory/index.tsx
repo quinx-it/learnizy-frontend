@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import React, { useRef, useLayoutEffect, useEffect, FC } from 'react';
+import { useRef, useLayoutEffect, useEffect, FC } from 'react';
 
 import AudioPlayer from '@/components/AudioPlayer';
 import MarkdownRenderer from '@/components/MarkdownText';

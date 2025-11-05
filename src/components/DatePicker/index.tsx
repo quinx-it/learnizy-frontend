@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, FC } from 'react';
+import { useState, useEffect, FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Calendar } from '@/components/Calendar';

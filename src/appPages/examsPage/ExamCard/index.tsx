@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import React, { ComponentProps, ReactNode, FC } from 'react';
+import { ComponentProps, ReactNode, FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Button from '@/components/Button';

@@ -2,7 +2,6 @@
 
 import { Meta, StoryFn } from '@storybook/nextjs';
 import { ThemeProvider } from 'next-themes';
-import React from 'react';
 
 import { Toaster, showToast } from '.';
 

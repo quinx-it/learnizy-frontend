@@ -1,5 +1,4 @@
 import { Progress } from '@radix-ui/react-progress';
-import * as React from 'react';
 import { FC } from 'react';
 
 import { cn } from '@/lib/utils';

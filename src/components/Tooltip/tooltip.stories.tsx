@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { StoryType } from './typings';
 
 import CustomTooltip from '.';

@@ -1,7 +1,7 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Toaster as Sonner, toast, ToasterProps } from 'sonner';
 
 import { NotificationIcon, CrossIcon } from '@/components/Icons';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { IIconProps } from '@/types';
 
 export const LockIcon = ({ color = 'currentColor', className }: IIconProps) => {
