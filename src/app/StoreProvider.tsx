@@ -1,13 +1,13 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/es/integration/react';
 
-import { FullscreenLoader } from '@/components/FullscreenLoader';
+import FullscreenLoader from '@/components/FullscreenLoader';
 import { store, persistor } from '@/store';
 
-export default function StoreProvider({ children }: { children: ReactNode }) {
+const StoreProvider: FC<PropsWithChildren> = ({ children }) => {
   return (
     <Provider store={store}>
       <PersistGate loading={<FullscreenLoader />} persistor={persistor}>
@@ -15,4 +15,6 @@ export default function StoreProvider({ children }: { children: ReactNode }) {
       </PersistGate>
     </Provider>
   );
-}
+};
+
+export default StoreProvider;

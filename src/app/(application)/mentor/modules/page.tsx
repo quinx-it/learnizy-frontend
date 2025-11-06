@@ -1,6 +1,8 @@
-import { ModulesPage } from '@/appPages/ModulesPage';
+import { FC } from 'react';
 
-const Modules = () => {
+import ModulesPage from '@/appPages/ModulesPage';
+
+const Modules: FC = () => {
   return <ModulesPage />;
 };
 

@@ -1,15 +1,15 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { ReactNode, useEffect } from 'react';
+import { FC, PropsWithChildren, useEffect } from 'react';
 
 import { routes } from '@/constants';
 import { useAppSelector } from '@/hooks/redux';
 import { selectToken } from '@/store/slices/auth/selectors';
 
-import { FullscreenLoader } from '../FullscreenLoader';
+import FullscreenLoader from '../FullscreenLoader';
 
-export function AuthLayout({ children }: { children: ReactNode }) {
+const AuthLayout: FC<PropsWithChildren> = ({ children }) => {
   const router = useRouter();
   const accessToken = useAppSelector(selectToken);
 
@@ -24,4 +24,6 @@ export function AuthLayout({ children }: { children: ReactNode }) {
   }
 
   return children;
-}
+};
+
+export default AuthLayout;

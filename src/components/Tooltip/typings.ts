@@ -1,7 +1,7 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { ComponentProps, PropsWithChildren, ReactNode } from 'react';
 
-import { CustomTooltip } from './tooltip';
+import CustomTooltip from '.';
 
 import type { StoryObj } from '@storybook/nextjs';
 

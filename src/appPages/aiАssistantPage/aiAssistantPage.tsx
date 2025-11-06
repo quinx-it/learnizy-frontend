@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -10,7 +9,7 @@ import {
   useSendMessageMutation,
   ISendMessageRequest,
 } from '@/api/endpoints/aiAssistant';
-import { ChatInput } from '@/components/aiAssistantChat/ChatInput';
+import ChatInput from '@/components/aiAssistantChat/ChatInput';
 import Page from '@/components/Page';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';

@@ -1,7 +1,12 @@
 'use client';
 
-import { ErrorSection, ErrorType } from '@/components/ErrorSection';
+import { FC } from 'react';
 
-export default function Error({ error, reset }: ErrorType) {
+import ErrorSection from '@/components/ErrorSection';
+import { ErrorType } from '@/components/ErrorSection/typings';
+
+const Error: FC<ErrorType> = ({ error, reset }) => {
   return <ErrorSection error={error} reset={reset} />;
-}
+};
+
+export default Error;

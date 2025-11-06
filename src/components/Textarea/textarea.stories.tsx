@@ -1,5 +1,6 @@
-import { Textarea } from './textarea';
 import { StoryType } from './typings';
+
+import Textarea from '.';
 
 import type { Meta } from '@storybook/nextjs';
 

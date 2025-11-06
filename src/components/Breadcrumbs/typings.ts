@@ -1,4 +1,4 @@
-import { Breadcrumbs } from './breadcrumbs';
+import Breadcrumbs from '.';
 
 import type { StoryObj } from '@storybook/nextjs';
 

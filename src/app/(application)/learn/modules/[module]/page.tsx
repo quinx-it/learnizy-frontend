@@ -1,12 +1,13 @@
 'use client';
 
 import { useParams } from 'next/navigation';
+import { FC } from 'react';
 
-import { ModuleItemPage } from '@/appPages/ModulesItemPage';
+import ModuleItemPage from '@/appPages/ModulesItemPage';
 
 import { ParamsType } from '../typings';
 
-const ModuleItem = () => {
+const ModuleItem: FC = () => {
   const params = useParams<ParamsType>();
   const { module } = params;
 

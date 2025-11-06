@@ -10,6 +10,7 @@ module.exports = {
   plugins: ['prettier', '@typescript-eslint', '@next/eslint-plugin-next'],
   rules: {
     'react/no-unstable-nested-components': 'off',
+    '@typescript-eslint/triple-slash-reference': 'off',
     'react/require-default-props': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/function-component-definition': 'off',

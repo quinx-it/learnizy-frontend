@@ -1,8 +1,8 @@
-import React from 'react';
+import { FC } from 'react';
 
-import { NotFoundPage } from '@/appPages/NotFoundPage';
+import NotFoundPage from '@/appPages/NotFoundPage';
 
-const LearnNotFound = () => {
+const LearnNotFound: FC = () => {
   return <NotFoundPage />;
 };
 

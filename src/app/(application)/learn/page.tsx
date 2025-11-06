@@ -1,6 +1,8 @@
-import { LearnMainPage } from '@/appPages/LearnMainPage';
+import { FC } from 'react';
 
-const LearnPage = () => {
+import LearnMainPage from '@/appPages/LearnMainPage';
+
+const LearnPage: FC = () => {
   return <LearnMainPage />;
 };
 

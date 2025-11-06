@@ -1,4 +1,4 @@
-import { DatePicker } from './datePicker';
+import DatePicker from '.';
 
 import type { StoryObj } from '@storybook/nextjs';
 

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-import { CustomSelect } from './select';
 import { StoryType } from './typings';
+
+import CustomSelect from '.';
 
 import type { Meta } from '@storybook/nextjs';
 

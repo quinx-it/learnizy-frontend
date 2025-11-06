@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 import { Heading, Text } from '@/components/Typography';
 import { cn } from '@/lib/utils';

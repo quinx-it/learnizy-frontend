@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react';
 
-import { Input } from './input';
+import Input from '.';
 
 import type { StoryObj } from '@storybook/nextjs';
 

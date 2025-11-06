@@ -1,4 +1,4 @@
-import { AreaChart } from './areaChart';
+import AreaChart from '.';
 
 import type { StoryObj } from '@storybook/nextjs';
 

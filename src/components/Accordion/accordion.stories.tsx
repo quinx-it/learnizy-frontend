@@ -1,5 +1,6 @@
-import { CardAccordion } from './accordion';
 import { StoryType } from './typings';
+
+import CardAccordion from '.';
 
 import type { Meta } from '@storybook/nextjs';
 
