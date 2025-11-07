@@ -3,17 +3,17 @@
 import { FC } from 'react';
 
 import AuthForm from '@/components/auth/AuthForm';
-import CardWrapper from '@/components/CardWrapper';
-import { Logo } from '@/components/Icons';
+
+import { Container, CardWrapper, Logo } from './styles';
 
 const LoginPage: FC = () => {
   return (
-    <div className="flex h-[100vh] items-center justify-center">
-      <CardWrapper className="max-w-[472px] px-8 py-16">
-        <Logo className="mb-12 w-full" />
+    <Container>
+      <CardWrapper>
+        <Logo />
         <AuthForm />
       </CardWrapper>
-    </div>
+    </Container>
   );
 };
 

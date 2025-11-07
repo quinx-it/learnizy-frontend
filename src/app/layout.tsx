@@ -2,6 +2,7 @@ import localFont from 'next/font/local';
 import { FC, PropsWithChildren } from 'react';
 
 import { Toaster } from '@/components/Toaster';
+import ThemeProvider from '@/lib/materialUI';
 import { getOgLocale, getBaseUrl } from '@/utils';
 
 import StoreProvider from './StoreProvider';
@@ -64,8 +65,10 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
     <html lang="ru" className={involve.className}>
       <body>
         <StoreProvider>
-          {children}
-          <Toaster />
+          <ThemeProvider>
+            {children}
+            <Toaster />
+          </ThemeProvider>
         </StoreProvider>
       </body>
     </html>
