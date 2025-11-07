@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import CardAccordion from '@/components/Accordion';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
-import Page from '@/components/Page';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
 import { globalConstants } from '@/constants/constants';
@@ -17,7 +16,7 @@ const FaqPage: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <Page key="FAQ_PAGE_SEO">
+    <>
       <Breadcrumbs
         rootLabel={t(globalConstants.rootBreadcrumbLabels.knowlegeBaseLabel)}
         rootHref={routes.user.knowlegeBase}
@@ -34,7 +33,7 @@ const FaqPage: FC = () => {
           </div>
         </div>
       </CardWrapper>
-    </Page>
+    </>
   );
 };
 

@@ -9,7 +9,6 @@ import CardWrapper from '@/components/CardWrapper';
 import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import LessonTestForm from '@/components/LessonTestForm';
-import Page from '@/components/Page';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
 import { globalConstants, routes } from '@/constants';
@@ -59,7 +58,7 @@ const TestPage: FC<TestPagePropsType> = (props) => {
   };
 
   return (
-    <Page noIndex>
+    <>
       <Breadcrumbs
         items={currentBreadcrumbs}
         rootHref={testType === TestType.LESSON ? routes.user.modules : routes.user.exams}
@@ -100,7 +99,7 @@ const TestPage: FC<TestPagePropsType> = (props) => {
           />
         </CardWrapper>
       </div>
-    </Page>
+    </>
   );
 };
 
