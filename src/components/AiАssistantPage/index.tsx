@@ -9,7 +9,7 @@ import {
   useSendMessageMutation,
   ISendMessageRequest,
 } from '@/api/endpoints/aiAssistant';
-import ChatInput from '@/components/aiAssistantChat/ChatInput';
+import ChatInput from '@/components/ChatInput';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';

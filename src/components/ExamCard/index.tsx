@@ -8,9 +8,8 @@ import { useTranslation } from 'react-i18next';
 import Button from '@/components/Button';
 import CardWrapper from '@/components/CardWrapper';
 import DotTitle from '@/components/DotTitle';
+import { ExamCardPropsType, ExamStatus } from '@/components/ExamsPage/typings';
 import { Text } from '@/components/Typography';
-
-import { ExamCardPropsType, ExamStatus } from '../typings';
 
 const ExamCard: FC<ExamCardPropsType> = (props) => {
   const { exam, status } = props;

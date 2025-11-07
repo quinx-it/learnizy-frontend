@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import NotFoundPage from '@/appPages/NotFoundPage';
+import NotFoundPage from '@/components/NotFoundPage';
 
 const LearnNotFound: FC = () => {
   return <NotFoundPage />;

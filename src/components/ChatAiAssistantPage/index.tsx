@@ -1,7 +1,7 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, FC } from 'react';
 
 import {
   useGetChatMessagesQuery,
@@ -10,12 +10,13 @@ import {
   ISendMessageRequest,
   Role,
 } from '@/api/endpoints/aiAssistant';
-import { ChatInput, ChatMessageHistory } from '@/components/aiAssistantChat';
+import ChatInput from '@/components/ChatInput';
+import ChatMessageHistory from '@/components/ChatMessageHistory';
 import { showToast } from '@/components/Toaster';
 
 import { POLLING_INTERVAL } from './constants';
 
-export const ChatAiAssistantPage = () => {
+const ChatAiAssistantPage: FC = () => {
   const params = useParams();
   const chatId = params.id ? parseInt(params.id as string, 10) : null;
 
@@ -115,3 +116,5 @@ export const ChatAiAssistantPage = () => {
     </div>
   );
 };
+
+export default ChatAiAssistantPage;

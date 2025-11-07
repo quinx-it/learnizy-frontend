@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation';
 import { FC } from 'react';
 
-import ModuleItemPage from '@/appPages/ModulesItemPage';
+import ModuleItemPage from '@/components/ModulesItemPage';
 
 import { ParamsType } from '../typings';
 

@@ -1,6 +1,6 @@
 import { PropsWithChildren, FC } from 'react';
 
-import ProfileDashboard from './ProfileDashboard';
+import ProfileDashboard from '@/components/ProfileDashboard';
 
 const UserProfilePage: FC<PropsWithChildren> = (props) => {
   const { children } = props;

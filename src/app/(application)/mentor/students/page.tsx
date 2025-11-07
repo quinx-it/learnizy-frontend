@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import MentorStudentsPage from '@/appPages/MentorStudentsPage';
+import MentorStudentsPage from '@/components/MentorStudentsPage';
 
 const MentorStudents: FC = () => {
   return <MentorStudentsPage />;

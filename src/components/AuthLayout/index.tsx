@@ -3,11 +3,10 @@
 import { useRouter } from 'next/navigation';
 import { FC, PropsWithChildren, useEffect } from 'react';
 
+import FullscreenLoader from '@/components/FullscreenLoader';
 import { routes } from '@/constants';
 import { useAppSelector } from '@/hooks/redux';
 import { selectToken } from '@/store/slices/auth/selectors';
-
-import FullscreenLoader from '../FullscreenLoader';
 
 const AuthLayout: FC<PropsWithChildren> = ({ children }) => {
   const router = useRouter();

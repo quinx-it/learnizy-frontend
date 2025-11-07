@@ -1,4 +1,4 @@
-import LoginPageDesign from '@/appPages/authPages/LoginPage';
+import LoginPageDesign from '@/components/LoginPage';
 
 const LoginPage = () => {
   return <LoginPageDesign />;

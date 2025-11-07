@@ -1,25 +1,19 @@
-'use client';
-
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import CardWrapper from '@/components/CardWrapper';
+import SecuritySettingsForm from '@/components/SecuritySettingsForm';
 import { Heading } from '@/components/Typography';
 
-import PersonalDataForm from './PersonalDataForm';
-
-const PersonalData: FC = () => {
-  const { t } = useTranslation();
-
+const SecuritySettings: FC = () => {
   return (
     <CardWrapper className="h-fit max-w-full">
       <Heading variant="xl" className="mb-4">
-        {t('PROFILE.PERSONAL_DATA')}
+        Настройки безопасности
       </Heading>
       <hr className="mb-8" />
-      <PersonalDataForm />
+      <SecuritySettingsForm />
     </CardWrapper>
   );
 };
 
-export default PersonalData;
+export default SecuritySettings;

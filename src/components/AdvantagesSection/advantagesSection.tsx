@@ -1,6 +1,5 @@
+import SectionContent from '@/components/SectionContent';
 import { Heading } from '@/components/Typography';
-
-import SectionContent from '../SectionContent';
 
 import { AdvantageCard } from './advantageCard';
 import { constants } from './constants';

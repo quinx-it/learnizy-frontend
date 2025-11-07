@@ -4,8 +4,8 @@ import { usePathname } from 'next/navigation';
 import { FC, PropsWithChildren } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { ChatHeader } from '@/components/aiAssistantChat';
-import AuthLayout from '@/components/AuthLayout/authLayout';
+import AuthLayout from '@/components/AuthLayout';
+import ChatHeader from '@/components/ChatHeader';
 import Navbar from '@/components/navbar';
 import { navbarLinks } from '@/constants/constants';
 import { routes } from '@/constants/routes';

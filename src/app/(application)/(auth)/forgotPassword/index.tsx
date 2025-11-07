@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import ForgotPasswordPage from '@/appPages/authPages/ForgotPasswordPage';
+import ForgotPasswordPage from '@/components/ForgotPasswordPage';
 
 const ForgotPassword: FC = () => {
   return <ForgotPasswordPage />;

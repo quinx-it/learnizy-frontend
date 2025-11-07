@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import FaqPage from '@/appPages/FaqPage';
+import FaqPage from '@/components/FaqPage';
 
 const Faq: FC = () => {
   return <FaqPage />;

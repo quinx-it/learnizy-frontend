@@ -3,7 +3,7 @@
 import { useRouter, useParams } from 'next/navigation';
 import { FC, PropsWithChildren } from 'react';
 
-import { ChatHistory } from '@/components/aiAssistantChat';
+import ChatHistory from '@/components/ChatHistory';
 import { routes } from '@/constants/routes';
 
 const AiAssistantLayout: FC<PropsWithChildren> = ({ children }) => {

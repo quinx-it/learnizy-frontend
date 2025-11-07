@@ -1,5 +1,5 @@
-import { AdvantagesSection } from './AdvantagesSection';
-import HeroSection from './HeroSection';
+import { AdvantagesSection } from '@/components/AdvantagesSection';
+import HeroSection from '@/components/HeroSection';
 
 export const LandingPage = () => {
   return (

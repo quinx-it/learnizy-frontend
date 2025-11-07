@@ -4,13 +4,12 @@ import clsx from 'clsx';
 import { useRef, useLayoutEffect, useEffect, FC } from 'react';
 
 import AudioPlayer from '@/components/AudioPlayer';
+import Typewriter from '@/components/ChatTypewriter';
 import MarkdownRenderer from '@/components/MarkdownText';
 import Spinner from '@/components/Spinner';
 import { Text } from '@/components/Typography';
 import { usePrevious } from '@/hooks/usePrevious';
 import { isAudioUrl } from '@/lib/utils';
-
-import Typewriter from '../ChatTypewriter';
 
 import { Role } from './constants';
 import { IChatMessageHistoryProps } from './typings';

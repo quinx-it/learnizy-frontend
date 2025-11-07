@@ -1,4 +1,4 @@
-import RegisterPageDesign from '@/appPages/authPages/RegisterPage';
+import RegisterPageDesign from '@/components/RegisterPage';
 
 const RegisterPage = () => {
   return <RegisterPageDesign />;
