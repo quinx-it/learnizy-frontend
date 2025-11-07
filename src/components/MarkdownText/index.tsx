@@ -7,6 +7,8 @@ import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkGfm from 'remark-gfm';
 
 import { IMarkdownRendererProps } from './typings';
+import { normalizeTableCellAlign } from './utils';
+
 import {
   Container,
   CodeBlockWrapper,
@@ -28,7 +30,6 @@ import {
   Image,
   Pre,
 } from './styles';
-import { normalizeTableCellAlign } from './utils';
 
 const MarkdownRenderer: FC<IMarkdownRendererProps> = (props) => {
   const { text = '', className } = props;

@@ -28,6 +28,7 @@ export const CodeBlockWrapper = styled(Box)(({ theme }) => ({
 export const InlineCode = styled('code')(({ theme }) => {
   const borderRadius =
     typeof theme.shape.borderRadius === 'number' ? theme.shape.borderRadius / 3 : 4;
+
   return {
     borderRadius,
     backgroundColor:
