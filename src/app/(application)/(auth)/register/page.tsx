@@ -1,7 +1,7 @@
-import RegisterPageDesign from '@/components/RegisterPage';
+import RegisterPageBase from '@/components/RegisterPage';
 
 const RegisterPage = () => {
-  return <RegisterPageDesign />;
+  return <RegisterPageBase />;
 };
 
 export default RegisterPage;

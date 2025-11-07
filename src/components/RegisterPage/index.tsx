@@ -4,7 +4,7 @@ import RegisterForm from '@/components/auth/RegisterForm';
 import CardWrapper from '@/components/CardWrapper';
 import { Logo } from '@/components/Icons';
 
-const RegisterPageDesign: FC = () => {
+const RegisterPage: FC = () => {
   return (
     <div className="flex h-[100vh] items-center justify-center">
       <CardWrapper className="max-w-[472px] px-8 py-16">
@@ -15,4 +15,4 @@ const RegisterPageDesign: FC = () => {
   );
 };
 
-export default RegisterPageDesign;
+export default RegisterPage;

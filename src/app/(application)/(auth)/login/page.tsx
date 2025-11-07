@@ -1,7 +1,7 @@
-import LoginPageDesign from '@/components/LoginPage';
+import LoginPageBase from '@/components/LoginPage';
 
 const LoginPage = () => {
-  return <LoginPageDesign />;
+  return <LoginPageBase />;
 };
 
 export default LoginPage;
