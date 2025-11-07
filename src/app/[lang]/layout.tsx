@@ -1,18 +1,21 @@
 import localFont from 'next/font/local';
-import { FC, PropsWithChildren } from 'react';
 
 import { Toaster } from '@/components/Toaster';
 import ThemeProvider from '@/lib/materialUI';
+import { i18n, type Locale } from '@/lib/translate/i18nConfig';
 import { getOgLocale, getBaseUrl } from '@/utils';
 
 import StoreProvider from './StoreProvider';
 
 import type { Metadata } from 'next';
 
-import '@/lib/translate';
 import './globals.css';
 
 const baseUrl = getBaseUrl();
+
+export async function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ lang: locale }));
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -52,17 +55,20 @@ export const metadata: Metadata = {
 };
 
 const involve = localFont({
-  src: '../assets/fonts/Involve-Medium.ttf',
+  src: '../../assets/fonts/Involve-Medium.ttf',
   display: 'swap',
 });
 
-const RootLayout: FC<PropsWithChildren> = ({ children }) => {
+async function RootLayout(props: { children: React.ReactNode; params: Promise<{ lang: Locale }> }) {
+  const { children, params: paramsBase } = props;
+  const params = await paramsBase;
+
   const isXML = typeof window !== 'undefined' && window.location.pathname.endsWith('.xml');
 
   if (isXML) return children;
 
   return (
-    <html lang="ru" className={involve.className}>
+    <html lang={params.lang} className={involve.className}>
       <body>
         <StoreProvider>
           <ThemeProvider>
@@ -73,6 +79,6 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
       </body>
     </html>
   );
-};
+}
 
 export default RootLayout;

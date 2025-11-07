@@ -1,7 +1,6 @@
 'use client';
 
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import CardAccordion from '@/components/Accordion';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -13,7 +12,7 @@ import { globalConstants } from '@/constants/constants';
 import { constants } from './constants';
 
 const FaqPage: FC = () => {
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   return (
     <>

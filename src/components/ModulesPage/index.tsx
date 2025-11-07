@@ -1,7 +1,6 @@
 'use client';
 
 import { FC, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import {
@@ -82,7 +81,7 @@ const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
 const ModulesPage: FC = () => {
   const role = useSelector(selectUserRole);
   const isMentor = role === UserRole.MENTOR;
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const {
     data: modulesData,

@@ -3,7 +3,11 @@
 import { useState, useEffect, useRef, FC } from 'react';
 
 import { DEFAULT_LANGUAGE } from '@/constants';
-import i18n from '@/lib/translate';
+
+const i18n = {
+  changeLanguage: (label: string) => label,
+  language: 'ru',
+};
 
 const LanguageSwitcher: FC = () => {
   const [open, setOpen] = useState(false);

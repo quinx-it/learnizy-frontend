@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { ComponentProps, ReactNode, FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import Button from '@/components/Button';
 import CardWrapper from '@/components/CardWrapper';
@@ -14,9 +13,10 @@ import { Text } from '@/components/Typography';
 const ExamCard: FC<ExamCardPropsType> = (props) => {
   const { exam, status } = props;
 
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
-  const { title, description, questions, time } = exam;
+  // const { title, description, questions, time } = exam;
+  const { title, description } = exam;
   const router = useRouter();
   const pathname = usePathname();
 
@@ -56,7 +56,8 @@ const ExamCard: FC<ExamCardPropsType> = (props) => {
     [ExamStatus.Available]: <Text variant="l">{t('EXAMS.STATUS.AVAILABLE')}</Text>,
     [ExamStatus.Unavailable]: (
       <Text variant="l">
-        {t('EXAMS.STATUS.UNAVAILABLE', { moduleLink: exam.moduleId })}
+        {/* need to fix */}
+        {t('EXAMS.STATUS.UNAVAILABLE')}
         <Link href={`modules/${exam.moduleId}`} className="text-medium !underline">
           {t('EXAMS.STATUS.LESSONS')}
         </Link>
@@ -77,9 +78,10 @@ const ExamCard: FC<ExamCardPropsType> = (props) => {
           dotClassName="w-1 h-1"
         />
 
+        {/* need to fix */}
         <DotTitle
-          firstLabel={t('EXAMS.QUESTIONS_COUNT', { count: questions })}
-          secondLabel={t('EXAMS.DURATION', { time })}
+          firstLabel={t('EXAMS.QUESTIONS_COUNT')}
+          secondLabel={t('EXAMS.DURATION')}
           firstVariant="m"
           secondVariant="m"
           dotClassName="w-1 h-1"

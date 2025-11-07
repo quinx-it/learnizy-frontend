@@ -3,7 +3,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FC } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
 
 import Button from '@/components/Button';
 import DatePicker from '@/components/DatePicker';
@@ -14,7 +13,7 @@ import { PersonalDataFormValuesType } from './typings';
 import { personalDataSchema } from './validations';
 
 const PersonalDataForm: FC = () => {
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const {
     handleSubmit,

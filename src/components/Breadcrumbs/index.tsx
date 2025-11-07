@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { Fragment, FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import DotTitle from '@/components/DotTitle';
 import { ArrowRightIcon } from '@/components/Icons';
@@ -13,7 +12,7 @@ import { constants } from './constants';
 import { IBreadcrumbsProps } from './typings';
 
 const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const {
     items,

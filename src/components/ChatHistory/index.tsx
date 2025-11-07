@@ -3,7 +3,6 @@
 import clsx from 'clsx';
 import { Plus, X } from 'lucide-react';
 import { FC, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { useGetChatsQuery, IChat } from '@/api/endpoints/aiAssistant';
 import Button from '@/components/Button';
@@ -16,7 +15,7 @@ import { IChatHistoryProps } from './typings';
 const ChatHistory: FC<IChatHistoryProps> = (props) => {
   const { selectedChatId, onSelectChat, onCreateChat } = props;
 
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const [isOpen, setIsOpen] = useState(false);
 

@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import Button from '@/components/Button';
 import CardWrapper from '@/components/CardWrapper';
@@ -11,7 +10,7 @@ import { LessonCardPropsType } from './typings';
 
 const LessonCard: FC<LessonCardPropsType> = (props) => {
   const { id, title, progress, index, onClick } = props;
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const blocked = false;
   const active = true;

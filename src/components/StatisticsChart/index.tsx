@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import AreaChart from '@/components/AreaChart';
 import { CalendarIcon } from '@/components/Icons';
@@ -11,7 +10,7 @@ import { StatisticsChartPropsType } from './typings';
 const StatisticsChart: FC<StatisticsChartPropsType> = (props) => {
   const { weeklyActivity } = props;
 
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const totalLessons = weeklyActivity.reduce((acc, item) => acc + item.lessonsCompleted, 0);
   const totalTests = weeklyActivity.reduce((acc, item) => acc + item.testsPassed, 0);

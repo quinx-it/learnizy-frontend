@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { memo, useMemo, FC } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { IModuleInfo } from '@/api/endpoints/modules';
@@ -27,11 +26,11 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
     description,
     title,
     id,
-    sequenceOrder,
+    // sequenceOrder,
     className,
   } = props;
 
-  const { t } = useTranslation();
+  const t = (label: string) => label;
   const role = useSelector(selectUserRole);
   const isMentor = role === UserRole.MENTOR;
 
@@ -56,9 +55,8 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
     [progressStatus, active, completed, blocked],
   );
 
-  const moduleLabel = bonus
-    ? t('MODULES_CARD.BONUS')
-    : t('MODULES_CARD.MODULE', { number: sequenceOrder });
+  /* need to fix */
+  const moduleLabel = bonus ? t('MODULES_CARD.BONUS') : t('MODULES_CARD.MODULE');
 
   const lessonInfo = `${pluralize(
     totalLessons,

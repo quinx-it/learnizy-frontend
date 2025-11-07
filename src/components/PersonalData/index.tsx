@@ -1,14 +1,13 @@
 'use client';
 
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import CardWrapper from '@/components/CardWrapper';
 import PersonalDataForm from '@/components/PersonalDataForm';
 import { Heading } from '@/components/Typography';
 
 const PersonalData: FC = () => {
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   return (
     <CardWrapper className="h-fit max-w-full">

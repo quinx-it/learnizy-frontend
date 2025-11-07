@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import Button from '@/components/Button';
 import { Heading } from '@/components/Typography';
@@ -17,7 +16,7 @@ import { NotFoundComponentPropsType } from './typings';
 const NotFoundComponent: FC<NotFoundComponentPropsType> = (props) => {
   const { className } = props;
 
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const role = useAppSelector(selectUserRole);
 

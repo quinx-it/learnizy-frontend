@@ -4,7 +4,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter, usePathname } from 'next/navigation';
 import { useState, FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
 
 import {
   AnswerInputType,
@@ -23,7 +22,7 @@ import { LessonTestFormSchema } from './validation';
 
 const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
   const { questions, onSubmit, testId, loading } = props;
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const router = useRouter();
   const pathname = usePathname();

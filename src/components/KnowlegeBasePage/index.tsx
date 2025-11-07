@@ -1,7 +1,6 @@
 'use client';
 
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import FrequentlyAskedQuestions from '@/components/FrequentlyAskedQuestions';
 import { CircleIcon } from '@/components/Icons';
@@ -10,7 +9,7 @@ import InterviewRecords from '@/components/InterviewRecords';
 import { Heading } from '@/components/Typography';
 
 const KnowlegeBasePage: FC = () => {
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">

@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation';
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { useGetMainPageProgressQuery } from '@/api/endpoints/progress';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -18,7 +17,7 @@ import { constants } from './constants';
 
 const LearnMainPage: FC = () => {
   const router = useRouter();
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const { data: mainPageProgress, error } = useGetMainPageProgressQuery();
 

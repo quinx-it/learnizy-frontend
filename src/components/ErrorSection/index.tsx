@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import Button from '@/components/Button';
 import { Heading, Text } from '@/components/Typography';
@@ -9,7 +8,7 @@ import { cn } from '@/lib/utils';
 import { ErrorPropsType, ErrorType } from './typings';
 
 const ErrorSection: FC<ErrorPropsType & ErrorType> = (props) => {
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const { className, reset } = props;
 

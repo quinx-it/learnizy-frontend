@@ -2,7 +2,6 @@
 
 import { FC } from 'react';
 import { Controller, useFormContext, useWatch } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
 
 import { RadioGroup } from '@/components/RadioGroup';
 import Textarea from '@/components/Textarea';
@@ -13,7 +12,7 @@ import { LessonQuestionPropsType } from './typings';
 const LessonQuestion: FC<LessonQuestionPropsType> = (props) => {
   const {
     type = 'checkbox',
-    totalQuestions,
+    // totalQuestions,
     sequenceOrder,
     text,
     answerFieldName,
@@ -21,7 +20,7 @@ const LessonQuestion: FC<LessonQuestionPropsType> = (props) => {
     errors,
   } = props;
 
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const { control, setValue } = useFormContext();
 
@@ -33,7 +32,8 @@ const LessonQuestion: FC<LessonQuestionPropsType> = (props) => {
   return (
     <div className="space-y-5">
       <Text variant="l" className="text-medium mb-3">
-        {t('LESSON_QUESTION.QUESTION_NUMBER', { current: sequenceOrder, total: totalQuestions })}
+        {/* need to fix */}
+        {t('LESSON_QUESTION.QUESTION_NUMBER')}
       </Text>
       <Text variant="l" className="mb-5">
         {text}

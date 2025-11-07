@@ -1,7 +1,6 @@
 'use client';
 
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import Button from '@/components/Button';
 import ProgressBar from '@/components/Progress';
@@ -14,7 +13,7 @@ import { CourseListItemType } from './typings';
 const CourseListItem: FC<CourseListItemType> = (props) => {
   const { title, number, status, progress, onClick } = props;
 
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const progressBarValue = progress ?? 0;
   const isBlocked = status === 'BLOCKED';

@@ -14,7 +14,6 @@ import {
   useEffect,
   useCallback,
 } from 'react';
-import { useTranslation } from 'react-i18next';
 import WaveSurfer from 'wavesurfer.js';
 
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
@@ -29,7 +28,7 @@ import { IChatInputProps, ILocalFile } from './typings';
 const ChatInput: FC<IChatInputProps> = (props) => {
   const { onSendMessage, isLoading } = props;
 
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const [inputValue, setInputValue] = useState('');
   const [attachedFiles, setAttachedFiles] = useState<ILocalFile[]>([]);

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { Calendar } from '@/components/Calendar';
 import { CalendarIcon } from '@/components/Icons';
@@ -12,7 +11,7 @@ import { IDatePickerProps } from './typings';
 import { formatDate, parseDateString } from './utils';
 
 const DatePicker: FC<IDatePickerProps> = ({ label, value, onChange, error }) => {
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const [open, setOpen] = useState(false);
 

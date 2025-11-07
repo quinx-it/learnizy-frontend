@@ -3,7 +3,6 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useState, FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import Button from '@/components/Button';
 import { HeaderLogo, ExitIcon, CubesMainIcon } from '@/components/Icons';
@@ -21,7 +20,7 @@ const Navbar: FC<INavbarProps> = (props) => {
 
   const { handleLogout, isLoading } = useLogout();
   const [isOpen, setIsOpen] = useState(false);
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   return (
     <>

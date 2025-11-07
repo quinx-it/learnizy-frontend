@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import Button from '@/components/Button';
 import CardWrapper from '@/components/CardWrapper';
@@ -16,7 +15,7 @@ const ProgressCard: FC<ProgressCardPropsType> = (props) => {
   const { title, subTitle, totalModules, totalLessons, lessons, status, modules, image, onClick } =
     props;
 
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const hasModules = totalModules !== undefined && modules !== undefined;
 

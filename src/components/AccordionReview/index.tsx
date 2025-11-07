@@ -5,7 +5,6 @@ import {
   AccordionTrigger,
 } from '@radix-ui/react-accordion';
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { ArrowRightIcon } from '@/components/Icons';
 import { Text } from '@/components/Typography';
@@ -17,7 +16,7 @@ import { AccordionReviewPropsType } from './typings';
 const AccordionReview: FC<AccordionReviewPropsType> = (props) => {
   const { items } = props;
 
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   return (
     <Accordion type="single" collapsible className={cn('w-full')}>

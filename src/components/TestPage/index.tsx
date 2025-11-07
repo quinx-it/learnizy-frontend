@@ -1,7 +1,6 @@
 'use client';
 
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { LessonTestSubmitType, useSendTestMutation } from '@/api/endpoints/test';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -19,7 +18,7 @@ import { TestPagePropsType } from './typings';
 const TestPage: FC<TestPagePropsType> = (props) => {
   const { lessonId, moduleId, lessonTest, isLoading, isError, refetch } = props;
 
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const [sendTestResult, { isLoading: isLoadingResult }] = useSendTestMutation();
 

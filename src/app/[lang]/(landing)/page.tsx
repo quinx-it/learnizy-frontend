@@ -2,11 +2,10 @@ import { Metadata } from 'next';
 import { FC } from 'react';
 
 import { LandingPage } from '@/components/LandingPage';
-import { getServerT } from '@/lib/translate/server';
 import { getOgLocale, getBaseUrl, getFullUrl } from '@/utils';
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const t = await getServerT('ru');
+  const t = (label: string) => label;
 
   const key = 'MAIN_PAGE_SEO';
   const ogLocale = getOgLocale();

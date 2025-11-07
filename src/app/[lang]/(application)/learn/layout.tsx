@@ -2,7 +2,6 @@
 
 import { usePathname } from 'next/navigation';
 import { FC, PropsWithChildren } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import AuthLayout from '@/components/AuthLayout';
 import ChatHeader from '@/components/ChatHeader';
@@ -14,7 +13,7 @@ const LearnLayout: FC<PropsWithChildren> = (props) => {
   const { children } = props;
 
   const pathname = usePathname();
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const showChatHeader = pathname.startsWith('/learn/ai-assistant/chat/');
 

@@ -1,7 +1,6 @@
 'use client';
 
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { useGetExamsQuery } from '@/api/endpoints/exams';
 import ErrorSection from '@/components/ErrorSection';
@@ -29,7 +28,7 @@ const mapExamStatus = (status: string): ExamStatus => {
 const ExamsPage: FC<ExamsPageProps> = (props) => {
   const { courseId = 1 } = props;
 
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const { data, isLoading, isError, refetch } = useGetExamsQuery({ courseId, page: 0, size: 10 });
 
@@ -47,10 +46,11 @@ const ExamsPage: FC<ExamsPageProps> = (props) => {
         <Heading variant="2xl">Java Core</Heading>
       </div>
 
+      {/* need to fix */}
       {data.content.map((examItem) => {
         const exam: ExamType = {
           ...examItem,
-          title: t('EXAMS.MODULE_TITLE', { moduleNumber: examItem.moduleSequenceOrder }),
+          title: t('EXAMS.MODULE_TITLE'),
           description: examItem.moduleTitle,
           questions: examItem.questionsCount,
           time: 20,

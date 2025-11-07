@@ -5,14 +5,14 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('../assets/fonts/Montserrat-Regular.ttf') format('truetype');
+  src: url('../../assets/fonts/Montserrat-Regular.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Involve';
-  src: url('../assets/fonts/Involve-Medium.ttf') format('truetype');
+  src: url('../../assets/fonts/Involve-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;

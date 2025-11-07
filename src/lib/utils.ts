@@ -11,8 +11,11 @@ import {
 } from '@/constants/routes';
 import { IDecodedToken, UserRole } from '@/store/slices/auth/typings';
 
-import i18n from './translate';
 import { IDecodedTokenPayload } from './typings';
+
+const i18n = {
+  t: (label: string) => label,
+};
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

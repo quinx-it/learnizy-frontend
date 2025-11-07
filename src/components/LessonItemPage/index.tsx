@@ -3,7 +3,6 @@
 import MDEditor from '@uiw/react-md-editor';
 import { usePathname, useRouter } from 'next/navigation';
 import { FC, useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { useUpdateLessonContentMarkdownMutation } from '@/api/endpoints/admin';
@@ -27,7 +26,7 @@ import { ILessonItemPageProps } from './typings';
 const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
   const { lessonId, moduleId } = props;
 
-  const { t } = useTranslation();
+  const t = (label: string) => label;
 
   const router = useRouter();
   const pathname = usePathname();
