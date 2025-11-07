@@ -2,6 +2,7 @@ import localFont from 'next/font/local';
 import { FC, PropsWithChildren } from 'react';
 
 import { Toaster } from '@/components/Toaster';
+import ThemeProvider from '@/lib/materialUI';
 import { getOgLocale, getBaseUrl } from '@/utils';
 
 import StoreProvider from './StoreProvider';
@@ -10,7 +11,6 @@ import type { Metadata } from 'next';
 
 import '@/lib/translate';
 import './globals.css';
-import ThemeProvider from '@/lib/materialUI';
 
 const baseUrl = getBaseUrl();
 
