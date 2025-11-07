@@ -1,7 +1,7 @@
-import RegisterPageBase from '@/components/RegisterPage';
+import RegisterPage from '@/components/RegisterPage';
 
-const RegisterPage = () => {
-  return <RegisterPageBase />;
+const Register = () => {
+  return <RegisterPage />;
 };
 
-export default RegisterPage;
+export default Register;

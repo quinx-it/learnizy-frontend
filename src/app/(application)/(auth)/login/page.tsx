@@ -1,7 +1,7 @@
-import LoginPageBase from '@/components/LoginPage';
+import LoginPage from '@/components/LoginPage';
 
-const LoginPage = () => {
-  return <LoginPageBase />;
+const Login = () => {
+  return <LoginPage />;
 };
 
-export default LoginPage;
+export default Login;
