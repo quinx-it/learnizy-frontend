@@ -13,8 +13,7 @@ import CardWrapper from '@/components/CardWrapper';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
-
-import VoiceRecorderControl from '../VoiceRecorderControl';
+import VoiceRecorderControl from '@/components/VoiceRecorderControl';
 
 import { AIQueryStatus } from './constants';
 import { IAIQuestionFormValues, IVoiceRecorderFormProps } from './typings';

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { FC } from 'react';
 
-import { LandingPage } from '@/appPages/landingPage';
+import { LandingPage } from '@/components/LandingPage';
 import { getServerT } from '@/lib/translate/server';
 import { getOgLocale, getBaseUrl, getFullUrl } from '@/utils';
 

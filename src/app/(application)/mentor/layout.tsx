@@ -2,7 +2,7 @@
 
 import { FC, PropsWithChildren } from 'react';
 
-import AuthLayout from '@/components/AuthLayout/authLayout';
+import AuthLayout from '@/components/AuthLayout';
 import Navbar from '@/components/navbar';
 import { navbarLinks } from '@/constants/constants';
 

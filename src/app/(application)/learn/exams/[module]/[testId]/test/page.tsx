@@ -4,8 +4,8 @@ import { useParams } from 'next/navigation';
 import { FC } from 'react';
 
 import { useGetExamByIdQuery } from '@/api/endpoints/exams';
-import TestPage from '@/appPages/TestPage';
-import { TestDataType } from '@/appPages/TestPage/typings';
+import TestPage from '@/components/TestPage';
+import { TestDataType } from '@/components/TestPage/typings';
 
 import { ParamsType } from '../../../typings';
 

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import PersonalData from '@/appPages/userProfilePage/PersonalData';
+import PersonalData from '@/components/PersonalData';
 
 const PersonalDataPage: FC = () => {
   return <PersonalData />;

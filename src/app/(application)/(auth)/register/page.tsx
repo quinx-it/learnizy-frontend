@@ -1,7 +1,7 @@
-import RegisterPageDesign from '@/appPages/authPages/RegisterPage';
+import RegisterPage from '@/components/RegisterPage';
 
-const RegisterPage = () => {
-  return <RegisterPageDesign />;
+const Register = () => {
+  return <RegisterPage />;
 };
 
-export default RegisterPage;
+export default Register;

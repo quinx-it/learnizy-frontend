@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import LearnMainPage from '@/appPages/LearnMainPage';
+import LearnMainPage from '@/components/LearnMainPage';
 
 const LearnPage: FC = () => {
   return <LearnMainPage />;

@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation';
 import { FC } from 'react';
 
-import ExamTestResultPage from '@/appPages/ExamTestResultPage';
+import ExamTestResultPage from '@/components/ExamTestResultPage';
 
 import { ParamsType } from '../../../typings';
 

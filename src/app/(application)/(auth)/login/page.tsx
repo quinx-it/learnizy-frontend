@@ -1,7 +1,7 @@
-import LoginPageDesign from '@/appPages/authPages/LoginPage';
+import LoginPage from '@/components/LoginPage';
 
-const LoginPage = () => {
-  return <LoginPageDesign />;
+const Login = () => {
+  return <LoginPage />;
 };
 
-export default LoginPage;
+export default Login;

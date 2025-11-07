@@ -2,8 +2,8 @@
 
 import { useSearchParams } from 'next/navigation';
 
-import ResetPasswordPage from '@/appPages/authPages/ResetPasswordPage';
-import NotFoundPage from '@/appPages/NotFoundPage';
+import NotFoundPage from '@/components/NotFoundPage';
+import ResetPasswordPage from '@/components/ResetPasswordPage';
 
 const ResetPassword = () => {
   const searchParams = useSearchParams();

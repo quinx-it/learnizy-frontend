@@ -2,15 +2,14 @@ import { clsx, type ClassValue } from 'clsx';
 import { jwtDecode } from 'jwt-decode';
 import { twMerge } from 'tailwind-merge';
 
-import { IDecodedToken, UserRole } from '@/store/slices/auth/typings';
-
 import {
   dynamicMentorRoutes,
   dynamicUserRoutes,
   publicRoutes,
   staticMentorRoutes,
   staticUserRoutes,
-} from '../constants/routes';
+} from '@/constants/routes';
+import { IDecodedToken, UserRole } from '@/store/slices/auth/typings';
 
 import i18n from './translate';
 import { IDecodedTokenPayload } from './typings';

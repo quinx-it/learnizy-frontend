@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import SecuritySettings from '@/appPages/userProfilePage/SecuritySettings';
+import SecuritySettings from '@/components/SecuritySettings';
 
 const SecuritySettingsPage: FC = () => {
   return <SecuritySettings />;
