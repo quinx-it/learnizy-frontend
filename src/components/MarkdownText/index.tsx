@@ -16,18 +16,19 @@ import {
   UnorderedList,
   OrderedList,
   TableWrapper,
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  TableHeader,
-  TableCell,
+  StyledTable,
+  StyledTableHead,
+  StyledTableBody,
+  StyledTableRow,
+  StyledTableHeader,
+  StyledTableCell,
   Blockquote,
   StyledLink,
   HorizontalRule,
   Image,
   Pre,
 } from './styles';
+import { normalizeTableCellAlign } from './utils';
 
 const MarkdownRenderer: FC<IMarkdownRendererProps> = (props) => {
   const { text = '', className } = props;
@@ -57,14 +58,22 @@ const MarkdownRenderer: FC<IMarkdownRendererProps> = (props) => {
     ol: ({ children, ...props }) => <OrderedList {...props}>{children}</OrderedList>,
     table: ({ children, ...props }) => (
       <TableWrapper>
-        <Table {...props}>{children}</Table>
+        <StyledTable {...props}>{children}</StyledTable>
       </TableWrapper>
     ),
-    thead: ({ children, ...props }) => <TableHead {...props}>{children}</TableHead>,
-    tbody: ({ children, ...props }) => <TableBody {...props}>{children}</TableBody>,
-    tr: ({ children, ...props }) => <TableRow {...props}>{children}</TableRow>,
-    th: ({ children, ...props }) => <TableHeader {...props}>{children}</TableHeader>,
-    td: ({ children, ...props }) => <TableCell {...props}>{children}</TableCell>,
+    thead: ({ children, ...props }) => <StyledTableHead {...props}>{children}</StyledTableHead>,
+    tbody: ({ children, ...props }) => <StyledTableBody {...props}>{children}</StyledTableBody>,
+    tr: ({ children, ...props }) => <StyledTableRow {...props}>{children}</StyledTableRow>,
+    th: ({ children, align, ...props }) => (
+      <StyledTableHeader align={normalizeTableCellAlign(align)} {...props}>
+        {children}
+      </StyledTableHeader>
+    ),
+    td: ({ children, align, ...props }) => (
+      <StyledTableCell align={normalizeTableCellAlign(align)} {...props}>
+        {children}
+      </StyledTableCell>
+    ),
     blockquote: ({ children, ...props }) => <Blockquote {...props}>{children}</Blockquote>,
     a: ({ children, href, ...props }) => (
       <StyledLink href={href} {...props}>

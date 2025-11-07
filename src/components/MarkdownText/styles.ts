@@ -1,4 +1,15 @@
-import { Box, Link as MuiLink, styled } from '@mui/material';
+import {
+  Box,
+  Link as MuiLink,
+  styled,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from '@mui/material';
 
 export const Container = styled(Box)(() => ({}));
 
@@ -19,13 +30,16 @@ export const InlineCode = styled('code')(({ theme }) => {
     typeof theme.shape.borderRadius === 'number' ? theme.shape.borderRadius / 3 : 4;
   return {
     borderRadius,
-    backgroundColor: theme.palette.mode === 'light' ? '#f5f5f5' : theme.palette.background.paper,
+    backgroundColor:
+      theme.palette.mode === 'light'
+        ? theme.palette.background.default
+        : theme.palette.background.paper,
     padding: `${theme.spacing(0.125)} ${theme.spacing(0.5)}`,
     fontSize: '0.875rem',
   };
 });
 
-export const Paragraph = styled('p')(({ theme }) => ({
+export const Paragraph = styled(Typography)(({ theme }) => ({
   marginBottom: theme.spacing(1),
   lineHeight: 1.75,
   margin: 0,
@@ -49,35 +63,37 @@ export const OrderedList = styled('ol')(({ theme }) => ({
   listStyleType: 'decimal',
 }));
 
-export const TableWrapper = styled(Box)(({ theme }) => ({
+export const TableWrapper = styled(TableContainer)(({ theme }) => ({
   marginBottom: theme.spacing(2),
   maxWidth: '100%',
-  overflowX: 'auto',
 }));
 
-export const Table = styled('table')(({ theme }) => ({
+export const StyledTable = styled(Table)(({ theme }) => ({
   minWidth: '100%',
   borderCollapse: 'collapse',
   border: `1px solid ${theme.palette.divider}`,
   fontSize: '0.875rem',
 }));
 
-export const TableHead = styled('thead')(() => ({}));
+export const StyledTableHead = styled(TableHead)(() => ({}));
 
-export const TableBody = styled('tbody')(() => ({}));
+export const StyledTableBody = styled(TableBody)(() => ({}));
 
-export const TableRow = styled('tr')(() => ({}));
+export const StyledTableRow = styled(TableRow)(() => ({}));
 
-export const TableHeader = styled('th')(({ theme }) => ({
+export const StyledTableHeader = styled(TableCell)(({ theme }) => ({
   border: `1px solid ${theme.palette.divider}`,
-  backgroundColor: theme.palette.mode === 'light' ? '#f5f5f5' : theme.palette.background.paper,
+  backgroundColor:
+    theme.palette.mode === 'light'
+      ? theme.palette.background.default
+      : theme.palette.background.paper,
   padding: `${theme.spacing(0.5)} ${theme.spacing(1)}`,
   textAlign: 'left',
   fontSize: '0.875rem',
   fontWeight: 600,
 }));
 
-export const TableCell = styled('td')(({ theme }) => ({
+export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   border: `1px solid ${theme.palette.divider}`,
   padding: `${theme.spacing(0.5)} ${theme.spacing(1)}`,
 }));
