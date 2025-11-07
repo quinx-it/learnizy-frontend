@@ -8,7 +8,6 @@ import { useGetMainPageProgressQuery } from '@/api/endpoints/progress';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
 import CourseListItem from '@/components/CourseListItem';
-import Page from '@/components/Page';
 import ProgressCard from '@/components/ProgressCard';
 import { ProgressStatus } from '@/components/ProgressCard/constants';
 import StatisticsChart from '@/components/StatisticsChart';
@@ -30,7 +29,7 @@ const LearnMainPage: FC = () => {
   );
 
   return (
-    <Page key="MAIN_PAGE_SEO">
+    <>
       <Breadcrumbs rootDescription={mainPageProgress.courseInfo.title || ''} />
 
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
@@ -105,7 +104,7 @@ const LearnMainPage: FC = () => {
           </div>
         </CardWrapper>
       </div>
-    </Page>
+    </>
   );
 };
 

@@ -7,7 +7,6 @@ import { useGetExamsQuery } from '@/api/endpoints/exams';
 import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import { CircleIcon } from '@/components/Icons';
-import Page from '@/components/Page';
 import { Heading } from '@/components/Typography';
 
 import ExamCard from './ExamCard';
@@ -39,31 +38,29 @@ const ExamsPage: FC<ExamsPageProps> = (props) => {
   if (isError || !data) return <ErrorSection reset={refetch} />;
 
   return (
-    <Page noIndex>
-      <div className="grid grid-cols-1 gap-6">
-        <div className="color-soft text-soft flex items-center justify-baseline gap-3 align-middle">
-          <Heading variant="2xl" className="text-black">
-            {t('EXAMS.TITLE')}
-          </Heading>
-          <CircleIcon className="block" />
-          <Heading variant="2xl">Java Core</Heading>
-        </div>
-
-        {data.content.map((examItem) => {
-          const exam: ExamType = {
-            ...examItem,
-            title: t('EXAMS.MODULE_TITLE', { moduleNumber: examItem.moduleSequenceOrder }),
-            description: examItem.moduleTitle,
-            questions: examItem.questionsCount,
-            time: 20,
-          };
-
-          return (
-            <ExamCard key={examItem.testId} exam={exam} status={mapExamStatus(examItem.status)} />
-          );
-        })}
+    <div className="grid grid-cols-1 gap-6">
+      <div className="color-soft text-soft flex items-center justify-baseline gap-3 align-middle">
+        <Heading variant="2xl" className="text-black">
+          {t('EXAMS.TITLE')}
+        </Heading>
+        <CircleIcon className="block" />
+        <Heading variant="2xl">Java Core</Heading>
       </div>
-    </Page>
+
+      {data.content.map((examItem) => {
+        const exam: ExamType = {
+          ...examItem,
+          title: t('EXAMS.MODULE_TITLE', { moduleNumber: examItem.moduleSequenceOrder }),
+          description: examItem.moduleTitle,
+          questions: examItem.questionsCount,
+          time: 20,
+        };
+
+        return (
+          <ExamCard key={examItem.testId} exam={exam} status={mapExamStatus(examItem.status)} />
+        );
+      })}
+    </div>
   );
 };
 

@@ -7,7 +7,6 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
 import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
-import Page from '@/components/Page';
 import { Text } from '@/components/Typography';
 import { globalConstants, routes } from '@/constants';
 
@@ -54,7 +53,7 @@ const ExamTestResultPage: FC<ExamTestResultPagePropsType> = (props) => {
   const passed = scorePercent >= 70;
 
   return (
-    <Page noIndex>
+    <>
       <Breadcrumbs
         items={[{ label: `Результаты`, href: `` }]}
         rootHref={routes.user.exams}
@@ -107,7 +106,7 @@ const ExamTestResultPage: FC<ExamTestResultPagePropsType> = (props) => {
           })}
         </div>
       </div>
-    </Page>
+    </>
   );
 };
 

@@ -29,7 +29,6 @@ import FullscreenLoader from '@/components/FullscreenLoader';
 import { CheckIcon, LockColorIcon } from '@/components/Icons';
 import Input from '@/components/Input';
 import LessonCard from '@/components/LessonCard';
-import Page from '@/components/Page';
 import ProgressBar from '@/components/Progress';
 import Textarea from '@/components/Textarea';
 import { showToast } from '@/components/Toaster';
@@ -142,7 +141,7 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
   const isAvailableExam = (progressValue: number) => progressValue >= examAvailableNumber;
 
   return (
-    <Page noIndex>
+    <>
       <Breadcrumbs
         items={breadcrumbs(sequenceOrder)}
         rootHref={routes.user.modules}
@@ -274,7 +273,7 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
           </DialogContent>
         </Dialog>
       )}
-    </Page>
+    </>
   );
 };
 

@@ -26,7 +26,6 @@ import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import Input from '@/components/Input';
 import { ModuleCard } from '@/components/ModuleCard';
-import Page from '@/components/Page';
 import Textarea from '@/components/Textarea';
 import { showToast } from '@/components/Toaster';
 import { routes } from '@/constants';
@@ -153,7 +152,7 @@ const ModulesPage: FC = () => {
   if (isError) return <ErrorSection reset={refetch} />;
 
   return (
-    <Page noIndex>
+    <>
       <Breadcrumbs
         rootLabel={t(globalConstants.rootBreadcrumbLabels.modulesLabel)}
         rootHref={routes.user.knowlegeBase}
@@ -222,7 +221,7 @@ const ModulesPage: FC = () => {
             />
           ))}
       </div>
-    </Page>
+    </>
   );
 };
 

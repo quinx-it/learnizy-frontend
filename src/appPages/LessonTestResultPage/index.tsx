@@ -7,7 +7,6 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
 import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
-import Page from '@/components/Page';
 import { Text } from '@/components/Typography';
 import { globalConstants, routes } from '@/constants';
 
@@ -85,7 +84,7 @@ const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) => {
   const passed = scorePercent >= 70;
 
   return (
-    <Page noIndex>
+    <>
       <Breadcrumbs
         items={[
           { label: `Модуль ${moduleSequenceOrder}`, href: `${routes.user.modules}/${moduleId}` },
@@ -146,7 +145,7 @@ const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) => {
           })}
         </div>
       </div>
-    </Page>
+    </>
   );
 };
 
