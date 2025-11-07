@@ -10,6 +10,7 @@ import type { Metadata } from 'next';
 
 import '@/lib/translate';
 import './globals.css';
+import ThemeProvider from '@/lib/materialUI';
 
 const baseUrl = getBaseUrl();
 
@@ -64,8 +65,10 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
     <html lang="ru" className={involve.className}>
       <body>
         <StoreProvider>
-          {children}
-          <Toaster />
+          <ThemeProvider>
+            {children}
+            <Toaster />
+          </ThemeProvider>
         </StoreProvider>
       </body>
     </html>
