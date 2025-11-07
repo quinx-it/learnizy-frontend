@@ -2,7 +2,7 @@ import localFont from 'next/font/local';
 import { FC, PropsWithChildren } from 'react';
 
 import { Toaster } from '@/components/Toaster';
-import { getOgLocale } from '@/utils/getOgLocale';
+import { getOgLocale, getBaseUrl } from '@/utils';
 
 import StoreProvider from './StoreProvider';
 
@@ -11,7 +11,7 @@ import type { Metadata } from 'next';
 import '@/lib/translate';
 import './globals.css';
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL?.replace(/\/$/, '') || '';
+const baseUrl = getBaseUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
