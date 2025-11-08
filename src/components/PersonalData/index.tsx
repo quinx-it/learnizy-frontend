@@ -5,9 +5,10 @@ import { FC } from 'react';
 import CardWrapper from '@/components/CardWrapper';
 import PersonalDataForm from '@/components/PersonalDataForm';
 import { Heading } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 
 const PersonalData: FC = () => {
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   return (
     <CardWrapper className="h-fit max-w-full">

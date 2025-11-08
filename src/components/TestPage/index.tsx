@@ -11,6 +11,7 @@ import LessonTestForm from '@/components/LessonTestForm';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
 import { globalConstants, routes } from '@/constants';
+import { useTranslation } from '@/hooks';
 
 import { constants, TestType } from './constants';
 import { TestPagePropsType } from './typings';
@@ -18,7 +19,7 @@ import { TestPagePropsType } from './typings';
 const TestPage: FC<TestPagePropsType> = (props) => {
   const { lessonId, moduleId, lessonTest, isLoading, isError, refetch } = props;
 
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const [sendTestResult, { isLoading: isLoadingResult }] = useSendTestMutation();
 

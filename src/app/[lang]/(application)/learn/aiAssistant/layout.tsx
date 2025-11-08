@@ -1,10 +1,11 @@
 'use client';
 
-import { useRouter, useParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { FC, PropsWithChildren } from 'react';
 
 import ChatHistory from '@/components/ChatHistory';
 import { routes } from '@/constants/routes';
+import { useRouter } from '@/hooks';
 
 const AiAssistantLayout: FC<PropsWithChildren> = ({ children }) => {
   const router = useRouter();

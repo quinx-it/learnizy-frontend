@@ -5,6 +5,7 @@ import { FC } from 'react';
 import Button from '@/components/Button';
 import ProgressBar from '@/components/Progress';
 import { Text } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 import { cn } from '@/lib/utils';
 
 import { constants } from './constants';
@@ -13,7 +14,7 @@ import { CourseListItemType } from './typings';
 const CourseListItem: FC<CourseListItemType> = (props) => {
   const { title, number, status, progress, onClick } = props;
 
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const progressBarValue = progress ?? 0;
   const isBlocked = status === 'BLOCKED';

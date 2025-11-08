@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { ComponentProps, ReactNode, FC } from 'react';
 
@@ -8,15 +7,16 @@ import Button from '@/components/Button';
 import CardWrapper from '@/components/CardWrapper';
 import DotTitle from '@/components/DotTitle';
 import { ExamCardPropsType, ExamStatus } from '@/components/ExamsPage/typings';
+import Link from '@/components/Link';
 import { Text } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 
 const ExamCard: FC<ExamCardPropsType> = (props) => {
   const { exam, status } = props;
 
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
-  // const { title, description, questions, time } = exam;
-  const { title, description } = exam;
+  const { title, description, questions, time } = exam;
   const router = useRouter();
   const pathname = usePathname();
 
@@ -56,8 +56,7 @@ const ExamCard: FC<ExamCardPropsType> = (props) => {
     [ExamStatus.Available]: <Text variant="l">{t('EXAMS.STATUS.AVAILABLE')}</Text>,
     [ExamStatus.Unavailable]: (
       <Text variant="l">
-        {/* need to fix */}
-        {t('EXAMS.STATUS.UNAVAILABLE')}
+        {t('EXAMS.STATUS.UNAVAILABLE', { moduleLink: exam.moduleId })}
         <Link href={`modules/${exam.moduleId}`} className="text-medium !underline">
           {t('EXAMS.STATUS.LESSONS')}
         </Link>
@@ -78,10 +77,9 @@ const ExamCard: FC<ExamCardPropsType> = (props) => {
           dotClassName="w-1 h-1"
         />
 
-        {/* need to fix */}
         <DotTitle
-          firstLabel={t('EXAMS.QUESTIONS_COUNT')}
-          secondLabel={t('EXAMS.DURATION')}
+          firstLabel={t('EXAMS.QUESTIONS_COUNT', { count: questions })}
+          secondLabel={t('EXAMS.DURATION', { time })}
           firstVariant="m"
           secondVariant="m"
           dotClassName="w-1 h-1"

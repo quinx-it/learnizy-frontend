@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { FC } from 'react';
 
 import Button from '@/components/Button';
+import Link from '@/components/Link';
+import { usePathname } from '@/hooks';
 import { cn } from '@/lib/utils';
 
 import { IDashboardLinkProps } from './typings';

@@ -8,11 +8,12 @@ import CardWrapper from '@/components/CardWrapper';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
 import { globalConstants } from '@/constants/constants';
+import { useTranslation } from '@/hooks';
 
 import { constants } from './constants';
 
 const FaqPage: FC = () => {
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   return (
     <>

@@ -8,6 +8,7 @@ import { FC } from 'react';
 
 import { ArrowRightIcon } from '@/components/Icons';
 import { Text } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 import { cn } from '@/lib/utils';
 
 import '@/components/Accordion/accordion.css';
@@ -16,7 +17,7 @@ import { AccordionReviewPropsType } from './typings';
 const AccordionReview: FC<AccordionReviewPropsType> = (props) => {
   const { items } = props;
 
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   return (
     <Accordion type="single" collapsible className={cn('w-full')}>

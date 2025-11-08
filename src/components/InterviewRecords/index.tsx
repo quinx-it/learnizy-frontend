@@ -1,17 +1,18 @@
-import Link from 'next/link';
 import { FC } from 'react';
 
 import Button from '@/components/Button';
 import CardWrapper from '@/components/CardWrapper';
+import Link from '@/components/Link';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
+import { useTranslation } from '@/hooks';
 import { cn } from '@/lib/utils';
 
 import { IInterviewRecordsProps } from './typings';
 
 const InterviewRecords: FC<IInterviewRecordsProps> = (props) => {
   const { className } = props;
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   return (
     <CardWrapper className={cn(className, 'flex flex-col gap-4')}>

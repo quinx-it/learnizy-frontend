@@ -1,18 +1,19 @@
 'use client';
 
-import Link from 'next/link';
 import { Fragment, FC } from 'react';
 
 import DotTitle from '@/components/DotTitle';
 import { ArrowRightIcon } from '@/components/Icons';
+import Link from '@/components/Link';
 import { Text } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 import { cn } from '@/lib/utils';
 
 import { constants } from './constants';
 import { IBreadcrumbsProps } from './typings';
 
 const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const {
     items,

@@ -1,7 +1,6 @@
 'use client';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useRouter, usePathname } from 'next/navigation';
 import { useState, FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -16,13 +15,14 @@ import LessonQuestion from '@/components/LessonQuestion';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
+import { usePathname, useRouter, useTranslation } from '@/hooks';
 
 import { LessonTestFormPropsType } from './typings';
 import { LessonTestFormSchema } from './validation';
 
 const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
   const { questions, onSubmit, testId, loading } = props;
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const router = useRouter();
   const pathname = usePathname();

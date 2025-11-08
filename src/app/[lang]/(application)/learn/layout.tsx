@@ -1,6 +1,5 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import { FC, PropsWithChildren } from 'react';
 
 import AuthLayout from '@/components/AuthLayout';
@@ -8,12 +7,13 @@ import ChatHeader from '@/components/ChatHeader';
 import Navbar from '@/components/navbar';
 import { navbarLinks } from '@/constants/constants';
 import { routes } from '@/constants/routes';
+import { usePathname, useTranslation } from '@/hooks';
 
 const LearnLayout: FC<PropsWithChildren> = (props) => {
   const { children } = props;
 
   const pathname = usePathname();
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const showChatHeader = pathname.startsWith('/learn/ai-assistant/chat/');
 

@@ -6,12 +6,13 @@ import { Calendar } from '@/components/Calendar';
 import { CalendarIcon } from '@/components/Icons';
 import Input from '@/components/Input';
 import Popover from '@/components/Popover';
+import { useTranslation } from '@/hooks';
 
 import { IDatePickerProps } from './typings';
 import { formatDate, parseDateString } from './utils';
 
 const DatePicker: FC<IDatePickerProps> = ({ label, value, onChange, error }) => {
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const [open, setOpen] = useState(false);
 

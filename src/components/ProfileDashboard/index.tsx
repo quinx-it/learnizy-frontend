@@ -9,9 +9,10 @@ import DashboardLink from '@/components/DashBoardLink';
 import { EditPhotoIcon, ExitIcon, LockIcon, PersonIcon } from '@/components/Icons';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
+import { useTranslation } from '@/hooks';
 
 const ProfileDashboard: FC = () => {
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   return (
     <CardWrapper className="h-full max-w-full">

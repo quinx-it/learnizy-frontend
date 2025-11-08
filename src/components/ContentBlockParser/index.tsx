@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { FC } from 'react';
 
 import {
@@ -10,6 +9,7 @@ import {
   headingVariants,
 } from '@/api/endpoints/lessons';
 import { LightbulbIcon, NotificationIcon } from '@/components/Icons';
+import Link from '@/components/Link';
 import { Heading, Text } from '@/components/Typography';
 
 import { IBlockRendererProps } from './typings';

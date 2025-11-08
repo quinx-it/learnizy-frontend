@@ -2,16 +2,17 @@ import { Metadata } from 'next';
 import { FC } from 'react';
 
 import { LandingPage } from '@/components/LandingPage';
+import { type Locale } from '@/lib/translate';
 import { getDictionary } from '@/lib/translate/getDictionary';
-import { type Locale } from '@/lib/translate/i18nConfig';
 import { getOgLocale, getBaseUrl, getFullUrl } from '@/utils';
 
 export const generateMetadata = async ({
   params,
 }: {
-  params: { lang: Locale };
+  params: Promise<{ lang: Locale }>;
 }): Promise<Metadata> => {
-  const dict = await getDictionary(params.lang);
+  const paramsBase = await params;
+  const dict = await getDictionary(paramsBase.lang);
 
   const ogLocale = getOgLocale();
   const baseUrl = getBaseUrl();

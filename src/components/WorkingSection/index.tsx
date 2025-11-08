@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { FC } from 'react';
 
 import { Text } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 import { cn } from '@/lib/utils';
 
 import { WorkingSectionPropsType } from './typings';
@@ -11,7 +12,7 @@ import { WorkingSectionPropsType } from './typings';
 const WorkingSection: FC<WorkingSectionPropsType> = (props) => {
   const { className } = props;
 
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   return (
     <div className="flex h-full items-center">

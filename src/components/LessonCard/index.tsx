@@ -4,13 +4,14 @@ import Button from '@/components/Button';
 import CardWrapper from '@/components/CardWrapper';
 import { StarIcon } from '@/components/Icons';
 import { Heading } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 import { cn, normalizeToFive } from '@/lib/utils';
 
 import { LessonCardPropsType } from './typings';
 
 const LessonCard: FC<LessonCardPropsType> = (props) => {
   const { id, title, progress, index, onClick } = props;
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const blocked = false;
   const active = true;

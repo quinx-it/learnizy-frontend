@@ -29,6 +29,7 @@ import Textarea from '@/components/Textarea';
 import { showToast } from '@/components/Toaster';
 import { routes } from '@/constants';
 import { globalConstants } from '@/constants/constants';
+import { useTranslation } from '@/hooks';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
 
@@ -81,7 +82,7 @@ const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
 const ModulesPage: FC = () => {
   const role = useSelector(selectUserRole);
   const isMentor = role === UserRole.MENTOR;
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const {
     data: modulesData,

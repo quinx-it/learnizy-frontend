@@ -1,16 +1,17 @@
 'use client';
 
 import clsx from 'clsx';
-import Link from 'next/link';
 import { useState, FC } from 'react';
 
 import Button from '@/components/Button';
 import { HeaderLogo, ExitIcon, CubesMainIcon } from '@/components/Icons';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import Link from '@/components/Link';
 import { INavbarProps } from '@/components/navbar/typings';
 import Spinner from '@/components/Spinner';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
+import { useTranslation } from '@/hooks';
 import { useLogout } from '@/hooks/useLogout';
 
 import NavbarLink from './NavbarLink';
@@ -20,7 +21,7 @@ const Navbar: FC<INavbarProps> = (props) => {
 
   const { handleLogout, isLoading } = useLogout();
   const [isOpen, setIsOpen] = useState(false);
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   return (
     <>

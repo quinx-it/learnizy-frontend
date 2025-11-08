@@ -7,9 +7,10 @@ import { CircleIcon } from '@/components/Icons';
 import InterviewQuestions from '@/components/InterviewQuestions';
 import InterviewRecords from '@/components/InterviewRecords';
 import { Heading } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 
 const KnowlegeBasePage: FC = () => {
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">

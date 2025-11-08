@@ -2,7 +2,8 @@ import { match as matchLocale } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import { NextResponse } from 'next/server';
 
-import { i18n } from '@/lib/translate/i18nConfig';
+import { excludedPaths, excludedPrefixes } from '@/constants/excludedPaths';
+import { i18n } from '@/lib/translate';
 
 import type { NextRequest } from 'next/server';
 
@@ -20,16 +21,6 @@ function getLocale(request: NextRequest): string | undefined {
 
   return locale;
 }
-
-const excludedPaths = [
-  '/manifest.json',
-  '/favicon.ico',
-  '/robots.txt',
-  '/sitemap.xml',
-  '/sitemap-0.xml',
-];
-
-const excludedPrefixes = ['/images/'];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;

@@ -10,12 +10,9 @@ import {
   staticUserRoutes,
 } from '@/constants/routes';
 import { IDecodedToken, UserRole } from '@/store/slices/auth/typings';
+import { TranslationFunction } from '@/types';
 
 import { IDecodedTokenPayload } from './typings';
-
-const i18n = {
-  t: (label: string) => label,
-};
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -103,7 +100,7 @@ export const isAudioUrl = (value: string): boolean => {
   }
 };
 
-export const formatRelativeDate = (date: Date): string => {
+export const formatRelativeDate = (date: Date, t: TranslationFunction): string => {
   const pluralize = (count: number, words: [string, string, string]): string => {
     const cases = [2, 0, 1, 1, 1, 2];
     const index = count % 100 > 4 && count % 100 < 20 ? 2 : cases[Math.min(count % 10, 5)];
@@ -118,43 +115,43 @@ export const formatRelativeDate = (date: Date): string => {
   const diffTime = today.getTime() - chatDate.getTime();
   const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
 
-  if (diffDays === 0) return i18n.t('TIME.TODAY');
+  if (diffDays === 0) return t('TIME.TODAY');
 
-  if (diffDays === 1) return i18n.t('TIME.YESTERDAY');
+  if (diffDays === 1) return t('TIME.YESTERDAY');
 
   if (diffDays <= 7) {
     return `${diffDays} ${pluralize(diffDays, [
-      i18n.t('TIME.DAY_ONE'),
-      i18n.t('TIME.DAY_TWO'),
-      i18n.t('TIME.DAY_MANY'),
-    ])} ${i18n.t('TIME.AGO')}`;
+      t('TIME.DAY_ONE'),
+      t('TIME.DAY_TWO'),
+      t('TIME.DAY_MANY'),
+    ])} ${t('TIME.AGO')}`;
   }
 
   const weeks = Math.floor(diffDays / 7);
 
   if (diffDays <= 30) {
     return `${weeks} ${pluralize(weeks, [
-      i18n.t('TIME.WEEK_ONE'),
-      i18n.t('TIME.WEEK_TWO'),
-      i18n.t('TIME.WEEK_MANY'),
-    ])} ${i18n.t('TIME.AGO')}`;
+      t('TIME.WEEK_ONE'),
+      t('TIME.WEEK_TWO'),
+      t('TIME.WEEK_MANY'),
+    ])} ${t('TIME.AGO')}`;
   }
 
   const months = Math.floor(diffDays / 30);
 
   if (diffDays <= 365) {
     return `${months} ${pluralize(months, [
-      i18n.t('TIME.MONTH_ONE'),
-      i18n.t('TIME.MONTH_TWO'),
-      i18n.t('TIME.MONTH_MANY'),
-    ])} ${i18n.t('TIME.AGO')}`;
+      t('TIME.MONTH_ONE'),
+      t('TIME.MONTH_TWO'),
+      t('TIME.MONTH_MANY'),
+    ])} ${t('TIME.AGO')}`;
   }
 
   const years = Math.floor(diffDays / 365);
 
   return `${years} ${pluralize(years, [
-    i18n.t('TIME.YEAR_ONE'),
-    i18n.t('TIME.YEAR_TWO'),
-    i18n.t('TIME.YEAR_MANY'),
-  ])} ${i18n.t('TIME.AGO')}`;
+    t('TIME.YEAR_ONE'),
+    t('TIME.YEAR_TWO'),
+    t('TIME.YEAR_MANY'),
+  ])} ${t('TIME.AGO')}`;
 };

@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 import {
   useCreateChatMutation,
@@ -12,10 +11,11 @@ import ChatInput from '@/components/ChatInput';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
+import { useRouter, useTranslation } from '@/hooks';
 
 export const AiAssistantPage = () => {
   const router = useRouter();
-  const t = (label: string) => label;
+  const { t } = useTranslation();
   const [createChat, { isLoading: isCreatingChat }] = useCreateChatMutation();
   const [sendMessage, { isLoading: isSendingMessage }] = useSendMessageMutation();
 

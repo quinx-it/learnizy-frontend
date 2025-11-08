@@ -21,6 +21,7 @@ import Button from '@/components/Button';
 import { MicChatIcon, AttachIcon, SendIcon } from '@/components/Icons';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
+import { useTranslation } from '@/hooks';
 
 import { MIN_RECORDING_DURATION_MS } from './constants';
 import { IChatInputProps, ILocalFile } from './typings';
@@ -28,7 +29,7 @@ import { IChatInputProps, ILocalFile } from './typings';
 const ChatInput: FC<IChatInputProps> = (props) => {
   const { onSendMessage, isLoading } = props;
 
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const [inputValue, setInputValue] = useState('');
   const [attachedFiles, setAttachedFiles] = useState<ILocalFile[]>([]);

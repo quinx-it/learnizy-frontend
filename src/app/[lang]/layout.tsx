@@ -2,9 +2,9 @@ import localFont from 'next/font/local';
 
 import { Toaster } from '@/components/Toaster';
 import ThemeProvider from '@/lib/materialUI';
+import { DictionaryProvider } from '@/lib/translate';
+import { i18n, type Locale } from '@/lib/translate';
 import { getDictionary } from '@/lib/translate/getDictionary';
-import { i18n, type Locale } from '@/lib/translate/i18nConfig';
-import { DictionaryProvider } from '@/providers/dictionaryProvider';
 import { getOgLocale, getBaseUrl } from '@/utils';
 
 import StoreProvider from './StoreProvider';
@@ -30,9 +30,10 @@ export const viewport: Viewport = {
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: Locale };
+  params: Promise<{ lang: Locale }>;
 }): Promise<Metadata> {
-  const dict = await getDictionary(params.lang);
+  const paramsBase = await params;
+  const dict = await getDictionary(paramsBase.lang);
 
   const alternates = i18n.locales.reduce(
     (acc, locale) => {
@@ -49,7 +50,7 @@ export async function generateMetadata({
     keywords: dict.SEO.DEFAULT.KEYWORDS,
     metadataBase: new URL(baseUrl),
     alternates: {
-      canonical: `${baseUrl}/${params.lang}/`,
+      canonical: `${baseUrl}/${paramsBase.lang}/`,
       languages: alternates,
     },
     applicationName: 'Learnizy',

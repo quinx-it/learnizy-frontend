@@ -8,12 +8,13 @@ import Button from '@/components/Button';
 import DatePicker from '@/components/DatePicker';
 import Input from '@/components/Input';
 import { RadioGroup, RadioGroupItem } from '@/components/RadioGroup';
+import { useTranslation } from '@/hooks';
 
 import { PersonalDataFormValuesType } from './typings';
 import { personalDataSchema } from './validations';
 
 const PersonalDataForm: FC = () => {
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const {
     handleSubmit,

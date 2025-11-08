@@ -8,6 +8,7 @@ import ExamCard from '@/components/ExamCard';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import { CircleIcon } from '@/components/Icons';
 import { Heading } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 
 import { ExamStatus, ExamType, ExamsPageProps } from './typings';
 
@@ -28,7 +29,7 @@ const mapExamStatus = (status: string): ExamStatus => {
 const ExamsPage: FC<ExamsPageProps> = (props) => {
   const { courseId = 1 } = props;
 
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const { data, isLoading, isError, refetch } = useGetExamsQuery({ courseId, page: 0, size: 10 });
 
@@ -46,11 +47,10 @@ const ExamsPage: FC<ExamsPageProps> = (props) => {
         <Heading variant="2xl">Java Core</Heading>
       </div>
 
-      {/* need to fix */}
       {data.content.map((examItem) => {
         const exam: ExamType = {
           ...examItem,
-          title: t('EXAMS.MODULE_TITLE'),
+          title: t('EXAMS.MODULE_TITLE', { moduleNumber: examItem.moduleSequenceOrder }),
           description: examItem.moduleTitle,
           questions: examItem.questionsCount,
           time: 20,

@@ -8,6 +8,7 @@ import { useGetChatsQuery, IChat } from '@/api/endpoints/aiAssistant';
 import Button from '@/components/Button';
 import { HistoryIcon } from '@/components/Icons';
 import { Text } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 import { formatRelativeDate } from '@/lib/utils';
 
 import { IChatHistoryProps } from './typings';
@@ -15,7 +16,7 @@ import { IChatHistoryProps } from './typings';
 const ChatHistory: FC<IChatHistoryProps> = (props) => {
   const { selectedChatId, onSelectChat, onCreateChat } = props;
 
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -30,7 +31,7 @@ const ChatHistory: FC<IChatHistoryProps> = (props) => {
     );
 
     return sortedChats.reduce((groups: { [key: string]: IChat[] }, chat) => {
-      const groupKey = formatRelativeDate(new Date(chat.updatedAt!));
+      const groupKey = formatRelativeDate(new Date(chat.updatedAt!), t);
 
       if (!groups[groupKey]) groups[groupKey] = [];
 

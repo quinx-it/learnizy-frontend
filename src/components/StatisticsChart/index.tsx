@@ -3,6 +3,7 @@ import { FC } from 'react';
 import AreaChart from '@/components/AreaChart';
 import { CalendarIcon } from '@/components/Icons';
 import { Text } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 
 import { WEEK_DAYS } from './constants';
 import { StatisticsChartPropsType } from './typings';
@@ -10,7 +11,7 @@ import { StatisticsChartPropsType } from './typings';
 const StatisticsChart: FC<StatisticsChartPropsType> = (props) => {
   const { weeklyActivity } = props;
 
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const totalLessons = weeklyActivity.reduce((acc, item) => acc + item.lessonsCompleted, 0);
   const totalTests = weeklyActivity.reduce((acc, item) => acc + item.testsPassed, 0);

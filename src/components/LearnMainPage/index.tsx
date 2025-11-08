@@ -1,6 +1,5 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 
 import { useGetMainPageProgressQuery } from '@/api/endpoints/progress';
@@ -12,12 +11,13 @@ import { ProgressStatus } from '@/components/ProgressCard/constants';
 import StatisticsChart from '@/components/StatisticsChart';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
+import { useRouter, useTranslation } from '@/hooks';
 
 import { constants } from './constants';
 
 const LearnMainPage: FC = () => {
   const router = useRouter();
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const { data: mainPageProgress, error } = useGetMainPageProgressQuery();
 
@@ -54,7 +54,7 @@ const LearnMainPage: FC = () => {
         <CardWrapper>
           <div>
             <Text variant="m-bold" className="mb-4">
-              {t('COURSE_LABEL')}{' '}
+              {t('COMMON.COURSE_LABEL')}{' '}
               <Text tag="span" className="text-medium" variant="m-bold">
                 {mainPageProgress.courseInfo.title}
               </Text>

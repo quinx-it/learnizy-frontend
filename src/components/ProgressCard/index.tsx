@@ -8,6 +8,7 @@ import CardWrapper from '@/components/CardWrapper';
 import DotTitle from '@/components/DotTitle';
 import ProgressBar from '@/components/Progress';
 import { Text } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 
 import { ProgressCardPropsType } from './typings';
 
@@ -15,7 +16,7 @@ const ProgressCard: FC<ProgressCardPropsType> = (props) => {
   const { title, subTitle, totalModules, totalLessons, lessons, status, modules, image, onClick } =
     props;
 
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const hasModules = totalModules !== undefined && modules !== undefined;
 

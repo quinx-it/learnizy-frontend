@@ -17,6 +17,7 @@ import MarkdownRenderer from '@/components/MarkdownText';
 import { showToast } from '@/components/Toaster';
 import { Heading, Text } from '@/components/Typography';
 import { routes } from '@/constants';
+import { useTranslation } from '@/hooks';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
 
@@ -26,7 +27,7 @@ import { ILessonItemPageProps } from './typings';
 const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
   const { lessonId, moduleId } = props;
 
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const router = useRouter();
   const pathname = usePathname();

@@ -1,6 +1,8 @@
+import { LANGUAGES } from '@/constants';
+
 export const i18n = {
-  defaultLocale: 'en',
-  locales: ['en', 'ru'],
+  defaultLocale: LANGUAGES.EN,
+  locales: Object.values(LANGUAGES),
 } as const;
 
 export type Locale = (typeof i18n)['locales'][number];

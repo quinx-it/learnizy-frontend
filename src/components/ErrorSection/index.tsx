@@ -3,12 +3,13 @@ import { FC } from 'react';
 
 import Button from '@/components/Button';
 import { Heading, Text } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 import { cn } from '@/lib/utils';
 
 import { ErrorPropsType, ErrorType } from './typings';
 
 const ErrorSection: FC<ErrorPropsType & ErrorType> = (props) => {
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const { className, reset } = props;
 

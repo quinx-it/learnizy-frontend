@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { memo, useMemo, FC } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -11,6 +10,7 @@ import CardWrapper from '@/components/CardWrapper';
 import DotTitle from '@/components/DotTitle';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
+import { useRouter, useTranslation } from '@/hooks';
 import { cn, pluralize } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
@@ -26,11 +26,11 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
     description,
     title,
     id,
-    // sequenceOrder,
+    sequenceOrder,
     className,
   } = props;
 
-  const t = (label: string) => label;
+  const { t } = useTranslation();
   const role = useSelector(selectUserRole);
   const isMentor = role === UserRole.MENTOR;
 
@@ -55,8 +55,9 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
     [progressStatus, active, completed, blocked],
   );
 
-  /* need to fix */
-  const moduleLabel = bonus ? t('MODULES_CARD.BONUS') : t('MODULES_CARD.MODULE');
+  const moduleLabel = bonus
+    ? t('MODULES_CARD.BONUS')
+    : t('MODULES_CARD.MODULE', { number: sequenceOrder });
 
   const lessonInfo = `${pluralize(
     totalLessons,

@@ -1,12 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { FC } from 'react';
 
 import Button from '@/components/Button';
+import Link from '@/components/Link';
 import { Heading } from '@/components/Typography';
 import { defaultPage, routes } from '@/constants';
+import { useTranslation } from '@/hooks';
 import { useAppSelector } from '@/hooks/redux';
 import { cn } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';
@@ -16,7 +17,7 @@ import { NotFoundComponentPropsType } from './typings';
 const NotFoundComponent: FC<NotFoundComponentPropsType> = (props) => {
   const { className } = props;
 
-  const t = (label: string) => label;
+  const { t } = useTranslation();
 
   const role = useAppSelector(selectUserRole);
 
