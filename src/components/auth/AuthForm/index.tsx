@@ -12,12 +12,14 @@ import { PasswordInput } from '@/components/PasswordInput';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
 import { routes } from '@/constants';
+import { useDict } from '@/providers/dictionaryProvider';
 
 import { IAuthFormValues } from './typings';
 import { formSchema } from './validation';
 
 const AuthForm: FC = () => {
   const [loginRequest, { isLoading }] = useLoginMutation();
+  const { t } = useDict();
 
   const {
     register,
@@ -45,7 +47,7 @@ const AuthForm: FC = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col gap-6">
       <Input
-        label="Введите логин"
+        label={t('COMMON.HELP_PROMPT')}
         id="username"
         autoComplete="username"
         placeholder="логин"

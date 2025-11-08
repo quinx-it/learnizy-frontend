@@ -2,7 +2,9 @@
 
 import { createContext, useContext, useMemo } from 'react';
 
-type Dict = Record<string, string | Record<string, string>>;
+export type Dict = {
+  [key: string]: string | Dict;
+};
 
 interface DictContextType {
   dict: Dict;
@@ -28,5 +30,17 @@ export const useDict = () => {
 
   if (!ctx) throw new Error('useDict must be used within DictionaryProvider');
 
-  return ctx;
+  const t = (path: string): string => {
+    const keys = path.split('.');
+
+    const result = keys.reduce<string | Dict>((acc, key) => {
+      if (typeof acc !== 'object' || acc === null) return path;
+
+      return acc[key] as string | Dict;
+    }, ctx.dict);
+
+    return typeof result === 'string' ? result : path;
+  };
+
+  return { t, lang: ctx.lang };
 };

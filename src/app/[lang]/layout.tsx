@@ -2,12 +2,14 @@ import localFont from 'next/font/local';
 
 import { Toaster } from '@/components/Toaster';
 import ThemeProvider from '@/lib/materialUI';
+import { getDictionary } from '@/lib/translate/getDictionary';
 import { i18n, type Locale } from '@/lib/translate/i18nConfig';
+import { DictionaryProvider } from '@/providers/dictionaryProvider';
 import { getOgLocale, getBaseUrl } from '@/utils';
 
 import StoreProvider from './StoreProvider';
 
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 
 import './globals.css';
 
@@ -17,42 +19,76 @@ export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
-export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
-  applicationName: 'Learnizy',
-  generator: 'Next.js',
-  icons: {
-    icon: [
-      { url: '/icons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/icons/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/icons/favicon.ico', type: 'image/x-icon' },
-    ],
-    apple: '/icons/apple-touch-icon.png',
-  },
-  manifest: '/manifest.json',
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: 'default',
-    title: 'Learnizy',
-  },
-
-  formatDetection: { telephone: false },
-  viewport: 'width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no',
-  other: {
-    'X-UA-Compatible': 'IE=edge',
-    'Content-Security-Policy': 'upgrade-insecure-requests',
-  },
-  openGraph: {
-    type: 'website',
-    siteName: 'Learnizy',
-    images: [`${baseUrl}/img/logo.png`],
-    locale: getOgLocale(),
-  },
-  twitter: {
-    card: 'summary_large_image',
-    images: [`${baseUrl}/img/logo.png`],
-  },
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: Locale };
+}): Promise<Metadata> {
+  const dict = await getDictionary(params.lang);
+
+  const alternates = i18n.locales.reduce(
+    (acc, locale) => {
+      acc[locale] = `${baseUrl}/${locale}/`;
+
+      return acc;
+    },
+    {} as Record<string, string>,
+  );
+
+  return {
+    title: dict.SEO.DEFAULT.TITLE,
+    description: dict.SEO.DEFAULT.DESCRIPTION,
+    keywords: dict.SEO.DEFAULT.KEYWORDS,
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: `${baseUrl}/${params.lang}/`,
+      languages: alternates,
+    },
+    applicationName: 'Learnizy',
+    generator: 'Next.js',
+    icons: {
+      icon: [
+        { url: '/icons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+        { url: '/icons/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+        { url: '/icons/favicon.ico', type: 'image/x-icon' },
+      ],
+      apple: '/icons/apple-touch-icon.png',
+    },
+    manifest: '/manifest.json',
+    appleWebApp: {
+      capable: true,
+      statusBarStyle: 'default',
+      title: 'Learnizy',
+    },
+
+    formatDetection: { telephone: false },
+
+    other: {
+      'X-UA-Compatible': 'IE=edge',
+      'Content-Security-Policy': 'upgrade-insecure-requests',
+    },
+    openGraph: {
+      title: dict.SEO.DEFAULT.OG_TITLE,
+      description: dict.SEO.DEFAULT.OG_DESCRIPTION,
+      type: 'website',
+      siteName: 'Learnizy',
+      images: [`${baseUrl}/img/logo.png`],
+      locale: getOgLocale(),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      images: [`${baseUrl}/img/logo.png`],
+    },
+  };
+}
 
 const involve = localFont({
   src: '../../assets/fonts/Involve-Medium.ttf',
@@ -62,6 +98,7 @@ const involve = localFont({
 async function RootLayout(props: { children: React.ReactNode; params: Promise<{ lang: Locale }> }) {
   const { children, params: paramsBase } = props;
   const params = await paramsBase;
+  const dict = await getDictionary(params.lang);
 
   const isXML = typeof window !== 'undefined' && window.location.pathname.endsWith('.xml');
 
@@ -72,8 +109,10 @@ async function RootLayout(props: { children: React.ReactNode; params: Promise<{ 
       <body>
         <StoreProvider>
           <ThemeProvider>
-            {children}
-            <Toaster />
+            <DictionaryProvider dict={dict} lang={params.lang}>
+              {children}
+              <Toaster />
+            </DictionaryProvider>
           </ThemeProvider>
         </StoreProvider>
       </body>

@@ -2,12 +2,17 @@ import { Metadata } from 'next';
 import { FC } from 'react';
 
 import { LandingPage } from '@/components/LandingPage';
+import { getDictionary } from '@/lib/translate/getDictionary';
+import { type Locale } from '@/lib/translate/i18nConfig';
 import { getOgLocale, getBaseUrl, getFullUrl } from '@/utils';
 
-export const generateMetadata = async (): Promise<Metadata> => {
-  const t = (label: string) => label;
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { lang: Locale };
+}): Promise<Metadata> => {
+  const dict = await getDictionary(params.lang);
 
-  const key = 'MAIN_PAGE_SEO';
   const ogLocale = getOgLocale();
   const baseUrl = getBaseUrl();
   const fullUrl = getFullUrl('/');
@@ -15,9 +20,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
   const noIndex = false;
 
   return {
-    title: t(`SEO.${key}.TITLE`),
-    description: t(`SEO.${key}.DESCRIPTION`),
-    keywords: t(`SEO.${key}.KEYWORDS`),
+    title: dict.SEO.MAIN_PAGE_SEO.TITLE,
+    description: dict.SEO.MAIN_PAGE_SEO.DESCRIPTION,
+    keywords: dict.SEO.MAIN_PAGE_SEO.KEYWORDS,
     alternates: {
       canonical: fullUrl,
       languages: {
@@ -26,14 +31,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
     },
     robots: noIndex ? 'noindex, nofollow' : 'index, follow',
     openGraph: {
-      title: t(`SEO.${key}.OG_TITLE`),
-      description: t(`SEO.${key}.OG_DESCRIPTION`),
+      title: dict.SEO.MAIN_PAGE_SEO.OG_TITLE,
+      description: dict.SEO.MAIN_PAGE_SEO.OG_DESCRIPTION,
       images: [`${baseUrl}/img/logo.png`],
       locale: ogLocale,
     },
     twitter: {
-      title: t(`SEO.${key}.OG_TITLE`),
-      description: t(`SEO.${key}.OG_DESCRIPTION`),
+      title: dict.SEO.MAIN_PAGE_SEO.OG_TITLE,
+      description: dict.SEO.MAIN_PAGE_SEO.OG_DESCRIPTION,
       images: [`${baseUrl}/img/logo.png`],
     },
   };

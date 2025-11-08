@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { PropsWithChildren, useEffect, FC } from 'react';
 
 import { useRefreshMutation } from '@/api/endpoints/auth';
@@ -16,6 +16,7 @@ import {
   dynamicMentorRoutes,
 } from '@/constants/routes';
 import { useAppSelector } from '@/hooks/redux';
+import { useRouter } from '@/hooks/useRouter';
 import { isRoleRoute } from '@/lib/utils';
 import { selectToken, selectUserRole } from '@/store/slices/auth/selectors';
 
@@ -36,6 +37,8 @@ const ApplicationLayout: FC<PropsWithChildren> = (props) => {
   const router = useRouter();
   const accessToken = useAppSelector(selectToken);
   const role = useAppSelector(selectUserRole);
+
+  const cleanPath = pathname.replace(/^\/(ru|en)(?=\/|$)/, '');
 
   useEffect(() => {
     refreshAccessToken();
@@ -68,7 +71,7 @@ const ApplicationLayout: FC<PropsWithChildren> = (props) => {
   if (role && (!isRoleRoute(role, pathname) || pathname === routes.public.loginPage))
     return <FullscreenLoader />;
 
-  if (!isValidRoute(pathname)) return <NotFoundPage />;
+  if (!isValidRoute(cleanPath)) return <NotFoundPage />;
 
   return children;
 };
