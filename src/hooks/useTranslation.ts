@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 
 import { DictContext } from '@/lib/translate';
-import { Dict, TranslationFunction } from '@/types';
+import { DictionaryType, TranslationFunctionType } from '@/types';
 
 interface UseTranslationReturn {
-  t: TranslationFunction;
+  t: TranslationFunctionType;
   lang: string;
 }
 
@@ -16,10 +16,10 @@ export const useTranslation = (): UseTranslationReturn => {
   const t = (path: string, values?: Record<string, string | number>): string => {
     const keys = path.split('.');
 
-    const result = keys.reduce<string | Dict>((acc, key) => {
+    const result = keys.reduce<string | DictionaryType>((acc, key) => {
       if (typeof acc !== 'object' || acc === null) return path;
 
-      return acc[key] as string | Dict;
+      return acc[key] as string | DictionaryType;
     }, ctx.dict);
 
     if (typeof result !== 'string') return path;

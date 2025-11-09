@@ -1,8 +1,8 @@
-export type Dict = {
-  [key: string]: string | Dict;
+export type DictionaryType = {
+  [key: string]: string | DictionaryType;
 };
 
-export type TranslationFunction = (
+export type TranslationFunctionType = (
   path: string,
   values?: Record<string, string | number>,
 ) => string;

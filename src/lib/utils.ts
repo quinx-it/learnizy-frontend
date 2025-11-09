@@ -10,7 +10,7 @@ import {
   staticUserRoutes,
 } from '@/constants/routes';
 import { IDecodedToken, UserRole } from '@/store/slices/auth/typings';
-import { TranslationFunction } from '@/types';
+import { TranslationFunctionType } from '@/types';
 
 import { IDecodedTokenPayload } from './typings';
 
@@ -100,7 +100,7 @@ export const isAudioUrl = (value: string): boolean => {
   }
 };
 
-export const formatRelativeDate = (date: Date, t: TranslationFunction): string => {
+export const formatRelativeDate = (date: Date, t: TranslationFunctionType): string => {
   const pluralize = (count: number, words: [string, string, string]): string => {
     const cases = [2, 0, 1, 1, 1, 2];
     const index = count % 100 > 4 && count % 100 < 20 ? 2 : cases[Math.min(count % 10, 5)];

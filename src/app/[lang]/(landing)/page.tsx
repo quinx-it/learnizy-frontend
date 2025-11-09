@@ -12,9 +12,10 @@ export const generateMetadata = async ({
   params: Promise<{ lang: Locale }>;
 }): Promise<Metadata> => {
   const paramsBase = await params;
-  const dict = await getDictionary(paramsBase.lang);
+  const { lang } = paramsBase;
+  const dict = await getDictionary(lang);
 
-  const ogLocale = getOgLocale();
+  const ogLocale = getOgLocale(lang);
   const baseUrl = getBaseUrl();
   const fullUrl = getFullUrl('/');
 

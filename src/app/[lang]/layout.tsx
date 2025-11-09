@@ -33,7 +33,8 @@ export async function generateMetadata({
   params: Promise<{ lang: Locale }>;
 }): Promise<Metadata> {
   const paramsBase = await params;
-  const dict = await getDictionary(paramsBase.lang);
+  const { lang } = paramsBase;
+  const dict = await getDictionary(lang);
 
   const alternates = i18n.locales.reduce(
     (acc, locale) => {
@@ -50,7 +51,7 @@ export async function generateMetadata({
     keywords: dict.SEO.DEFAULT.KEYWORDS,
     metadataBase: new URL(baseUrl),
     alternates: {
-      canonical: `${baseUrl}/${paramsBase.lang}/`,
+      canonical: `${baseUrl}/${lang}/`,
       languages: alternates,
     },
     applicationName: 'Learnizy',
@@ -82,7 +83,7 @@ export async function generateMetadata({
       type: 'website',
       siteName: 'Learnizy',
       images: [`${baseUrl}/img/logo.png`],
-      locale: getOgLocale(),
+      locale: getOgLocale(lang),
     },
     twitter: {
       card: 'summary_large_image',

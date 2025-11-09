@@ -3,8 +3,4 @@ const localeMap: Record<string, string> = {
   en: 'en_US',
 };
 
-export const getOgLocale = (): string => {
-  const lang = 'en_US';
-
-  return localeMap[lang];
-};
+export const getOgLocale = (lang: string): string => localeMap[lang] || localeMap.en;

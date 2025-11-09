@@ -1,3 +1,5 @@
+// https://github.com/vercel/next.js/blob/canary/examples/i18n-routing/middleware.ts
+
 import { match as matchLocale } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import { NextResponse } from 'next/server';

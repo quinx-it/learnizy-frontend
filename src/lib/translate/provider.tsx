@@ -2,15 +2,15 @@
 
 import { createContext, useMemo } from 'react';
 
-import { Dict } from '@/types';
+import { type DictionaryType } from '@/types';
 
 interface DictContextType {
-  dict: Dict;
+  dict: DictionaryType;
   lang: string;
 }
 
 interface DictionaryProviderProps {
-  dict: Dict;
+  dict: DictionaryType;
   lang: string;
   children: React.ReactNode;
 }
