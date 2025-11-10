@@ -7,7 +7,24 @@ import remarkGfm from 'remark-gfm';
 
 import { IMarkdownRendererProps } from './typings';
 
-import * as S from './styles';
+import {
+  Anchor,
+  Blockquote,
+  CodeBlock,
+  HorizontalRule,
+  Image as StyledImage,
+  InlineCode,
+  ListItem,
+  OrderedList,
+  Paragraph,
+  Preformatted,
+  StyledTable,
+  TableCell,
+  TableHeaderCell,
+  TableWrapper,
+  UnorderedList,
+  Wrapper,
+} from './styles';
 
 const MarkdownRenderer: FC<IMarkdownRendererProps> = (props) => {
   const { text = '', className } = props;
@@ -18,46 +35,46 @@ const MarkdownRenderer: FC<IMarkdownRendererProps> = (props) => {
 
       if (!inline && match) {
         return (
-          <S.CodeBlock
+          <CodeBlock
             style={{ ...coldarkDark } as { [key: string]: CSSProperties }}
             language={match[1]}
             PreTag="div"
             {...props}
           >
             {String(children).replace(/\n$/, '')}
-          </S.CodeBlock>
+          </CodeBlock>
         );
       }
 
-      return <S.InlineCode {...props}>{children}</S.InlineCode>;
+      return <InlineCode {...props}>{children}</InlineCode>;
     }) as FC<{ inline?: boolean; className?: string; children?: ReactNode }>,
-    p: ({ children, ...props }) => <S.Paragraph {...props}>{children}</S.Paragraph>,
-    li: ({ children, ...props }) => <S.ListItem {...props}>{children}</S.ListItem>,
-    ul: ({ children, ...props }) => <S.UnorderedList {...props}>{children}</S.UnorderedList>,
-    ol: ({ children, ...props }) => <S.OrderedList {...props}>{children}</S.OrderedList>,
+    p: ({ children, ...props }) => <Paragraph {...props}>{children}</Paragraph>,
+    li: ({ children, ...props }) => <ListItem {...props}>{children}</ListItem>,
+    ul: ({ children, ...props }) => <UnorderedList {...props}>{children}</UnorderedList>,
+    ol: ({ children, ...props }) => <OrderedList {...props}>{children}</OrderedList>,
     table: ({ children, ...props }) => (
-      <S.TableWrapper>
-        <S.StyledTable {...props}>{children}</S.StyledTable>
-      </S.TableWrapper>
+      <TableWrapper>
+        <StyledTable {...props}>{children}</StyledTable>
+      </TableWrapper>
     ),
 
     thead: ({ children, ...props }) => <thead {...props}>{children}</thead>,
     tbody: ({ children, ...props }) => <tbody {...props}>{children}</tbody>,
     tr: ({ children, ...props }) => <tr {...props}>{children}</tr>,
-    th: ({ children, ...props }) => <S.TableHeaderCell {...props}>{children}</S.TableHeaderCell>,
-    td: ({ children, ...props }) => <S.TableCell {...props}>{children}</S.TableCell>,
-    blockquote: ({ children, ...props }) => <S.Blockquote {...props}>{children}</S.Blockquote>,
+    th: ({ children, ...props }) => <TableHeaderCell {...props}>{children}</TableHeaderCell>,
+    td: ({ children, ...props }) => <TableCell {...props}>{children}</TableCell>,
+    blockquote: ({ children, ...props }) => <Blockquote {...props}>{children}</Blockquote>,
     a: ({ children, href, ...props }) => (
-      <S.Anchor href={href} {...props}>
+      <Anchor href={href} {...props}>
         {children}
-      </S.Anchor>
+      </Anchor>
     ),
     em: ({ children, ...props }) => <em {...props}>{children}</em>,
     strong: ({ children, ...props }) => <strong {...props}>{children}</strong>,
     del: ({ children, ...props }) => <del {...props}>{children}</del>,
-    hr: (props) => <S.HorizontalRule {...props} />,
-    img: ({ src, alt, ...props }) => <S.Image src={src} alt={alt} {...props} />,
-    pre: ({ children, ...props }) => <S.Preformatted {...props}>{children}</S.Preformatted>,
+    hr: (props) => <HorizontalRule {...props} />,
+    img: ({ src, alt, ...props }) => <StyledImage src={src} alt={alt} {...props} />,
+    pre: ({ children, ...props }) => <Preformatted {...props}>{children}</Preformatted>,
   };
 
   const normalizeMarkdown = (input: string) =>
@@ -68,11 +85,11 @@ const MarkdownRenderer: FC<IMarkdownRendererProps> = (props) => {
       .trim();
 
   return (
-    <S.Wrapper className={className}>
+    <Wrapper className={className}>
       <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
         {normalizeMarkdown(text)}
       </ReactMarkdown>
-    </S.Wrapper>
+    </Wrapper>
   );
 };
 
