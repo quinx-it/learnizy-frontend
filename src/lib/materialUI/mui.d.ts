@@ -9,4 +9,12 @@ declare module '@mui/material/styles' {
     xl: true;
     '2xl': true;
   }
+
+  interface Palette {
+    link: Palette['primary'];
+  }
+
+  interface PaletteOptions {
+    link?: PaletteOptions['primary'];
+  }
 }

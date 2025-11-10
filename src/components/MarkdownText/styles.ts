@@ -1,123 +1,88 @@
-import {
-  Box,
-  Link as MuiLink,
-  styled,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Typography,
-} from '@mui/material';
+import { styled } from '@mui/material';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
-export const Container = styled(Box)(() => ({}));
+export const Wrapper = styled('div')(() => ({}));
 
-export const CodeBlockWrapper = styled(Box)(({ theme }) => ({
-  marginTop: theme.spacing(1),
-  marginBottom: theme.spacing(1),
-  '& pre': {
-    margin: 0,
-    overflowX: 'auto',
-    borderRadius: theme.shape.borderRadius,
-    padding: theme.spacing(2),
-    fontSize: '0.875rem',
-  },
-}));
-
-export const InlineCode = styled('code')(({ theme }) => {
-  const borderRadius =
-    typeof theme.shape.borderRadius === 'number' ? theme.shape.borderRadius / 3 : 4;
-
-  return {
-    borderRadius,
-    backgroundColor:
-      theme.palette.mode === 'light'
-        ? theme.palette.background.default
-        : theme.palette.background.paper,
-    padding: `${theme.spacing(0.125)} ${theme.spacing(0.5)}`,
-    fontSize: '0.875rem',
-  };
-});
-
-export const Paragraph = styled(Typography)(({ theme }) => ({
-  marginBottom: theme.spacing(1),
-  lineHeight: 1.75,
-  margin: 0,
-}));
-
-export const ListItem = styled('li')(({ theme }) => ({
-  marginBottom: theme.spacing(0.25),
-  marginLeft: theme.spacing(2),
-  listStyleType: 'disc',
-}));
-
-export const UnorderedList = styled('ul')(({ theme }) => ({
-  marginBottom: theme.spacing(1),
-  marginLeft: theme.spacing(2),
-  listStyleType: 'disc',
-}));
-
-export const OrderedList = styled('ol')(({ theme }) => ({
-  marginBottom: theme.spacing(1),
-  marginLeft: theme.spacing(2),
-  listStyleType: 'decimal',
-}));
-
-export const TableWrapper = styled(TableContainer)(({ theme }) => ({
-  marginBottom: theme.spacing(2),
-  maxWidth: '100%',
-}));
-
-export const StyledTable = styled(Table)(({ theme }) => ({
-  minWidth: '100%',
-  borderCollapse: 'collapse',
-  border: `1px solid ${theme.palette.divider}`,
+export const CodeBlock = styled(SyntaxHighlighter)(() => ({
+  margin: '0.5rem 0',
+  overflowX: 'auto',
+  borderRadius: '0.5rem',
+  padding: '1rem',
   fontSize: '0.875rem',
 }));
 
-export const StyledTableHead = styled(TableHead)(() => ({}));
+export const InlineCode = styled('code')(({ theme }) => ({
+  borderRadius: '0.25rem',
+  backgroundColor: theme.palette.grey[100],
+  padding: '0.125rem 0.25rem',
+  fontSize: '0.875rem',
+}));
 
-export const StyledTableBody = styled(TableBody)(() => ({}));
+export const Paragraph = styled('p')(() => ({
+  marginBottom: '0.5rem',
+  lineHeight: 1.625,
+}));
 
-export const StyledTableRow = styled(TableRow)(() => ({}));
+export const ListItem = styled('li')(() => ({
+  marginBottom: '0.25rem',
+  marginLeft: '1rem',
+  listStyle: 'disc',
+}));
 
-export const StyledTableHeader = styled(TableCell)(({ theme }) => ({
-  border: `1px solid ${theme.palette.divider}`,
-  backgroundColor:
-    theme.palette.mode === 'light'
-      ? theme.palette.background.default
-      : theme.palette.background.paper,
-  padding: `${theme.spacing(0.5)} ${theme.spacing(1)}`,
+export const UnorderedList = styled('ul')(() => ({
+  marginBottom: '0.5rem',
+  marginLeft: '1rem',
+  listStyle: 'disc',
+}));
+
+export const OrderedList = styled('ol')(() => ({
+  marginBottom: '0.5rem',
+  marginLeft: '1rem',
+  listStyle: 'decimal',
+}));
+
+export const TableWrapper = styled('div')(() => ({
+  marginBottom: '1rem',
+  maxWidth: '100%',
+  overflowX: 'auto',
+}));
+
+export const StyledTable = styled('table')(({ theme }) => ({
+  minWidth: '100%',
+  borderCollapse: 'collapse',
+  border: `1px solid ${theme.palette.grey[300]}`,
+  fontSize: '0.875rem',
+}));
+
+export const TableHeaderCell = styled('th')(({ theme }) => ({
+  border: `1px solid ${theme.palette.grey[300]}`,
+  backgroundColor: theme.palette.grey[100],
+  padding: '0.25rem 0.5rem',
   textAlign: 'left',
   fontSize: '0.875rem',
   fontWeight: 600,
 }));
 
-export const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  border: `1px solid ${theme.palette.divider}`,
-  padding: `${theme.spacing(0.5)} ${theme.spacing(1)}`,
+export const TableCell = styled('td')(({ theme }) => ({
+  border: `1px solid ${theme.palette.grey[300]}`,
+  padding: '0.25rem 0.5rem',
 }));
 
 export const Blockquote = styled('blockquote')(({ theme }) => ({
-  marginBottom: theme.spacing(1),
-  borderLeft: `4px solid ${theme.palette.divider}`,
-  paddingLeft: theme.spacing(2),
+  marginBottom: '0.5rem',
+  borderLeft: `4px solid ${theme.palette.grey[400]}`,
+  paddingLeft: '1rem',
   fontStyle: 'italic',
 }));
 
-export const StyledLink = styled(MuiLink)(({ theme }) => ({
-  color: theme.palette.primary.main,
+export const Anchor = styled('a')(({ theme }) => ({
+  color: theme.palette.link.main,
   textDecoration: 'underline',
-  '&:hover': {
-    textDecoration: 'underline',
-  },
 }));
 
 export const HorizontalRule = styled('hr')(({ theme }) => ({
-  marginTop: theme.spacing(2),
-  marginBottom: theme.spacing(2),
-  borderColor: theme.palette.divider,
+  margin: '1rem 0',
+  borderColor: theme.palette.grey[300],
 }));
 
 export const Image = styled('img')(() => ({
@@ -125,6 +90,6 @@ export const Image = styled('img')(() => ({
   borderRadius: '0.25rem',
 }));
 
-export const Pre = styled('pre')(({ theme }) => ({
-  marginBottom: theme.spacing(1),
+export const Preformatted = styled('pre')(() => ({
+  marginBottom: '0.5rem',
 }));
