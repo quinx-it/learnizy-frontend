@@ -1,13 +1,13 @@
 'use client';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import Link from 'next/link';
 import { FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { useLoginMutation } from '@/api/endpoints/auth';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
+import Link from '@/components/Link';
 import { PasswordInput } from '@/components/PasswordInput';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';

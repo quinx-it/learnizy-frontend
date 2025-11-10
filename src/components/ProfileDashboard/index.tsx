@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import Button from '@/components/Button';
 import CardWrapper from '@/components/CardWrapper';
@@ -10,6 +9,7 @@ import DashboardLink from '@/components/DashBoardLink';
 import { EditPhotoIcon, ExitIcon, LockIcon, PersonIcon } from '@/components/Icons';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
+import { useTranslation } from '@/hooks';
 
 const ProfileDashboard: FC = () => {
   const { t } = useTranslation();

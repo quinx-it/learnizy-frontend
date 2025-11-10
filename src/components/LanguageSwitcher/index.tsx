@@ -1,51 +1,47 @@
 'use client';
 
-import { useState, useEffect, useRef, FC } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useState, useRef, FC } from 'react';
 
-import { DEFAULT_LANGUAGE } from '@/constants';
-import i18n from '@/lib/translate';
+import { LANGUAGES } from '@/constants';
 
 const LanguageSwitcher: FC = () => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const setCookie = (name: string, value: string, days: number) => {
     const expires = new Date(Date.now() + days * 864e5).toUTCString();
     document.cookie = `${name}=${value}; expires=${expires}; path=/`;
   };
 
-  const getCookie = (name: string) => {
-    return document.cookie
-      .split('; ')
-      .find((row) => row.startsWith(`${name}=`))
-      ?.split('=')[1];
-  };
-
-  const changeLanguage = (lng: string) => {
-    const lang = lng || DEFAULT_LANGUAGE;
-    i18n.changeLanguage(lang);
+  const changeLanguage = (lng: LANGUAGES) => {
+    const lang = lng || LANGUAGES.EN;
     setCookie('language', lang, 365);
+
+    const segments = pathname.split('/').filter(Boolean);
+    const allLangs = Object.values(LANGUAGES);
+
+    if (segments.length > 0 && allLangs.includes(segments[0] as LANGUAGES)) {
+      segments[0] = lang;
+    } else {
+      segments.unshift(lang);
+    }
+
+    router.push(`/${segments.join('/')}`);
     setOpen(false);
   };
 
-  useEffect(() => {
-    const savedLang = getCookie('language');
-
-    if (savedLang) {
-      i18n.changeLanguage(savedLang);
-    } else {
-      i18n.changeLanguage(DEFAULT_LANGUAGE);
+  const handleClickOutside = (e: MouseEvent) => {
+    if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+      setOpen(false);
     }
+  };
 
-    const handleClickOutside = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
-    };
+  if (typeof window !== 'undefined') {
     document.addEventListener('click', handleClickOutside);
-
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, []);
+  }
 
   return (
     <div className="relative flex w-full justify-end pr-4" ref={menuRef}>
@@ -54,7 +50,7 @@ const LanguageSwitcher: FC = () => {
         onClick={() => setOpen((prev) => !prev)}
         className="flex items-center gap-2 rounded-md border border-gray-300 px-3 py-1 text-sm hover:bg-gray-100"
       >
-        {i18n.language?.toUpperCase() || DEFAULT_LANGUAGE.toUpperCase()}
+        {pathname.split('/')[1]?.toUpperCase() || LANGUAGES.EN.toUpperCase()}
       </button>
 
       <div
@@ -66,14 +62,14 @@ const LanguageSwitcher: FC = () => {
       >
         <button
           type="button"
-          onClick={() => changeLanguage('en')}
+          onClick={() => changeLanguage(LANGUAGES.EN)}
           className="block w-full px-3 py-2 text-left text-sm hover:bg-gray-100"
         >
           English
         </button>
         <button
           type="button"
-          onClick={() => changeLanguage('ru')}
+          onClick={() => changeLanguage(LANGUAGES.RU)}
           className="block w-full px-3 py-2 text-left text-sm hover:bg-gray-100"
         >
           Русский

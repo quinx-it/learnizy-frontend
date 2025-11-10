@@ -1,11 +1,11 @@
 'use client';
 
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import Button from '@/components/Button';
 import ProgressBar from '@/components/Progress';
 import { Text } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 import { cn } from '@/lib/utils';
 
 import { constants } from './constants';

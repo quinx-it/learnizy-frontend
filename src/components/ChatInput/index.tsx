@@ -14,7 +14,6 @@ import {
   useEffect,
   useCallback,
 } from 'react';
-import { useTranslation } from 'react-i18next';
 import WaveSurfer from 'wavesurfer.js';
 
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
@@ -22,6 +21,7 @@ import Button from '@/components/Button';
 import { MicChatIcon, AttachIcon, SendIcon } from '@/components/Icons';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
+import { useTranslation } from '@/hooks';
 
 import { MIN_RECORDING_DURATION_MS } from './constants';
 import { IChatInputProps, ILocalFile } from './typings';

@@ -1,12 +1,12 @@
 'use client';
 
 import { useState, useEffect, FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { Calendar } from '@/components/Calendar';
 import { CalendarIcon } from '@/components/Icons';
 import Input from '@/components/Input';
 import Popover from '@/components/Popover';
+import { useTranslation } from '@/hooks';
 
 import { IDatePickerProps } from './typings';
 import { formatDate, parseDateString } from './utils';

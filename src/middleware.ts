@@ -1,0 +1,51 @@
+// https://github.com/vercel/next.js/blob/canary/examples/i18n-routing/middleware.ts
+
+import { match as matchLocale } from '@formatjs/intl-localematcher';
+import Negotiator from 'negotiator';
+import { NextResponse } from 'next/server';
+
+import { excludedPaths, excludedPrefixes } from '@/constants/excludedPaths';
+import { i18n } from '@/lib/translate';
+
+import type { NextRequest } from 'next/server';
+
+function getLocale(request: NextRequest): string | undefined {
+  const negotiatorHeaders: Record<string, string> = {};
+  request.headers.forEach((value, key) => {
+    negotiatorHeaders[key] = value;
+  });
+
+  const locales = Array.from(i18n.locales);
+
+  const languages = new Negotiator({ headers: negotiatorHeaders }).languages(locales);
+
+  const locale = matchLocale(languages, locales, i18n.defaultLocale);
+
+  return locale;
+}
+
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  const isExcluded =
+    excludedPaths.includes(pathname) ||
+    excludedPrefixes.some((prefix) => pathname.startsWith(prefix));
+
+  if (isExcluded) return;
+
+  const pathnameIsMissingLocale = i18n.locales.every(
+    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
+  );
+
+  if (pathnameIsMissingLocale) {
+    const locale = getLocale(request);
+
+    const normalizedPath = pathname.startsWith('/') ? pathname : `/${pathname}`;
+
+    return NextResponse.redirect(new URL(`/${locale}${normalizedPath}`, request.url));
+  }
+}
+
+export const config = {
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+};

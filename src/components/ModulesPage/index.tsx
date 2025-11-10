@@ -1,7 +1,6 @@
 'use client';
 
 import { FC, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import {
@@ -30,6 +29,7 @@ import Textarea from '@/components/Textarea';
 import { showToast } from '@/components/Toaster';
 import { routes } from '@/constants';
 import { globalConstants } from '@/constants/constants';
+import { useTranslation } from '@/hooks';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
 

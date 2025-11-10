@@ -1,7 +1,6 @@
 'use client';
 
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import CardAccordion from '@/components/Accordion';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -9,6 +8,7 @@ import CardWrapper from '@/components/CardWrapper';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
 import { globalConstants } from '@/constants/constants';
+import { useTranslation } from '@/hooks';
 
 import { constants } from './constants';
 

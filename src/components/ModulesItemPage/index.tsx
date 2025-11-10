@@ -1,9 +1,7 @@
 'use client';
 
-import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { FC, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import {
@@ -29,11 +27,13 @@ import FullscreenLoader from '@/components/FullscreenLoader';
 import { CheckIcon, LockColorIcon } from '@/components/Icons';
 import Input from '@/components/Input';
 import LessonCard from '@/components/LessonCard';
+import Link from '@/components/Link';
 import ProgressBar from '@/components/Progress';
 import Textarea from '@/components/Textarea';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
+import { useTranslation } from '@/hooks';
 import { percentage, pluralize } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';

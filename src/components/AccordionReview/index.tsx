@@ -5,10 +5,10 @@ import {
   AccordionTrigger,
 } from '@radix-ui/react-accordion';
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { ArrowRightIcon } from '@/components/Icons';
 import { Text } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 import { cn } from '@/lib/utils';
 
 import '@/components/Accordion/accordion.css';

@@ -1,8 +1,6 @@
 'use client';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useState, useEffect, ChangeEvent, FC } from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 
@@ -14,11 +12,13 @@ import {
 import Button from '@/components/Button';
 import CheckboxWithLabel from '@/components/CheckboxWithLabel';
 import Input from '@/components/Input';
+import Link from '@/components/Link';
 import { PasswordInput } from '@/components/PasswordInput';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
 import { Heading, Text } from '@/components/Typography';
 import { routes, HttpStatus } from '@/constants';
+import { useRouter } from '@/hooks';
 
 import { VerificationFormValuesType, RegisterStep, IRegisterFormValues } from './typings';
 import { formSchema, verificationSchema } from './validation';

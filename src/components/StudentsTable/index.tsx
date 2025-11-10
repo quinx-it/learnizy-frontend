@@ -1,11 +1,11 @@
 'use client';
 
 import { Copy, Edit3 } from 'lucide-react';
-import Link from 'next/link';
 import { useState, FC } from 'react';
 
 import Button from '@/components/Button';
 import { ArrowRightIcon, PersonIcon } from '@/components/Icons';
+import Link from '@/components/Link';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
 

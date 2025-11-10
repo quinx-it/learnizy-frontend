@@ -1,7 +1,6 @@
 'use client';
 
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { LessonTestSubmitType, useSendTestMutation } from '@/api/endpoints/test';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -12,6 +11,7 @@ import LessonTestForm from '@/components/LessonTestForm';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
 import { globalConstants, routes } from '@/constants';
+import { useTranslation } from '@/hooks';
 
 import { constants, TestType } from './constants';
 import { TestPagePropsType } from './typings';

@@ -1,11 +1,11 @@
 'use client';
 
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import CardWrapper from '@/components/CardWrapper';
 import PersonalDataForm from '@/components/PersonalDataForm';
 import { Heading } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 
 const PersonalData: FC = () => {
   const { t } = useTranslation();

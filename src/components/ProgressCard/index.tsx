@@ -2,13 +2,13 @@
 
 import Image from 'next/image';
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import Button from '@/components/Button';
 import CardWrapper from '@/components/CardWrapper';
 import DotTitle from '@/components/DotTitle';
 import ProgressBar from '@/components/Progress';
 import { Text } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 
 import { ProgressCardPropsType } from './typings';
 

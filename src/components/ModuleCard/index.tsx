@@ -1,9 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { memo, useMemo, FC } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { IModuleInfo } from '@/api/endpoints/modules';
@@ -12,6 +10,7 @@ import CardWrapper from '@/components/CardWrapper';
 import DotTitle from '@/components/DotTitle';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
+import { useRouter, useTranslation } from '@/hooks';
 import { cn, pluralize } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';

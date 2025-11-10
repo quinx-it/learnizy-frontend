@@ -1,7 +1,6 @@
 'use client';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useRouter } from 'next/navigation';
 import { useState, useEffect, FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
@@ -11,6 +10,7 @@ import { PasswordInput } from '@/components/PasswordInput';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
 import { routes } from '@/constants';
+import { useRouter } from '@/hooks';
 
 import { IResetPasswordFormProps } from './typings';
 import { IResetPasswordFormValues, formSchema } from './validation';

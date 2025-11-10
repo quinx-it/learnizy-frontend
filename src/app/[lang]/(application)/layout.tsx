@@ -1,6 +1,5 @@
 'use client';
 
-import { useRouter, usePathname } from 'next/navigation';
 import { PropsWithChildren, useEffect, FC } from 'react';
 
 import { useRefreshMutation } from '@/api/endpoints/auth';
@@ -15,6 +14,7 @@ import {
   staticMentorRoutes,
   dynamicMentorRoutes,
 } from '@/constants/routes';
+import { useRouter, usePathname } from '@/hooks';
 import { useAppSelector } from '@/hooks/redux';
 import { isRoleRoute } from '@/lib/utils';
 import { selectToken, selectUserRole } from '@/store/slices/auth/selectors';

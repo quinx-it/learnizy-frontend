@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { Text } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 import { cn } from '@/lib/utils';
 
 import { WorkingSectionPropsType } from './typings';

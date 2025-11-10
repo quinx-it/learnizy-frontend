@@ -2,11 +2,11 @@
 
 import { FC } from 'react';
 import { Controller, useFormContext, useWatch } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
 
 import { RadioGroup } from '@/components/RadioGroup';
 import Textarea from '@/components/Textarea';
 import { Text } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 
 import { LessonQuestionPropsType } from './typings';
 

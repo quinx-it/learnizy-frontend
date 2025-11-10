@@ -141,10 +141,10 @@ import Image from 'next/image';
 
 - Изображения размещайте в папке `public` проекта.
 
-- Для навигации используйте компонент `Link` из Next.js:
+- Для навигации используйте компонент `Link` из `components`:
 
 ```tsx
-import Link from 'next/link';
+import Link from '@/components/Link';
 
 <Link href="/blog">Blog</Link>;
 ```

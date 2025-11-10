@@ -1,12 +1,12 @@
 'use client';
 
-import Link from 'next/link';
 import { Fragment, FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import DotTitle from '@/components/DotTitle';
 import { ArrowRightIcon } from '@/components/Icons';
+import Link from '@/components/Link';
 import { Text } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 import { cn } from '@/lib/utils';
 
 import { constants } from './constants';

@@ -24,12 +24,6 @@ export const globalConstants = {
   },
 };
 
-export enum Language {
-  ru = 'ru',
-}
-
-export const DEFAULT_LANGUAGE = Language.ru;
-
 export enum HttpStatus {
   OK = 200,
   CREATED = 201,

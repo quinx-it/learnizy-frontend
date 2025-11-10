@@ -1,7 +1,6 @@
 'use client';
 
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { useGetExamsQuery } from '@/api/endpoints/exams';
 import ErrorSection from '@/components/ErrorSection';
@@ -9,6 +8,7 @@ import ExamCard from '@/components/ExamCard';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import { CircleIcon } from '@/components/Icons';
 import { Heading } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 
 import { ExamStatus, ExamType, ExamsPageProps } from './typings';
 
