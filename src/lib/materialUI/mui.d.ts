@@ -1,7 +1,8 @@
 import '@mui/material/styles';
+import type { PaletteColor, PaletteColorOptions } from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
-  interface BreakpointOverrides {
+  interface IBreakpointOverrides {
     xs: true;
     sm: true;
     md: true;
@@ -10,11 +11,20 @@ declare module '@mui/material/styles' {
     '2xl': true;
   }
 
-  interface Palette {
-    link: Palette['primary'];
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+  interface BreakpointOverrides extends IBreakpointOverrides {}
+
+  interface IPalette {
+    link: PaletteColor;
   }
 
-  interface PaletteOptions {
-    link?: PaletteOptions['primary'];
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+  interface Palette extends IPalette {}
+
+  interface IPaletteOptions {
+    link?: PaletteColorOptions;
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+  interface PaletteOptions extends IPaletteOptions {}
 }

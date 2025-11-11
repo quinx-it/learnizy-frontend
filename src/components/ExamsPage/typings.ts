@@ -19,6 +19,6 @@ export type ExamCardPropsType = {
   status: ExamStatus;
 };
 
-export interface ExamsPageProps {
+export interface IExamsPageProps {
   courseId?: number;
 }

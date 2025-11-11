@@ -48,33 +48,29 @@ const MarkdownRenderer: FC<IMarkdownRendererProps> = (props) => {
 
       return <InlineCode {...props}>{children}</InlineCode>;
     }) as FC<{ inline?: boolean; className?: string; children?: ReactNode }>,
-    p: ({ children, ...props }) => <Paragraph {...props}>{children}</Paragraph>,
-    li: ({ children, ...props }) => <ListItem {...props}>{children}</ListItem>,
-    ul: ({ children, ...props }) => <UnorderedList {...props}>{children}</UnorderedList>,
-    ol: ({ children, ...props }) => <OrderedList {...props}>{children}</OrderedList>,
+    p: (props) => <Paragraph {...props} />,
+    li: (props) => <ListItem {...props} />,
+    ul: (props) => <UnorderedList {...props} />,
+    ol: (props) => <OrderedList {...props} />,
     table: ({ children, ...props }) => (
       <TableWrapper>
         <StyledTable {...props}>{children}</StyledTable>
       </TableWrapper>
     ),
 
-    thead: ({ children, ...props }) => <thead {...props}>{children}</thead>,
-    tbody: ({ children, ...props }) => <tbody {...props}>{children}</tbody>,
-    tr: ({ children, ...props }) => <tr {...props}>{children}</tr>,
-    th: ({ children, ...props }) => <TableHeaderCell {...props}>{children}</TableHeaderCell>,
-    td: ({ children, ...props }) => <TableCell {...props}>{children}</TableCell>,
-    blockquote: ({ children, ...props }) => <Blockquote {...props}>{children}</Blockquote>,
-    a: ({ children, href, ...props }) => (
-      <Anchor href={href} {...props}>
-        {children}
-      </Anchor>
-    ),
-    em: ({ children, ...props }) => <em {...props}>{children}</em>,
-    strong: ({ children, ...props }) => <strong {...props}>{children}</strong>,
-    del: ({ children, ...props }) => <del {...props}>{children}</del>,
+    thead: (props) => <thead {...props} />,
+    tbody: (props) => <tbody {...props} />,
+    tr: (props) => <tr {...props} />,
+    th: (props) => <TableHeaderCell {...props} />,
+    td: (props) => <TableCell {...props} />,
+    blockquote: (props) => <Blockquote {...props} />,
+    a: (props) => <Anchor {...props} />,
+    em: (props) => <em {...props} />,
+    strong: (props) => <strong {...props} />,
+    del: (props) => <del {...props} />,
     hr: (props) => <HorizontalRule {...props} />,
-    img: ({ src, alt, ...props }) => <StyledImage src={src} alt={alt} {...props} />,
-    pre: ({ children, ...props }) => <Preformatted {...props}>{children}</Preformatted>,
+    img: (props) => <StyledImage {...props} />,
+    pre: (props) => <Preformatted {...props} />,
   };
 
   const normalizeMarkdown = (input: string) =>
