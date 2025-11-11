@@ -10,7 +10,7 @@ import { CircleIcon } from '@/components/Icons';
 import { Heading } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
 
-import { ExamStatus, ExamType, ExamsPageProps } from './typings';
+import { ExamStatus, ExamType, IExamsPageProps } from './typings';
 
 const mapExamStatus = (status: string): ExamStatus => {
   switch (status) {
@@ -26,7 +26,7 @@ const mapExamStatus = (status: string): ExamStatus => {
   }
 };
 
-const ExamsPage: FC<ExamsPageProps> = (props) => {
+const ExamsPage: FC<IExamsPageProps> = (props) => {
   const { courseId = 1 } = props;
 
   const { t } = useTranslation();

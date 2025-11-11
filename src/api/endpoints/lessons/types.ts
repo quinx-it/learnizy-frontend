@@ -96,7 +96,7 @@ export interface ICodeProperties extends ICommonProperties {
   lineNumbers?: boolean;
 }
 
-export interface ImageProperties extends ICommonProperties {
+export interface IImageProperties extends ICommonProperties {
   width: number;
   height: number;
   alt?: string;
@@ -154,7 +154,7 @@ interface ICodeBlock extends IBaseBlock {
 
 interface IImageBlock extends IBaseBlock {
   blockType: BlockType.IMAGE;
-  properties: ImageProperties;
+  properties: IImageProperties;
 }
 
 interface IAdviceBlock extends IBaseBlock {
