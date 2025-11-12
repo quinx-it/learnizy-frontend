@@ -20,6 +20,15 @@ import { usePathname, useRouter, useTranslation } from '@/hooks';
 import { LessonTestFormPropsType } from './typings';
 import { LessonTestFormSchema } from './validation';
 
+import {
+  ActionsWrapper,
+  ErrorText,
+  Form,
+  QuestionItem,
+  QuestionsList,
+  SubmitButtonWrapper,
+} from './styles';
+
 const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
   const { questions, onSubmit, testId, loading } = props;
   const { t } = useTranslation();
@@ -88,10 +97,10 @@ const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(handleSubmitForm)}>
-        <ul>
+      <Form onSubmit={handleSubmit(handleSubmitForm)}>
+        <QuestionsList>
           {questions.map(({ questionId, text, sequenceOrder }) => (
-            <li key={questionId} className="border-gray border-b py-16 first:pt-0">
+            <QuestionItem key={questionId}>
               <input
                 type="hidden"
                 {...methods.register(`questions.${sequenceOrder}.textAnswer`)}
@@ -107,22 +116,20 @@ const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
                 fileFieldName={`questions.${sequenceOrder}.file`}
                 errors={errors}
               />
-            </li>
+            </QuestionItem>
           ))}
-        </ul>
+        </QuestionsList>
 
-        <div className="mt-8 space-y-5">
+        <ActionsWrapper>
           <Text variant="l">{t('LESSON_TEST.INFO_TEXT')}</Text>
-          <Button type="submit" disabled={isSubmitting} className="mb-0">
-            {isSubmitting || loading ? <Spinner variant="circle" /> : t('LESSON_TEST.SUBMIT')}
-          </Button>
-          {Object.keys(errors).length > 0 && (
-            <Text tag="span" className="text-error ml-8">
-              {t('LESSON_TEST.ERROR_FIELD')}
-            </Text>
-          )}
-        </div>
-      </form>
+          <SubmitButtonWrapper>
+            <Button type="submit" disabled={isSubmitting}>
+              {isSubmitting || loading ? <Spinner variant="circle" /> : t('LESSON_TEST.SUBMIT')}
+            </Button>
+          </SubmitButtonWrapper>
+          {Object.keys(errors).length > 0 && <ErrorText>{t('LESSON_TEST.ERROR_FIELD')}</ErrorText>}
+        </ActionsWrapper>
+      </Form>
     </FormProvider>
   );
 };

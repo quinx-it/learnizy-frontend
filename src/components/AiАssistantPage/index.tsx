@@ -13,6 +13,8 @@ import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
 import { useRouter, useTranslation } from '@/hooks';
 
+import { Container, ImageContainer, WelcomeText } from './styles';
+
 export const AiAssistantPage = () => {
   const router = useRouter();
   const { t } = useTranslation();
@@ -37,17 +39,19 @@ export const AiAssistantPage = () => {
   };
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center p-4">
-      <div className="relative h-[178px] w-[264px]">
+    <Container>
+      <ImageContainer>
         <Image
           src="/images/blue-planet-with-moon.webp"
           alt="Planet"
           fill
-          className="object-contain"
+          style={{ objectFit: 'contain' }}
         />
-      </div>
-      <Text className="mt-12 mb-6.5 text-center text-3xl">{t('COMMON.HELP_PROMPT')}</Text>
+      </ImageContainer>
+      <WelcomeText>
+        <Text>{t('COMMON.HELP_PROMPT')}</Text>
+      </WelcomeText>
       <ChatInput onSendMessage={handleStartNewChat} isLoading={isLoading} />
-    </div>
+    </Container>
   );
 };

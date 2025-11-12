@@ -4,11 +4,19 @@ import { FC } from 'react';
 import { Controller, useFormContext, useWatch } from 'react-hook-form';
 
 import { RadioGroup } from '@/components/RadioGroup';
-import Textarea from '@/components/Textarea';
 import { Text } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
 
 import { LessonQuestionPropsType } from './typings';
+
+import {
+  Container,
+  ErrorMessage,
+  QuestionNumber,
+  QuestionText,
+  RadioGroupWrapper,
+  StyledTextarea,
+} from './styles';
 
 const LessonQuestion: FC<LessonQuestionPropsType> = (props) => {
   const {
@@ -31,25 +39,24 @@ const LessonQuestion: FC<LessonQuestionPropsType> = (props) => {
   const error = textAnswer ?? file;
 
   return (
-    <div className="space-y-5">
-      <Text variant="l" className="text-medium mb-3">
-        {t('LESSON_QUESTION.QUESTION_NUMBER', { current: sequenceOrder, total: totalQuestions })}
-      </Text>
-      <Text variant="l" className="mb-5">
-        {text}
-      </Text>
+    <Container>
+      <QuestionNumber>
+        <Text variant="l">
+          {t('LESSON_QUESTION.QUESTION_NUMBER', { current: sequenceOrder, total: totalQuestions })}
+        </Text>
+      </QuestionNumber>
+      <QuestionText>
+        <Text variant="l">{text}</Text>
+      </QuestionText>
 
       {type === 'checkbox' ? (
         <Controller
           name={answerFieldName}
           control={control}
           render={({ field }) => (
-            <RadioGroup
-              value={field.value}
-              onValueChange={field.onChange}
-              className="mx-0 flex w-fit flex-col space-y-3"
-            >
-              {/*  {question?.options.map((option) => (
+            <RadioGroupWrapper>
+              <RadioGroup value={field.value} onValueChange={field.onChange}>
+                {/*  {question?.options.map((option) => (
                 <RadioGroupItem
                   key={option.id}
                   className="cursor-pointer flex-row-reverse"
@@ -59,7 +66,8 @@ const LessonQuestion: FC<LessonQuestionPropsType> = (props) => {
                   {option.label}
                 </RadioGroupItem>
               ))} */}
-            </RadioGroup>
+              </RadioGroup>
+            </RadioGroupWrapper>
           )}
         />
       ) : (
@@ -68,9 +76,8 @@ const LessonQuestion: FC<LessonQuestionPropsType> = (props) => {
             name={answerFieldName}
             control={control}
             render={({ field }) => (
-              <Textarea
+              <StyledTextarea
                 {...field}
-                className="min-h-[60px] max-w-[728px] resize-none py-0.5"
                 onChange={(e) => {
                   setValue(fileFieldName, null);
                   field.onChange(e);
@@ -81,8 +88,8 @@ const LessonQuestion: FC<LessonQuestionPropsType> = (props) => {
         )
       )}
 
-      {error?.message && <p className="text-error">{error.message}</p>}
-    </div>
+      {error?.message && <ErrorMessage>{error.message}</ErrorMessage>}
+    </Container>
   );
 };
 

@@ -16,6 +16,7 @@ declare module '@mui/material/styles' {
 
   interface IPalette {
     link: PaletteColor;
+    gray: string;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
@@ -23,6 +24,7 @@ declare module '@mui/material/styles' {
 
   interface IPaletteOptions {
     link?: PaletteColorOptions;
+    gray?: string;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
