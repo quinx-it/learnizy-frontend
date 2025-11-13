@@ -1,8 +1,8 @@
-import { styled } from '@mui/material';
+import { Box, styled } from '@mui/material';
 
-export const Container = styled('div')(() => ({}));
+export const Container = Box;
 
-export const PlayerContainer = styled('div')(({ theme }) => ({
+export const PlayerContainer = styled(Box)(({ theme }) => ({
   border: `1px solid ${theme.palette.primary.main}`,
   display: 'flex',
   height: '24px',
@@ -26,12 +26,12 @@ export const TimeText = styled('span')(() => ({
   color: '#ffffff',
 }));
 
-export const WaveformContainer = styled('div')(() => ({
+export const WaveformContainer = styled(Box)(() => ({
   height: '20px',
   flex: 1,
 }));
 
-export const ControlsContainer = styled('div')(() => ({
+export const ControlsContainer = styled(Box)(() => ({
   display: 'flex',
   alignItems: 'center',
 }));
@@ -67,14 +67,15 @@ export const TranscriptButton = styled('button')(() => ({
   },
 }));
 
-export const TranscriptContainer = styled('div')(() => ({
+export const TranscriptContainer = styled(Box)<{ $maxHeight?: number }>(({ $maxHeight = 0 }) => ({
   overflow: 'hidden',
   paddingLeft: '1.25rem',
   paddingRight: '1.25rem',
   transition: 'max-height 0.5s ease-in-out',
+  maxHeight: `${$maxHeight}px`,
 }));
 
-export const TranscriptText = styled('div')(() => ({
+export const TranscriptText = styled(Box)(() => ({
   marginTop: '0.75rem',
   '& > *': {
     fontSize: '1rem !important',

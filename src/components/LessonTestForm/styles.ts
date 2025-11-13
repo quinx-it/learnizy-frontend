@@ -1,11 +1,7 @@
-import { styled } from '@mui/material';
-
-export const Form = styled('form')(() => ({}));
-
-export const QuestionsList = styled('ul')(() => ({}));
+import { Box, styled } from '@mui/material';
 
 export const QuestionItem = styled('li')(({ theme }) => ({
-  borderBottom: `1px solid ${theme.palette.gray}`,
+  borderBottom: `1px solid ${theme.palette.grey[500]}`,
   paddingTop: '4rem',
   paddingBottom: '4rem',
   '&:first-child': {
@@ -13,7 +9,7 @@ export const QuestionItem = styled('li')(({ theme }) => ({
   },
 }));
 
-export const ActionsWrapper = styled('div')(() => ({
+export const ActionsWrapper = styled(Box)(() => ({
   marginTop: '2rem',
   display: 'flex',
   flexDirection: 'column',
@@ -21,7 +17,7 @@ export const ActionsWrapper = styled('div')(() => ({
   alignItems: 'flex-start',
 }));
 
-export const SubmitButtonWrapper = styled('div')(() => ({
+export const SubmitButtonWrapper = styled(Box)(() => ({
   display: 'inline-flex',
   width: 'auto',
 }));

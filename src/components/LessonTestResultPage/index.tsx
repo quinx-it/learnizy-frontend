@@ -1,14 +1,20 @@
 'use client';
 
+import { Box } from '@mui/material';
 import { FC, useEffect, useRef } from 'react';
 
-import { useGetLastTestAttemptQuery, useGetTestByLessonIdQuery } from '@/api/endpoints/test';
+import {
+  AnswerEvaluation,
+  useGetLastTestAttemptQuery,
+  useGetTestByLessonIdQuery,
+} from '@/api/endpoints/test';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import { Text } from '@/components/Typography';
 import { globalConstants, routes } from '@/constants';
 
+import { evaluationMap } from './constants';
 import { LessonTestResponseType, LessonTestResultPagePropsType } from './types';
 
 import {
@@ -17,30 +23,18 @@ import {
   AnswersList,
   Container,
   Divider,
-  EvaluationTextCorrect,
-  EvaluationTextIncorrect,
-  EvaluationTextPartial,
-  EvaluationTextPending,
   NotesText,
   QuestionText,
   ResultCard,
-  ResultHeader,
   ResultInfo,
   ResultText,
   ResultTitle,
 } from './styles';
 
-const mapEvaluation = (evaluation: string) => {
-  switch (evaluation) {
-    case 'CORRECT':
-      return { text: 'Верно', component: EvaluationTextCorrect, value: 1 };
-    case 'PARTIAL':
-      return { text: 'Частично верно', component: EvaluationTextPartial, value: 0.5 };
-    case 'INCORRECT':
-      return { text: 'Неверно', component: EvaluationTextIncorrect, value: 0 };
-    default:
-      return { text: 'Ответ находится на проверке', component: EvaluationTextPending, value: 0 };
-  }
+const mapEvaluation = (evaluation: AnswerEvaluation | string | null | undefined) => {
+  return (
+    evaluationMap[evaluation as AnswerEvaluation] || evaluationMap[AnswerEvaluation.UNASSESSED]
+  );
 };
 
 const getStatus = (status: string, passed: boolean) => {
@@ -118,7 +112,7 @@ const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) => {
 
       <Container>
         <ResultCard>
-          <ResultHeader>
+          <Box>
             <ResultTitle>
               <Text variant="l">Результаты теста {lessonSequenceOrder + 1}</Text>
             </ResultTitle>
@@ -131,7 +125,7 @@ const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) => {
                 <Text variant="m">Статус: {getStatus(status, passed)}</Text>
               </ResultText>
             </ResultInfo>
-          </ResultHeader>
+          </Box>
         </ResultCard>
 
         <AnswersList>

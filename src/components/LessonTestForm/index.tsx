@@ -20,14 +20,7 @@ import { usePathname, useRouter, useTranslation } from '@/hooks';
 import { LessonTestFormPropsType } from './typings';
 import { LessonTestFormSchema } from './validation';
 
-import {
-  ActionsWrapper,
-  ErrorText,
-  Form,
-  QuestionItem,
-  QuestionsList,
-  SubmitButtonWrapper,
-} from './styles';
+import { ActionsWrapper, ErrorText, QuestionItem, SubmitButtonWrapper } from './styles';
 
 const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
   const { questions, onSubmit, testId, loading } = props;
@@ -97,8 +90,8 @@ const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
 
   return (
     <FormProvider {...methods}>
-      <Form onSubmit={handleSubmit(handleSubmitForm)}>
-        <QuestionsList>
+      <form onSubmit={handleSubmit(handleSubmitForm)}>
+        <ul>
           {questions.map(({ questionId, text, sequenceOrder }) => (
             <QuestionItem key={questionId}>
               <input
@@ -118,7 +111,7 @@ const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
               />
             </QuestionItem>
           ))}
-        </QuestionsList>
+        </ul>
 
         <ActionsWrapper>
           <Text variant="l">{t('LESSON_TEST.INFO_TEXT')}</Text>
@@ -129,7 +122,7 @@ const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
           </SubmitButtonWrapper>
           {Object.keys(errors).length > 0 && <ErrorText>{t('LESSON_TEST.ERROR_FIELD')}</ErrorText>}
         </ActionsWrapper>
-      </Form>
+      </form>
     </FormProvider>
   );
 };

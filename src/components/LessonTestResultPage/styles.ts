@@ -1,8 +1,8 @@
-import { styled } from '@mui/material';
+import { Box, styled } from '@mui/material';
 
 import CardWrapper from '@/components/CardWrapper';
 
-export const Container = styled('div')(() => ({
+export const Container = styled(Box)(() => ({
   display: 'flex',
   flexDirection: 'column',
   gap: '1.5rem',
@@ -14,9 +14,9 @@ export const ResultCard = styled(CardWrapper)(() => ({
   gap: '1.25rem',
 }));
 
-export const ResultHeader = styled('div')(() => ({}));
+export const ResultHeader = Box;
 
-export const ResultTitle = styled('div')(({ theme }) => ({
+export const ResultTitle = styled(Box)(({ theme }) => ({
   color: theme.palette.primary.main,
   marginBottom: '1.25rem',
 }));
@@ -28,17 +28,17 @@ export const Divider = styled('hr')(({ theme }) => ({
   borderTop: `1px solid ${theme.palette.gray}`,
 }));
 
-export const ResultInfo = styled('div')(() => ({
+export const ResultInfo = styled(Box)(() => ({
   display: 'flex',
   flexDirection: 'column',
   gap: '0.25rem',
 }));
 
-export const ResultText = styled('div')(({ theme }) => ({
+export const ResultText = styled(Box)(({ theme }) => ({
   color: theme.palette.primary.main,
 }));
 
-export const AnswersList = styled('div')(() => ({
+export const AnswersList = styled(Box)(() => ({
   display: 'flex',
   flexDirection: 'column',
   gap: '1rem',
@@ -50,7 +50,7 @@ export const AnswerCard = styled(CardWrapper)(() => ({
   gap: '0.75rem',
 }));
 
-export const QuestionText = styled('div')(() => ({
+export const QuestionText = styled(Box)(() => ({
   marginBottom: '1.25rem',
   '& > *': {
     fontSize: '20px !important',
@@ -60,27 +60,27 @@ export const QuestionText = styled('div')(() => ({
   },
 }));
 
-export const AnswerText = styled('div')(({ theme }) => ({
+export const AnswerText = styled(Box)(({ theme }) => ({
   color: theme.palette.primary.main,
   wordBreak: 'break-word',
 }));
 
-export const EvaluationTextCorrect = styled('div')(() => ({
+export const EvaluationTextCorrect = styled(Box)(() => ({
   color: '#16a34a',
 }));
 
-export const EvaluationTextPartial = styled('div')(() => ({
+export const EvaluationTextPartial = styled(Box)(() => ({
   color: '#ca8a04',
 }));
 
-export const EvaluationTextIncorrect = styled('div')(() => ({
+export const EvaluationTextIncorrect = styled(Box)(() => ({
   color: '#dc2626',
 }));
 
-export const EvaluationTextPending = styled('div')(({ theme }) => ({
+export const EvaluationTextPending = styled(Box)(({ theme }) => ({
   color: theme.palette.grey[600],
 }));
 
-export const NotesText = styled('div')(({ theme }) => ({
+export const NotesText = styled(Box)(({ theme }) => ({
   color: theme.palette.grey[500],
 }));

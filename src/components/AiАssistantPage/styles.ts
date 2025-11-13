@@ -1,6 +1,7 @@
-import { styled } from '@mui/material';
+import { Box, styled } from '@mui/material';
+import Image from 'next/image';
 
-export const Container = styled('div')(() => ({
+export const Container = styled(Box)(() => ({
   display: 'flex',
   flex: 1,
   flexDirection: 'column',
@@ -9,13 +10,17 @@ export const Container = styled('div')(() => ({
   padding: '1rem',
 }));
 
-export const ImageContainer = styled('div')(() => ({
+export const ImageContainer = styled(Box)(() => ({
   position: 'relative',
   height: '178px',
   width: '264px',
 }));
 
-export const WelcomeText = styled('div')(() => ({
+export const StyledImage = styled(Image)(() => ({
+  objectFit: 'contain',
+}));
+
+export const WelcomeText = styled(Box)(() => ({
   marginTop: '3rem',
   marginBottom: '1.625rem',
   textAlign: 'center',

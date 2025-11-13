@@ -1,7 +1,5 @@
 'use client';
 
-import Image from 'next/image';
-
 import {
   useCreateChatMutation,
   useSendMessageMutation,
@@ -13,7 +11,7 @@ import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
 import { useRouter, useTranslation } from '@/hooks';
 
-import { Container, ImageContainer, WelcomeText } from './styles';
+import { Container, ImageContainer, StyledImage, WelcomeText } from './styles';
 
 export const AiAssistantPage = () => {
   const router = useRouter();
@@ -41,12 +39,7 @@ export const AiAssistantPage = () => {
   return (
     <Container>
       <ImageContainer>
-        <Image
-          src="/images/blue-planet-with-moon.webp"
-          alt="Planet"
-          fill
-          style={{ objectFit: 'contain' }}
-        />
+        <StyledImage src="/images/blue-planet-with-moon.webp" alt="Planet" fill />
       </ImageContainer>
       <WelcomeText>
         <Text>{t('COMMON.HELP_PROMPT')}</Text>

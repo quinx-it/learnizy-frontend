@@ -1,25 +1,25 @@
-import { styled } from '@mui/material';
+import { Box, styled } from '@mui/material';
 
 import Textarea from '@/components/Textarea';
 
-export const Container = styled('div')(() => ({
+export const Container = styled(Box)(() => ({
   display: 'flex',
   flexDirection: 'column',
   gap: '0.1rem',
 }));
 
-export const QuestionNumber = styled('div')(({ theme }) => ({
+export const QuestionNumber = styled(Box)(({ theme }) => ({
   marginBottom: '0.75rem',
   '& > *': {
     color: `${theme.palette.primary.main} !important`,
   },
 }));
 
-export const QuestionText = styled('div')(() => ({
+export const QuestionText = styled(Box)(() => ({
   marginBottom: '1.25rem',
 }));
 
-export const RadioGroupWrapper = styled('div')(() => ({
+export const RadioGroupWrapper = styled(Box)(() => ({
   display: 'flex',
   flexDirection: 'column',
   width: 'fit-content',
