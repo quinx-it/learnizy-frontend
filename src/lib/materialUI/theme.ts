@@ -49,7 +49,6 @@ const theme = createTheme({
     link: {
       main: '#2563eb',
     },
-    gray: '#b9b9b9',
   },
 
   typography: {
