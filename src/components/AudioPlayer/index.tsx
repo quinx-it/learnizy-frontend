@@ -8,6 +8,18 @@ import { Text } from '@/components/Typography';
 
 import { IAudioPlayerProps } from './typings';
 
+import {
+  Container,
+  ControlsContainer,
+  PlayerContainer,
+  PlayButton,
+  TimeText,
+  TranscriptButton,
+  TranscriptContainer,
+  TranscriptText,
+  WaveformContainer,
+} from './styles';
+
 const AudioPlayer: FC<IAudioPlayerProps> = (props) => {
   const { src, transcript } = props;
 
@@ -43,7 +55,7 @@ const AudioPlayer: FC<IAudioPlayerProps> = (props) => {
     ws.on('audioprocess', onAudioProcess);
     ws.on('finish', onFinish);
 
-    ws.load(src).catch((e) => {
+    ws.load(src).catch((e: unknown) => {
       if (!(e instanceof DOMException && e.name === 'AbortError')) {
         console.error('Ошибка загрузки аудио:', e);
       }
@@ -79,44 +91,37 @@ const AudioPlayer: FC<IAudioPlayerProps> = (props) => {
   };
 
   return (
-    <div>
-      <div className="border-medium flex h-[24px] w-100 max-w-[250px] items-center justify-between gap-2 rounded-full p-1 px-5 md:max-w-[400px]">
-        <span className="text-medium w-fit text-[16px] text-white">
+    <Container>
+      <PlayerContainer>
+        <TimeText>
           {formatTime(time)}/{formatTime(duration)}
-        </span>
+        </TimeText>
 
-        <div ref={containerRef} className="h-[20px] flex-1" />
+        <WaveformContainer ref={containerRef} />
 
-        <div className="flex items-center">
-          <button type="button" onClick={togglePlay} className="text-medium mr-1.5 w-6">
+        <ControlsContainer>
+          <PlayButton type="button" onClick={togglePlay}>
             <PlayPauseIcon color="white" isPlaying={isPlaying} />
-          </button>
+          </PlayButton>
           {transcript && (
-            <button
-              type="button"
-              onClick={toggleTranscript}
-              className="rounded py-1 text-sm text-white"
-            >
+            <TranscriptButton type="button" onClick={toggleTranscript}>
               {showTranscript ? <ArrowCloseIcon /> : <AaIcon />}
-            </button>
+            </TranscriptButton>
           )}
-        </div>
-      </div>
+        </ControlsContainer>
+      </PlayerContainer>
 
       {transcript && (
-        <div
+        <TranscriptContainer
           ref={transcriptRef}
-          className="overflow-hidden px-5 transition-[max-height] duration-500 ease-in-out"
-          style={{
-            maxHeight: showTranscript ? `${transcriptRef.current?.scrollHeight}px` : '0px',
-          }}
+          $maxHeight={showTranscript ? transcriptRef.current?.scrollHeight : 0}
         >
-          <Text variant="m" className="mt-3 text-base text-white">
-            {transcript}
-          </Text>
-        </div>
+          <TranscriptText>
+            <Text variant="m">{transcript}</Text>
+          </TranscriptText>
+        </TranscriptContainer>
       )}
-    </div>
+    </Container>
   );
 };
 

@@ -1,7 +1,5 @@
 'use client';
 
-import Image from 'next/image';
-
 import {
   useCreateChatMutation,
   useSendMessageMutation,
@@ -12,6 +10,8 @@ import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
 import { useRouter, useTranslation } from '@/hooks';
+
+import { Container, ImageContainer, StyledImage, WelcomeText } from './styles';
 
 export const AiAssistantPage = () => {
   const router = useRouter();
@@ -37,17 +37,14 @@ export const AiAssistantPage = () => {
   };
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center p-4">
-      <div className="relative h-[178px] w-[264px]">
-        <Image
-          src="/images/blue-planet-with-moon.webp"
-          alt="Planet"
-          fill
-          className="object-contain"
-        />
-      </div>
-      <Text className="mt-12 mb-6.5 text-center text-3xl">{t('COMMON.HELP_PROMPT')}</Text>
+    <Container>
+      <ImageContainer>
+        <StyledImage src="/images/blue-planet-with-moon.webp" alt="Planet" fill />
+      </ImageContainer>
+      <WelcomeText>
+        <Text>{t('COMMON.HELP_PROMPT')}</Text>
+      </WelcomeText>
       <ChatInput onSendMessage={handleStartNewChat} isLoading={isLoading} />
-    </div>
+    </Container>
   );
 };

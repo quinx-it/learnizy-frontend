@@ -1,5 +1,6 @@
 'use client';
 
+import { Box } from '@mui/material';
 import { FC, ReactNode, CSSProperties } from 'react';
 import ReactMarkdown, { Components } from 'react-markdown';
 import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -23,7 +24,6 @@ import {
   TableHeaderCell,
   TableWrapper,
   UnorderedList,
-  Wrapper,
 } from './styles';
 
 const MarkdownRenderer: FC<IMarkdownRendererProps> = (props) => {
@@ -81,11 +81,11 @@ const MarkdownRenderer: FC<IMarkdownRendererProps> = (props) => {
       .trim();
 
   return (
-    <Wrapper className={className}>
+    <Box className={className}>
       <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
         {normalizeMarkdown(text)}
       </ReactMarkdown>
-    </Wrapper>
+    </Box>
   );
 };
 

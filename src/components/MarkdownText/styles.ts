@@ -1,7 +1,7 @@
-import { styled } from '@mui/material';
+import { Box, styled } from '@mui/material';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
-export const Wrapper = styled('div')(() => ({}));
+export const Wrapper = Box;
 
 export const CodeBlock = styled(SyntaxHighlighter)(() => ({
   margin: '0.5rem 0',
@@ -41,7 +41,7 @@ export const OrderedList = styled('ol')(() => ({
   listStyle: 'decimal',
 }));
 
-export const TableWrapper = styled('div')(() => ({
+export const TableWrapper = styled(Box)(() => ({
   marginBottom: '1rem',
   maxWidth: '100%',
   overflowX: 'auto',
