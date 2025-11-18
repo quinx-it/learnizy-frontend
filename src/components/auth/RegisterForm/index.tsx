@@ -12,7 +12,6 @@ import {
 import Button from '@/components/Button';
 import CheckboxWithLabel from '@/components/CheckboxWithLabel';
 import Input from '@/components/Input';
-import Link from '@/components/Link';
 import { PasswordInput } from '@/components/PasswordInput';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
@@ -22,6 +21,20 @@ import { useRouter } from '@/hooks';
 
 import { VerificationFormValuesType, RegisterStep, IRegisterFormValues } from './typings';
 import { formSchema, verificationSchema } from './validation';
+
+import {
+  CheckboxContainer,
+  Container,
+  EmailText,
+  ErrorText,
+  Form,
+  HeadingContainer,
+  LinkStyled,
+  ResendButton,
+  ResendText,
+  TextContainer,
+  VerificationInput,
+} from './styles';
 
 import type { HttpStatusError } from '@/types';
 
@@ -130,24 +143,24 @@ const RegisterForm: FC = () => {
 
   if (step === 'verify') {
     return (
-      <div className="w-full">
-        <Heading variant="xl" className="mb-2">
-          Подтвердите электронную почту
-        </Heading>
-        <Text variant="m" className="mb-6">
-          Пожалуйста, введите 6-значный код, отправленный на{' '}
-          <span className="font-medium text-black">{userEmail}</span>
-        </Text>
+      <Container>
+        <HeadingContainer>
+          <Heading variant="xl">Подтвердите электронную почту</Heading>
+        </HeadingContainer>
+        <TextContainer>
+          <Text variant="m">
+            Пожалуйста, введите 6-значный код, отправленный на <EmailText>{userEmail}</EmailText>
+          </Text>
+        </TextContainer>
 
-        <form onSubmit={handleSubmitVerify(onVerifySubmit)} className="flex w-full flex-col gap-6">
-          <Input
+        <Form onSubmit={handleSubmitVerify(onVerifySubmit)}>
+          <VerificationInput
             label=""
             id="verification-code"
             placeholder="______"
             {...registerVerify('code')}
             error={verifyErrors.code?.message}
             inputMode="numeric"
-            className="text-center text-2xl tracking-[0.1em]"
             maxLength={6}
             onInput={(e: ChangeEvent<HTMLInputElement>) => {
               e.currentTarget.value = e.currentTarget.value.replace(/\D/g, '');
@@ -157,31 +170,30 @@ const RegisterForm: FC = () => {
               }
             }}
           />
-          <div className="text-sm text-gray-500">
+          <ResendText>
             {timer > 0 ? (
               `Отправить код повторно через ${timer} сек.`
             ) : (
-              <button
+              <ResendButton
                 type="button"
                 onClick={handleResendCode}
                 disabled={!canResend || isResending}
-                className="text-blue-500 hover:underline disabled:text-gray-400 disabled:no-underline"
               >
                 {isResending ? 'Отправка...' : 'Отправить код еще раз'}
-              </button>
+              </ResendButton>
             )}
-          </div>
+          </ResendText>
 
           <Button type="submit" disabled={isVerifying} className="rounded-full">
             {isVerifying ? <Spinner type="ring" /> : 'Подтвердить'}
           </Button>
-        </form>
-      </div>
+        </Form>
+      </Container>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit(onRegisterSubmit)} className="flex w-full flex-col gap-6">
+    <Form onSubmit={handleSubmit(onRegisterSubmit)}>
       <Input
         label="Введите логин"
         id="login"
@@ -217,7 +229,7 @@ const RegisterForm: FC = () => {
         error={errors.repeatPassword?.message}
       />
 
-      <div className="flex flex-col gap-1">
+      <CheckboxContainer>
         <Controller
           control={control}
           name="agreement"
@@ -225,23 +237,23 @@ const RegisterForm: FC = () => {
           render={({ field }) => (
             <CheckboxWithLabel checked={field.value} onCheckedChange={field.onChange}>
               Принимаю условия{' '}
-              <Link href={routes.public.userAgreement} className="inline !underline">
+              <LinkStyled href={routes.public.userAgreement}>
                 пользовательского соглашения
-              </Link>{' '}
+              </LinkStyled>{' '}
               и даю согласие на{' '}
-              <Link href={routes.public.privacyPolicy} className="inline !underline">
+              <LinkStyled href={routes.public.privacyPolicy}>
                 обработку персональных данных
-              </Link>
+              </LinkStyled>
             </CheckboxWithLabel>
           )}
         />
-        {errors.agreement && <p className="text-error text-[12px]">{errors.agreement.message}</p>}
-      </div>
+        {errors.agreement && <ErrorText>{errors.agreement.message}</ErrorText>}
+      </CheckboxContainer>
 
       <Button type="submit" disabled={isRegistering} className="rounded-full">
         {isRegistering ? <Spinner type="ring" /> : 'Зарегистрироваться'}
       </Button>
-    </form>
+    </Form>
   );
 };
 

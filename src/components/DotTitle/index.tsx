@@ -7,14 +7,7 @@ import { cn } from '@/lib/utils';
 
 import { IDotTitleProps } from './typings';
 
-export const Dot = ({ className }: { className?: string }) => (
-  <span
-    className={cn(
-      'bg-medium !mt-2.5 h-[3px] max-h-[3px] min-h-[3px] w-[3px] max-w-[3px] min-w-[3px] rounded-full',
-      className,
-    )}
-  />
-);
+import { Container, Dot, SecondLabel } from './styles';
 
 const DotTitle: FC<IDotTitleProps> = (props) => {
   const {
@@ -29,31 +22,27 @@ const DotTitle: FC<IDotTitleProps> = (props) => {
   } = props;
 
   return (
-    <div className={cn('flex items-start gap-1.5', className)}>
+    <Container className={className}>
       {heading ? (
         <Heading variant="2xl" className={cn('min-w-fit', firstClassName)}>
           {firstLabel}
 
-          <span className={cn('text-medium inline', secondClassName)}>
-            <span className={cn('leading-inherit !bg-transparent px-1 text-[22px]', dotClassName)}>
-              •
-            </span>
+          <SecondLabel className={secondClassName}>
+            <Dot className={cn(dotClassName)}>•</Dot>
             {secondLabel}
-          </span>
+          </SecondLabel>
         </Heading>
       ) : (
         <Text variant={firstVariant} className={cn('min-w-fit', firstClassName)}>
           {firstLabel}
 
-          <span className={cn('text-medium inline', secondClassName)}>
-            <span className={cn('leading-inherit !bg-transparent px-1 text-[16px]', dotClassName)}>
-              •
-            </span>
+          <SecondLabel className={secondClassName}>
+            <Dot className={cn('dot-small', dotClassName)}>•</Dot>
             {secondLabel}
-          </span>
+          </SecondLabel>
         </Text>
       )}
-    </div>
+    </Container>
   );
 };
 

@@ -13,6 +13,8 @@ import { showToast } from '@/components/Toaster';
 import { IForgotPasswordFormValues } from './typings';
 import { formSchema } from './validation';
 
+import { Form } from './styles';
+
 const ForgotPasswordForm: FC = () => {
   const [forgotPasswordRequest, { isLoading, error }] = useForgotPasswordMutation();
 
@@ -43,7 +45,7 @@ const ForgotPasswordForm: FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col gap-6">
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <Input
         label="Введите email"
         id="email"
@@ -56,7 +58,7 @@ const ForgotPasswordForm: FC = () => {
       <Button type="submit" size="medium" disabled={isLoading} className="rounded-full">
         {isLoading ? <Spinner type="ring" /> : 'Отправить'}
       </Button>
-    </form>
+    </Form>
   );
 };
 
