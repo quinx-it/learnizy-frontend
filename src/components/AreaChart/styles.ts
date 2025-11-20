@@ -8,7 +8,7 @@ export const Container = styled(Box)(() => ({
 }));
 
 export const ChartContainerStyled = styled(Box)(() => ({
-  maxHeight: '180px',
+  maxHeight: '180',
   width: '100%',
-  minWidth: '500px',
+  minWidth: '500',
 }));
