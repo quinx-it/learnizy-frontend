@@ -11,6 +11,8 @@ import { cn } from '@/lib/utils';
 import { constants } from './constants';
 import { CourseListItemType } from './typings';
 
+import { Container, ContentWrapper, ModuleWrapper, TitleWrapper } from './styles';
+
 const CourseListItem: FC<CourseListItemType> = (props) => {
   const { title, number, status, progress, onClick } = props;
 
@@ -20,19 +22,21 @@ const CourseListItem: FC<CourseListItemType> = (props) => {
   const isBlocked = status === 'BLOCKED';
 
   return (
-    <div className="flex w-full flex-col justify-between gap-2 sm:flex-row sm:items-center sm:gap-4">
-      <div className="flex w-full flex-col gap-1 sm:flex-1 sm:flex-row sm:items-center sm:gap-4">
-        <div className="flex flex-row items-center gap-2 sm:gap-4">
+    <Container>
+      <ContentWrapper>
+        <ModuleWrapper>
           <Text className="text-sm whitespace-nowrap sm:text-base">
             {' '}
             {`${t('MAIN_PAGE.MODULE')} ${number}`}
           </Text>
           <ProgressBar size={12} strokeWidth={2} variant="circular" value={progressBarValue} />
-        </div>
-        <Text variant="m" className="text-medium w-full break-words sm:w-auto">
-          {title}
-        </Text>
-      </div>
+        </ModuleWrapper>
+        <TitleWrapper>
+          <Text variant="m" className="text-medium">
+            {title}
+          </Text>
+        </TitleWrapper>
+      </ContentWrapper>
       {status && (
         <Button
           variant="blue"
@@ -45,7 +49,7 @@ const CourseListItem: FC<CourseListItemType> = (props) => {
           {t(constants.statuses[status])}
         </Button>
       )}
-    </div>
+    </Container>
   );
 };
 

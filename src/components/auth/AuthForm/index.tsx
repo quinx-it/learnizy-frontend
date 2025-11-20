@@ -7,7 +7,6 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { useLoginMutation } from '@/api/endpoints/auth';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
-import Link from '@/components/Link';
 import { PasswordInput } from '@/components/PasswordInput';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
@@ -15,6 +14,8 @@ import { routes } from '@/constants';
 
 import { IAuthFormValues } from './typings';
 import { formSchema } from './validation';
+
+import { AuthLink, Form, LinksRow } from './styles';
 
 const AuthForm: FC = () => {
   const [loginRequest, { isLoading }] = useLoginMutation();
@@ -43,7 +44,7 @@ const AuthForm: FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col gap-6">
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <Input
         label="Введите логин"
         id="username"
@@ -62,19 +63,15 @@ const AuthForm: FC = () => {
         error={errors.password?.message}
       />
 
-      <div className="-mt-4 flex w-full justify-between text-[12px]">
-        <Link href={routes.public.registerPage} className="text-medium !underline">
-          Регистрация
-        </Link>
-        <Link href={routes.public.forgotPassword} className="text-medium !underline">
-          Забыли пароль?
-        </Link>
-      </div>
+      <LinksRow>
+        <AuthLink href={routes.public.registerPage}>Регистрация</AuthLink>
+        <AuthLink href={routes.public.forgotPassword}>Забыли пароль?</AuthLink>
+      </LinksRow>
 
       <Button type="submit" disabled={isLoading} size="medium" asChild={false}>
         {isLoading ? <Spinner type="ring" /> : 'Войти'}
       </Button>
-    </form>
+    </Form>
   );
 };
 

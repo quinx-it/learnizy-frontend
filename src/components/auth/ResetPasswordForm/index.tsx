@@ -15,6 +15,8 @@ import { useRouter } from '@/hooks';
 import { IResetPasswordFormProps } from './typings';
 import { IResetPasswordFormValues, formSchema } from './validation';
 
+import { Form, SuccessContainer, SuccessText } from './styles';
+
 const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
   const { token, onSuccess } = props;
   const [resetPassword, { isLoading, error }] = useResetPasswordMutation();
@@ -59,17 +61,17 @@ const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
 
   if (isSuccess) {
     return (
-      <div className="flex flex-col items-center gap-6">
-        <div className="text-lg font-semibold text-green-700">Пароль успешно изменён!</div>
+      <SuccessContainer>
+        <SuccessText>Пароль успешно изменён!</SuccessText>
         <Button onClick={onClick} size="medium">
           Вернуться к окну авторизации
         </Button>
-      </div>
+      </SuccessContainer>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col gap-6">
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <PasswordInput
         label="Новый пароль"
         id="password"
@@ -89,7 +91,7 @@ const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
       <Button type="submit" size="medium" className="rounded-full" disabled={isLoading}>
         {isLoading ? <Spinner size={22} /> : 'Сохранить'}
       </Button>
-    </form>
+    </Form>
   );
 };
 

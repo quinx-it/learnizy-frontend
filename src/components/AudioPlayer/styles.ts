@@ -15,6 +15,7 @@ export const PlayerContainer = styled(Box)(({ theme }) => ({
   padding: '0.25rem',
   paddingLeft: '1.25rem',
   paddingRight: '1.25rem',
+
   [theme.breakpoints.up('md')]: {
     maxWidth: '400px',
   },
