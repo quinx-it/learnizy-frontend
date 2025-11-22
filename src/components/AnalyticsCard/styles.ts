@@ -4,7 +4,7 @@ export const Container = styled(Box)(({ theme }) => ({
   flex: 1,
   borderRadius: '0.5rem',
   border: `1px solid ${theme.palette.grey[300]}`,
-  backgroundColor: '#ffffff',
+  backgroundColor: theme.palette.background.paper,
   padding: '1.5rem',
   boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
 }));
@@ -30,11 +30,11 @@ export const Value = styled('p')(() => ({
   fontWeight: 600,
 }));
 
-export const Percentage = styled('p')<{ $isPositive: boolean }>(({ $isPositive }) => ({
+export const Percentage = styled('p')<{ $isPositive: boolean }>(({ theme, $isPositive }) => ({
   marginLeft: '0.5rem',
   display: 'flex',
   alignItems: 'baseline',
   fontSize: '12px',
   fontWeight: 600,
-  color: $isPositive ? '#16a34a' : '#dc2626',
+  color: $isPositive ? theme.palette.success.main : theme.palette.error.main,
 }));

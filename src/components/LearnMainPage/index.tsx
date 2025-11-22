@@ -1,5 +1,6 @@
 'use client';
 
+import { Box } from '@mui/material';
 import { FC } from 'react';
 
 import { useGetMainPageProgressQuery } from '@/api/endpoints/progress';
@@ -14,6 +15,15 @@ import { routes } from '@/constants';
 import { useRouter, useTranslation } from '@/hooks';
 
 import { constants } from './constants';
+
+import {
+  Container,
+  CourseDivider,
+  CourseTitle,
+  ModulesList,
+  StatisticsDivider,
+  StatisticsTitle,
+} from './styles';
 
 const LearnMainPage: FC = () => {
   const router = useRouter();
@@ -31,7 +41,7 @@ const LearnMainPage: FC = () => {
     <>
       <Breadcrumbs rootDescription={mainPageProgress.courseInfo.title || ''} />
 
-      <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+      <Container>
         <ProgressCard
           title={t(constants.titles.currentCourse)}
           subTitle={mainPageProgress.courseInfo.title || ''}
@@ -52,15 +62,17 @@ const LearnMainPage: FC = () => {
         />
 
         <CardWrapper>
-          <div>
-            <Text variant="m-bold" className="mb-4">
-              {t('COMMON.COURSE_LABEL')}{' '}
-              <Text tag="span" className="text-medium" variant="m-bold">
-                {mainPageProgress.courseInfo.title}
+          <Box>
+            <CourseTitle>
+              <Text variant="m-bold">
+                {t('COMMON.COURSE_LABEL')}{' '}
+                <Text tag="span" className="text-medium" variant="m-bold">
+                  {mainPageProgress.courseInfo.title}
+                </Text>
               </Text>
-            </Text>
-            <hr className="border-gray mb-4" />
-            <ul className="space-y-4">
+            </CourseTitle>
+            <CourseDivider />
+            <ModulesList>
               {mainPageProgress.modules.map((module) => {
                 const moduleProgress =
                   module.totalLessons > 0
@@ -90,19 +102,19 @@ const LearnMainPage: FC = () => {
                   </li>
                 );
               })}
-            </ul>
-          </div>
+            </ModulesList>
+          </Box>
         </CardWrapper>
         <CardWrapper>
-          <div>
-            <Text variant="m-bold" className="mb-4">
-              {t(constants.titles.statistics)}
-            </Text>
-            <hr className="border-gray mb-4" />
+          <Box>
+            <StatisticsTitle>
+              <Text variant="m-bold">{t(constants.titles.statistics)}</Text>
+            </StatisticsTitle>
+            <StatisticsDivider />
             <StatisticsChart weeklyActivity={mainPageProgress.weeklyActivity ?? []} />
-          </div>
+          </Box>
         </CardWrapper>
-      </div>
+      </Container>
     </>
   );
 };

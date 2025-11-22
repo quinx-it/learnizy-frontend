@@ -21,10 +21,10 @@ export const PlayerContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const TimeText = styled('span')(() => ({
+export const TimeText = styled('span')(({ theme }) => ({
   width: 'fit-content',
   fontSize: '16px',
-  color: '#ffffff',
+  color: theme.palette.common.white,
 }));
 
 export const WaveformContainer = styled(Box)(() => ({
@@ -52,12 +52,12 @@ export const PlayButton = styled('button')(() => ({
   },
 }));
 
-export const TranscriptButton = styled('button')(() => ({
+export const TranscriptButton = styled('button')(({ theme }) => ({
   borderRadius: '0.25rem',
   paddingTop: '0.25rem',
   paddingBottom: '0.25rem',
   fontSize: '0.875rem',
-  color: '#ffffff',
+  color: theme.palette.common.white,
   backgroundColor: 'transparent',
   border: 'none',
   paddingLeft: '0.5rem',
@@ -76,10 +76,10 @@ export const TranscriptContainer = styled(Box)<{ $maxHeight?: number }>(({ $maxH
   maxHeight: `${$maxHeight}px`,
 }));
 
-export const TranscriptText = styled(Box)(() => ({
+export const TranscriptText = styled(Box)(({ theme }) => ({
   marginTop: '0.75rem',
   '& > *': {
     fontSize: '1rem !important',
-    color: '#ffffff !important',
+    color: `${theme.palette.common.white} !important`,
   },
 }));

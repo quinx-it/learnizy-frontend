@@ -1,45 +1,46 @@
 'use client';
 
+import { Box } from '@mui/material';
 import { forwardRef } from 'react';
 
 import Label from '@/components/Label';
 import { Text } from '@/components/Typography';
-import { cn } from '@/lib/utils';
 
 import { IInputProps } from './typings';
+
+import { ErrorText, LabelWrapper, StyledInput } from './styles';
 
 const Input = forwardRef<HTMLInputElement, IInputProps>(
   ({ innerClassName, className, type = 'text', error, label, autoComplete, ...props }, ref) => {
     return (
-      <div className={className}>
+      <Box className={className}>
         {label && (
-          <Label className="mb-1.5">
-            <Text variant="s" className="text-medium">
-              {label}
-            </Text>
-          </Label>
+          <LabelWrapper>
+            <Label>
+              <Text variant="s" className="text-medium">
+                {label}
+              </Text>
+            </Label>
+          </LabelWrapper>
         )}
-        <input
+        <StyledInput
           ref={ref}
           type={type}
           autoComplete={autoComplete ?? ''}
           data-slot="input"
-          className={cn(
-            'bg-light flex h-9 w-full min-w-0 rounded-[50px] border px-[20px] py-0.5 text-[16px] font-medium text-black transition-[color] outline-none placeholder:text-black/50 md:text-sm',
-            'disabled:text-gray disabled:placeholder:text-gray disabled:pointer-events-none disabled:cursor-not-allowed',
-            'aria-invalid:text-error aria-invalid:border-error',
-            innerClassName,
-            error && 'border-error text-error',
-          )}
+          $hasError={!!error}
           aria-invalid={!!error}
+          className={innerClassName}
           {...props}
         />
         {error && (
-          <Text variant="s" className="text-error ml-[20px]">
-            {error}
-          </Text>
+          <ErrorText>
+            <Text variant="s" className="text-error">
+              {error}
+            </Text>
+          </ErrorText>
         )}
-      </div>
+      </Box>
     );
   },
 );

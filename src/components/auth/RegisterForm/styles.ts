@@ -22,9 +22,9 @@ export const TextContainer = styled(Box)(() => ({
   marginBottom: '1.5rem',
 }));
 
-export const EmailText = styled('span')(() => ({
+export const EmailText = styled('span')(({ theme }) => ({
   fontWeight: 500,
-  color: '#000000',
+  color: theme.palette.text.primary,
 }));
 
 export const VerificationInput = styled(Input)(() => ({

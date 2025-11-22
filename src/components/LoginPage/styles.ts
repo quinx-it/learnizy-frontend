@@ -18,5 +18,5 @@ export const CardWrapper = styled(CardWrapperBase)({
 
 export const Logo = styled(LogoBase)({
   width: '100%',
-  marginBottom: 12,
+  marginBottom: '3rem',
 });
