@@ -1,3 +1,5 @@
+'use client';
+
 import { PropsWithChildren, FC } from 'react';
 
 import ProfileDashboard from '@/components/ProfileDashboard';

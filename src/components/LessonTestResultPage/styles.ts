@@ -1,4 +1,4 @@
-import { Box, styled } from '@mui/material';
+import { Box, Divider as MuiDivider, styled } from '@mui/material';
 
 import CardWrapper from '@/components/CardWrapper';
 
@@ -21,11 +21,9 @@ export const ResultTitle = styled(Box)(({ theme }) => ({
   marginBottom: '1.25rem',
 }));
 
-export const Divider = styled('hr')(({ theme }) => ({
+export const Divider = styled(MuiDivider)(({ theme }) => ({
   borderColor: theme.palette.gray,
   marginBottom: '1rem',
-  border: 'none',
-  borderTop: `1px solid ${theme.palette.gray}`,
 }));
 
 export const ResultInfo = styled(Box)(() => ({

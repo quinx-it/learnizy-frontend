@@ -1,4 +1,4 @@
-import { Box, styled } from '@mui/material';
+import { Box, Button as MuiButton, styled } from '@mui/material';
 
 import Button from '@/components/Button';
 
@@ -14,13 +14,15 @@ export const Container = styled(Box)(() => ({
   gap: '0.75rem',
 }));
 
-export const DeleteButton = styled('button')(() => ({
+export const DeleteButton = styled(MuiButton)(() => ({
   maxWidth: 'fit-content',
+  minWidth: 'auto',
   backgroundColor: 'transparent',
   border: 'none',
-  cursor: 'pointer',
   padding: 0,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  textTransform: 'none',
+  boxShadow: 'none',
+  '&:hover': {
+    boxShadow: 'none',
+  },
 }));

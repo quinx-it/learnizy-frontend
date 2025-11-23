@@ -1,4 +1,4 @@
-import { Box, styled } from '@mui/material';
+import { Box, Divider as MuiDivider, styled } from '@mui/material';
 
 export const Container = styled(Box)(({ theme }) => ({
   display: 'grid',
@@ -14,15 +14,12 @@ export const CourseTitle = styled(Box)(() => ({
   marginBottom: '1rem',
 }));
 
-export const CourseDivider = styled('hr')(({ theme }) => ({
+export const CourseDivider = styled(MuiDivider)(({ theme }) => ({
   borderColor: theme.palette.gray,
-  borderStyle: 'solid',
-  borderWidth: '0 0 1px 0',
   marginTop: 0,
   marginLeft: 0,
   marginRight: 0,
   marginBottom: '1rem',
-  padding: 0,
 }));
 
 export const ModulesList = styled('ul')(() => ({
@@ -38,13 +35,10 @@ export const StatisticsTitle = styled(Box)(() => ({
   marginBottom: '1rem',
 }));
 
-export const StatisticsDivider = styled('hr')(({ theme }) => ({
+export const StatisticsDivider = styled(MuiDivider)(({ theme }) => ({
   borderColor: theme.palette.gray,
-  borderStyle: 'solid',
-  borderWidth: '0 0 1px 0',
   marginTop: 0,
   marginLeft: 0,
   marginRight: 0,
   marginBottom: '1rem',
-  padding: 0,
 }));

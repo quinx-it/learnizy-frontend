@@ -114,7 +114,7 @@ const AudioPlayer: FC<IAudioPlayerProps> = (props) => {
       {transcript && (
         <TranscriptContainer
           ref={transcriptRef}
-          $maxHeight={showTranscript ? transcriptRef.current?.scrollHeight : 0}
+          maxHeight={showTranscript ? transcriptRef.current?.scrollHeight : 0}
         >
           <TranscriptText>
             <Text variant="m">{transcript}</Text>

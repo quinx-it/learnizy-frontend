@@ -18,6 +18,7 @@ export const FormField = styled(Box)(() => ({
 export const ButtonWrapper = styled(Box)(() => ({
   flex: 1,
   fontSize: '16px',
+
   '& > *': {
     fontSize: '16px',
   },

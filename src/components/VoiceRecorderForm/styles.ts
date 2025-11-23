@@ -13,7 +13,7 @@ export const FieldWrapper = styled(Box)(() => ({
   flexDirection: 'column',
 }));
 
-export const ErrorText = styled('p')(({ theme }) => ({
+export const ErrorText = styled(Box)(({ theme }) => ({
   color: theme.palette.error.main,
 }));
 
@@ -39,6 +39,7 @@ export const ErrorContainer = styled(CardWrapper)(({ theme }) => ({
   marginTop: '1rem',
   backgroundColor: `${theme.palette.error.main}33`,
   padding: '1rem',
+
   '& > *': {
     color: theme.palette.error.main,
   },

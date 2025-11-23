@@ -1,6 +1,7 @@
 import { Box, styled } from '@mui/material';
 
 import Button from '@/components/Button';
+import Input from '@/components/Input';
 import Link from '@/components/Link';
 
 export const SearchContainer = styled(Box)(() => ({
@@ -8,19 +9,12 @@ export const SearchContainer = styled(Box)(() => ({
   marginBottom: '1rem',
 }));
 
-export const SearchInput = styled('input')(({ theme }) => ({
+export const SearchInput = styled(Input)(() => ({
   width: '100%',
   maxWidth: '24rem',
-  borderRadius: '0.375rem',
-  border: `1px solid ${theme.palette.divider}`,
-  backgroundColor: theme.palette.background.paper,
-  paddingTop: '0.5rem',
-  paddingBottom: '0.5rem',
-  paddingRight: '1rem',
-  paddingLeft: '2.5rem',
-  outline: 'none',
-  '&:focus': {
-    outline: 'none',
+
+  '& input': {
+    paddingLeft: '2.5rem',
   },
 }));
 
@@ -38,15 +32,17 @@ export const TableGrid = styled(Box)(() => ({
   textAlign: 'center',
 }));
 
-export const HeaderCell = styled(Box)<{ $hasBorder?: boolean; $hasPadding?: boolean }>(
-  ({ theme, $hasBorder = true, $hasPadding = false }) => ({
-    borderRight: $hasBorder ? `1px solid ${theme.palette.divider}` : 'none',
+export const HeaderCell = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'hasBorder' && prop !== 'hasPadding',
+})<{ hasBorder?: boolean; hasPadding?: boolean }>(
+  ({ theme, hasBorder = true, hasPadding = false }) => ({
+    borderRight: hasBorder ? `1px solid ${theme.palette.divider}` : 'none',
     backgroundColor: theme.palette.info.main,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingLeft: $hasPadding ? '1rem' : 0,
-    paddingRight: $hasPadding ? '1rem' : 0,
+    paddingLeft: hasPadding ? '1rem' : 0,
+    paddingRight: hasPadding ? '1rem' : 0,
     paddingTop: '0.75rem',
     paddingBottom: '0.75rem',
   }),
@@ -56,17 +52,19 @@ export const RowWrapper = styled(Box)(() => ({
   display: 'contents',
 }));
 
-export const Cell = styled(Box)<{ $hasBorder?: boolean; $hasPadding?: boolean }>(
-  ({ theme, $hasBorder = true, $hasPadding = false }) => ({
+export const Cell = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'hasBorder' && prop !== 'hasPadding',
+})<{ hasBorder?: boolean; hasPadding?: boolean }>(
+  ({ theme, hasBorder = true, hasPadding = false }) => ({
     borderTop: `1px solid ${theme.palette.divider}`,
-    borderRight: $hasBorder ? `1px solid ${theme.palette.divider}` : 'none',
+    borderRight: hasBorder ? `1px solid ${theme.palette.divider}` : 'none',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: '0.75rem',
     paddingBottom: '0.75rem',
-    paddingLeft: $hasPadding ? '1rem' : 0,
-    paddingRight: $hasPadding ? '1rem' : 0,
+    paddingLeft: hasPadding ? '1rem' : 0,
+    paddingRight: hasPadding ? '1rem' : 0,
     gap: '0.25rem',
   }),
 );

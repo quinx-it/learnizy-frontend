@@ -1,6 +1,8 @@
-import { Box, styled } from '@mui/material';
+import { Box, Button, styled } from '@mui/material';
 
-export const ToastContainer = styled(Box)<{ $bg: string; $text: string }>(({ $bg, $text }) => ({
+export const ToastContainer = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'bg' && prop !== 'text',
+})<{ bg: string; text: string }>(({ bg, text }) => ({
   display: 'flex',
   maxWidth: '400px',
   minWidth: '320px',
@@ -8,8 +10,8 @@ export const ToastContainer = styled(Box)<{ $bg: string; $text: string }>(({ $bg
   gap: '0.75rem',
   borderRadius: '1rem',
   padding: '1rem',
-  backgroundColor: $bg,
-  color: $text,
+  backgroundColor: bg,
+  color: text,
 }));
 
 export const IconWrapper = styled(Box)(() => ({
@@ -32,15 +34,19 @@ export const Description = styled(Box)(() => ({
   fontSize: '12px',
 }));
 
-export const CloseButton = styled('button')<{ $text: string }>(({ $text }) => ({
+export const CloseButton = styled(Button, {
+  shouldForwardProp: (prop) => prop !== 'text',
+})<{ text: string }>(({ text }) => ({
   marginTop: '0.5rem',
-  cursor: 'pointer',
   border: 0,
   backgroundColor: 'transparent',
-  color: $text,
+  color: text,
   fontSize: '24px',
   padding: 0,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  minWidth: 'auto',
+  textTransform: 'none',
+  boxShadow: 'none',
+  '&:hover': {
+    boxShadow: 'none',
+  },
 }));

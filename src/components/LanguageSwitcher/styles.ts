@@ -1,4 +1,4 @@
-import { Box, styled } from '@mui/material';
+import { Box, Button, styled } from '@mui/material';
 
 export const Container = styled(Box)(() => ({
   position: 'relative',
@@ -8,7 +8,7 @@ export const Container = styled(Box)(() => ({
   paddingRight: '1rem',
 }));
 
-export const ToggleButton = styled('button')(({ theme }) => ({
+export const ToggleButton = styled(Button)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   gap: '0.5rem',
@@ -20,14 +20,19 @@ export const ToggleButton = styled('button')(({ theme }) => ({
   paddingBottom: '0.25rem',
   fontSize: '0.875rem',
   backgroundColor: 'transparent',
-  cursor: 'pointer',
+  textTransform: 'none',
+  boxShadow: 'none',
   transition: 'background-color 0.2s ease-in-out',
+
   '&:hover': {
     backgroundColor: theme.palette.grey[100],
+    boxShadow: 'none',
   },
 }));
 
-export const DropdownMenu = styled(Box)<{ $isOpen: boolean }>(({ theme, $isOpen }) => ({
+export const DropdownMenu = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'isOpen',
+})<{ isOpen: boolean }>(({ theme, isOpen }) => ({
   position: 'absolute',
   right: '1rem',
   marginTop: '0.5rem',
@@ -37,12 +42,12 @@ export const DropdownMenu = styled(Box)<{ $isOpen: boolean }>(({ theme, $isOpen 
   backgroundColor: theme.palette.background.paper,
   boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
   transition: 'all 0.2s ease-in-out',
-  pointerEvents: $isOpen ? 'auto' : 'none',
-  transform: $isOpen ? 'translateY(0)' : 'translateY(-0.5rem)',
-  opacity: $isOpen ? 1 : 0,
+  pointerEvents: isOpen ? 'auto' : 'none',
+  transform: isOpen ? 'translateY(0)' : 'translateY(-0.5rem)',
+  opacity: isOpen ? 1 : 0,
 }));
 
-export const MenuItem = styled('button')(({ theme }) => ({
+export const MenuItem = styled(Button)(({ theme }) => ({
   display: 'block',
   width: '100%',
   paddingLeft: '0.75rem',
@@ -52,10 +57,12 @@ export const MenuItem = styled('button')(({ theme }) => ({
   textAlign: 'left',
   fontSize: '0.875rem',
   backgroundColor: 'transparent',
-  border: 'none',
-  cursor: 'pointer',
+  textTransform: 'none',
+  boxShadow: 'none',
   transition: 'background-color 0.2s ease-in-out',
+
   '&:hover': {
     backgroundColor: theme.palette.grey[100],
+    boxShadow: 'none',
   },
 }));

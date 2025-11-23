@@ -1,4 +1,4 @@
-import { Box, styled } from '@mui/material';
+import { Box, Button, styled } from '@mui/material';
 
 import Input from '@/components/Input';
 import Link from '@/components/Link';
@@ -22,9 +22,10 @@ export const TextContainer = styled(Box)(() => ({
   marginBottom: '1.5rem',
 }));
 
-export const EmailText = styled('span')(({ theme }) => ({
+export const EmailText = styled(Box)(({ theme }) => ({
   fontWeight: 500,
   color: theme.palette.text.primary,
+  display: 'inline',
 }));
 
 export const VerificationInput = styled(Input)(() => ({
@@ -40,20 +41,23 @@ export const ResendText = styled(Box)(({ theme }) => ({
   color: theme.palette.grey[500],
 }));
 
-export const ResendButton = styled('button')(({ theme }) => ({
+export const ResendButton = styled(Button)(({ theme }) => ({
   color: theme.palette.link.main,
   backgroundColor: 'transparent',
   border: 'none',
   padding: 0,
-  cursor: 'pointer',
+  textTransform: 'none',
+  boxShadow: 'none',
   fontSize: 'inherit',
+
   '&:hover': {
     textDecoration: 'underline',
+    boxShadow: 'none',
   },
+
   '&:disabled': {
     color: theme.palette.grey[400],
     textDecoration: 'none',
-    cursor: 'not-allowed',
   },
 }));
 
@@ -63,7 +67,7 @@ export const CheckboxContainer = styled(Box)(() => ({
   gap: '0.25rem',
 }));
 
-export const ErrorText = styled('p')(({ theme }) => ({
+export const ErrorText = styled(Box)(({ theme }) => ({
   color: theme.palette.error.main,
   fontSize: '12px',
 }));

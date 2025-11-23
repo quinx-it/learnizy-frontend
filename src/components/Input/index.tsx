@@ -28,7 +28,7 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
           type={type}
           autoComplete={autoComplete ?? ''}
           data-slot="input"
-          $hasError={!!error}
+          hasError={!!error}
           aria-invalid={!!error}
           className={innerClassName}
           {...props}

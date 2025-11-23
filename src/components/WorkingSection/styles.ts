@@ -19,6 +19,7 @@ export const ContentWrapper = styled(Box)(() => ({
 export const StyledImage = styled(Image)(({ theme }) => ({
   width: 'auto',
   height: 'auto',
+
   [theme.breakpoints.up('md')]: {
     maxWidth: '110px',
   },

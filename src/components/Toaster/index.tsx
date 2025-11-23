@@ -47,13 +47,13 @@ const CustomToast: FC<CustomToastPropsType> = (props) => {
   const { bg, text, icon } = colorMap[variant];
 
   return (
-    <ToastContainer $bg={bg} $text={text}>
+    <ToastContainer bg={bg} text={text}>
       <IconWrapper>{icon}</IconWrapper>
       <ContentWrapper>
         <Title>{title}</Title>
         <Description>{description}</Description>
       </ContentWrapper>
-      <CloseButton type="button" onClick={onClose} aria-label="Закрыть" $text={text}>
+      <CloseButton type="button" onClick={onClose} aria-label="Закрыть" text={text}>
         <CrossIcon color="black" />
       </CloseButton>
     </ToastContainer>

@@ -36,11 +36,11 @@ const Textarea: FC<ITextareaProps> = ({
 
   return (
     <Container>
-      <Wrapper $hasError={!!error} className={className}>
+      <Wrapper hasError={!!error} className={className}>
         <TextareaContainer>
           <StyledTextarea
             data-slot="textarea"
-            $hasError={!!error}
+            hasError={!!error}
             aria-invalid={!!error}
             maxLength={maxLength}
             value={value}

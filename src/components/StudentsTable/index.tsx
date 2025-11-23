@@ -50,52 +50,52 @@ const StudentsTable: FC<IStudentsTableProps> = (props) => {
 
       <TableWrapper>
         <TableGrid>
-          <HeaderCell $hasBorder $hasPadding={false}>
+          <HeaderCell hasBorder hasPadding={false}>
             <Text variant="m">
               <PersonIcon className="h-4 w-4" />
             </Text>
           </HeaderCell>
-          <HeaderCell $hasBorder $hasPadding={false}>
+          <HeaderCell hasBorder hasPadding={false}>
             <Text variant="m">ID</Text>
           </HeaderCell>
-          <HeaderCell $hasBorder $hasPadding>
+          <HeaderCell hasBorder hasPadding>
             <Text variant="m">ФИО</Text>
           </HeaderCell>
-          <HeaderCell $hasBorder $hasPadding={false}>
+          <HeaderCell hasBorder hasPadding={false}>
             <Text variant="m">Прогресс</Text>
           </HeaderCell>
-          <HeaderCell $hasBorder $hasPadding>
+          <HeaderCell hasBorder hasPadding>
             <Text variant="m">Текущий модуль</Text>
           </HeaderCell>
-          <HeaderCell $hasBorder $hasPadding={false}>
+          <HeaderCell hasBorder hasPadding={false}>
             <Text variant="m">Текущий урок</Text>
           </HeaderCell>
-          <HeaderCell $hasBorder={false} $hasPadding={false} />
+          <HeaderCell hasBorder={false} hasPadding={false} />
 
           {filteredStudents.length > 0 ? (
             filteredStudents.map((row) => (
               <RowWrapper key={row.id}>
-                <Cell $hasBorder $hasPadding={false}>
+                <Cell hasBorder hasPadding={false}>
                   <EditButton variant="white">
                     <Edit3 size={18} />
                   </EditButton>
                 </Cell>
-                <Cell $hasBorder $hasPadding={false}>
+                <Cell hasBorder hasPadding={false}>
                   <Text variant="m">{row.id}</Text>
                   <CopyButton variant="white">
                     <Copy cursor="pointer" size={16} />
                   </CopyButton>
                 </Cell>
-                <Cell $hasBorder $hasPadding>
+                <Cell hasBorder hasPadding>
                   <Text variant="m">{row.fullName}</Text>
                 </Cell>
-                <Cell $hasBorder $hasPadding={false}>
+                <Cell hasBorder hasPadding={false}>
                   <Text variant="m">{row.progress}</Text>
                 </Cell>
-                <Cell $hasBorder $hasPadding>
+                <Cell hasBorder hasPadding>
                   <Text variant="m">{row.currentModule}</Text>
                 </Cell>
-                <Cell $hasBorder $hasPadding={false}>
+                <Cell hasBorder hasPadding={false}>
                   <Text variant="m">{row.currentLesson}</Text>
                 </Cell>
                 <LinkCell href={`${routes.mentor.students}/${row.id}`}>

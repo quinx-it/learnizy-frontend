@@ -57,7 +57,7 @@ const LanguageSwitcher: FC = () => {
         {pathname.split('/')[1]?.toUpperCase() || LANGUAGES.EN.toUpperCase()}
       </ToggleButton>
 
-      <DropdownMenu $isOpen={open}>
+      <DropdownMenu isOpen={open}>
         <MenuItem type="button" onClick={() => changeLanguage(LANGUAGES.EN)}>
           English
         </MenuItem>
