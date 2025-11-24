@@ -7,9 +7,16 @@ import { Toaster as Sonner, toast, ToasterProps } from 'sonner';
 import { NotificationIcon, CrossIcon } from '@/components/Icons';
 
 import { NotificationVariantType, ColorMapEntryType, CustomToastPropsType } from './typings';
-import './toaster.css';
 
-const iconSize = 24;
+import {
+  CloseButton,
+  ContentWrapper,
+  Description,
+  IconWrapper,
+  Title,
+  ToastContainer,
+} from './styles';
+import './toaster.css';
 
 const colorMap: Record<NotificationVariantType, ColorMapEntryType> = {
   info: {
@@ -40,27 +47,16 @@ const CustomToast: FC<CustomToastPropsType> = (props) => {
   const { bg, text, icon } = colorMap[variant];
 
   return (
-    <div
-      className="flex max-w-[400px] min-w-[320px] items-start gap-3 rounded-2xl p-4"
-      style={{ backgroundColor: bg, color: text }}
-    >
-      <div style={{ fontSize: iconSize }} className="mt-2">
-        {icon}
-      </div>
-      <div className="flex-1">
-        <div className="mb-1 text-[16px] leading-[22px] font-bold">{title}</div>
-        <div className="text-[12px]">{description}</div>
-      </div>
-      <button
-        type="button"
-        onClick={onClose}
-        aria-label="Закрыть"
-        className="mt-2 cursor-pointer border-0 bg-transparent"
-        style={{ color: text, fontSize: iconSize }}
-      >
+    <ToastContainer bg={bg} text={text}>
+      <IconWrapper>{icon}</IconWrapper>
+      <ContentWrapper>
+        <Title>{title}</Title>
+        <Description>{description}</Description>
+      </ContentWrapper>
+      <CloseButton type="button" onClick={onClose} aria-label="Закрыть" text={text}>
         <CrossIcon color="black" />
-      </button>
-    </div>
+      </CloseButton>
+    </ToastContainer>
   );
 };
 

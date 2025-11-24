@@ -9,7 +9,6 @@ import {
   CreateLessonAIQueryRequestType,
 } from '@/api/endpoints/voice';
 import Button from '@/components/Button';
-import CardWrapper from '@/components/CardWrapper';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
@@ -18,6 +17,16 @@ import VoiceRecorderControl from '@/components/VoiceRecorderControl';
 import { AIQueryStatus } from './constants';
 import { IAIQuestionFormValues, IVoiceRecorderFormProps } from './typings';
 import { schema } from './validation';
+
+import {
+  ErrorContainer,
+  ErrorText,
+  Form,
+  LoadingContainer,
+  ResponseContainer,
+  FieldWrapper,
+  SubmitButtonWrapper,
+} from './styles';
 
 const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = (props) => {
   const { lessonId } = props;
@@ -106,52 +115,49 @@ const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <Controller
         control={control}
         name="file"
         render={({ field }) => (
-          <div>
+          <FieldWrapper>
             <VoiceRecorderControl onChange={field.onChange} />
-            {errors.file && <p className="text-error">{errors.file.message}</p>}
-          </div>
+            {errors.file && <ErrorText>{errors.file.message}</ErrorText>}
+          </FieldWrapper>
         )}
       />
 
-      <Button
-        type="submit"
-        disabled={isCreatingQuery || isLoadingLastQuery}
-        size="medium"
-        className="w-fit"
-      >
-        {isCreatingQuery || (lastCreatedQueryId && isLoadingLastQuery) ? (
-          <Spinner />
-        ) : (
-          'Задать вопрос'
-        )}
-      </Button>
+      <SubmitButtonWrapper>
+        <Button type="submit" disabled={isCreatingQuery || isLoadingLastQuery} size="medium">
+          {isCreatingQuery || (lastCreatedQueryId && isLoadingLastQuery) ? (
+            <Spinner />
+          ) : (
+            'Задать вопрос'
+          )}
+        </Button>
+      </SubmitButtonWrapper>
 
       {lastCreatedQueryId && !lastAIResponse && !lastAIError && (
-        <div className="mt-4 flex items-center gap-2 text-gray-600">
+        <LoadingContainer>
           <Spinner />
           <Text>Идёт ожидание обработки ИИ...</Text>
-        </div>
+        </LoadingContainer>
       )}
 
       {lastAIResponse && (
-        <div className="mt-4 bg-gray-100 p-4">
+        <ResponseContainer>
           <Text variant="l-bold">Ответ:</Text>
           <Text>{lastAIResponse}</Text>
-        </div>
+        </ResponseContainer>
       )}
 
       {lastAIError && (
-        <CardWrapper className="mt-4 bg-red-100 p-4 text-red-700">
+        <ErrorContainer>
           <Text variant="l-bold">Ошибка:</Text>
           <Text>{lastAIError}</Text>
-        </CardWrapper>
+        </ErrorContainer>
       )}
-    </form>
+    </Form>
   );
 };
 

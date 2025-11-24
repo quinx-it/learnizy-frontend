@@ -1,10 +1,10 @@
 'use client';
 
+import { Box } from '@mui/material';
 import { FC } from 'react';
 
 import { LessonTestSubmitType, useSendTestMutation } from '@/api/endpoints/test';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import CardWrapper from '@/components/CardWrapper';
 import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import LessonTestForm from '@/components/LessonTestForm';
@@ -15,6 +15,15 @@ import { useTranslation } from '@/hooks';
 
 import { constants, TestType } from './constants';
 import { TestPagePropsType } from './typings';
+
+import {
+  CardContent,
+  Container,
+  DescriptionWrapper,
+  Divider,
+  InfoContainer,
+  TitleWrapper,
+} from './styles';
 
 const TestPage: FC<TestPagePropsType> = (props) => {
   const { lessonId, moduleId, lessonTest, isLoading, isError, refetch } = props;
@@ -68,37 +77,39 @@ const TestPage: FC<TestPagePropsType> = (props) => {
             : t(globalConstants.rootBreadcrumbLabels.examsLabel)
         }
       />
-      <div className="space-y-6">
-        <CardWrapper className="flex flex-col gap-5">
-          <div>
-            <Text variant="l" className="text-medium mb-5">
-              {t(title)}{' '}
-              {testType === 'LESSON_TEST' ? lessonSequenceOrder + 1 : moduleSequenceOrder}
-            </Text>
-
-            <hr className="border-gray mb-4" />
-            <div className="space-y-1">
-              <Text variant="l" className="mb-4 whitespace-pre-wrap xl:max-w-[90%]">
-                {t(description)}
+      <Container>
+        <CardContent>
+          <Box>
+            <TitleWrapper>
+              <Text variant="l" className="text-medium">
+                {t(title)}{' '}
+                {testType === 'LESSON_TEST' ? lessonSequenceOrder + 1 : moduleSequenceOrder}
               </Text>
+            </TitleWrapper>
+
+            <Divider />
+            <InfoContainer>
+              <DescriptionWrapper>
+                <Text variant="l">{t(description)}</Text>
+              </DescriptionWrapper>
               <Text variant="m" className="text-medium">
                 {t(constants.questionAmount)} {questions.length}
               </Text>
               <Text variant="m" className="text-medium">
                 {t(constants.procent)} {passThresholdPercentage}%
               </Text>
-            </div>
-          </div>
-        </CardWrapper>
-        <CardWrapper className="flex flex-col gap-5">
+            </InfoContainer>
+          </Box>
+        </CardContent>
+        <CardContent>
           <LessonTestForm
             loading={isLoadingResult}
             onSubmit={onSubmit}
             questions={questions}
             testId={id}
           />
-        </CardWrapper>
-      </div>
+        </CardContent>
+      </Container>
     </>
   );
 };

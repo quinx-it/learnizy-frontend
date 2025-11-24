@@ -1,4 +1,4 @@
-import { Box, styled } from '@mui/material';
+import { Box, Divider as MuiDivider, styled } from '@mui/material';
 
 import CardWrapper from '@/components/CardWrapper';
 
@@ -21,11 +21,9 @@ export const ResultTitle = styled(Box)(({ theme }) => ({
   marginBottom: '1.25rem',
 }));
 
-export const Divider = styled('hr')(({ theme }) => ({
+export const Divider = styled(MuiDivider)(({ theme }) => ({
   borderColor: theme.palette.gray,
   marginBottom: '1rem',
-  border: 'none',
-  borderTop: `1px solid ${theme.palette.gray}`,
 }));
 
 export const ResultInfo = styled(Box)(() => ({
@@ -65,16 +63,16 @@ export const AnswerText = styled(Box)(({ theme }) => ({
   wordBreak: 'break-word',
 }));
 
-export const EvaluationTextCorrect = styled(Box)(() => ({
-  color: '#16a34a',
+export const EvaluationTextCorrect = styled(Box)(({ theme }) => ({
+  color: theme.palette.success.main,
 }));
 
-export const EvaluationTextPartial = styled(Box)(() => ({
-  color: '#ca8a04',
+export const EvaluationTextPartial = styled(Box)(({ theme }) => ({
+  color: theme.palette.warning.main,
 }));
 
-export const EvaluationTextIncorrect = styled(Box)(() => ({
-  color: '#dc2626',
+export const EvaluationTextIncorrect = styled(Box)(({ theme }) => ({
+  color: theme.palette.error.main,
 }));
 
 export const EvaluationTextPending = styled(Box)(({ theme }) => ({

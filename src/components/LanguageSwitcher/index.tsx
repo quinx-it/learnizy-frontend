@@ -1,9 +1,11 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { useState, useRef, FC } from 'react';
+import { useState, useRef, useEffect, FC } from 'react';
 
 import { LANGUAGES } from '@/constants';
+
+import { Container, DropdownMenu, MenuItem, ToggleButton } from './styles';
 
 const LanguageSwitcher: FC = () => {
   const [open, setOpen] = useState(false);
@@ -33,49 +35,37 @@ const LanguageSwitcher: FC = () => {
     setOpen(false);
   };
 
-  const handleClickOutside = (e: MouseEvent) => {
-    if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-      setOpen(false);
-    }
-  };
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
 
-  if (typeof window !== 'undefined') {
-    document.addEventListener('click', handleClickOutside);
-  }
+    if (typeof window !== 'undefined') {
+      document.addEventListener('click', handleClickOutside);
+
+      return () => {
+        document.removeEventListener('click', handleClickOutside);
+      };
+    }
+  }, []);
 
   return (
-    <div className="relative flex w-full justify-end pr-4" ref={menuRef}>
-      <button
-        type="button"
-        onClick={() => setOpen((prev) => !prev)}
-        className="flex items-center gap-2 rounded-md border border-gray-300 px-3 py-1 text-sm hover:bg-gray-100"
-      >
+    <Container ref={menuRef}>
+      <ToggleButton type="button" onClick={() => setOpen((prev) => !prev)}>
         {pathname.split('/')[1]?.toUpperCase() || LANGUAGES.EN.toUpperCase()}
-      </button>
+      </ToggleButton>
 
-      <div
-        className={`absolute right-4 mt-2 w-28 rounded-md border border-gray-200 bg-white shadow-md transition-all duration-200 ${
-          open
-            ? 'pointer-events-auto translate-y-0 opacity-100'
-            : 'pointer-events-none -translate-y-2 opacity-0'
-        }`}
-      >
-        <button
-          type="button"
-          onClick={() => changeLanguage(LANGUAGES.EN)}
-          className="block w-full px-3 py-2 text-left text-sm hover:bg-gray-100"
-        >
+      <DropdownMenu isOpen={open}>
+        <MenuItem type="button" onClick={() => changeLanguage(LANGUAGES.EN)}>
           English
-        </button>
-        <button
-          type="button"
-          onClick={() => changeLanguage(LANGUAGES.RU)}
-          className="block w-full px-3 py-2 text-left text-sm hover:bg-gray-100"
-        >
+        </MenuItem>
+        <MenuItem type="button" onClick={() => changeLanguage(LANGUAGES.RU)}>
           Русский
-        </button>
-      </div>
-    </div>
+        </MenuItem>
+      </DropdownMenu>
+    </Container>
   );
 };
 

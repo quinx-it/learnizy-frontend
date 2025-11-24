@@ -9,7 +9,7 @@ import { IChartLineProps } from './typings';
 
 import { ChartContainerStyled, Container } from './styles';
 
-const chartMargin = { left: 15, right: 15, top: 5, bottom: 0 };
+const chartMargin = { left: 15, right: 15, top: 5, bottom: 245 };
 
 const AreaChart: FC<IChartLineProps> = ({ data }) => {
   if (!data || data.length === 0) return null;

@@ -1,10 +1,18 @@
 import { ChangeEvent, useState, useEffect, FC } from 'react';
 
 import { Text } from '@/components/Typography';
-import { cn } from '@/lib/utils';
 
 import { MAX_TEXTAREA_LENGTH } from './constants';
 import { ITextareaProps } from './typings';
+
+import {
+  Container,
+  CounterWrapper,
+  ErrorText,
+  StyledTextarea,
+  TextareaContainer,
+  Wrapper,
+} from './styles';
 
 const Textarea: FC<ITextareaProps> = ({
   className,
@@ -27,36 +35,31 @@ const Textarea: FC<ITextareaProps> = ({
   };
 
   return (
-    <div className="relative w-full">
-      <div className={cn('bg-light rounded-[12px] border px-2 pt-2 pb-0', className)}>
-        <div className="relative">
-          <textarea
+    <Container>
+      <Wrapper hasError={!!error} className={className}>
+        <TextareaContainer>
+          <StyledTextarea
             data-slot="textarea"
-            className={cn(
-              'w-full text-[16px] font-medium text-black transition-[color] outline-none placeholder:text-black/50 md:text-sm',
-              'h-32 resize-y overflow-auto pr-14',
-              'disabled:text-gray disabled:placeholder:text-gray disabled:pointer-events-none disabled:cursor-not-allowed',
-              'aria-invalid:text-error aria-invalid:border-error',
-              className,
-            )}
+            hasError={!!error}
             aria-invalid={!!error}
             maxLength={maxLength}
             value={value}
             onChange={handleChange}
+            className={className}
             {...props}
           />
-          <div className="absolute right-3 bottom-1 text-xs text-gray-500">
+          <CounterWrapper>
             {String(value).length}/{maxLength}
-          </div>
-        </div>
-      </div>
+          </CounterWrapper>
+        </TextareaContainer>
+      </Wrapper>
 
       {error && (
-        <Text variant="s" className="text-error mt-1 ml-2">
-          {error}
-        </Text>
+        <ErrorText>
+          <Text variant="s">{error}</Text>
+        </ErrorText>
       )}
-    </div>
+    </Container>
   );
 };
 

@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import { FC } from 'react';
 
 import AreaChart from '@/components/AreaChart';
@@ -7,6 +8,8 @@ import { useTranslation } from '@/hooks';
 
 import { WEEK_DAYS } from './constants';
 import { StatisticsChartPropsType } from './typings';
+
+import { HeaderContainer, StatisticsWrapper, TitleWrapper } from './styles';
 
 const StatisticsChart: FC<StatisticsChartPropsType> = (props) => {
   const { weeklyActivity } = props;
@@ -24,13 +27,13 @@ const StatisticsChart: FC<StatisticsChartPropsType> = (props) => {
   });
 
   return (
-    <div>
-      <div className="mb-4 flex justify-between gap-2">
-        <div className="flex items-center gap-2">
+    <Box>
+      <HeaderContainer>
+        <TitleWrapper>
           <CalendarIcon type="blue" />
           <Text variant="m">{t('STATISTICS_CHART.LAST_WEEK')}</Text>
-        </div>
-        <div className="flex items-center gap-3">
+        </TitleWrapper>
+        <StatisticsWrapper>
           <Text variant="m">
             <Text tag="span" variant="l-bold" className="text-medium">
               {totalLessons}
@@ -43,10 +46,10 @@ const StatisticsChart: FC<StatisticsChartPropsType> = (props) => {
             </Text>{' '}
             {t('STATISTICS_CHART.TESTS')}
           </Text>
-        </div>
-      </div>
+        </StatisticsWrapper>
+      </HeaderContainer>
       <AreaChart data={chartData} />
-    </div>
+    </Box>
   );
 };
 

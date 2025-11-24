@@ -14,8 +14,8 @@ export const SuccessContainer = styled(Box)(() => ({
   gap: '1.5rem',
 }));
 
-export const SuccessText = styled(Box)(() => ({
+export const SuccessText = styled(Box)(({ theme }) => ({
   fontSize: '1.125rem',
   fontWeight: 600,
-  color: '#15803d',
+  color: theme.palette.success.main,
 }));

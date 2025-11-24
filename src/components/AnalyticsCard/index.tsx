@@ -21,7 +21,7 @@ const AnalyticsCard: FC<IAnalyticsCardProps> = (props) => {
         <ValueWrapper>
           <Value>{value}</Value>
           {typeof changePercentage === 'number' && (
-            <Percentage $isPositive={isPositive}>
+            <Percentage isPositive={isPositive}>
               {isPositive ? '+' : ''}
               {changePercentage.toFixed(1)}%
             </Percentage>

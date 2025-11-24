@@ -1,12 +1,13 @@
 import { useEffect, useState, FC } from 'react';
 
 import AudioPlayer from '@/components/AudioPlayer';
-import Button from '@/components/Button';
 import { MicIcon, TrashCanIcon } from '@/components/Icons';
 import { Text } from '@/components/Typography';
 import { useVoiceRecorder } from '@/hooks';
 
 import { PropsType } from './typings';
+
+import { ButtonWrapper, Container, DeleteButton } from './styles';
 
 const VoiceRecorderControl: FC<PropsType> = (props) => {
   const { onChange } = props;
@@ -40,39 +41,29 @@ const VoiceRecorderControl: FC<PropsType> = (props) => {
   return (
     <>
       {!audioUrl && !recording && (
-        <Button
-          type="button"
-          onClick={startRecording}
-          size="medium"
-          className="flex max-w-fit gap-3"
-        >
+        <ButtonWrapper type="button" onClick={startRecording} size="medium">
           <MicIcon /> Начать запись
-        </Button>
+        </ButtonWrapper>
       )}
 
       {!audioUrl && recording && (
-        <div className="flex items-center gap-3">
-          <Button
-            type="button"
-            onClick={stopRecording}
-            size="medium"
-            className="flex max-w-fit gap-3"
-          >
+        <Container>
+          <ButtonWrapper type="button" onClick={stopRecording} size="medium">
             ⏹ Остановить
-          </Button>
+          </ButtonWrapper>
           <Text variant="m" className="text-medium">
             {new Date(duration * 1000).toISOString().slice(14, 19)}
           </Text>
-        </div>
+        </Container>
       )}
 
       {audioUrl && (
-        <div className="flex items-center gap-3">
+        <Container>
           <AudioPlayer src={audioUrl} />
-          <button type="button" onClick={handleClear} className="max-w-fit">
+          <DeleteButton type="button" onClick={handleClear}>
             <TrashCanIcon />
-          </button>
-        </div>
+          </DeleteButton>
+        </Container>
       )}
     </>
   );
