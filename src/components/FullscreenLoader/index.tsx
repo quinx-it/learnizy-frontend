@@ -1,12 +1,16 @@
+'use client';
+
 import { FC } from 'react';
 
 import Spinner from '@/components/Spinner';
 
+import { Container } from './styles';
+
 const FullscreenLoader: FC = () => {
   return (
-    <div className="text-medium flex h-screen items-center justify-center">
+    <Container>
       <Spinner size={100} />
-    </div>
+    </Container>
   );
 };
 

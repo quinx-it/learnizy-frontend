@@ -1,18 +1,31 @@
 'use client';
 
-import clsx from 'clsx';
 import { useRef, useLayoutEffect, useEffect, FC } from 'react';
 
 import AudioPlayer from '@/components/AudioPlayer';
 import Typewriter from '@/components/ChatTypewriter';
 import MarkdownRenderer from '@/components/MarkdownText';
 import Spinner from '@/components/Spinner';
-import { Text } from '@/components/Typography';
 import { usePrevious } from '@/hooks/usePrevious';
 import { isAudioUrl } from '@/lib/utils';
 
 import { Role } from './constants';
 import { IChatMessageHistoryProps } from './typings';
+
+import {
+  AttachmentFilename,
+  AttachmentLink,
+  AttachmentsWrapper,
+  LoadingContainer,
+  MarkdownWrapper,
+  MessageBubble,
+  MessageWrapper,
+  ScrollContainer,
+  ThinkingBubble,
+  ThinkingText,
+  ThinkingWrapper,
+  UserMessageText,
+} from './styles';
 
 const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
   const { messages = [], isLoading, isWaitingForAssistant } = props;
@@ -48,17 +61,14 @@ const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
 
   if (isLoading && messages.length === 0) {
     return (
-      <div className="flex h-full items-center justify-center text-[#238BA7]">
+      <LoadingContainer>
         <Spinner size={50} />
-      </div>
+      </LoadingContainer>
     );
   }
 
   return (
-    <div
-      ref={scrollContainerRef}
-      className="no-scrollbar h-full w-full max-w-[659px] overflow-y-auto pt-[90px]"
-    >
+    <ScrollContainer ref={scrollContainerRef}>
       {messages.map((message, index) => {
         const shouldAnimate =
           index === messages.length - 1 &&
@@ -66,22 +76,13 @@ const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
           prevIsWaiting === true &&
           isWaitingForAssistant === false;
 
+        const isUser = message.role === Role.USER;
+
         return (
-          <div
-            key={message.id}
-            className={clsx('mb-3 flex', {
-              'justify-end': message.role === Role.USER,
-              'justify-start': message.role !== Role.USER,
-            })}
-          >
-            <div
-              className={clsx('rounded-3xl py-2 break-words lg:mr-0 lg:ml-0', {
-                'ml-6 bg-[#238BA7] text-white': message.role === Role.USER,
-                'w-full': message.role !== Role.USER,
-              })}
-            >
+          <MessageWrapper key={message.id} isUser={isUser}>
+            <MessageBubble isUser={isUser}>
               {(() => {
-                if (message.role === Role.USER) {
+                if (isUser) {
                   if (isAudioUrl(message.audioFileUrl || '')) {
                     return (
                       <AudioPlayer
@@ -91,11 +92,7 @@ const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
                     );
                   }
 
-                  return (
-                    <Text variant="m" className="px-4 text-base">
-                      {message.content}
-                    </Text>
-                  );
+                  return <UserMessageText>{message.content}</UserMessageText>;
                 }
 
                 if (shouldAnimate) {
@@ -103,49 +100,43 @@ const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
                 }
 
                 return (
-                  <div className="prose prose-sm max-w-none break-words">
-                    <MarkdownRenderer
-                      text={message.content}
-                      className="prose max-w-none break-words"
-                    />
-                  </div>
+                  <MarkdownWrapper>
+                    <MarkdownRenderer text={message.content} />
+                  </MarkdownWrapper>
                 );
               })()}
 
-              {message.role === Role.USER &&
-                message.attachments &&
-                message.attachments.length > 0 && (
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {message.attachments.map((att) => (
-                      <a
-                        key={att.downloadUrl}
-                        href={att.downloadUrl}
-                        download={att.originalFilename}
-                        className="flex items-center gap-2 rounded-full px-5 py-1 text-sm transition-colors hover:text-gray-300"
-                      >
-                        <span className="max-w-[150px] truncate" title={att.originalFilename}>
-                          {att.originalFilename}
-                        </span>
-                      </a>
-                    ))}
-                  </div>
-                )}
-            </div>
-          </div>
+              {isUser && message.attachments && message.attachments.length > 0 && (
+                <AttachmentsWrapper>
+                  {message.attachments.map((att) => (
+                    <AttachmentLink
+                      key={att.downloadUrl}
+                      href={att.downloadUrl}
+                      download={att.originalFilename}
+                    >
+                      <AttachmentFilename title={att.originalFilename}>
+                        {att.originalFilename}
+                      </AttachmentFilename>
+                    </AttachmentLink>
+                  ))}
+                </AttachmentsWrapper>
+              )}
+            </MessageBubble>
+          </MessageWrapper>
         );
       })}
 
       {isWaitingForAssistant && (
-        <div className="mb-8 flex justify-start">
-          <div className="flex max-w-[90%] items-center gap-2 rounded-3xl px-4 py-2 text-gray-700">
-            <Spinner size={16} className="text-[#238BA7]" />
-            <span>ИИ думает...</span>
-          </div>
-        </div>
+        <ThinkingWrapper>
+          <ThinkingBubble>
+            <Spinner size={16} />
+            <ThinkingText>ИИ думает...</ThinkingText>
+          </ThinkingBubble>
+        </ThinkingWrapper>
       )}
 
       <div ref={messagesEndRef} />
-    </div>
+    </ScrollContainer>
   );
 };
 

@@ -1,12 +1,16 @@
+'use client';
+
 import { FC } from 'react';
 
 import NotFoundComponent from '@/components/NotFoundComponent';
 
+import { Container } from './styles';
+
 const NotFoundPage: FC = () => {
   return (
-    <div className="flex h-[100vh] items-center justify-center">
+    <Container>
       <NotFoundComponent />
-    </div>
+    </Container>
   );
 };
 

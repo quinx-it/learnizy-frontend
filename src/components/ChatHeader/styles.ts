@@ -7,22 +7,12 @@ export const Container = styled(Box)(() => ({
   width: '100%',
 }));
 
-export const Divider = styled(Box)(({ theme }) => ({
+export const Divider = styled(Box)(() => ({
   height: 1,
   borderBottom: '1px solid',
   borderImageSlice: 1,
   borderImageSource: 'linear-gradient(270deg, #F2FCFF 0%, #248EAB 35%, #248EAB 65%, #F2FCFF 100%)',
-  marginLeft: 'auto',
-  marginRight: 'auto',
   width: '100%',
-
-  [theme.breakpoints.up('md')]: {
-    width: '80%',
-  },
-
-  [theme.breakpoints.up('sm')]: {
-    width: '50%',
-  },
 }));
 
 export const Title = styled(Typography)(({ theme }) => ({

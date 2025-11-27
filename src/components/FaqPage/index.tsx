@@ -5,12 +5,13 @@ import { FC } from 'react';
 import CardAccordion from '@/components/Accordion';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
-import { Text } from '@/components/Typography';
 import { routes } from '@/constants';
 import { globalConstants } from '@/constants/constants';
 import { useTranslation } from '@/hooks';
 
 import { constants } from './constants';
+
+import { AccordionContainer, Divider, StyledCardWrapper, Title } from './styles';
 
 const FaqPage: FC = () => {
   const { t } = useTranslation();
@@ -22,17 +23,15 @@ const FaqPage: FC = () => {
         rootHref={routes.user.knowlegeBase}
         items={constants.breadCrumbs}
       />
-      <CardWrapper className="max-w-full">
-        <div>
-          <Text variant="m-bold" className="text-medium mb-5">
-            {t('COMMON.FAQ_ANSWERS_TO_POPULAR_QUESTIONS')}
-          </Text>
-          <hr className="border-gray mb-4" />
-          <div className="w-full">
-            <CardAccordion className="w-full" items={constants.accordionItems} />
-          </div>
-        </div>
-      </CardWrapper>
+      <StyledCardWrapper>
+        <CardWrapper>
+          <Title>{t('COMMON.FAQ_ANSWERS_TO_POPULAR_QUESTIONS')}</Title>
+          <Divider />
+          <AccordionContainer>
+            <CardAccordion items={constants.accordionItems} />
+          </AccordionContainer>
+        </CardWrapper>
+      </StyledCardWrapper>
     </>
   );
 };

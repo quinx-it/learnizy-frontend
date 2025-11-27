@@ -1,11 +1,15 @@
+'use client';
+
 import { AdvantagesSection } from '@/components/AdvantagesSection';
 import HeroSection from '@/components/HeroSection';
 
+import { Main } from './styles';
+
 export const LandingPage = () => {
   return (
-    <main className="m-0 w-full p-0">
+    <Main>
       <HeroSection />
       <AdvantagesSection />
-    </main>
+    </Main>
   );
 };

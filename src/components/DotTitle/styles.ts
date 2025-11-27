@@ -18,6 +18,7 @@ export const Dot = styled(Box)(() => ({
   paddingRight: '0.25rem',
   fontSize: '22px',
   display: 'inline',
+
   '&.dot-small': {
     fontSize: '16px',
   },

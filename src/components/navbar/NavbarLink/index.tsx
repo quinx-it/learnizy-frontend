@@ -3,11 +3,11 @@
 import { FC } from 'react';
 
 import Button from '@/components/Button';
-import Link from '@/components/Link';
-import { Text } from '@/components/Typography';
 import { usePathname } from '@/hooks';
 
 import { INavbarLinkProps } from './typings';
+
+import { IconWrapper, StyledLink, StyledText } from './styles';
 
 const NavbarLink: FC<INavbarLinkProps> = (props) => {
   const { href, Icon, label, className, onClick } = props;
@@ -18,12 +18,12 @@ const NavbarLink: FC<INavbarLinkProps> = (props) => {
 
   return (
     <Button onClick={onClick} variant={isActive ? 'blue' : 'white'} asChild className={className}>
-      <Link href={href.toString()} className="justify-start gap-2.5 border-0 !px-5 !py-2">
-        <Icon className="h-[16px] w-[16px]" />
-        <Text variant="s" tag="span" className="text-inherit md:hidden lg:block">
-          {label}
-        </Text>
-      </Link>
+      <StyledLink href={href.toString()}>
+        <IconWrapper>
+          <Icon />
+        </IconWrapper>
+        <StyledText as="span">{label}</StyledText>
+      </StyledLink>
     </Button>
   );
 };

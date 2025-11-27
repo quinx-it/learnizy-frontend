@@ -1,12 +1,21 @@
+'use client';
+
 import Image from 'next/image';
 import { FC } from 'react';
 
-import Button from '@/components/Button';
-import { Heading, Text } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
-import { cn } from '@/lib/utils';
 
 import { ErrorPropsType, ErrorType } from './typings';
+
+import {
+  Container,
+  ContentWrapper,
+  Description,
+  ImageWrapper,
+  StyledButton,
+  TextContainer,
+  Title,
+} from './styles';
 
 const ErrorSection: FC<ErrorPropsType & ErrorType> = (props) => {
   const { t } = useTranslation();
@@ -18,29 +27,18 @@ const ErrorSection: FC<ErrorPropsType & ErrorType> = (props) => {
   };
 
   return (
-    <div className="flex h-screen items-center">
-      <div
-        className={cn(
-          'text-deep relative m-auto flex flex-col items-center gap-5 text-center',
-          className,
-        )}
-      >
-        <Image
-          width={110}
-          height={105}
-          src="/images/error-astronaut.webp"
-          alt="astronaut"
-          className="md:max-w-[110px]"
-        />
-        <div className="space-y-3">
-          <Heading variant="xl-bold">{t('ERROR_SECTION.TITLE')}</Heading>
-          <Text className="whitespace-pre-wrap" variant="m">
-            {t('ERROR_SECTION.TEXT')}
-          </Text>
-        </div>
-        <Button onClick={handleError}>{t('ERROR_SECTION.BUTTON')}</Button>
-      </div>
-    </div>
+    <Container>
+      <ContentWrapper className={className}>
+        <ImageWrapper>
+          <Image width={110} height={105} src="/images/error-astronaut.webp" alt="astronaut" />
+        </ImageWrapper>
+        <TextContainer>
+          <Title>{t('ERROR_SECTION.TITLE')}</Title>
+          <Description>{t('ERROR_SECTION.TEXT')}</Description>
+        </TextContainer>
+        <StyledButton onClick={handleError}>{t('ERROR_SECTION.BUTTON')}</StyledButton>
+      </ContentWrapper>
+    </Container>
   );
 };
 

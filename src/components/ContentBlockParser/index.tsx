@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import Image from 'next/image';
 import { FC } from 'react';
 
@@ -14,8 +15,22 @@ import { Heading, Text } from '@/components/Typography';
 
 import { IBlockRendererProps } from './typings';
 
+import {
+  AdviceContainer,
+  BoxedTextContainer,
+  Code,
+  CodeBlock,
+  Figcaption,
+  Figure,
+  StrongText,
+  StrongTextWithGap,
+  StrongTextWithoutGap,
+  StyledLinkWrapper,
+  UnorderedList,
+  WarningContainer,
+} from './styles';
+
 const defaultStyles = {
-  color: '#0C0C0C',
   display: 'block',
   marginBottom: 0,
 };
@@ -25,7 +40,7 @@ const BlockRenderer: FC<IBlockRendererProps> = (props) => {
 
   const baseStyle = {
     marginBottom: block.properties.mb ?? defaultStyles.marginBottom,
-    color: block.properties.color ?? defaultStyles.color,
+    color: block.properties.color,
     display: block.properties.inline ? 'inline' : defaultStyles.display,
   };
 
@@ -58,53 +73,47 @@ const BlockRenderer: FC<IBlockRendererProps> = (props) => {
 
     case BlockType.LINK:
       return (
-        <Link
-          href={block.properties.url}
-          target={block.properties.target}
-          rel={block.properties.target === '_blank' ? 'noopener noreferrer' : undefined}
-          style={baseStyle}
-          className="underline"
-        >
-          {block.content}
-          {renderChildren(block.children)}
-        </Link>
+        <StyledLinkWrapper style={baseStyle}>
+          <Link
+            href={block.properties.url}
+            target={block.properties.target}
+            rel={block.properties.target === '_blank' ? 'noopener noreferrer' : undefined}
+          >
+            {block.content}
+            {renderChildren(block.children)}
+          </Link>
+        </StyledLinkWrapper>
       );
 
     case BlockType.UL:
       return (
-        <ul
-          className="list-disc pl-5 marker:text-lg marker:text-black"
-          style={{ marginBottom: block.properties.mb ?? 0 }}
-        >
+        <UnorderedList style={{ marginBottom: block.properties.mb ?? 0 }}>
           {renderChildren(block.children)}
-        </ul>
+        </UnorderedList>
       );
 
     case BlockType.LI: {
       const liStyle = {
         marginBottom: block.properties.mb ?? 0,
-        color: block.properties.color ?? defaultStyles.color,
+        color: block.properties.color,
       };
 
       return (
-        <li style={liStyle}>
+        <Box style={liStyle}>
           {block.content}
           {renderChildren(block.children)}
-        </li>
+        </Box>
       );
     }
 
     case BlockType.CODE:
       return (
-        <pre
-          className="bg-light border-gray w-full max-w-full overflow-x-auto rounded-2xl border p-4"
-          style={baseStyle}
-        >
-          <code className="block whitespace-pre">
+        <CodeBlock style={baseStyle}>
+          <Code>
             {block.content}
             {renderChildren(block.children)}
-          </code>
-        </pre>
+          </Code>
+        </CodeBlock>
       );
 
     case BlockType.IMAGE: {
@@ -121,52 +130,47 @@ const BlockRenderer: FC<IBlockRendererProps> = (props) => {
       if (!isValidUrl(block.content)) return null;
 
       return (
-        <figure style={baseStyle} className="w-fit">
+        <Figure style={baseStyle}>
           <Image
             src={block.content}
             width={block.properties.width ?? 400}
             height={block.properties.height ?? 300}
             alt={block.properties.alt ?? ''}
           />
-          {block.properties.caption && (
-            <figcaption className="text-center">{block.properties.caption}</figcaption>
-          )}
+          {block.properties.caption && <Figcaption>{block.properties.caption}</Figcaption>}
           {renderChildren(block.children)}
-        </figure>
+        </Figure>
       );
     }
 
     case BlockType.ADVICE:
       return (
-        <div className="bg-soft w-fit rounded-2xl p-4" style={{ ...baseStyle, color: '#238BA7' }}>
-          <strong className="mb-3 flex items-center">
+        <AdviceContainer style={baseStyle}>
+          <StrongText>
             <LightbulbIcon />
             {block.content}
-          </strong>
+          </StrongText>
           {renderChildren(block.children)}
-        </div>
+        </AdviceContainer>
       );
 
     case BlockType.WARNING:
       return (
-        <div
-          className="w-fit rounded-2xl bg-[#E644444D] p-4"
-          style={{ ...baseStyle, color: '#E64444' }}
-        >
-          <strong className="mb-3 flex items-center gap-2">
-            <NotificationIcon status="warning" color="#E64444" />
+        <WarningContainer style={baseStyle}>
+          <StrongTextWithGap>
+            <NotificationIcon status="warning" />
             {block.content}
-          </strong>
+          </StrongTextWithGap>
           {renderChildren(block.children)}
-        </div>
+        </WarningContainer>
       );
 
     case BlockType.BOXED_TEXT:
       return (
-        <div className="border-gray rounded-2xl border p-4" style={baseStyle}>
-          <strong className="mb-3">{block.content}</strong>
+        <BoxedTextContainer style={baseStyle}>
+          <StrongTextWithoutGap>{block.content}</StrongTextWithoutGap>
           {renderChildren(block.children)}
-        </div>
+        </BoxedTextContainer>
       );
 
     default:
