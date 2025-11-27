@@ -16,7 +16,7 @@ import { PasswordInput } from '@/components/PasswordInput';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
 import { Heading, Text } from '@/components/Typography';
-import { routes, HttpStatus } from '@/constants';
+import { routes, HttpStatus } from '@/const';
 import { useRouter } from '@/hooks';
 
 import { VerificationFormValuesType, RegisterStep, IRegisterFormValues } from './typings';

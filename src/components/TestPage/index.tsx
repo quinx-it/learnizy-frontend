@@ -10,7 +10,7 @@ import FullscreenLoader from '@/components/FullscreenLoader';
 import LessonTestForm from '@/components/LessonTestForm';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
-import { globalConstants, routes } from '@/constants';
+import { globalConstants, routes } from '@/const';
 import { useTranslation } from '@/hooks';
 
 import { constants, TestType } from './constants';

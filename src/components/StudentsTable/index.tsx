@@ -6,7 +6,7 @@ import { useState, FC } from 'react';
 
 import { ArrowRightIcon, PersonIcon } from '@/components/Icons';
 import { Text } from '@/components/Typography';
-import { routes } from '@/constants';
+import { routes } from '@/const';
 
 import { IStudentsTableProps } from './typings';
 

@@ -9,7 +9,7 @@ import Button from '@/components/Button';
 import { PasswordInput } from '@/components/PasswordInput';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
-import { routes } from '@/constants';
+import { routes } from '@/const';
 import { useRouter } from '@/hooks';
 
 import { IResetPasswordFormProps } from './typings';

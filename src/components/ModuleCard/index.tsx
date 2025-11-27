@@ -9,7 +9,7 @@ import Button from '@/components/Button';
 import CardWrapper from '@/components/CardWrapper';
 import DotTitle from '@/components/DotTitle';
 import { Text } from '@/components/Typography';
-import { routes } from '@/constants';
+import { routes } from '@/const';
 import { useRouter, useTranslation } from '@/hooks';
 import { cn, pluralize } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';

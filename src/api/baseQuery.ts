@@ -6,7 +6,7 @@ import {
 } from '@reduxjs/toolkit/query';
 import { throttle } from 'lodash';
 
-import { HttpStatus, REFRESH_THROTTLE } from '@/constants';
+import { API_BASE_URL, HttpStatus, REFRESH_THROTTLE } from '@/const';
 import { RootStateType } from '@/store';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 
@@ -14,7 +14,7 @@ import { AUTH_BASE_URL } from './constants';
 import { IRefreshResponse, BaseQueryApi, BaseQueryExtraOptions } from './types';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1`,
+  baseUrl: `${API_BASE_URL}/api/v1`,
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootStateType).auth.accessToken;

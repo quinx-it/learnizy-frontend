@@ -3,7 +3,7 @@
 import { FC, PropsWithChildren, useEffect } from 'react';
 
 import FullscreenLoader from '@/components/FullscreenLoader';
-import { routes } from '@/constants';
+import { routes } from '@/const';
 import { useRouter } from '@/hooks';
 import { useAppSelector } from '@/hooks/redux';
 import { selectToken } from '@/store/slices/auth/selectors';

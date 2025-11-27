@@ -4,7 +4,7 @@ import { FC, PropsWithChildren } from 'react';
 
 import AuthLayout from '@/components/AuthLayout';
 import Navbar from '@/components/navbar';
-import { navbarLinks } from '@/constants/constants';
+import { navbarLinks } from '@/const/constants';
 
 const LearnLayout: FC<PropsWithChildren> = (props) => {
   const { children } = props;

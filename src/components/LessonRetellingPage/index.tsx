@@ -6,7 +6,7 @@ import CardWrapper from '@/components/CardWrapper';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import { Text } from '@/components/Typography';
 import VoiceRecorderForm from '@/components/VoiceRecorderForm';
-import { routes } from '@/constants';
+import { routes } from '@/const';
 
 import { constants } from './constants';
 import { ILessonRetellingPageProps } from './typings';

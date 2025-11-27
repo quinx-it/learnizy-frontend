@@ -13,7 +13,7 @@ import {
   dynamicUserRoutes,
   staticMentorRoutes,
   dynamicMentorRoutes,
-} from '@/constants/routes';
+} from '@/const/routes';
 import { useRouter, usePathname } from '@/hooks';
 import { useAppSelector } from '@/hooks/redux';
 import { isRoleRoute } from '@/lib/utils';

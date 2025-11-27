@@ -2,7 +2,7 @@
 
 import { useRouter as useRouterBase, usePathname } from 'next/navigation';
 
-import { LANGUAGES } from '@/constants';
+import { LANGUAGES } from '@/const';
 
 type NavigateOptions = { scroll?: boolean };
 

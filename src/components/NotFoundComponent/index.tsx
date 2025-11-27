@@ -6,7 +6,7 @@ import { FC } from 'react';
 import Button from '@/components/Button';
 import Link from '@/components/Link';
 import { Heading } from '@/components/Typography';
-import { defaultPage, routes } from '@/constants';
+import { defaultPage, routes } from '@/const';
 import { useTranslation } from '@/hooks';
 import { useAppSelector } from '@/hooks/redux';
 import { cn } from '@/lib/utils';
