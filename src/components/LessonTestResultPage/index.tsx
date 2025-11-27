@@ -12,7 +12,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import { Text } from '@/components/Typography';
-import { globalConstants, routes } from '@/constants';
+import { globalConstants, routes } from '@/const';
 
 import { evaluationMap } from './constants';
 import { LessonTestResponseType, LessonTestResultPagePropsType } from './types';

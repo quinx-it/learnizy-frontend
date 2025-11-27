@@ -8,7 +8,7 @@ import {
   publicRoutes,
   staticMentorRoutes,
   staticUserRoutes,
-} from '@/constants/routes';
+} from '@/const/routes';
 import { IDecodedToken, UserRole } from '@/store/slices/auth/typings';
 import { TranslationFunctionType } from '@/types';
 

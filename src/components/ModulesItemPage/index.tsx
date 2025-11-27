@@ -32,7 +32,7 @@ import ProgressBar from '@/components/Progress';
 import Textarea from '@/components/Textarea';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
-import { routes } from '@/constants';
+import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
 import { percentage, pluralize } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';

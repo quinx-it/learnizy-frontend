@@ -1,4 +1,4 @@
-import { routes } from '@/constants';
+import { routes } from '@/const';
 
 export enum TestType {
   LESSON = 'LESSON_TEST',

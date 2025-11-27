@@ -1,4 +1,4 @@
-import { LANGUAGES } from '@/constants';
+import { LANGUAGES } from '@/const';
 
 export const i18n = {
   defaultLocale: LANGUAGES.EN,

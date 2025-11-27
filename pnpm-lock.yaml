@@ -86,6 +86,9 @@ importers:
       embla-carousel-react:
         specifier: 8.6.0
         version: 8.6.0(react@19.0.0)
+      envalid:
+        specifier: 8.1.1
+        version: 8.1.1
       jwt-decode:
         specifier: 4.0.0
         version: 4.0.0
@@ -3427,6 +3430,10 @@ packages:
   env-paths@2.2.1:
     resolution: {integrity: sha512-+h1lkLKhZMTYjog1VEpJNG7NZJWcuc2DDk/qsqSTRRCOXiLjeQ1d1/udrUGhqMxUgAlwKNZ0cf2uqan5GLuS2A==}
     engines: {node: '>=6'}
+
+  envalid@8.1.1:
+    resolution: {integrity: sha512-vOUfHxAFFvkBjbVQbBfgnCO9d3GcNfMMTtVfgqSU2rQGMFEVqWy9GBuoSfHnwGu7EqR0/GeukQcL3KjFBaga9w==}
+    engines: {node: '>=18'}
 
   environment@1.1.0:
     resolution: {integrity: sha512-xUtoPkMggbz0MPyPiIWr1Kp4aeWJjDZ6SMvURhimjdZgsRuDplF5/s9hcgGhyXMhs+6vpnuoiZ2kFiu3FMnS8Q==}
@@ -9774,6 +9781,10 @@ snapshots:
   entities@6.0.1: {}
 
   env-paths@2.2.1: {}
+
+  envalid@8.1.1:
+    dependencies:
+      tslib: 2.8.1
 
   environment@1.1.0: {}
 

@@ -1,3 +1,5 @@
+import { BASE_URL } from '@/const';
+
 export const getBaseUrl = (): string => {
-  return process.env.NEXT_PUBLIC_BASE_URL?.replace(/\/$/, '') || '';
+  return BASE_URL.replace(/\/$/, '') || '';
 };
