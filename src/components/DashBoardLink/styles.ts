@@ -1,11 +1,10 @@
 import { Box, styled } from '@mui/material';
-import { shouldForwardProp } from '@mui/system';
 
 import Button from '@/components/Button';
 import Link from '@/components/Link';
 
 export const StyledButton = styled(Button, {
-  shouldForwardProp: (prop) => shouldForwardProp(prop) && prop !== 'isActive',
+  shouldForwardProp: (prop) => prop !== 'isActive',
 })<{ isActive: boolean }>(({ theme, isActive }) => ({
   justifyContent: 'flex-start',
   border: 0,

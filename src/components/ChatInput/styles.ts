@@ -1,11 +1,10 @@
 import { Box, Button, styled } from '@mui/material';
-import { shouldForwardProp } from '@mui/system';
 
 import { StyledInput } from '@/components/Input/styles';
 import { StyledTextarea as BaseTextarea } from '@/components/Textarea/styles';
 
 export const Container = styled(Box, {
-  shouldForwardProp: (prop) => shouldForwardProp(prop) && prop !== 'isExpanded',
+  shouldForwardProp: (prop) => prop !== 'isExpanded',
 })<{ isExpanded: boolean }>(({ theme, isExpanded }) => ({
   position: 'relative',
   display: 'flex',
@@ -93,8 +92,7 @@ export const AttachButton = styled(Button)(({ theme }) => ({
 }));
 
 export const StyledTextarea = styled(BaseTextarea, {
-  shouldForwardProp: (prop) =>
-    shouldForwardProp(prop) && prop !== 'hasAttachedFiles' && prop !== 'isRecording',
+  shouldForwardProp: (prop) => prop !== 'hasAttachedFiles' && prop !== 'isRecording',
 })<{ hasAttachedFiles: boolean; isRecording: boolean }>(
   ({ theme, hasAttachedFiles, isRecording }) => ({
     flex: 1,
@@ -156,7 +154,7 @@ export const SwipeUpHint = styled(Box)(({ theme }) => ({
 export const SwipeUpText = styled(Box)(() => ({}));
 
 export const MicrophoneButton = styled(Button, {
-  shouldForwardProp: (prop) => shouldForwardProp(prop) && prop !== 'isRecording',
+  shouldForwardProp: (prop) => prop !== 'isRecording',
 })<{ isRecording: boolean }>(({ theme, isRecording }) => ({
   display: 'flex',
   height: '2.25rem',
@@ -189,7 +187,7 @@ export const AudioBarsContainer = styled(Box)(() => ({
 }));
 
 export const AudioBar = styled(Box, {
-  shouldForwardProp: (prop) => shouldForwardProp(prop) && prop !== 'barHeight',
+  shouldForwardProp: (prop) => prop !== 'barHeight',
 })<{ barHeight?: number }>(({ theme, barHeight }) => ({
   width: '1.5px',
   borderRadius: '2px',

@@ -1,5 +1,4 @@
 import { Box, Typography, styled } from '@mui/material';
-import { shouldForwardProp } from '@mui/system';
 
 import Button from '@/components/Button';
 
@@ -23,7 +22,7 @@ export const Overlay = styled(Box)(() => ({
 }));
 
 export const MobileSidebar = styled(Box, {
-  shouldForwardProp: (prop) => shouldForwardProp(prop) && prop !== 'isOpen',
+  shouldForwardProp: (prop) => prop !== 'isOpen',
 })<{ isOpen: boolean }>(({ theme, isOpen }) => ({
   position: 'fixed',
   top: 0,
@@ -124,7 +123,7 @@ export const GroupLabel = styled(Typography)(({ theme }) => ({
 }));
 
 export const ChatItem = styled(Box, {
-  shouldForwardProp: (prop) => shouldForwardProp(prop) && prop !== 'isSelected',
+  shouldForwardProp: (prop) => prop !== 'isSelected',
 })<{ isSelected: boolean }>(({ theme, isSelected }) => ({
   marginTop: '0.5rem',
   display: 'flex',
