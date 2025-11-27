@@ -8,7 +8,7 @@ import {
 import ChatInput from '@/components/ChatInput';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
-import { routes } from '@/constants';
+import { routes } from '@/const';
 import { useRouter, useTranslation } from '@/hooks';
 
 import { Container, ImageContainer, StyledImage, WelcomeText } from './styles';

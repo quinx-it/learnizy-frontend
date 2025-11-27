@@ -8,7 +8,7 @@ import CardWrapper from '@/components/CardWrapper';
 import DashboardLink from '@/components/DashBoardLink';
 import { EditPhotoIcon, ExitIcon, LockIcon, PersonIcon } from '@/components/Icons';
 import { Text } from '@/components/Typography';
-import { routes } from '@/constants';
+import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
 
 const ProfileDashboard: FC = () => {

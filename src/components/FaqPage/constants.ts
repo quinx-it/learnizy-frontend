@@ -1,5 +1,5 @@
-import { routes } from '@/constants';
-import { globalConstants } from '@/constants/constants';
+import { routes } from '@/const';
+import { globalConstants } from '@/const/constants';
 
 export const constants = {
   breadCrumbs: [

@@ -4,7 +4,7 @@ import { match as matchLocale } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import { NextResponse } from 'next/server';
 
-import { excludedPaths, excludedPrefixes } from '@/constants/excludedPaths';
+import { excludedPaths, excludedPrefixes } from '@/const/excludedPaths';
 import { i18n } from '@/lib/translate';
 
 import type { NextRequest } from 'next/server';

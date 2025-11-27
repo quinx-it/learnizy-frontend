@@ -5,8 +5,8 @@ import { FC } from 'react';
 import CardAccordion from '@/components/Accordion';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
-import { routes } from '@/constants';
-import { globalConstants } from '@/constants/constants';
+import { routes } from '@/const';
+import { globalConstants } from '@/const/constants';
 import { useTranslation } from '@/hooks';
 
 import { constants } from './constants';

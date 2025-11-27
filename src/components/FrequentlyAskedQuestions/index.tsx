@@ -5,7 +5,7 @@ import Button from '@/components/Button';
 import CardWrapper from '@/components/CardWrapper';
 import Link from '@/components/Link';
 import { Text } from '@/components/Typography';
-import { routes } from '@/constants';
+import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
 
 const FrequentlyAskedQuestions: FC = () => {

@@ -10,7 +10,7 @@ import Input from '@/components/Input';
 import { PasswordInput } from '@/components/PasswordInput';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
-import { routes } from '@/constants';
+import { routes } from '@/const';
 
 import { IAuthFormValues } from './typings';
 import { formSchema } from './validation';

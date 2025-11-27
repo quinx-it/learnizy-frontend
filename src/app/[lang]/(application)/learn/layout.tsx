@@ -5,8 +5,8 @@ import { FC, PropsWithChildren } from 'react';
 import AuthLayout from '@/components/AuthLayout';
 import ChatHeader from '@/components/ChatHeader';
 import Navbar from '@/components/navbar';
-import { navbarLinks } from '@/constants/constants';
-import { routes } from '@/constants/routes';
+import { navbarLinks } from '@/const/constants';
+import { routes } from '@/const/routes';
 import { usePathname, useTranslation } from '@/hooks';
 
 const LearnLayout: FC<PropsWithChildren> = (props) => {

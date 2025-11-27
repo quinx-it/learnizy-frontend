@@ -7,7 +7,7 @@ import {
   StudentHatIcon,
   FourPointedStarIcon,
 } from '@/components/Icons';
-import { routes } from '@/constants';
+import { routes } from '@/const';
 
 export const globalConstants = {
   rootBreadcrumbLabels: {

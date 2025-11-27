@@ -10,7 +10,7 @@ import Link from '@/components/Link';
 import { INavbarProps } from '@/components/navbar/typings';
 import Spinner from '@/components/Spinner';
 import { Text } from '@/components/Typography';
-import { routes } from '@/constants';
+import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
 import { useLogout } from '@/hooks/useLogout';
 

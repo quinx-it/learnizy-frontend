@@ -11,7 +11,7 @@ import ProgressCard from '@/components/ProgressCard';
 import { ProgressStatus } from '@/components/ProgressCard/constants';
 import StatisticsChart from '@/components/StatisticsChart';
 import { Text } from '@/components/Typography';
-import { routes } from '@/constants';
+import { routes } from '@/const';
 import { useRouter, useTranslation } from '@/hooks';
 
 import { constants } from './constants';

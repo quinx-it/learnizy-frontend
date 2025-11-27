@@ -1,6 +1,6 @@
 import { usePathname as usePathnameBase } from 'next/navigation';
 
-import { LANGUAGES } from '@/constants';
+import { LANGUAGES } from '@/const';
 
 export const usePathname = () => {
   const pathname = usePathnameBase() || '/';

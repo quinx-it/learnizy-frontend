@@ -16,7 +16,7 @@ import FullscreenLoader from '@/components/FullscreenLoader';
 import MarkdownRenderer from '@/components/MarkdownText';
 import { showToast } from '@/components/Toaster';
 import { Heading, Text } from '@/components/Typography';
-import { routes } from '@/constants';
+import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';

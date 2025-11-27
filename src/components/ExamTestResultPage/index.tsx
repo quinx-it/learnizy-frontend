@@ -8,7 +8,7 @@ import CardWrapper from '@/components/CardWrapper';
 import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import { Text } from '@/components/Typography';
-import { globalConstants, routes } from '@/constants';
+import { globalConstants, routes } from '@/const';
 
 import { ExamTestResultPagePropsType } from './typings';
 

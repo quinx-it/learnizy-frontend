@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, useRef, useEffect, FC } from 'react';
 
-import { LANGUAGES } from '@/constants';
+import { LANGUAGES } from '@/const';
 
 import { Container, DropdownMenu, MenuItem, ToggleButton } from './styles';
 
