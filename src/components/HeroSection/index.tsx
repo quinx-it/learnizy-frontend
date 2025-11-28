@@ -1,9 +1,11 @@
+'use client';
+
 import { FC } from 'react';
 
-import SectionContent from '@/components/SectionContent';
+import { StyledHeroSection } from './styles';
 
 const HeroSection: FC = () => {
-  return <SectionContent className="text-light bg-black">HeroSection</SectionContent>;
+  return <StyledHeroSection>HeroSection</StyledHeroSection>;
 };
 
 export default HeroSection;

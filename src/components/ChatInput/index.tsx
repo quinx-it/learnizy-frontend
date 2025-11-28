@@ -1,6 +1,5 @@
 'use client';
 
-import clsx from 'clsx';
 import { X, Check, ArrowUp } from 'lucide-react';
 import { nanoid } from 'nanoid';
 import {
@@ -17,7 +16,6 @@ import {
 import WaveSurfer from 'wavesurfer.js';
 
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
-import Button from '@/components/Button';
 import { MicChatIcon, AttachIcon, SendIcon } from '@/components/Icons';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
@@ -25,6 +23,29 @@ import { useTranslation } from '@/hooks';
 
 import { MIN_RECORDING_DURATION_MS } from './constants';
 import { IChatInputProps, ILocalFile } from './typings';
+
+import {
+  AttachButton,
+  AttachedFileItem,
+  AttachedFileName,
+  AttachedFilesContainer,
+  AudioBar,
+  AudioBarsContainer,
+  Container,
+  DiscardButton,
+  HiddenFileInput,
+  MicrophoneButton,
+  MicrophoneContainer,
+  RemoveFileButton,
+  SendButton,
+  StopButton,
+  StopButtonBar,
+  StopButtonContent,
+  StyledTextarea,
+  SwipeUpHint,
+  SwipeUpText,
+  UploadAudioButton,
+} from './styles';
 
 const ChatInput: FC<IChatInputProps> = (props) => {
   const { onSendMessage, isLoading } = props;
@@ -443,59 +464,34 @@ const ChatInput: FC<IChatInputProps> = (props) => {
   };
 
   return (
-    <div
-      className={clsx(
-        'relative flex w-full max-w-[666px] border border-gray-300 bg-white p-3 shadow-lg',
-        {
-          'h-auto items-end rounded-3xl': isComponentExpanded,
-          'h-[48px] items-center rounded-full': !isComponentExpanded,
-        },
-      )}
-    >
+    <Container isExpanded={isComponentExpanded}>
       {attachedFiles.length > 0 && (
-        <div className="absolute top-2 left-3 z-10 flex flex-wrap gap-2">
+        <AttachedFilesContainer>
           {attachedFiles.map((att) => (
-            <div
-              key={att.id}
-              className="flex items-center gap-2 rounded-full bg-[#E8F8FC] py-1 pr-2 pl-3 text-sm text-[#238BA7]"
-            >
-              <span className="max-w-[150px] truncate" title={att.file.name}>
-                {att.file.name}
-              </span>
-              <button
-                type="button"
-                onClick={() => handleRemoveFile(att.id)}
-                className="flex h-5 w-5 items-center justify-center rounded-full hover:bg-[#238BA7] hover:text-white"
-              >
+            <AttachedFileItem key={att.id}>
+              <AttachedFileName title={att.file.name}>{att.file.name}</AttachedFileName>
+              <RemoveFileButton type="button" onClick={() => handleRemoveFile(att.id)}>
                 <X size={14} />
-              </button>
-            </div>
+              </RemoveFileButton>
+            </AttachedFileItem>
           ))}
-        </div>
+        </AttachedFilesContainer>
       )}
-      <button
+      <AttachButton
         type="button"
-        className="cursor-pointer p-2 text-gray-400 transition hover:text-gray-500"
         disabled={isDisabled}
         onClick={() => fileInputRef.current?.click()}
       >
         <AttachIcon />
-      </button>
-      <input ref={fileInputRef} type="file" multiple hidden onChange={handleFileSelect} />
-      <textarea
+      </AttachButton>
+      <HiddenFileInput ref={fileInputRef} type="file" multiple onChange={handleFileSelect} />
+      <StyledTextarea
         ref={textareaRef}
         placeholder={
           isRecording ? formatTime(recordingDuration) : t('CHAT_INPUT.WRITE_YOUR_QUESTION')
         }
-        className={clsx(
-          'scrollbar-thin scrollbar-thumb-gray-300 scrollbar-thumb-rounded-lg flex-1 resize-none overflow-y-auto bg-transparent px-3 text-[16px] text-black outline-none',
-          {
-            'mt-8 mb-2': attachedFiles.length > 0,
-            'mt-0 mb-0': attachedFiles.length === 0,
-            'placeholder:text-red-500': isRecording,
-            'placeholder:text-gray-400': !isRecording,
-          },
-        )}
+        hasAttachedFiles={attachedFiles.length > 0}
+        isRecording={isRecording}
         value={inputValue}
         onChange={handleInput}
         onKeyDown={handleKeyPress}
@@ -503,22 +499,17 @@ const ChatInput: FC<IChatInputProps> = (props) => {
         rows={1}
       />
 
-      <div className="relative">
+      <MicrophoneContainer>
         {isRecording && !isLocked && (
-          <div className="absolute -top-6 left-1/2 flex -translate-x-1/2 animate-bounce items-center gap-1 text-xs text-gray-600">
+          <SwipeUpHint>
             <ArrowUp size={17} />
-            <span>{t('CHAT_INPUT.SWIPE_UP')} </span>
-          </div>
+            <SwipeUpText>{t('CHAT_INPUT.SWIPE_UP')} </SwipeUpText>
+          </SwipeUpHint>
         )}
-        <button
+        <MicrophoneButton
           ref={microphoneRef}
           type="button"
-          className={clsx(
-            'flex h-9 w-9 items-center justify-center rounded-full text-gray-400 transition-all duration-300 hover:bg-[#E8F8FC]',
-            {
-              'scale-110 bg-gradient-to-r from-[#238BA7] to-[#00617B] text-white': isRecording,
-            },
-          )}
+          isRecording={isRecording}
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
           onTouchStart={handleTouchStart}
@@ -530,76 +521,49 @@ const ChatInput: FC<IChatInputProps> = (props) => {
 
             if (isRecording) {
               return (
-                <div className="flex items-center justify-center gap-[1.5px]">
+                <AudioBarsContainer>
                   {(audioLevels.length > 0 ? audioLevels : [0.3, 0.5, 0.4, 0.3, 0.6, 0.2]).map(
                     (level, index) => {
                       const barHeight = 4 + level * 16;
 
-                      return (
-                        <div
-                          key={index}
-                          className="w-[1.5px] rounded bg-white transition-[height] duration-100 ease-out"
-                          style={{ height: `${barHeight}px` }}
-                        />
-                      );
+                      return <AudioBar key={index} barHeight={barHeight} />;
                     },
                   )}
-                </div>
+                </AudioBarsContainer>
               );
             }
 
             return <MicChatIcon />;
           })()}
-        </button>
-      </div>
+        </MicrophoneButton>
+      </MicrophoneContainer>
 
       {isRecording && !audioBlob && (
-        <Button
-          onClick={stopRecording}
-          variant="blue"
-          size="icon"
-          className="ml-0.5 !rounded-full"
-          title={t('CHAT_INPUT.STOP_RECORDING')}
-        >
-          <div className="flex items-center gap-1">
-            <div className="h-4 w-1 rounded-sm bg-current" />
-            <div className="h-4 w-1 rounded-sm bg-current" />
-          </div>
-        </Button>
+        <StopButton onClick={stopRecording} title={t('CHAT_INPUT.STOP_RECORDING')}>
+          <StopButtonContent>
+            <StopButtonBar />
+            <StopButtonBar />
+          </StopButtonContent>
+        </StopButton>
       )}
 
       {audioBlob && (
         <>
-          <Button
-            onClick={discardRecording}
-            variant="gray"
-            size="icon"
-            className="ml-0.5 !rounded-full"
-            title={t('CHAT_INPUT.CANCEL')}
-          >
+          <DiscardButton onClick={discardRecording} title={t('CHAT_INPUT.CANCEL')}>
             <X size={18} />
-          </Button>
-          <Button
-            onClick={handleUploadAudio}
-            variant="green"
-            size="icon"
-            className="ml-0.5 !rounded-full"
-            title={t('CHAT_INPUT.SEND')}
-          >
+          </DiscardButton>
+          <UploadAudioButton onClick={handleUploadAudio} title={t('CHAT_INPUT.SEND')}>
             <Check size={18} />
-          </Button>
+          </UploadAudioButton>
         </>
       )}
 
       {!isRecording && !audioBlob && (
-        <Button
-          className="ml-0.5 cursor-pointer bg-white p-2 text-gray-400 transition hover:bg-[#E8F8FC]"
-          onClick={handleSendClick}
-        >
+        <SendButton onClick={handleSendClick}>
           <SendIcon />
-        </Button>
+        </SendButton>
       )}
-    </div>
+    </Container>
   );
 };
 

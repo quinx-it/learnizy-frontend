@@ -35,6 +35,14 @@ import { UserRole } from '@/store/slices/auth/typings';
 
 import { IModuleProgressCardProps } from './typings';
 
+import {
+  ButtonsWrapper,
+  CreateButtonWrapper,
+  FormContent,
+  ModuleProgressCardContainer,
+  ModulesGrid,
+} from './styles';
+
 const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
   const { module, isMentor, openEditModal, handleDeleteModule } = props;
 
@@ -62,20 +70,20 @@ const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
   }
 
   return (
-    <div className="flex flex-col">
+    <ModuleProgressCardContainer>
       <ModuleCard className="h-full w-full max-w-full" {...moduleInfo} />
 
       {isMentor && (
-        <div className="mt-2 flex gap-2">
+        <ButtonsWrapper>
           <Button variant="yellow" size="small" onClick={() => openEditModal(module.id)}>
             Редактировать
           </Button>
           <Button variant="white" size="small" onClick={() => handleDeleteModule(module.id)}>
             Удалить
           </Button>
-        </div>
+        </ButtonsWrapper>
       )}
-    </div>
+    </ModuleProgressCardContainer>
   );
 };
 
@@ -159,11 +167,11 @@ const ModulesPage: FC = () => {
         rootDescription="Java Core"
       />
       {isMentor && (
-        <div className="mb-4">
+        <CreateButtonWrapper>
           <Button variant="blue" size="small" onClick={openCreateModal}>
             Создать новый модуль
           </Button>
-        </div>
+        </CreateButtonWrapper>
       )}
 
       {modalOpen && (
@@ -175,7 +183,7 @@ const ModulesPage: FC = () => {
               </DialogTitle>
             </DialogHeader>
 
-            <div className="flex flex-col gap-4">
+            <FormContent>
               <Input
                 type="number"
                 placeholder="Порядковый номер"
@@ -193,7 +201,7 @@ const ModulesPage: FC = () => {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
-            </div>
+            </FormContent>
 
             <DialogFooter className="flex justify-end gap-2">
               <Button variant="white" size="small" onClick={() => setModalOpen(false)}>
@@ -207,7 +215,7 @@ const ModulesPage: FC = () => {
         </Dialog>
       )}
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <ModulesGrid>
         {modulesData?.content
           .slice()
           .sort((a, b) => a.sequenceOrder - b.sequenceOrder)
@@ -220,7 +228,7 @@ const ModulesPage: FC = () => {
               handleDeleteModule={handleDeleteModule}
             />
           ))}
-      </div>
+      </ModulesGrid>
     </>
   );
 };

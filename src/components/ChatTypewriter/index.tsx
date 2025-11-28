@@ -6,6 +6,8 @@ import MarkdownRenderer from '@/components/MarkdownText';
 
 import { ITypewriterProps } from './typings';
 
+import { Container } from './styles';
+
 const Typewriter: FC<ITypewriterProps> = (props) => {
   const { text, speed = 1, onUpdate } = props;
 
@@ -40,9 +42,9 @@ const Typewriter: FC<ITypewriterProps> = (props) => {
   const visibleText = text.slice(0, displayedLength);
 
   return (
-    <div className="prose prose-sm max-w-none">
+    <Container>
       <MarkdownRenderer text={visibleText} />
-    </div>
+    </Container>
   );
 };
 

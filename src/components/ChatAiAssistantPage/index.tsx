@@ -10,11 +10,14 @@ import {
   ISendMessageRequest,
   Role,
 } from '@/api/endpoints/aiAssistant';
+import ChatHeader from '@/components/ChatHeader';
 import ChatInput from '@/components/ChatInput';
 import ChatMessageHistory from '@/components/ChatMessageHistory';
 import { showToast } from '@/components/Toaster';
 
 import { POLLING_INTERVAL } from './constants';
+
+import { Container, InputContainer, MessagesContainer, Spacer } from './styles';
 
 const ChatAiAssistantPage: FC = () => {
   const params = useParams();
@@ -97,23 +100,24 @@ const ChatAiAssistantPage: FC = () => {
   const assistantCount = optimisticMessages.filter((m) => m.role === Role.ASSISTANT).length;
 
   return (
-    <div className="relative flex h-screen w-full flex-col items-center justify-center px-5">
-      <div className="no-scrollbar flex w-full flex-1 items-center justify-center overflow-auto">
+    <Container>
+      <ChatHeader />
+      <MessagesContainer>
         <ChatMessageHistory
           messages={optimisticMessages}
           isLoading={isLoadingMessages && optimisticMessages.length === 0}
           isWaitingForAssistant={userCount > assistantCount}
         />
-      </div>
+      </MessagesContainer>
 
-      <div className="mb-4 flex h-9 w-full justify-center" />
-      <div className="absolute bottom-0 flex w-full justify-center bg-none p-4">
+      <Spacer />
+      <InputContainer>
         <ChatInput
           onSendMessage={handleSendMessage}
           isLoading={isSendingMessage || userCount > assistantCount}
         />
-      </div>
-    </div>
+      </InputContainer>
+    </Container>
   );
 };
 
