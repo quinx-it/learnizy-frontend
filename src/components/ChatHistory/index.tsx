@@ -11,6 +11,7 @@ import { formatRelativeDate } from '@/lib/utils';
 import { IChatHistoryProps } from './typings';
 
 import {
+  ChatGroup,
   ChatItem,
   ChatText,
   ChatsLabel,
@@ -108,7 +109,7 @@ const ChatHistory: FC<IChatHistoryProps> = (props) => {
               {isError && <ErrorText>{t('COMMON.FAILED_TO_LOAD_CHATS')}</ErrorText>}
 
               {chatGroups.map((group) => (
-                <div key={group}>
+                <ChatGroup key={group}>
                   <GroupLabel>{group}</GroupLabel>
                   {groupedChats[group].map((chat) => (
                     <ChatItem
@@ -130,7 +131,7 @@ const ChatHistory: FC<IChatHistoryProps> = (props) => {
                       <ChatText>{chat.title || t('COMMON.NEW_CHAT')}</ChatText>
                     </ChatItem>
                   ))}
-                </div>
+                </ChatGroup>
               ))}
             </ScrollContainer>
           </MobileSidebar>
@@ -154,7 +155,7 @@ const ChatHistory: FC<IChatHistoryProps> = (props) => {
             {isError && <ErrorText>{t('COMMON.FAILED_TO_LOAD_CHATS')}</ErrorText>}
 
             {chatGroups.map((group) => (
-              <div key={group}>
+              <ChatGroup key={group}>
                 <GroupLabel>{group}</GroupLabel>
                 {groupedChats[group].map((chat) => (
                   <ChatItem
@@ -170,7 +171,7 @@ const ChatHistory: FC<IChatHistoryProps> = (props) => {
                     <ChatText>{chat.title || t('COMMON.NEW_CHAT')}</ChatText>
                   </ChatItem>
                 ))}
-              </div>
+              </ChatGroup>
             ))}
           </ScrollContainer>
         </DesktopSidebar>

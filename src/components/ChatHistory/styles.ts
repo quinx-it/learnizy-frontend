@@ -133,9 +133,11 @@ export const ChatItem = styled(Box, {
   padding: '0.5rem',
   transition: 'background-color 0.2s',
   backgroundColor: isSelected ? theme.palette.grey[200] : 'transparent',
+
   '&:hover': {
     backgroundColor: isSelected ? theme.palette.grey[200] : theme.palette.grey[100],
   },
+
   '&:last-child': {
     marginBottom: '0.625rem',
   },
@@ -206,3 +208,5 @@ export const ErrorText = styled(Typography)(({ theme }) => ({
   fontSize: '0.875rem',
   color: theme.palette.error.main,
 }));
+
+export const ChatGroup = styled(Box)(() => ({}));

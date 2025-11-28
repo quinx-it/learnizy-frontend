@@ -64,7 +64,7 @@ const LearnMainPage: FC = () => {
         <CardWrapper>
           <Box>
             <CourseTitle>
-              <Text variant="m-bold">
+              <Text tag="span" variant="m-bold">
                 {t('COMMON.COURSE_LABEL')}{' '}
                 <Text tag="span" className="text-medium" variant="m-bold">
                   {mainPageProgress.courseInfo.title}

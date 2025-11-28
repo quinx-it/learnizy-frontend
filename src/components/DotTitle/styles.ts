@@ -21,7 +21,9 @@ export const SecondLabel = styled(Box)(() => ({
   display: 'inline',
 }));
 
-export const Dot = styled(Box)<{ isSmall?: boolean }>(({ isSmall }) => ({
+export const Dot = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'isSmall',
+})<{ isSmall?: boolean }>(({ isSmall }) => ({
   lineHeight: 'inherit',
   backgroundColor: 'transparent !important',
   paddingLeft: '0.25rem',

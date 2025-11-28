@@ -60,16 +60,29 @@ const BlockRenderer: FC<IBlockRendererProps> = (props) => {
         </Heading>
       );
 
-    case BlockType.TEXT:
+    case BlockType.TEXT: {
+      const hasChildren = block.children && block.children.length > 0;
+      const variant = getTextVariant(block.properties.size ?? 'm', block.properties.style);
+
+      if (hasChildren) {
+        return (
+          <Box style={baseStyle}>
+            {block.content && (
+              <Text variant={variant} tag="span">
+                {block.content}
+              </Text>
+            )}
+            {renderChildren(block.children)}
+          </Box>
+        );
+      }
+
       return (
-        <Text
-          variant={getTextVariant(block.properties.size ?? 'm', block.properties.style)}
-          style={baseStyle}
-        >
+        <Text variant={variant} style={baseStyle}>
           {block.content}
-          {renderChildren(block.children)}
         </Text>
       );
+    }
 
     case BlockType.LINK:
       return (
