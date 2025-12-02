@@ -31,6 +31,7 @@ export const ModulesGrid = styled(Box)(({ theme }) => ({
   display: 'grid',
   gridTemplateColumns: '1fr',
   gap: theme.spacing(1),
+  alignItems: 'stretch',
 
   [theme.breakpoints.up('md')]: {
     gridTemplateColumns: 'repeat(2, 1fr)',

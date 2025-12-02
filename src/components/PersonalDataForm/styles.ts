@@ -8,7 +8,7 @@ export const RadioGroupContainer = styled(Box)(({ theme }) => ({
   marginBottom: theme.spacing(4),
 }));
 
-export const ErrorText = styled('p')(({ theme }) => ({
+export const ErrorText = styled(Box)(({ theme }) => ({
   color: theme.palette.error.main,
   marginTop: theme.spacing(0.5),
 }));

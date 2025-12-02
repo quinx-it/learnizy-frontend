@@ -29,7 +29,7 @@ export const StyledImage = styled(Image)(() => ({
   borderRadius: '50%',
 }));
 
-export const EditButton = styled('button')(() => ({
+export const EditButton = styled(Button)(() => ({
   position: 'absolute',
   right: 0,
   bottom: 0,

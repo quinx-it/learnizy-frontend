@@ -1,6 +1,6 @@
 import { Box, styled } from '@mui/material';
 
-export const QuestionItem = styled('li')(({ theme }) => ({
+export const QuestionItem = styled(Box)(({ theme }) => ({
   borderBottom: `1px solid ${theme.palette.grey[500]}`,
   paddingTop: '4rem',
   paddingBottom: '4rem',
@@ -22,7 +22,7 @@ export const SubmitButtonWrapper = styled(Box)(() => ({
   width: 'auto',
 }));
 
-export const ErrorText = styled('span')(({ theme }) => ({
+export const ErrorText = styled(Box)(({ theme }) => ({
   color: theme.palette.error.main,
   marginLeft: '2rem',
   fontSize: '12px',

@@ -1,4 +1,4 @@
-import { styled } from '@mui/material';
+import { Box, styled } from '@mui/material';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 
 export const StyledRadioGroupRoot = styled(RadioGroupPrimitive.Root)(({ theme }) => ({
@@ -47,7 +47,7 @@ export const StyledRadioGroupIndicator = styled(RadioGroupPrimitive.Indicator)((
   height: '100%',
 }));
 
-export const StyledCircleIconWrapper = styled('div')(() => ({
+export const StyledCircleIconWrapper = styled(Box)(() => ({
   position: 'absolute',
   top: '50%',
   left: '50%',

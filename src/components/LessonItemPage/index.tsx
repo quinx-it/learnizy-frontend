@@ -12,7 +12,6 @@ import CardWrapper from '@/components/CardWrapper';
 import BlockRenderer from '@/components/ContentBlockParser';
 import DotTitle from '@/components/DotTitle';
 import FullscreenLoader from '@/components/FullscreenLoader';
-import MarkdownRenderer from '@/components/MarkdownText';
 import { showToast } from '@/components/Toaster';
 import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
@@ -32,7 +31,6 @@ import {
   EditButtonWrapper,
   EditingContainer,
   EditorWrapper,
-  MarkdownWrapper,
   SectionHeading,
   SectionText,
   SectionTextSmall,
@@ -104,36 +102,34 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
         />
       </BreadcrumbsWrapper>
 
-      <CardWrapper>
-        {isMentor && !editing && (
-          <EditButtonWrapper>
-            <YellowButton onClick={handleEdit}>{t('LESSON_ITEM_PAGE.BUTTON_EDIT')}</YellowButton>
-          </EditButtonWrapper>
-        )}
-        {editing ? (
-          <EditingContainer>
-            <EditorWrapper data-color-mode="light">
-              <MDEditor
-                value={markdownContent}
-                onChange={(val) => setMarkdownContent(val || '')}
-                height={400}
-              />
-            </EditorWrapper>
-            <ButtonsContainer>
-              <WhiteButton onClick={handleCancel}>
-                {t('LESSON_ITEM_PAGE.BUTTON_CANCEL')}
-              </WhiteButton>
-              <BlueButtonSmall onClick={handleSave}>
-                {t('LESSON_ITEM_PAGE.BUTTON_SAVE')}
-              </BlueButtonSmall>
-            </ButtonsContainer>
-          </EditingContainer>
-        ) : (
-          <MarkdownWrapper>
-            <MarkdownRenderer text={markdownContent} />
-          </MarkdownWrapper>
-        )}
-      </CardWrapper>
+      {isMentor && (
+        <CardWrapper>
+          {!editing && (
+            <EditButtonWrapper>
+              <YellowButton onClick={handleEdit}>{t('LESSON_ITEM_PAGE.BUTTON_EDIT')}</YellowButton>
+            </EditButtonWrapper>
+          )}
+          {editing && (
+            <EditingContainer>
+              <EditorWrapper data-color-mode="light">
+                <MDEditor
+                  value={markdownContent}
+                  onChange={(val) => setMarkdownContent(val || '')}
+                  height={400}
+                />
+              </EditorWrapper>
+              <ButtonsContainer>
+                <WhiteButton onClick={handleCancel}>
+                  {t('LESSON_ITEM_PAGE.BUTTON_CANCEL')}
+                </WhiteButton>
+                <BlueButtonSmall onClick={handleSave}>
+                  {t('LESSON_ITEM_PAGE.BUTTON_SAVE')}
+                </BlueButtonSmall>
+              </ButtonsContainer>
+            </EditingContainer>
+          )}
+        </CardWrapper>
+      )}
 
       {lesson.contentBlocks?.length > 0 && (
         <CardWrapper>

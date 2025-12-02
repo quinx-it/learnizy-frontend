@@ -22,6 +22,7 @@ import {
   CodeBlock,
   Figcaption,
   Figure,
+  ListItem,
   StrongText,
   StrongTextWithGap,
   StrongTextWithoutGap,
@@ -112,10 +113,10 @@ const BlockRenderer: FC<IBlockRendererProps> = (props) => {
       };
 
       return (
-        <Box style={liStyle}>
+        <ListItem style={liStyle}>
           {block.content}
           {renderChildren(block.children)}
-        </Box>
+        </ListItem>
       );
     }
 

@@ -102,6 +102,7 @@ export const WhiteButton = styled(MuiButton)(({ theme }) => ({
   lineHeight: '16px',
   position: 'relative',
   overflow: 'hidden',
+
   '&:hover': {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,
@@ -123,6 +124,7 @@ export const BlueButtonSmall = styled(MuiButton)(({ theme }) => ({
   lineHeight: '16px',
   position: 'relative',
   overflow: 'hidden',
+
   '&:hover': {
     backgroundColor: theme.palette.primary.dark,
     boxShadow: 'none',
@@ -144,6 +146,7 @@ export const BlueButtonMedium = styled(MuiButton)(({ theme }) => ({
   lineHeight: '22px',
   position: 'relative',
   overflow: 'hidden',
+
   '&:hover': {
     backgroundColor: theme.palette.primary.dark,
     boxShadow: 'none',

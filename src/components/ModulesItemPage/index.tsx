@@ -177,6 +177,8 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
                 heading
                 firstLabel={`${t('COMMON.MODULE')} ${sequenceOrder}`}
                 secondLabel={moduleTitle}
+                firstClassName="module-title-first"
+                secondClassName="module-title-second"
               />
             </ModuleTitleWrapper>
             <ModuleInfoWrapper>

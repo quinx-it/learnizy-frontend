@@ -109,6 +109,8 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
               secondLabel={title}
               firstVariant="m-bold"
               secondVariant="m"
+              firstClassName="module-card-title-first"
+              secondClassName="module-card-title-second"
             />
             <Text>{description}</Text>
           </TopSection>

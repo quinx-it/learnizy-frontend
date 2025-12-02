@@ -7,6 +7,10 @@ export const CardContainer = styled(Box, {
   ({ theme, bonus, isBlocked, isMentor }) => ({
     position: 'relative',
     width: '100%',
+    minHeight: theme.spacing(20),
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
     padding: theme.spacing(3),
     borderRadius: '1rem',
     backgroundColor: theme.palette.background.default,
@@ -47,6 +51,18 @@ export const TopSection = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   gap: theme.spacing(1),
+  '& .module-card-title-first': {
+    color: `${theme.palette.common.black} !important`,
+  },
+  '& .module-card-title-second': {
+    color: `${theme.palette.primary.main} !important`,
+  },
+  '& .module-card-title-second *': {
+    color: `${theme.palette.primary.main} !important`,
+  },
+  '& span.module-card-title-second > div': {
+    backgroundColor: `${theme.palette.primary.main} !important`,
+  },
 }));
 
 export const BottomSection = styled(Box)(({ theme }) => ({

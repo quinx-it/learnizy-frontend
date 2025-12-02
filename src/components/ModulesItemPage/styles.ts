@@ -32,7 +32,7 @@ export const StyledCreateButton = styled(MuiButton)(({ theme }) => ({
   },
 }));
 
-export const LessonsList = styled('ul')(({ theme }) => ({
+export const LessonsList = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(0.75),
   display: 'flex',
   flexDirection: 'column',
@@ -41,7 +41,7 @@ export const LessonsList = styled('ul')(({ theme }) => ({
   listStyle: 'none',
 }));
 
-export const LessonListItem = styled('li')(() => ({
+export const LessonListItem = styled(Box)(() => ({
   position: 'relative',
 }));
 
@@ -92,6 +92,7 @@ export const StyledStartButton = styled(MuiButton)(({ theme }) => ({
   paddingBottom: theme.spacing(1),
   fontSize: '16px',
   lineHeight: '22px',
+
   '&:hover': {
     backgroundColor: theme.palette.primary.dark,
     boxShadow: 'none',
@@ -135,17 +136,34 @@ export const ModuleTitleWrapper = styled(Box)(({ theme }) => ({
   '& h2': {
     fontSize: '24px !important',
     lineHeight: '32px !important',
+    color: `${theme.palette.common.black} !important`,
   },
-  '& h2 > span': {
+  '& .module-title-first': {
+    color: `${theme.palette.common.black} !important`,
+  },
+  '& h2.module-title-first': {
+    color: `${theme.palette.common.black} !important`,
+    '& > span.module-title-second': {
+      color: `${theme.palette.primary.main} !important`,
+    },
+  },
+  '& .module-title-second': {
+    color: `${theme.palette.primary.main} !important`,
+  },
+  '& h2 > span.module-title-second': {
+    color: `${theme.palette.primary.main} !important`,
     fontSize: '24px !important',
     lineHeight: '32px !important',
-    color: `${theme.palette.text.secondary} !important`,
+  },
+  '& h2 > span.module-title-second *': {
+    color: `${theme.palette.primary.main} !important`,
   },
   '& h2 > span > div': {
     width: '6px !important',
     height: '6px !important',
     alignSelf: 'center',
     margin: '0 !important',
+    backgroundColor: `${theme.palette.primary.main} !important`,
   },
 }));
 

@@ -39,6 +39,6 @@ export const StyledTextarea = styled(Textarea)(() => ({
   },
 }));
 
-export const ErrorMessage = styled('p')(({ theme }) => ({
+export const ErrorMessage = styled(Box)(({ theme }) => ({
   color: theme.palette.error.main,
 }));

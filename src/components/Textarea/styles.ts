@@ -32,6 +32,7 @@ export const StyledTextarea = styled('textarea', {
   color: theme.palette.text.primary,
   transition: 'color 0.2s ease-in-out',
   outline: 'none',
+  paddingLeft: theme.spacing(1.7),
 
   '&::placeholder': {
     color: `${theme.palette.text.primary}80`,

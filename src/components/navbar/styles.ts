@@ -26,7 +26,7 @@ export const StyledMobileMenuButton = styled(MuiButton)(({ theme }) => ({
   },
 }));
 
-export const NavbarContainer = styled('nav')(({ theme }) => ({
+export const NavbarContainer = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
   boxShadow: '0px 4px 13px 0px rgba(0, 0, 0, 0.15)',
   zIndex: 40,

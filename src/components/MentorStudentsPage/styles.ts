@@ -45,7 +45,7 @@ export const StatsRow = styled(Box)(() => ({
   display: 'block',
 }));
 
-export const StatsValue = styled('span')(({ theme }) => ({
+export const StatsValue = styled(Box)(({ theme }) => ({
   fontWeight: 600,
   color: theme.palette.text.primary,
 }));

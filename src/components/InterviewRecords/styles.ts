@@ -46,12 +46,14 @@ export const StyledLinkButton = styled(Link)(({ theme }) => ({
   justifyContent: 'center',
   textDecoration: 'none',
   transition: 'background-color 0.2s ease-in-out',
+
   '&:hover': {
     backgroundColor: theme.palette.primary.dark,
     boxShadow: 'none',
     color: theme.palette.common.white,
     textDecoration: 'none',
   },
+
   '&:disabled': {
     backgroundColor: theme.palette.info.main,
     color: theme.palette.common.white,

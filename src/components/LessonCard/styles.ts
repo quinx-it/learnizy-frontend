@@ -67,19 +67,26 @@ export const TitleSpan = styled('span', {
   };
 });
 
-export const TaskList = styled('ul')(({ theme }) => ({
+export const TaskList = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(0.5),
-  paddingLeft: theme.spacing(2),
-  listStyle: 'disc',
+  paddingLeft: theme.spacing(0.2),
   wordBreak: 'break-word',
 }));
 
-export const TaskListItem = styled('li')(({ theme }) => ({
+export const TaskListItem = styled(Box)(({ theme }) => ({
   color: theme.palette.common.black,
   marginBottom: theme.spacing(0.25),
   wordBreak: 'break-word',
-  '&::marker': {
+  position: 'relative',
+  paddingLeft: theme.spacing(2.5),
+
+  '&::before': {
+    content: '"•"',
+    position: 'absolute',
+    left: 0,
     color: theme.palette.primary.main,
+    fontSize: '1.2em',
+    lineHeight: '1',
   },
 }));
 
@@ -112,6 +119,7 @@ export const StyledButton = styled(Button, {
   fontSize: isActive ? '16px' : '12px',
   lineHeight: isActive ? '22px' : '16px',
   pointerEvents: isActive ? 'auto' : 'none',
+
   '&:hover': {
     backgroundColor: isActive ? theme.palette.primary.dark : theme.palette.primary.main,
     color: theme.palette.common.white,

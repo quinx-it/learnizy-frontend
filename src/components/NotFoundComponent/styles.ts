@@ -13,7 +13,7 @@ export const Container = styled(Box)(({ theme }) => ({
   textAlign: 'center',
 }));
 
-export const NotFoundNumber = styled('h1')(({ theme }) => ({
+export const NotFoundNumber = styled(Box)(({ theme }) => ({
   fontSize: '200px',
   lineHeight: 'auto',
   color: theme.palette.info.main,

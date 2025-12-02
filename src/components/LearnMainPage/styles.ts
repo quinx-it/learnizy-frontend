@@ -22,7 +22,7 @@ export const CourseDivider = styled(MuiDivider)(({ theme }) => ({
   marginBottom: '1rem',
 }));
 
-export const ModulesList = styled('ul')(() => ({
+export const ModulesList = styled(Box)(() => ({
   display: 'flex',
   flexDirection: 'column',
   gap: '1rem',
