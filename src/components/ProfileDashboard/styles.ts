@@ -61,10 +61,10 @@ export const LogoutButton = styled(Button)(({ theme }) => ({
 
   '&:hover': {
     backgroundColor: theme.palette.primary.main,
-    color: `${theme.palette.common.white} !important`,
+    color: theme.palette.common.white,
     boxShadow: 'none',
     '& *': {
-      color: `${theme.palette.common.white} !important`,
+      color: theme.palette.common.white,
     },
   },
 }));

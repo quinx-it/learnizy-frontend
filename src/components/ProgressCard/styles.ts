@@ -27,16 +27,20 @@ export const DotTitleWrapper = styled(Box)(({ theme }) => ({
   marginRight: '150px',
   maxWidth: '370px',
 
-  '& [class*="StyledText"], & [class*="StyledHeading"]': {
-    color: `${theme.palette.common.black} !important`,
+  '& .progress-card-title-first': {
+    color: theme.palette.common.black,
   },
 
-  '& [class*="SecondLabel"], & [class*="SecondLabel"] *': {
-    color: `${theme.palette.primary.main} !important`,
+  '& .progress-card-title-second': {
+    color: theme.palette.primary.main,
+  },
+
+  '& .progress-card-title-second *': {
+    color: theme.palette.primary.main,
   },
 
   '& [class*="Dot"]': {
-    backgroundColor: `${theme.palette.primary.main} !important`,
+    backgroundColor: theme.palette.primary.main,
   },
 }));
 
@@ -60,7 +64,7 @@ export const StyledText = styled(Typography)(({ theme }) => ({
 export const ProgressBarWrapper = styled(Box)(() => ({
   width: '100%',
   '& > *': {
-    height: '4px !important',
+    height: '4px',
   },
 }));
 
@@ -71,16 +75,17 @@ export const StatusButton = styled(Button)(({ theme }) => ({
   paddingLeft: theme.spacing(2),
   paddingRight: theme.spacing(2),
   backgroundColor: theme.palette.primary.main,
-  color: `${theme.palette.common.white} !important`,
+  color: theme.palette.common.white,
   textTransform: 'none',
   boxShadow: 'none',
+
   '&:hover': {
     backgroundColor: theme.palette.primary.dark,
-    color: `${theme.palette.common.white} !important`,
+    color: theme.palette.common.white,
     boxShadow: 'none',
   },
   '& *': {
-    color: `${theme.palette.common.white} !important`,
+    color: theme.palette.common.white,
     textTransform: 'none',
   },
 }));

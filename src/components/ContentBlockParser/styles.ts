@@ -81,6 +81,7 @@ export const StrongTextWithoutGap = styled(Typography)(() => ({
 export const ListItem = styled(Box)(({ theme }) => ({
   position: 'relative',
   paddingLeft: theme.spacing(2),
+
   '&::before': {
     content: '"•"',
     position: 'absolute',

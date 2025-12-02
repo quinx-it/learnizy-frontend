@@ -51,17 +51,21 @@ export const TopSection = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   gap: theme.spacing(1),
+
   '& .module-card-title-first': {
-    color: `${theme.palette.common.black} !important`,
+    color: theme.palette.common.black,
   },
+
   '& .module-card-title-second': {
-    color: `${theme.palette.primary.main} !important`,
+    color: theme.palette.primary.main,
   },
+
   '& .module-card-title-second *': {
-    color: `${theme.palette.primary.main} !important`,
+    color: theme.palette.primary.main,
   },
+
   '& span.module-card-title-second > div': {
-    backgroundColor: `${theme.palette.primary.main} !important`,
+    backgroundColor: theme.palette.primary.main,
   },
 }));
 

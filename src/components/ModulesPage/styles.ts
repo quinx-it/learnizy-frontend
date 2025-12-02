@@ -52,6 +52,7 @@ export const YellowButton = styled(MuiButton)(({ theme }) => ({
   lineHeight: '16px',
   position: 'relative',
   overflow: 'hidden',
+
   '&:hover': {
     backgroundColor: theme.palette.warning.main,
     boxShadow: 'none',
@@ -73,6 +74,7 @@ export const WhiteButton = styled(MuiButton)(({ theme }) => ({
   lineHeight: '16px',
   position: 'relative',
   overflow: 'hidden',
+
   '&:hover': {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,
@@ -94,6 +96,7 @@ export const BlueButtonSmall = styled(MuiButton)(({ theme }) => ({
   lineHeight: '16px',
   position: 'relative',
   overflow: 'hidden',
+
   '&:hover': {
     backgroundColor: theme.palette.primary.dark,
     boxShadow: 'none',
@@ -103,14 +106,14 @@ export const BlueButtonSmall = styled(MuiButton)(({ theme }) => ({
 
 export const DialogContentWrapper = styled(Box)(() => ({
   '& [data-slot="dialog-content"]': {
-    maxWidth: '28rem !important',
+    maxWidth: '28rem',
   },
 }));
 
 export const DialogFooterWrapper = styled(Box)(({ theme }) => ({
   '& [data-slot="dialog-footer"]': {
-    display: 'flex !important',
-    justifyContent: 'flex-end !important',
-    gap: `${theme.spacing(0.5)} !important`,
+    display: 'flex',
+    justifyContent: 'flex-end',
+    gap: theme.spacing(0.5),
   },
 }));

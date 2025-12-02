@@ -38,7 +38,12 @@ const ProgressCard: FC<ProgressCardPropsType> = (props) => {
 
         <ContentWrapper>
           <DotTitleWrapper>
-            <DotTitle firstLabel={title} secondLabel={subTitle} />
+            <DotTitle
+              firstLabel={title}
+              secondLabel={subTitle}
+              firstClassName="progress-card-title-first"
+              secondClassName="progress-card-title-second"
+            />
           </DotTitleWrapper>
           <StatsContainer>
             <StatsRow>

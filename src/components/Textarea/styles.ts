@@ -72,6 +72,6 @@ export const ErrorText = styled(Box)(({ theme }) => ({
   marginLeft: theme.spacing(0.5),
 
   '& > *': {
-    color: `${theme.palette.error.main} !important`,
+    color: theme.palette.error.main,
   },
 }));

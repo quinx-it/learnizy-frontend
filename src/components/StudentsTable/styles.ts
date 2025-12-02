@@ -74,6 +74,7 @@ export const EditButton = styled(Button)(({ theme }) => ({
   border: 'none',
   padding: theme.spacing(0.625),
   cursor: 'pointer',
+
   '&:hover': {
     backgroundColor: theme.palette.info.main,
     color: theme.palette.background.default,
@@ -84,12 +85,14 @@ export const CopyButton = styled(Button)(({ theme }) => ({
   border: 'none',
   padding: theme.spacing(0.25),
   cursor: 'pointer',
+
   '&:hover': {
     backgroundColor: 'transparent',
     color: theme.palette.text.primary,
   },
+
   '&:active': {
-    color: `${theme.palette.text.primary} !important`,
+    color: theme.palette.text.primary,
   },
 }));
 

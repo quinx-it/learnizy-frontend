@@ -46,6 +46,7 @@ export const PlayButton = styled(Button)(() => ({
   padding: 0,
   textTransform: 'none',
   boxShadow: 'none',
+
   '&:hover': {
     opacity: 0.8,
     boxShadow: 'none',
@@ -65,6 +66,7 @@ export const TranscriptButton = styled(Button)(({ theme }) => ({
   minWidth: 'auto',
   textTransform: 'none',
   boxShadow: 'none',
+
   '&:hover': {
     opacity: 0.8,
     boxShadow: 'none',
@@ -83,8 +85,9 @@ export const TranscriptContainer = styled(Box, {
 
 export const TranscriptText = styled(Box)(({ theme }) => ({
   marginTop: '0.75rem',
+
   '& > *': {
-    fontSize: '1rem !important',
-    color: `${theme.palette.common.white} !important`,
+    fontSize: '1rem',
+    color: theme.palette.common.white,
   },
 }));

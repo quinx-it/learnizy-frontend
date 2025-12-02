@@ -111,6 +111,7 @@ export const ScrollContainer = styled(Box)(() => ({
   overflowY: 'auto',
   msOverflowStyle: 'none',
   scrollbarWidth: 'none',
+
   '&::-webkit-scrollbar': {
     display: 'none',
   },

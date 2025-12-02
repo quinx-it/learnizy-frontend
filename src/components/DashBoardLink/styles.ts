@@ -13,10 +13,10 @@ export const StyledButton = styled(Button, {
 
   '&:hover': {
     backgroundColor: theme.palette.primary.main,
-    color: `${theme.palette.common.white} !important`,
+    color: theme.palette.common.white,
     boxShadow: 'none',
     '& *': {
-      color: `${theme.palette.common.white} !important`,
+      color: theme.palette.common.white,
     },
   },
 }));

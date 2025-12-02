@@ -74,5 +74,5 @@ export const ErrorText = styled(Box)(({ theme }) => ({
 
 export const LinkStyled = styled(Link)(() => ({
   display: 'inline',
-  textDecoration: 'underline !important',
+  textDecoration: 'underline',
 }));

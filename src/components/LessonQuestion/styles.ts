@@ -11,7 +11,7 @@ export const Container = styled(Box)(() => ({
 export const QuestionNumber = styled(Box)(({ theme }) => ({
   marginBottom: '0.75rem',
   '& > *': {
-    color: `${theme.palette.primary.main} !important`,
+    color: theme.palette.primary.main,
   },
 }));
 
@@ -31,9 +31,9 @@ export const RadioGroupWrapper = styled(Box)(() => ({
 export const StyledTextarea = styled(Textarea)(() => ({
   width: '100%',
   '& textarea': {
-    height: 'auto !important',
-    minHeight: '60px !important',
-    resize: 'none !important',
+    height: 'auto',
+    minHeight: '60px',
+    resize: 'none',
     paddingTop: '0.125rem',
     paddingBottom: '0.125rem',
   },

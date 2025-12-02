@@ -21,6 +21,7 @@ export const StyledButton = styled(MuiButton, {
   display: 'flex',
   alignItems: 'center',
   gap: theme.spacing(0.625),
+
   '&:hover': {
     backgroundColor: isActive ? theme.palette.primary.dark : theme.palette.primary.main,
     color: theme.palette.common.white,

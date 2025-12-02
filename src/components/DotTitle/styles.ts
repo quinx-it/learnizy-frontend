@@ -25,7 +25,7 @@ export const Dot = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'isSmall',
 })<{ isSmall?: boolean }>(({ isSmall }) => ({
   lineHeight: 'inherit',
-  backgroundColor: 'transparent !important',
+  backgroundColor: 'transparent',
   paddingLeft: '0.25rem',
   paddingRight: '0.25rem',
   fontSize: isSmall ? '16px' : '22px',

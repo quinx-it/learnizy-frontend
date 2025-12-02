@@ -38,8 +38,8 @@ export const StyledInput = styled('input', {
     cursor: 'not-allowed',
   },
   ...(hasError && {
-    color: `${theme.palette.error.main} !important`,
-    borderColor: `${theme.palette.error.main} !important`,
+    color: theme.palette.error.main,
+    borderColor: theme.palette.error.main,
   }),
 
   '@media (min-width: 768px)': {

@@ -63,37 +63,40 @@ export const ButtonsContainer = styled(Box)(({ theme }) => ({
 
 export const TitleDotTitleWrapper = styled(Box)(({ theme }) => ({
   '& p, & h1, & h2, & h3, & h4, & h5, & h6': {
-    fontSize: '24px !important',
-    lineHeight: '32px !important',
+    fontSize: '24px',
+    lineHeight: '32px',
   },
 
   '& .exam-title-first': {
-    color: `${theme.palette.common.black} !important`,
+    color: theme.palette.common.black,
   },
 
   '& .exam-title-second': {
-    color: `${theme.palette.text.secondary} !important`,
+    color: theme.palette.text.secondary,
   },
 
   '& span > div': {
-    width: '4px !important',
-    height: '4px !important',
+    width: '4px',
+    height: '4px',
   },
 }));
 
 export const InfoDotTitleWrapper = styled(Box)(({ theme }) => ({
   color: theme.palette.text.secondary,
+
   '& > div > span > div': {
-    width: '4px !important',
-    height: '4px !important',
+    width: '4px',
+    height: '4px',
   },
 }));
 
 export const LinkWrapper = styled(Box)(({ theme }) => ({
   display: 'inline',
+
   '& a': {
     color: theme.palette.text.secondary,
     textDecoration: 'underline',
+
     '&:hover': {
       textDecoration: 'underline',
     },
@@ -110,6 +113,7 @@ export const UnavailableStatusText = styled(Box)(({ theme }) => ({
 
 export const InlineLinkWrapper = styled(Box)(({ theme }) => ({
   display: 'inline',
+
   '& a': {
     color: theme.palette.text.secondary,
     textDecoration: 'underline',
@@ -121,7 +125,7 @@ export const StyledButton = styled(Button)(({ theme }) => ({
   boxShadow: 'none',
   borderRadius: '50px',
   backgroundColor: theme.palette.primary.main,
-  color: `${theme.palette.common.white} !important`,
+  color: theme.palette.common.white,
   paddingLeft: theme.spacing(3),
   paddingRight: theme.spacing(3),
   paddingTop: theme.spacing(1),
@@ -134,11 +138,11 @@ export const StyledButton = styled(Button)(({ theme }) => ({
   '&:hover': {
     backgroundColor: theme.palette.primary.dark,
     boxShadow: 'none',
-    color: `${theme.palette.common.white} !important`,
+    color: theme.palette.common.white,
   },
 
   '&:disabled': {
     backgroundColor: theme.palette.info.main,
-    color: `${theme.palette.common.white} !important`,
+    color: theme.palette.common.white,
   },
 }));

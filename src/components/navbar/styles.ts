@@ -20,6 +20,7 @@ export const StyledMobileMenuButton = styled(MuiButton)(({ theme }) => ({
   boxShadow: 'none',
   backgroundColor: theme.palette.primary.main,
   color: theme.palette.common.white,
+
   '&:hover': {
     backgroundColor: theme.palette.primary.dark,
     boxShadow: 'none',
@@ -75,16 +76,17 @@ export const LogoutButton = styled(MuiButton)(({ theme }) => ({
   justifyContent: 'flex-start',
   gap: theme.spacing(0.625),
   border: 'none',
-  paddingLeft: `${theme.spacing(1.25)} !important`,
-  paddingRight: `${theme.spacing(1.25)} !important`,
-  paddingTop: `${theme.spacing(0.5)} !important`,
-  paddingBottom: `${theme.spacing(0.5)} !important`,
+  paddingLeft: theme.spacing(1.25),
+  paddingRight: theme.spacing(1.25),
+  paddingTop: theme.spacing(0.5),
+  paddingBottom: theme.spacing(0.5),
   textTransform: 'none',
   boxShadow: 'none',
   borderRadius: '50px',
   backgroundColor: theme.palette.common.white,
   color: theme.palette.common.black,
   borderColor: theme.palette.primary.main,
+
   '&:hover': {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,
@@ -167,15 +169,16 @@ export const MobileLogoutButton = styled(MuiButton)(({ theme }) => ({
   justifyContent: 'flex-start',
   gap: theme.spacing(0.625),
   border: 'none',
-  paddingLeft: `${theme.spacing(1.25)} !important`,
-  paddingRight: `${theme.spacing(1.25)} !important`,
-  paddingTop: `${theme.spacing(0.5)} !important`,
-  paddingBottom: `${theme.spacing(0.5)} !important`,
+  paddingLeft: theme.spacing(1.25),
+  paddingRight: theme.spacing(1.25),
+  paddingTop: theme.spacing(0.5),
+  paddingBottom: theme.spacing(0.5),
   textTransform: 'none',
   boxShadow: 'none',
   borderRadius: '50px',
   backgroundColor: theme.palette.common.white,
   color: theme.palette.common.black,
+
   '&:hover': {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,
@@ -199,6 +202,7 @@ export const IconWrapper = styled(Box)(() => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+
   '& svg': {
     width: '16px',
     height: '16px',

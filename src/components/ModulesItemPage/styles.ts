@@ -26,6 +26,7 @@ export const StyledCreateButton = styled(MuiButton)(({ theme }) => ({
   paddingRight: theme.spacing(1.25),
   paddingTop: theme.spacing(0.375),
   paddingBottom: theme.spacing(0.375),
+
   '&:hover': {
     backgroundColor: theme.palette.primary.dark,
     boxShadow: 'none',
@@ -60,6 +61,7 @@ export const ExamStatusContainer = styled(Box)(({ theme }) => ({
 export const StyledLink = styled(Link)(({ theme }) => ({
   color: theme.palette.text.secondary,
   textDecoration: 'underline',
+
   '&:hover': {
     textDecoration: 'underline',
   },
@@ -74,6 +76,7 @@ export const ExamActionsContainer = styled(Box)(({ theme }) => ({
 export const StyledLinkButton = styled(Link)(({ theme }) => ({
   color: theme.palette.text.secondary,
   textDecoration: 'none',
+
   '&:hover': {
     textDecoration: 'none',
   },
@@ -97,6 +100,7 @@ export const StyledStartButton = styled(MuiButton)(({ theme }) => ({
     backgroundColor: theme.palette.primary.dark,
     boxShadow: 'none',
   },
+
   '&:disabled': {
     backgroundColor: theme.palette.info.main,
     color: theme.palette.common.white,
@@ -112,7 +116,7 @@ export const ProgressText = styled(BaseText)(({ theme }) => ({
 export const DialogContentWrapper = styled(Box)(({ theme }) => ({
   '& [data-slot="dialog-content"]': {
     [theme.breakpoints.up('sm')]: {
-      maxWidth: '28rem !important',
+      maxWidth: '28rem',
     },
   },
 }));
@@ -126,44 +130,50 @@ export const FormContainer = styled(Box)(({ theme }) => ({
 export const DialogFooterWrapper = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(1),
   '& [data-slot="dialog-footer"]': {
-    display: 'flex !important',
-    justifyContent: 'flex-end !important',
-    gap: `${theme.spacing(0.5)} !important`,
+    display: 'flex',
+    justifyContent: 'flex-end',
+    gap: theme.spacing(0.5),
   },
 }));
 
 export const ModuleTitleWrapper = styled(Box)(({ theme }) => ({
   '& h2': {
-    fontSize: '24px !important',
-    lineHeight: '32px !important',
-    color: `${theme.palette.common.black} !important`,
+    fontSize: '24px',
+    lineHeight: '32px',
+    color: theme.palette.common.black,
   },
+
   '& .module-title-first': {
-    color: `${theme.palette.common.black} !important`,
+    color: theme.palette.common.black,
   },
+
   '& h2.module-title-first': {
-    color: `${theme.palette.common.black} !important`,
+    color: theme.palette.common.black,
     '& > span.module-title-second': {
-      color: `${theme.palette.primary.main} !important`,
+      color: theme.palette.primary.main,
     },
   },
+
   '& .module-title-second': {
-    color: `${theme.palette.primary.main} !important`,
+    color: theme.palette.primary.main,
   },
+
   '& h2 > span.module-title-second': {
-    color: `${theme.palette.primary.main} !important`,
-    fontSize: '24px !important',
-    lineHeight: '32px !important',
+    color: theme.palette.primary.main,
+    fontSize: '24px',
+    lineHeight: '32px',
   },
+
   '& h2 > span.module-title-second *': {
-    color: `${theme.palette.primary.main} !important`,
+    color: theme.palette.primary.main,
   },
+
   '& h2 > span > div': {
-    width: '6px !important',
-    height: '6px !important',
+    width: '6px',
+    height: '6px',
     alignSelf: 'center',
-    margin: '0 !important',
-    backgroundColor: `${theme.palette.primary.main} !important`,
+    margin: 0,
+    backgroundColor: theme.palette.primary.main,
   },
 }));
 
@@ -171,8 +181,8 @@ export const ModuleInfoWrapper = styled(Box)(({ theme }) => ({
   color: theme.palette.text.secondary,
   '& > div > span > div': {
     backgroundColor: theme.palette.info.main,
-    width: '4px !important',
-    height: '4px !important',
+    width: '4px',
+    height: '4px',
   },
 }));
 
@@ -190,6 +200,7 @@ export const YellowButton = styled(MuiButton)(({ theme }) => ({
   lineHeight: '16px',
   position: 'relative',
   overflow: 'hidden',
+
   '&:hover': {
     backgroundColor: theme.palette.warning.main,
     boxShadow: 'none',
@@ -211,6 +222,7 @@ export const WhiteButton = styled(MuiButton)(({ theme }) => ({
   lineHeight: '16px',
   position: 'relative',
   overflow: 'hidden',
+
   '&:hover': {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,
@@ -232,6 +244,7 @@ export const BlueButtonSmall = styled(MuiButton)(({ theme }) => ({
   lineHeight: '16px',
   position: 'relative',
   overflow: 'hidden',
+
   '&:hover': {
     backgroundColor: theme.palette.primary.dark,
     boxShadow: 'none',

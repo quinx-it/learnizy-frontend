@@ -16,14 +16,14 @@ export const Container = styled(Box)(({ theme }) => ({
   zIndex: 9999,
 
   '& svg': {
-    color: `${theme.palette.primary.main} !important`,
+    color: theme.palette.primary.main,
   },
 
   '& svg circle': {
-    stroke: `${theme.palette.primary.main} !important`,
+    stroke: theme.palette.primary.main,
   },
 
   '& svg g circle': {
-    stroke: `${theme.palette.primary.main} !important`,
+    stroke: theme.palette.primary.main,
   },
 }));

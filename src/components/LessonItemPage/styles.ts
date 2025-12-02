@@ -61,6 +61,7 @@ export const ButtonsRow = styled(Box)(({ theme }) => ({
 export const TestInfoDotTitleWrapper = styled(Box)(({ theme }) => ({
   color: theme.palette.text.secondary,
   marginBottom: theme.spacing(1.5),
+
   '& span > div': {
     width: '4px',
     height: '4px',
@@ -81,6 +82,7 @@ export const YellowButton = styled(MuiButton)(({ theme }) => ({
   lineHeight: '16px',
   position: 'relative',
   overflow: 'hidden',
+
   '&:hover': {
     backgroundColor: theme.palette.warning.main,
     boxShadow: 'none',

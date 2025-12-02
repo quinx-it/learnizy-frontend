@@ -6,12 +6,15 @@ export const StyledOverlay = styled(DialogPrimitive.Overlay)(({ theme }) => ({
   inset: 0,
   zIndex: 50,
   backgroundColor: `${theme.palette.common.black}80`,
+
   '&[data-state=open]': {
     animation: 'fadeIn 0.15s ease-out',
   },
+
   '&[data-state=closed]': {
     animation: 'fadeOut 0.15s ease-out',
   },
+
   '@keyframes fadeIn': {
     from: {
       opacity: 0,

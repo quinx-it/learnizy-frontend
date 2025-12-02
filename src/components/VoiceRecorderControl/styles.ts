@@ -22,6 +22,7 @@ export const DeleteButton = styled(MuiButton)(() => ({
   padding: 0,
   textTransform: 'none',
   boxShadow: 'none',
+
   '&:hover': {
     boxShadow: 'none',
   },
