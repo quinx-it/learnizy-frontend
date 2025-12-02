@@ -1,42 +1,42 @@
 import Image from 'next/image';
 import { FC } from 'react';
 
-import Button from '@/components/Button';
 import CardWrapper from '@/components/CardWrapper';
-import Link from '@/components/Link';
-import { Text } from '@/components/Typography';
 import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
+
+import {
+  DescriptionContainer,
+  DescriptionSecondaryText,
+  DescriptionText,
+  ImageWrapper,
+  StyledLinkButton,
+  StyledCardWrapper,
+  StyledDivider,
+  Title,
+} from './styles';
 
 const FrequentlyAskedQuestions: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <CardWrapper className="relative flex flex-col gap-4 overflow-hidden">
-      <Text variant="m" className="text-medium">
-        {t('FAQ.TITLE')}
-      </Text>
-      <hr />
-      <div>
-        <Text variant="m" className="mb-2">
-          {t('FAQ.DESCRIPTION_1')}
-        </Text>
-        <Text variant="s" className="text-medium w-3/4">
-          {t('FAQ.DESCRIPTION_2')}
-        </Text>
-      </div>
+    <CardWrapper>
+      <StyledCardWrapper>
+        <Title variant="m">{t('FAQ.TITLE')}</Title>
+        <StyledDivider />
+        <DescriptionContainer>
+          <DescriptionText variant="m">{t('FAQ.DESCRIPTION_1')}</DescriptionText>
+          <DescriptionSecondaryText variant="s">{t('FAQ.DESCRIPTION_2')}</DescriptionSecondaryText>
+        </DescriptionContainer>
 
-      <Button variant="blue" size="small" asChild className="w-fit">
-        <Link href={routes.user.frequentlyAskedQuestions}>{t('FAQ.BUTTON')}</Link>
-      </Button>
+        <StyledLinkButton href={routes.user.frequentlyAskedQuestions}>
+          {t('FAQ.BUTTON')}
+        </StyledLinkButton>
 
-      <Image
-        src="/images/blue-planet-with-moon.webp"
-        alt=""
-        className="absolute right-0 bottom-0 translate-x-15 translate-y-7 rotate-6"
-        width={160}
-        height={107}
-      />
+        <ImageWrapper>
+          <Image src="/images/blue-planet-with-moon.webp" alt="" width={160} height={107} />
+        </ImageWrapper>
+      </StyledCardWrapper>
     </CardWrapper>
   );
 };

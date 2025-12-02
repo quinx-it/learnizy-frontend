@@ -13,11 +13,11 @@ export const MobileButtonWrapper = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const Overlay = styled(Box)(() => ({
+export const Overlay = styled(Box)(({ theme }) => ({
   position: 'fixed',
   inset: 0,
   zIndex: 40,
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  backgroundColor: `${theme.palette.common.black}80`,
   transition: 'opacity 0.3s',
 }));
 
@@ -88,6 +88,8 @@ export const DesktopNewChatButton = styled(NewChatButton)(() => ({
 export const HeaderTitle = styled(Typography)(() => ({
   fontSize: '20px',
   wordBreak: 'break-word',
+  textAlign: 'center',
+  flex: 1,
 }));
 
 export const NewChatButtonWrapper = styled(Box)(() => ({
@@ -148,6 +150,8 @@ export const ChatText = styled(Typography)(() => ({
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
+  fontSize: '0.875rem',
+  lineHeight: '1.25rem',
 }));
 
 export const DesktopWrapper = styled(Box)(({ theme }) => ({
@@ -186,7 +190,7 @@ export const DesktopSidebarHeader = styled(Box)(() => ({
 export const DesktopHeaderTitle = styled(Typography)(() => ({
   display: 'block',
   height: '48px',
-  textAlign: 'right',
+  textAlign: 'center',
   fontSize: '20px',
   wordBreak: 'break-word',
 }));

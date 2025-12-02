@@ -13,7 +13,6 @@ import {
 } from '@/api/endpoints/admin';
 import { CompletionStatus } from '@/api/endpoints/types';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import Button from '@/components/Button';
 import {
   Dialog,
   DialogContent,
@@ -36,11 +35,17 @@ import { UserRole } from '@/store/slices/auth/typings';
 import { IModuleProgressCardProps } from './typings';
 
 import {
+  BlueButtonSmall,
   ButtonsWrapper,
   CreateButtonWrapper,
+  DialogContentWrapper,
+  DialogFooterWrapper,
   FormContent,
+  ModuleCardWrapper,
   ModuleProgressCardContainer,
   ModulesGrid,
+  WhiteButton,
+  YellowButton,
 } from './styles';
 
 const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
@@ -71,16 +76,14 @@ const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
 
   return (
     <ModuleProgressCardContainer>
-      <ModuleCard className="h-full w-full max-w-full" {...moduleInfo} />
+      <ModuleCardWrapper>
+        <ModuleCard {...moduleInfo} />
+      </ModuleCardWrapper>
 
       {isMentor && (
         <ButtonsWrapper>
-          <Button variant="yellow" size="small" onClick={() => openEditModal(module.id)}>
-            Редактировать
-          </Button>
-          <Button variant="white" size="small" onClick={() => handleDeleteModule(module.id)}>
-            Удалить
-          </Button>
+          <YellowButton onClick={() => openEditModal(module.id)}>Редактировать</YellowButton>
+          <WhiteButton onClick={() => handleDeleteModule(module.id)}>Удалить</WhiteButton>
         </ButtonsWrapper>
       )}
     </ModuleProgressCardContainer>
@@ -168,51 +171,51 @@ const ModulesPage: FC = () => {
       />
       {isMentor && (
         <CreateButtonWrapper>
-          <Button variant="blue" size="small" onClick={openCreateModal}>
-            Создать новый модуль
-          </Button>
+          <BlueButtonSmall onClick={openCreateModal}>Создать новый модуль</BlueButtonSmall>
         </CreateButtonWrapper>
       )}
 
       {modalOpen && (
-        <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-          <DialogContent className="max-w-md">
-            <DialogHeader>
-              <DialogTitle>
-                {editingModuleId ? 'Редактирование модуля' : 'Создание нового модуля'}
-              </DialogTitle>
-            </DialogHeader>
+        <DialogContentWrapper>
+          <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>
+                  {editingModuleId ? 'Редактирование модуля' : 'Создание нового модуля'}
+                </DialogTitle>
+              </DialogHeader>
 
-            <FormContent>
-              <Input
-                type="number"
-                placeholder="Порядковый номер"
-                value={sequenceOrder}
-                min={1}
-                onChange={(e) => setSequenceOrder(Number(e.target.value))}
-              />
-              <Input
-                placeholder="Название модуля"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-              <Textarea
-                placeholder="Описание модуля"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </FormContent>
+              <FormContent>
+                <Input
+                  type="number"
+                  placeholder="Порядковый номер"
+                  value={sequenceOrder}
+                  min={1}
+                  onChange={(e) => setSequenceOrder(Number(e.target.value))}
+                />
+                <Input
+                  placeholder="Название модуля"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+                <Textarea
+                  placeholder="Описание модуля"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </FormContent>
 
-            <DialogFooter className="flex justify-end gap-2">
-              <Button variant="white" size="small" onClick={() => setModalOpen(false)}>
-                Отмена
-              </Button>
-              <Button variant="blue" size="small" onClick={handleSaveModule}>
-                {editingModuleId ? 'Сохранить' : 'Создать'}
-              </Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+              <DialogFooterWrapper>
+                <DialogFooter>
+                  <WhiteButton onClick={() => setModalOpen(false)}>Отмена</WhiteButton>
+                  <BlueButtonSmall onClick={handleSaveModule}>
+                    {editingModuleId ? 'Сохранить' : 'Создать'}
+                  </BlueButtonSmall>
+                </DialogFooter>
+              </DialogFooterWrapper>
+            </DialogContent>
+          </Dialog>
+        </DialogContentWrapper>
       )}
 
       <ModulesGrid>

@@ -1,11 +1,11 @@
 import { Box, Link, styled, Typography } from '@mui/material';
 
-export const ScrollContainer = styled(Box)(() => ({
+export const ScrollContainer = styled(Box)(({ theme }) => ({
   height: '100%',
   width: '100%',
   maxWidth: '659px',
   overflowY: 'auto',
-  paddingTop: '90px',
+  paddingTop: theme.spacing(3),
   msOverflowStyle: 'none',
   scrollbarWidth: 'none',
 

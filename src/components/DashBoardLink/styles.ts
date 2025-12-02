@@ -10,6 +10,15 @@ export const StyledButton = styled(Button, {
   border: 0,
   fontSize: '16px',
   backgroundColor: isActive ? theme.palette.info.main : 'transparent',
+
+  '&:hover': {
+    backgroundColor: theme.palette.primary.main,
+    color: `${theme.palette.common.white} !important`,
+    boxShadow: 'none',
+    '& *': {
+      color: `${theme.palette.common.white} !important`,
+    },
+  },
 }));
 
 export const StyledLink = styled(Link)(() => ({
@@ -19,8 +28,9 @@ export const StyledLink = styled(Link)(() => ({
 }));
 
 export const IconWrapper = styled(Box)(({ theme }) => ({
-  marginRight: '0.625rem',
+  marginRight: theme.spacing(0.625),
   height: '20px',
   width: '20px',
   color: theme.palette.text.primary,
+  transition: 'color 0.2s ease-in-out',
 }));

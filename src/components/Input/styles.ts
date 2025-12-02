@@ -1,7 +1,7 @@
 import { Box, styled } from '@mui/material';
 
-export const LabelWrapper = styled(Box)(() => ({
-  marginBottom: '0.375rem',
+export const LabelWrapper = styled(Box)(({ theme }) => ({
+  marginBottom: theme.spacing(0.375),
 }));
 
 export const StyledInput = styled('input', {
@@ -14,10 +14,10 @@ export const StyledInput = styled('input', {
   minWidth: 0,
   borderRadius: '50px',
   border: `1px solid ${theme.palette.divider}`,
-  paddingLeft: '20px',
-  paddingRight: '20px',
-  paddingTop: '0.125rem',
-  paddingBottom: '0.125rem',
+  paddingLeft: theme.spacing(2.5),
+  paddingRight: theme.spacing(2.5),
+  paddingTop: theme.spacing(0.125),
+  paddingBottom: theme.spacing(0.125),
   fontSize: '16px',
   fontWeight: 500,
   color: theme.palette.text.primary,
@@ -47,8 +47,8 @@ export const StyledInput = styled('input', {
   },
 }));
 
-export const ErrorText = styled(Box)(() => ({
-  marginLeft: '20px',
+export const ErrorText = styled(Box)(({ theme }) => ({
+  marginLeft: theme.spacing(2.5),
 
   '& > *': {
     color: 'inherit',

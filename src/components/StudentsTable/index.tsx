@@ -17,6 +17,7 @@ import {
   EmptyMessage,
   HeaderCell,
   LinkCell,
+  PersonIconWrapper,
   RowWrapper,
   SearchContainer,
   SearchInput,
@@ -51,9 +52,9 @@ const StudentsTable: FC<IStudentsTableProps> = (props) => {
       <TableWrapper>
         <TableGrid>
           <HeaderCell hasBorder hasPadding={false}>
-            <Text variant="m">
-              <PersonIcon className="h-4 w-4" />
-            </Text>
+            <PersonIconWrapper>
+              <PersonIcon />
+            </PersonIconWrapper>
           </HeaderCell>
           <HeaderCell hasBorder hasPadding={false}>
             <Text variant="m">ID</Text>
@@ -70,7 +71,9 @@ const StudentsTable: FC<IStudentsTableProps> = (props) => {
           <HeaderCell hasBorder hasPadding={false}>
             <Text variant="m">Текущий урок</Text>
           </HeaderCell>
-          <HeaderCell hasBorder={false} hasPadding={false} />
+          <HeaderCell hasBorder={false} hasPadding={false}>
+            <Text variant="m">Статус</Text>
+          </HeaderCell>
 
           {filteredStudents.length > 0 ? (
             filteredStudents.map((row) => (

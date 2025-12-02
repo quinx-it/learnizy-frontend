@@ -4,7 +4,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FC } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
-import Button from '@/components/Button';
 import DatePicker from '@/components/DatePicker';
 import Input from '@/components/Input';
 import { RadioGroup, RadioGroupItem } from '@/components/RadioGroup';
@@ -12,6 +11,18 @@ import { useTranslation } from '@/hooks';
 
 import { PersonalDataFormValuesType } from './typings';
 import { personalDataSchema } from './validations';
+
+import {
+  BlueButton,
+  ButtonWrapper,
+  ButtonsContainer,
+  ErrorText,
+  Form,
+  FormFieldFullWidth,
+  FormGrid,
+  RadioGroupContainer,
+  WhiteButton,
+} from './styles';
 
 const PersonalDataForm: FC = () => {
   const { t } = useTranslation();
@@ -40,20 +51,22 @@ const PersonalDataForm: FC = () => {
   const onSubmit = () => {};
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <Controller
         name="gender"
         control={control}
         render={({ field }) => (
-          <RadioGroup value={field.value} onValueChange={field.onChange} className="mb-8">
-            <RadioGroupItem value="man">{t('PERSONAL_DATA_FORM.GENDER.MAN')}</RadioGroupItem>
-            <RadioGroupItem value="woman">{t('PERSONAL_DATA_FORM.GENDER.WOMAN')}</RadioGroupItem>
-          </RadioGroup>
+          <RadioGroupContainer>
+            <RadioGroup value={field.value} onValueChange={field.onChange}>
+              <RadioGroupItem value="man">{t('PERSONAL_DATA_FORM.GENDER.MAN')}</RadioGroupItem>
+              <RadioGroupItem value="woman">{t('PERSONAL_DATA_FORM.GENDER.WOMAN')}</RadioGroupItem>
+            </RadioGroup>
+          </RadioGroupContainer>
         )}
       />
-      {errors.gender && <p className="text-red-500">{errors.gender.message}</p>}
+      {errors.gender && <ErrorText>{errors.gender.message}</ErrorText>}
 
-      <div className="grid grid-cols-2 grid-rows-[repeat(5,1fr)_auto] gap-x-4 gap-y-8">
+      <FormGrid>
         <Input
           label={t('PERSONAL_DATA_FORM.FIRST_NAME')}
           {...register('firstName')}
@@ -64,18 +77,20 @@ const PersonalDataForm: FC = () => {
           {...register('lastName')}
           error={errors.lastName?.message}
         />
-        <Input
-          label={t('PERSONAL_DATA_FORM.EMAIL')}
-          className="col-span-2"
-          {...register('email')}
-          error={errors.email?.message}
-        />
-        <Input
-          label={t('PERSONAL_DATA_FORM.ADDRESS')}
-          className="col-span-2"
-          {...register('address')}
-          error={errors.address?.message}
-        />
+        <FormFieldFullWidth>
+          <Input
+            label={t('PERSONAL_DATA_FORM.EMAIL')}
+            {...register('email')}
+            error={errors.email?.message}
+          />
+        </FormFieldFullWidth>
+        <FormFieldFullWidth>
+          <Input
+            label={t('PERSONAL_DATA_FORM.ADDRESS')}
+            {...register('address')}
+            error={errors.address?.message}
+          />
+        </FormFieldFullWidth>
         <Input
           label={t('PERSONAL_DATA_FORM.PHONE')}
           {...register('phone')}
@@ -104,14 +119,18 @@ const PersonalDataForm: FC = () => {
           error={errors.city?.message}
         />
 
-        <Button type="reset" variant="white" className="flex-1 text-[16px]" onClick={() => reset()}>
-          {t('PERSONAL_DATA_FORM.RESET')}
-        </Button>
-        <Button type="submit" variant="blue" className="flex-1 text-[16px]">
-          {t('PERSONAL_DATA_FORM.SUBMIT')}
-        </Button>
-      </div>
-    </form>
+        <ButtonsContainer>
+          <ButtonWrapper>
+            <WhiteButton type="reset" onClick={() => reset()}>
+              {t('PERSONAL_DATA_FORM.RESET')}
+            </WhiteButton>
+          </ButtonWrapper>
+          <ButtonWrapper>
+            <BlueButton type="submit">{t('PERSONAL_DATA_FORM.SUBMIT')}</BlueButton>
+          </ButtonWrapper>
+        </ButtonsContainer>
+      </FormGrid>
+    </Form>
   );
 };
 

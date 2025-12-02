@@ -1,5 +1,8 @@
 import { Box, styled } from '@mui/material';
 
+import Button from '@/components/Button';
+import { Text } from '@/components/Typography';
+
 export const Container = styled(Box)(({ theme }) => ({
   display: 'flex',
   width: '100%',
@@ -46,4 +49,36 @@ export const TitleWrapper = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     width: 'auto',
   },
+}));
+
+export const StyledModuleText = styled(Text)(({ theme }) => ({
+  fontSize: '12px',
+  lineHeight: '16px',
+  whiteSpace: 'nowrap',
+
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '16px',
+    lineHeight: '22px',
+  },
+}));
+
+export const StyledTitleText = styled(Text)(({ theme }) => ({
+  color: theme.palette.primary.main,
+}));
+
+export const StyledButton = styled(Button, {
+  shouldForwardProp: (prop) => prop !== 'isBlocked',
+})<{ isBlocked?: boolean }>(({ theme, isBlocked }) => ({
+  height: '32px',
+  width: '128px',
+  flexShrink: 0,
+  paddingLeft: theme.spacing(1),
+  paddingRight: theme.spacing(1),
+  paddingTop: theme.spacing(0.25),
+  paddingBottom: theme.spacing(0.25),
+
+  ...(isBlocked && {
+    cursor: 'not-allowed',
+    opacity: 0.5,
+  }),
 }));

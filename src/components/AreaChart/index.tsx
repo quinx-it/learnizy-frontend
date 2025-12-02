@@ -28,7 +28,7 @@ const AreaChart: FC<IChartLineProps> = ({ data }) => {
           config={{
             value: {
               label: 'Value',
-              color: 'hsl(var(--chart-1))',
+              color: '#238ba7',
             },
           }}
         >
@@ -40,6 +40,7 @@ const AreaChart: FC<IChartLineProps> = ({ data }) => {
               axisLine={false}
               tickMargin={0}
               tickFormatter={(value) => (value.startsWith('fake') ? '' : value)}
+              tick={{ fill: '#0c0c0c', fontSize: 12 }}
             />
             <YAxis hide domain={['dataMin - 10']} />
             <defs>

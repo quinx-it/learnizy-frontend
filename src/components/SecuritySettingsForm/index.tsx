@@ -10,7 +10,7 @@ import { PasswordInput } from '@/components/PasswordInput';
 
 import { securitySettingsSchema, SecuritySettingsFormValuesType } from './validation';
 
-import { ButtonWrapper, Form, FormField, FormGrid } from './styles';
+import { ButtonWrapper, ButtonsContainer, Form, FormField, FormGrid } from './styles';
 
 const SecuritySettingsForm: FC = () => {
   const {
@@ -56,16 +56,18 @@ const SecuritySettingsForm: FC = () => {
           />
         </FormField>
 
-        <ButtonWrapper>
-          <Button type="reset" variant="white" onClick={() => reset()}>
-            Не сохранять
-          </Button>
-        </ButtonWrapper>
-        <ButtonWrapper>
-          <Button type="submit" variant="blue">
-            Сохранить изменения
-          </Button>
-        </ButtonWrapper>
+        <ButtonsContainer>
+          <ButtonWrapper>
+            <Button type="reset" variant="white" onClick={() => reset()}>
+              Не сохранять
+            </Button>
+          </ButtonWrapper>
+          <ButtonWrapper>
+            <Button type="submit" variant="blue">
+              Сохранить изменения
+            </Button>
+          </ButtonWrapper>
+        </ButtonsContainer>
       </FormGrid>
     </Form>
   );

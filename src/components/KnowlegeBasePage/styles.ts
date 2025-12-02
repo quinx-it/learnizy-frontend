@@ -14,7 +14,7 @@ export const HeaderContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   alignContent: 'baseline',
-  gap: theme.spacing(0.75),
+  gap: theme.spacing(1.5),
   color: theme.palette.info.main,
 
   [theme.breakpoints.up('md')]: {

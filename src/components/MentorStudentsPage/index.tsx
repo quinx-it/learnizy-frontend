@@ -8,6 +8,16 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import ProgressBar from '@/components/Progress';
 import StudentsTable from '@/components/StudentsTable';
 
+import {
+  AnalyticsGrid,
+  Container,
+  GrowthChartContainer,
+  ProgressContainer,
+  StatsContainer,
+  StatsRow,
+  StatsValue,
+} from './styles';
+
 const MentorStudentsPage: FC = () => {
   const { data } = useGetDashboardAnalyticsQuery();
 
@@ -17,11 +27,11 @@ const MentorStudentsPage: FC = () => {
       : 0;
 
   return (
-    <div>
+    <Container>
       <Breadcrumbs rootLabel="Главная" rootDescription="Ментор" />
 
       {data?.analyticsSummary && (
-        <div className="my-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <AnalyticsGrid>
           <AnalyticsCard
             title="Общие число пользователей"
             value={data.analyticsSummary.totalUsers.value}
@@ -37,31 +47,31 @@ const MentorStudentsPage: FC = () => {
             value={data.analyticsSummary.retentionRate.value}
             changePercentage={data.analyticsSummary.retentionRate.changePercentage}
           />
-        </div>
+        </AnalyticsGrid>
       )}
 
       {data?.userGrowthChart && (
-        <div className="my-6 w-[400px]">
+        <GrowthChartContainer>
           <AnalyticsCard title="Рост новых пользователей">
-            <div className="flex items-center gap-4">
+            <ProgressContainer>
               <ProgressBar value={growthPercentage} variant="circular" size={60} strokeWidth={6} />
 
-              <div className="flex flex-col text-sm text-gray-600">
-                <div>
+              <StatsContainer>
+                <StatsRow>
                   Новые пользователи:{' '}
-                  <span className="font-semibold">{data.userGrowthChart.newUsersMonthly}</span>
-                </div>
-                <div>
+                  <StatsValue>{data.userGrowthChart.newUsersMonthly}</StatsValue>
+                </StatsRow>
+                <StatsRow>
                   Активные пользователи:{' '}
-                  <span className="font-semibold">{data.userGrowthChart.activeUsersMonthly}</span>
-                </div>
-              </div>
-            </div>
+                  <StatsValue>{data.userGrowthChart.activeUsersMonthly}</StatsValue>
+                </StatsRow>
+              </StatsContainer>
+            </ProgressContainer>
           </AnalyticsCard>
-        </div>
+        </GrowthChartContainer>
       )}
       {data?.userTable && <StudentsTable students={data.userTable} />}
-    </div>
+    </Container>
   );
 };
 

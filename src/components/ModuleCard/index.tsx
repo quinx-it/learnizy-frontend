@@ -1,22 +1,31 @@
 'use client';
 
-import Image from 'next/image';
 import { memo, useMemo, FC } from 'react';
 import { useSelector } from 'react-redux';
 
 import { IModuleInfo } from '@/api/endpoints/modules';
 import Button from '@/components/Button';
-import CardWrapper from '@/components/CardWrapper';
 import DotTitle from '@/components/DotTitle';
 import { Text } from '@/components/Typography';
 import { routes } from '@/const';
 import { useRouter, useTranslation } from '@/hooks';
-import { cn, pluralize } from '@/lib/utils';
+import { pluralize } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
 
 import { constants } from './constants';
 import { renderModuleProgress } from './utils';
+
+import {
+  BottomSection,
+  ButtonContainer,
+  CardContainer,
+  ContentWrapper,
+  DotTitleWrapper,
+  LeftContent,
+  StyledImage,
+  TopSection,
+} from './styles';
 
 const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) => {
   const {
@@ -46,7 +55,7 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
 
   const { active, completed, blocked } = constants.status;
 
-  const { isBlocked, isCompleted, isActive } = useMemo(
+  const { isBlocked, isCompleted } = useMemo(
     () => ({
       isBlocked: progressStatus === blocked,
       isCompleted: progressStatus === completed,
@@ -73,16 +82,6 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
     t('MODULES_CARD.TASK_MANY'),
   )}`;
 
-  const cardClass = cn(
-    'border border-transparent',
-    {
-      'border-medium border': isActive,
-      'bg-soft/50 border-soft': bonus,
-      'hover:border-medium': !isBlocked || isMentor,
-    },
-    className,
-  );
-
   const handleCardClick = () => {
     if (isBlocked && !isMentor) return;
 
@@ -90,45 +89,54 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
   };
 
   return (
-    <CardWrapper onClick={handleCardClick} className={cardClass}>
-      <div className="flex h-full items-start justify-between gap-3">
-        <div className="flex h-full max-w-7/10 flex-col justify-between space-y-3.5">
-          <div className="space-y-2">
+    <CardContainer
+      bonus={bonus}
+      isBlocked={isBlocked}
+      isMentor={isMentor}
+      onClick={handleCardClick}
+      className={className}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') handleCardClick();
+      }}
+    >
+      <ContentWrapper>
+        <LeftContent>
+          <TopSection>
             <DotTitle
               firstLabel={t(moduleLabel)}
               secondLabel={title}
               firstVariant="m-bold"
               secondVariant="m"
-              secondClassName="font-normal"
             />
             <Text>{description}</Text>
-          </div>
-          <div className="space-y-2">
-            <DotTitle
-              firstLabel={lessonInfo}
-              secondLabel={taskInfo}
-              firstVariant="m"
-              secondVariant="m"
-              className={cn('text-soft', { 'text-medium': bonus })}
-              dotClassName="text-soft"
-            />
+          </TopSection>
+          <BottomSection>
+            <DotTitleWrapper bonus={bonus}>
+              <DotTitle
+                firstLabel={lessonInfo}
+                secondLabel={taskInfo}
+                firstVariant="m"
+                secondVariant="m"
+              />
+            </DotTitleWrapper>
 
-            <div className="flex items-end gap-3">
+            <ButtonContainer>
               <Button
                 disabled={!isMentor && isBlocked}
                 variant={isCompleted ? 'white' : 'blue'}
                 size="small"
-                className="cursor-pointer"
               >
                 {isMentor && isBlocked ? t('MODULES_CARD.START') : t(progressStatus)}
               </Button>
               {progressElement}
-            </div>
-          </div>
-        </div>
-        <Image width={115} height={115} src="/images/astronaut1.webp" alt="moduleimg" />
-      </div>
-    </CardWrapper>
+            </ButtonContainer>
+          </BottomSection>
+        </LeftContent>
+        <StyledImage width={115} height={115} src="/images/astronaut1.webp" alt="moduleimg" />
+      </ContentWrapper>
+    </CardContainer>
   );
 };
 

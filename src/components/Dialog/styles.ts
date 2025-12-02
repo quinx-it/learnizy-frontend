@@ -1,11 +1,11 @@
 import { Box, styled } from '@mui/material';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 
-export const StyledOverlay = styled(DialogPrimitive.Overlay)(() => ({
+export const StyledOverlay = styled(DialogPrimitive.Overlay)(({ theme }) => ({
   position: 'fixed',
   inset: 0,
   zIndex: 50,
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  backgroundColor: `${theme.palette.common.black}80`,
   '&[data-state=open]': {
     animation: 'fadeIn 0.15s ease-out',
   },
