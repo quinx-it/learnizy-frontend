@@ -15,6 +15,7 @@ export const StyledButton = styled(Button, {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,
     boxShadow: 'none',
+
     '& *': {
       color: theme.palette.common.white,
     },

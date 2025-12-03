@@ -17,7 +17,7 @@ export const StyledProgressBar = styled(ProgressPrimitive.Root)<{ strokeWidth?: 
     position: 'relative',
     width: '100%',
     overflow: 'hidden',
-    borderRadius: '9999px',
+    borderRadius: '50px',
     backgroundColor: theme.palette.info.main,
     height: `${strokeWidth}px`,
   }),

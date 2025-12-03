@@ -52,6 +52,7 @@ export const MessageBubble = styled(Box, {
     : {
         width: '100%',
       }),
+
   [theme.breakpoints.up('lg')]: {
     marginLeft: 0,
     marginRight: 0,
@@ -79,7 +80,7 @@ export const AttachmentLink = styled(Link)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   gap: '0.5rem',
-  borderRadius: '9999px',
+  borderRadius: '50px',
   paddingLeft: '1.25rem',
   paddingRight: '1.25rem',
   paddingTop: '0.25rem',

@@ -43,6 +43,7 @@ export const AstronautImage = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
     maxWidth: '192px',
   },
+
   '& img': {
     width: '100%',
     height: 'auto',

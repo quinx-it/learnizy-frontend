@@ -1,12 +1,5 @@
 import { AnswerEvaluation } from '@/api/endpoints/test';
 
-import {
-  EvaluationTextCorrect,
-  EvaluationTextIncorrect,
-  EvaluationTextPartial,
-  EvaluationTextPending,
-} from './styles';
-
 export enum EvaluationTextLabel {
   CORRECT = 'Верно',
   PARTIAL = 'Частично верно',
@@ -24,22 +17,22 @@ export const EvaluationValue = {
 export const evaluationMap = {
   [AnswerEvaluation.CORRECT]: {
     text: EvaluationTextLabel.CORRECT,
-    component: EvaluationTextCorrect,
+    evaluation: AnswerEvaluation.CORRECT,
     value: EvaluationValue[AnswerEvaluation.CORRECT],
   },
   [AnswerEvaluation.PARTIAL]: {
     text: EvaluationTextLabel.PARTIAL,
-    component: EvaluationTextPartial,
+    evaluation: AnswerEvaluation.PARTIAL,
     value: EvaluationValue[AnswerEvaluation.PARTIAL],
   },
   [AnswerEvaluation.INCORRECT]: {
     text: EvaluationTextLabel.INCORRECT,
-    component: EvaluationTextIncorrect,
+    evaluation: AnswerEvaluation.INCORRECT,
     value: EvaluationValue[AnswerEvaluation.INCORRECT],
   },
   [AnswerEvaluation.UNASSESSED]: {
     text: EvaluationTextLabel.UNASSESSED,
-    component: EvaluationTextPending,
+    evaluation: AnswerEvaluation.UNASSESSED,
     value: EvaluationValue[AnswerEvaluation.UNASSESSED],
   },
 };

@@ -7,6 +7,7 @@ export const MobileMenuButtonWrapper = styled(Box)(({ theme }) => ({
   top: theme.spacing(1),
   right: theme.spacing(1.5),
   zIndex: 30,
+
   [theme.breakpoints.up('md')]: {
     display: 'none',
   },
@@ -40,9 +41,11 @@ export const NavbarContainer = styled(Box)(({ theme }) => ({
   paddingRight: theme.spacing(1.5),
   paddingTop: theme.spacing(2),
   paddingBottom: theme.spacing(2),
+
   [theme.breakpoints.up('md')]: {
     display: 'flex',
   },
+
   [theme.breakpoints.up('lg')]: {
     width: '230px',
   },
@@ -62,6 +65,7 @@ export const LinksContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   gap: theme.spacing(2),
+
   [theme.breakpoints.up('lg')]: {
     gap: theme.spacing(1.5),
   },
@@ -101,11 +105,11 @@ export const LogoutButtonText = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const Overlay = styled(Box)(({ theme }) => ({
+export const Overlay = styled(Box)(() => ({
   position: 'fixed',
   inset: 0,
   zIndex: 30,
-  backgroundColor: `${theme.palette.common.black}80`,
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
   transition: 'opacity 0.3s',
 }));
 
@@ -130,6 +134,7 @@ export const MobileMenuContainer = styled(Box, {
   padding: theme.spacing(1.5),
   boxShadow: theme.shadows[8],
   transition: 'transform 0.3s',
+
   [theme.breakpoints.up('md')]: {
     display: 'none',
   },
@@ -188,9 +193,11 @@ export const MobileLogoutButton = styled(MuiButton)(({ theme }) => ({
 
 export const MobileLogoutButtonText = styled(Box)(({ theme }) => ({
   display: 'none',
+
   [theme.breakpoints.up('md')]: {
     display: 'none',
   },
+
   [theme.breakpoints.up('lg')]: {
     display: 'block',
   },
@@ -215,6 +222,7 @@ export const SpinnerWrapper = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   color: theme.palette.primary.main,
+
   '& svg': {
     color: theme.palette.primary.main,
     stroke: theme.palette.primary.main,

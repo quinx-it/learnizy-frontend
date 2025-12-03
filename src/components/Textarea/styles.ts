@@ -35,7 +35,7 @@ export const StyledTextarea = styled('textarea', {
   paddingLeft: theme.spacing(1.7),
 
   '&::placeholder': {
-    color: `${theme.palette.text.primary}80`,
+    color: 'rgba(12, 12, 12, 0.5)',
   },
   height: '128px',
   resize: 'vertical',
@@ -54,6 +54,7 @@ export const StyledTextarea = styled('textarea', {
     color: theme.palette.error.main,
     borderColor: theme.palette.error.main,
   }),
+
   [theme.breakpoints.up('md')]: {
     fontSize: '0.875rem',
   },

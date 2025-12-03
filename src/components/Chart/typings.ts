@@ -1,15 +1,12 @@
 import { ComponentType, ReactNode } from 'react';
 
-import { THEMES } from '.';
+import { ChartTheme } from '.';
 
 export type ChartConfigType = {
   [k in string]: {
     label?: ReactNode;
     icon?: ComponentType;
-  } & (
-    | { color?: string; theme?: never }
-    | { color?: never; theme: Record<keyof typeof THEMES, string> }
-  );
+  } & ({ color?: string; theme?: never } | { color?: never; theme: Record<ChartTheme, string> });
 };
 
 export type ChartContextPropsType = {

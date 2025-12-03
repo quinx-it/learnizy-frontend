@@ -2,13 +2,14 @@
 
 import { FC } from 'react';
 
-import { useGetLastTestAttemptQuery } from '@/api/endpoints/test';
+import { AnswerEvaluation, useGetLastTestAttemptQuery } from '@/api/endpoints/test';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
 import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import { globalConstants, routes } from '@/const';
 
+import { evaluationMap } from './constants';
 import { ExamTestResultPagePropsType } from './typings';
 
 import {
@@ -27,16 +28,9 @@ import {
 } from './styles';
 
 const mapEvaluation = (evaluation: string) => {
-  switch (evaluation) {
-    case 'CORRECT':
-      return { text: 'Верно', evaluation: 'CORRECT' as const, value: 1 };
-    case 'PARTIAL':
-      return { text: 'Частично верно', evaluation: 'PARTIAL' as const, value: 0.5 };
-    case 'INCORRECT':
-      return { text: 'Неверно', evaluation: 'INCORRECT' as const, value: 0 };
-    default:
-      return { text: 'Ответ находится на проверке', evaluation: 'PENDING' as const, value: 0 };
-  }
+  const evaluationEnum = evaluation as AnswerEvaluation;
+
+  return evaluationMap[evaluationEnum] || evaluationMap[AnswerEvaluation.UNASSESSED];
 };
 
 const getStatus = (status: string, passed: boolean) => {

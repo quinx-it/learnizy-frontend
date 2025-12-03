@@ -11,7 +11,7 @@ export const PlayerContainer = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'space-between',
   gap: '0.5rem',
-  borderRadius: '9999px',
+  borderRadius: '50px',
   padding: '0.25rem',
   paddingLeft: '1.25rem',
   paddingRight: '1.25rem',

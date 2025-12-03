@@ -27,7 +27,7 @@
     "CREATE_LESSON": "Create new lesson",
     "LESSON_TITLE": "Lesson title",
     "LESSON_DESCRIPTION": "Lesson description",
-    "LESSON_CONTENT": "Content (Markdown)",
+    "LESSON_CONTENT": "Content",
     "CANCEL": "Cancel",
     "SAVE": "Save",
     "CREATE": "Create",

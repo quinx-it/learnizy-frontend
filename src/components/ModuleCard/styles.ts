@@ -19,7 +19,7 @@ export const CardContainer = styled(Box, {
     borderColor: 'transparent',
     cursor: isBlocked && !isMentor ? 'default' : 'pointer',
     ...(bonus && {
-      backgroundColor: `${theme.palette.info.main}80`,
+      backgroundColor: 'rgba(169, 219, 233, 0.5)',
       borderColor: theme.palette.info.main,
     }),
     ...((!isBlocked || isMentor) && {
@@ -63,10 +63,6 @@ export const TopSection = styled(Box)(({ theme }) => ({
   '& .module-card-title-second *': {
     color: theme.palette.primary.main,
   },
-
-  '& span.module-card-title-second > div': {
-    backgroundColor: theme.palette.primary.main,
-  },
 }));
 
 export const BottomSection = styled(Box)(({ theme }) => ({
@@ -106,7 +102,4 @@ export const DotTitleWrapper = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'bonus',
 })<{ bonus?: boolean }>(({ theme, bonus }) => ({
   color: bonus ? theme.palette.primary.main : theme.palette.text.secondary,
-  '& span > div': {
-    color: theme.palette.text.secondary,
-  },
 }));

@@ -137,53 +137,25 @@ export const DialogFooterWrapper = styled(Box)(({ theme }) => ({
 }));
 
 export const ModuleTitleWrapper = styled(Box)(({ theme }) => ({
-  '& h2': {
+  '& .module-title-first': {
     fontSize: '24px',
     lineHeight: '32px',
     color: theme.palette.common.black,
-  },
-
-  '& .module-title-first': {
-    color: theme.palette.common.black,
-  },
-
-  '& h2.module-title-first': {
-    color: theme.palette.common.black,
-    '& > span.module-title-second': {
-      color: theme.palette.primary.main,
-    },
   },
 
   '& .module-title-second': {
     color: theme.palette.primary.main,
-  },
-
-  '& h2 > span.module-title-second': {
-    color: theme.palette.primary.main,
     fontSize: '24px',
     lineHeight: '32px',
   },
 
-  '& h2 > span.module-title-second *': {
+  '& .module-title-second *': {
     color: theme.palette.primary.main,
-  },
-
-  '& h2 > span > div': {
-    width: '6px',
-    height: '6px',
-    alignSelf: 'center',
-    margin: 0,
-    backgroundColor: theme.palette.primary.main,
   },
 }));
 
 export const ModuleInfoWrapper = styled(Box)(({ theme }) => ({
   color: theme.palette.text.secondary,
-  '& > div > span > div': {
-    backgroundColor: theme.palette.info.main,
-    width: '4px',
-    height: '4px',
-  },
 }));
 
 export const YellowButton = styled(MuiButton)(({ theme }) => ({

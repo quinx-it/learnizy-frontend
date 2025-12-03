@@ -38,10 +38,6 @@ export const DotTitleWrapper = styled(Box)(({ theme }) => ({
   '& .progress-card-title-second *': {
     color: theme.palette.primary.main,
   },
-
-  '& [class*="Dot"]': {
-    backgroundColor: theme.palette.primary.main,
-  },
 }));
 
 export const StatsContainer = styled(Box)(({ theme }) => ({

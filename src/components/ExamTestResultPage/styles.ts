@@ -1,5 +1,6 @@
 import { Box, Divider as MuiDivider, styled } from '@mui/material';
 
+import { AnswerEvaluation } from '@/api/endpoints/test';
 import { Text as BaseText } from '@/components/Typography';
 
 export const Container = styled(Box)(({ theme }) => ({
@@ -61,13 +62,13 @@ export const AnswerText = styled(BaseText)(({ theme }) => ({
 
 export const EvaluationText = styled(BaseText, {
   shouldForwardProp: (prop) => prop !== 'evaluation',
-})<{ evaluation: 'CORRECT' | 'PARTIAL' | 'INCORRECT' | 'PENDING' }>(({ theme, evaluation }) => {
+})<{ evaluation: AnswerEvaluation }>(({ theme, evaluation }) => {
   const getColor = () => {
-    if (evaluation === 'CORRECT') return theme.palette.success.main;
+    if (evaluation === AnswerEvaluation.CORRECT) return theme.palette.success.main;
 
-    if (evaluation === 'PARTIAL') return theme.palette.warning.main;
+    if (evaluation === AnswerEvaluation.PARTIAL) return theme.palette.warning.main;
 
-    if (evaluation === 'INCORRECT') return theme.palette.error.main;
+    if (evaluation === AnswerEvaluation.INCORRECT) return theme.palette.error.main;
 
     return theme.palette.grey[500];
   };

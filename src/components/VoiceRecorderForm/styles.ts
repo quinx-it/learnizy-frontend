@@ -37,7 +37,7 @@ export const ResponseContainer = styled(Box)(({ theme }) => ({
 
 export const ErrorContainer = styled(CardWrapper)(({ theme }) => ({
   marginTop: '1rem',
-  backgroundColor: `${theme.palette.error.main}33`,
+  backgroundColor: 'rgba(230, 68, 68, 0.2)',
   padding: '1rem',
 
   '& > *': {

@@ -16,12 +16,12 @@ export const StyledText = styled(BaseText)(() => ({
   minWidth: 'fit-content',
 }));
 
-export const SecondLabel = styled(Box)(() => ({
+export const SecondLabel = styled('span')(() => ({
   fontWeight: 500,
   display: 'inline',
 }));
 
-export const Dot = styled(Box, {
+export const Dot = styled('span', {
   shouldForwardProp: (prop) => prop !== 'isSmall',
 })<{ isSmall?: boolean }>(({ isSmall }) => ({
   lineHeight: 'inherit',

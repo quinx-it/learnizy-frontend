@@ -1,5 +1,6 @@
 import { Box, Button, styled } from '@mui/material';
 
+import { ExamStatus } from '@/components/ExamsPage/typings';
 import { Text as BaseText } from '@/components/Typography';
 
 export const StyledCardWrapper = styled(Box)(({ theme }) => ({
@@ -7,6 +8,7 @@ export const StyledCardWrapper = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   gap: theme.spacing(2),
   maxWidth: '100%',
+
   [theme.breakpoints.up('md')]: {
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -18,6 +20,7 @@ export const ContentWrapper = styled(Box)(({ theme }) => ({
   flex: 1,
   display: 'flex',
   flexDirection: 'column',
+
   '& > * + *': {
     marginTop: theme.spacing(2),
   },
@@ -30,18 +33,18 @@ export const StatusContainer = styled(Box)(({ theme }) => ({
 
 export const StatusBadge = styled(BaseText, {
   shouldForwardProp: (prop) => prop !== 'statusVariant',
-})<{ statusVariant?: 'completed' | 'failed' }>(({ theme, statusVariant }) => ({
+})<{ statusVariant?: ExamStatus.Completed | ExamStatus.Failed }>(({ theme, statusVariant }) => ({
   border: '1px solid',
-  borderRadius: '9999px',
+  borderRadius: '50px',
   backgroundColor: 'transparent',
   paddingLeft: theme.spacing(1.5),
   paddingRight: theme.spacing(1.5),
   paddingTop: theme.spacing(0.5),
   paddingBottom: theme.spacing(0.5),
   borderColor: (() => {
-    if (statusVariant === 'completed') return theme.palette.grey[300];
+    if (statusVariant === ExamStatus.Completed) return theme.palette.grey[300];
 
-    if (statusVariant === 'failed') return theme.palette.error.main;
+    if (statusVariant === ExamStatus.Failed) return theme.palette.error.main;
 
     return 'transparent';
   })(),
@@ -51,10 +54,12 @@ export const ButtonsContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
   gap: theme.spacing(0.5),
+
   [theme.breakpoints.up('md')]: {
     width: 'auto',
     flexDirection: 'column',
   },
+
   [theme.breakpoints.up('lg')]: {
     marginTop: 0,
     alignItems: 'flex-end',
@@ -62,32 +67,19 @@ export const ButtonsContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const TitleDotTitleWrapper = styled(Box)(({ theme }) => ({
-  '& p, & h1, & h2, & h3, & h4, & h5, & h6': {
+  '& .exam-title-first': {
     fontSize: '24px',
     lineHeight: '32px',
-  },
-
-  '& .exam-title-first': {
     color: theme.palette.common.black,
   },
 
   '& .exam-title-second': {
     color: theme.palette.text.secondary,
   },
-
-  '& span > div': {
-    width: '4px',
-    height: '4px',
-  },
 }));
 
 export const InfoDotTitleWrapper = styled(Box)(({ theme }) => ({
   color: theme.palette.text.secondary,
-
-  '& > div > span > div': {
-    width: '4px',
-    height: '4px',
-  },
 }));
 
 export const LinkWrapper = styled(Box)(({ theme }) => ({

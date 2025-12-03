@@ -21,7 +21,7 @@ import {
 } from './styles';
 
 const LessonCard: FC<LessonCardPropsType> = (props) => {
-  const { id, title, progress, index, onClick } = props;
+  const { id, title, progress, sequenceOrder, onClick } = props;
   const { t } = useTranslation();
 
   const blocked = false;
@@ -47,7 +47,7 @@ const LessonCard: FC<LessonCardPropsType> = (props) => {
       <CardContent>
         <LeftContent>
           <StyledHeading>
-            {t('LESSON_CARD.LESSON')} {index + 1} -{' '}
+            {t('LESSON_CARD.LESSON')} {sequenceOrder + 1} -{' '}
             <TitleSpan active={active} blocked={blocked}>
               {title}
             </TitleSpan>

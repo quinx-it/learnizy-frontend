@@ -54,14 +54,14 @@ const ExamCard: FC<ExamCardPropsType> = (props) => {
   const examStatusUi: Record<ExamStatus, ReactNode> = {
     [ExamStatus.Completed]: (
       <StatusContainer>
-        <StatusBadge statusVariant="completed" variant="m">
+        <StatusBadge statusVariant={ExamStatus.Completed} variant="m">
           {t('EXAMS.STATUS.COMPLETED')}
         </StatusBadge>
       </StatusContainer>
     ),
     [ExamStatus.Failed]: (
       <StatusContainer>
-        <StatusBadge statusVariant="failed" variant="m">
+        <StatusBadge statusVariant={ExamStatus.Failed} variant="m">
           {t('EXAMS.STATUS.FAILED')}
         </StatusBadge>
       </StatusContainer>

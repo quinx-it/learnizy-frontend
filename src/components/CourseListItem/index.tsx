@@ -5,7 +5,7 @@ import { FC } from 'react';
 import ProgressBar from '@/components/Progress';
 import { useTranslation } from '@/hooks';
 
-import { constants } from './constants';
+import { constants, CourseListItemStatus } from './constants';
 import { CourseListItemType } from './typings';
 
 import {
@@ -24,7 +24,7 @@ const CourseListItem: FC<CourseListItemType> = (props) => {
   const { t } = useTranslation();
 
   const progressBarValue = progress ?? 0;
-  const isBlocked = status === 'BLOCKED';
+  const isBlocked = status === CourseListItemStatus.BLOCKED;
 
   return (
     <Container>

@@ -42,7 +42,7 @@ export const AttachedFileItem = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   gap: theme.spacing(0.5),
   borderRadius: '50px',
-  backgroundColor: `${theme.palette.info.main}33`,
+  backgroundColor: 'rgba(169, 219, 233, 0.2)',
   paddingTop: theme.spacing(0.25),
   paddingBottom: theme.spacing(0.25),
   paddingRight: theme.spacing(0.5),
@@ -169,12 +169,12 @@ export const MicrophoneButton = styled(Button, {
   boxShadow: 'none',
 
   '&:hover': {
-    backgroundColor: `${theme.palette.info.main}33`,
+    backgroundColor: 'rgba(169, 219, 233, 0.2)',
     color: theme.palette.grey[400],
   },
   ...(isRecording && {
     transform: 'scale(1.1)',
-    background: `linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.primary.main}B3)`,
+    background: 'linear-gradient(to right, #238ba7, rgba(35, 139, 167, 0.7))',
     color: theme.palette.common.white,
   }),
 }));
@@ -261,7 +261,7 @@ export const SendButton = styled(Button)(({ theme }) => ({
   minWidth: 'auto',
 
   '&:hover': {
-    backgroundColor: `${theme.palette.info.main}33`,
+    backgroundColor: 'rgba(169, 219, 233, 0.2)',
     color: theme.palette.grey[500],
     boxShadow: 'none',
   },

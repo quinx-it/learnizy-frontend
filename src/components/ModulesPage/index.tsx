@@ -44,6 +44,7 @@ import {
   ModuleCardWrapper,
   ModuleProgressCardContainer,
   ModulesGrid,
+  PageContainer,
   WhiteButton,
   YellowButton,
 } from './styles';
@@ -163,7 +164,7 @@ const ModulesPage: FC = () => {
   if (isError) return <ErrorSection reset={refetch} />;
 
   return (
-    <>
+    <PageContainer>
       <Breadcrumbs
         rootLabel={t(globalConstants.rootBreadcrumbLabels.modulesLabel)}
         rootHref={routes.user.knowlegeBase}
@@ -232,7 +233,7 @@ const ModulesPage: FC = () => {
             />
           ))}
       </ModulesGrid>
-    </>
+    </PageContainer>
   );
 };
 

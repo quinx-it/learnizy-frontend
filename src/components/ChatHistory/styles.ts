@@ -8,16 +8,17 @@ export const MobileButtonWrapper = styled(Box)(({ theme }) => ({
   right: 0,
   zIndex: 40,
   marginLeft: '1.5rem',
+
   [theme.breakpoints.up('lg')]: {
     display: 'none',
   },
 }));
 
-export const Overlay = styled(Box)(({ theme }) => ({
+export const Overlay = styled(Box)(() => ({
   position: 'fixed',
   inset: 0,
   zIndex: 40,
-  backgroundColor: `${theme.palette.common.black}80`,
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
   transition: 'opacity 0.3s',
 }));
 
@@ -39,6 +40,7 @@ export const MobileSidebar = styled(Box, {
   boxShadow: '0px 4px 13px 0px rgba(0, 0, 0, 0.149)',
   transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
   transition: 'transform 0.3s',
+
   [theme.breakpoints.up('lg')]: {
     display: 'none',
   },
@@ -158,6 +160,7 @@ export const ChatText = styled(Typography)(() => ({
 export const DesktopWrapper = styled(Box)(({ theme }) => ({
   display: 'none',
   backgroundColor: 'transparent',
+
   [theme.breakpoints.up('lg')]: {
     display: 'block',
     width: '230px',

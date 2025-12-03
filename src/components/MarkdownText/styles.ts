@@ -18,7 +18,7 @@ export const InlineCode = styled('code')(({ theme }) => ({
   fontSize: '0.875rem',
 }));
 
-export const Paragraph = styled('p')(() => ({
+export const Paragraph = styled(Box)(() => ({
   marginBottom: '0.5rem',
   lineHeight: 1.625,
 }));

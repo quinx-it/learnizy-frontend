@@ -50,7 +50,7 @@ export const AdviceContainer = styled(Box)(({ theme }) => ({
 export const WarningContainer = styled(Box)(({ theme }) => ({
   width: 'fit-content',
   borderRadius: '1rem',
-  backgroundColor: `${theme.palette.error.main}4D`,
+  backgroundColor: 'rgba(230, 68, 68, 0.3)',
   padding: '1rem',
   color: theme.palette.error.main,
 }));

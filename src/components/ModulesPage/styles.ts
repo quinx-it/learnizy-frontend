@@ -117,3 +117,8 @@ export const DialogFooterWrapper = styled(Box)(({ theme }) => ({
     gap: theme.spacing(0.5),
   },
 }));
+
+export const PageContainer = styled(Box)(() => ({
+  display: 'flex',
+  flexDirection: 'column',
+}));

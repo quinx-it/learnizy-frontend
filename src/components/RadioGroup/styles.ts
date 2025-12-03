@@ -23,7 +23,7 @@ export const StyledRadioGroupItem = styled(RadioGroupPrimitive.Item)(({ theme })
 
   '&:focus-visible': {
     borderColor: theme.palette.primary.main,
-    boxShadow: `0 0 0 3px ${theme.palette.primary.main}80`,
+    boxShadow: '0 0 0 3px rgba(35, 139, 167, 0.5)',
   },
 
   '&:disabled': {
@@ -33,7 +33,7 @@ export const StyledRadioGroupItem = styled(RadioGroupPrimitive.Item)(({ theme })
 
   '&[aria-invalid="true"]': {
     borderColor: theme.palette.error.main,
-    boxShadow: `0 0 0 3px ${theme.palette.error.main}33`,
+    boxShadow: '0 0 0 3px rgba(230, 68, 68, 0.2)',
   },
 }));
 

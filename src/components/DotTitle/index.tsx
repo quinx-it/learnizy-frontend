@@ -19,13 +19,13 @@ const DotTitle: FC<IDotTitleProps> = (props) => {
   } = props;
 
   return (
-    <Container className={className}>
+    <Container className={`dot-title-container ${className || ''}`}>
       {heading ? (
         <StyledHeading variant="2xl" className={firstClassName}>
           {firstLabel}
 
-          <SecondLabel className={secondClassName}>
-            <Dot className={dotClassName}>•</Dot>
+          <SecondLabel className={`dot-title-second-label ${secondClassName || ''}`}>
+            <Dot className={`dot-title-dot ${dotClassName || ''}`}>•</Dot>
             {secondLabel}
           </SecondLabel>
         </StyledHeading>
@@ -33,8 +33,8 @@ const DotTitle: FC<IDotTitleProps> = (props) => {
         <StyledText variant={firstVariant} className={firstClassName}>
           {firstLabel}
 
-          <SecondLabel className={secondClassName}>
-            <Dot isSmall className={dotClassName}>
+          <SecondLabel className={`dot-title-second-label ${secondClassName || ''}`}>
+            <Dot isSmall className={`dot-title-dot ${dotClassName || ''}`}>
               •
             </Dot>
             {secondLabel}

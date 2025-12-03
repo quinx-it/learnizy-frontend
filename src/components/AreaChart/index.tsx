@@ -1,5 +1,6 @@
 'use client';
 
+import { useTheme } from '@mui/material';
 import { FC } from 'react';
 import { Area, AreaChart as AreaChartDefault, XAxis, YAxis } from 'recharts';
 
@@ -12,6 +13,8 @@ import { ChartContainerStyled, Container } from './styles';
 const chartMargin = { left: 15, right: 15, top: 5, bottom: 245 };
 
 const AreaChart: FC<IChartLineProps> = ({ data }) => {
+  const theme = useTheme();
+
   if (!data || data.length === 0) return null;
 
   const minValue = Math.min(...data.map((item) => item.value));
@@ -21,6 +24,10 @@ const AreaChart: FC<IChartLineProps> = ({ data }) => {
     { day: 'fake-end', value: minValue },
   ];
 
+  const primaryColor = theme.palette.primary.main;
+  const infoColor = theme.palette.info.main;
+  const textPrimaryColor = theme.palette.text.primary;
+
   return (
     <Container>
       <ChartContainerStyled>
@@ -28,7 +35,7 @@ const AreaChart: FC<IChartLineProps> = ({ data }) => {
           config={{
             value: {
               label: 'Value',
-              color: '#238ba7',
+              color: primaryColor,
             },
           }}
         >
@@ -40,18 +47,18 @@ const AreaChart: FC<IChartLineProps> = ({ data }) => {
               axisLine={false}
               tickMargin={0}
               tickFormatter={(value) => (value.startsWith('fake') ? '' : value)}
-              tick={{ fill: '#0c0c0c', fontSize: 12 }}
+              tick={{ fill: textPrimaryColor, fontSize: 12 }}
             />
             <YAxis hide domain={['dataMin - 10']} />
             <defs>
               <linearGradient id="lineStroke" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="2.74%" stopColor="#C9E1E8" />
-                <stop offset="40.29%" stopColor="#248EAB" />
-                <stop offset="100%" stopColor="#C9E1E8" />
+                <stop offset="2.74%" stopColor={infoColor} />
+                <stop offset="40.29%" stopColor={primaryColor} />
+                <stop offset="100%" stopColor={infoColor} />
               </linearGradient>
               <linearGradient id="lineFill" gradientTransform="rotate(90)">
-                <stop offset="44.81%" stopColor="#248EAB" stopOpacity={0.3} />
-                <stop offset="86.03%" stopColor="#C4C4C400" stopOpacity={0} />
+                <stop offset="44.81%" stopColor={primaryColor} stopOpacity={0.3} />
+                <stop offset="86.03%" stopColor="rgba(196, 196, 196, 0)" stopOpacity={0} />
               </linearGradient>
             </defs>
             <Area

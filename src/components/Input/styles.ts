@@ -25,7 +25,7 @@ export const StyledInput = styled('input', {
   outline: 'none',
 
   '&::placeholder': {
-    color: `${theme.palette.text.primary}80`,
+    color: 'rgba(12, 12, 12, 0.5)',
   },
 
   '&:disabled': {

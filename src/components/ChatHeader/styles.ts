@@ -21,7 +21,7 @@ export const Title = styled(Typography)(({ theme }) => ({
   textAlign: 'center',
   fontWeight: 700,
   color: theme.palette.primary.main,
-  textShadow: `1px 1px 2px ${theme.palette.common.black}1A`,
+  textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)',
   marginBottom: 0,
 
   [theme.breakpoints.up('md')]: {

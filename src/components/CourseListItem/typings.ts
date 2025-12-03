@@ -1,7 +1,9 @@
+import { CourseListItemStatus } from './constants';
+
 export type CourseListItemType = {
   title: string;
   number: number;
-  status?: 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED' | 'BLOCKED';
+  status?: CourseListItemStatus;
   progress?: number;
   onClick?: () => void;
 };

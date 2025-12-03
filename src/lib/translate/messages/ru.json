@@ -27,7 +27,7 @@
     "CREATE_LESSON": "Создание нового урока",
     "LESSON_TITLE": "Название урока",
     "LESSON_DESCRIPTION": "Описание урока",
-    "LESSON_CONTENT": "Контент (Markdown)",
+    "LESSON_CONTENT": "Контент",
     "CANCEL": "Отмена",
     "SAVE": "Сохранить",
     "CREATE": "Создать",

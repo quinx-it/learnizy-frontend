@@ -201,25 +201,30 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
           </TitleSection>
 
           {isMentor && (
-            <StyledCreateButton onClick={openCreateModal}>{t('ADD_LESSON')}</StyledCreateButton>
+            <StyledCreateButton onClick={openCreateModal}>
+              {t('COMMON.ADD_LESSON')}
+            </StyledCreateButton>
           )}
 
           <LessonsList>
-            {lessons.map((lesson: ILesson, index) => (
-              <LessonListItem key={lesson.id}>
-                <LessonCard onClick={handleLessonCardClick} index={index} {...lesson} />
-                {isMentor && (
-                  <LessonActions>
-                    <YellowButton onClick={() => openEditModal(lesson)}>
-                      {t('COMMON.EDIT')}
-                    </YellowButton>
-                    <WhiteButton onClick={() => handleDeleteLesson(lesson.id)}>
-                      {t('COMMON.DELETE')}
-                    </WhiteButton>
-                  </LessonActions>
-                )}
-              </LessonListItem>
-            ))}
+            {lessons
+              .slice()
+              .sort((a, b) => a.sequenceOrder - b.sequenceOrder)
+              .map((lesson: ILesson) => (
+                <LessonListItem key={lesson.id}>
+                  <LessonCard onClick={handleLessonCardClick} {...lesson} />
+                  {isMentor && (
+                    <LessonActions>
+                      <YellowButton onClick={() => openEditModal(lesson)}>
+                        {t('COMMON.EDIT')}
+                      </YellowButton>
+                      <WhiteButton onClick={() => handleDeleteLesson(lesson.id)}>
+                        {t('COMMON.DELETE')}
+                      </WhiteButton>
+                    </LessonActions>
+                  )}
+                </LessonListItem>
+              ))}
           </LessonsList>
 
           <ExamStatusContainer>
