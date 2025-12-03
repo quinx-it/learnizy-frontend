@@ -27,7 +27,7 @@
     "CREATE_LESSON": "Создание нового урока",
     "LESSON_TITLE": "Название урока",
     "LESSON_DESCRIPTION": "Описание урока",
-    "LESSON_CONTENT": "Контент (Markdown)",
+    "LESSON_CONTENT": "Контент",
     "CANCEL": "Отмена",
     "SAVE": "Сохранить",
     "CREATE": "Создать",
@@ -106,7 +106,7 @@
   "EXAMS": {
     "TITLE": "Экзамены",
     "MODULE_TITLE": "Экзамен по модулю {{moduleNumber}}",
-    "QUESTIONS_COUNT": "📋{{count}} вопросов",
+    "QUESTIONS_COUNT": "📋 {{count}} вопросов",
     "DURATION": "⏱ {{time}} минут",
     "BUTTONS": {
       "RETRY": "Попробовать снова",

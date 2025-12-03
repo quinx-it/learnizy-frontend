@@ -2,27 +2,35 @@
 
 import { FC } from 'react';
 
-import { useGetLastTestAttemptQuery } from '@/api/endpoints/test';
+import { AnswerEvaluation, useGetLastTestAttemptQuery } from '@/api/endpoints/test';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
 import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
-import { Text } from '@/components/Typography';
 import { globalConstants, routes } from '@/const';
 
+import { evaluationMap } from './constants';
 import { ExamTestResultPagePropsType } from './typings';
 
+import {
+  Container,
+  ResultCardContent,
+  ResultTitle,
+  StyledDivider,
+  ResultsContainer,
+  ResultText,
+  AnswersContainer,
+  AnswerCardContent,
+  QuestionText,
+  AnswerText,
+  EvaluationText,
+  NotesText,
+} from './styles';
+
 const mapEvaluation = (evaluation: string) => {
-  switch (evaluation) {
-    case 'CORRECT':
-      return { text: 'Верно', color: 'text-green-600', value: 1 };
-    case 'PARTIAL':
-      return { text: 'Частично верно', color: 'text-yellow-600', value: 0.5 };
-    case 'INCORRECT':
-      return { text: 'Неверно', color: 'text-red-600', value: 0 };
-    default:
-      return { text: 'Ответ находится на проверке', color: 'text-gray-600', value: 0 };
-  }
+  const evaluationEnum = evaluation as AnswerEvaluation;
+
+  return evaluationMap[evaluationEnum] || evaluationMap[AnswerEvaluation.UNASSESSED];
 };
 
 const getStatus = (status: string, passed: boolean) => {
@@ -60,52 +68,41 @@ const ExamTestResultPage: FC<ExamTestResultPagePropsType> = (props) => {
         rootLabel={globalConstants.rootBreadcrumbLabels.examsLabel}
       />
 
-      <div className="space-y-6">
-        <CardWrapper className="flex flex-col gap-5">
-          <div>
-            <Text variant="l" className="text-medium mb-5">
-              Результаты экзамена
-            </Text>
-            <hr className="border-gray mb-4" />
-            <div className="space-y-1">
-              <Text variant="m" className="text-medium">
-                Результат: {scorePercent}%
-              </Text>
-              <Text variant="m" className="text-medium">
-                Статус: {getStatus(testResult.status, passed)}
-              </Text>
-            </div>
-          </div>
+      <Container>
+        <CardWrapper>
+          <ResultCardContent>
+            <ResultTitle variant="l">Результаты экзамена</ResultTitle>
+            <StyledDivider />
+            <ResultsContainer>
+              <ResultText variant="m">Результат: {scorePercent}%</ResultText>
+              <ResultText variant="m">Статус: {getStatus(testResult.status, passed)}</ResultText>
+            </ResultsContainer>
+          </ResultCardContent>
         </CardWrapper>
 
-        <div className="space-y-4">
+        <AnswersContainer>
           {answers.map((a, idx) => {
             const evaluation = mapEvaluation(a.evaluation);
 
             return (
-              <CardWrapper key={a.questionId} className="flex flex-col gap-3">
-                <Text
-                  variant="m"
-                  className="mb-5 text-[20px] leading-[27px] font-medium transition-colors"
-                >
-                  {idx + 1}. {a.questionText}
-                </Text>
-                <Text variant="m" className="text-medium break-words">
-                  Ваш ответ: {a.textAnswer || a.voiceTranscript || '—'}
-                </Text>
-                <Text variant="m" className={evaluation.color}>
-                  {evaluation.text}
-                </Text>
-                {a.notes && (
-                  <Text variant="m" className="text-gray-500">
-                    Примечание: {a.notes}
-                  </Text>
-                )}
+              <CardWrapper key={a.questionId}>
+                <AnswerCardContent>
+                  <QuestionText variant="m">
+                    {idx + 1}. {a.questionText}
+                  </QuestionText>
+                  <AnswerText variant="m">
+                    Ваш ответ: {a.textAnswer || a.voiceTranscript || '—'}
+                  </AnswerText>
+                  <EvaluationText variant="m" evaluation={evaluation.evaluation}>
+                    {evaluation.text}
+                  </EvaluationText>
+                  {a.notes && <NotesText variant="m">Примечание: {a.notes}</NotesText>}
+                </AnswerCardContent>
               </CardWrapper>
             );
           })}
-        </div>
-      </div>
+        </AnswersContainer>
+      </Container>
     </>
   );
 };

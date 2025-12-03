@@ -5,7 +5,7 @@ export const StyledLabel = styled(LabelPrimitive.Root)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   gap: theme.spacing(0.5),
-  fontSize: '16px',
+  fontSize: theme.typography.body1.fontSize,
   lineHeight: 1,
   fontWeight: 500,
   userSelect: 'none',

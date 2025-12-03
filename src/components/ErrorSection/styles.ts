@@ -21,6 +21,7 @@ export const ImageWrapper = styled(Box)(({ theme }) => ({
   '& img': {
     maxWidth: '110px',
   },
+
   [theme.breakpoints.down('md')]: {
     '& img': {
       maxWidth: 'none',
@@ -54,7 +55,7 @@ export const StyledButton = styled(Button)(({ theme }) => ({
   color: theme.palette.common.white,
 
   '&:hover': {
-    backgroundColor: '#00617b',
+    backgroundColor: theme.palette.primary.dark,
     boxShadow: 'none',
   },
 }));

@@ -1,6 +1,7 @@
 'use client';
 
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Box } from '@mui/material';
 import { FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
@@ -69,7 +70,13 @@ const AuthForm: FC = () => {
       </LinksRow>
 
       <Button type="submit" disabled={isLoading} size="medium" asChild={false}>
-        {isLoading ? <Spinner type="ring" /> : 'Войти'}
+        {isLoading ? (
+          <Box sx={{ color: 'primary.main', display: 'flex', alignItems: 'center' }}>
+            <Spinner type="ring" />
+          </Box>
+        ) : (
+          'Войти'
+        )}
       </Button>
     </Form>
   );

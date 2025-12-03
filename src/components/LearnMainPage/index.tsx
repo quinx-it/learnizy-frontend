@@ -3,10 +3,11 @@
 import { Box } from '@mui/material';
 import { FC } from 'react';
 
-import { useGetMainPageProgressQuery } from '@/api/endpoints/progress';
+import { ModuleCompletionStatus, useGetMainPageProgressQuery } from '@/api/endpoints/progress';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
 import CourseListItem from '@/components/CourseListItem';
+import { CourseListItemStatus } from '@/components/CourseListItem/constants';
 import ProgressCard from '@/components/ProgressCard';
 import { ProgressStatus } from '@/components/ProgressCard/constants';
 import StatisticsChart from '@/components/StatisticsChart';
@@ -14,7 +15,7 @@ import { Text } from '@/components/Typography';
 import { routes } from '@/const';
 import { useRouter, useTranslation } from '@/hooks';
 
-import { constants } from './constants';
+import { constants, ModuleStatus } from './constants';
 
 import {
   Container,
@@ -24,6 +25,40 @@ import {
   StatisticsDivider,
   StatisticsTitle,
 } from './styles';
+
+const mapModuleCompletionStatusToModuleStatus = (
+  apiStatus: ModuleCompletionStatus,
+  completedLessons: number,
+): ModuleStatus => {
+  if (apiStatus === ModuleCompletionStatus.BLOCKED) {
+    return ModuleStatus.BLOCKED;
+  }
+
+  if (apiStatus === ModuleCompletionStatus.COMPLETED) {
+    return ModuleStatus.COMPLETED;
+  }
+
+  if (completedLessons > 0) {
+    return ModuleStatus.IN_PROGRESS;
+  }
+
+  return ModuleStatus.NOT_STARTED;
+};
+
+const mapModuleStatusToCourseListItemStatus = (status: ModuleStatus): CourseListItemStatus => {
+  switch (status) {
+    case ModuleStatus.BLOCKED:
+      return CourseListItemStatus.BLOCKED;
+    case ModuleStatus.COMPLETED:
+      return CourseListItemStatus.COMPLETED;
+    case ModuleStatus.IN_PROGRESS:
+      return CourseListItemStatus.IN_PROGRESS;
+    case ModuleStatus.NOT_STARTED:
+      return CourseListItemStatus.NOT_STARTED;
+    default:
+      return CourseListItemStatus.NOT_STARTED;
+  }
+};
 
 const LearnMainPage: FC = () => {
   const router = useRouter();
@@ -38,7 +73,7 @@ const LearnMainPage: FC = () => {
   );
 
   return (
-    <>
+    <Box>
       <Breadcrumbs rootDescription={mainPageProgress.courseInfo.title || ''} />
 
       <Container>
@@ -78,25 +113,22 @@ const LearnMainPage: FC = () => {
                   module.totalLessons > 0
                     ? (module.completedLessons / module.totalLessons) * 100
                     : 0;
-                let status: keyof typeof constants.statuses = 'NOT_STARTED';
-
-                if (module.completionStatus === 'BLOCKED') {
-                  status = 'BLOCKED';
-                } else if (module.completionStatus === 'COMPLETED') {
-                  status = 'COMPLETED';
-                } else if (module.completedLessons > 0) {
-                  status = 'IN_PROGRESS';
-                }
+                const moduleStatus = mapModuleCompletionStatusToModuleStatus(
+                  module.completionStatus,
+                  module.completedLessons,
+                );
+                const courseListItemStatus = mapModuleStatusToCourseListItemStatus(moduleStatus);
 
                 return (
                   <li key={module.id}>
                     <CourseListItem
                       number={module.sequenceNumber}
                       title={module.title}
-                      status={status}
+                      status={courseListItemStatus}
                       progress={moduleProgress}
                       onClick={() =>
-                        status !== 'BLOCKED' && router.push(`${routes.user.modules}/${module.id}`)
+                        moduleStatus !== ModuleStatus.BLOCKED &&
+                        router.push(`${routes.user.modules}/${module.id}`)
                       }
                     />
                   </li>
@@ -115,7 +147,7 @@ const LearnMainPage: FC = () => {
           </Box>
         </CardWrapper>
       </Container>
-    </>
+    </Box>
   );
 };
 

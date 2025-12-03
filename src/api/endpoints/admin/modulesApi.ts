@@ -11,6 +11,7 @@ import {
 const MODULES_URL = '/modules';
 
 export const modulesApi = api.injectEndpoints({
+  overrideExisting: true,
   endpoints: (builder) => ({
     getModules: builder.query<
       IPage<IModuleResponse>,

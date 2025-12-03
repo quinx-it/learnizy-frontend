@@ -12,7 +12,7 @@ export const Title = styled(Typography)(({ theme }) => ({
   marginBottom: theme.spacing(1.25),
 }));
 
-export const Divider = styled('hr')(({ theme }) => ({
+export const Divider = styled(Box)(({ theme }) => ({
   borderColor: theme.palette.grey[500],
   borderWidth: '1px',
   borderStyle: 'solid',

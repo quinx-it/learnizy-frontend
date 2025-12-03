@@ -12,7 +12,7 @@ export const Container = styled(Box, {
   maxWidth: '666px',
   border: `1px solid ${theme.palette.grey[300]}`,
   backgroundColor: theme.palette.background.paper,
-  padding: '0.75rem',
+  padding: theme.spacing(0.75),
   boxShadow: '0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05)',
   ...(isExpanded
     ? {
@@ -27,26 +27,26 @@ export const Container = styled(Box, {
       }),
 }));
 
-export const AttachedFilesContainer = styled(Box)(() => ({
+export const AttachedFilesContainer = styled(Box)(({ theme }) => ({
   position: 'absolute',
-  top: '0.5rem',
-  left: '0.75rem',
+  top: theme.spacing(0.5),
+  left: theme.spacing(0.75),
   zIndex: 10,
   display: 'flex',
   flexWrap: 'wrap',
-  gap: '0.5rem',
+  gap: theme.spacing(0.5),
 }));
 
 export const AttachedFileItem = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  gap: '0.5rem',
+  gap: theme.spacing(0.5),
   borderRadius: '50px',
-  backgroundColor: `${theme.palette.info.main}33`,
-  paddingTop: '0.25rem',
-  paddingBottom: '0.25rem',
-  paddingRight: '0.5rem',
-  paddingLeft: '0.75rem',
+  backgroundColor: 'rgba(169, 219, 233, 0.2)',
+  paddingTop: theme.spacing(0.25),
+  paddingBottom: theme.spacing(0.25),
+  paddingRight: theme.spacing(0.5),
+  paddingLeft: theme.spacing(0.75),
   fontSize: '0.875rem',
   color: theme.palette.primary.main,
 }));
@@ -78,7 +78,7 @@ export const RemoveFileButton = styled(Button)(({ theme }) => ({
 
 export const AttachButton = styled(Button)(({ theme }) => ({
   cursor: 'pointer',
-  padding: '0.5rem',
+  padding: theme.spacing(0.5),
   color: theme.palette.grey[400],
   transition: 'color 0.2s',
   minWidth: 'auto',
@@ -99,14 +99,14 @@ export const StyledTextarea = styled(BaseTextarea, {
     resize: 'none',
     overflowY: 'auto',
     backgroundColor: 'transparent',
-    paddingLeft: '0.75rem',
-    paddingRight: '0.75rem',
-    fontSize: '16px',
+    paddingLeft: theme.spacing(0.75),
+    paddingRight: theme.spacing(0.75),
+    fontSize: theme.typography.body1.fontSize,
     color: theme.palette.text.primary,
     outline: 'none',
     border: 'none',
-    marginTop: hasAttachedFiles ? '2rem' : 0,
-    marginBottom: hasAttachedFiles ? '0.5rem' : 0,
+    marginTop: hasAttachedFiles ? theme.spacing(2) : 0,
+    marginBottom: hasAttachedFiles ? theme.spacing(0.5) : 0,
     fontFamily: 'inherit',
     height: 'auto',
 
@@ -136,7 +136,7 @@ export const SwipeUpHint = styled(Box)(({ theme }) => ({
   transform: 'translateX(-50%)',
   display: 'flex',
   alignItems: 'center',
-  gap: '0.25rem',
+  gap: theme.spacing(0.25),
   fontSize: '0.75rem',
   color: theme.palette.grey[600],
   animation: 'bounce 1s infinite',
@@ -169,12 +169,12 @@ export const MicrophoneButton = styled(Button, {
   boxShadow: 'none',
 
   '&:hover': {
-    backgroundColor: `${theme.palette.info.main}33`,
+    backgroundColor: 'rgba(169, 219, 233, 0.2)',
     color: theme.palette.grey[400],
   },
   ...(isRecording && {
     transform: 'scale(1.1)',
-    background: `linear-gradient(to right, ${theme.palette.primary.main}, rgba(35, 139, 167, 0.7))`,
+    background: 'linear-gradient(to right, #238ba7, rgba(35, 139, 167, 0.7))',
     color: theme.palette.common.white,
   }),
 }));
@@ -209,7 +209,7 @@ export const StopButton = styled(Button)(({ theme }) => ({
   boxShadow: 'none',
 
   '&:hover': {
-    backgroundColor: '#00617b',
+    backgroundColor: theme.palette.primary.dark,
     boxShadow: 'none',
   },
 
@@ -218,10 +218,10 @@ export const StopButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export const StopButtonContent = styled(Box)(() => ({
+export const StopButtonContent = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  gap: '0.25rem',
+  gap: theme.spacing(0.25),
 }));
 
 export const StopButtonBar = styled(Box)(() => ({
@@ -253,7 +253,7 @@ export const SendButton = styled(Button)(({ theme }) => ({
   marginLeft: '0.125rem',
   cursor: 'pointer',
   backgroundColor: 'transparent',
-  padding: '0.5rem',
+  padding: theme.spacing(0.5),
   color: theme.palette.grey[500],
   transition: 'background-color 0.2s, color 0.2s',
   textTransform: 'none',
@@ -261,7 +261,7 @@ export const SendButton = styled(Button)(({ theme }) => ({
   minWidth: 'auto',
 
   '&:hover': {
-    backgroundColor: `${theme.palette.info.main}33`,
+    backgroundColor: 'rgba(169, 219, 233, 0.2)',
     color: theme.palette.grey[500],
     boxShadow: 'none',
   },

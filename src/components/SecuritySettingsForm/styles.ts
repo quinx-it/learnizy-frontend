@@ -15,11 +15,18 @@ export const FormField = styled(Box)(() => ({
   gridColumn: 'span 2',
 }));
 
+export const ButtonsContainer = styled(Box)(({ theme }) => ({
+  gridColumn: 'span 2',
+  display: 'flex',
+  gap: theme.spacing(0.5),
+}));
+
 export const ButtonWrapper = styled(Box)(() => ({
   flex: 1,
   fontSize: '16px',
 
   '& > *': {
+    width: '100%',
     fontSize: '16px',
   },
 }));

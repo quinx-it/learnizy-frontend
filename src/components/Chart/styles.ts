@@ -12,7 +12,7 @@ export const StyledChartContainer = styled(Box)(({ theme }) => ({
   },
 
   '& .recharts-cartesian-grid line[stroke="#ccc"]': {
-    stroke: `${theme.palette.divider}80`,
+    stroke: 'rgba(169, 219, 233, 0.5)',
   },
 
   '& .recharts-curve.recharts-tooltip-cursor': {
@@ -62,7 +62,7 @@ export const TooltipContainer = styled(Box)(({ theme }) => ({
   alignItems: 'flex-start',
   gap: '0.375rem',
   borderRadius: theme.shape.borderRadius,
-  border: `1px solid ${theme.palette.divider}80`,
+  border: '1px solid rgba(169, 219, 233, 0.5)',
   backgroundColor: theme.palette.background.paper,
   paddingLeft: '0.625rem',
   paddingRight: '0.625rem',

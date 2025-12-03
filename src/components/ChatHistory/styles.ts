@@ -8,6 +8,7 @@ export const MobileButtonWrapper = styled(Box)(({ theme }) => ({
   right: 0,
   zIndex: 40,
   marginLeft: '1.5rem',
+
   [theme.breakpoints.up('lg')]: {
     display: 'none',
   },
@@ -39,6 +40,7 @@ export const MobileSidebar = styled(Box, {
   boxShadow: '0px 4px 13px 0px rgba(0, 0, 0, 0.149)',
   transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
   transition: 'transform 0.3s',
+
   [theme.breakpoints.up('lg')]: {
     display: 'none',
   },
@@ -88,6 +90,8 @@ export const DesktopNewChatButton = styled(NewChatButton)(() => ({
 export const HeaderTitle = styled(Typography)(() => ({
   fontSize: '20px',
   wordBreak: 'break-word',
+  textAlign: 'center',
+  flex: 1,
 }));
 
 export const NewChatButtonWrapper = styled(Box)(() => ({
@@ -109,6 +113,7 @@ export const ScrollContainer = styled(Box)(() => ({
   overflowY: 'auto',
   msOverflowStyle: 'none',
   scrollbarWidth: 'none',
+
   '&::-webkit-scrollbar': {
     display: 'none',
   },
@@ -148,11 +153,14 @@ export const ChatText = styled(Typography)(() => ({
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
+  fontSize: '0.875rem',
+  lineHeight: '1.25rem',
 }));
 
 export const DesktopWrapper = styled(Box)(({ theme }) => ({
   display: 'none',
   backgroundColor: 'transparent',
+
   [theme.breakpoints.up('lg')]: {
     display: 'block',
     width: '230px',
@@ -186,7 +194,7 @@ export const DesktopSidebarHeader = styled(Box)(() => ({
 export const DesktopHeaderTitle = styled(Typography)(() => ({
   display: 'block',
   height: '48px',
-  textAlign: 'right',
+  textAlign: 'center',
   fontSize: '20px',
   wordBreak: 'break-word',
 }));

@@ -46,6 +46,7 @@ export const CloseButton = styled(Button, {
   minWidth: 'auto',
   textTransform: 'none',
   boxShadow: 'none',
+
   '&:hover': {
     boxShadow: 'none',
   },

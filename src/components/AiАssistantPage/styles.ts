@@ -24,8 +24,9 @@ export const WelcomeText = styled(Box)(() => ({
   marginTop: '3rem',
   marginBottom: '1.625rem',
   textAlign: 'center',
+
   '& > *': {
-    fontSize: '1.875rem !important',
-    lineHeight: '2.25rem !important',
+    fontSize: '1.875rem',
+    lineHeight: '2.25rem',
   },
 }));

@@ -1,34 +1,36 @@
 import { FC } from 'react';
 
-import Button from '@/components/Button';
 import CardWrapper from '@/components/CardWrapper';
-import Link from '@/components/Link';
-import { Text } from '@/components/Typography';
 import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
-import { cn } from '@/lib/utils';
 
 import { IInterviewRecordsProps } from './typings';
+
+import {
+  DescriptionText,
+  StyledCardWrapper,
+  StyledDivider,
+  StyledLinkButton,
+  Title,
+} from './styles';
 
 const InterviewRecords: FC<IInterviewRecordsProps> = (props) => {
   const { className } = props;
   const { t } = useTranslation();
 
   return (
-    <CardWrapper className={cn(className, 'flex flex-col gap-4')}>
-      <Text variant="m" className="text-medium">
-        {t('INTERVIEW_RECORDS.TITLE')}
-      </Text>
+    <CardWrapper className={className}>
+      <StyledCardWrapper>
+        <Title variant="m">{t('INTERVIEW_RECORDS.TITLE')}</Title>
 
-      <hr />
+        <StyledDivider />
 
-      <Text variant="m" className="mb-2">
-        {t('INTERVIEW_RECORDS.DESCRIPTION')}
-      </Text>
+        <DescriptionText variant="m">{t('INTERVIEW_RECORDS.DESCRIPTION')}</DescriptionText>
 
-      <Button variant="blue" size="small" asChild className="w-fit">
-        <Link href={routes.user.interviewRecords}>{t('INTERVIEW_RECORDS.BUTTON')}</Link>
-      </Button>
+        <StyledLinkButton href={routes.user.interviewRecords}>
+          {t('INTERVIEW_RECORDS.BUTTON')}
+        </StyledLinkButton>
+      </StyledCardWrapper>
     </CardWrapper>
   );
 };

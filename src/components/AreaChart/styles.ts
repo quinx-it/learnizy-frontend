@@ -1,12 +1,16 @@
 import { Box, styled } from '@mui/material';
 
-export const Container = styled(Box)(() => ({
+export const Container = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  gap: '1rem',
+  gap: theme.spacing(1),
 }));
 
-export const ChartContainerStyled = styled(Box)(() => ({
+export const ChartContainerStyled = styled(Box)(({ theme }) => ({
   maxHeight: '180px',
   width: '100%',
+
+  '& .recharts-xAxis .recharts-cartesian-axis-tick text': {
+    fill: theme.palette.common.black,
+  },
 }));

@@ -15,31 +15,31 @@ export enum EvaluationTextLabel {
 }
 
 export const EvaluationValue = {
-  CORRECT: 1,
-  PARTIAL: 0.5,
-  INCORRECT: 0,
-  UNASSESSED: 0,
-} as const;
+  [AnswerEvaluation.CORRECT]: 1,
+  [AnswerEvaluation.PARTIAL]: 0.5,
+  [AnswerEvaluation.INCORRECT]: 0,
+  [AnswerEvaluation.UNASSESSED]: 0,
+};
 
 export const evaluationMap = {
   [AnswerEvaluation.CORRECT]: {
     text: EvaluationTextLabel.CORRECT,
     component: EvaluationTextCorrect,
-    value: EvaluationValue.CORRECT,
+    value: EvaluationValue[AnswerEvaluation.CORRECT],
   },
   [AnswerEvaluation.PARTIAL]: {
     text: EvaluationTextLabel.PARTIAL,
     component: EvaluationTextPartial,
-    value: EvaluationValue.PARTIAL,
+    value: EvaluationValue[AnswerEvaluation.PARTIAL],
   },
   [AnswerEvaluation.INCORRECT]: {
     text: EvaluationTextLabel.INCORRECT,
     component: EvaluationTextIncorrect,
-    value: EvaluationValue.INCORRECT,
+    value: EvaluationValue[AnswerEvaluation.INCORRECT],
   },
   [AnswerEvaluation.UNASSESSED]: {
     text: EvaluationTextLabel.UNASSESSED,
     component: EvaluationTextPending,
-    value: EvaluationValue.UNASSESSED,
+    value: EvaluationValue[AnswerEvaluation.UNASSESSED],
   },
-} as const;
+};

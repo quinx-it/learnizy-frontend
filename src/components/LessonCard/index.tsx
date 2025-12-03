@@ -1,16 +1,27 @@
 import { FC } from 'react';
 
-import Button from '@/components/Button';
-import CardWrapper from '@/components/CardWrapper';
 import { StarIcon } from '@/components/Icons';
-import { Heading } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
-import { cn, normalizeToFive } from '@/lib/utils';
+import { normalizeToFive } from '@/lib/utils';
 
 import { LessonCardPropsType } from './typings';
 
+import {
+  CardContent,
+  LeftContent,
+  RatingContainer,
+  RatingHeading,
+  RightContent,
+  StyledButton,
+  StyledCardWrapper,
+  StyledHeading,
+  TaskList,
+  TaskListItem,
+  TitleSpan,
+} from './styles';
+
 const LessonCard: FC<LessonCardPropsType> = (props) => {
-  const { id, title, progress, index, onClick } = props;
+  const { id, title, progress, sequenceOrder, onClick } = props;
   const { t } = useTranslation();
 
   const blocked = false;
@@ -23,57 +34,54 @@ const LessonCard: FC<LessonCardPropsType> = (props) => {
   ];
 
   return (
-    <CardWrapper
-      className={cn('border-soft cursor-pointer border !shadow-none', {
-        'border-medium border-2 !shadow-lg': active,
-        'border-gray': blocked,
-      })}
+    <StyledCardWrapper
+      active={active}
+      blocked={blocked}
       onClick={() => onClick(id)}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') onClick(id);
+      }}
     >
-      <div className="flex">
-        <div className="flex-1 space-y-2">
-          <Heading>
-            {t('LESSON_CARD.LESSON')} {index + 1} -{' '}
-            <span
-              className={cn('text-soft', {
-                'text-medium': active,
-                'text-gray': blocked,
-              })}
-            >
+      <CardContent>
+        <LeftContent>
+          <StyledHeading>
+            {t('LESSON_CARD.LESSON')} {sequenceOrder + 1} -{' '}
+            <TitleSpan active={active} blocked={blocked}>
               {title}
-            </span>
-          </Heading>
+            </TitleSpan>
+          </StyledHeading>
 
-          <ul className="marker:text-medium mt-2 list-disc space-y-1 pl-5 break-words">
-            {taskProgress.map(({ title }, index) => (
-              <li key={index}>{title}</li>
+          <TaskList>
+            {taskProgress.map(({ title }, idx) => (
+              <TaskListItem key={idx}>{title}</TaskListItem>
             ))}
-          </ul>
-        </div>
+          </TaskList>
+        </LeftContent>
 
-        <div className="flex flex-col items-end justify-between">
-          <div className="flex items-center gap-1 self-end">
+        <RightContent>
+          <RatingContainer>
             <StarIcon type={blocked ? 'disabled' : 'gold'} />
-            <Heading className={cn('text-medium', { 'text-gray': blocked })}>
+            <RatingHeading blocked={blocked}>
               {progress.testResult ? normalizeToFive(progress.testResult) : 0}/5
-            </Heading>
-          </div>
+            </RatingHeading>
+          </RatingContainer>
 
           {!blocked && (
-            <Button
-              size={active ? 'medium' : 'small'}
-              variant={active ? 'blue' : 'white'}
-              className={cn('pointer-events-none', {
-                'pointer-events-auto': active,
-              })}
-              onClick={() => onClick(id)}
+            <StyledButton
+              isActive={active}
+              onClick={(e) => {
+                e.stopPropagation();
+                onClick(id);
+              }}
             >
               {t(active ? 'MODULES_CARD.START' : 'MODULES_CARD.COMPLETED')}
-            </Button>
+            </StyledButton>
           )}
-        </div>
-      </div>
-    </CardWrapper>
+        </RightContent>
+      </CardContent>
+    </StyledCardWrapper>
   );
 };
 

@@ -1,16 +1,25 @@
 'use client';
 
-import Image from 'next/image';
 import { FC } from 'react';
 
-import Button from '@/components/Button';
 import CardWrapper from '@/components/CardWrapper';
 import DotTitle from '@/components/DotTitle';
 import ProgressBar from '@/components/Progress';
-import { Text } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
 
 import { ProgressCardPropsType } from './typings';
+
+import {
+  Container,
+  ContentWrapper,
+  DotTitleWrapper,
+  ProgressBarWrapper,
+  StatsContainer,
+  StatsRow,
+  StatusButton,
+  StyledImage,
+  StyledText,
+} from './styles';
 
 const ProgressCard: FC<ProgressCardPropsType> = (props) => {
   const { title, subTitle, totalModules, totalLessons, lessons, status, modules, image, onClick } =
@@ -24,40 +33,41 @@ const ProgressCard: FC<ProgressCardPropsType> = (props) => {
 
   return (
     <CardWrapper>
-      <div className="relative flex h-auto items-stretch gap-4">
-        {image && (
-          <Image width={49} height={58} className="my-auto max-h-[58px]" src={image} alt="rocket" />
-        )}
+      <Container>
+        {image && <StyledImage width={49} height={58} src={image} alt="rocket" />}
 
-        <div className="flex min-w-0 flex-1 flex-col justify-between">
-          <DotTitle
-            className="mr-[150px] max-w-[370px]"
-            firstLabel={title}
-            secondLabel={subTitle}
-            secondClassName="text-soft"
-            dotClassName="bg-soft"
-          />
-          <div className="space-y-2">
-            <div className="flex gap-2">
+        <ContentWrapper>
+          <DotTitleWrapper>
+            <DotTitle
+              firstLabel={title}
+              secondLabel={subTitle}
+              firstClassName="progress-card-title-first"
+              secondClassName="progress-card-title-second"
+            />
+          </DotTitleWrapper>
+          <StatsContainer>
+            <StatsRow>
               {hasModules && (
-                <Text className="text-[10px]">
+                <StyledText>
                   {t('PROGRESS_CARD.MODULES_LABEL')}: {modules}/{totalModules}
-                </Text>
+                </StyledText>
               )}
-              <Text className="text-[10px]">
+              <StyledText>
                 {t('PROGRESS_CARD.LESSONS_LABEL')}: {lessons}/{totalLessons}
-              </Text>
-            </div>
-            <ProgressBar className="h-1 w-full" value={progressValue} />
-          </div>
-        </div>
+              </StyledText>
+            </StatsRow>
+            <ProgressBarWrapper>
+              <ProgressBar value={progressValue} />
+            </ProgressBarWrapper>
+          </StatsContainer>
+        </ContentWrapper>
 
         {status && (
-          <Button className="absolute top-0 right-0" size="small" onClick={onClick}>
+          <StatusButton size="small" onClick={onClick}>
             {status}
-          </Button>
+          </StatusButton>
         )}
-      </div>
+      </Container>
     </CardWrapper>
   );
 };

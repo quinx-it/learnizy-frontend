@@ -1,3 +1,10 @@
+export enum ModuleCompletionStatus {
+  NOT_STARTED = 'NOT_STARTED',
+  BLOCKED = 'BLOCKED',
+  IN_PROGRESS = 'IN_PROGRESS',
+  COMPLETED = 'COMPLETED',
+}
+
 export interface ICourseInfo {
   id: number;
   title: string;
@@ -14,7 +21,7 @@ export interface IModuleInfo {
   description: string;
   totalLessons: number;
   completedLessons: number;
-  completionStatus: 'NOT_STARTED' | 'BLOCKED' | 'IN_PROGRESS' | 'COMPLETED';
+  completionStatus: ModuleCompletionStatus;
   sequenceNumber: number;
 }
 

@@ -34,7 +34,7 @@ export const WithCustomData: StoryType = {
     ];
 
     return (
-      <div className="w-full max-w-lg">
+      <div style={{ width: '100%', maxWidth: '512px' }}>
         <AreaChart data={customData} />
       </div>
     );

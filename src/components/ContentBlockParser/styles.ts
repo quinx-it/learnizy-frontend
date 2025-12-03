@@ -7,12 +7,10 @@ export const StyledLinkWrapper = styled(Box)(() => ({
 }));
 
 export const UnorderedList = styled(Box)(({ theme }) => ({
-  listStyleType: 'disc',
-  paddingLeft: '1.25rem',
-  '&::marker': {
-    fontSize: '1.125rem',
-    color: theme.palette.text.primary,
-  },
+  paddingLeft: theme.spacing(0),
+  display: 'flex',
+  flexDirection: 'column',
+  gap: theme.spacing(0.25),
 }));
 
 export const CodeBlock = styled(Box)(({ theme }) => ({
@@ -52,7 +50,7 @@ export const AdviceContainer = styled(Box)(({ theme }) => ({
 export const WarningContainer = styled(Box)(({ theme }) => ({
   width: 'fit-content',
   borderRadius: '1rem',
-  backgroundColor: `${theme.palette.error.main}4D`,
+  backgroundColor: 'rgba(230, 68, 68, 0.3)',
   padding: '1rem',
   color: theme.palette.error.main,
 }));
@@ -78,4 +76,18 @@ export const StrongTextWithGap = styled(StrongText)(() => ({
 export const StrongTextWithoutGap = styled(Typography)(() => ({
   fontWeight: 600,
   marginBottom: '0.75rem',
+}));
+
+export const ListItem = styled(Box)(({ theme }) => ({
+  position: 'relative',
+  paddingLeft: theme.spacing(2),
+
+  '&::before': {
+    content: '"•"',
+    position: 'absolute',
+    left: 0,
+    color: theme.palette.text.primary,
+    fontSize: '1.2em',
+    lineHeight: '1',
+  },
 }));

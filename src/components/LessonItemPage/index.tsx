@@ -8,14 +8,11 @@ import { useSelector } from 'react-redux';
 import { useUpdateLessonContentMarkdownMutation } from '@/api/endpoints/admin';
 import { useGetLessonQuery } from '@/api/endpoints/lessons';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import Button from '@/components/Button';
 import CardWrapper from '@/components/CardWrapper';
 import BlockRenderer from '@/components/ContentBlockParser';
 import DotTitle from '@/components/DotTitle';
 import FullscreenLoader from '@/components/FullscreenLoader';
-import MarkdownRenderer from '@/components/MarkdownText';
 import { showToast } from '@/components/Toaster';
-import { Heading, Text } from '@/components/Typography';
 import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
 import { selectUserRole } from '@/store/slices/auth/selectors';
@@ -23,6 +20,24 @@ import { UserRole } from '@/store/slices/auth/typings';
 
 import { constants } from './constants';
 import { ILessonItemPageProps } from './typings';
+
+import {
+  BlueButtonMedium,
+  BlueButtonSmall,
+  BreadcrumbsWrapper,
+  ButtonsContainer,
+  ButtonsRow,
+  Container,
+  EditButtonWrapper,
+  EditingContainer,
+  EditorWrapper,
+  SectionHeading,
+  SectionText,
+  SectionTextSmall,
+  TestInfoDotTitleWrapper,
+  WhiteButton,
+  YellowButton,
+} from './styles';
 
 const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
   const { lessonId, moduleId } = props;
@@ -78,44 +93,43 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
   };
 
   return (
-    <div className="flex flex-col gap-6">
-      <Breadcrumbs
-        items={constants.breadcrumbs(t, moduleSequenceOrder ?? 1, moduleId, sequenceOrder ?? 0)}
-        rootHref={routes.user.modules}
-        rootLabel={t('LESSON_ITEM_PAGE.BREADCRUMB_ROOT')}
-        className="mb-0"
-      />
+    <Container>
+      <BreadcrumbsWrapper>
+        <Breadcrumbs
+          items={constants.breadcrumbs(t, moduleSequenceOrder ?? 1, moduleId, sequenceOrder ?? 0)}
+          rootHref={routes.user.modules}
+          rootLabel={t('LESSON_ITEM_PAGE.BREADCRUMB_ROOT')}
+        />
+      </BreadcrumbsWrapper>
 
-      <CardWrapper>
-        {isMentor && !editing && (
-          <Button variant="yellow" size="small" onClick={handleEdit} className="mb-4">
-            {t('LESSON_ITEM_PAGE.BUTTON_EDIT')}
-          </Button>
-        )}
-        {editing ? (
-          <div className="flex flex-col gap-4">
-            <div data-color-mode="light" className="wmde-markdown-light">
-              <MDEditor
-                value={markdownContent}
-                onChange={(val) => setMarkdownContent(val || '')}
-                height={400}
-              />
-            </div>
-            <div className="flex justify-end gap-2">
-              <Button variant="white" size="small" onClick={handleCancel}>
-                {t('LESSON_ITEM_PAGE.BUTTON_CANCEL')}
-              </Button>
-              <Button variant="blue" size="small" onClick={handleSave}>
-                {t('LESSON_ITEM_PAGE.BUTTON_SAVE')}
-              </Button>
-            </div>
-          </div>
-        ) : (
-          <div className="prose max-w-full break-words">
-            <MarkdownRenderer text={markdownContent} className="lesson-markdown" />
-          </div>
-        )}
-      </CardWrapper>
+      {isMentor && (
+        <CardWrapper>
+          {!editing && (
+            <EditButtonWrapper>
+              <YellowButton onClick={handleEdit}>{t('LESSON_ITEM_PAGE.BUTTON_EDIT')}</YellowButton>
+            </EditButtonWrapper>
+          )}
+          {editing && (
+            <EditingContainer>
+              <EditorWrapper data-color-mode="light">
+                <MDEditor
+                  value={markdownContent}
+                  onChange={(val) => setMarkdownContent(val || '')}
+                  height={400}
+                />
+              </EditorWrapper>
+              <ButtonsContainer>
+                <WhiteButton onClick={handleCancel}>
+                  {t('LESSON_ITEM_PAGE.BUTTON_CANCEL')}
+                </WhiteButton>
+                <BlueButtonSmall onClick={handleSave}>
+                  {t('LESSON_ITEM_PAGE.BUTTON_SAVE')}
+                </BlueButtonSmall>
+              </ButtonsContainer>
+            </EditingContainer>
+          )}
+        </CardWrapper>
+      )}
 
       {lesson.contentBlocks?.length > 0 && (
         <CardWrapper>
@@ -126,42 +140,38 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
       )}
 
       <CardWrapper>
-        <Heading variant="2xl" className="mb-4">
-          {t('LESSON_ITEM_PAGE.AI_ASSISTANT_TITLE')}
-        </Heading>
-        <Text variant="l" className="mb-6">
-          {t('LESSON_ITEM_PAGE.AI_ASSISTANT_DESCRIPTION')}
-        </Text>
-        <Button onClick={() => router.push(routes.user.aiAssistant)} size="medium">
+        <SectionHeading variant="2xl">{t('LESSON_ITEM_PAGE.AI_ASSISTANT_TITLE')}</SectionHeading>
+        <SectionText variant="l">{t('LESSON_ITEM_PAGE.AI_ASSISTANT_DESCRIPTION')}</SectionText>
+        <BlueButtonMedium onClick={() => router.push(routes.user.aiAssistant)}>
           {t('LESSON_ITEM_PAGE.AI_ASSISTANT_ASK_QUESTION')}
-        </Button>
+        </BlueButtonMedium>
       </CardWrapper>
 
       <CardWrapper>
-        <Heading variant="2xl" className="mb-4">
+        <SectionHeading variant="2xl">
           {t('LESSON_ITEM_PAGE.CHECK_YOUR_KNOWLEDGE_TITLE')}
-        </Heading>
-        <Text variant="l" className="mb-4">
+        </SectionHeading>
+        <SectionTextSmall variant="l">
           {t('LESSON_ITEM_PAGE.CHECK_YOUR_KNOWLEDGE_DESCRIPTION')}
-        </Text>
-        <DotTitle
-          firstLabel={`📋 ${testQuestions ?? 0} ${t('LESSON_ITEM_PAGE.TEST_QUESTIONS_LABEL')}`}
-          secondLabel={t('LESSON_ITEM_PAGE.TEST_TIME_LABEL')}
-          firstVariant="m"
-          secondVariant="m"
-          dotClassName="w-1 h-1"
-          className="text-medium mb-6"
-        />
-        <div className="flex gap-2">
-          <Button onClick={handleNavigate('test')} size="medium">
+        </SectionTextSmall>
+        <TestInfoDotTitleWrapper>
+          <DotTitle
+            firstLabel={`📋 ${testQuestions ?? 0} ${t('LESSON_ITEM_PAGE.TEST_QUESTIONS_LABEL')}`}
+            secondLabel={t('LESSON_ITEM_PAGE.TEST_TIME_LABEL')}
+            firstVariant="m"
+            secondVariant="m"
+          />
+        </TestInfoDotTitleWrapper>
+        <ButtonsRow>
+          <BlueButtonMedium onClick={handleNavigate('test')}>
             {t('LESSON_ITEM_PAGE.BUTTON_START')}
-          </Button>
-          <Button onClick={handleNavigate('result')} size="medium">
+          </BlueButtonMedium>
+          <BlueButtonMedium onClick={handleNavigate('result')}>
             {t('LESSON_ITEM_PAGE.BUTTON_RESULT')}
-          </Button>
-        </div>
+          </BlueButtonMedium>
+        </ButtonsRow>
       </CardWrapper>
-    </div>
+    </Container>
   );
 };
 

@@ -1,15 +1,28 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { ComponentProps, ReactNode, FC } from 'react';
+import { ReactNode, FC } from 'react';
 
-import Button from '@/components/Button';
 import CardWrapper from '@/components/CardWrapper';
 import DotTitle from '@/components/DotTitle';
 import { ExamCardPropsType, ExamStatus } from '@/components/ExamsPage/typings';
 import Link from '@/components/Link';
 import { Text } from '@/components/Typography';
+import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
+
+import {
+  StyledCardWrapper,
+  ContentWrapper,
+  StatusContainer,
+  StatusBadge,
+  ButtonsContainer,
+  TitleDotTitleWrapper,
+  InfoDotTitleWrapper,
+  StyledButton,
+  UnavailableStatusText,
+  InlineLinkWrapper,
+} from './styles';
 
 const ExamCard: FC<ExamCardPropsType> = (props) => {
   const { exam, status } = props;
@@ -24,7 +37,7 @@ const ExamCard: FC<ExamCardPropsType> = (props) => {
     router.push(`${pathname}/${path}`);
   };
 
-  const buttonConfig: Record<ExamStatus, ComponentProps<typeof Button>> = {
+  const buttonConfig: Record<ExamStatus, { children?: string; disabled?: boolean }> = {
     [ExamStatus.Completed]: {},
     [ExamStatus.Failed]: {
       children: t('EXAMS.BUTTONS.RETRY'),
@@ -40,73 +53,69 @@ const ExamCard: FC<ExamCardPropsType> = (props) => {
 
   const examStatusUi: Record<ExamStatus, ReactNode> = {
     [ExamStatus.Completed]: (
-      <div className="flex gap-4">
-        <Text variant="m" className="border-soft rounded-full border bg-transparent px-6 py-2">
+      <StatusContainer>
+        <StatusBadge statusVariant={ExamStatus.Completed} variant="m">
           {t('EXAMS.STATUS.COMPLETED')}
-        </Text>
-      </div>
+        </StatusBadge>
+      </StatusContainer>
     ),
     [ExamStatus.Failed]: (
-      <div className="flex gap-4">
-        <Text variant="m" className="border-error rounded-full border bg-transparent px-6 py-2">
+      <StatusContainer>
+        <StatusBadge statusVariant={ExamStatus.Failed} variant="m">
           {t('EXAMS.STATUS.FAILED')}
-        </Text>
-      </div>
+        </StatusBadge>
+      </StatusContainer>
     ),
     [ExamStatus.Available]: <Text variant="l">{t('EXAMS.STATUS.AVAILABLE')}</Text>,
     [ExamStatus.Unavailable]: (
-      <Text variant="l">
-        {t('EXAMS.STATUS.UNAVAILABLE', { moduleLink: exam.moduleId })}
-        <Link href={`modules/${exam.moduleId}`} className="text-medium !underline">
-          {t('EXAMS.STATUS.LESSONS')}
-        </Link>
-      </Text>
+      <UnavailableStatusText>
+        {t('EXAMS.STATUS.UNAVAILABLE', { moduleLink: exam.moduleId })}{' '}
+        <InlineLinkWrapper>
+          <Link href={`${routes.user.modules}/${exam.moduleId}`}>{t('EXAMS.STATUS.LESSONS')}</Link>
+        </InlineLinkWrapper>
+        {' модуля'}
+      </UnavailableStatusText>
     ),
   };
 
   return (
-    <CardWrapper className="flex max-w-full flex-col gap-4 md:flex-row md:items-start md:justify-between">
-      <div className="flex-1 space-y-4">
-        <DotTitle
-          firstLabel={title}
-          secondLabel={description}
-          firstVariant="l"
-          secondVariant="l"
-          firstClassName="text-[24px] leading-8"
-          secondClassName="text-[24px] leading-8"
-          dotClassName="w-1 h-1"
-        />
+    <CardWrapper>
+      <StyledCardWrapper>
+        <ContentWrapper>
+          <TitleDotTitleWrapper>
+            <DotTitle
+              firstLabel={title}
+              secondLabel={description}
+              firstVariant="l"
+              firstClassName="exam-title-first"
+              secondClassName="exam-title-second"
+            />
+          </TitleDotTitleWrapper>
 
-        <DotTitle
-          firstLabel={t('EXAMS.QUESTIONS_COUNT', { count: questions })}
-          secondLabel={t('EXAMS.DURATION', { time })}
-          firstVariant="m"
-          secondVariant="m"
-          dotClassName="w-1 h-1"
-          className="text-medium"
-        />
-        {examStatusUi[status]}
-      </div>
+          <InfoDotTitleWrapper>
+            <DotTitle
+              firstLabel={t('EXAMS.QUESTIONS_COUNT', { count: questions })}
+              secondLabel={t('EXAMS.DURATION', { time })}
+              firstVariant="m"
+            />
+          </InfoDotTitleWrapper>
+          {examStatusUi[status]}
+        </ContentWrapper>
 
-      <div className="flex flex-row gap-2 md:w-auto md:flex-col lg:mt-0 lg:items-end">
-        {status !== ExamStatus.Completed && (
-          <Button
-            onClick={() => handleNavigate(`/${exam.moduleId}/${exam.testId}/test`)}
-            variant="blue"
-            size="medium"
-            {...buttonConfig[status]}
-          />
-        )}
-        {(status === ExamStatus.Completed || status === ExamStatus.Failed) && (
-          <Button
-            onClick={() => handleNavigate(`/${exam.moduleId}/${exam.testId}/result`)}
-            variant="blue"
-            size="medium"
-          >
-            Результаты
-          </Button>
-        )}
-      </div>
+        <ButtonsContainer>
+          {status !== ExamStatus.Completed && (
+            <StyledButton
+              onClick={() => handleNavigate(`/${exam.moduleId}/${exam.testId}/test`)}
+              {...buttonConfig[status]}
+            />
+          )}
+          {(status === ExamStatus.Completed || status === ExamStatus.Failed) && (
+            <StyledButton onClick={() => handleNavigate(`/${exam.moduleId}/${exam.testId}/result`)}>
+              Результаты
+            </StyledButton>
+          )}
+        </ButtonsContainer>
+      </StyledCardWrapper>
     </CardWrapper>
   );
 };

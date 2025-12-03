@@ -2,22 +2,20 @@
 
 import { FC } from 'react';
 
-import CardWrapper from '@/components/CardWrapper';
 import PersonalDataForm from '@/components/PersonalDataForm';
-import { Heading } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
+
+import { StyledCardWrapper, StyledDivider, StyledHeading } from './styles';
 
 const PersonalData: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <CardWrapper className="h-fit max-w-full">
-      <Heading variant="xl" className="mb-4">
-        {t('PROFILE.PERSONAL_DATA')}
-      </Heading>
-      <hr className="mb-8" />
+    <StyledCardWrapper>
+      <StyledHeading variant="xl">{t('PROFILE.PERSONAL_DATA')}</StyledHeading>
+      <StyledDivider />
       <PersonalDataForm />
-    </CardWrapper>
+    </StyledCardWrapper>
   );
 };
 

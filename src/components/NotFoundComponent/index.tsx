@@ -3,16 +3,21 @@
 import Image from 'next/image';
 import { FC } from 'react';
 
-import Button from '@/components/Button';
-import Link from '@/components/Link';
-import { Heading } from '@/components/Typography';
 import { defaultPage, routes } from '@/const';
 import { useTranslation } from '@/hooks';
 import { useAppSelector } from '@/hooks/redux';
-import { cn } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 
 import { NotFoundComponentPropsType } from './typings';
+
+import {
+  AstronautImage,
+  Container,
+  NotFoundNumber,
+  NotFoundTitle,
+  StyledButton,
+  StyledLinkButton,
+} from './styles';
 
 const NotFoundComponent: FC<NotFoundComponentPropsType> = (props) => {
   const { className } = props;
@@ -24,24 +29,18 @@ const NotFoundComponent: FC<NotFoundComponentPropsType> = (props) => {
   const defaultUrl = role && defaultPage[role] ? defaultPage[role] : routes.public.loginPage;
 
   return (
-    <div className={cn('text-deep relative mx-auto flex flex-col p-4 text-center', className)}>
-      <Heading className="leading-auto text-[200px] text-[#CCEDF6] md:text-[300px] md:leading-[270px]">
-        404
-      </Heading>
-      <Heading variant="2xl" className="text-medium mt-5">
+    <Container className={className}>
+      <NotFoundNumber>404</NotFoundNumber>
+      <NotFoundTitle tag="h2" variant="2xl">
         {t('NOT_FOUND_TITLE')}
-      </Heading>
-      <Image
-        width={192}
-        height={207}
-        src="/images/notfound-astronaut.webp"
-        alt="astronaut"
-        className="absolute right-1/5 bottom-2/7 max-w-[132px] translate-x-1/5 transform md:max-w-[192px]"
-      />
-      <Button className="mx-auto mt-8 max-w-[141px]" size="medium" asChild>
-        <Link href={defaultUrl}>{t('GO_HOME')}</Link>
-      </Button>
-    </div>
+      </NotFoundTitle>
+      <AstronautImage>
+        <Image width={192} height={207} src="/images/notfound-astronaut.webp" alt="astronaut" />
+      </AstronautImage>
+      <StyledLinkButton href={defaultUrl}>
+        <StyledButton>{t('GO_HOME')}</StyledButton>
+      </StyledLinkButton>
+    </Container>
   );
 };
 

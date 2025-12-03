@@ -1,11 +1,11 @@
 import { Box, Link, styled, Typography } from '@mui/material';
 
-export const ScrollContainer = styled(Box)(() => ({
+export const ScrollContainer = styled(Box)(({ theme }) => ({
   height: '100%',
   width: '100%',
   maxWidth: '659px',
   overflowY: 'auto',
-  paddingTop: '90px',
+  paddingTop: theme.spacing(3),
   msOverflowStyle: 'none',
   scrollbarWidth: 'none',
 
@@ -52,6 +52,7 @@ export const MessageBubble = styled(Box, {
     : {
         width: '100%',
       }),
+
   [theme.breakpoints.up('lg')]: {
     marginLeft: 0,
     marginRight: 0,
@@ -79,7 +80,7 @@ export const AttachmentLink = styled(Link)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   gap: '0.5rem',
-  borderRadius: '9999px',
+  borderRadius: '50px',
   paddingLeft: '1.25rem',
   paddingRight: '1.25rem',
   paddingTop: '0.25rem',

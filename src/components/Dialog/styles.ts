@@ -6,12 +6,15 @@ export const StyledOverlay = styled(DialogPrimitive.Overlay)(() => ({
   inset: 0,
   zIndex: 50,
   backgroundColor: 'rgba(0, 0, 0, 0.5)',
+
   '&[data-state=open]': {
     animation: 'fadeIn 0.15s ease-out',
   },
+
   '&[data-state=closed]': {
     animation: 'fadeOut 0.15s ease-out',
   },
+
   '@keyframes fadeIn': {
     from: {
       opacity: 0,
@@ -46,12 +49,15 @@ export const StyledContent = styled(DialogPrimitive.Content)(({ theme }) => ({
   padding: '1.5rem',
   boxShadow: theme.shadows[8],
   transition: 'all 0.2s',
+
   '&[data-state=open]': {
     animation: 'fadeInZoomIn 0.2s ease-out',
   },
+
   '&[data-state=closed]': {
     animation: 'fadeOutZoomOut 0.2s ease-out',
   },
+
   '@keyframes fadeInZoomIn': {
     from: {
       opacity: 0,
@@ -62,6 +68,7 @@ export const StyledContent = styled(DialogPrimitive.Content)(({ theme }) => ({
       transform: 'translate(-50%, -50%) scale(1)',
     },
   },
+
   '@keyframes fadeOutZoomOut': {
     from: {
       opacity: 1,
@@ -72,6 +79,7 @@ export const StyledContent = styled(DialogPrimitive.Content)(({ theme }) => ({
       transform: 'translate(-50%, -50%) scale(0.95)',
     },
   },
+
   [theme.breakpoints.up('sm')]: {
     maxWidth: '32rem',
   },
@@ -123,6 +131,7 @@ export const DialogHeader = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   gap: '0.5rem',
   textAlign: 'center',
+
   [theme.breakpoints.up('sm')]: {
     textAlign: 'left',
   },
@@ -132,6 +141,7 @@ export const DialogFooter = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column-reverse',
   gap: '0.5rem',
+
   [theme.breakpoints.up('sm')]: {
     flexDirection: 'row',
     justifyContent: 'flex-end',

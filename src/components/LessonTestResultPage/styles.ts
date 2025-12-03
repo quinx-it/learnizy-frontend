@@ -51,9 +51,9 @@ export const AnswerCard = styled(CardWrapper)(() => ({
 export const QuestionText = styled(Box)(() => ({
   marginBottom: '1.25rem',
   '& > *': {
-    fontSize: '20px !important',
-    lineHeight: '27px !important',
-    fontWeight: '500 !important',
+    fontSize: '20px',
+    lineHeight: '27px',
+    fontWeight: 500,
     transition: 'color 0.2s ease-in-out',
   },
 }));

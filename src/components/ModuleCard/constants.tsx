@@ -11,4 +11,4 @@ export type StatusValueType = (typeof STATUS)[StatusKeyType];
 export const constants = {
   status: STATUS,
   bonus: 'Бонусный модуль',
-} as const;
+};

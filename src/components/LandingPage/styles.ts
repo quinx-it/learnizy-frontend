@@ -1,6 +1,6 @@
-import { styled } from '@mui/material';
+import { Box, styled } from '@mui/material';
 
-export const Main = styled('main')(() => ({
+export const Main = styled(Box)(() => ({
   margin: 0,
   width: '100%',
   padding: 0,

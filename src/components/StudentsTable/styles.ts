@@ -4,24 +4,24 @@ import Button from '@/components/Button';
 import Input from '@/components/Input';
 import Link from '@/components/Link';
 
-export const SearchContainer = styled(Box)(() => ({
+export const SearchContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
-  marginBottom: '1rem',
+  marginBottom: theme.spacing(1),
 }));
 
-export const SearchInput = styled(Input)(() => ({
+export const SearchInput = styled(Input)(({ theme }) => ({
   width: '100%',
-  maxWidth: '24rem',
+  maxWidth: theme.spacing(30),
 
   '& input': {
-    paddingLeft: '2.5rem',
+    paddingLeft: theme.spacing(3),
   },
 }));
 
 export const TableWrapper = styled(Box)(({ theme }) => ({
-  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+  boxShadow: theme.shadows[2],
   overflowX: 'auto',
-  borderRadius: '0.375rem',
+  borderRadius: theme.shape.borderRadius,
   border: `1px solid ${theme.palette.divider}`,
 }));
 
@@ -41,10 +41,10 @@ export const HeaderCell = styled(Box, {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingLeft: hasPadding ? '1rem' : 0,
-    paddingRight: hasPadding ? '1rem' : 0,
-    paddingTop: '0.75rem',
-    paddingBottom: '0.75rem',
+    paddingLeft: hasPadding ? theme.spacing(1.25) : 0,
+    paddingRight: hasPadding ? theme.spacing(1.25) : 0,
+    paddingTop: theme.spacing(0.75),
+    paddingBottom: theme.spacing(0.75),
   }),
 );
 
@@ -61,19 +61,20 @@ export const Cell = styled(Box, {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: '0.75rem',
-    paddingBottom: '0.75rem',
-    paddingLeft: hasPadding ? '1rem' : 0,
-    paddingRight: hasPadding ? '1rem' : 0,
-    gap: '0.25rem',
+    paddingTop: theme.spacing(0.75),
+    paddingBottom: theme.spacing(0.75),
+    paddingLeft: hasPadding ? theme.spacing(1.25) : 0,
+    paddingRight: hasPadding ? theme.spacing(1.25) : 0,
+    gap: theme.spacing(0.25),
   }),
 );
 
 export const EditButton = styled(Button)(({ theme }) => ({
   color: theme.palette.info.main,
   border: 'none',
-  padding: '0.5rem',
+  padding: theme.spacing(0.625),
   cursor: 'pointer',
+
   '&:hover': {
     backgroundColor: theme.palette.info.main,
     color: theme.palette.background.default,
@@ -82,14 +83,16 @@ export const EditButton = styled(Button)(({ theme }) => ({
 
 export const CopyButton = styled(Button)(({ theme }) => ({
   border: 'none',
-  padding: '0.25rem',
+  padding: theme.spacing(0.25),
   cursor: 'pointer',
+
   '&:hover': {
     backgroundColor: 'transparent',
     color: theme.palette.text.primary,
   },
+
   '&:active': {
-    color: `${theme.palette.text.primary} !important`,
+    color: theme.palette.text.primary,
   },
 }));
 
@@ -97,19 +100,32 @@ export const LinkCell = styled(Link)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  gap: '0.5rem',
+  gap: theme.spacing(0.625),
   borderTop: `1px solid ${theme.palette.divider}`,
-  paddingLeft: '1rem',
-  paddingRight: '1rem',
-  paddingTop: '0.75rem',
-  paddingBottom: '0.75rem',
+  paddingLeft: theme.spacing(1.25),
+  paddingRight: theme.spacing(1.25),
+  paddingTop: theme.spacing(0.75),
+  paddingBottom: theme.spacing(0.75),
 }));
 
 export const EmptyMessage = styled(Box)(({ theme }) => ({
   gridColumn: '1 / -1',
   borderTop: `1px solid ${theme.palette.divider}`,
-  paddingTop: '2rem',
-  paddingBottom: '2rem',
+  paddingTop: theme.spacing(2.5),
+  paddingBottom: theme.spacing(2.5),
   textAlign: 'center',
   color: theme.palette.grey[500],
+}));
+
+export const PersonIconWrapper = styled(Box)(() => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '16px',
+  height: '16px',
+
+  '& svg': {
+    width: '16px',
+    height: '16px',
+  },
 }));

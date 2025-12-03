@@ -1,12 +1,13 @@
-import { Progress } from '@radix-ui/react-progress';
+import { useTheme } from '@mui/material';
 import { FC } from 'react';
-
-import { cn } from '@/lib/utils';
 
 import { IProgressBarProps } from './typings';
 
+import { ProgressIndicator, StyledCircle, StyledCircularSVG, StyledProgressBar } from './styles';
+
 const ProgressBar: FC<IProgressBarProps> = (props) => {
   const { value, className, variant = 'linear', size = 48, strokeWidth = 4 } = props;
+  const theme = useTheme();
 
   if (variant === 'circular') {
     const radius = (size - strokeWidth) / 2;
@@ -14,45 +15,32 @@ const ProgressBar: FC<IProgressBarProps> = (props) => {
     const offset = circumference - (value / 100) * circumference;
 
     return (
-      <svg width={size} height={size} className={cn('rotate-[-90deg]', className)}>
-        <circle
+      <StyledCircularSVG size={size} className={className}>
+        <StyledCircle
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke="var(--color-soft, #e5e7eb)"
+          stroke={theme.palette.info.main}
           strokeWidth={strokeWidth}
-          fill="transparent"
         />
-        <circle
+        <StyledCircle
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke="var(--color-medium, #9ca3af)"
+          stroke={theme.palette.primary.main}
           strokeWidth={strokeWidth}
-          fill="transparent"
           strokeDasharray={circumference}
           strokeDashoffset={offset}
           strokeLinecap="round"
-          className="transition-all duration-300"
         />
-      </svg>
+      </StyledCircularSVG>
     );
   }
 
   return (
-    <Progress
-      value={value}
-      className={cn(
-        'bg-soft relative w-full overflow-hidden rounded-full',
-        strokeWidth && `h-${strokeWidth}`,
-        className,
-      )}
-    >
-      <div
-        className="bg-medium h-full w-full flex-1 transition-all duration-300"
-        style={{ transform: `translateX(-${100 - value}%)` }}
-      />
-    </Progress>
+    <StyledProgressBar value={value} strokeWidth={strokeWidth} className={className}>
+      <ProgressIndicator style={{ transform: `translateX(-${100 - value}%)` }} />
+    </StyledProgressBar>
   );
 };
 
