@@ -57,6 +57,7 @@ const AudioPlayer: FC<IAudioPlayerProps> = (props) => {
 
     ws.load(src).catch((e: unknown) => {
       if (!(e instanceof DOMException && e.name === 'AbortError')) {
+        // eslint-disable-next-line no-console
         console.error('Ошибка загрузки аудио:', e);
       }
     });

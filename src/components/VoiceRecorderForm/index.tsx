@@ -59,12 +59,12 @@ const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = (props) => {
     if (
       lastAIQuery &&
       lastAIQuery.id === lastCreatedQueryId &&
-      lastAIQuery.status !== AIQueryStatus.PENDING
+      lastAIQuery.status !== AIQueryStatus.Pending
     ) {
-      if (lastAIQuery.status === AIQueryStatus.ANSWERED) {
+      if (lastAIQuery.status === AIQueryStatus.Answered) {
         setLastAIResponse(lastAIQuery.aiResponseText || 'ИИ ответил на ваш вопрос.');
         setLastAIError(null);
-      } else if (lastAIQuery.status === AIQueryStatus.FAILED) {
+      } else if (lastAIQuery.status === AIQueryStatus.Failed) {
         setLastAIError(lastAIQuery.processingError || 'Не удалось получить ответ от ИИ.');
         setLastAIResponse(null);
       }

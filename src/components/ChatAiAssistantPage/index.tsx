@@ -54,8 +54,8 @@ const ChatAiAssistantPage: FC = () => {
 
     setOptimisticMessages(chatData.messages);
 
-    const userCount = chatData.messages.filter((m) => m.role === Role.USER).length;
-    const assistantCount = chatData.messages.filter((m) => m.role === Role.ASSISTANT).length;
+    const userCount = chatData.messages.filter((m) => m.role === Role.User).length;
+    const assistantCount = chatData.messages.filter((m) => m.role === Role.Assistant).length;
 
     if (userCount > assistantCount) {
       startPolling();
@@ -69,7 +69,7 @@ const ChatAiAssistantPage: FC = () => {
 
     const optimisticMessage: IMessage = {
       id: Date.now(),
-      role: Role.USER,
+      role: Role.User,
       content: data.text || '',
       audioFileUrl: data.audioFileUrl || null,
       voiceTranscript: data.text || null,
@@ -96,8 +96,8 @@ const ChatAiAssistantPage: FC = () => {
 
   if (!chatId) return null;
 
-  const userCount = optimisticMessages.filter((m) => m.role === Role.USER).length;
-  const assistantCount = optimisticMessages.filter((m) => m.role === Role.ASSISTANT).length;
+  const userCount = optimisticMessages.filter((m) => m.role === Role.User).length;
+  const assistantCount = optimisticMessages.filter((m) => m.role === Role.Assistant).length;
 
   return (
     <Container>

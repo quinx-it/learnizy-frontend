@@ -1,6 +1,6 @@
 export enum CardType {
-  Dark = 'dark',
-  Light = 'light',
+  Dark = 'Dark',
+  Light = 'Light',
 }
 
 export const constants = {

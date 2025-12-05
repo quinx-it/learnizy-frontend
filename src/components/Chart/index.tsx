@@ -30,8 +30,8 @@ import {
 } from './styles';
 
 export enum ChartTheme {
-  Light = 'light',
-  Dark = 'dark',
+  Light = 'Light',
+  Dark = 'Dark',
 }
 
 export const THEMES = {

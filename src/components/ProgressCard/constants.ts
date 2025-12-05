@@ -1,4 +1,4 @@
 export enum ProgressStatus {
-  CONTINUE = 'Продолжить',
-  START = 'Начать',
+  Continue = 'Continue',
+  Start = 'Start',
 }

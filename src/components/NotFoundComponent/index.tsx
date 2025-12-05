@@ -32,13 +32,13 @@ const NotFoundComponent: FC<NotFoundComponentPropsType> = (props) => {
     <Container className={className}>
       <NotFoundNumber>404</NotFoundNumber>
       <NotFoundTitle tag="h2" variant="2xl">
-        {t('NOT_FOUND_TITLE')}
+        {t('COMMON.NOT_FOUND_TITLE')}
       </NotFoundTitle>
       <AstronautImage>
         <Image width={192} height={207} src="/images/notfound-astronaut.webp" alt="astronaut" />
       </AstronautImage>
       <StyledLinkButton href={defaultUrl}>
-        <StyledButton>{t('GO_HOME')}</StyledButton>
+        <StyledButton>{t('COMMON.GO_HOME')}</StyledButton>
       </StyledLinkButton>
     </Container>
   );

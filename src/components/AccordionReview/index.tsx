@@ -6,7 +6,6 @@ import { ArrowRightIcon } from '@/components/Icons';
 import { Text } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
 
-import '@/components/Accordion/accordion.css';
 import { AccordionReviewPropsType } from './typings';
 
 import {
@@ -44,7 +43,7 @@ const AccordionReview: FC<AccordionReviewPropsType> = (props) => {
               </IconClose>
             </IconWrapper>
           </StyledAccordionTrigger>
-          <StyledAccordionContent className="accordion-content">
+          <StyledAccordionContent>
             <Text>{content}</Text>
           </StyledAccordionContent>
         </StyledAccordionItem>

@@ -1,8 +1,8 @@
 export enum ModuleCompletionStatus {
-  NOT_STARTED = 'NOT_STARTED',
-  BLOCKED = 'BLOCKED',
-  IN_PROGRESS = 'IN_PROGRESS',
-  COMPLETED = 'COMPLETED',
+  NotStarted = 'NOT_STARTED',
+  Blocked = 'BLOCKED',
+  InProgress = 'IN_PROGRESS',
+  Completed = 'COMPLETED',
 }
 
 export interface ICourseInfo {

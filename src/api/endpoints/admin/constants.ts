@@ -1,12 +1,12 @@
 export enum LessonStatus {
-  NOT_STARTED = 'not_started',
-  COMPLETED = 'completed',
-  BLOCKED = 'blocked',
+  NotStarted = 'NOT_STARTED',
+  Completed = 'COMPLETED',
+  Blocked = 'BLOCKED',
 }
 
 export enum CompletionStatus {
-  NOT_STARTED = 'not_started',
-  IN_PROGRESS = 'in_progress',
-  COMPLETED = 'completed',
-  BLOCKED = 'blocked',
+  NotStarted = 'NOT_STARTED',
+  InProgress = 'IN_PROGRESS',
+  Completed = 'COMPLETED',
+  Blocked = 'BLOCKED',
 }

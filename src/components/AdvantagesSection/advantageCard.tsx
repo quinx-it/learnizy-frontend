@@ -1,55 +1,38 @@
 import Image from 'next/image';
 import { FC } from 'react';
 
-import { Heading, Text } from '@/components/Typography';
-import { cn } from '@/lib/utils';
+import { Text } from '@/components/Typography';
 
-import { CardType } from './constants';
 import { AdvantageCardPropsType } from './typings';
 
-const cardStyles = {
-  [CardType.Dark]: {
-    bg: 'bg-primary',
-    heading: 'text-card',
-    text: 'text-card',
-  },
-  [CardType.Light]: {
-    bg: 'bg-card',
-    heading: 'text-primary',
-    text: 'text-primary',
-  },
-};
+import { StyledCard, CardContent, StyledCardHeading, ImageWrapper } from './styles';
 
 export const AdvantageCard: FC<AdvantageCardPropsType> = (props) => {
   const { type, title, text, className } = props;
 
-  const styles = cardStyles[type];
-
   return (
-    <div
-      className={cn(
-        'relative flex aspect-square max-w-[558px] flex-col justify-between overflow-hidden rounded-3xl p-16',
-        styles.bg,
-        className,
-      )}
-    >
-      <div>
-        <Heading variant="5xl" className={`mb-3 ${styles.heading}`}>
-          {title}
-        </Heading>
-        <Text variant="l" className={`${styles.text}`}>
-          {text}
-        </Text>
-      </div>
-      <div className="mt-6 flex justify-center">
+    <StyledCard cardType={type} className={className}>
+      <CardContent>
+        <StyledCardHeading variant="5xl">{title}</StyledCardHeading>
+        <Text variant="l">{text}</Text>
+      </CardContent>
+      <ImageWrapper>
         <Image
           width={305}
           height={306}
           src="/images/rocketOnBlue.webp"
           alt="rocket"
-          className="absolute -right-1/10 -bottom-1/10 w-1/2 max-w-[305px] scale-x-[-1] transform xl:w-full"
+          style={{
+            position: 'absolute',
+            right: '-10%',
+            bottom: '-10%',
+            width: '50%',
+            maxWidth: '305px',
+            transform: 'scaleX(-1)',
+          }}
+          className="xl:w-full"
         />
-      </div>
-    </div>
+      </ImageWrapper>
+    </StyledCard>
   );
 };

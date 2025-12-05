@@ -199,7 +199,7 @@
   },
   "PROGRESS_STATUSES": {
     "COMPLETED": "Completed",
-    "NOT_STARTED": "started",
+    "NOT_STARTED": "Not started",
     "BLOCKED": "Blocked",
     "IN_PROGRESS": "In progress"
   },

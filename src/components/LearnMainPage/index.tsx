@@ -30,33 +30,33 @@ const mapModuleCompletionStatusToModuleStatus = (
   apiStatus: ModuleCompletionStatus,
   completedLessons: number,
 ): ModuleStatus => {
-  if (apiStatus === ModuleCompletionStatus.BLOCKED) {
-    return ModuleStatus.BLOCKED;
+  if (apiStatus === ModuleCompletionStatus.Blocked) {
+    return ModuleStatus.Blocked;
   }
 
-  if (apiStatus === ModuleCompletionStatus.COMPLETED) {
-    return ModuleStatus.COMPLETED;
+  if (apiStatus === ModuleCompletionStatus.Completed) {
+    return ModuleStatus.Completed;
   }
 
   if (completedLessons > 0) {
-    return ModuleStatus.IN_PROGRESS;
+    return ModuleStatus.InProgress;
   }
 
-  return ModuleStatus.NOT_STARTED;
+  return ModuleStatus.NotStarted;
 };
 
 const mapModuleStatusToCourseListItemStatus = (status: ModuleStatus): CourseListItemStatus => {
   switch (status) {
-    case ModuleStatus.BLOCKED:
-      return CourseListItemStatus.BLOCKED;
-    case ModuleStatus.COMPLETED:
-      return CourseListItemStatus.COMPLETED;
-    case ModuleStatus.IN_PROGRESS:
-      return CourseListItemStatus.IN_PROGRESS;
-    case ModuleStatus.NOT_STARTED:
-      return CourseListItemStatus.NOT_STARTED;
+    case ModuleStatus.Blocked:
+      return CourseListItemStatus.Blocked;
+    case ModuleStatus.Completed:
+      return CourseListItemStatus.Completed;
+    case ModuleStatus.InProgress:
+      return CourseListItemStatus.InProgress;
+    case ModuleStatus.NotStarted:
+      return CourseListItemStatus.NotStarted;
     default:
-      return CourseListItemStatus.NOT_STARTED;
+      return CourseListItemStatus.NotStarted;
   }
 };
 
@@ -92,7 +92,7 @@ const LearnMainPage: FC = () => {
           subTitle={currentModule?.title || t(constants.titles.moduleName)}
           totalLessons={currentModule?.totalLessons || 0}
           lessons={currentModule?.completedLessons || 0}
-          status={ProgressStatus.CONTINUE}
+          status={ProgressStatus.Continue}
           onClick={() => currentModule && router.push(`${routes.user.modules}/${currentModule.id}`)}
         />
 
@@ -127,7 +127,7 @@ const LearnMainPage: FC = () => {
                       status={courseListItemStatus}
                       progress={moduleProgress}
                       onClick={() =>
-                        moduleStatus !== ModuleStatus.BLOCKED &&
+                        moduleStatus !== ModuleStatus.Blocked &&
                         router.push(`${routes.user.modules}/${module.id}`)
                       }
                     />

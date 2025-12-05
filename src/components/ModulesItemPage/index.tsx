@@ -71,7 +71,7 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
   const router = useRouter();
 
   const role = useSelector(selectUserRole);
-  const isMentor = role === UserRole.MENTOR;
+  const isMentor = role === UserRole.Mentor;
 
   const { breadcrumbs, examAvailableNumber } = constants;
 

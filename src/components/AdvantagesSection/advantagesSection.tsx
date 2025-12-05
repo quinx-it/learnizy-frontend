@@ -1,26 +1,30 @@
-import SectionContent from '@/components/SectionContent';
-import { Heading } from '@/components/Typography';
-
 import { AdvantageCard } from './advantageCard';
 import { constants } from './constants';
 
+import {
+  StyledSectionContent,
+  SectionWrapper,
+  HeaderContainer,
+  StyledHeading7xl,
+  StyledHeadingDescription,
+  CardsGrid,
+} from './styles';
+
 export const AdvantagesSection = () => {
   return (
-    <SectionContent className="bg-[#B7E3F0]">
-      <div className="mx-auto max-w-[1140px] px-4">
-        <div className="w-full px-16">
-          <Heading variant="7xl" className="mb-2">
-            {constants.title}
-          </Heading>
-          <Heading className="mb-30 max-w-[750px]">{constants.description}</Heading>
-        </div>
+    <StyledSectionContent>
+      <SectionWrapper>
+        <HeaderContainer>
+          <StyledHeading7xl variant="7xl">{constants.title}</StyledHeading7xl>
+          <StyledHeadingDescription>{constants.description}</StyledHeadingDescription>
+        </HeaderContainer>
 
-        <div className="mx-auto grid w-full grid-cols-1 gap-6 lg:grid-cols-2">
+        <CardsGrid>
           {constants.cards.map((item, index) => (
             <AdvantageCard key={index} {...item} />
           ))}
-        </div>
-      </div>
-    </SectionContent>
+        </CardsGrid>
+      </SectionWrapper>
+    </StyledSectionContent>
   );
 };

@@ -49,7 +49,7 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
 
   const { data: lesson, isLoading } = useGetLessonQuery(lessonId);
   const role = useSelector(selectUserRole);
-  const isMentor = role === UserRole.MENTOR;
+  const isMentor = role === UserRole.Mentor;
 
   const [updateContent] = useUpdateLessonContentMarkdownMutation();
 

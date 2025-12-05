@@ -2,31 +2,30 @@
 
 import { forwardRef } from 'react';
 
-import { cn } from '@/lib/utils';
-
-import { headingVariants, textVariants } from './constants';
 import { IHeadingProps, ITextProps } from './typings';
 
+import { StyledHeading, StyledText } from './styles';
+
 const Heading = forwardRef<HTMLHeadingElement, IHeadingProps>(
-  ({ tag = 'h3', variant, children, className, ...props }, ref) => {
-    const Tag = tag;
+  ({ tag = 'h3', variant = 'xl', children, className, ...props }, ref) => {
+    const StyledComponent = StyledHeading.withComponent(tag);
 
     return (
-      <Tag className={cn(headingVariants({ variant, className }))} ref={ref} {...props}>
+      <StyledComponent variant={variant || 'xl'} className={className} ref={ref} {...props}>
         {children}
-      </Tag>
+      </StyledComponent>
     );
   },
 );
 
 const Text = forwardRef<HTMLParagraphElement, ITextProps>(
-  ({ tag = 'p', variant, children, className, ...props }, ref) => {
-    const Tag = tag;
+  ({ tag = 'p', variant = 's', children, className, ...props }, ref) => {
+    const StyledComponent = StyledText.withComponent(tag);
 
     return (
-      <Tag className={cn(textVariants({ variant, className }))} ref={ref} {...props}>
+      <StyledComponent variant={variant || 's'} className={className} ref={ref} {...props}>
         {children}
-      </Tag>
+      </StyledComponent>
     );
   },
 );

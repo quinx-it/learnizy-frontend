@@ -1,4 +1,11 @@
-export type ExamStatusType = 'BLOCKED' | 'AVAILABLE' | 'FAILED' | 'PASSED';
+export enum ExamApiStatus {
+  Passed = 'PASSED',
+  Failed = 'FAILED',
+  Available = 'AVAILABLE',
+  Blocked = 'BLOCKED',
+}
+
+export type ExamStatusType = ExamApiStatus;
 
 export interface IExamLastResult {
   scorePercent: number;

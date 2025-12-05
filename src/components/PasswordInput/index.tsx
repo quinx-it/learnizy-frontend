@@ -2,41 +2,66 @@
 
 import { forwardRef, useState } from 'react';
 
-import Button from '@/components/Button';
-import { EyeIcon } from '@/components/Icons';
-import Input from '@/components/Input';
-import { cn } from '@/lib/utils';
-
-import './styles.css';
+import Label from '@/components/Label';
+import { Text } from '@/components/Typography';
 
 import { IPasswordInputProps } from './typings';
 
+import {
+  InputWrapper,
+  PasswordInputWrapper,
+  ScreenReaderOnly,
+  StyledEyeIcon,
+  StyledInput,
+  ToggleButton,
+} from './styles';
+import { ErrorText, LabelWrapper } from '@/components/Input/styles';
+
 const PasswordInput = forwardRef<HTMLInputElement, IPasswordInputProps>(
-  ({ className, innerClassName, disabled, autoComplete, ...props }, ref) => {
+  ({ className, innerClassName, disabled, autoComplete, error, label, ...props }, ref) => {
     const [showPassword, setShowPassword] = useState(false);
 
     return (
-      <div className={cn('relative', className)}>
-        <Input
-          type={showPassword ? 'text' : 'password'}
-          className=""
-          autoComplete={autoComplete}
-          innerClassName={cn(innerClassName, 'hide-password-toggle pr-10')}
-          ref={ref}
-          {...props}
-        />
-        <Button
-          type="button"
-          variant="white"
-          size="small"
-          className="absolute top-6.25 right-0 cursor-pointer border-none bg-transparent px-3 py-2 hover:bg-transparent"
-          onClick={() => setShowPassword((prev) => !prev)}
-          disabled={disabled}
-        >
-          <EyeIcon open={showPassword && !disabled} className="h-4 w-4" aria-hidden="true" />
-          <span className="sr-only">{showPassword ? 'Hide password' : 'Show password'}</span>
-        </Button>
-      </div>
+      <PasswordInputWrapper className={className}>
+        {label && (
+          <LabelWrapper>
+            <Label>
+              <Text variant="s" className="text-medium">
+                {label}
+              </Text>
+            </Label>
+          </LabelWrapper>
+        )}
+        <InputWrapper>
+          <StyledInput
+            ref={ref}
+            type={showPassword ? 'text' : 'password'}
+            autoComplete={autoComplete ?? ''}
+            data-slot="input"
+            hasError={!!error}
+            aria-invalid={!!error}
+            className={innerClassName}
+            disabled={disabled}
+            {...props}
+          />
+          <ToggleButton
+            type="button"
+            onClick={() => setShowPassword((prev) => !prev)}
+            disabled={disabled}
+            aria-label={showPassword ? 'Hide password' : 'Show password'}
+          >
+            <StyledEyeIcon open={showPassword && !disabled} aria-hidden="true" />
+            <ScreenReaderOnly>{showPassword ? 'Hide password' : 'Show password'}</ScreenReaderOnly>
+          </ToggleButton>
+        </InputWrapper>
+        {error && (
+          <ErrorText>
+            <Text variant="s" className="text-error">
+              {error}
+            </Text>
+          </ErrorText>
+        )}
+      </PasswordInputWrapper>
     );
   },
 );

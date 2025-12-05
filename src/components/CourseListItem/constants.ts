@@ -1,15 +1,15 @@
 export enum CourseListItemStatus {
-  NOT_STARTED = 'NOT_STARTED',
-  IN_PROGRESS = 'IN_PROGRESS',
-  COMPLETED = 'COMPLETED',
-  BLOCKED = 'BLOCKED',
+  NotStarted = 'NotStarted',
+  InProgress = 'InProgress',
+  Completed = 'Completed',
+  Blocked = 'Blocked',
 }
 
 export const constants = {
   statuses: {
-    [CourseListItemStatus.COMPLETED]: 'PROGRESS_STATUSES.COMPLETED',
-    [CourseListItemStatus.NOT_STARTED]: 'PROGRESS_STATUSES.NOT_STARTED',
-    [CourseListItemStatus.BLOCKED]: 'PROGRESS_STATUSES.BLOCKED',
-    [CourseListItemStatus.IN_PROGRESS]: 'PROGRESS_STATUSES.IN_PROGRESS',
+    [CourseListItemStatus.Completed]: 'PROGRESS_STATUSES.COMPLETED',
+    [CourseListItemStatus.NotStarted]: 'PROGRESS_STATUSES.NOT_STARTED',
+    [CourseListItemStatus.Blocked]: 'PROGRESS_STATUSES.BLOCKED',
+    [CourseListItemStatus.InProgress]: 'PROGRESS_STATUSES.IN_PROGRESS',
   },
 };

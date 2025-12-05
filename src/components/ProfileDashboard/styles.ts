@@ -55,9 +55,14 @@ export const LinksContainer = styled(Box)(({ theme }) => ({
 
 export const LogoutButton = styled(Button)(({ theme }) => ({
   justifyContent: 'flex-start',
-  border: 0,
   fontSize: '16px',
   backgroundColor: 'transparent',
+  border: 'none',
+  paddingLeft: theme.spacing(2),
+  paddingRight: theme.spacing(2),
+  paddingTop: theme.spacing(2),
+  paddingBottom: theme.spacing(2),
+  width: '100%',
 
   '&:hover': {
     backgroundColor: theme.palette.primary.main,

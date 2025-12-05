@@ -8,38 +8,38 @@ import {
 } from './styles';
 
 export enum EvaluationTextLabel {
-  CORRECT = 'Верно',
-  PARTIAL = 'Частично верно',
-  INCORRECT = 'Неверно',
-  UNASSESSED = 'Ответ находится на проверке',
+  Correct = 'Верно',
+  Partial = 'Частично верно',
+  Incorrect = 'Неверно',
+  Unassessed = 'Ответ находится на проверке',
 }
 
 export const EvaluationValue = {
-  [AnswerEvaluation.CORRECT]: 1,
-  [AnswerEvaluation.PARTIAL]: 0.5,
-  [AnswerEvaluation.INCORRECT]: 0,
-  [AnswerEvaluation.UNASSESSED]: 0,
+  [AnswerEvaluation.Correct]: 1,
+  [AnswerEvaluation.Partial]: 0.5,
+  [AnswerEvaluation.Incorrect]: 0,
+  [AnswerEvaluation.Unassessed]: 0,
 };
 
 export const evaluationMap = {
-  [AnswerEvaluation.CORRECT]: {
-    text: EvaluationTextLabel.CORRECT,
+  [AnswerEvaluation.Correct]: {
+    text: EvaluationTextLabel.Correct,
     component: EvaluationTextCorrect,
-    value: EvaluationValue[AnswerEvaluation.CORRECT],
+    value: EvaluationValue[AnswerEvaluation.Correct],
   },
-  [AnswerEvaluation.PARTIAL]: {
-    text: EvaluationTextLabel.PARTIAL,
+  [AnswerEvaluation.Partial]: {
+    text: EvaluationTextLabel.Partial,
     component: EvaluationTextPartial,
-    value: EvaluationValue[AnswerEvaluation.PARTIAL],
+    value: EvaluationValue[AnswerEvaluation.Partial],
   },
-  [AnswerEvaluation.INCORRECT]: {
-    text: EvaluationTextLabel.INCORRECT,
+  [AnswerEvaluation.Incorrect]: {
+    text: EvaluationTextLabel.Incorrect,
     component: EvaluationTextIncorrect,
-    value: EvaluationValue[AnswerEvaluation.INCORRECT],
+    value: EvaluationValue[AnswerEvaluation.Incorrect],
   },
-  [AnswerEvaluation.UNASSESSED]: {
-    text: EvaluationTextLabel.UNASSESSED,
+  [AnswerEvaluation.Unassessed]: {
+    text: EvaluationTextLabel.Unassessed,
     component: EvaluationTextPending,
-    value: EvaluationValue[AnswerEvaluation.UNASSESSED],
+    value: EvaluationValue[AnswerEvaluation.Unassessed],
   },
 };

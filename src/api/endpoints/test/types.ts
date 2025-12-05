@@ -1,8 +1,8 @@
 export type TestType = 'LESSON_TEST';
 
 export enum AnswerInputType {
-  TEXT = 'TEXT',
-  VOICE = 'VOICE',
+  Text = 'TEXT',
+  Voice = 'VOICE',
 }
 
 export type QuestionAnswerSubmitType = {
@@ -49,17 +49,17 @@ export type LessonTestFormValuesType = {
 };
 
 export enum TestStatus {
-  SUBMITTED = 'SUBMITTED',
-  EVALUATING = 'EVALUATING',
-  EVALUATED = 'EVALUATED',
-  FAILED = 'FAILED',
+  Submitted = 'SUBMITTED',
+  Evaluating = 'EVALUATING',
+  Evaluated = 'EVALUATED',
+  Failed = 'FAILED',
 }
 
 export enum AnswerEvaluation {
-  CORRECT = 'CORRECT',
-  INCORRECT = 'INCORRECT',
-  PARTIAL = 'PARTIAL',
-  UNASSESSED = 'UNASSESSED',
+  Correct = 'CORRECT',
+  Incorrect = 'INCORRECT',
+  Partial = 'PARTIAL',
+  Unassessed = 'UNASSESSED',
 }
 
 export interface ILessonAnswer extends QuestionAnswerSubmitType {

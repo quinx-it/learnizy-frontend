@@ -30,7 +30,7 @@ export const renderModuleProgress = (
   const progress = percentage(totalLessons, completedLessons);
 
   switch (completionStatus) {
-    case CompletionStatus.COMPLETED:
+    case CompletionStatus.Completed:
       return {
         element: (
           <StarContainer>
@@ -43,13 +43,19 @@ export const renderModuleProgress = (
         status: constants.status.completed,
       };
 
-    case CompletionStatus.NOT_STARTED:
+    case CompletionStatus.InProgress:
+      return {
+        element: <ProcentContent progress={progress} />,
+        status: constants.status.active,
+      };
+
+    case CompletionStatus.NotStarted:
       return {
         element: <ProcentContent progress={progress} />,
         status: constants.status.start,
       };
 
-    case CompletionStatus.BLOCKED:
+    case CompletionStatus.Blocked:
       return {
         element: null,
         status: constants.status.blocked,

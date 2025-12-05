@@ -5,4 +5,5 @@ export interface IModuleProgressCardProps {
   isMentor: boolean;
   openEditModal: (moduleId: number) => void;
   handleDeleteModule: (moduleId: number) => void;
+  shouldBlock?: boolean;
 }

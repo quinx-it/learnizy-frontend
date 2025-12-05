@@ -41,7 +41,7 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
 
   const { t } = useTranslation();
   const role = useSelector(selectUserRole);
-  const isMentor = role === UserRole.MENTOR;
+  const isMentor = role === UserRole.Mentor;
 
   const bonus = false;
 

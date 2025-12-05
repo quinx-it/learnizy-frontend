@@ -48,7 +48,7 @@ const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
 
     if (
       lastMessage &&
-      lastMessage.role !== Role.USER &&
+      lastMessage.role !== Role.User &&
       prevIsWaiting === true &&
       isWaitingForAssistant === false
     ) {
@@ -72,11 +72,11 @@ const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
       {messages.map((message, index) => {
         const shouldAnimate =
           index === messages.length - 1 &&
-          message.role !== Role.USER &&
+          message.role !== Role.User &&
           prevIsWaiting === true &&
           isWaitingForAssistant === false;
 
-        const isUser = message.role === Role.USER;
+        const isUser = message.role === Role.User;
 
         return (
           <MessageWrapper key={message.id} isUser={isUser}>

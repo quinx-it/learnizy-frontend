@@ -11,6 +11,7 @@ import {
   useDeleteModuleMutation,
   IModuleInfo,
 } from '@/api/endpoints/admin';
+import { ModuleCompletionStatus, useGetMainPageProgressQuery } from '@/api/endpoints/progress';
 import { CompletionStatus } from '@/api/endpoints/types';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import {
@@ -50,7 +51,7 @@ import {
 } from './styles';
 
 const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
-  const { module, isMentor, openEditModal, handleDeleteModule } = props;
+  const { module, isMentor, openEditModal, handleDeleteModule, shouldBlock = false } = props;
 
   const courseId = 1;
 
@@ -66,12 +67,18 @@ const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
       ...module,
       totalLessons: 0,
       completedLessons: 0,
-      completionStatus: CompletionStatus.NOT_STARTED,
+      completionStatus: shouldBlock ? CompletionStatus.Blocked : CompletionStatus.NotStarted,
     };
   } else {
+    let completionStatus = progressData.moduleInfo.completionStatus as CompletionStatus;
+
+    if (!isMentor && shouldBlock) {
+      completionStatus = CompletionStatus.Blocked;
+    }
+
     moduleInfo = {
       ...progressData.moduleInfo,
-      completionStatus: progressData.moduleInfo.completionStatus as CompletionStatus,
+      completionStatus,
     };
   }
 
@@ -93,7 +100,7 @@ const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
 
 const ModulesPage: FC = () => {
   const role = useSelector(selectUserRole);
-  const isMentor = role === UserRole.MENTOR;
+  const isMentor = role === UserRole.Mentor;
   const { t } = useTranslation();
 
   const {
@@ -102,6 +109,7 @@ const ModulesPage: FC = () => {
     isError,
     refetch,
   } = useGetModulesQuery({ page: 0, size: 20 });
+  const { data: mainPageProgress } = useGetMainPageProgressQuery();
   const [createModule] = useCreateModuleMutation();
   const [updateModule] = useUpdateModuleMutation();
   const [deleteModule] = useDeleteModuleMutation();
@@ -223,15 +231,39 @@ const ModulesPage: FC = () => {
         {modulesData?.content
           .slice()
           .sort((a, b) => a.sequenceOrder - b.sequenceOrder)
-          .map((module) => (
-            <ModuleProgressCard
-              key={module.id}
-              module={module}
-              isMentor={isMentor}
-              openEditModal={openEditModal}
-              handleDeleteModule={handleDeleteModule}
-            />
-          ))}
+          .map((module, index, sortedModules) => {
+            let shouldBlock = false;
+
+            if (!isMentor && index > 0 && mainPageProgress) {
+              for (let i = 0; i < index; i += 1) {
+                const prevModule = sortedModules[i];
+                const prevModuleProgress = mainPageProgress.modules.find(
+                  (m) => m.id === prevModule.id,
+                );
+
+                if (prevModuleProgress) {
+                  if (prevModuleProgress.completionStatus !== ModuleCompletionStatus.Completed) {
+                    shouldBlock = true;
+                    break;
+                  }
+                } else {
+                  shouldBlock = true;
+                  break;
+                }
+              }
+            }
+
+            return (
+              <ModuleProgressCard
+                key={module.id}
+                module={module}
+                isMentor={isMentor}
+                openEditModal={openEditModal}
+                handleDeleteModule={handleDeleteModule}
+                shouldBlock={shouldBlock}
+              />
+            );
+          })}
       </ModulesGrid>
     </PageContainer>
   );

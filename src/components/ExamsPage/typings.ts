@@ -1,8 +1,8 @@
 export enum ExamStatus {
-  Completed = 'completed',
-  Failed = 'failed',
-  Available = 'available',
-  Unavailable = 'unavailable',
+  Completed = 'Completed',
+  Failed = 'Failed',
+  Available = 'Available',
+  Unavailable = 'Unavailable',
 }
 
 export type ExamType = {
