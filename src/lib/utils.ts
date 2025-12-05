@@ -48,13 +48,13 @@ export const decodeToken = (token: string): IDecodedToken => {
 };
 
 export const isMentor = (role: UserRole) => {
-  return role === UserRole.MENTOR;
+  return role === UserRole.Mentor;
 };
 export const isUser = (role: UserRole) => {
-  return role === UserRole.USER;
+  return role === UserRole.User;
 };
 export const isGuest = (role: UserRole) => {
-  return role === UserRole.GUEST;
+  return role === UserRole.Guest;
 };
 
 export function isMentorRoute(pathname: string) {
@@ -75,11 +75,11 @@ export function isRoleRoute(role: UserRole | undefined, pathname: string) {
   if (!role) return false;
 
   switch (role) {
-    case UserRole.GUEST:
+    case UserRole.Guest:
       return isPublicRoute(pathname);
-    case UserRole.USER:
+    case UserRole.User:
       return isUserRoute(pathname);
-    case UserRole.MENTOR:
+    case UserRole.Mentor:
       return isMentorRoute(pathname);
     default:
       return false;

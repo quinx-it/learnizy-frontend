@@ -3,8 +3,8 @@ export type VerificationFormValuesType = {
 };
 
 export enum RegisterStep {
-  REGISTER = 'register',
-  VERIFY = 'verify',
+  Register = 'Register',
+  Verify = 'Verify',
 }
 
 export interface IRegisterFormValues {

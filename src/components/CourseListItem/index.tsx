@@ -24,7 +24,7 @@ const CourseListItem: FC<CourseListItemType> = (props) => {
   const { t } = useTranslation();
 
   const progressBarValue = progress ?? 0;
-  const isBlocked = status === CourseListItemStatus.BLOCKED;
+  const isBlocked = status === CourseListItemStatus.Blocked;
 
   return (
     <Container>

@@ -99,6 +99,7 @@ export const StyledContent = styled(TooltipPrimitive.Content)(({ theme }) => ({
 
   '&[data-side="bottom"]': {
     animation: `${fadeIn} 0.15s ease-out, ${zoomIn} 0.15s ease-out, ${slideInFromTop} 0.15s ease-out`,
+
     '&[data-state="closed"]': {
       animation: `${fadeOut} 0.15s ease-in, ${zoomOut} 0.15s ease-in`,
     },
@@ -106,6 +107,7 @@ export const StyledContent = styled(TooltipPrimitive.Content)(({ theme }) => ({
 
   '&[data-side="left"]': {
     animation: `${fadeIn} 0.15s ease-out, ${zoomIn} 0.15s ease-out, ${slideInFromRight} 0.15s ease-out`,
+
     '&[data-state="closed"]': {
       animation: `${fadeOut} 0.15s ease-in, ${zoomOut} 0.15s ease-in`,
     },
@@ -113,6 +115,7 @@ export const StyledContent = styled(TooltipPrimitive.Content)(({ theme }) => ({
 
   '&[data-side="right"]': {
     animation: `${fadeIn} 0.15s ease-out, ${zoomIn} 0.15s ease-out, ${slideInFromLeft} 0.15s ease-out`,
+
     '&[data-state="closed"]': {
       animation: `${fadeOut} 0.15s ease-in, ${zoomOut} 0.15s ease-in`,
     },
@@ -120,6 +123,7 @@ export const StyledContent = styled(TooltipPrimitive.Content)(({ theme }) => ({
 
   '&[data-side="top"]': {
     animation: `${fadeIn} 0.15s ease-out, ${zoomIn} 0.15s ease-out, ${slideInFromBottom} 0.15s ease-out`,
+
     '&[data-state="closed"]': {
       animation: `${fadeOut} 0.15s ease-in, ${zoomOut} 0.15s ease-in`,
     },

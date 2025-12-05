@@ -64,11 +64,11 @@ export const EvaluationText = styled(BaseText, {
   shouldForwardProp: (prop) => prop !== 'evaluation',
 })<{ evaluation: AnswerEvaluation }>(({ theme, evaluation }) => {
   const getColor = () => {
-    if (evaluation === AnswerEvaluation.CORRECT) return theme.palette.success.main;
+    if (evaluation === AnswerEvaluation.Correct) return theme.palette.success.main;
 
-    if (evaluation === AnswerEvaluation.PARTIAL) return theme.palette.warning.main;
+    if (evaluation === AnswerEvaluation.Partial) return theme.palette.warning.main;
 
-    if (evaluation === AnswerEvaluation.INCORRECT) return theme.palette.error.main;
+    if (evaluation === AnswerEvaluation.Incorrect) return theme.palette.error.main;
 
     return theme.palette.grey[500];
   };

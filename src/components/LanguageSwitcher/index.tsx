@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, useRef, useEffect, FC } from 'react';
 
-import { LANGUAGES } from '@/const';
+import { Language } from '@/const';
 
 import { Container, DropdownMenu, MenuItem, ToggleButton } from './styles';
 
@@ -18,14 +18,14 @@ const LanguageSwitcher: FC = () => {
     document.cookie = `${name}=${value}; expires=${expires}; path=/`;
   };
 
-  const changeLanguage = (lng: LANGUAGES) => {
-    const lang = lng || LANGUAGES.EN;
+  const changeLanguage = (lng: Language) => {
+    const lang = lng || Language.En;
     setCookie('language', lang, 365);
 
     const segments = pathname.split('/').filter(Boolean);
-    const allLangs = Object.values(LANGUAGES);
+    const allLangs = Object.values(Language);
 
-    if (segments.length > 0 && allLangs.includes(segments[0] as LANGUAGES)) {
+    if (segments.length > 0 && allLangs.includes(segments[0] as Language)) {
       segments[0] = lang;
     } else {
       segments.unshift(lang);
@@ -54,14 +54,14 @@ const LanguageSwitcher: FC = () => {
   return (
     <Container ref={menuRef}>
       <ToggleButton type="button" onClick={() => setOpen((prev) => !prev)}>
-        {pathname.split('/')[1]?.toUpperCase() || LANGUAGES.EN.toUpperCase()}
+        {pathname.split('/')[1]?.toUpperCase() || Language.En.toUpperCase()}
       </ToggleButton>
 
       <DropdownMenu isOpen={open}>
-        <MenuItem type="button" onClick={() => changeLanguage(LANGUAGES.EN)}>
+        <MenuItem type="button" onClick={() => changeLanguage(Language.En)}>
           English
         </MenuItem>
-        <MenuItem type="button" onClick={() => changeLanguage(LANGUAGES.RU)}>
+        <MenuItem type="button" onClick={() => changeLanguage(Language.Ru)}>
           Русский
         </MenuItem>
       </DropdownMenu>

@@ -21,13 +21,13 @@ import {
 
 const mapExamStatus = (status: ExamApiStatus): ExamStatus => {
   switch (status) {
-    case ExamApiStatus.PASSED:
+    case ExamApiStatus.Passed:
       return ExamStatus.Completed;
-    case ExamApiStatus.FAILED:
+    case ExamApiStatus.Failed:
       return ExamStatus.Failed;
-    case ExamApiStatus.AVAILABLE:
+    case ExamApiStatus.Available:
       return ExamStatus.Available;
-    case ExamApiStatus.BLOCKED:
+    case ExamApiStatus.Blocked:
       return ExamStatus.Unavailable;
     default:
       return ExamStatus.Unavailable;

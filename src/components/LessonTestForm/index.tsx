@@ -61,7 +61,7 @@ const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
 
             return {
               questionId: questions[index].questionId,
-              inputType: AnswerInputType.VOICE,
+              inputType: AnswerInputType.Voice,
               voiceFileUrl: downloadUrl,
               voiceTranscript: q.voiceTranscript ?? null,
             };
@@ -69,7 +69,7 @@ const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
 
           return {
             questionId: questions[index].questionId,
-            inputType: AnswerInputType.TEXT,
+            inputType: AnswerInputType.Text,
             textAnswer: q.textAnswer ?? null,
           };
         }),

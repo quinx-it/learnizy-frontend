@@ -42,9 +42,11 @@ export const StyledButton = styled('button', {
 
     ...(variant === 'blue' && {
       backgroundColor: theme.palette.primary.main,
+
       '&:hover:not(:disabled)': {
         backgroundColor: theme.palette.primary.dark,
       },
+
       '&:disabled': {
         backgroundColor: theme.palette.info.main,
       },
@@ -53,6 +55,7 @@ export const StyledButton = styled('button', {
     ...(variant === 'yellow' && {
       backgroundColor: theme.palette.secondary.main,
       color: theme.palette.text.primary,
+
       '&:hover:not(:disabled)': {
         backgroundColor: 'var(--yellow)',
       },
@@ -62,16 +65,19 @@ export const StyledButton = styled('button', {
       backgroundColor: theme.palette.background.default,
       border: `1px solid ${theme.palette.primary.main}`,
       color: theme.palette.text.primary,
+
       '&:hover:not(:disabled)': {
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
       },
+
       '&:active:not(:disabled)': {
         borderColor: theme.palette.primary.main,
         [theme.breakpoints.up('md')]: {
           color: theme.palette.primary.contrastText,
         },
       },
+
       '&:disabled': {
         borderColor: theme.palette.grey[400],
         color: theme.palette.grey[400],
@@ -81,6 +87,7 @@ export const StyledButton = styled('button', {
     ...(variant === 'red' && {
       backgroundColor: theme.palette.primary.main,
       color: theme.palette.primary.contrastText,
+
       '&:hover:not(:disabled)': {
         backgroundColor: theme.palette.primary.dark,
       },
@@ -89,6 +96,7 @@ export const StyledButton = styled('button', {
     ...(variant === 'green' && {
       backgroundColor: theme.palette.primary.main,
       color: theme.palette.primary.contrastText,
+
       '&:hover:not(:disabled)': {
         backgroundColor: theme.palette.primary.dark,
       },
@@ -97,6 +105,7 @@ export const StyledButton = styled('button', {
     ...(variant === 'gray' && {
       backgroundColor: theme.palette.info.main,
       color: theme.palette.primary.contrastText,
+
       '&:hover:not(:disabled)': {
         backgroundColor: theme.palette.primary.main,
       },

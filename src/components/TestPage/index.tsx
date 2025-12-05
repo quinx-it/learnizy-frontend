@@ -70,9 +70,9 @@ const TestPage: FC<TestPagePropsType> = (props) => {
     <>
       <Breadcrumbs
         items={currentBreadcrumbs}
-        rootHref={testType === TestType.LESSON ? routes.user.modules : routes.user.exams}
+        rootHref={testType === TestType.Lesson ? routes.user.modules : routes.user.exams}
         rootLabel={
-          testType === TestType.LESSON
+          testType === TestType.Lesson
             ? t(globalConstants.rootBreadcrumbLabels.modulesLabel)
             : t(globalConstants.rootBreadcrumbLabels.examsLabel)
         }

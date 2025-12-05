@@ -57,7 +57,7 @@ export const dynamicMentorRoutes = [
 export const loginPageUrl = routes.public.loginPage;
 
 export const defaultPage: Record<UserRole, string> = {
-  [UserRole.GUEST]: routes.public.loginPage,
-  [UserRole.USER]: routes.user.homePage,
-  [UserRole.MENTOR]: routes.mentor.students,
+  [UserRole.Guest]: routes.public.loginPage,
+  [UserRole.User]: routes.user.homePage,
+  [UserRole.Mentor]: routes.mentor.students,
 };

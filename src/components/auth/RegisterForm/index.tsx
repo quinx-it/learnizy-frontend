@@ -40,7 +40,7 @@ import type { HttpStatusError } from '@/types';
 
 const RegisterForm: FC = () => {
   const router = useRouter();
-  const [step, setStep] = useState<RegisterStep>(RegisterStep.REGISTER);
+  const [step, setStep] = useState<RegisterStep>(RegisterStep.Register);
   const [userEmail, setUserEmail] = useState('');
   const [timer, setTimer] = useState(30);
   const [canResend, setCanResend] = useState(false);
@@ -75,7 +75,7 @@ const RegisterForm: FC = () => {
   });
 
   useEffect(() => {
-    if (step !== RegisterStep.VERIFY) return;
+    if (step !== RegisterStep.Verify) return;
 
     if (timer > 0) {
       const interval = setInterval(() => {
@@ -97,7 +97,7 @@ const RegisterForm: FC = () => {
       }).unwrap();
       showToast('success', 'Успешно', 'Код подтверждения отправлен на вашу почту.');
       setUserEmail(data.email);
-      setStep(RegisterStep.VERIFY);
+      setStep(RegisterStep.Verify);
       setTimer(30);
       setCanResend(false);
     } catch (error: unknown) {
@@ -141,7 +141,7 @@ const RegisterForm: FC = () => {
     }
   };
 
-  if (step === 'verify') {
+  if (step === RegisterStep.Verify) {
     return (
       <Container>
         <HeadingContainer>

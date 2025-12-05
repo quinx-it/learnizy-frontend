@@ -1,38 +1,38 @@
 import { AnswerEvaluation } from '@/api/endpoints/test';
 
 export enum EvaluationTextLabel {
-  CORRECT = 'Верно',
-  PARTIAL = 'Частично верно',
-  INCORRECT = 'Неверно',
-  UNASSESSED = 'Ответ находится на проверке',
+  Correct = 'Верно',
+  Partial = 'Частично верно',
+  Incorrect = 'Неверно',
+  Unassessed = 'Ответ находится на проверке',
 }
 
 export const EvaluationValue = {
-  [AnswerEvaluation.CORRECT]: 1,
-  [AnswerEvaluation.PARTIAL]: 0.5,
-  [AnswerEvaluation.INCORRECT]: 0,
-  [AnswerEvaluation.UNASSESSED]: 0,
+  [AnswerEvaluation.Correct]: 1,
+  [AnswerEvaluation.Partial]: 0.5,
+  [AnswerEvaluation.Incorrect]: 0,
+  [AnswerEvaluation.Unassessed]: 0,
 };
 
 export const evaluationMap = {
-  [AnswerEvaluation.CORRECT]: {
-    text: EvaluationTextLabel.CORRECT,
-    evaluation: AnswerEvaluation.CORRECT,
-    value: EvaluationValue[AnswerEvaluation.CORRECT],
+  [AnswerEvaluation.Correct]: {
+    text: EvaluationTextLabel.Correct,
+    evaluation: AnswerEvaluation.Correct,
+    value: EvaluationValue[AnswerEvaluation.Correct],
   },
-  [AnswerEvaluation.PARTIAL]: {
-    text: EvaluationTextLabel.PARTIAL,
-    evaluation: AnswerEvaluation.PARTIAL,
-    value: EvaluationValue[AnswerEvaluation.PARTIAL],
+  [AnswerEvaluation.Partial]: {
+    text: EvaluationTextLabel.Partial,
+    evaluation: AnswerEvaluation.Partial,
+    value: EvaluationValue[AnswerEvaluation.Partial],
   },
-  [AnswerEvaluation.INCORRECT]: {
-    text: EvaluationTextLabel.INCORRECT,
-    evaluation: AnswerEvaluation.INCORRECT,
-    value: EvaluationValue[AnswerEvaluation.INCORRECT],
+  [AnswerEvaluation.Incorrect]: {
+    text: EvaluationTextLabel.Incorrect,
+    evaluation: AnswerEvaluation.Incorrect,
+    value: EvaluationValue[AnswerEvaluation.Incorrect],
   },
-  [AnswerEvaluation.UNASSESSED]: {
-    text: EvaluationTextLabel.UNASSESSED,
-    evaluation: AnswerEvaluation.UNASSESSED,
-    value: EvaluationValue[AnswerEvaluation.UNASSESSED],
+  [AnswerEvaluation.Unassessed]: {
+    text: EvaluationTextLabel.Unassessed,
+    evaluation: AnswerEvaluation.Unassessed,
+    value: EvaluationValue[AnswerEvaluation.Unassessed],
   },
 };

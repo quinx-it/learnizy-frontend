@@ -49,7 +49,7 @@ const BlockRenderer: FC<IBlockRendererProps> = (props) => {
     children?.map((child) => <BlockRenderer key={child.id} block={child} />);
 
   switch (block.blockType) {
-    case BlockType.HEADING:
+    case BlockType.Heading:
       return (
         <Heading
           tag={headingTags[block.properties.level]}
@@ -61,7 +61,7 @@ const BlockRenderer: FC<IBlockRendererProps> = (props) => {
         </Heading>
       );
 
-    case BlockType.TEXT: {
+    case BlockType.Text: {
       const hasChildren = block.children && block.children.length > 0;
       const variant = getTextVariant(block.properties.size ?? 'm', block.properties.style);
 
@@ -85,7 +85,7 @@ const BlockRenderer: FC<IBlockRendererProps> = (props) => {
       );
     }
 
-    case BlockType.LINK:
+    case BlockType.Link:
       return (
         <StyledLinkWrapper style={baseStyle}>
           <Link
@@ -99,14 +99,14 @@ const BlockRenderer: FC<IBlockRendererProps> = (props) => {
         </StyledLinkWrapper>
       );
 
-    case BlockType.UL:
+    case BlockType.Ul:
       return (
         <UnorderedList style={{ marginBottom: block.properties.mb ?? 0 }}>
           {renderChildren(block.children)}
         </UnorderedList>
       );
 
-    case BlockType.LI: {
+    case BlockType.Li: {
       const liStyle = {
         marginBottom: block.properties.mb ?? 0,
         color: block.properties.color,
@@ -120,7 +120,7 @@ const BlockRenderer: FC<IBlockRendererProps> = (props) => {
       );
     }
 
-    case BlockType.CODE:
+    case BlockType.Code:
       return (
         <CodeBlock style={baseStyle}>
           <Code>
@@ -130,7 +130,7 @@ const BlockRenderer: FC<IBlockRendererProps> = (props) => {
         </CodeBlock>
       );
 
-    case BlockType.IMAGE: {
+    case BlockType.Image: {
       const isValidUrl = (str: string) => {
         try {
           const url = new URL(str);
@@ -157,7 +157,7 @@ const BlockRenderer: FC<IBlockRendererProps> = (props) => {
       );
     }
 
-    case BlockType.ADVICE:
+    case BlockType.Advice:
       return (
         <AdviceContainer style={baseStyle}>
           <StrongText>
@@ -168,7 +168,7 @@ const BlockRenderer: FC<IBlockRendererProps> = (props) => {
         </AdviceContainer>
       );
 
-    case BlockType.WARNING:
+    case BlockType.Warning:
       return (
         <WarningContainer style={baseStyle}>
           <StrongTextWithGap>
@@ -179,7 +179,7 @@ const BlockRenderer: FC<IBlockRendererProps> = (props) => {
         </WarningContainer>
       );
 
-    case BlockType.BOXED_TEXT:
+    case BlockType.BoxedText:
       return (
         <BoxedTextContainer style={baseStyle}>
           <StrongTextWithoutGap>{block.content}</StrongTextWithoutGap>

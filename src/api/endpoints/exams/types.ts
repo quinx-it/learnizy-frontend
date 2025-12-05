@@ -1,8 +1,8 @@
 export enum ExamApiStatus {
-  PASSED = 'PASSED',
-  FAILED = 'FAILED',
-  AVAILABLE = 'AVAILABLE',
-  BLOCKED = 'BLOCKED',
+  Passed = 'PASSED',
+  Failed = 'FAILED',
+  Available = 'AVAILABLE',
+  Blocked = 'BLOCKED',
 }
 
 export type ExamStatusType = ExamApiStatus;

@@ -30,7 +30,7 @@ import {
 const mapEvaluation = (evaluation: string) => {
   const evaluationEnum = evaluation as AnswerEvaluation;
 
-  return evaluationMap[evaluationEnum] || evaluationMap[AnswerEvaluation.UNASSESSED];
+  return evaluationMap[evaluationEnum] || evaluationMap[AnswerEvaluation.Unassessed];
 };
 
 const getStatus = (status: string, passed: boolean) => {

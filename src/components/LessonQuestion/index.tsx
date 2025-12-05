@@ -55,18 +55,7 @@ const LessonQuestion: FC<LessonQuestionPropsType> = (props) => {
           control={control}
           render={({ field }) => (
             <RadioGroupWrapper>
-              <RadioGroup value={field.value} onValueChange={field.onChange}>
-                {/*  {question?.options.map((option) => (
-                <RadioGroupItem
-                  key={option.id}
-                  className="cursor-pointer flex-row-reverse"
-                  value={option.value}
-                  id={option.id}
-                >
-                  {option.label}
-                </RadioGroupItem>
-              ))} */}
-              </RadioGroup>
+              <RadioGroup value={field.value} onValueChange={field.onChange} />
             </RadioGroupWrapper>
           )}
         />

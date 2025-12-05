@@ -91,7 +91,7 @@ export const StyledMinusIcon = styled(Box)(({ theme }) => ({
   transform: 'scale(0.75)',
   opacity: 0,
   transition: 'all 0.3s ease-in-out',
-  color: theme.palette.primary.main, // text-medium = #238ba7 (дефолтный цвет)
+  color: theme.palette.primary.main,
 
   'button[data-state="open"] &': {
     transform: 'scale(1)',

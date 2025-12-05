@@ -1,9 +1,9 @@
 import { Action } from '@reduxjs/toolkit';
 
 export enum UserRole {
-  MENTOR = 'ADMIN',
-  USER = 'USER',
-  GUEST = 'GUEST',
+  Mentor = 'ADMIN',
+  User = 'USER',
+  Guest = 'GUEST',
 }
 
 export interface IUser {

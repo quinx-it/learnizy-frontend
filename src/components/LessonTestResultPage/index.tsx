@@ -33,7 +33,7 @@ import {
 
 const mapEvaluation = (evaluation: AnswerEvaluation | string | null | undefined) => {
   return (
-    evaluationMap[evaluation as AnswerEvaluation] || evaluationMap[AnswerEvaluation.UNASSESSED]
+    evaluationMap[evaluation as AnswerEvaluation] || evaluationMap[AnswerEvaluation.Unassessed]
   );
 };
 

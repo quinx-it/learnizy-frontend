@@ -6,23 +6,23 @@ export interface ILessonProgress {
 }
 
 export enum LessonStatus {
-  NOT_STARTED = 'NOT_STARTED',
-  IN_PROGRESS = 'IN_PROGRESS',
-  COMPLETED = 'COMPLETED',
-  BLOCKED = 'BLOCKED',
+  NotStarted = 'NOT_STARTED',
+  InProgress = 'IN_PROGRESS',
+  Completed = 'COMPLETED',
+  Blocked = 'BLOCKED',
 }
 
 export enum BlockType {
-  HEADING = 'HEADING',
-  TEXT = 'TEXT',
-  LINK = 'LINK',
-  CODE = 'CODE',
-  IMAGE = 'IMAGE',
-  UL = 'UNORDERED_LIST',
-  LI = 'LIST_ITEM',
-  ADVICE = 'ADVICE',
-  WARNING = 'WARNING',
-  BOXED_TEXT = 'BOXED_TEXT',
+  Heading = 'HEADING',
+  Text = 'TEXT',
+  Link = 'LINK',
+  Code = 'CODE',
+  Image = 'IMAGE',
+  Ul = 'UNORDERED_LIST',
+  Li = 'LIST_ITEM',
+  Advice = 'ADVICE',
+  Warning = 'WARNING',
+  BoxedText = 'BOXED_TEXT',
 }
 
 export interface ICommonProperties {
@@ -124,40 +124,40 @@ interface IBaseBlock {
 }
 
 interface IHeadingBlock extends IBaseBlock {
-  blockType: BlockType.HEADING;
+  blockType: BlockType.Heading;
   properties: IHeadingProperties;
 }
 
 interface ITextBlock extends IBaseBlock {
-  blockType: BlockType.TEXT;
+  blockType: BlockType.Text;
   properties: ITextProperties;
 }
 
 interface ILinkBlock extends IBaseBlock {
-  blockType: BlockType.LINK;
+  blockType: BlockType.Link;
   properties: ILinkProperties;
 }
 
 interface IUlBlock extends IBaseBlock {
-  blockType: BlockType.UL;
+  blockType: BlockType.Ul;
 }
 
 interface ILiBlock extends IBaseBlock {
-  blockType: BlockType.LI;
+  blockType: BlockType.Li;
 }
 
 interface ICodeBlock extends IBaseBlock {
-  blockType: BlockType.CODE;
+  blockType: BlockType.Code;
   properties: ICodeProperties;
 }
 
 interface IImageBlock extends IBaseBlock {
-  blockType: BlockType.IMAGE;
+  blockType: BlockType.Image;
   properties: IImageProperties;
 }
 
 interface IAdviceBlock extends IBaseBlock {
-  blockType: BlockType.ADVICE | BlockType.WARNING | BlockType.BOXED_TEXT;
+  blockType: BlockType.Advice | BlockType.Warning | BlockType.BoxedText;
   properties: ICommonProperties;
 }
 
