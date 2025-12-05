@@ -27,9 +27,7 @@ const SecuritySettingsForm: FC = () => {
     },
   });
 
-  const onSubmit = () => {
-    // TODO: Implement form submission
-  };
+  const onSubmit = () => {};
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>

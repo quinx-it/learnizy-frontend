@@ -13,10 +13,10 @@ import {
   ContentWrapper,
   Description,
   IconWrapper,
+  StyledToaster,
   Title,
   ToastContainer,
 } from './styles';
-import './toaster.css';
 
 const colorMap: Record<NotificationVariantType, ColorMapEntryType> = {
   info: {
@@ -64,14 +64,15 @@ const Toaster: FC<ToasterProps> = (props) => {
   const { theme = 'system' } = useTheme();
 
   return (
-    <Sonner
-      theme={theme as ToasterProps['theme']}
-      toastOptions={{
-        duration: 5000,
-      }}
-      className=""
-      {...props}
-    />
+    <StyledToaster>
+      <Sonner
+        theme={theme as ToasterProps['theme']}
+        toastOptions={{
+          duration: 5000,
+        }}
+        {...props}
+      />
+    </StyledToaster>
   );
 };
 

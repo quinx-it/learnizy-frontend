@@ -1,58 +1,20 @@
 import { Slot } from '@radix-ui/react-slot';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { FC, ComponentProps, MouseEvent } from 'react';
+import { FC, MouseEvent } from 'react';
 
-import { cn } from '@/lib/utils';
+import { StyledButton } from './styles';
 
-import './button.css';
-
-const baseStyles = [
-  'relative overflow-hidden flex items-center justify-center box-content',
-  'text-light rounded-[50px] focus:outline-none focus:ring-0 pointer disabled:cursor-not-allowed',
-  'transition-colors duration-200 ease-in-out',
-].join(' ');
-
-const buttonVariants = cva(baseStyles, {
-  variants: {
-    variant: {
-      blue: 'bg-medium hover:bg-dark disabled:bg-soft',
-      yellow: 'bg-yellow-pale text-black hover:bg-yellow',
-      white:
-        'bg-light border border-medium text-black hover:bg-medium hover:text-light active:border-medium md:active:text-light disabled:border-gray disabled:text-gray',
-      red: 'bg-medium hover:bg-dark text-white',
-      green: 'bg-medium hover:bg-dark text-white',
-      gray: 'bg-soft hover:bg-medium text-white',
-    },
-    size: {
-      large: 'px-8 py-3 text-[20px] leading-[27px]',
-      medium: 'px-6 py-2 text-[16px] leading-[22px]',
-      small: 'px-5 py-1.5 text-[12px] leading-[16px]',
-      icon: 'w-9 h-9 p-0',
-    },
-  },
-  defaultVariants: {
-    variant: 'blue',
-    size: 'large',
-  },
-});
-
-type ButtonProps = ComponentProps<'button'> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
-  };
+import type { ButtonProps, ButtonSize, ButtonVariant } from './typings';
 
 const Button: FC<ButtonProps> = ({
   className,
-  variant,
-  size,
+  variant = 'blue',
+  size = 'large',
   onClick,
   asChild = false,
   type = 'button',
   children,
   ...props
 }) => {
-  const Comp = asChild ? Slot : 'button';
-
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const button = e.currentTarget;
     const circle = document.createElement('span');
@@ -74,17 +36,37 @@ const Button: FC<ButtonProps> = ({
     if (typeof onClick === 'function') onClick(e);
   };
 
+  if (asChild) {
+    return (
+      <Slot onClick={handleClick} data-variant={variant} {...props}>
+        {children}
+      </Slot>
+    );
+  }
+
   return (
-    <Comp
+    <StyledButton
       type={type}
       onClick={handleClick}
-      className={cn(buttonVariants({ variant, size, className }))}
+      variant={variant}
+      size={size}
+      data-variant={variant}
+      className={className}
       {...props}
     >
       {children}
-    </Comp>
+    </StyledButton>
   );
 };
 
-export { buttonVariants };
+export const buttonVariants = (props?: {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  className?: string;
+}) => {
+  return props?.className || '';
+};
+
+export type { ButtonProps, ButtonSize, ButtonVariant } from './typings';
+
 export default Button;

@@ -4,7 +4,7 @@ import { usePathname } from '@/hooks';
 
 import { IDashboardLinkProps } from './typings';
 
-import { IconWrapper, StyledButton, StyledLink } from './styles';
+import { IconWrapper, StyledLink } from './styles';
 
 const DashboardLink: FC<IDashboardLinkProps> = (props) => {
   const { href, Icon, children } = props;
@@ -13,14 +13,12 @@ const DashboardLink: FC<IDashboardLinkProps> = (props) => {
   const isActive = pathname === href;
 
   return (
-    <StyledButton variant="white" isActive={isActive} asChild>
-      <StyledLink href={href}>
-        <IconWrapper>
-          <Icon />
-        </IconWrapper>
-        {children}
-      </StyledLink>
-    </StyledButton>
+    <StyledLink href={href} isActive={isActive}>
+      <IconWrapper>
+        <Icon />
+      </IconWrapper>
+      {children}
+    </StyledLink>
   );
 };
 

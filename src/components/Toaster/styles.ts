@@ -51,3 +51,21 @@ export const CloseButton = styled(Button, {
     boxShadow: 'none',
   },
 }));
+
+export const StyledToaster = styled(Box)(() => ({
+  '& ol > li:nth-of-type(1)': {
+    opacity: 1,
+  },
+
+  '& ol > li:nth-of-type(2)': {
+    opacity: 0.8,
+  },
+
+  '& ol > li:nth-of-type(3)': {
+    opacity: 0.6,
+  },
+
+  '& ol:hover > li': {
+    opacity: 1,
+  },
+}));

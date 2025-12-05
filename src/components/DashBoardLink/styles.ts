@@ -1,31 +1,34 @@
 import { Box, styled } from '@mui/material';
 
-import Button from '@/components/Button';
 import Link from '@/components/Link';
 
-export const StyledButton = styled(Button, {
+export const StyledLink = styled(Link, {
   shouldForwardProp: (prop) => prop !== 'isActive',
-})<{ isActive: boolean }>(({ theme, isActive }) => ({
+})<{ isActive?: boolean }>(({ theme, isActive }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  textDecoration: 'none',
   justifyContent: 'flex-start',
-  border: 0,
+  border: 'none',
   fontSize: '16px',
   backgroundColor: isActive ? theme.palette.info.main : 'transparent',
+  borderRadius: '50px',
+  paddingLeft: theme.spacing(2),
+  paddingRight: theme.spacing(2),
+  paddingTop: theme.spacing(2),
+  paddingBottom: theme.spacing(2),
+  width: '100%',
+  transition: 'background-color 0.2s ease-in-out, color 0.2s ease-in-out',
+  color: theme.palette.text.primary,
 
   '&:hover': {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.common.white,
-    boxShadow: 'none',
 
     '& *': {
       color: theme.palette.common.white,
     },
   },
-}));
-
-export const StyledLink = styled(Link)(() => ({
-  display: 'flex',
-  alignItems: 'center',
-  textDecoration: 'none',
 }));
 
 export const IconWrapper = styled(Box)(({ theme }) => ({

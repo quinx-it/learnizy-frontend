@@ -2,7 +2,7 @@
 
 import { FC } from 'react';
 
-import { useGetExamsQuery } from '@/api/endpoints/exams';
+import { useGetExamsQuery, ExamApiStatus } from '@/api/endpoints/exams';
 import ErrorSection from '@/components/ErrorSection';
 import ExamCard from '@/components/ExamCard';
 import FullscreenLoader from '@/components/FullscreenLoader';
@@ -19,15 +19,15 @@ import {
   IconWrapper,
 } from './styles';
 
-const mapExamStatus = (status: string): ExamStatus => {
+const mapExamStatus = (status: ExamApiStatus): ExamStatus => {
   switch (status) {
-    case 'PASSED':
+    case ExamApiStatus.PASSED:
       return ExamStatus.Completed;
-    case 'FAILED':
+    case ExamApiStatus.FAILED:
       return ExamStatus.Failed;
-    case 'AVAILABLE':
+    case ExamApiStatus.AVAILABLE:
       return ExamStatus.Available;
-    case 'BLOCKED':
+    case ExamApiStatus.BLOCKED:
       return ExamStatus.Unavailable;
     default:
       return ExamStatus.Unavailable;

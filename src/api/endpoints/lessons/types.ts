@@ -103,7 +103,6 @@ export interface IImageProperties extends ICommonProperties {
   caption?: string;
 }
 
-// Forward declaration for recursive type
 /* eslint-disable no-use-before-define */
 type Block =
   | IHeadingBlock

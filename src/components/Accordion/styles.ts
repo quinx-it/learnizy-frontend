@@ -37,9 +37,28 @@ export const StyledAccordion = styled(RadixAccordion)(() => ({
 }));
 
 export const StyledAccordionItem = styled(RadixAccordionItem)(({ theme }) => ({
-  marginBottom: '0.5rem',
-  borderRadius: theme.shape.borderRadius,
+  marginBottom: theme.spacing(0.5),
+  borderRadius: '16px',
   transition: 'background-color 0.2s ease-in-out',
+  backgroundColor: theme.palette.info.main,
+}));
+
+export const StyledAccordionTrigger = styled(RadixAccordionTrigger)(() => ({
+  display: 'flex',
+  width: '100%',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  paddingLeft: '1rem',
+  paddingRight: '1rem',
+  paddingTop: '1rem',
+  paddingBottom: '1rem',
+  fontSize: '1.125rem',
+  fontWeight: 600,
+  transition: 'all 0.2s ease-in-out',
+  outline: 'none',
+  border: 'none',
+  background: 'transparent',
+  cursor: 'pointer',
 }));
 
 export const IconWrapper = styled(Box)(() => ({
@@ -48,61 +67,44 @@ export const IconWrapper = styled(Box)(() => ({
   width: '1.25rem',
 }));
 
-export const IconOpen = styled(Box)(() => ({
+export const StyledPlusIcon = styled(Box)(({ theme }) => ({
   position: 'absolute',
   inset: 0,
   height: '1.25rem',
   width: '1.25rem',
-  transform: 'rotate(90deg)',
-  transition: 'all 0.3s ease-in-out',
-  transformOrigin: 'center',
-  scale: 1,
+  transform: 'scale(1)',
   opacity: 1,
+  transition: 'all 0.3s ease-in-out',
+  color: theme.palette.primary.main,
 
   'button[data-state="open"] &': {
-    scale: 0.75,
+    transform: 'scale(0.75)',
     opacity: 0,
   },
 }));
 
-export const IconClose = styled(Box)(() => ({
+export const StyledMinusIcon = styled(Box)(({ theme }) => ({
   position: 'absolute',
   inset: 0,
   height: '1.25rem',
   width: '1.25rem',
-  transform: 'rotate(-90deg)',
-  transition: 'all 0.3s ease-in-out',
-  transformOrigin: 'center',
-  scale: 0.75,
+  transform: 'scale(0.75)',
   opacity: 0,
+  transition: 'all 0.3s ease-in-out',
+  color: theme.palette.primary.main, // text-medium = #238ba7 (дефолтный цвет)
 
   'button[data-state="open"] &': {
-    scale: 1,
+    transform: 'scale(1)',
     opacity: 1,
   },
 }));
 
-export const StyledAccordionTrigger = styled(RadixAccordionTrigger)(() => ({
-  display: 'flex',
-  width: '100%',
-  cursor: 'pointer',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  transition: 'all 0.2s ease-in-out',
-  outline: 'none',
-  border: 'none',
-  background: 'transparent',
-  padding: 0,
-}));
-
-export const StyledAccordionContent = styled(RadixAccordionContent)(() => ({
-  paddingLeft: '0.25rem',
-  paddingTop: '0.5rem',
-  paddingBottom: '0.5rem',
+export const StyledAccordionContent = styled(RadixAccordionContent)(({ theme }) => ({
   overflow: 'hidden',
   animationDuration: '300ms',
   animationTimingFunction: 'ease-out',
   willChange: 'height, opacity, transform',
+  color: theme.palette.primary.main,
 
   '&[data-state="open"]': {
     animation: `${accordionDown} 300ms ease-out`,
@@ -111,4 +113,12 @@ export const StyledAccordionContent = styled(RadixAccordionContent)(() => ({
   '&[data-state="closed"]': {
     animation: `${accordionUp} 300ms ease-out`,
   },
+}));
+
+export const ContentWrapper = styled(Box)(({ theme }) => ({
+  paddingLeft: theme.spacing(1),
+  paddingTop: 0,
+  paddingBottom: theme.spacing(1),
+  fontSize: '0.875rem',
+  lineHeight: 1.625,
 }));

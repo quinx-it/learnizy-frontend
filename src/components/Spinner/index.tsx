@@ -2,14 +2,10 @@ import { FC } from 'react';
 
 import { SpinnerVariantPropsType, SpinnerPropsType } from './typings';
 
+import { StyledCircle, StyledRing } from './styles';
+
 const Circle = ({ size = 24, className = '', ...props }: SpinnerVariantPropsType) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 100 100"
-    className={`animate-spin ${className}`}
-    {...props}
-  >
+  <StyledCircle width={size} height={size} viewBox="0 0 100 100" className={className} {...props}>
     <circle
       cx="50"
       cy="50"
@@ -21,11 +17,11 @@ const Circle = ({ size = 24, className = '', ...props }: SpinnerVariantPropsType
       strokeDasharray="200"
       strokeDashoffset="100"
     />
-  </svg>
+  </StyledCircle>
 );
 
 const Ring = ({ size = 24, className = '', ...props }: SpinnerVariantPropsType) => (
-  <svg
+  <StyledRing
     height={size}
     className={className}
     stroke="currentColor"
@@ -81,7 +77,7 @@ const Ring = ({ size = 24, className = '', ...props }: SpinnerVariantPropsType) 
         />
       </circle>
     </g>
-  </svg>
+  </StyledRing>
 );
 
 const Spinner: FC<SpinnerPropsType> = (props) => {

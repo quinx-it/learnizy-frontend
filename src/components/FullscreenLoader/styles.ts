@@ -13,7 +13,7 @@ export const Container = styled(Box)(({ theme }) => ({
   justifyContent: 'center',
   backgroundColor: theme.palette.background.default,
   color: theme.palette.primary.main,
-  zIndex: 9999,
+  zIndex: 50,
 
   '& svg': {
     color: theme.palette.primary.main,

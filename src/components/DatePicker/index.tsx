@@ -4,12 +4,13 @@ import { useState, useEffect, FC } from 'react';
 
 import { Calendar } from '@/components/Calendar';
 import { CalendarIcon } from '@/components/Icons';
-import Input from '@/components/Input';
 import Popover from '@/components/Popover';
 import { useTranslation } from '@/hooks';
 
 import { IDatePickerProps } from './typings';
 import { formatDate, parseDateString } from './utils';
+
+import { Container, StyledDateInput, IconWrapper } from './styles';
 
 const DatePicker: FC<IDatePickerProps> = ({ label, value, onChange, error }) => {
   const { t } = useTranslation();
@@ -25,13 +26,12 @@ const DatePicker: FC<IDatePickerProps> = ({ label, value, onChange, error }) => 
   }, [value]);
 
   return (
-    <div className="relative">
-      <Input
+    <Container>
+      <StyledDateInput
         id="date"
         value={inputValue}
         label={label}
         placeholder={t('PERSONAL_DATA_FORM.DATE_PLACEHOLDER')}
-        innerClassName="bg-background rounded-4xl px-4 py-2 pr-10"
         maxLength={10}
         error={error}
         onChange={(e) => {
@@ -79,11 +79,11 @@ const DatePicker: FC<IDatePickerProps> = ({ label, value, onChange, error }) => 
           />
         }
       >
-        <div id="date-picker" className="absolute right-3 bottom-2 cursor-pointer">
+        <IconWrapper id="date-picker">
           <CalendarIcon type="dark" />
-        </div>
+        </IconWrapper>
       </Popover>
-    </div>
+    </Container>
   );
 };
 
