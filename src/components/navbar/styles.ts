@@ -209,10 +209,24 @@ export const IconWrapper = styled(Box)(() => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  flexShrink: 0,
+  color: 'inherit',
 
-  '& svg': {
-    width: '16px',
-    height: '16px',
+  '& .icon-wrapper': {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'inherit',
+
+    '& svg': {
+      width: '16px',
+      height: '16px',
+      display: 'block',
+      flexShrink: 0,
+      color: 'inherit',
+    },
   },
 }));
 

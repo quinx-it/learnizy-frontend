@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 
+import { Icon } from '@/components/Icon';
 import { IIconProps } from '@/types';
 
 type NotificationStatusType = 'error' | 'success' | 'info' | 'warning';
@@ -11,16 +12,17 @@ const BaseIcon = ({
   className,
   children,
 }: IIconProps & { children: ReactNode; className: string }) => (
-  <svg
-    width={ICON_SIZE}
-    height={ICON_SIZE}
-    viewBox={VIEW_BOX}
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className={className}
-  >
-    {children}
-  </svg>
+  <Icon className={className}>
+    <svg
+      width={ICON_SIZE}
+      height={ICON_SIZE}
+      viewBox={VIEW_BOX}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {children}
+    </svg>
+  </Icon>
 );
 
 const StatusIcons = (color: string): Record<NotificationStatusType, ReactNode> => ({

@@ -25,13 +25,9 @@ import {
 const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
   const { t } = useTranslation();
 
-  const {
-    items,
-    rootLabel = t(constants.rootLabel),
-    rootHref = constants.rootHref,
-    className,
-    rootDescription,
-  } = props;
+  const { items, rootLabel, rootHref = constants.rootHref, className, rootDescription } = props;
+
+  const translatedRootLabel = rootLabel || t(constants.rootLabel);
 
   return (
     <StyledNav className={className}>
@@ -40,7 +36,7 @@ const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
           <>
             <StyledListItem>
               <StyledRootLink href={rootHref} hasItems={!!items}>
-                <Text variant="l">{t(rootLabel)}</Text>
+                <Text variant="l">{t(translatedRootLabel)}</Text>
               </StyledRootLink>
             </StyledListItem>
             {items.map((crumb, index) => (
@@ -62,7 +58,7 @@ const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
           <StyledListItem>
             <StyledDotTitleContainer>
               <StyledDotTitleHeading variant="2xl">
-                {t(rootLabel)}
+                {t(translatedRootLabel)}
                 <StyledDotTitleSecondLabel>
                   <StyledDotTitleDot>•</StyledDotTitleDot>
                   {rootDescription || ''}

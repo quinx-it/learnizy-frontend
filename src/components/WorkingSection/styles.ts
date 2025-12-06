@@ -17,11 +17,13 @@ export const ContentWrapper = styled(Box)(() => ({
 }));
 
 export const StyledImage = styled(Image)(({ theme }) => ({
-  width: 'auto',
-  height: 'auto',
+  width: '120px',
+  height: '120px',
+  objectFit: 'contain',
 
-  [theme.breakpoints.up('md')]: {
-    maxWidth: '110px',
+  [theme.breakpoints.down('md')]: {
+    width: '110px',
+    height: '105px',
   },
 }));
 

@@ -50,6 +50,20 @@ export const IconWrapper = styled(Box)(() => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+
+  '& .icon-wrapper': {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    '& svg': {
+      width: '16px',
+      height: '16px',
+      display: 'block',
+    },
+  },
 }));
 
 export const StyledText = styled(Box)(({ theme }) => ({
