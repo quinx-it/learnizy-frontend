@@ -1,8 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import { useState, FC } from 'react';
 
-import { HeaderLogo, ExitIcon, CubesMainIcon } from '@/components/Icons';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { INavbarProps } from '@/components/navbar/typings';
 import Spinner from '@/components/Spinner';
@@ -45,18 +45,31 @@ const Navbar: FC<INavbarProps> = (props) => {
     <>
       <MobileMenuButtonWrapper>
         <StyledMobileMenuButton onClick={() => setIsOpen(!isOpen)}>
-          <CubesMainIcon />
+          <Image src="/images/cubes-main-icon.svg" alt="Menu icon" width={16} height={16} />
         </StyledMobileMenuButton>
       </MobileMenuButtonWrapper>
 
       <NavbarContainer>
         <LogoLink href={routes.user.homePage}>
-          <HeaderLogo />
+          <Image
+            src="/images/header-logo-mobile.svg"
+            alt="Logo"
+            width={44}
+            height={44}
+            className="hidden md:block lg:hidden"
+          />
+          <Image
+            src="/images/header-logo-desktop.svg"
+            alt="Logo"
+            width={170}
+            height={70}
+            className="md:hidden lg:block"
+          />
         </LogoLink>
 
         <LinksContainer>
-          {links.map(({ href, Icon, label }) => (
-            <NavbarLink key={label} href={href} Icon={Icon} label={t(label)} />
+          {links.map(({ href, iconSrc, label }) => (
+            <NavbarLink key={label} href={href} iconSrc={iconSrc || ''} label={t(label)} />
           ))}
         </LinksContainer>
 
@@ -72,7 +85,7 @@ const Navbar: FC<INavbarProps> = (props) => {
           ) : (
             <>
               <IconWrapper>
-                <ExitIcon />
+                <Image src="/images/exit-icon.svg" alt="Exit icon" width={16} height={16} />
               </IconWrapper>
               <LogoutButtonText>
                 <Text variant="s" tag="span">
@@ -97,15 +110,28 @@ const Navbar: FC<INavbarProps> = (props) => {
           />
           <MobileMenuContainer isOpen={isOpen}>
             <MobileLogoLink href={routes.user.homePage} onClick={() => setIsOpen(false)}>
-              <HeaderLogo />
+              <Image
+                src="/images/header-logo-mobile.svg"
+                alt="Logo"
+                width={44}
+                height={44}
+                className="hidden md:block lg:hidden"
+              />
+              <Image
+                src="/images/header-logo-desktop.svg"
+                alt="Logo"
+                width={200}
+                height={70}
+                className="md:hidden lg:block"
+              />
             </MobileLogoLink>
 
             <MobileLinksContainer>
-              {links.map(({ href, Icon, label }) => (
+              {links.map(({ href, iconSrc, label }) => (
                 <NavbarLink
                   key={label}
                   href={href}
-                  Icon={Icon}
+                  iconSrc={iconSrc || ''}
                   label={label}
                   onClick={() => setIsOpen(false)}
                 />
@@ -125,7 +151,7 @@ const Navbar: FC<INavbarProps> = (props) => {
                 ) : (
                   <>
                     <IconWrapper>
-                      <ExitIcon />
+                      <Image src="/images/exit-icon.svg" alt="Exit icon" width={16} height={16} />
                     </IconWrapper>
                     <MobileLogoutButtonText>
                       <Text variant="s" tag="span">

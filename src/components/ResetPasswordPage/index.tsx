@@ -1,8 +1,8 @@
+import Image from 'next/image';
 import { FC, useState } from 'react';
 
 import ResetPasswordForm from '@/components/auth/ResetPasswordForm';
 import CardWrapper from '@/components/CardWrapper';
-import { Logo } from '@/components/Icons';
 import { Heading, Text } from '@/components/Typography';
 
 import { IResetPasswordPageProps } from './typings';
@@ -24,7 +24,7 @@ const ResetPasswordPage: FC<IResetPasswordPageProps> = (props) => {
       <CardWrapperContainer>
         <CardWrapper>
           <LogoWrapper>
-            <Logo />
+            <Image src="/images/logo.svg" alt="Logo" width={200} height={70} />
           </LogoWrapper>
           {!isSuccess && (
             <>

@@ -1,7 +1,7 @@
+import Image from 'next/image';
 import { useEffect, useState, FC } from 'react';
 
 import AudioPlayer from '@/components/AudioPlayer';
-import { MicIcon, TrashCanIcon } from '@/components/Icons';
 import { Text } from '@/components/Typography';
 import { useVoiceRecorder } from '@/hooks';
 
@@ -42,7 +42,7 @@ const VoiceRecorderControl: FC<PropsType> = (props) => {
     <>
       {!audioUrl && !recording && (
         <ButtonWrapper type="button" onClick={startRecording} size="medium">
-          <MicIcon /> Начать запись
+          <Image src="/images/mic-icon.svg" alt="Mic icon" width={16} height={20} /> Начать запись
         </ButtonWrapper>
       )}
 
@@ -61,7 +61,7 @@ const VoiceRecorderControl: FC<PropsType> = (props) => {
         <Container>
           <AudioPlayer src={audioUrl} />
           <DeleteButton type="button" onClick={handleClear}>
-            <TrashCanIcon />
+            <Image src="/images/trash-can-icon.svg" alt="Trash can icon" width={32} height={32} />
           </DeleteButton>
         </Container>
       )}

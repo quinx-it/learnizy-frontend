@@ -1,9 +1,8 @@
 'use client';
 
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
+import Image from 'next/image';
 import { ComponentProps, FC } from 'react';
-
-import { CheckIcon } from '@/components/Icons';
 
 import { StyledIndicator, StyledRoot } from './styles';
 
@@ -11,7 +10,13 @@ const Checkbox: FC<ComponentProps<typeof CheckboxPrimitive.Root>> = ({ className
   return (
     <StyledRoot className={className} {...props}>
       <StyledIndicator>
-        <CheckIcon color="blue" />
+        <Image
+          src="/images/check-icon.svg"
+          alt="Check icon"
+          width={18}
+          height={13}
+          style={{ color: '#238BA7' }}
+        />
       </StyledIndicator>
     </StyledRoot>
   );

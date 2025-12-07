@@ -1,12 +1,3 @@
-import {
-  ProjectsIcon,
-  APlusIcon,
-  CubesMainIcon,
-  DiscussionIcon,
-  PersonIcon,
-  StudentHatIcon,
-  FourPointedStarIcon,
-} from '@/components/Icons';
 import { routes } from '@/const';
 
 export const globalConstants = {
@@ -39,16 +30,32 @@ export const REFRESH_THROTTLE = 1000;
 
 export const navbarLinks = {
   user: [
-    { href: routes.user.homePage, Icon: CubesMainIcon, label: 'NAVBAR.HOME' },
-    { href: routes.user.modules, Icon: StudentHatIcon, label: 'NAVBAR.MODULES' },
-    { href: routes.user.aiAssistant, Icon: FourPointedStarIcon, label: 'NAVBAR.AI_ASSISTANT' },
-    { href: routes.user.knowlegeBase, Icon: DiscussionIcon, label: 'NAVBAR.KNOWLEDGE_BASE' },
-    { href: routes.user.exams, Icon: APlusIcon, label: 'NAVBAR.EXAMS' },
-    { href: routes.user.projects, Icon: ProjectsIcon, label: 'NAVBAR.PROJECTS' },
-    { href: routes.user.userProfilePersonalData, Icon: PersonIcon, label: 'NAVBAR.PROFILE' },
+    { href: routes.user.homePage, iconSrc: '/images/cubes-main-icon.svg', label: 'NAVBAR.HOME' },
+    { href: routes.user.modules, iconSrc: '/images/student-hat-icon.svg', label: 'NAVBAR.MODULES' },
+    {
+      href: routes.user.aiAssistant,
+      iconSrc: '/images/four-pointed-star-icon.svg',
+      label: 'NAVBAR.AI_ASSISTANT',
+    },
+    {
+      href: routes.user.knowlegeBase,
+      iconSrc: '/images/discussion-icon.svg',
+      label: 'NAVBAR.KNOWLEDGE_BASE',
+    },
+    { href: routes.user.exams, iconSrc: '/images/a-plus-icon.svg', label: 'NAVBAR.EXAMS' },
+    { href: routes.user.projects, iconSrc: '/images/projects-icon.svg', label: 'NAVBAR.PROJECTS' },
+    {
+      href: routes.user.userProfilePersonalData,
+      iconSrc: '/images/person-icon.svg',
+      label: 'NAVBAR.PROFILE',
+    },
   ],
   mentor: [
-    { href: routes.mentor.students, Icon: StudentHatIcon, label: 'NAVBAR.HOME' },
-    { href: routes.mentor.modules, Icon: StudentHatIcon, label: 'NAVBAR.MODULES' },
+    { href: routes.mentor.students, iconSrc: '/images/student-hat-icon.svg', label: 'NAVBAR.HOME' },
+    {
+      href: routes.mentor.modules,
+      iconSrc: '/images/student-hat-icon.svg',
+      label: 'NAVBAR.MODULES',
+    },
   ],
 };

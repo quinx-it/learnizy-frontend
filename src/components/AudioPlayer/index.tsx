@@ -1,9 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useRef, useState, FC } from 'react';
 import WaveSurfer from 'wavesurfer.js';
 
-import { PlayPauseIcon, AaIcon, ArrowCloseIcon } from '@/components/Icons';
 import { Text } from '@/components/Typography';
 
 import { IAudioPlayerProps } from './typings';
@@ -102,11 +102,26 @@ const AudioPlayer: FC<IAudioPlayerProps> = (props) => {
 
         <ControlsContainer>
           <PlayButton type="button" onClick={togglePlay}>
-            <PlayPauseIcon color="white" isPlaying={isPlaying} />
+            <Image
+              src={isPlaying ? '/images/pause-icon.svg' : '/images/play-icon.svg'}
+              alt={isPlaying ? 'Pause' : 'Play'}
+              width={24}
+              height={24}
+              style={{ color: 'white' }}
+            />
           </PlayButton>
           {transcript && (
             <TranscriptButton type="button" onClick={toggleTranscript}>
-              {showTranscript ? <ArrowCloseIcon /> : <AaIcon />}
+              {showTranscript ? (
+                <Image
+                  src="/images/arrow-close-icon.svg"
+                  alt="Close transcript"
+                  width={28}
+                  height={24}
+                />
+              ) : (
+                <Image src="/images/aa-icon.svg" alt="Show transcript" width={28} height={24} />
+              )}
             </TranscriptButton>
           )}
         </ControlsContainer>

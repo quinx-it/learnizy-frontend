@@ -1,10 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import { FC } from 'react';
 import { Toaster as Sonner, toast, ToasterProps } from 'sonner';
-
-import { NotificationIcon, CrossIcon } from '@/components/Icons';
 
 import { NotificationVariantType, ColorMapEntryType, CustomToastPropsType } from './typings';
 
@@ -22,22 +21,26 @@ const colorMap: Record<NotificationVariantType, ColorMapEntryType> = {
   info: {
     bg: 'var(--soft)',
     text: 'var(--black)',
-    icon: <NotificationIcon status="info" color="black" />,
+    icon: <Image src="/images/notification-icon-info.svg" alt="Info" width={18} height={18} />,
   },
   success: {
     bg: 'var(--success)',
     text: 'var(--black)',
-    icon: <NotificationIcon status="success" />,
+    icon: (
+      <Image src="/images/notification-icon-success.svg" alt="Success" width={18} height={18} />
+    ),
   },
   warning: {
     bg: 'var(--warning)',
     text: 'var(--black)',
-    icon: <NotificationIcon status="warning" />,
+    icon: (
+      <Image src="/images/notification-icon-warning.svg" alt="Warning" width={18} height={18} />
+    ),
   },
   error: {
     bg: 'var(--error)',
     text: 'var(--black)',
-    icon: <NotificationIcon status="error" />,
+    icon: <Image src="/images/notification-icon-error.svg" alt="Error" width={18} height={18} />,
   },
 };
 
@@ -54,7 +57,13 @@ const CustomToast: FC<CustomToastPropsType> = (props) => {
         <Description>{description}</Description>
       </ContentWrapper>
       <CloseButton type="button" onClick={onClose} aria-label="Закрыть" text={text}>
-        <CrossIcon color="black" />
+        <Image
+          src="/images/cross-icon.svg"
+          alt="Close icon"
+          width={16}
+          height={16}
+          style={{ color: '#0C0C0C' }}
+        />
       </CloseButton>
     </ToastContainer>
   );

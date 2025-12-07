@@ -4,7 +4,7 @@ import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 export const StyledRadioGroupRoot = styled(RadioGroupPrimitive.Root)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  gap: theme.spacing(0.75),
+  gap: theme.spacing(2),
 }));
 
 export const StyledRadioGroupItem = styled(RadioGroupPrimitive.Item)(({ theme }) => ({

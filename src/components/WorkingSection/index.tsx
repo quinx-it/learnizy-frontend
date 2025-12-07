@@ -17,7 +17,7 @@ const WorkingSection: FC<WorkingSectionPropsType> = (props) => {
   return (
     <Container>
       <ContentWrapper className={className}>
-        <StyledImage width={110} height={105} src="/images/astronaut1.webp" alt="astronaut" />
+        <StyledImage width={200} height={190} src="/images/astronaut1.webp" alt="astronaut" />
         <TextWrapper>
           <Text variant="l">{t('COMMON.COMING_SOON_TEXT')}</Text>
         </TextWrapper>

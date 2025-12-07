@@ -2,9 +2,9 @@
 
 import { Box } from '@mui/material';
 import { Copy, Edit3 } from 'lucide-react';
+import Image from 'next/image';
 import { useState, FC } from 'react';
 
-import { ArrowRightIcon, PersonIcon } from '@/components/Icons';
 import { Text } from '@/components/Typography';
 import { routes } from '@/const';
 
@@ -53,7 +53,7 @@ const StudentsTable: FC<IStudentsTableProps> = (props) => {
         <TableGrid>
           <HeaderCell hasBorder hasPadding={false}>
             <PersonIconWrapper>
-              <PersonIcon />
+              <Image src="/images/person-icon.svg" alt="Person icon" width={12} height={12} />
             </PersonIconWrapper>
           </HeaderCell>
           <HeaderCell hasBorder hasPadding={false}>
@@ -102,7 +102,13 @@ const StudentsTable: FC<IStudentsTableProps> = (props) => {
                   <Text variant="m">{row.currentLesson}</Text>
                 </Cell>
                 <LinkCell href={`${routes.mentor.students}/${row.id}`}>
-                  <ArrowRightIcon color="blue" />
+                  <Image
+                    src="/images/arrow-right-icon.svg"
+                    alt="Arrow right icon"
+                    width={9}
+                    height={16}
+                    style={{ color: '#238BA7' }}
+                  />
                 </LinkCell>
               </RowWrapper>
             ))

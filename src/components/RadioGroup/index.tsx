@@ -1,7 +1,7 @@
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
+import Image from 'next/image';
 import { FC, ComponentProps } from 'react';
 
-import { CircleIcon } from '@/components/Icons';
 import Label from '@/components/Label';
 
 import {
@@ -30,7 +30,7 @@ const RadioGroupItem: FC<ComponentProps<typeof RadioGroupPrimitive.Item>> = ({
       <StyledRadioGroupItem data-slot="radio-group-item" value={value} id={value} {...props}>
         <StyledRadioGroupIndicator data-slot="radio-group-indicator">
           <StyledCircleIconWrapper>
-            <CircleIcon />
+            <Image src="/images/circle-icon.svg" alt="Circle icon" width={8} height={8} />
           </StyledCircleIconWrapper>
         </StyledRadioGroupIndicator>
       </StyledRadioGroupItem>

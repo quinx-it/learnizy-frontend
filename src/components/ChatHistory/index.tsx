@@ -1,10 +1,10 @@
 'use client';
 
 import { Plus, X } from 'lucide-react';
+import Image from 'next/image';
 import { FC, useState } from 'react';
 
 import { useGetChatsQuery, IChat } from '@/api/endpoints/aiAssistant';
-import { HistoryIcon } from '@/components/Icons';
 import { useTranslation } from '@/hooks';
 import { formatRelativeDate } from '@/lib/utils';
 
@@ -71,7 +71,7 @@ const ChatHistory: FC<IChatHistoryProps> = (props) => {
     <>
       <MobileButtonWrapper>
         <MobileOpenButton variant="blue" size="small" onClick={() => setIsOpen(true)}>
-          <HistoryIcon />
+          <Image src="/images/history-icon.svg" alt="History icon" width={24} height={24} />
         </MobileOpenButton>
       </MobileButtonWrapper>
 

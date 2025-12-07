@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -23,7 +24,6 @@ import {
 import DotTitle from '@/components/DotTitle';
 import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
-import { CheckIcon, LockColorIcon } from '@/components/Icons';
 import Input from '@/components/Input';
 import LessonCard from '@/components/LessonCard';
 import ProgressBar from '@/components/Progress';
@@ -230,7 +230,13 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
           <ExamStatusContainer>
             {isAvailableExam(progress) ? (
               <>
-                <CheckIcon color="blue" />
+                <Image
+                  src="/images/check-icon.svg"
+                  alt="Check icon"
+                  width={18}
+                  height={13}
+                  style={{ color: '#238BA7' }}
+                />
                 <Text variant="l">
                   {t('COMMON.MODULE_COMPLETED')}{' '}
                   <StyledLink href={routes.user.exams}>{t('COMMON.EXAM')}</StyledLink>
@@ -238,7 +244,7 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
               </>
             ) : (
               <>
-                <LockColorIcon />
+                <Image src="/images/lock-color-icon.svg" alt="Lock icon" width={19} height={21} />
                 <Text variant="l">
                   {t('COMMON.EXAM_LOCKED')}{' '}
                   <StyledLink href={routes.user.exams}>{t('COMMON.EXAM')}</StyledLink>
