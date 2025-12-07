@@ -2,7 +2,10 @@ import { LinkProps } from 'next/link';
 import { ComponentType } from 'react';
 
 export interface INavbarLinkProps extends LinkProps {
-  Icon: ComponentType<{ className?: string }>;
+  iconSrc?: string;
+  Icon?: ComponentType<{ className?: string }>;
+  iconWidth?: number;
+  iconHeight?: number;
   label: string;
   className?: string;
   onClick?: () => void;

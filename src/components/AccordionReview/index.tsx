@@ -1,8 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import { FC } from 'react';
 
-import { ArrowRightIcon } from '@/components/Icons';
 import { Text } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
 
@@ -36,10 +36,20 @@ const AccordionReview: FC<AccordionReviewPropsType> = (props) => {
             </Text>
             <IconWrapper>
               <IconOpen>
-                <ArrowRightIcon color="blue" />
+                <Image
+                  src="/images/arrow-right-icon.svg"
+                  alt="Arrow right"
+                  width={16}
+                  height={16}
+                />
               </IconOpen>
               <IconClose>
-                <ArrowRightIcon color="blue" />
+                <Image
+                  src="/images/arrow-right-icon.svg"
+                  alt="Arrow right"
+                  width={16}
+                  height={16}
+                />
               </IconClose>
             </IconWrapper>
           </StyledAccordionTrigger>

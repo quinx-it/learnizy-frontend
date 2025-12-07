@@ -1,7 +1,6 @@
 import { Box, styled } from '@mui/material';
 
 import CardWrapperBase from '@/components/CardWrapper';
-import { Logo as LogoBase } from '@/components/Icons';
 
 export const Container = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -17,7 +16,9 @@ export const CardWrapper = styled(CardWrapperBase)(({ theme }) => ({
   padding: `${theme.spacing(8)} ${theme.spacing(4)}`,
 }));
 
-export const Logo = styled(LogoBase)({
+export const LogoWrapper = styled(Box)({
   width: '100%',
   marginBottom: '3rem',
+  display: 'flex',
+  justifyContent: 'center',
 });

@@ -1,8 +1,8 @@
 import { Box } from '@mui/material';
+import Image from 'next/image';
 import { FC } from 'react';
 
 import AreaChart from '@/components/AreaChart';
-import { CalendarIcon } from '@/components/Icons';
 import { Text } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
 
@@ -30,7 +30,13 @@ const StatisticsChart: FC<StatisticsChartPropsType> = (props) => {
     <Box>
       <HeaderContainer>
         <TitleWrapper>
-          <CalendarIcon type="blue" />
+          <Image
+            src="/images/calendar-icon.svg"
+            alt="Calendar icon"
+            width={16}
+            height={16}
+            style={{ color: '#A9DBE9' }}
+          />
           <Text variant="m">{t('STATISTICS_CHART.LAST_WEEK')}</Text>
         </TitleWrapper>
         <StatisticsWrapper>

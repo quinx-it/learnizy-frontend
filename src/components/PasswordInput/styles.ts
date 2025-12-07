@@ -1,7 +1,5 @@
 import { Box, IconButton, styled } from '@mui/material';
 
-import { EyeIcon as BaseEyeIcon } from '@/components/Icons';
-
 import { StyledInput as BaseStyledInput } from '@/components/Input/styles';
 
 export const PasswordInputWrapper = styled(Box)(() => ({
@@ -47,9 +45,12 @@ export const ToggleButton = styled(IconButton)(({ theme }) => ({
   },
 }));
 
-export const StyledEyeIcon = styled(BaseEyeIcon)(() => ({
-  width: '16px',
-  height: '16px',
+export const EyeIconWrapper = styled(Box)(() => ({
+  width: '22px',
+  height: '18px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 }));
 
 export const ScreenReaderOnly = styled('span')(() => ({

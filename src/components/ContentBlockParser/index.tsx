@@ -9,7 +9,6 @@ import {
   headingTags,
   headingVariants,
 } from '@/api/endpoints/lessons';
-import { LightbulbIcon, NotificationIcon } from '@/components/Icons';
 import Link from '@/components/Link';
 import { Heading, Text } from '@/components/Typography';
 
@@ -161,7 +160,7 @@ const BlockRenderer: FC<IBlockRendererProps> = (props) => {
       return (
         <AdviceContainer style={baseStyle}>
           <StrongText>
-            <LightbulbIcon />
+            <Image src="/images/lightbulb-icon.svg" alt="Lightbulb icon" width={26} height={26} />
             {block.content}
           </StrongText>
           {renderChildren(block.children)}
@@ -172,7 +171,12 @@ const BlockRenderer: FC<IBlockRendererProps> = (props) => {
       return (
         <WarningContainer style={baseStyle}>
           <StrongTextWithGap>
-            <NotificationIcon status="warning" />
+            <Image
+              src="/images/notification-icon-warning.svg"
+              alt="Warning"
+              width={18}
+              height={18}
+            />
             {block.content}
           </StrongTextWithGap>
           {renderChildren(block.children)}

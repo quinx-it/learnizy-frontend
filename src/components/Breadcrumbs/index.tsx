@@ -1,8 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import { Fragment, FC } from 'react';
 
-import { ArrowRightIcon } from '@/components/Icons';
 import { Text } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
 
@@ -46,7 +46,14 @@ const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
             {items.map((crumb, index) => (
               <Fragment key={crumb.href}>
                 <StyledListItem>
-                  <ArrowRightIcon color="blue" className="size-2.5" />
+                  <Image
+                    src="/images/arrow-right-icon.svg"
+                    alt="Arrow right icon"
+                    width={9}
+                    height={16}
+                    className="size-2.5"
+                    style={{ color: '#238BA7' }}
+                  />
                   {index === items.length - 1 ? (
                     <StyledText variant="l">{t(crumb.label)}</StyledText>
                   ) : (

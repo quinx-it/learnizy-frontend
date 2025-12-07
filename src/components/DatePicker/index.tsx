@@ -1,9 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import { useState, useEffect, FC } from 'react';
 
 import { Calendar } from '@/components/Calendar';
-import { CalendarIcon } from '@/components/Icons';
 import Popover from '@/components/Popover';
 import { useTranslation } from '@/hooks';
 
@@ -80,7 +80,13 @@ const DatePicker: FC<IDatePickerProps> = ({ label, value, onChange, error }) => 
         }
       >
         <IconWrapper id="date-picker">
-          <CalendarIcon type="dark" />
+          <Image
+            src="/images/calendar-icon.svg"
+            alt="Calendar icon"
+            width={16}
+            height={16}
+            style={{ color: '#0C0C0C' }}
+          />
         </IconWrapper>
       </Popover>
     </Container>

@@ -1,12 +1,12 @@
 'use client';
 
+import Image from 'next/image';
 import { FC } from 'react';
 
 import { useGetExamsQuery, ExamApiStatus } from '@/api/endpoints/exams';
 import ErrorSection from '@/components/ErrorSection';
 import ExamCard from '@/components/ExamCard';
 import FullscreenLoader from '@/components/FullscreenLoader';
-import { CircleIcon } from '@/components/Icons';
 import { useTranslation } from '@/hooks';
 
 import { ExamStatus, ExamType, IExamsPageProps } from './typings';
@@ -50,7 +50,7 @@ const ExamsPage: FC<IExamsPageProps> = (props) => {
       <HeaderContainer>
         <StyledHeading variant="2xl">{t('EXAMS.TITLE')}</StyledHeading>
         <IconWrapper>
-          <CircleIcon />
+          <Image src="/images/circle-icon.svg" alt="Circle icon" width={8} height={8} />
         </IconWrapper>
         <StyledHeadingSecondary variant="2xl">Java Core</StyledHeadingSecondary>
       </HeaderContainer>

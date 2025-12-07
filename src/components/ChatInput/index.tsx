@@ -2,6 +2,7 @@
 
 import { X, Check, ArrowUp } from 'lucide-react';
 import { nanoid } from 'nanoid';
+import Image from 'next/image';
 import {
   useState,
   useRef,
@@ -16,7 +17,6 @@ import {
 import WaveSurfer from 'wavesurfer.js';
 
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
-import { MicChatIcon, AttachIcon, SendIcon } from '@/components/Icons';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
 import { useTranslation } from '@/hooks';
@@ -482,7 +482,7 @@ const ChatInput: FC<IChatInputProps> = (props) => {
         disabled={isDisabled}
         onClick={() => fileInputRef.current?.click()}
       >
-        <AttachIcon />
+        <Image src="/images/attach-icon.svg" alt="Attach icon" width={15} height={24} />
       </AttachButton>
       <HiddenFileInput ref={fileInputRef} type="file" multiple onChange={handleFileSelect} />
       <StyledTextarea
@@ -533,7 +533,9 @@ const ChatInput: FC<IChatInputProps> = (props) => {
               );
             }
 
-            return <MicChatIcon />;
+            return (
+              <Image src="/images/mic-chat-icon.svg" alt="Microphone" width={18} height={24} />
+            );
           })()}
         </MicrophoneButton>
       </MicrophoneContainer>
@@ -560,7 +562,7 @@ const ChatInput: FC<IChatInputProps> = (props) => {
 
       {!isRecording && !audioBlob && (
         <SendButton onClick={handleSendClick}>
-          <SendIcon />
+          <Image src="/images/send-icon.svg" alt="Send icon" width={24} height={24} />
         </SendButton>
       )}
     </Container>

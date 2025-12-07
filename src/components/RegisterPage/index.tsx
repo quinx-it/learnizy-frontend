@@ -1,10 +1,10 @@
 'use client';
 
+import Image from 'next/image';
 import { FC } from 'react';
 
 import RegisterForm from '@/components/auth/RegisterForm';
 import CardWrapper from '@/components/CardWrapper';
-import { Logo } from '@/components/Icons';
 
 import { CardWrapperContainer, Container, LogoWrapper } from './styles';
 
@@ -14,7 +14,7 @@ const RegisterPage: FC = () => {
       <CardWrapperContainer>
         <CardWrapper>
           <LogoWrapper>
-            <Logo />
+            <Image src="/images/logo.svg" alt="Logo" width={200} height={70} />
           </LogoWrapper>
           <RegisterForm />
         </CardWrapper>

@@ -21,7 +21,7 @@ export const StyledImage = styled(Image)(({ theme }) => ({
   height: 'auto',
 
   [theme.breakpoints.up('md')]: {
-    maxWidth: '110px',
+    maxWidth: '200px',
   },
 }));
 

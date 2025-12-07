@@ -7,6 +7,7 @@ import DotTitle from '@/components/DotTitle';
 import ProgressBar from '@/components/Progress';
 import { useTranslation } from '@/hooks';
 
+import { constants } from './constants';
 import { ProgressCardPropsType } from './typings';
 
 import {
@@ -64,7 +65,7 @@ const ProgressCard: FC<ProgressCardPropsType> = (props) => {
 
         {status && (
           <StatusButton size="small" onClick={onClick}>
-            {status}
+            {t(constants.statuses[status])}
           </StatusButton>
         )}
       </Container>

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { forwardRef, useState } from 'react';
 
 import Label from '@/components/Label';
@@ -11,7 +12,7 @@ import {
   InputWrapper,
   PasswordInputWrapper,
   ScreenReaderOnly,
-  StyledEyeIcon,
+  EyeIconWrapper,
   StyledInput,
   ToggleButton,
 } from './styles';
@@ -50,7 +51,18 @@ const PasswordInput = forwardRef<HTMLInputElement, IPasswordInputProps>(
             disabled={disabled}
             aria-label={showPassword ? 'Hide password' : 'Show password'}
           >
-            <StyledEyeIcon open={showPassword && !disabled} aria-hidden="true" />
+            <EyeIconWrapper aria-hidden="true">
+              <Image
+                src={
+                  showPassword && !disabled
+                    ? '/images/eye-icon-open.svg'
+                    : '/images/eye-icon-closed.svg'
+                }
+                alt={showPassword ? 'Hide password' : 'Show password'}
+                width={22}
+                height={showPassword && !disabled ? 16 : 18}
+              />
+            </EyeIconWrapper>
             <ScreenReaderOnly>{showPassword ? 'Hide password' : 'Show password'}</ScreenReaderOnly>
           </ToggleButton>
         </InputWrapper>

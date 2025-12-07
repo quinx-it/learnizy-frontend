@@ -1,8 +1,8 @@
+import Image from 'next/image';
 import { FC } from 'react';
 
 import ForgotPasswordForm from '@/components/auth/ForgotPasswordForm';
 import CardWrapper from '@/components/CardWrapper';
-import { Logo } from '@/components/Icons';
 import { Heading, Text } from '@/components/Typography';
 
 import {
@@ -19,7 +19,7 @@ const ForgotPasswordPage: FC = () => {
       <CardWrapperContainer>
         <CardWrapper>
           <LogoWrapper>
-            <Logo />
+            <Image src="/images/logo.svg" alt="Logo" width={200} height={70} />
           </LogoWrapper>
           <HeadingWrapper>
             <Heading variant="xl">Забыли пароль?</Heading>

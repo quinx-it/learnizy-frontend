@@ -1,9 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import { FC } from 'react';
 
 import FrequentlyAskedQuestions from '@/components/FrequentlyAskedQuestions';
-import { CircleIcon } from '@/components/Icons';
 import InterviewQuestions from '@/components/InterviewQuestions';
 import InterviewRecords from '@/components/InterviewRecords';
 import { useTranslation } from '@/hooks';
@@ -25,7 +25,7 @@ const KnowlegeBasePage: FC = () => {
       <HeaderContainer>
         <HeaderTitle>{t('NAVBAR.KNOWLEDGE_BASE')}</HeaderTitle>
         <IconWrapper>
-          <CircleIcon />
+          <Image src="/images/circle-icon.svg" alt="Circle icon" width={8} height={8} />
         </IconWrapper>
         <HeaderSubtitle>Java Core</HeaderSubtitle>
       </HeaderContainer>

@@ -85,6 +85,7 @@ export const ProgressContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   gap: theme.spacing(0.375),
   alignSelf: 'center',
+  marginTop: theme.spacing(0.5),
   color: theme.palette.text.secondary,
 }));
 
@@ -92,6 +93,7 @@ export const StarContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   gap: theme.spacing(0.375),
   color: theme.palette.text.secondary,
+
   '& svg': {
     width: '18px',
     height: '18px',

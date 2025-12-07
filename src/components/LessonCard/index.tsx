@@ -1,6 +1,6 @@
+import Image from 'next/image';
 import { FC } from 'react';
 
-import { StarIcon } from '@/components/Icons';
 import { useTranslation } from '@/hooks';
 import { normalizeToFive } from '@/lib/utils';
 
@@ -62,7 +62,12 @@ const LessonCard: FC<LessonCardPropsType> = (props) => {
 
         <RightContent>
           <RatingContainer>
-            <StarIcon type={blocked ? 'disabled' : 'gold'} />
+            <Image
+              src={blocked ? '/images/star-icon-disabled.svg' : '/images/star-icon-gold.svg'}
+              alt="Star"
+              width={25}
+              height={25}
+            />
             <RatingHeading blocked={blocked}>
               {progress.testResult ? normalizeToFive(progress.testResult) : 0}/5
             </RatingHeading>
