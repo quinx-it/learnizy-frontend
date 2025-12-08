@@ -9,27 +9,29 @@ import Button from '@/components/Button';
 import Input from '@/components/Input';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
+import { useTranslation } from '@/hooks';
 
 import { IForgotPasswordFormValues } from './typings';
-import { formSchema } from './validation';
+import { createFormSchema } from './validation';
 
 import { Form } from './styles';
 
 const ForgotPasswordForm: FC = () => {
+  const { t } = useTranslation();
   const [forgotPasswordRequest, { isLoading, error }] = useForgotPasswordMutation();
 
   useEffect(() => {
     if (error) {
-      showToast('error', 'Ошибка', 'Проверьте правильность введённых логина и пароля');
+      showToast('error', t('COMMON.ERROR'), t('AUTH.CHECK_CREDENTIALS'));
     }
-  }, [error]);
+  }, [error, t]);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IForgotPasswordFormValues>({
-    resolver: yupResolver(formSchema),
+    resolver: yupResolver(createFormSchema(t)),
     defaultValues: {
       email: '',
     },
@@ -40,14 +42,14 @@ const ForgotPasswordForm: FC = () => {
       const { email } = data;
       await forgotPasswordRequest({ email }).unwrap();
     } catch {
-      showToast('error', 'Ошибка смены пароля', 'Что-то не так');
+      showToast('error', t('AUTH.PASSWORD_RESET_ERROR'), t('AUTH.SOMETHING_WRONG'));
     }
   };
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Input
-        label="Введите email"
+        label={t('AUTH.ENTER_EMAIL')}
         id="email"
         autoComplete="email"
         placeholder="E-mail"
@@ -56,7 +58,7 @@ const ForgotPasswordForm: FC = () => {
       />
 
       <Button type="submit" size="medium" disabled={isLoading} className="rounded-full">
-        {isLoading ? <Spinner type="ring" /> : 'Отправить'}
+        {isLoading ? <Spinner type="ring" /> : t('AUTH.SEND')}
       </Button>
     </Form>
   );

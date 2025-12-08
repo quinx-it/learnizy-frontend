@@ -1,4 +1,1 @@
-export const constants = {
-  rootLabel: 'NAVBAR.HOME',
-  rootHref: '/learn',
-};
+export const DEFAULT_ROOT_HREF = '/learn';

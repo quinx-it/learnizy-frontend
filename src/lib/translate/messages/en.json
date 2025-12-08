@@ -96,7 +96,9 @@
     "TITLE": "Answers to Popular Questions",
     "DESCRIPTION_1": "Everything you wanted to ask is already collected in one place. How the training goes, where to find homework, how to get a certificate, and much more.",
     "DESCRIPTION_2": "Go to the section to find the information you need or quickly understand something unclear.",
-    "BUTTON": "View Answers"
+    "BUTTON": "View Answers",
+    "PROGRESS_QUESTION": "How is my progress saved?",
+    "PROGRESS_ANSWER": "Progress is saved automatically. You can exit at any time and return — the system will remember where you left off."
   },
   "INTERVIEW_RECORDS": {
     "TITLE": "Interview Records",
@@ -280,6 +282,199 @@
     "TITLE": "Oops, something went wrong...",
     "TEXT": "We are already aware of this and are working to fix it.\nPlease try again later.",
     "BUTTON": "Reload page"
+  },
+  "TEST_RESULT": {
+    "TITLE_LESSON": "Test Results",
+    "TITLE_EXAM": "Exam Results",
+    "RESULT_LABEL": "Result:",
+    "STATUS_LABEL": "Status:",
+    "YOUR_ANSWER": "Your answer:",
+    "NOTE": "Note:",
+    "STATUS_PROCESSING": "Processing",
+    "STATUS_PASSED": "Passed",
+    "STATUS_FAILED": "Failed",
+    "MODULE": "Module",
+    "LESSON": "Lesson",
+    "RESULTS": "Results"
+  },
+  "EVALUATION": {
+    "CORRECT": "Correct",
+    "PARTIAL": "Partially correct",
+    "INCORRECT": "Incorrect",
+    "UNASSESSED": "Answer is being checked"
+  },
+  "VOICE_RECORDER": {
+    "AI_RESPONDED": "AI answered your question.",
+    "AI_ERROR": "Failed to get response from AI.",
+    "ERROR_RECORD_VOICE": "Please record your question by voice.",
+    "ERROR_UPLOAD_AUDIO": "Failed to upload audio file.",
+    "QUESTION_SENT": "Question sent!",
+    "AI_PROCESSING": "AI is processing your question. Please wait for the response.",
+    "ERROR_CREATE_QUESTION": "Failed to create question to AI.",
+    "ASK_QUESTION": "Ask question",
+    "WAITING_AI": "Waiting for AI processing...",
+    "ANSWER": "Answer:",
+    "ERROR": "Error:"
+  },
+  "MODULES_PAGE": {
+    "CREATE_MODULE": "Create new module",
+    "EDIT_MODULE": "Edit module",
+    "CREATE_NEW_MODULE": "Create new module",
+    "SEQUENCE_NUMBER": "Sequence number",
+    "MODULE_TITLE": "Module title",
+    "MODULE_DESCRIPTION": "Module description",
+    "CANCEL": "Cancel",
+    "SAVE": "Save",
+    "CREATE": "Create",
+    "ERROR_SAVE": "Error saving module",
+    "ERROR_DELETE": "Error deleting module"
+  },
+  "SECURITY_SETTINGS": {
+    "PASSWORD": "Password",
+    "NEW_PASSWORD": "New password",
+    "LOGIN": "Login (Email or phone)",
+    "DONT_SAVE": "Do not save",
+    "SAVE_CHANGES": "Save changes"
+  },
+  "TEST_PAGE": {
+    "SUCCESS": "Great!",
+    "TEST_PASSED": "Test passed",
+    "ERROR_SEND": "Failed to send test"
+  },
+  "AUTH": {
+    "SUCCESS": "Success",
+    "CODE_SENT": "Verification code sent to your email.",
+    "EMAIL_EXISTS": "An account with this email already exists. Log in or recover access.",
+    "REGISTER_ERROR": "Failed to register. Please try again.",
+    "EMAIL_CONFIRMED": "Your email is confirmed!",
+    "INVALID_CODE": "Invalid code or code expired.",
+    "NEW_CODE_SENT": "New code sent to your email.",
+    "RESEND_ERROR": "Failed to resend code.",
+    "SENDING": "Sending...",
+    "RESEND_CODE": "Resend code",
+    "CONFIRM": "Confirm",
+    "ENTER_LOGIN": "Enter login",
+    "LOGIN_PLACEHOLDER": "login",
+    "ENTER_EMAIL": "Enter email",
+    "ENTER_PASSWORD": "Enter password",
+    "PASSWORD_PLACEHOLDER": "password",
+    "REPEAT_PASSWORD": "Repeat password",
+    "ACCEPT_AGREEMENT": "You must accept the agreement",
+    "REGISTER": "Register",
+    "CHECK_CREDENTIALS": "Check the correctness of entered login and password",
+    "CONFIRM_EMAIL": "Confirm email",
+    "ENTER_CODE": "Please enter the 6-digit code sent to",
+    "RESEND_CODE_TIMER": "Resend code in {{seconds}} sec.",
+    "ACCEPT_TERMS": "I accept the terms",
+    "USER_AGREEMENT": "user agreement",
+    "AND_CONSENT": "and consent to",
+    "PERSONAL_DATA": "personal data processing",
+    "PASSWORD_CHANGED": "Password successfully changed!",
+    "RETURN_TO_LOGIN": "Return to login",
+    "PASSWORD_CHANGE_ERROR": "Failed to change password",
+    "PASSWORD_RESET_ERROR": "Password reset error",
+    "SOMETHING_WRONG": "Something went wrong",
+    "SEND": "Send"
+  },
+  "CHAT": {
+    "SEND_ERROR": "Failed to send message",
+    "AI_THINKING": "AI is thinking...",
+    "CREATE_CHAT_ERROR": "Failed to create new chat"
+  },
+  "COMMON_LABELS": {
+    "CLOSE": "Close",
+    "SEARCH": "Search..."
+  },
+  "LOGIN": {
+    "ENTER": "Log in",
+    "REGISTRATION": "Registration",
+    "FORGOT_PASSWORD": "Forgot password?"
+  },
+  "MENTOR": {
+    "HOME": "Home",
+    "ROLE": "Mentor",
+    "TOTAL_USERS": "Total users",
+    "ACTIVE_USERS": "Active users",
+    "RETENTION_RATE": "Retention rate",
+    "USER_GROWTH": "New user growth",
+    "NEW_USERS": "New users:",
+    "ACTIVE_USERS_LABEL": "Active users:",
+    "STUDENTS_TABLE": {
+      "ID": "ID",
+      "FULL_NAME": "Full Name",
+      "PROGRESS": "Progress",
+      "CURRENT_MODULE": "Current Module",
+      "CURRENT_LESSON": "Current Lesson",
+      "STATUS": "Status",
+      "NOT_FOUND": "No students found.",
+      "EDIT": "edit",
+      "DELETE": "delete"
+    }
+  },
+  "MODULE_CARD": {
+    "BONUS": "Bonus module"
+  },
+  "LESSON_RETELLING": {
+    "MODULES": "Modules",
+    "ASK_QUESTION": "Ask a question",
+    "DESCRIPTION": "Press the record button and ask a question about the topic you've studied. Speak clearly, as if asking a colleague or friend. This method will help you better understand the material and feel more confident in interviews.",
+    "EMPHASIS": "Speak freely. Questions are part of learning!"
+  },
+  "ADVANTAGES": {
+    "TITLE": "Why choose us?",
+    "DESCRIPTION": "From practice with real cases to mentor support — everything to help you confidently pass a technical interview.",
+    "CARD_TITLE": "More than Java",
+    "CARD_TEXT": "We are not limited to programming only. At Learnizy you will find courses in marketing, logistics, business analytics and other in-demand areas"
+  },
+  "STUDENT_STATUS": {
+    "CHECKED": "Checked",
+    "TEST": "Test",
+    "RECORDING": "Recording",
+    "PRACTICE_TASK": "Practice task",
+    "EXAM": "Exam"
+  },
+  "VALIDATION": {
+    "REQUIRED_PASSWORD": "Enter current password",
+    "MIN_8_CHARS": "Minimum 8 characters",
+    "PASSWORD_LETTERS": "Password must contain letters",
+    "PASSWORD_DIGITS": "Password must contain digits",
+    "REQUIRED_NEW_PASSWORD": "Enter new password",
+    "PASSWORD_MATCH": "New password must not match current password",
+    "REQUIRED_LOGIN": "Enter login",
+    "VALID_EMAIL_USERNAME": "Enter valid email or username",
+    "SELECT_GENDER": "Select \"Male\" or \"Female\"",
+    "REQUIRED_GENDER": "Select gender",
+    "REQUIRED_FIRST_NAME": "Enter first name",
+    "REQUIRED_LAST_NAME": "Enter last name",
+    "INVALID_EMAIL": "Invalid email",
+    "REQUIRED_EMAIL": "Enter email",
+    "REQUIRED_ADDRESS": "Enter address",
+    "INVALID_PHONE": "Invalid number",
+    "REQUIRED_PHONE": "Enter phone number",
+    "REQUIRED_BIRTH_DATE": "Select birth date",
+    "REQUIRED_COUNTRY": "Enter country",
+    "REQUIRED_CITY": "Enter city",
+    "NO_RECORDING": "You did not record a question.",
+    "RECORDING_TOO_LONG": "Recording too long (max. 30MB)",
+    "NOT_AUDIO_FILE": "Value is not an audio file",
+    "ANSWER_OR_FILE": "You need to fill in the answer or attach a file (but not both)",
+    "ANSWER_OR_FILE_ONLY": "Fill in either the answer or attach a file",
+    "REQUIRED_USERNAME": "Enter username",
+    "USERNAME_FORMAT": "Username can only contain letters, numbers, \".\", \"_\" and \"-\"",
+    "MIN_6_CHARS": "Minimum 6 characters",
+    "MAX_100_CHARS": "Maximum 100 characters",
+    "REQUIRED_PASSWORD_AUTH": "Enter password",
+    "PASSWORDS_MATCH": "Passwords must match",
+    "REPEAT_PASSWORD": "Repeat password",
+    "ACCEPT_AGREEMENT": "You must accept the agreement",
+    "REQUIRED_CODE": "Enter code",
+    "CODE_6_DIGITS": "Code must contain 6 digits",
+    "REQUIRED_EMAIL_OR_USERNAME": "Enter email or username",
+    "INVALID_EMAIL_USERNAME": "Invalid email or nickname"
+  },
+  "VOICE_RECORDER_CONTROL": {
+    "START_RECORDING": "Start recording",
+    "STOP_RECORDING": "Stop"
   },
   "SEO": {
     "DEFAULT": {

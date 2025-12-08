@@ -7,6 +7,7 @@ import { useState, FC } from 'react';
 
 import { Text } from '@/components/Typography';
 import { routes } from '@/const';
+import { useTranslation } from '@/hooks';
 
 import { IStudentsTableProps } from './typings';
 
@@ -27,6 +28,7 @@ import {
 
 const StudentsTable: FC<IStudentsTableProps> = (props) => {
   const { students } = props;
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
 
   const lowercasedFilter = searchTerm.toLowerCase();
@@ -45,7 +47,7 @@ const StudentsTable: FC<IStudentsTableProps> = (props) => {
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Поиск..."
+          placeholder={t('COMMON_LABELS.SEARCH')}
         />
       </SearchContainer>
 
@@ -57,29 +59,29 @@ const StudentsTable: FC<IStudentsTableProps> = (props) => {
             </PersonIconWrapper>
           </HeaderCell>
           <HeaderCell hasBorder hasPadding={false}>
-            <Text variant="m">ID</Text>
+            <Text variant="m">{t('MENTOR.STUDENTS_TABLE.ID')}</Text>
           </HeaderCell>
           <HeaderCell hasBorder hasPadding>
-            <Text variant="m">ФИО</Text>
+            <Text variant="m">{t('MENTOR.STUDENTS_TABLE.FULL_NAME')}</Text>
           </HeaderCell>
           <HeaderCell hasBorder hasPadding={false}>
-            <Text variant="m">Прогресс</Text>
+            <Text variant="m">{t('MENTOR.STUDENTS_TABLE.PROGRESS')}</Text>
           </HeaderCell>
           <HeaderCell hasBorder hasPadding>
-            <Text variant="m">Текущий модуль</Text>
+            <Text variant="m">{t('MENTOR.STUDENTS_TABLE.CURRENT_MODULE')}</Text>
           </HeaderCell>
           <HeaderCell hasBorder hasPadding={false}>
-            <Text variant="m">Текущий урок</Text>
+            <Text variant="m">{t('MENTOR.STUDENTS_TABLE.CURRENT_LESSON')}</Text>
           </HeaderCell>
           <HeaderCell hasBorder={false} hasPadding={false}>
-            <Text variant="m">Статус</Text>
+            <Text variant="m">{t('MENTOR.STUDENTS_TABLE.STATUS')}</Text>
           </HeaderCell>
 
           {filteredStudents.length > 0 ? (
             filteredStudents.map((row) => (
               <RowWrapper key={row.id}>
                 <Cell hasBorder hasPadding={false}>
-                  <EditButton variant="white">
+                  <EditButton variant="white" aria-label={t('MENTOR.STUDENTS_TABLE.EDIT')}>
                     <Edit3 size={18} />
                   </EditButton>
                 </Cell>
@@ -113,7 +115,7 @@ const StudentsTable: FC<IStudentsTableProps> = (props) => {
               </RowWrapper>
             ))
           ) : (
-            <EmptyMessage>Студенты не найдены.</EmptyMessage>
+            <EmptyMessage>{t('MENTOR.STUDENTS_TABLE.NOT_FOUND')}</EmptyMessage>
           )}
         </TableGrid>
       </TableWrapper>

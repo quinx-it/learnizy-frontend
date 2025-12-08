@@ -13,6 +13,7 @@ import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import { Text } from '@/components/Typography';
 import { globalConstants, routes } from '@/const';
+import { useTranslation } from '@/hooks';
 
 import { evaluationMap } from './constants';
 import { LessonTestResponseType, LessonTestResultPagePropsType } from './types';
@@ -37,16 +38,17 @@ const mapEvaluation = (evaluation: AnswerEvaluation | string | null | undefined)
   );
 };
 
-const getStatus = (status: string, passed: boolean) => {
-  if (status === 'SUBMITTED') return 'В обработке';
+const getStatus = (status: string, passed: boolean, t: (key: string) => string) => {
+  if (status === 'SUBMITTED') return t('TEST_RESULT.STATUS_PROCESSING');
 
-  if (passed) return 'Пройден';
+  if (passed) return t('TEST_RESULT.STATUS_PASSED');
 
-  return 'Не пройден';
+  return t('TEST_RESULT.STATUS_FAILED');
 };
 
 const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) => {
   const { lessonId, moduleId } = props;
+  const { t } = useTranslation();
 
   const { data: lessonTest } = useGetTestByLessonIdQuery(+lessonId);
   const {
@@ -99,30 +101,39 @@ const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) => {
     <>
       <Breadcrumbs
         items={[
-          { label: `Модуль ${moduleSequenceOrder}`, href: `${routes.user.modules}/${moduleId}` },
           {
-            label: `Урок ${lessonSequenceOrder + 1}`,
+            label: `${t('TEST_RESULT.MODULE')} ${moduleSequenceOrder}`,
+            href: `${routes.user.modules}/${moduleId}`,
+          },
+          {
+            label: `${t('TEST_RESULT.LESSON')} ${lessonSequenceOrder + 1}`,
             href: `${routes.user.modules}/${moduleId}/${lessonId}`,
           },
-          { label: `Результаты`, href: `` },
+          { label: t('TEST_RESULT.RESULTS'), href: `` },
         ]}
         rootHref={routes.user.modules}
-        rootLabel={globalConstants.rootBreadcrumbLabels.modulesLabel}
+        rootLabel={t(globalConstants.rootBreadcrumbLabels.modulesLabel)}
       />
 
       <Container>
         <ResultCard>
           <Box>
             <ResultTitle>
-              <Text variant="l">Результаты теста {lessonSequenceOrder + 1}</Text>
+              <Text variant="l">
+                {t('TEST_RESULT.TITLE_LESSON')} {lessonSequenceOrder + 1}
+              </Text>
             </ResultTitle>
             <Divider />
             <ResultInfo>
               <ResultText>
-                <Text variant="m">Результат: {scorePercent}%</Text>
+                <Text variant="m">
+                  {t('TEST_RESULT.RESULT_LABEL')} {scorePercent}%
+                </Text>
               </ResultText>
               <ResultText>
-                <Text variant="m">Статус: {getStatus(status, passed)}</Text>
+                <Text variant="m">
+                  {t('TEST_RESULT.STATUS_LABEL')} {getStatus(status, passed, t)}
+                </Text>
               </ResultText>
             </ResultInfo>
           </Box>
@@ -141,15 +152,19 @@ const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) => {
                   </Text>
                 </QuestionText>
                 <AnswerText>
-                  <Text variant="m">Ваш ответ: {a.textAnswer || a.voiceTranscript || '—'}</Text>
+                  <Text variant="m">
+                    {t('TEST_RESULT.YOUR_ANSWER')} {a.textAnswer || a.voiceTranscript || '—'}
+                  </Text>
                 </AnswerText>
 
                 <EvaluationComponent>
-                  <Text variant="m">{evaluation.text}</Text>
+                  <Text variant="m">{t(evaluation.translationKey)}</Text>
                 </EvaluationComponent>
                 {a.notes && (
                   <NotesText>
-                    <Text variant="m">Примечание: {a.notes}</Text>
+                    <Text variant="m">
+                      {t('TEST_RESULT.NOTE')} {a.notes}
+                    </Text>
                   </NotesText>
                 )}
               </AnswerCard>

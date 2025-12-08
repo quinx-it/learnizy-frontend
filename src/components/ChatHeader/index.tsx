@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation';
 import { FC, useEffect, useState } from 'react';
 
 import { useGetChatMessagesQuery } from '@/api/endpoints/aiAssistant';
+import { useTranslation } from '@/hooks';
 
 import { IChatHeaderProps } from './typings';
 
@@ -11,6 +12,7 @@ import { Container, Divider, Title } from './styles';
 
 const ChatHeader: FC<IChatHeaderProps> = (props) => {
   const { className } = props;
+  const { t } = useTranslation();
 
   const params = useParams();
   const chatId = params.id ? parseInt(params.id as string, 10) : null;
@@ -29,7 +31,7 @@ const ChatHeader: FC<IChatHeaderProps> = (props) => {
 
   return (
     <Container className={className}>
-      <Title variant="h1">{isLoading ? 'Загрузка...' : title}</Title>
+      <Title variant="h1">{isLoading ? t('COMMON.LOADING') : title}</Title>
       <Divider />
     </Container>
   );

@@ -52,6 +52,7 @@ import {
 
 const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
   const { module, isMentor, openEditModal, handleDeleteModule, shouldBlock = false } = props;
+  const { t } = useTranslation();
 
   const courseId = 1;
 
@@ -90,8 +91,10 @@ const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
 
       {isMentor && (
         <ButtonsWrapper>
-          <YellowButton onClick={() => openEditModal(module.id)}>Редактировать</YellowButton>
-          <WhiteButton onClick={() => handleDeleteModule(module.id)}>Удалить</WhiteButton>
+          <YellowButton onClick={() => openEditModal(module.id)}>{t('COMMON.EDIT')}</YellowButton>
+          <WhiteButton onClick={() => handleDeleteModule(module.id)}>
+            {t('COMMON.DELETE')}
+          </WhiteButton>
         </ButtonsWrapper>
       )}
     </ModuleProgressCardContainer>
@@ -154,7 +157,7 @@ const ModulesPage: FC = () => {
       setModalOpen(false);
       refetch();
     } catch {
-      showToast('error', 'Ошибка', 'Ошибка при сохранении модуля');
+      showToast('error', t('COMMON.ERROR'), t('MODULES_PAGE.ERROR_SAVE'));
     }
   };
 
@@ -163,7 +166,7 @@ const ModulesPage: FC = () => {
       await deleteModule(moduleId).unwrap();
       refetch();
     } catch {
-      showToast('error', 'Ошибка', 'Ошибка при удалении модуля');
+      showToast('error', t('COMMON.ERROR'), t('MODULES_PAGE.ERROR_DELETE'));
     }
   };
 
@@ -180,7 +183,9 @@ const ModulesPage: FC = () => {
       />
       {isMentor && (
         <CreateButtonWrapper>
-          <BlueButtonSmall onClick={openCreateModal}>Создать новый модуль</BlueButtonSmall>
+          <BlueButtonSmall onClick={openCreateModal}>
+            {t('MODULES_PAGE.CREATE_MODULE')}
+          </BlueButtonSmall>
         </CreateButtonWrapper>
       )}
 
@@ -190,25 +195,27 @@ const ModulesPage: FC = () => {
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>
-                  {editingModuleId ? 'Редактирование модуля' : 'Создание нового модуля'}
+                  {editingModuleId
+                    ? t('MODULES_PAGE.EDIT_MODULE')
+                    : t('MODULES_PAGE.CREATE_NEW_MODULE')}
                 </DialogTitle>
               </DialogHeader>
 
               <FormContent>
                 <Input
                   type="number"
-                  placeholder="Порядковый номер"
+                  placeholder={t('MODULES_PAGE.SEQUENCE_NUMBER')}
                   value={sequenceOrder}
                   min={1}
                   onChange={(e) => setSequenceOrder(Number(e.target.value))}
                 />
                 <Input
-                  placeholder="Название модуля"
+                  placeholder={t('MODULES_PAGE.MODULE_TITLE')}
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
                 <Textarea
-                  placeholder="Описание модуля"
+                  placeholder={t('MODULES_PAGE.MODULE_DESCRIPTION')}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 />
@@ -216,9 +223,11 @@ const ModulesPage: FC = () => {
 
               <DialogFooterWrapper>
                 <DialogFooter>
-                  <WhiteButton onClick={() => setModalOpen(false)}>Отмена</WhiteButton>
+                  <WhiteButton onClick={() => setModalOpen(false)}>
+                    {t('MODULES_PAGE.CANCEL')}
+                  </WhiteButton>
                   <BlueButtonSmall onClick={handleSaveModule}>
-                    {editingModuleId ? 'Сохранить' : 'Создать'}
+                    {editingModuleId ? t('MODULES_PAGE.SAVE') : t('MODULES_PAGE.CREATE')}
                   </BlueButtonSmall>
                 </DialogFooter>
               </DialogFooterWrapper>

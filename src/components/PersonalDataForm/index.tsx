@@ -10,7 +10,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/RadioGroup';
 import { useTranslation } from '@/hooks';
 
 import { PersonalDataFormValuesType } from './typings';
-import { personalDataSchema } from './validations';
+import { createPersonalDataSchema } from './validations';
 
 import {
   BlueButton,
@@ -34,7 +34,7 @@ const PersonalDataForm: FC = () => {
     reset,
     formState: { errors },
   } = useForm<PersonalDataFormValuesType>({
-    resolver: yupResolver(personalDataSchema),
+    resolver: yupResolver(createPersonalDataSchema(t)),
     defaultValues: {
       gender: 'man',
       firstName: '',

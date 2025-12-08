@@ -68,8 +68,8 @@ const Navbar: FC<INavbarProps> = (props) => {
         </LogoLink>
 
         <LinksContainer>
-          {links.map(({ href, iconSrc, label }) => (
-            <NavbarLink key={label} href={href} iconSrc={iconSrc || ''} label={t(label)} />
+          {links.map(({ href, src, label }) => (
+            <NavbarLink key={label} href={href} src={src || ''} label={t(label)} />
           ))}
         </LinksContainer>
 
@@ -102,7 +102,7 @@ const Navbar: FC<INavbarProps> = (props) => {
           <Overlay
             role="button"
             tabIndex={0}
-            aria-label="Закрыть"
+            aria-label={t('COMMON_LABELS.CLOSE')}
             onClick={() => setIsOpen(false)}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') setIsOpen(false);
@@ -127,11 +127,11 @@ const Navbar: FC<INavbarProps> = (props) => {
             </MobileLogoLink>
 
             <MobileLinksContainer>
-              {links.map(({ href, iconSrc, label }) => (
+              {links.map(({ href, src, label }) => (
                 <NavbarLink
                   key={label}
                   href={href}
-                  iconSrc={iconSrc || ''}
+                  src={src || ''}
                   label={label}
                   onClick={() => setIsOpen(false)}
                 />

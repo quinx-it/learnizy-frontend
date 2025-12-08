@@ -18,7 +18,7 @@ import { Text } from '@/components/Typography';
 import { usePathname, useRouter, useTranslation } from '@/hooks';
 
 import { LessonTestFormPropsType } from './typings';
-import { LessonTestFormSchema } from './validation';
+import { createLessonTestFormSchema } from './validation';
 
 import { ActionsWrapper, ErrorText, QuestionItem, SubmitButtonWrapper } from './styles';
 
@@ -33,7 +33,7 @@ const LessonTestForm: FC<LessonTestFormPropsType> = (props) => {
 
   const methods = useForm<LessonTestFormValuesType>({
     defaultValues: { questions: [] },
-    resolver: yupResolver(LessonTestFormSchema),
+    resolver: yupResolver(createLessonTestFormSchema(t)),
   });
 
   const {

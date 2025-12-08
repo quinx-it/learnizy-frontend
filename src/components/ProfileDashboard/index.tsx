@@ -35,13 +35,10 @@ const ProfileDashboard: FC = () => {
         <NameText variant="m-bold">{t('PROFILE.NAME')}</NameText>
       </ProfileContainer>
       <LinksContainer>
-        <DashboardLink href={routes.user.userProfilePersonalData} iconSrc="/images/person-icon.svg">
+        <DashboardLink href={routes.user.userProfilePersonalData} src="/images/person-icon.svg">
           {t('PROFILE.PERSONAL_DATA')}
         </DashboardLink>
-        <DashboardLink
-          href={routes.user.userProfileSecuritySettings}
-          iconSrc="/images/lock-icon.svg"
-        >
+        <DashboardLink href={routes.user.userProfileSecuritySettings} src="/images/lock-icon.svg">
           {t('PROFILE.SECURITY_SETTINGS')}
         </DashboardLink>
         <LogoutButton variant="white">

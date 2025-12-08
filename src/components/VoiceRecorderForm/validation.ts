@@ -1,15 +1,18 @@
 import * as yup from 'yup';
 
+import { TranslationFunctionType } from '@/types';
+
 import { MAX_FILE_SIZE } from './constants';
 
-export const schema = yup.object({
-  file: yup
-    .mixed<Blob>()
-    .required('Вы не записали вопрос.')
-    .test('fileSize', 'Запись слишком длинная (макс. 30MB)', (value) => {
-      return value ? value.size <= MAX_FILE_SIZE : false;
-    })
-    .test('is-blob', 'Значение не является аудиофайлом', (value) => {
-      return value instanceof Blob;
-    }),
-});
+export const createSchema = (t: TranslationFunctionType) =>
+  yup.object({
+    file: yup
+      .mixed<Blob>()
+      .required(t('VALIDATION.NO_RECORDING'))
+      .test('fileSize', t('VALIDATION.RECORDING_TOO_LONG'), (value) => {
+        return value ? value.size <= MAX_FILE_SIZE : false;
+      })
+      .test('is-blob', t('VALIDATION.NOT_AUDIO_FILE'), (value) => {
+        return value instanceof Blob;
+      }),
+  });

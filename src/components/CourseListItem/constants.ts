@@ -5,11 +5,17 @@ export enum CourseListItemStatus {
   Blocked = 'Blocked',
 }
 
-export const constants = {
-  statuses: {
-    [CourseListItemStatus.Completed]: 'PROGRESS_STATUSES.COMPLETED',
-    [CourseListItemStatus.NotStarted]: 'PROGRESS_STATUSES.NOT_STARTED',
-    [CourseListItemStatus.Blocked]: 'PROGRESS_STATUSES.BLOCKED',
-    [CourseListItemStatus.InProgress]: 'PROGRESS_STATUSES.IN_PROGRESS',
-  },
+export const getStatusTranslationKey = (status: CourseListItemStatus | undefined): string => {
+  if (!status) return 'PROGRESS_STATUSES.NOT_STARTED';
+
+  switch (status) {
+    case CourseListItemStatus.Completed:
+      return 'PROGRESS_STATUSES.COMPLETED';
+    case CourseListItemStatus.InProgress:
+      return 'PROGRESS_STATUSES.IN_PROGRESS';
+    case CourseListItemStatus.Blocked:
+      return 'PROGRESS_STATUSES.BLOCKED';
+    default:
+      return 'PROGRESS_STATUSES.NOT_STARTED';
+  }
 };

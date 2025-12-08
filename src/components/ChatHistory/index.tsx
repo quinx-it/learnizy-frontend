@@ -80,7 +80,7 @@ const ChatHistory: FC<IChatHistoryProps> = (props) => {
           <Overlay
             role="button"
             tabIndex={0}
-            aria-label="Закрыть"
+            aria-label={t('COMMON_LABELS.CLOSE')}
             onClick={() => setIsOpen(false)}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') setIsOpen(false);

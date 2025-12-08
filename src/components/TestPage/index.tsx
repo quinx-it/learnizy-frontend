@@ -60,9 +60,9 @@ const TestPage: FC<TestPagePropsType> = (props) => {
   const onSubmit = async (data: LessonTestSubmitType) => {
     try {
       await sendTestResult(data).unwrap();
-      showToast('info', 'Отлично!', 'Тест пройден');
+      showToast('info', t('TEST_PAGE.SUCCESS'), t('TEST_PAGE.TEST_PASSED'));
     } catch {
-      showToast('error', 'Ошибка', 'Не удалось отправить тест');
+      showToast('error', t('COMMON.ERROR'), t('TEST_PAGE.ERROR_SEND'));
     }
   };
 

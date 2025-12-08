@@ -10,31 +10,32 @@ import { PasswordInput } from '@/components/PasswordInput';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
 import { routes } from '@/const';
-import { useRouter } from '@/hooks';
+import { useRouter, useTranslation } from '@/hooks';
 
 import { IResetPasswordFormProps } from './typings';
-import { IResetPasswordFormValues, formSchema } from './validation';
+import { IResetPasswordFormValues, createFormSchema } from './validation';
 
 import { Form, SuccessContainer, SuccessText } from './styles';
 
 const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
   const { token, onSuccess } = props;
+  const { t } = useTranslation();
   const [resetPassword, { isLoading, error }] = useResetPasswordMutation();
   const [isSuccess, setIsSuccess] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     if (error) {
-      showToast('error', 'Ошибка', 'Проверьте правильность введённых логина и пароля');
+      showToast('error', t('COMMON.ERROR'), t('AUTH.CHECK_CREDENTIALS'));
     }
-  }, [error]);
+  }, [error, t]);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IResetPasswordFormValues>({
-    resolver: yupResolver(formSchema),
+    resolver: yupResolver(createFormSchema(t)),
     defaultValues: {
       password: '',
       repeatPassword: '',
@@ -47,11 +48,11 @@ const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
         token,
         newPassword: data.password,
       }).unwrap();
-      showToast('success', 'Ура!', 'Пароль успешно изменён');
+      showToast('success', t('AUTH.SUCCESS'), t('AUTH.PASSWORD_CHANGED'));
       setIsSuccess(true);
       onSuccess?.();
     } catch {
-      showToast('error', 'Ошибка!', 'Не удалось изменить пароль');
+      showToast('error', t('COMMON.ERROR'), t('AUTH.PASSWORD_CHANGE_ERROR'));
     }
   };
 
@@ -62,9 +63,9 @@ const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
   if (isSuccess) {
     return (
       <SuccessContainer>
-        <SuccessText>Пароль успешно изменён!</SuccessText>
+        <SuccessText>{t('AUTH.PASSWORD_CHANGED')}</SuccessText>
         <Button onClick={onClick} size="medium">
-          Вернуться к окну авторизации
+          {t('AUTH.RETURN_TO_LOGIN')}
         </Button>
       </SuccessContainer>
     );
@@ -73,23 +74,23 @@ const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <PasswordInput
-        label="Новый пароль"
+        label={t('SECURITY_SETTINGS.NEW_PASSWORD')}
         id="password"
-        placeholder="пароль"
+        placeholder={t('AUTH.PASSWORD_PLACEHOLDER')}
         {...register('password')}
         error={errors.password?.message}
       />
 
       <PasswordInput
-        label="Повторите новый пароль"
+        label={t('AUTH.REPEAT_PASSWORD')}
         id="repeat-password"
-        placeholder="пароль"
+        placeholder={t('AUTH.PASSWORD_PLACEHOLDER')}
         {...register('repeatPassword')}
         error={errors.repeatPassword?.message}
       />
 
       <Button type="submit" size="medium" className="rounded-full" disabled={isLoading}>
-        {isLoading ? <Spinner size={22} /> : 'Сохранить'}
+        {isLoading ? <Spinner size={22} /> : t('COMMON.SAVE')}
       </Button>
     </Form>
   );

@@ -8,7 +8,7 @@ import { IDashboardLinkProps } from './typings';
 import { IconWrapper, StyledLink } from './styles';
 
 const DashboardLink: FC<IDashboardLinkProps> = (props) => {
-  const { href, iconSrc, Icon, iconWidth = 16, iconHeight = 16, children } = props;
+  const { href, src, Icon, iconWidth = 16, iconHeight = 16, children } = props;
 
   const pathname = usePathname();
   const isActive = pathname === href;
@@ -16,8 +16,7 @@ const DashboardLink: FC<IDashboardLinkProps> = (props) => {
   return (
     <StyledLink href={href} isActive={isActive}>
       <IconWrapper>
-        {iconSrc && <Image src={iconSrc} alt="" width={iconWidth} height={iconHeight} />}
-        {!iconSrc && Icon && <Icon />}
+        {src ? <Image src={src} alt="" width={iconWidth} height={iconHeight} /> : Icon && <Icon />}
       </IconWrapper>
       {children}
     </StyledLink>
