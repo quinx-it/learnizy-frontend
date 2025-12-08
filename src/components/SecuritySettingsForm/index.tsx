@@ -7,19 +7,21 @@ import { useForm } from 'react-hook-form';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import { PasswordInput } from '@/components/PasswordInput';
+import { useTranslation } from '@/hooks';
 
-import { securitySettingsSchema, SecuritySettingsFormValuesType } from './validation';
+import { createSecuritySettingsSchema, SecuritySettingsFormValuesType } from './validation';
 
 import { ButtonWrapper, ButtonsContainer, Form, FormField, FormGrid } from './styles';
 
 const SecuritySettingsForm: FC = () => {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<SecuritySettingsFormValuesType>({
-    resolver: yupResolver(securitySettingsSchema),
+    resolver: yupResolver(createSecuritySettingsSchema(t)),
     defaultValues: {
       password: '',
       newPassword: '',
@@ -34,21 +36,21 @@ const SecuritySettingsForm: FC = () => {
       <FormGrid>
         <FormField>
           <PasswordInput
-            label="Пароль"
+            label={t('SECURITY_SETTINGS.PASSWORD')}
             {...register('password')}
             error={errors.password?.message}
           />
         </FormField>
         <FormField>
           <PasswordInput
-            label="Новый пароль"
+            label={t('SECURITY_SETTINGS.NEW_PASSWORD')}
             {...register('newPassword')}
             error={errors.newPassword?.message}
           />
         </FormField>
         <FormField>
           <Input
-            label="Логин (Email или телефон)"
+            label={t('SECURITY_SETTINGS.LOGIN')}
             {...register('login')}
             error={errors.login?.message}
           />
@@ -57,12 +59,12 @@ const SecuritySettingsForm: FC = () => {
         <ButtonsContainer>
           <ButtonWrapper>
             <Button type="reset" variant="white" onClick={() => reset()}>
-              Не сохранять
+              {t('SECURITY_SETTINGS.DONT_SAVE')}
             </Button>
           </ButtonWrapper>
           <ButtonWrapper>
             <Button type="submit" variant="blue">
-              Сохранить изменения
+              {t('SECURITY_SETTINGS.SAVE_CHANGES')}
             </Button>
           </ButtonWrapper>
         </ButtonsContainer>

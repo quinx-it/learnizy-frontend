@@ -9,12 +9,13 @@ import { routes } from '@/const';
 import { globalConstants } from '@/const/constants';
 import { useTranslation } from '@/hooks';
 
-import { constants } from './constants';
+import { createConstants } from './constants';
 
 import { AccordionContainer, Divider, StyledCardWrapper, Title } from './styles';
 
 const FaqPage: FC = () => {
   const { t } = useTranslation();
+  const constants = createConstants(t);
 
   return (
     <>

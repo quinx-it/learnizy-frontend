@@ -73,7 +73,7 @@ const ExamCard: FC<ExamCardPropsType> = (props) => {
         <InlineLinkWrapper>
           <Link href={`${routes.user.modules}/${exam.moduleId}`}>{t('EXAMS.STATUS.LESSONS')}</Link>
         </InlineLinkWrapper>
-        {'  модуля'}
+        {` ${t('EXAMS.STATUS.MODULE')}`}
       </UnavailableStatusText>
     ),
   };

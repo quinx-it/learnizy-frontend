@@ -36,7 +36,7 @@ import { percentage, pluralize } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
 
-import { constants } from './constants';
+import { createBreadcrumbs, examAvailableNumber } from './constants';
 import { ModuleItemPagePropsType } from './typings';
 
 import {
@@ -73,7 +73,7 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
   const role = useSelector(selectUserRole);
   const isMentor = role === UserRole.Mentor;
 
-  const { breadcrumbs, examAvailableNumber } = constants;
+  const breadcrumbs = createBreadcrumbs(t);
 
   const {
     data: module,

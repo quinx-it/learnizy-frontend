@@ -32,7 +32,7 @@ export const AiAssistantPage = () => {
 
       router.push(`${routes.user.aiAssistant}/chat/${newChatId}`);
     } catch {
-      showToast('error', 'Не удалось создать новый чат', '');
+      showToast('error', t('CHAT.CREATE_CHAT_ERROR'), '');
     }
   };
 

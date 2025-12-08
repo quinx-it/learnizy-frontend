@@ -3,6 +3,7 @@ import { FC, useState, useEffect } from 'react';
 import { Controller, useForm, Resolver } from 'react-hook-form';
 
 import {
+  AIQueryStatus,
   useUploadVoiceMutation,
   useCreateLessonAIQueryMutation,
   useGetLessonAIQueriesQuery,
@@ -13,10 +14,10 @@ import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
 import VoiceRecorderControl from '@/components/VoiceRecorderControl';
+import { useTranslation } from '@/hooks';
 
-import { AIQueryStatus } from './constants';
 import { IAIQuestionFormValues, IVoiceRecorderFormProps } from './typings';
-import { schema } from './validation';
+import { createSchema } from './validation';
 
 import {
   ErrorContainer,
@@ -30,6 +31,7 @@ import {
 
 const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = (props) => {
   const { lessonId } = props;
+  const { t } = useTranslation();
 
   const [uploadVoice] = useUploadVoiceMutation();
   const [createLessonAIQuery, { isLoading: isCreatingQuery }] = useCreateLessonAIQueryMutation();
@@ -51,7 +53,7 @@ const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = (props) => {
     setValue,
     formState: { errors },
   } = useForm<IAIQuestionFormValues>({
-    resolver: yupResolver(schema) as Resolver<IAIQuestionFormValues>,
+    resolver: yupResolver(createSchema(t)) as Resolver<IAIQuestionFormValues>,
     defaultValues: { file: undefined },
   });
 
@@ -62,10 +64,10 @@ const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = (props) => {
       lastAIQuery.status !== AIQueryStatus.Pending
     ) {
       if (lastAIQuery.status === AIQueryStatus.Answered) {
-        setLastAIResponse(lastAIQuery.aiResponseText || 'ИИ ответил на ваш вопрос.');
+        setLastAIResponse(lastAIQuery.aiResponseText || t('VOICE_RECORDER.AI_RESPONDED'));
         setLastAIError(null);
       } else if (lastAIQuery.status === AIQueryStatus.Failed) {
-        setLastAIError(lastAIQuery.processingError || 'Не удалось получить ответ от ИИ.');
+        setLastAIError(lastAIQuery.processingError || t('VOICE_RECORDER.AI_ERROR'));
         setLastAIResponse(null);
       }
 
@@ -75,7 +77,7 @@ const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = (props) => {
 
   const onSubmit = async (data: IAIQuestionFormValues) => {
     if (!data.file) {
-      showToast('error', 'Ошибка', 'Пожалуйста, запишите вопрос голосом.');
+      showToast('error', t('COMMON.ERROR'), t('VOICE_RECORDER.ERROR_RECORD_VOICE'));
 
       return;
     }
@@ -89,7 +91,11 @@ const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = (props) => {
       const { downloadUrl } = await uploadVoice(formData).unwrap();
       audioUrl = downloadUrl;
     } catch {
-      showToast('error', 'Ошибка загрузки аудио', 'Не удалось загрузить аудиофайл.');
+      showToast(
+        'error',
+        t('CHAT_INPUT.ERROR_UPLOADING_AUDIO'),
+        t('VOICE_RECORDER.ERROR_UPLOAD_AUDIO'),
+      );
 
       return;
     }
@@ -102,15 +108,11 @@ const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = (props) => {
       const result = await createLessonAIQuery({ lessonId, body: requestBody }).unwrap();
       setLastCreatedQueryId(result.id);
 
-      showToast(
-        'success',
-        'Вопрос отправлен!',
-        'ИИ обрабатывает ваш вопрос. Пожалуйста, ожидайте ответа.',
-      );
+      showToast('success', t('VOICE_RECORDER.QUESTION_SENT'), t('VOICE_RECORDER.AI_PROCESSING'));
 
       setValue('file', undefined);
     } catch {
-      showToast('error', 'Ошибка', 'Не удалось создать вопрос к ИИ.');
+      showToast('error', t('COMMON.ERROR'), t('VOICE_RECORDER.ERROR_CREATE_QUESTION'));
     }
   };
 
@@ -132,7 +134,7 @@ const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = (props) => {
           {isCreatingQuery || (lastCreatedQueryId && isLoadingLastQuery) ? (
             <Spinner />
           ) : (
-            'Задать вопрос'
+            t('VOICE_RECORDER.ASK_QUESTION')
           )}
         </Button>
       </SubmitButtonWrapper>
@@ -140,20 +142,20 @@ const VoiceRecorderForm: FC<IVoiceRecorderFormProps> = (props) => {
       {lastCreatedQueryId && !lastAIResponse && !lastAIError && (
         <LoadingContainer>
           <Spinner />
-          <Text>Идёт ожидание обработки ИИ...</Text>
+          <Text>{t('VOICE_RECORDER.WAITING_AI')}</Text>
         </LoadingContainer>
       )}
 
       {lastAIResponse && (
         <ResponseContainer>
-          <Text variant="l-bold">Ответ:</Text>
+          <Text variant="l-bold">{t('VOICE_RECORDER.ANSWER')}</Text>
           <Text>{lastAIResponse}</Text>
         </ResponseContainer>
       )}
 
       {lastAIError && (
         <ErrorContainer>
-          <Text variant="l-bold">Ошибка:</Text>
+          <Text variant="l-bold">{t('VOICE_RECORDER.ERROR')}</Text>
           <Text>{lastAIError}</Text>
         </ErrorContainer>
       )}

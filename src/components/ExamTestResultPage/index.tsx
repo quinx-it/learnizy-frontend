@@ -2,12 +2,13 @@
 
 import { FC } from 'react';
 
-import { AnswerEvaluation, useGetLastTestAttemptQuery } from '@/api/endpoints/test';
+import { AnswerEvaluation, TestStatus, useGetLastTestAttemptQuery } from '@/api/endpoints/test';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
 import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import { globalConstants, routes } from '@/const';
+import { useTranslation } from '@/hooks';
 
 import { evaluationMap } from './constants';
 import { ExamTestResultPagePropsType } from './typings';
@@ -27,22 +28,21 @@ import {
   NotesText,
 } from './styles';
 
-const mapEvaluation = (evaluation: string) => {
-  const evaluationEnum = evaluation as AnswerEvaluation;
-
-  return evaluationMap[evaluationEnum] || evaluationMap[AnswerEvaluation.Unassessed];
+const mapEvaluation = (evaluation: AnswerEvaluation) => {
+  return evaluationMap[evaluation] || evaluationMap[AnswerEvaluation.Unassessed];
 };
 
-const getStatus = (status: string, passed: boolean) => {
-  if (status === 'SUBMITTED') return 'В обработке';
+const getStatus = (status: TestStatus, passed: boolean, t: (key: string) => string) => {
+  if (status === TestStatus.Submitted) return t('TEST_RESULT.STATUS_PROCESSING');
 
-  if (passed) return 'Пройден';
+  if (passed) return t('TEST_RESULT.STATUS_PASSED');
 
-  return 'Не пройден';
+  return t('TEST_RESULT.STATUS_FAILED');
 };
 
 const ExamTestResultPage: FC<ExamTestResultPagePropsType> = (props) => {
   const { testId } = props;
+  const { t } = useTranslation();
 
   const {
     data: testResult,
@@ -63,19 +63,23 @@ const ExamTestResultPage: FC<ExamTestResultPagePropsType> = (props) => {
   return (
     <>
       <Breadcrumbs
-        items={[{ label: `Результаты`, href: `` }]}
+        items={[{ label: t('TEST_RESULT.RESULTS'), href: `` }]}
         rootHref={routes.user.exams}
-        rootLabel={globalConstants.rootBreadcrumbLabels.examsLabel}
+        rootLabel={t(globalConstants.rootBreadcrumbLabels.examsLabel)}
       />
 
       <Container>
         <CardWrapper>
           <ResultCardContent>
-            <ResultTitle variant="l">Результаты экзамена</ResultTitle>
+            <ResultTitle variant="l">{t('TEST_RESULT.TITLE_EXAM')}</ResultTitle>
             <StyledDivider />
             <ResultsContainer>
-              <ResultText variant="m">Результат: {scorePercent}%</ResultText>
-              <ResultText variant="m">Статус: {getStatus(testResult.status, passed)}</ResultText>
+              <ResultText variant="m">
+                {t('TEST_RESULT.RESULT_LABEL')} {scorePercent}%
+              </ResultText>
+              <ResultText variant="m">
+                {t('TEST_RESULT.STATUS_LABEL')} {getStatus(testResult.status, passed, t)}
+              </ResultText>
             </ResultsContainer>
           </ResultCardContent>
         </CardWrapper>
@@ -91,12 +95,16 @@ const ExamTestResultPage: FC<ExamTestResultPagePropsType> = (props) => {
                     {idx + 1}. {a.questionText}
                   </QuestionText>
                   <AnswerText variant="m">
-                    Ваш ответ: {a.textAnswer || a.voiceTranscript || '—'}
+                    {t('TEST_RESULT.YOUR_ANSWER')} {a.textAnswer || a.voiceTranscript || '—'}
                   </AnswerText>
                   <EvaluationText variant="m" evaluation={evaluation.evaluation}>
-                    {evaluation.text}
+                    {t(evaluation.text)}
                   </EvaluationText>
-                  {a.notes && <NotesText variant="m">Примечание: {a.notes}</NotesText>}
+                  {a.notes && (
+                    <NotesText variant="m">
+                      {t('TEST_RESULT.NOTE')} {a.notes}
+                    </NotesText>
+                  )}
                 </AnswerCardContent>
               </CardWrapper>
             );

@@ -2,6 +2,12 @@ export type VoiceFormValuesType = { file: Blob };
 export type VoiceDataType = FormData;
 export type FileUploadResponseType = { downloadUrl: string };
 
+export enum AIQueryStatus {
+  Pending = 'PENDING',
+  Answered = 'ANSWERED',
+  Failed = 'FAILED',
+}
+
 export type CreateLessonAIQueryRequestType = {
   audioUrl?: string | null;
   questionText?: string | null;
@@ -14,7 +20,7 @@ export type LessonAIQueryType = {
   audioUrl: string | null;
   questionText: string | null;
   aiResponseText: string | null;
-  status: 'PENDING' | 'ANSWERED' | 'FAILED';
+  status: AIQueryStatus;
   processingError: string | null;
   createdAt: string;
 };

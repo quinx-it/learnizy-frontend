@@ -1,32 +1,37 @@
 import * as yup from 'yup';
 
-export const securitySettingsSchema = yup.object({
-  password: yup
-    .string()
-    .required('Введите текущий пароль')
-    .min(8, 'Минимум 8 символов')
-    .matches(/[A-Za-z]/, 'Пароль должен содержать буквы')
-    .matches(/\d/, 'Пароль должен содержать цифры'),
+import { TranslationFunctionType } from '@/types';
 
-  newPassword: yup
-    .string()
-    .required('Введите новый пароль')
-    .min(8, 'Минимум 8 символов')
-    .matches(/[A-Za-z]/, 'Пароль должен содержать буквы')
-    .matches(/\d/, 'Пароль должен содержать цифры')
-    .notOneOf([yup.ref('password')], 'Новый пароль не должен совпадать с текущим'),
+export const createSecuritySettingsSchema = (t: TranslationFunctionType) =>
+  yup.object({
+    password: yup
+      .string()
+      .required(t('VALIDATION.REQUIRED_PASSWORD'))
+      .min(8, t('VALIDATION.MIN_8_CHARS'))
+      .matches(/[A-Za-z]/, t('VALIDATION.PASSWORD_LETTERS'))
+      .matches(/\d/, t('VALIDATION.PASSWORD_DIGITS')),
 
-  login: yup
-    .string()
-    .required('Введите логин')
-    .test('email-or-username', 'Введите корректный email или username', (value) => {
-      if (!value) return false;
+    newPassword: yup
+      .string()
+      .required(t('VALIDATION.REQUIRED_NEW_PASSWORD'))
+      .min(8, t('VALIDATION.MIN_8_CHARS'))
+      .matches(/[A-Za-z]/, t('VALIDATION.PASSWORD_LETTERS'))
+      .matches(/\d/, t('VALIDATION.PASSWORD_DIGITS'))
+      .notOneOf([yup.ref('password')], t('VALIDATION.PASSWORD_MATCH')),
 
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      const usernameRegex = /^[a-zA-Z0-9_]{3,20}$/;
+    login: yup
+      .string()
+      .required(t('VALIDATION.REQUIRED_LOGIN'))
+      .test('email-or-username', t('VALIDATION.VALID_EMAIL_USERNAME'), (value) => {
+        if (!value) return false;
 
-      return emailRegex.test(value) || usernameRegex.test(value);
-    }),
-});
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const usernameRegex = /^[a-zA-Z0-9_]{3,20}$/;
 
-export type SecuritySettingsFormValuesType = yup.InferType<typeof securitySettingsSchema>;
+        return emailRegex.test(value) || usernameRegex.test(value);
+      }),
+  });
+
+export type SecuritySettingsFormValuesType = yup.InferType<
+  ReturnType<typeof createSecuritySettingsSchema>
+>;

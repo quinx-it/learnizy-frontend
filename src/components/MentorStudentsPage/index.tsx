@@ -7,6 +7,7 @@ import AnalyticsCard from '@/components/AnalyticsCard';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ProgressBar from '@/components/Progress';
 import StudentsTable from '@/components/StudentsTable';
+import { useTranslation } from '@/hooks';
 
 import {
   AnalyticsGrid,
@@ -19,6 +20,7 @@ import {
 } from './styles';
 
 const MentorStudentsPage: FC = () => {
+  const { t } = useTranslation();
   const { data } = useGetDashboardAnalyticsQuery();
 
   const growthPercentage =
@@ -28,22 +30,22 @@ const MentorStudentsPage: FC = () => {
 
   return (
     <Container>
-      <Breadcrumbs rootLabel="Главная" rootDescription="Ментор" />
+      <Breadcrumbs rootLabel={t('MENTOR.HOME')} rootDescription={t('MENTOR.ROLE')} />
 
       {data?.analyticsSummary && (
         <AnalyticsGrid>
           <AnalyticsCard
-            title="Общие число пользователей"
+            title={t('MENTOR.TOTAL_USERS')}
             value={data.analyticsSummary.totalUsers.value}
             changePercentage={data.analyticsSummary.totalUsers.changePercentage}
           />
           <AnalyticsCard
-            title="Активные пользователи"
+            title={t('MENTOR.ACTIVE_USERS')}
             value={data.analyticsSummary.activeUsers.value}
             changePercentage={data.analyticsSummary.activeUsers.changePercentage}
           />
           <AnalyticsCard
-            title="Коэффициент удержания"
+            title={t('MENTOR.RETENTION_RATE')}
             value={data.analyticsSummary.retentionRate.value}
             changePercentage={data.analyticsSummary.retentionRate.changePercentage}
           />
@@ -52,17 +54,17 @@ const MentorStudentsPage: FC = () => {
 
       {data?.userGrowthChart && (
         <GrowthChartContainer>
-          <AnalyticsCard title="Рост новых пользователей">
+          <AnalyticsCard title={t('MENTOR.USER_GROWTH')}>
             <ProgressContainer>
               <ProgressBar value={growthPercentage} variant="circular" size={60} strokeWidth={6} />
 
               <StatsContainer>
                 <StatsRow>
-                  Новые пользователи:{' '}
+                  {t('MENTOR.NEW_USERS')}{' '}
                   <StatsValue>{data.userGrowthChart.newUsersMonthly}</StatsValue>
                 </StatsRow>
                 <StatsRow>
-                  Активные пользователи:{' '}
+                  {t('MENTOR.ACTIVE_USERS_LABEL')}{' '}
                   <StatsValue>{data.userGrowthChart.activeUsersMonthly}</StatsValue>
                 </StatsRow>
               </StatsContainer>

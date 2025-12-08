@@ -5,7 +5,7 @@ import { FC } from 'react';
 import ProgressBar from '@/components/Progress';
 import { useTranslation } from '@/hooks';
 
-import { constants, CourseListItemStatus } from './constants';
+import { CourseListItemStatus, getStatusTranslationKey } from './constants';
 import { CourseListItemType } from './typings';
 
 import {
@@ -44,7 +44,7 @@ const CourseListItem: FC<CourseListItemType> = (props) => {
           isBlocked={isBlocked}
           onClick={isBlocked ? undefined : onClick}
         >
-          {t(constants.statuses[status])}
+          {t(getStatusTranslationKey(status))}
         </StyledButton>
       )}
     </Container>

@@ -6,8 +6,9 @@ import CardWrapper from '@/components/CardWrapper';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import VoiceRecorderForm from '@/components/VoiceRecorderForm';
 import { routes } from '@/const';
+import { useTranslation } from '@/hooks';
 
-import { constants } from './constants';
+import { createBreadcrumbs } from './constants';
 import { ILessonRetellingPageProps } from './typings';
 
 import {
@@ -21,6 +22,7 @@ import {
 
 const LessonRetellingPage: FC<ILessonRetellingPageProps> = (props) => {
   const { module, lesson } = props;
+  const { t } = useTranslation();
 
   const { data: lessonData, isLoading } = useGetLessonQuery(lesson);
 
@@ -30,23 +32,21 @@ const LessonRetellingPage: FC<ILessonRetellingPageProps> = (props) => {
 
   const { sequenceOrder, moduleSequenceOrder } = lessonData;
 
+  const breadcrumbs = createBreadcrumbs(t);
+
   return (
     <Container>
       <Breadcrumbs
-        items={constants.breadcrumbs(moduleSequenceOrder ?? 1, module, lesson, sequenceOrder + 1)}
+        items={breadcrumbs(moduleSequenceOrder ?? 1, module, lesson, sequenceOrder + 1)}
         rootHref={routes.user.modules}
-        rootLabel="Модули"
+        rootLabel={t('LESSON_RETELLING.MODULES')}
       />
       <CardWrapper>
         <CardWrapperContainer>
-          <TitleText variant="l-bold">Задайте вопрос</TitleText>
+          <TitleText variant="l-bold">{t('LESSON_RETELLING.ASK_QUESTION')}</TitleText>
           <StyledDivider />
-          <DescriptionText variant="l">
-            Нажмите кнопку записи и задайте интересующий вопрос по пройденной теме. Говорите чётко,
-            словно задаёте вопрос коллеге или другу. Такой метод поможет лучше понять пройденный
-            материал и увереннее чувствовать себя на собеседовании.
-          </DescriptionText>
-          <EmphasisText variant="l">Говорите свободно. Вопросы — часть обучения!</EmphasisText>
+          <DescriptionText variant="l">{t('LESSON_RETELLING.DESCRIPTION')}</DescriptionText>
+          <EmphasisText variant="l">{t('LESSON_RETELLING.EMPHASIS')}</EmphasisText>
 
           <VoiceRecorderForm lessonId={Number(lesson)} />
         </CardWrapperContainer>

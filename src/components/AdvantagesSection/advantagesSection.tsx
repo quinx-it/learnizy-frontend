@@ -1,5 +1,7 @@
+import { useTranslation } from '@/hooks';
+
 import { AdvantageCard } from './advantageCard';
-import { constants } from './constants';
+import { cards } from './constants';
 
 import {
   StyledSectionContent,
@@ -11,17 +13,24 @@ import {
 } from './styles';
 
 export const AdvantagesSection = () => {
+  const { t } = useTranslation();
+
   return (
     <StyledSectionContent>
       <SectionWrapper>
         <HeaderContainer>
-          <StyledHeading7xl variant="7xl">{constants.title}</StyledHeading7xl>
-          <StyledHeadingDescription>{constants.description}</StyledHeadingDescription>
+          <StyledHeading7xl variant="7xl">{t('ADVANTAGES.TITLE')}</StyledHeading7xl>
+          <StyledHeadingDescription>{t('ADVANTAGES.DESCRIPTION')}</StyledHeadingDescription>
         </HeaderContainer>
 
         <CardsGrid>
-          {constants.cards.map((item, index) => (
-            <AdvantageCard key={index} {...item} />
+          {cards.map((type, index) => (
+            <AdvantageCard
+              key={index}
+              type={type}
+              title={t('ADVANTAGES.CARD_TITLE')}
+              text={t('ADVANTAGES.CARD_TEXT')}
+            />
           ))}
         </CardsGrid>
       </SectionWrapper>

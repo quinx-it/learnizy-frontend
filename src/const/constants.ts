@@ -30,31 +30,31 @@ export const REFRESH_THROTTLE = 1000;
 
 export const navbarLinks = {
   user: [
-    { href: routes.user.homePage, iconSrc: '/images/cubes-main-icon.svg', label: 'NAVBAR.HOME' },
-    { href: routes.user.modules, iconSrc: '/images/student-hat-icon.svg', label: 'NAVBAR.MODULES' },
+    { href: routes.user.homePage, src: '/images/cubes-main-icon.svg', label: 'NAVBAR.HOME' },
+    { href: routes.user.modules, src: '/images/student-hat-icon.svg', label: 'NAVBAR.MODULES' },
     {
       href: routes.user.aiAssistant,
-      iconSrc: '/images/four-pointed-star-icon.svg',
+      src: '/images/four-pointed-star-icon.svg',
       label: 'NAVBAR.AI_ASSISTANT',
     },
     {
       href: routes.user.knowlegeBase,
-      iconSrc: '/images/discussion-icon.svg',
+      src: '/images/discussion-icon.svg',
       label: 'NAVBAR.KNOWLEDGE_BASE',
     },
-    { href: routes.user.exams, iconSrc: '/images/a-plus-icon.svg', label: 'NAVBAR.EXAMS' },
-    { href: routes.user.projects, iconSrc: '/images/projects-icon.svg', label: 'NAVBAR.PROJECTS' },
+    { href: routes.user.exams, src: '/images/a-plus-icon.svg', label: 'NAVBAR.EXAMS' },
+    { href: routes.user.projects, src: '/images/projects-icon.svg', label: 'NAVBAR.PROJECTS' },
     {
       href: routes.user.userProfilePersonalData,
-      iconSrc: '/images/person-icon.svg',
+      src: '/images/person-icon.svg',
       label: 'NAVBAR.PROFILE',
     },
   ],
   mentor: [
-    { href: routes.mentor.students, iconSrc: '/images/student-hat-icon.svg', label: 'NAVBAR.HOME' },
+    { href: routes.mentor.students, src: '/images/student-hat-icon.svg', label: 'NAVBAR.HOME' },
     {
       href: routes.mentor.modules,
-      iconSrc: '/images/student-hat-icon.svg',
+      src: '/images/student-hat-icon.svg',
       label: 'NAVBAR.MODULES',
     },
   ],

@@ -3,7 +3,7 @@ import { useEffect, useState, FC } from 'react';
 
 import AudioPlayer from '@/components/AudioPlayer';
 import { Text } from '@/components/Typography';
-import { useVoiceRecorder } from '@/hooks';
+import { useTranslation, useVoiceRecorder } from '@/hooks';
 
 import { PropsType } from './typings';
 
@@ -11,6 +11,7 @@ import { ButtonWrapper, Container, DeleteButton } from './styles';
 
 const VoiceRecorderControl: FC<PropsType> = (props) => {
   const { onChange } = props;
+  const { t } = useTranslation();
 
   const { recording, audioUrl, audioBlob, startRecording, stopRecording, reset } =
     useVoiceRecorder();
@@ -42,14 +43,15 @@ const VoiceRecorderControl: FC<PropsType> = (props) => {
     <>
       {!audioUrl && !recording && (
         <ButtonWrapper type="button" onClick={startRecording} size="medium">
-          <Image src="/images/mic-icon.svg" alt="Mic icon" width={16} height={20} /> Начать запись
+          <Image src="/images/mic-icon.svg" alt="Mic icon" width={16} height={20} />{' '}
+          {t('VOICE_RECORDER_CONTROL.START_RECORDING')}
         </ButtonWrapper>
       )}
 
       {!audioUrl && recording && (
         <Container>
           <ButtonWrapper type="button" onClick={stopRecording} size="medium">
-            ⏹ Остановить
+            ⏹ {t('VOICE_RECORDER_CONTROL.STOP_RECORDING')}
           </ButtonWrapper>
           <Text variant="m" className="text-medium">
             {new Date(duration * 1000).toISOString().slice(14, 19)}

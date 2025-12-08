@@ -4,7 +4,8 @@ export const QuestionItem = styled(Box)(({ theme }) => ({
   borderBottom: `1px solid ${theme.palette.grey[500]}`,
   paddingTop: '4rem',
   paddingBottom: '4rem',
-  '&:first-child': {
+
+  '&:first-of-type': {
     paddingTop: 0,
   },
 }));

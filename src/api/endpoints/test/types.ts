@@ -93,7 +93,7 @@ export interface IAnswerView {
   textAnswer: string | null;
   voiceFileUrl: string | null;
   voiceTranscript: string | null;
-  evaluation: 'CORRECT' | 'INCORRECT' | 'PARTIAL' | 'UNASSESSED';
+  evaluation: AnswerEvaluation;
   notes: string | null;
 }
 
@@ -103,7 +103,7 @@ export interface ITestAttemptResponse {
   testId: number;
   lessonId: number;
   moduleId: number;
-  status: 'SUBMITTED' | 'EVALUATING' | 'EVALUATED' | 'FAILED';
+  status: TestStatus;
   answers: IAnswerView[];
   scorePercent: number | null;
   passed: boolean | null;

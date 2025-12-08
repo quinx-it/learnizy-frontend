@@ -12,13 +12,15 @@ import { PasswordInput } from '@/components/PasswordInput';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
 import { routes } from '@/const';
+import { useTranslation } from '@/hooks';
 
 import { IAuthFormValues } from './typings';
-import { formSchema } from './validation';
+import { createFormSchema } from './validation';
 
 import { AuthLink, Form, LinksRow } from './styles';
 
 const AuthForm: FC = () => {
+  const { t } = useTranslation();
   const [loginRequest, { isLoading }] = useLoginMutation();
 
   const {
@@ -26,7 +28,7 @@ const AuthForm: FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<IAuthFormValues>({
-    resolver: yupResolver(formSchema),
+    resolver: yupResolver(createFormSchema(t)),
     defaultValues: {
       username: '',
       password: '',
@@ -40,33 +42,33 @@ const AuthForm: FC = () => {
         password: data.password,
       }).unwrap();
     } catch {
-      showToast('error', 'Ошибка', 'Проверьте правильность введённых логина и пароля');
+      showToast('error', t('COMMON.ERROR'), t('AUTH.CHECK_CREDENTIALS'));
     }
   };
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Input
-        label="Введите логин"
+        label={t('AUTH.ENTER_LOGIN')}
         id="username"
         autoComplete="username"
-        placeholder="логин"
+        placeholder={t('AUTH.LOGIN_PLACEHOLDER')}
         {...register('username')}
         error={errors.username?.message}
       />
 
       <PasswordInput
-        label="Введите пароль"
+        label={t('AUTH.ENTER_PASSWORD')}
         id="password"
         autoComplete="current-password"
-        placeholder="пароль"
+        placeholder={t('AUTH.PASSWORD_PLACEHOLDER')}
         {...register('password')}
         error={errors.password?.message}
       />
 
       <LinksRow>
-        <AuthLink href={routes.public.registerPage}>Регистрация</AuthLink>
-        <AuthLink href={routes.public.forgotPassword}>Забыли пароль?</AuthLink>
+        <AuthLink href={routes.public.registerPage}>{t('LOGIN.REGISTRATION')}</AuthLink>
+        <AuthLink href={routes.public.forgotPassword}>{t('LOGIN.FORGOT_PASSWORD')}</AuthLink>
       </LinksRow>
 
       <Button type="submit" disabled={isLoading} size="medium" asChild={false}>
@@ -75,7 +77,7 @@ const AuthForm: FC = () => {
             <Spinner type="ring" />
           </Box>
         ) : (
-          'Войти'
+          t('LOGIN.ENTER')
         )}
       </Button>
     </Form>

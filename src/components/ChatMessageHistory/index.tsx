@@ -6,6 +6,7 @@ import AudioPlayer from '@/components/AudioPlayer';
 import Typewriter from '@/components/ChatTypewriter';
 import MarkdownRenderer from '@/components/MarkdownText';
 import Spinner from '@/components/Spinner';
+import { useTranslation } from '@/hooks';
 import { usePrevious } from '@/hooks/usePrevious';
 import { isAudioUrl } from '@/lib/utils';
 
@@ -29,6 +30,7 @@ import {
 
 const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
   const { messages = [], isLoading, isWaitingForAssistant } = props;
+  const { t } = useTranslation();
 
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
@@ -130,7 +132,7 @@ const ChatMessageHistory: FC<IChatMessageHistoryProps> = (props) => {
         <ThinkingWrapper>
           <ThinkingBubble>
             <Spinner size={16} />
-            <ThinkingText>ИИ думает...</ThinkingText>
+            <ThinkingText>{t('CHAT.AI_THINKING')}</ThinkingText>
           </ThinkingBubble>
         </ThinkingWrapper>
       )}

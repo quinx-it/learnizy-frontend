@@ -5,6 +5,8 @@ import { useTheme } from 'next-themes';
 import { FC } from 'react';
 import { Toaster as Sonner, toast, ToasterProps } from 'sonner';
 
+import { useTranslation } from '@/hooks';
+
 import { NotificationVariantType, ColorMapEntryType, CustomToastPropsType } from './typings';
 
 import {
@@ -46,6 +48,7 @@ const colorMap: Record<NotificationVariantType, ColorMapEntryType> = {
 
 const CustomToast: FC<CustomToastPropsType> = (props) => {
   const { variant, title, description, onClose } = props;
+  const { t } = useTranslation();
 
   const { bg, text, icon } = colorMap[variant];
 
@@ -56,7 +59,12 @@ const CustomToast: FC<CustomToastPropsType> = (props) => {
         <Title>{title}</Title>
         <Description>{description}</Description>
       </ContentWrapper>
-      <CloseButton type="button" onClick={onClose} aria-label="Закрыть" text={text}>
+      <CloseButton
+        type="button"
+        onClick={onClose}
+        aria-label={t('COMMON_LABELS.CLOSE')}
+        text={text}
+      >
         <Image
           src="/images/cross-icon.svg"
           alt="Close icon"

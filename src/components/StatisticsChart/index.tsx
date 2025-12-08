@@ -6,7 +6,7 @@ import AreaChart from '@/components/AreaChart';
 import { Text } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
 
-import { WEEK_DAYS } from './constants';
+import { WEEK_DAY_KEYS } from './constants';
 import { StatisticsChartPropsType } from './typings';
 
 import { HeaderContainer, StatisticsWrapper, TitleWrapper } from './styles';
@@ -21,7 +21,7 @@ const StatisticsChart: FC<StatisticsChartPropsType> = (props) => {
 
   const chartData = weeklyActivity.map((item) => {
     const dateObj = new Date(item.date);
-    const dayName = t(WEEK_DAYS[dateObj.getDay()]);
+    const dayName = t(WEEK_DAY_KEYS[dateObj.getDay()]);
 
     return { day: dayName, value: item.lessonsCompleted + item.testsPassed };
   });

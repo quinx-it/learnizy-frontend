@@ -14,6 +14,7 @@ import ChatHeader from '@/components/ChatHeader';
 import ChatInput from '@/components/ChatInput';
 import ChatMessageHistory from '@/components/ChatMessageHistory';
 import { showToast } from '@/components/Toaster';
+import { useTranslation } from '@/hooks';
 
 import { POLLING_INTERVAL } from './constants';
 
@@ -21,6 +22,7 @@ import { Container, InputContainer, MessagesContainer, Spacer } from './styles';
 
 const ChatAiAssistantPage: FC = () => {
   const params = useParams();
+  const { t } = useTranslation();
   const chatId = params.id ? parseInt(params.id as string, 10) : null;
 
   const pollingInterval = useRef<NodeJS.Timeout | null>(null);
@@ -82,7 +84,7 @@ const ChatAiAssistantPage: FC = () => {
       await sendMessage({ chatId, data }).unwrap();
       startPolling();
     } catch {
-      showToast('error', 'Не удалось отправить сообщение', '');
+      showToast('error', t('CHAT.SEND_ERROR'), '');
       setOptimisticMessages((prev) => prev.filter((msg) => msg.id !== optimisticMessage.id));
       stopPolling();
     }

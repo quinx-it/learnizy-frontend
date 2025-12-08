@@ -26,7 +26,12 @@ const ProfileDashboard: FC = () => {
     <StyledCardWrapper>
       <ProfileContainer>
         <AvatarContainer>
-          <StyledImage src="/images/astronaut1.webp" alt="Profile Image" width={152} height={152} />
+          <StyledImage
+            src="/images/astronaut1.webp"
+            alt={t('PROFILE.ALT_IMAGE')}
+            width={152}
+            height={152}
+          />
           <EditButton type="button">
             <Image src="/images/edit-photo-icon.svg" alt="Edit photo icon" width={27} height={27} />
           </EditButton>
@@ -35,13 +40,10 @@ const ProfileDashboard: FC = () => {
         <NameText variant="m-bold">{t('PROFILE.NAME')}</NameText>
       </ProfileContainer>
       <LinksContainer>
-        <DashboardLink href={routes.user.userProfilePersonalData} iconSrc="/images/person-icon.svg">
+        <DashboardLink href={routes.user.userProfilePersonalData} src="/images/person-icon.svg">
           {t('PROFILE.PERSONAL_DATA')}
         </DashboardLink>
-        <DashboardLink
-          href={routes.user.userProfileSecuritySettings}
-          iconSrc="/images/lock-icon.svg"
-        >
+        <DashboardLink href={routes.user.userProfileSecuritySettings} src="/images/lock-icon.svg">
           {t('PROFILE.SECURITY_SETTINGS')}
         </DashboardLink>
         <LogoutButton variant="white">

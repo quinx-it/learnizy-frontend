@@ -10,7 +10,7 @@ import { INavbarLinkProps } from './typings';
 import { IconWrapper, StyledButton, StyledLink, StyledText } from './styles';
 
 const NavbarLink: FC<INavbarLinkProps> = (props) => {
-  const { href, iconSrc, Icon, iconWidth = 16, iconHeight = 16, label, onClick } = props;
+  const { href, src, Icon, iconWidth = 16, iconHeight = 16, label, onClick } = props;
 
   const pathname = usePathname();
   const isActive =
@@ -20,8 +20,11 @@ const NavbarLink: FC<INavbarLinkProps> = (props) => {
     <StyledLink href={href.toString()} onClick={onClick}>
       <StyledButton isActive={isActive}>
         <IconWrapper>
-          {iconSrc && <Image src={iconSrc} alt={label} width={iconWidth} height={iconHeight} />}
-          {!iconSrc && Icon && <Icon />}
+          {src ? (
+            <Image src={src} alt={label} width={iconWidth} height={iconHeight} />
+          ) : (
+            Icon && <Icon />
+          )}
         </IconWrapper>
         <StyledText>{label}</StyledText>
       </StyledButton>

@@ -1,19 +1,16 @@
-import { routes, globalConstants } from '@/const';
+import { routes } from '@/const';
+import { TranslationFunctionType } from '@/types';
 
-const { moduleLabel, lessonLabel, retellingLabel } = globalConstants.rootBreadcrumbLabels;
-
-export const constants = {
-  breadcrumbs: (
-    moduleSequenceOrder: number,
-    moduleId: string,
-    lessonId: string,
-    sequenceOrder: number,
-  ) => [
-    { label: `${moduleLabel} ${moduleSequenceOrder}`, href: `${routes.user.modules}/${moduleId}` },
+export const createBreadcrumbs =
+  (t: TranslationFunctionType) =>
+  (moduleSequenceOrder: number, moduleId: string, lessonId: string, sequenceOrder: number) => [
     {
-      label: `${lessonLabel} ${sequenceOrder}`,
+      label: `${t('TEST_RESULT.MODULE')} ${moduleSequenceOrder}`,
+      href: `${routes.user.modules}/${moduleId}`,
+    },
+    {
+      label: `${t('TEST_RESULT.LESSON')} ${sequenceOrder}`,
       href: `${routes.user.modules}/${moduleId}/${lessonId}`,
     },
-    { label: retellingLabel, href: '' },
-  ],
-};
+    { label: t('LESSON_RETELLING.ASK_QUESTION'), href: '' },
+  ];

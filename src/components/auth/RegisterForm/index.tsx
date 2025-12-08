@@ -17,10 +17,10 @@ import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
 import { Heading, Text } from '@/components/Typography';
 import { routes, HttpStatus } from '@/const';
-import { useRouter } from '@/hooks';
+import { useRouter, useTranslation } from '@/hooks';
 
 import { VerificationFormValuesType, RegisterStep, IRegisterFormValues } from './typings';
-import { formSchema, verificationSchema } from './validation';
+import { createFormSchema, createVerificationSchema } from './validation';
 
 import {
   CheckboxContainer,
@@ -40,6 +40,7 @@ import type { HttpStatusError } from '@/types';
 
 const RegisterForm: FC = () => {
   const router = useRouter();
+  const { t } = useTranslation();
   const [step, setStep] = useState<RegisterStep>(RegisterStep.Register);
   const [userEmail, setUserEmail] = useState('');
   const [timer, setTimer] = useState(30);
@@ -55,7 +56,7 @@ const RegisterForm: FC = () => {
     control,
     formState: { errors },
   } = useForm<IRegisterFormValues>({
-    resolver: yupResolver(formSchema),
+    resolver: yupResolver(createFormSchema(t)),
     defaultValues: {
       login: '',
       email: '',
@@ -70,7 +71,7 @@ const RegisterForm: FC = () => {
     handleSubmit: handleSubmitVerify,
     formState: { errors: verifyErrors },
   } = useForm<VerificationFormValuesType>({
-    resolver: yupResolver(verificationSchema),
+    resolver: yupResolver(createVerificationSchema(t)),
     defaultValues: { code: '' },
   });
 
@@ -95,7 +96,7 @@ const RegisterForm: FC = () => {
         email: data.email,
         password: data.password,
       }).unwrap();
-      showToast('success', 'Успешно', 'Код подтверждения отправлен на вашу почту.');
+      showToast('success', t('AUTH.SUCCESS'), t('AUTH.CODE_SENT'));
       setUserEmail(data.email);
       setStep(RegisterStep.Verify);
       setTimer(30);
@@ -105,26 +106,22 @@ const RegisterForm: FC = () => {
       const isConflict = status === HttpStatus.CONFLICT;
 
       if (isConflict) {
-        showToast(
-          'error',
-          'Ошибка',
-          'Аккаунт с таким email уже существует. Войдите или восстановите доступ.',
-        );
+        showToast('error', t('COMMON.ERROR'), t('AUTH.EMAIL_EXISTS'));
 
         return;
       }
 
-      showToast('error', 'Ошибка', 'Не удалось зарегистрироваться. Попробуйте снова.');
+      showToast('error', t('COMMON.ERROR'), t('AUTH.REGISTER_ERROR'));
     }
   };
 
   const onVerifySubmit: SubmitHandler<VerificationFormValuesType> = async (data) => {
     try {
       await verifyEmail({ email: userEmail, code: data.code }).unwrap();
-      showToast('success', 'Успешно', 'Ваша почта подтверждена!');
+      showToast('success', t('AUTH.SUCCESS'), t('AUTH.EMAIL_CONFIRMED'));
       router.push(routes.user.homePage);
     } catch {
-      showToast('error', 'Ошибка', 'Неверный код или истек срок его действия.');
+      showToast('error', t('COMMON.ERROR'), t('AUTH.INVALID_CODE'));
     }
   };
 
@@ -133,11 +130,11 @@ const RegisterForm: FC = () => {
 
     try {
       await resendCode({ email: userEmail }).unwrap();
-      showToast('success', 'Успешно', 'Новый код отправлен на вашу почту.');
+      showToast('success', t('AUTH.SUCCESS'), t('AUTH.NEW_CODE_SENT'));
       setTimer(30);
       setCanResend(false);
     } catch {
-      showToast('error', 'Ошибка', 'Не удалось отправить код повторно.');
+      showToast('error', t('COMMON.ERROR'), t('AUTH.RESEND_ERROR'));
     }
   };
 
@@ -145,11 +142,11 @@ const RegisterForm: FC = () => {
     return (
       <Container>
         <HeadingContainer>
-          <Heading variant="xl">Подтвердите электронную почту</Heading>
+          <Heading variant="xl">{t('AUTH.CONFIRM_EMAIL')}</Heading>
         </HeadingContainer>
         <TextContainer>
           <Text variant="m">
-            Пожалуйста, введите 6-значный код, отправленный на <EmailText>{userEmail}</EmailText>
+            {t('AUTH.ENTER_CODE')} <EmailText>{userEmail}</EmailText>
           </Text>
         </TextContainer>
 
@@ -172,20 +169,20 @@ const RegisterForm: FC = () => {
           />
           <ResendText>
             {timer > 0 ? (
-              `Отправить код повторно через ${timer} сек.`
+              t('AUTH.RESEND_CODE_TIMER', { seconds: timer })
             ) : (
               <ResendButton
                 type="button"
                 onClick={handleResendCode}
                 disabled={!canResend || isResending}
               >
-                {isResending ? 'Отправка...' : 'Отправить код еще раз'}
+                {isResending ? t('AUTH.SENDING') : t('AUTH.RESEND_CODE')}
               </ResendButton>
             )}
           </ResendText>
 
           <Button type="submit" disabled={isVerifying} className="rounded-full">
-            {isVerifying ? <Spinner type="ring" /> : 'Подтвердить'}
+            {isVerifying ? <Spinner type="ring" /> : t('AUTH.CONFIRM')}
           </Button>
         </Form>
       </Container>
@@ -195,36 +192,36 @@ const RegisterForm: FC = () => {
   return (
     <Form onSubmit={handleSubmit(onRegisterSubmit)}>
       <Input
-        label="Введите логин"
+        label={t('AUTH.ENTER_LOGIN')}
         id="login"
         autoComplete="username"
-        placeholder="логин"
+        placeholder={t('AUTH.LOGIN_PLACEHOLDER')}
         {...register('login')}
         error={errors.login?.message}
       />
 
       <Input
-        label="Введите email"
+        label={t('AUTH.ENTER_EMAIL')}
         id="email"
         type="email"
         autoComplete="email"
-        placeholder="email"
+        placeholder={t('AUTH.EMAIL_PLACEHOLDER')}
         {...register('email')}
         error={errors.email?.message}
       />
 
       <PasswordInput
-        label="Введите пароль"
+        label={t('AUTH.ENTER_PASSWORD')}
         id="password"
-        placeholder="пароль"
+        placeholder={t('AUTH.PASSWORD_PLACEHOLDER')}
         {...register('password')}
         error={errors.password?.message}
       />
 
       <PasswordInput
-        label="Повторите пароль"
+        label={t('AUTH.REPEAT_PASSWORD')}
         id="repeat-password"
-        placeholder="пароль"
+        placeholder={t('AUTH.PASSWORD_PLACEHOLDER')}
         {...register('repeatPassword')}
         error={errors.repeatPassword?.message}
       />
@@ -233,17 +230,13 @@ const RegisterForm: FC = () => {
         <Controller
           control={control}
           name="agreement"
-          rules={{ required: 'Нужно принять соглашение' }}
+          rules={{ required: t('AUTH.ACCEPT_AGREEMENT') }}
           render={({ field }) => (
             <CheckboxWithLabel checked={field.value} onCheckedChange={field.onChange}>
-              Принимаю условия{' '}
-              <LinkStyled href={routes.public.userAgreement}>
-                пользовательского соглашения
-              </LinkStyled>{' '}
-              и даю согласие на{' '}
-              <LinkStyled href={routes.public.privacyPolicy}>
-                обработку персональных данных
-              </LinkStyled>
+              {t('AUTH.ACCEPT_TERMS')}{' '}
+              <LinkStyled href={routes.public.userAgreement}>{t('AUTH.USER_AGREEMENT')}</LinkStyled>{' '}
+              {t('AUTH.AND_CONSENT')}{' '}
+              <LinkStyled href={routes.public.privacyPolicy}>{t('AUTH.PERSONAL_DATA')}</LinkStyled>
             </CheckboxWithLabel>
           )}
         />
@@ -251,7 +244,7 @@ const RegisterForm: FC = () => {
       </CheckboxContainer>
 
       <Button type="submit" disabled={isRegistering} className="rounded-full">
-        {isRegistering ? <Spinner type="ring" /> : 'Зарегистрироваться'}
+        {isRegistering ? <Spinner type="ring" /> : t('AUTH.REGISTER')}
       </Button>
     </Form>
   );
