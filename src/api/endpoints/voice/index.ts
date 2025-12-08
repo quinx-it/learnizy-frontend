@@ -9,3 +9,5 @@ export type {
   LessonAIQueryType,
   LessonAIQueryPageType,
 } from './types';
+
+export { AIQueryStatus } from './types';

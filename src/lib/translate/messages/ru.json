@@ -119,7 +119,8 @@
       "FAILED": "Экзамен не сдан",
       "AVAILABLE": "Вы завершили все уроки — теперь можно сдать экзамен",
       "UNAVAILABLE": "Доступен после завершения всех ",
-      "LESSONS": "уроков"
+      "LESSONS": "уроков",
+      "MODULE": "модуля"
     },
     "LESSON_TEST_FORM": {
       "SUBMISSION_TEXT": "Нажмите кнопку ниже, чтобы узнать свой балл и увидеть разбор вопросов. Проверка ответов может занять некоторое время",
@@ -330,6 +331,7 @@
     "ERROR_DELETE": "Ошибка при удалении модуля"
   },
   "SECURITY_SETTINGS": {
+    "TITLE": "Настройки безопасности",
     "PASSWORD": "Пароль",
     "NEW_PASSWORD": "Новый пароль",
     "LOGIN": "Логин (Email или телефон)",
@@ -356,6 +358,7 @@
     "ENTER_LOGIN": "Введите логин",
     "LOGIN_PLACEHOLDER": "логин",
     "ENTER_EMAIL": "Введите email",
+    "EMAIL_PLACEHOLDER": "email",
     "ENTER_PASSWORD": "Введите пароль",
     "PASSWORD_PLACEHOLDER": "пароль",
     "REPEAT_PASSWORD": "Повторите пароль",
@@ -383,12 +386,22 @@
   },
   "COMMON_LABELS": {
     "CLOSE": "Закрыть",
-    "SEARCH": "Поиск..."
+    "SEARCH": "Поиск...",
+    "HIDE_PASSWORD": "Скрыть пароль",
+    "SHOW_PASSWORD": "Показать пароль"
   },
   "LOGIN": {
     "ENTER": "Войти",
     "REGISTRATION": "Регистрация",
     "FORGOT_PASSWORD": "Забыли пароль?"
+  },
+  "RESET_PASSWORD": {
+    "CREATE_NEW_PASSWORD": "Создайте новый пароль",
+    "DESCRIPTION": "Чтобы завершить восстановление, придумайте новый надежный пароль для вашего аккаунта."
+  },
+  "FORGOT_PASSWORD": {
+    "TITLE": "Забыли пароль?",
+    "DESCRIPTION": "Не волнуйтесь! Просто укажите ваш email, и мы вышлем ссылку для сброса пароля."
   },
   "MENTOR": {
     "HOME": "Главная",

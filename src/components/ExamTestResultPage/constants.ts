@@ -9,22 +9,22 @@ export const EvaluationValue = {
 
 export const evaluationMap = {
   [AnswerEvaluation.Correct]: {
-    translationKey: 'EVALUATION.CORRECT',
+    text: 'EVALUATION.CORRECT',
     evaluation: AnswerEvaluation.Correct,
     value: EvaluationValue[AnswerEvaluation.Correct],
   },
   [AnswerEvaluation.Partial]: {
-    translationKey: 'EVALUATION.PARTIAL',
+    text: 'EVALUATION.PARTIAL',
     evaluation: AnswerEvaluation.Partial,
     value: EvaluationValue[AnswerEvaluation.Partial],
   },
   [AnswerEvaluation.Incorrect]: {
-    translationKey: 'EVALUATION.INCORRECT',
+    text: 'EVALUATION.INCORRECT',
     evaluation: AnswerEvaluation.Incorrect,
     value: EvaluationValue[AnswerEvaluation.Incorrect],
   },
   [AnswerEvaluation.Unassessed]: {
-    translationKey: 'EVALUATION.UNASSESSED',
+    text: 'EVALUATION.UNASSESSED',
     evaluation: AnswerEvaluation.Unassessed,
     value: EvaluationValue[AnswerEvaluation.Unassessed],
   },

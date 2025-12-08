@@ -16,22 +16,22 @@ export const EvaluationValue = {
 
 export const evaluationMap = {
   [AnswerEvaluation.Correct]: {
-    translationKey: 'EVALUATION.CORRECT',
+    text: 'EVALUATION.CORRECT',
     component: EvaluationTextCorrect,
     value: EvaluationValue[AnswerEvaluation.Correct],
   },
   [AnswerEvaluation.Partial]: {
-    translationKey: 'EVALUATION.PARTIAL',
+    text: 'EVALUATION.PARTIAL',
     component: EvaluationTextPartial,
     value: EvaluationValue[AnswerEvaluation.Partial],
   },
   [AnswerEvaluation.Incorrect]: {
-    translationKey: 'EVALUATION.INCORRECT',
+    text: 'EVALUATION.INCORRECT',
     component: EvaluationTextIncorrect,
     value: EvaluationValue[AnswerEvaluation.Incorrect],
   },
   [AnswerEvaluation.Unassessed]: {
-    translationKey: 'EVALUATION.UNASSESSED',
+    text: 'EVALUATION.UNASSESSED',
     component: EvaluationTextPending,
     value: EvaluationValue[AnswerEvaluation.Unassessed],
   },

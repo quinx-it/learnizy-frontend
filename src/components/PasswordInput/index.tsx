@@ -5,6 +5,7 @@ import { forwardRef, useState } from 'react';
 
 import Label from '@/components/Label';
 import { Text } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 
 import { IPasswordInputProps } from './typings';
 
@@ -21,6 +22,7 @@ import { ErrorText, LabelWrapper } from '@/components/Input/styles';
 const PasswordInput = forwardRef<HTMLInputElement, IPasswordInputProps>(
   ({ className, innerClassName, disabled, autoComplete, error, label, ...props }, ref) => {
     const [showPassword, setShowPassword] = useState(false);
+    const { t } = useTranslation();
 
     return (
       <PasswordInputWrapper className={className}>
@@ -49,7 +51,9 @@ const PasswordInput = forwardRef<HTMLInputElement, IPasswordInputProps>(
             type="button"
             onClick={() => setShowPassword((prev) => !prev)}
             disabled={disabled}
-            aria-label={showPassword ? 'Hide password' : 'Show password'}
+            aria-label={
+              showPassword ? t('COMMON_LABELS.HIDE_PASSWORD') : t('COMMON_LABELS.SHOW_PASSWORD')
+            }
           >
             <EyeIconWrapper aria-hidden="true">
               <Image
@@ -58,12 +62,16 @@ const PasswordInput = forwardRef<HTMLInputElement, IPasswordInputProps>(
                     ? '/images/eye-icon-open.svg'
                     : '/images/eye-icon-closed.svg'
                 }
-                alt={showPassword ? 'Hide password' : 'Show password'}
+                alt={
+                  showPassword ? t('COMMON_LABELS.HIDE_PASSWORD') : t('COMMON_LABELS.SHOW_PASSWORD')
+                }
                 width={22}
                 height={showPassword && !disabled ? 16 : 18}
               />
             </EyeIconWrapper>
-            <ScreenReaderOnly>{showPassword ? 'Hide password' : 'Show password'}</ScreenReaderOnly>
+            <ScreenReaderOnly>
+              {showPassword ? t('COMMON_LABELS.HIDE_PASSWORD') : t('COMMON_LABELS.SHOW_PASSWORD')}
+            </ScreenReaderOnly>
           </ToggleButton>
         </InputWrapper>
         {error && (

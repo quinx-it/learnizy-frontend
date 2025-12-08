@@ -24,10 +24,10 @@ export const AdvantagesSection = () => {
         </HeaderContainer>
 
         <CardsGrid>
-          {cards.map((item, index) => (
+          {cards.map((type, index) => (
             <AdvantageCard
               key={index}
-              type={item.type}
+              type={type}
               title={t('ADVANTAGES.CARD_TITLE')}
               text={t('ADVANTAGES.CARD_TEXT')}
             />

@@ -205,7 +205,7 @@ const RegisterForm: FC = () => {
         id="email"
         type="email"
         autoComplete="email"
-        placeholder="email"
+        placeholder={t('AUTH.EMAIL_PLACEHOLDER')}
         {...register('email')}
         error={errors.email?.message}
       />

@@ -119,7 +119,8 @@
       "FAILED": "Exam failed",
       "AVAILABLE": "You completed all lessons — now you can take the exam",
       "UNAVAILABLE": "Available after completing all ",
-      "LESSONS": "lessons"
+      "LESSONS": "lessons",
+      "MODULE": "module"
     },
     "LESSON_TEST_FORM": {
       "SUBMISSION_TEXT": "Click the button below to see your score and review the questions. Answer checking may take some time",
@@ -330,6 +331,7 @@
     "ERROR_DELETE": "Error deleting module"
   },
   "SECURITY_SETTINGS": {
+    "TITLE": "Security Settings",
     "PASSWORD": "Password",
     "NEW_PASSWORD": "New password",
     "LOGIN": "Login (Email or phone)",
@@ -356,6 +358,7 @@
     "ENTER_LOGIN": "Enter login",
     "LOGIN_PLACEHOLDER": "login",
     "ENTER_EMAIL": "Enter email",
+    "EMAIL_PLACEHOLDER": "email",
     "ENTER_PASSWORD": "Enter password",
     "PASSWORD_PLACEHOLDER": "password",
     "REPEAT_PASSWORD": "Repeat password",
@@ -383,12 +386,22 @@
   },
   "COMMON_LABELS": {
     "CLOSE": "Close",
-    "SEARCH": "Search..."
+    "SEARCH": "Search...",
+    "HIDE_PASSWORD": "Hide password",
+    "SHOW_PASSWORD": "Show password"
   },
   "LOGIN": {
     "ENTER": "Log in",
     "REGISTRATION": "Registration",
     "FORGOT_PASSWORD": "Forgot password?"
+  },
+  "RESET_PASSWORD": {
+    "CREATE_NEW_PASSWORD": "Create new password",
+    "DESCRIPTION": "To complete recovery, create a new secure password for your account."
+  },
+  "FORGOT_PASSWORD": {
+    "TITLE": "Forgot password?",
+    "DESCRIPTION": "Don't worry! Just enter your email and we'll send you a password reset link."
   },
   "MENTOR": {
     "HOME": "Home",

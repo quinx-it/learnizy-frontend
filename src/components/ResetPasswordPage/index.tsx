@@ -4,6 +4,7 @@ import { FC, useState } from 'react';
 import ResetPasswordForm from '@/components/auth/ResetPasswordForm';
 import CardWrapper from '@/components/CardWrapper';
 import { Heading, Text } from '@/components/Typography';
+import { useTranslation } from '@/hooks';
 
 import { IResetPasswordPageProps } from './typings';
 
@@ -18,6 +19,7 @@ import {
 const ResetPasswordPage: FC<IResetPasswordPageProps> = (props) => {
   const { token } = props;
   const [isSuccess, setIsSuccess] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <Container>
@@ -29,13 +31,10 @@ const ResetPasswordPage: FC<IResetPasswordPageProps> = (props) => {
           {!isSuccess && (
             <>
               <HeadingWrapper>
-                <Heading variant="xl">Создайте новый пароль</Heading>
+                <Heading variant="xl">{t('RESET_PASSWORD.CREATE_NEW_PASSWORD')}</Heading>
               </HeadingWrapper>
               <TextWrapper>
-                <Text variant="m">
-                  Чтобы завершить восстановление, придумайте новый надежный пароль для вашего
-                  аккаунта.
-                </Text>
+                <Text variant="m">{t('RESET_PASSWORD.DESCRIPTION')}</Text>
               </TextWrapper>
             </>
           )}

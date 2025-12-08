@@ -26,7 +26,12 @@ const ProfileDashboard: FC = () => {
     <StyledCardWrapper>
       <ProfileContainer>
         <AvatarContainer>
-          <StyledImage src="/images/astronaut1.webp" alt="Profile Image" width={152} height={152} />
+          <StyledImage
+            src="/images/astronaut1.webp"
+            alt={t('PROFILE.ALT_IMAGE')}
+            width={152}
+            height={152}
+          />
           <EditButton type="button">
             <Image src="/images/edit-photo-icon.svg" alt="Edit photo icon" width={27} height={27} />
           </EditButton>

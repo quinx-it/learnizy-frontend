@@ -2,7 +2,7 @@
 
 import { FC } from 'react';
 
-import { AnswerEvaluation, useGetLastTestAttemptQuery } from '@/api/endpoints/test';
+import { AnswerEvaluation, TestStatus, useGetLastTestAttemptQuery } from '@/api/endpoints/test';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
 import ErrorSection from '@/components/ErrorSection';
@@ -28,14 +28,12 @@ import {
   NotesText,
 } from './styles';
 
-const mapEvaluation = (evaluation: string) => {
-  const evaluationEnum = evaluation as AnswerEvaluation;
-
-  return evaluationMap[evaluationEnum] || evaluationMap[AnswerEvaluation.Unassessed];
+const mapEvaluation = (evaluation: AnswerEvaluation) => {
+  return evaluationMap[evaluation] || evaluationMap[AnswerEvaluation.Unassessed];
 };
 
-const getStatus = (status: string, passed: boolean, t: (key: string) => string) => {
-  if (status === 'SUBMITTED') return t('TEST_RESULT.STATUS_PROCESSING');
+const getStatus = (status: TestStatus, passed: boolean, t: (key: string) => string) => {
+  if (status === TestStatus.Submitted) return t('TEST_RESULT.STATUS_PROCESSING');
 
   if (passed) return t('TEST_RESULT.STATUS_PASSED');
 
@@ -100,7 +98,7 @@ const ExamTestResultPage: FC<ExamTestResultPagePropsType> = (props) => {
                     {t('TEST_RESULT.YOUR_ANSWER')} {a.textAnswer || a.voiceTranscript || '—'}
                   </AnswerText>
                   <EvaluationText variant="m" evaluation={evaluation.evaluation}>
-                    {t(evaluation.translationKey)}
+                    {t(evaluation.text)}
                   </EvaluationText>
                   {a.notes && (
                     <NotesText variant="m">

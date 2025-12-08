@@ -52,7 +52,7 @@ const ForgotPasswordForm: FC = () => {
         label={t('AUTH.ENTER_EMAIL')}
         id="email"
         autoComplete="email"
-        placeholder="E-mail"
+        placeholder={t('AUTH.EMAIL_PLACEHOLDER')}
         {...register('email')}
         error={errors.email?.message}
       />

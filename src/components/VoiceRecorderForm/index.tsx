@@ -3,6 +3,7 @@ import { FC, useState, useEffect } from 'react';
 import { Controller, useForm, Resolver } from 'react-hook-form';
 
 import {
+  AIQueryStatus,
   useUploadVoiceMutation,
   useCreateLessonAIQueryMutation,
   useGetLessonAIQueriesQuery,
@@ -15,7 +16,6 @@ import { Text } from '@/components/Typography';
 import VoiceRecorderControl from '@/components/VoiceRecorderControl';
 import { useTranslation } from '@/hooks';
 
-import { AIQueryStatus } from './constants';
 import { IAIQuestionFormValues, IVoiceRecorderFormProps } from './typings';
 import { createSchema } from './validation';
 

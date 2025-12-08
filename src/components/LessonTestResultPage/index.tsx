@@ -5,6 +5,7 @@ import { FC, useEffect, useRef } from 'react';
 
 import {
   AnswerEvaluation,
+  TestStatus,
   useGetLastTestAttemptQuery,
   useGetTestByLessonIdQuery,
 } from '@/api/endpoints/test';
@@ -38,8 +39,8 @@ const mapEvaluation = (evaluation: AnswerEvaluation | string | null | undefined)
   );
 };
 
-const getStatus = (status: string, passed: boolean, t: (key: string) => string) => {
-  if (status === 'SUBMITTED') return t('TEST_RESULT.STATUS_PROCESSING');
+const getStatus = (status: TestStatus, passed: boolean, t: (key: string) => string) => {
+  if (status === TestStatus.Submitted) return t('TEST_RESULT.STATUS_PROCESSING');
 
   if (passed) return t('TEST_RESULT.STATUS_PASSED');
 
@@ -65,7 +66,7 @@ const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) => {
   useEffect(() => {
     if (!lessonTest?.id) return;
 
-    if (!testResult || testResult.status === 'SUBMITTED') {
+    if (!testResult || testResult.status === TestStatus.Submitted) {
       if (!pollingRef.current) {
         pollingRef.current = setInterval(() => {
           refetch();
@@ -158,7 +159,7 @@ const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) => {
                 </AnswerText>
 
                 <EvaluationComponent>
-                  <Text variant="m">{t(evaluation.translationKey)}</Text>
+                  <Text variant="m">{t(evaluation.text)}</Text>
                 </EvaluationComponent>
                 {a.notes && (
                   <NotesText>

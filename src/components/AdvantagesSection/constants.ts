@@ -3,9 +3,4 @@ export enum CardType {
   Light = 'Light',
 }
 
-export const cards = [
-  { type: CardType.Dark },
-  { type: CardType.Light },
-  { type: CardType.Dark },
-  { type: CardType.Light },
-];
+export const cards = [CardType.Dark, CardType.Light, CardType.Light, CardType.Dark];

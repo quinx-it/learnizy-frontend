@@ -4,9 +4,9 @@ import Image from 'next/image';
 import { Fragment, FC } from 'react';
 
 import { Text } from '@/components/Typography';
+import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
 
-import { DEFAULT_ROOT_HREF } from './constants';
 import { IBreadcrumbsProps } from './typings';
 
 import {
@@ -28,7 +28,7 @@ const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
   const {
     items,
     rootLabel = t('NAVBAR.HOME'),
-    rootHref = DEFAULT_ROOT_HREF,
+    rootHref = routes.user.homePage,
     className,
     rootDescription,
   } = props;

@@ -4,6 +4,8 @@ import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { XIcon } from 'lucide-react';
 import { ComponentProps } from 'react';
 
+import { useTranslation } from '@/hooks';
+
 import {
   CloseButton,
   DialogDescription as StyledDialogDescription,
@@ -42,6 +44,8 @@ function DialogContent({
 }: ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean;
 }) {
+  const { t } = useTranslation();
+
   return (
     <DialogPortal data-slot="dialog-portal">
       <DialogOverlay />
@@ -50,7 +54,7 @@ function DialogContent({
         {showCloseButton && (
           <CloseButton data-slot="dialog-close">
             <XIcon />
-            <ScreenReaderOnly>Close</ScreenReaderOnly>
+            <ScreenReaderOnly>{t('COMMON_LABELS.CLOSE')}</ScreenReaderOnly>
           </CloseButton>
         )}
       </StyledContent>
