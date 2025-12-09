@@ -10,7 +10,7 @@ import { useTranslation } from '@/hooks';
 import { usePrevious } from '@/hooks/usePrevious';
 import { isAudioUrl } from '@/lib/utils';
 
-import { Role } from './constants';
+import { Role } from './const';
 import { IChatMessageHistoryProps } from './typings';
 
 import {

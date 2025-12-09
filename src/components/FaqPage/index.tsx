@@ -9,7 +9,7 @@ import { routes } from '@/const';
 import { globalConstants } from '@/const/constants';
 import { useTranslation } from '@/hooks';
 
-import { createConstants } from './constants';
+import { createConstants } from './const';
 
 import { AccordionContainer, Divider, StyledCardWrapper, Title } from './styles';
 

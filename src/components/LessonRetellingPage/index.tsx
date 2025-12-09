@@ -8,7 +8,7 @@ import VoiceRecorderForm from '@/components/VoiceRecorderForm';
 import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
 
-import { createBreadcrumbs } from './constants';
+import { createBreadcrumbs } from './const';
 import { ILessonRetellingPageProps } from './typings';
 
 import {

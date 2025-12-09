@@ -1,4 +1,4 @@
-import { CardType } from './constants';
+import { CardType } from './const';
 
 export type AdvantageCardPropsType = {
   title: string;

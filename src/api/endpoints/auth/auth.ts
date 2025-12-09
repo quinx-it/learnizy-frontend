@@ -1,5 +1,5 @@
 import { api } from '@/api';
-import { AUTH_BASE_URL } from '@/api/constants';
+import { AUTH_BASE_URL } from '@/api/const';
 import { showToast } from '@/components/Toaster';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 import { IAuthState } from '@/store/slices/auth/typings';

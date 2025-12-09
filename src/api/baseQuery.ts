@@ -10,7 +10,7 @@ import { API_BASE_URL, HttpStatus, REFRESH_THROTTLE } from '@/const';
 import { RootStateType } from '@/store';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 
-import { AUTH_BASE_URL } from './constants';
+import { AUTH_BASE_URL } from './const';
 import { IRefreshResponse, BaseQueryApi, BaseQueryExtraOptions } from './types';
 
 const baseQuery = fetchBaseQuery({

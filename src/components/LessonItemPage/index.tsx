@@ -18,7 +18,7 @@ import { useTranslation } from '@/hooks';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
 
-import { constants } from './constants';
+import { constants } from './const';
 import { ILessonItemPageProps } from './typings';
 
 import {

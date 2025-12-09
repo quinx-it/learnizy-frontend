@@ -36,7 +36,7 @@ import { percentage, pluralize } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
 
-import { createBreadcrumbs, examAvailableNumber } from './constants';
+import { createBreadcrumbs, examAvailableNumber } from './const';
 import { ModuleItemPagePropsType } from './typings';
 
 import {

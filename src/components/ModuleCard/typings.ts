@@ -1,6 +1,6 @@
 import { JSX } from 'react';
 
-import { StatusValueType } from './constants';
+import { StatusValueType } from './const';
 
 export type ProgressModuleType = {
   element: JSX.Element | null;

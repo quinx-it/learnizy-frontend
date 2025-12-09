@@ -1,4 +1,4 @@
-import { ProgressStatus } from './constants';
+import { ProgressStatus } from './const';
 
 export type ProgressCardPropsType = {
   title: string;

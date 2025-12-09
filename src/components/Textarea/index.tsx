@@ -2,7 +2,7 @@ import { ChangeEvent, useState, useEffect, FC } from 'react';
 
 import { Text } from '@/components/Typography';
 
-import { MAX_TEXTAREA_LENGTH } from './constants';
+import { MAX_TEXTAREA_LENGTH } from './const';
 import { ITextareaProps } from './typings';
 
 import {

@@ -2,7 +2,7 @@ import * as yup from 'yup';
 
 import { TranslationFunctionType } from '@/types';
 
-import { MAX_FILE_SIZE } from './constants';
+import { MAX_FILE_SIZE } from './const';
 
 export const createSchema = (t: TranslationFunctionType) =>
   yup.object({
