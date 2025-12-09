@@ -16,7 +16,7 @@ import { Text } from '@/components/Typography';
 import { globalConstants, routes } from '@/const';
 import { useTranslation } from '@/hooks';
 
-import { evaluationMap } from './constants';
+import { evaluationMap } from './const';
 import { LessonTestResponseType, LessonTestResultPagePropsType } from './types';
 
 import {

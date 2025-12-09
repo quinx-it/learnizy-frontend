@@ -7,7 +7,7 @@ import DotTitle from '@/components/DotTitle';
 import ProgressBar from '@/components/Progress';
 import { useTranslation } from '@/hooks';
 
-import { ProgressStatus } from './constants';
+import { ProgressStatus } from './const';
 import { ProgressCardPropsType } from './typings';
 
 import {

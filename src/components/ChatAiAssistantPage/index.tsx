@@ -16,7 +16,7 @@ import ChatMessageHistory from '@/components/ChatMessageHistory';
 import { showToast } from '@/components/Toaster';
 import { useTranslation } from '@/hooks';
 
-import { POLLING_INTERVAL } from './constants';
+import { POLLING_INTERVAL } from './const';
 
 import { Container, InputContainer, MessagesContainer, Spacer } from './styles';
 

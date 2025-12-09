@@ -13,7 +13,7 @@ import { Text } from '@/components/Typography';
 import { globalConstants, routes } from '@/const';
 import { useTranslation } from '@/hooks';
 
-import { constants, TestType } from './constants';
+import { constants, TestType } from './const';
 import { TestPagePropsType } from './typings';
 
 import {

@@ -1,7 +1,7 @@
 import { useTranslation } from '@/hooks';
 
 import { AdvantageCard } from './advantageCard';
-import { cards } from './constants';
+import { cards } from './const';
 
 import {
   StyledSectionContent,

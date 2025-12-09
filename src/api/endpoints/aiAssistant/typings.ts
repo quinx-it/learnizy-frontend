@@ -1,4 +1,4 @@
-import { Role } from './constants';
+import { Role } from './const';
 
 export interface IChat {
   id: number;

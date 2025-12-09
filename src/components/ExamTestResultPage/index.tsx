@@ -10,7 +10,7 @@ import FullscreenLoader from '@/components/FullscreenLoader';
 import { globalConstants, routes } from '@/const';
 import { useTranslation } from '@/hooks';
 
-import { evaluationMap } from './constants';
+import { evaluationMap } from './const';
 import { ExamTestResultPagePropsType } from './typings';
 
 import {

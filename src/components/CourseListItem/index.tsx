@@ -5,7 +5,7 @@ import { FC } from 'react';
 import ProgressBar from '@/components/Progress';
 import { useTranslation } from '@/hooks';
 
-import { CourseListItemStatus, getStatusTranslationKey } from './constants';
+import { CourseListItemStatus, getStatusTranslationKey } from './const';
 import { CourseListItemType } from './typings';
 
 import {

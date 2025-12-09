@@ -3,7 +3,7 @@ import { Box, styled } from '@mui/material';
 import SectionContent from '@/components/SectionContent';
 import { Heading as BaseHeading } from '@/components/Typography';
 
-import { CardType } from './constants';
+import { CardType } from './const';
 
 export const StyledSectionContent = styled(SectionContent)(() => ({
   backgroundColor: '#B7E3F0',

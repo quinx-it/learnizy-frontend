@@ -1,7 +1,7 @@
 import { VariantProps } from 'class-variance-authority';
 import { HTMLAttributes } from 'react';
 
-import { headingVariants, textVariants } from './constants';
+import { headingVariants, textVariants } from './const';
 
 import { Heading, Text } from '.';
 

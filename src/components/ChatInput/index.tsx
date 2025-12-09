@@ -21,7 +21,7 @@ import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
 import { useTranslation } from '@/hooks';
 
-import { MIN_RECORDING_DURATION_MS } from './constants';
+import { MIN_RECORDING_DURATION_MS } from './const';
 import { IChatInputProps, ILocalFile } from './typings';
 
 import {

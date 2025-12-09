@@ -7,15 +7,15 @@ import { ModuleCompletionStatus, useGetMainPageProgressQuery } from '@/api/endpo
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
 import CourseListItem from '@/components/CourseListItem';
-import { CourseListItemStatus } from '@/components/CourseListItem/constants';
+import { CourseListItemStatus } from '@/components/CourseListItem/const';
 import ProgressCard from '@/components/ProgressCard';
-import { ProgressStatus } from '@/components/ProgressCard/constants';
+import { ProgressStatus } from '@/components/ProgressCard/const';
 import StatisticsChart from '@/components/StatisticsChart';
 import { Text } from '@/components/Typography';
 import { routes } from '@/const';
 import { useRouter, useTranslation } from '@/hooks';
 
-import { constants, ModuleStatus } from './constants';
+import { constants, ModuleStatus } from './const';
 
 import {
   Container,

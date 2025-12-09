@@ -6,7 +6,7 @@ import ProgressBar from '@/components/Progress';
 import { Text } from '@/components/Typography';
 import { percentage } from '@/lib/utils';
 
-import { constants } from './constants';
+import { constants } from './const';
 import { ProgressModuleType, IProcentContentProps } from './typings';
 
 import { ProgressContainer, StarContainer } from './styles';
