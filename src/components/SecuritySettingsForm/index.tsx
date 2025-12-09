@@ -9,7 +9,7 @@ import Input from '@/components/Input';
 import { PasswordInput } from '@/components/PasswordInput';
 import { useTranslation } from '@/hooks';
 
-import { createSecuritySettingsSchema, SecuritySettingsFormValuesType } from './validation';
+import { createSecuritySettingsSchema, SecuritySettingsFormValuesType } from './const';
 
 import { ButtonWrapper, ButtonsContainer, Form, FormField, FormGrid } from './styles';
 

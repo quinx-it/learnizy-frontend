@@ -12,8 +12,8 @@ import { showToast } from '@/components/Toaster';
 import { routes } from '@/const';
 import { useRouter, useTranslation } from '@/hooks';
 
+import { IResetPasswordFormValues, createFormSchema } from './const';
 import { IResetPasswordFormProps } from './typings';
-import { IResetPasswordFormValues, createFormSchema } from './validation';
 
 import { Form, SuccessContainer, SuccessText } from './styles';
 

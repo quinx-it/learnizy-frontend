@@ -1,2 +1,2 @@
-export * from './advantagesSection';
-export * from './advantageCard';
+export * from './AdvantagesSection';
+export * from './AdvantageCard';

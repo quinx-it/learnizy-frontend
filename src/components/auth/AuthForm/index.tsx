@@ -14,8 +14,8 @@ import { showToast } from '@/components/Toaster';
 import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
 
+import { createFormSchema } from './const';
 import { IAuthFormValues } from './typings';
-import { createFormSchema } from './validation';
 
 import { AuthLink, Form, LinksRow } from './styles';
 
