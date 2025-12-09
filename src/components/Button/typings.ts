@@ -1,4 +1,4 @@
-import type meta from './button.stories';
+import type meta from './Button.stories';
 import type { StoryObj } from '@storybook/nextjs';
 import type { ComponentProps } from 'react';
 

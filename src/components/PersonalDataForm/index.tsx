@@ -9,8 +9,8 @@ import Input from '@/components/Input';
 import { RadioGroup, RadioGroupItem } from '@/components/RadioGroup';
 import { useTranslation } from '@/hooks';
 
+import { createPersonalDataSchema } from './const';
 import { PersonalDataFormValuesType } from './typings';
-import { createPersonalDataSchema } from './validations';
 
 import {
   BlueButton,

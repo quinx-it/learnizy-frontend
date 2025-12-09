@@ -11,8 +11,8 @@ import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
 import { useTranslation } from '@/hooks';
 
+import { createFormSchema } from './const';
 import { IForgotPasswordFormValues } from './typings';
-import { createFormSchema } from './validation';
 
 import { Form } from './styles';
 

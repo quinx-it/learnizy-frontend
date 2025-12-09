@@ -5,7 +5,7 @@ import { FC } from 'react';
 
 import { useTranslation } from '@/hooks';
 
-import { LinkProps } from './Link.typings';
+import { LinkProps } from './typings';
 
 const Link: FC<LinkProps> = ({ href, children, ...props }) => {
   const { lang } = useTranslation();

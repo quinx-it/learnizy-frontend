@@ -19,8 +19,8 @@ import { Heading, Text } from '@/components/Typography';
 import { routes, HttpStatus } from '@/const';
 import { useRouter, useTranslation } from '@/hooks';
 
+import { createFormSchema, createVerificationSchema } from './const';
 import { VerificationFormValuesType, RegisterStep, IRegisterFormValues } from './typings';
-import { createFormSchema, createVerificationSchema } from './validation';
 
 import {
   CheckboxContainer,

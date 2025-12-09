@@ -1,6 +1,6 @@
 import { useTranslation } from '@/hooks';
 
-import { AdvantageCard } from './advantageCard';
+import { AdvantageCard } from './AdvantageCard';
 import { cards } from './const';
 
 import {

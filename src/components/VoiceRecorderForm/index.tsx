@@ -16,8 +16,8 @@ import { Text } from '@/components/Typography';
 import VoiceRecorderControl from '@/components/VoiceRecorderControl';
 import { useTranslation } from '@/hooks';
 
+import { createSchema } from './const';
 import { IAIQuestionFormValues, IVoiceRecorderFormProps } from './typings';
-import { createSchema } from './validation';
 
 import {
   ErrorContainer,
