@@ -1,6 +1,6 @@
 import { routes } from '@/const';
 
-export enum TestType {
+export const enum TestType {
   Lesson = 'LESSON_TEST',
   Module = 'MODULE_EXAM',
 }

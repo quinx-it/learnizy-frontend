@@ -1,4 +1,4 @@
-export enum CourseListItemStatus {
+export const enum CourseListItemStatus {
   NotStarted = 'NotStarted',
   InProgress = 'InProgress',
   Completed = 'Completed',

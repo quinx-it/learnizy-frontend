@@ -29,7 +29,7 @@ import {
   TooltipLabel,
 } from './styles';
 
-export enum ChartTheme {
+export const enum ChartTheme {
   Light = 'Light',
   Dark = 'Dark',
 }

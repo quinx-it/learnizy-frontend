@@ -1,6 +1,6 @@
 export type TestType = 'LESSON_TEST';
 
-export enum AnswerInputType {
+export const enum AnswerInputType {
   Text = 'TEXT',
   Voice = 'VOICE',
 }
@@ -48,14 +48,14 @@ export type LessonTestFormValuesType = {
   questions: QuestionAnswerFormType[];
 };
 
-export enum TestStatus {
+export const enum TestStatus {
   Submitted = 'SUBMITTED',
   Evaluating = 'EVALUATING',
   Evaluated = 'EVALUATED',
   Failed = 'FAILED',
 }
 
-export enum AnswerEvaluation {
+export const enum AnswerEvaluation {
   Correct = 'CORRECT',
   Incorrect = 'INCORRECT',
   Partial = 'PARTIAL',

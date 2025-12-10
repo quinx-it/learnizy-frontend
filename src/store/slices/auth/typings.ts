@@ -1,6 +1,6 @@
 import { Action } from '@reduxjs/toolkit';
 
-export enum UserRole {
+export const enum UserRole {
   Mentor = 'ADMIN',
   User = 'USER',
   Guest = 'GUEST',
