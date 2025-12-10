@@ -1,7 +1,7 @@
 import { AccordionItemType } from '@/components/AccordionReview/typings';
 import { CourseListItemType } from '@/components/CourseListItem/typings';
 
-export enum ModuleStatus {
+export const enum ModuleStatus {
   NotStarted = 'NotStarted',
   InProgress = 'InProgress',
   Completed = 'Completed',

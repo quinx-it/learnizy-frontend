@@ -2,7 +2,7 @@ export type VerificationFormValuesType = {
   code: string;
 };
 
-export enum RegisterStep {
+export const enum RegisterStep {
   Register = 'Register',
   Verify = 'Verify',
 }

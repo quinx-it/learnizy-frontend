@@ -1,4 +1,4 @@
-export enum ExamApiStatus {
+export const enum ExamApiStatus {
   Passed = 'PASSED',
   Failed = 'FAILED',
   Available = 'AVAILABLE',

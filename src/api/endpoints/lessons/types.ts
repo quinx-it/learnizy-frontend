@@ -5,14 +5,14 @@ export interface ILessonProgress {
   testResult?: number;
 }
 
-export enum LessonStatus {
+export const enum LessonStatus {
   NotStarted = 'NOT_STARTED',
   InProgress = 'IN_PROGRESS',
   Completed = 'COMPLETED',
   Blocked = 'BLOCKED',
 }
 
-export enum BlockType {
+export const enum BlockType {
   Heading = 'HEADING',
   Text = 'TEXT',
   Link = 'LINK',

@@ -2,7 +2,7 @@ export type VoiceFormValuesType = { file: Blob };
 export type VoiceDataType = FormData;
 export type FileUploadResponseType = { downloadUrl: string };
 
-export enum AIQueryStatus {
+export const enum AIQueryStatus {
   Pending = 'PENDING',
   Answered = 'ANSWERED',
   Failed = 'FAILED',

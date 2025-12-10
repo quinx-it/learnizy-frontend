@@ -1,4 +1,4 @@
-export enum ExamStatus {
+export const enum ExamStatus {
   Completed = 'Completed',
   Failed = 'Failed',
   Available = 'Available',
