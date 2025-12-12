@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { useState, useRef, useEffect, FC } from 'react';
+import { useState, useRef, useEffect, type FC } from 'react';
 
 import { Language } from '@/const';
 

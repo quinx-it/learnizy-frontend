@@ -1,5 +1,4 @@
-import ProgressBar from '.';
-
+import type ProgressBar from '.';
 import type { StoryObj } from '@storybook/nextjs';
 
 export interface IProgressBarProps {

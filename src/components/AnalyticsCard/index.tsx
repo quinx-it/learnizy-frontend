@@ -1,8 +1,8 @@
 'use client';
 
-import { FC } from 'react';
+import { type FC } from 'react';
 
-import { IAnalyticsCardProps } from './typings';
+import { type IAnalyticsCardProps } from './typings';
 
 import { Container, Content, Percentage, Title, Value, ValueWrapper } from './styles';
 

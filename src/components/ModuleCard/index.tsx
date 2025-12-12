@@ -1,9 +1,9 @@
 'use client';
 
-import { memo, useMemo, FC } from 'react';
+import { memo, useMemo, type FC } from 'react';
 import { useSelector } from 'react-redux';
 
-import { IModuleInfo } from '@/api/endpoints/modules';
+import { type IModuleInfo } from '@/api/endpoints/modules';
 import Button from '@/components/Button';
 import DotTitle from '@/components/DotTitle';
 import { Text } from '@/components/Typography';

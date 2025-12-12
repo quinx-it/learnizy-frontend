@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { FC, useState } from 'react';
+import { type FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
@@ -10,7 +10,7 @@ import {
   useUpdateLessonMutation,
   useDeleteLessonMutation,
 } from '@/api/endpoints/admin';
-import { ILesson } from '@/api/endpoints/lessons';
+import { type ILesson } from '@/api/endpoints/lessons';
 import { useGetModuleQuery } from '@/api/endpoints/modules';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
@@ -37,7 +37,7 @@ import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
 
 import { createBreadcrumbs, examAvailableNumber } from './const';
-import { ModuleItemPagePropsType } from './typings';
+import { type ModuleItemPagePropsType } from './typings';
 
 import {
   BlueButtonSmall,

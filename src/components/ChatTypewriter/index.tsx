@@ -1,10 +1,10 @@
 'use client';
 
-import { FC, useState, useEffect } from 'react';
+import { type FC, useState, useEffect } from 'react';
 
 import MarkdownRenderer from '@/components/MarkdownText';
 
-import { ITypewriterProps } from './typings';
+import { type ITypewriterProps } from './typings';
 
 import { Container } from './styles';
 

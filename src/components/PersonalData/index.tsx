@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import PersonalDataForm from '@/components/PersonalDataForm';
 import { useTranslation } from '@/hooks';

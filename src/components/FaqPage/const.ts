@@ -1,6 +1,6 @@
 import { routes } from '@/const';
 import { globalConstants } from '@/const/constants';
-import { TranslationFunctionType } from '@/types';
+import { type TranslationFunctionType } from '@/types';
 
 export const createConstants = (t: TranslationFunctionType) => ({
   breadCrumbs: [

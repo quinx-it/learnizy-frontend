@@ -1,5 +1,5 @@
 import { routes } from '@/const';
-import { TranslationFunctionType } from '@/types';
+import { type TranslationFunctionType } from '@/types';
 
 export const createBreadcrumbs =
   (t: TranslationFunctionType) =>

@@ -1,6 +1,6 @@
 'use client';
 
-import { PropsWithChildren, useEffect, FC } from 'react';
+import { type PropsWithChildren, useEffect, type FC } from 'react';
 
 import { useRefreshMutation } from '@/api/endpoints/auth';
 import FullscreenLoader from '@/components/FullscreenLoader';

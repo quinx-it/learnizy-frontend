@@ -1,13 +1,13 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { useState, useEffect, useRef, useCallback, FC } from 'react';
+import { useState, useEffect, useRef, useCallback, type FC } from 'react';
 
 import {
   useGetChatMessagesQuery,
   useSendMessageMutation,
-  IMessage,
-  ISendMessageRequest,
+  type IMessage,
+  type ISendMessageRequest,
   Role,
 } from '@/api/endpoints/aiAssistant';
 import ChatHeader from '@/components/ChatHeader';

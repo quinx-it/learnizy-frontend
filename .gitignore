@@ -49,3 +49,6 @@ next-env.d.ts
 storybook-static
 
 /.husky
+
+# vscode settings
+.vscode/settings.json

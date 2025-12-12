@@ -1,13 +1,13 @@
 'use client';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useState, FC } from 'react';
+import { useState, type FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import {
   AnswerInputType,
-  LessonTestFormValuesType,
-  LessonTestSubmitType,
+  type LessonTestFormValuesType,
+  type LessonTestSubmitType,
 } from '@/api/endpoints/test';
 import { useUploadVoiceMutation } from '@/api/endpoints/voice';
 import Button from '@/components/Button';
@@ -17,7 +17,7 @@ import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
 import { usePathname, useRouter, useTranslation } from '@/hooks';
 
-import { LessonTestFormPropsType } from './typings';
+import { type LessonTestFormPropsType } from './typings';
 import { createLessonTestFormSchema } from './validation';
 
 import { ActionsWrapper, ErrorText, QuestionItem, SubmitButtonWrapper } from './styles';

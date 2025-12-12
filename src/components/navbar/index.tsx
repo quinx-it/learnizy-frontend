@@ -1,10 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, FC } from 'react';
+import { useState, type FC } from 'react';
 
 import LanguageSwitcher from '@/components/LanguageSwitcher';
-import { INavbarProps } from '@/components/navbar/typings';
+import { type INavbarProps } from '@/components/navbar/typings';
 import Spinner from '@/components/Spinner';
 import { Text } from '@/components/Typography';
 import { routes } from '@/const';

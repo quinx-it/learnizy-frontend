@@ -1,8 +1,8 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 import { decodeToken } from '@/lib/utils';
 
-import { IAuthState, IDecodedToken, IRehydrateAction } from './typings';
+import { type IAuthState, type IDecodedToken, type IRehydrateAction } from './typings';
 
 const initialState: IAuthState = {
   accessToken: null,

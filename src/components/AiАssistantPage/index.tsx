@@ -3,7 +3,7 @@
 import {
   useCreateChatMutation,
   useSendMessageMutation,
-  ISendMessageRequest,
+  type ISendMessageRequest,
 } from '@/api/endpoints/aiAssistant';
 import ChatInput from '@/components/ChatInput';
 import { showToast } from '@/components/Toaster';

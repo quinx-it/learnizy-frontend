@@ -1,7 +1,7 @@
 'use client';
 
 import { Box } from '@mui/material';
-import { FC, useEffect, useRef } from 'react';
+import { type FC, useEffect, useRef } from 'react';
 
 import {
   AnswerEvaluation,
@@ -17,7 +17,7 @@ import { globalConstants, routes } from '@/const';
 import { useTranslation } from '@/hooks';
 
 import { evaluationMap } from './const';
-import { LessonTestResponseType, LessonTestResultPagePropsType } from './types';
+import { type LessonTestResponseType, type LessonTestResultPagePropsType } from './types';
 
 import {
   AnswerCard,

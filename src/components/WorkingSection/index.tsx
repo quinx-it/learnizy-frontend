@@ -1,11 +1,11 @@
 'use client';
 
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import { Text } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
 
-import { WorkingSectionPropsType } from './typings';
+import { type WorkingSectionPropsType } from './typings';
 
 import { Container, ContentWrapper, StyledImage, TextWrapper } from './styles';
 

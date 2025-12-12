@@ -1,6 +1,6 @@
 import { api } from '@/api';
 
-import { IGetModuleRequest, IModuleData, IModuleInfo } from './types';
+import { type IGetModuleRequest, type IModuleData, type IModuleInfo } from './types';
 
 export const modulesApi = api.injectEndpoints({
   endpoints: (builder) => ({

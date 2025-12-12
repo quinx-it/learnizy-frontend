@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import RegisterForm from '@/components/auth/RegisterForm';
 import CardWrapper from '@/components/CardWrapper';

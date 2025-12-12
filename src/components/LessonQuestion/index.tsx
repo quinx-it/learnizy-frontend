@@ -1,13 +1,13 @@
 'use client';
 
-import { FC } from 'react';
+import { type FC } from 'react';
 import { Controller, useFormContext, useWatch } from 'react-hook-form';
 
 import { RadioGroup } from '@/components/RadioGroup';
 import { Text } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
 
-import { LessonQuestionPropsType } from './typings';
+import { type LessonQuestionPropsType } from './typings';
 
 import {
   Container,

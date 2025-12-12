@@ -1,12 +1,12 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { FC, useEffect, useState } from 'react';
+import { type FC, useEffect, useState } from 'react';
 
 import { useGetChatMessagesQuery } from '@/api/endpoints/aiAssistant';
 import { useTranslation } from '@/hooks';
 
-import { IChatHeaderProps } from './typings';
+import { type IChatHeaderProps } from './typings';
 
 import { Container, Divider, Title } from './styles';
 

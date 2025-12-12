@@ -1,4 +1,4 @@
-import { StoryType } from './typings';
+import { type StoryType } from './typings';
 
 import AreaChart from '.';
 

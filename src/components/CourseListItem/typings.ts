@@ -1,4 +1,4 @@
-import { CourseListItemStatus } from './const';
+import { type CourseListItemStatus } from './const';
 
 export type CourseListItemType = {
   title: string;

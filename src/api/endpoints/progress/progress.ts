@@ -1,6 +1,6 @@
 import { api } from '@/api';
 
-import { IMainPageInfoResponse } from './types';
+import { type IMainPageInfoResponse } from './types';
 
 export const progressApi = api.injectEndpoints({
   endpoints: (builder) => ({

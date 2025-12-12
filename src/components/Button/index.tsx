@@ -1,5 +1,5 @@
 import { Slot } from '@radix-ui/react-slot';
-import { FC, MouseEvent } from 'react';
+import { type FC, type MouseEvent } from 'react';
 
 import { StyledButton } from './styles';
 

@@ -1,6 +1,10 @@
 import { api } from '@/api';
 
-import { LessonTestResponseType, LessonTestSubmitType, ITestAttemptResponse } from './types';
+import {
+  type LessonTestResponseType,
+  type LessonTestSubmitType,
+  type ITestAttemptResponse,
+} from './types';
 
 export const voice = api.injectEndpoints({
   endpoints: (builder) => ({

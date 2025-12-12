@@ -1,3 +1,3 @@
-import { breakpoints } from './useBreakpoint';
+import { type breakpoints } from './useBreakpoint';
 
 export type BreakpointKeyType = keyof typeof breakpoints;

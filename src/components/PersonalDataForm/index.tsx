@@ -1,7 +1,7 @@
 'use client';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FC } from 'react';
+import { type FC } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
 import DatePicker from '@/components/DatePicker';
@@ -10,7 +10,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/RadioGroup';
 import { useTranslation } from '@/hooks';
 
 import { createPersonalDataSchema } from './const';
-import { PersonalDataFormValuesType } from './typings';
+import { type PersonalDataFormValuesType } from './typings';
 
 import {
   BlueButton,

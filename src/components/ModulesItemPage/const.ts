@@ -1,4 +1,4 @@
-import { TranslationFunctionType } from '@/types';
+import { type TranslationFunctionType } from '@/types';
 
 export const examAvailableNumber = 100;
 

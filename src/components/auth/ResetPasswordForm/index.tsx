@@ -1,8 +1,8 @@
 'use client';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useState, useEffect, FC } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useState, useEffect, type FC } from 'react';
+import { useForm, type SubmitHandler } from 'react-hook-form';
 
 import { useResetPasswordMutation } from '@/api/endpoints/auth';
 import Button from '@/components/Button';
@@ -12,8 +12,8 @@ import { showToast } from '@/components/Toaster';
 import { routes } from '@/const';
 import { useRouter, useTranslation } from '@/hooks';
 
-import { IResetPasswordFormValues, createFormSchema } from './const';
-import { IResetPasswordFormProps } from './typings';
+import { type IResetPasswordFormValues, createFormSchema } from './const';
+import { type IResetPasswordFormProps } from './typings';
 
 import { Form, SuccessContainer, SuccessText } from './styles';
 

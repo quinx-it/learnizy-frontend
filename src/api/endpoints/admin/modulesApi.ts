@@ -1,11 +1,11 @@
 import { api } from '@/api';
 
 import {
-  IPage,
-  IModuleResponse,
-  IModuleRequest,
-  IModuleWithLessonList,
-  IModuleDetailsDTO,
+  type IPage,
+  type IModuleResponse,
+  type IModuleRequest,
+  type IModuleWithLessonList,
+  type IModuleDetailsDTO,
 } from './typings';
 
 const MODULES_URL = '/modules';

@@ -1,9 +1,9 @@
-import { VariantProps } from 'class-variance-authority';
-import { HTMLAttributes } from 'react';
+import { type VariantProps } from 'class-variance-authority';
+import { type HTMLAttributes } from 'react';
 
-import { headingVariants, textVariants } from './const';
+import { type headingVariants, type textVariants } from './const';
 
-import { Heading, Text } from '.';
+import { type Heading, type Text } from '.';
 
 import type { StoryObj } from '@storybook/nextjs';
 

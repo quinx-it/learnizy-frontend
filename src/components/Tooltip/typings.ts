@@ -1,8 +1,7 @@
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import { ComponentProps, PropsWithChildren, ReactNode } from 'react';
+import { type ComponentProps, type PropsWithChildren, type ReactNode } from 'react';
 
-import CustomTooltip from '.';
-
+import type CustomTooltip from '.';
+import type * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import type { StoryObj } from '@storybook/nextjs';
 
 export interface ITooltipProps extends PropsWithChildren {

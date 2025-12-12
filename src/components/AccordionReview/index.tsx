@@ -1,12 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import { Text } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
 
-import { AccordionReviewPropsType } from './typings';
+import { type AccordionReviewPropsType } from './typings';
 
 import {
   IconClose,

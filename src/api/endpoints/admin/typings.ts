@@ -1,4 +1,4 @@
-import { LessonStatus, CompletionStatus } from './const';
+import { type LessonStatus, type CompletionStatus } from './const';
 
 export interface IUserDTO {
   id: number;

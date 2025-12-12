@@ -1,9 +1,9 @@
-import { ChangeEvent, useState, useEffect, FC } from 'react';
+import { type ChangeEvent, useState, useEffect, type FC } from 'react';
 
 import { Text } from '@/components/Typography';
 
 import { MAX_TEXTAREA_LENGTH } from './const';
-import { ITextareaProps } from './typings';
+import { type ITextareaProps } from './typings';
 
 import {
   Container,

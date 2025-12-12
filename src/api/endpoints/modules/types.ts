@@ -1,5 +1,5 @@
-import { ILesson } from '../lessons/types';
-import { CompletionStatus } from '../types';
+import { type ILesson } from '../lessons/types';
+import { type CompletionStatus } from '../types';
 
 export interface IModuleInfo {
   id: number;

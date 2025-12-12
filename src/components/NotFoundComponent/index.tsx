@@ -1,14 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import { defaultPage, routes } from '@/const';
 import { useTranslation } from '@/hooks';
 import { useAppSelector } from '@/hooks/redux';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 
-import { NotFoundComponentPropsType } from './typings';
+import { type NotFoundComponentPropsType } from './typings';
 
 import {
   AstronautImage,

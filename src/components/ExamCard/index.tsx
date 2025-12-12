@@ -1,11 +1,11 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { ReactNode, FC } from 'react';
+import { type ReactNode, type FC } from 'react';
 
 import CardWrapper from '@/components/CardWrapper';
 import DotTitle from '@/components/DotTitle';
-import { ExamCardPropsType, ExamStatus } from '@/components/ExamsPage/typings';
+import { type ExamCardPropsType, ExamStatus } from '@/components/ExamsPage/typings';
 import Link from '@/components/Link';
 import { Text } from '@/components/Typography';
 import { routes } from '@/const';

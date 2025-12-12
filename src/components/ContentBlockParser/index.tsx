@@ -1,9 +1,9 @@
 import { Box } from '@mui/material';
 import Image from 'next/image';
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import {
-  Block,
+  type Block,
   BlockType,
   getTextVariant,
   headingTags,
@@ -12,7 +12,7 @@ import {
 import Link from '@/components/Link';
 import { Heading, Text } from '@/components/Typography';
 
-import { IBlockRendererProps } from './typings';
+import { type IBlockRendererProps } from './typings';
 
 import {
   AdviceContainer,

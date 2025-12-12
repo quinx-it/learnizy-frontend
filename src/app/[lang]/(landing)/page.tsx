@@ -1,5 +1,5 @@
-import { Metadata } from 'next';
-import { FC } from 'react';
+import { type Metadata } from 'next';
+import { type FC } from 'react';
 
 import { LandingPage } from '@/components/LandingPage';
 import { type Locale } from '@/lib/translate';

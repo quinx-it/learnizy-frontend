@@ -1,10 +1,10 @@
 import { Plus, Minus } from 'lucide-react';
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import { Text } from '@/components/Typography';
 import { cn } from '@/lib/utils';
 
-import { IAccordionProps } from './typings';
+import { type IAccordionProps } from './typings';
 
 import {
   StyledAccordion,

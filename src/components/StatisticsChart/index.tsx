@@ -1,13 +1,13 @@
 import { Box } from '@mui/material';
 import Image from 'next/image';
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import AreaChart from '@/components/AreaChart';
 import { Text } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
 
 import { WEEK_DAY_KEYS } from './const';
-import { StatisticsChartPropsType } from './typings';
+import { type StatisticsChartPropsType } from './typings';
 
 import { HeaderContainer, StatisticsWrapper, TitleWrapper } from './styles';
 

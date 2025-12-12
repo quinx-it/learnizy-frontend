@@ -1,7 +1,7 @@
-import { PersistConfig } from 'redux-persist';
+import { type PersistConfig } from 'redux-persist';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 
-import { IAuthState } from './slices/auth/typings';
+import { type IAuthState } from './slices/auth/typings';
 
 const createNoopStorage = () => {
   return {

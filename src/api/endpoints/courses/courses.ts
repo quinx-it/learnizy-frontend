@@ -1,6 +1,6 @@
 import { api } from '@/api';
 
-import { ICourse } from './types';
+import { type ICourse } from './types';
 
 export const courseApi = api.injectEndpoints({
   endpoints: (builder) => ({

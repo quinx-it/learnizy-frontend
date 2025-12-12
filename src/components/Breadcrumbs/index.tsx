@@ -1,13 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-import { Fragment, FC } from 'react';
+import { Fragment, type FC } from 'react';
 
 import { Text } from '@/components/Typography';
 import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
 
-import { IBreadcrumbsProps } from './typings';
+import { type IBreadcrumbsProps } from './typings';
 
 import {
   StyledNav,

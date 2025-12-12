@@ -1,4 +1,4 @@
-import { ProgressStatus } from './const';
+import { type ProgressStatus } from './const';
 
 export type ProgressCardPropsType = {
   title: string;

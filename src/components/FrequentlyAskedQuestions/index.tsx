@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import CardWrapper from '@/components/CardWrapper';
 import { routes } from '@/const';

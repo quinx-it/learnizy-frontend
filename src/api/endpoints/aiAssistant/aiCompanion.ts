@@ -1,13 +1,13 @@
 import { api } from '@/api';
 
 import {
-  IChat,
-  IMessage,
-  ISendMessageRequest,
-  IGetChatsApiResponse,
-  ICreateChatApiResponse,
-  IGetChatMessagesApiResponse,
-  IGetChatMessagesTransformedResponse,
+  type IChat,
+  type IMessage,
+  type ISendMessageRequest,
+  type IGetChatsApiResponse,
+  type ICreateChatApiResponse,
+  type IGetChatMessagesApiResponse,
+  type IGetChatMessagesTransformedResponse,
 } from './typings';
 
 const AI_CHAT_URL = '/ai-companion/chats';

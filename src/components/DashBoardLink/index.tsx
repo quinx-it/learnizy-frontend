@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import { usePathname } from '@/hooks';
 
-import { IDashboardLinkProps } from './typings';
+import { type IDashboardLinkProps } from './typings';
 
 import { IconWrapper, StyledLink } from './styles';
 

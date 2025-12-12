@@ -1,9 +1,9 @@
 'use client';
 
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import { FC } from 'react';
+import { type FC } from 'react';
 
-import { ITooltipProps } from './typings';
+import { type ITooltipProps } from './typings';
 
 import { StyledArrow, StyledContent } from './styles';
 

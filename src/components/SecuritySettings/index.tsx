@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import SecuritySettingsForm from '@/components/SecuritySettingsForm';
 import { Heading } from '@/components/Typography';

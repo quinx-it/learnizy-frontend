@@ -1,8 +1,8 @@
 'use client';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FC, useEffect } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { type FC, useEffect } from 'react';
+import { useForm, type SubmitHandler } from 'react-hook-form';
 
 import { useForgotPasswordMutation } from '@/api/endpoints/auth';
 import Button from '@/components/Button';
@@ -12,7 +12,7 @@ import { showToast } from '@/components/Toaster';
 import { useTranslation } from '@/hooks';
 
 import { createFormSchema } from './const';
-import { IForgotPasswordFormValues } from './typings';
+import { type IForgotPasswordFormValues } from './typings';
 
 import { Form } from './styles';
 

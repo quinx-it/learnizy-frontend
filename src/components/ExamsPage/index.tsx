@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import { useGetExamsQuery, ExamApiStatus } from '@/api/endpoints/exams';
 import ErrorSection from '@/components/ErrorSection';
@@ -9,7 +9,7 @@ import ExamCard from '@/components/ExamCard';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import { useTranslation } from '@/hooks';
 
-import { ExamStatus, ExamType, IExamsPageProps } from './typings';
+import { ExamStatus, type ExamType, type IExamsPageProps } from './typings';
 
 import {
   Container,

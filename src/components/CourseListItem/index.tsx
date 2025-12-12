@@ -1,12 +1,12 @@
 'use client';
 
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import ProgressBar from '@/components/Progress';
 import { useTranslation } from '@/hooks';
 
 import { CourseListItemStatus, getStatusTranslationKey } from './const';
-import { CourseListItemType } from './typings';
+import { type CourseListItemType } from './typings';
 
 import {
   Container,

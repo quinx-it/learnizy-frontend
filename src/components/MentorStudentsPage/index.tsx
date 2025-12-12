@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import { useGetDashboardAnalyticsQuery } from '@/api/endpoints/admin';
 import AnalyticsCard from '@/components/AnalyticsCard';

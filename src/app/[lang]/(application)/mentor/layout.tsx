@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, PropsWithChildren } from 'react';
+import { type FC, type PropsWithChildren } from 'react';
 
 import AuthLayout from '@/components/AuthLayout';
 import Navbar from '@/components/navbar';

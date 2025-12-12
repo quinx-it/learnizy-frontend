@@ -1,13 +1,13 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import { useGetExamByIdQuery } from '@/api/endpoints/exams';
 import TestPage from '@/components/TestPage';
-import { TestDataType } from '@/components/TestPage/typings';
+import { type TestDataType } from '@/components/TestPage/typings';
 
-import { ParamsType } from '../../../typings';
+import { type ParamsType } from '../../../typings';
 
 const ExamPage: FC = () => {
   const params = useParams<ParamsType>();

@@ -1,12 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef, useState, FC } from 'react';
+import { useEffect, useRef, useState, type FC } from 'react';
 import WaveSurfer from 'wavesurfer.js';
 
 import { Text } from '@/components/Typography';
 
-import { IAudioPlayerProps } from './typings';
+import { type IAudioPlayerProps } from './typings';
 
 import {
   Container,

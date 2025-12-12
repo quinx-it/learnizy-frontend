@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import { AnswerEvaluation, TestStatus, useGetLastTestAttemptQuery } from '@/api/endpoints/test';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -11,7 +11,7 @@ import { globalConstants, routes } from '@/const';
 import { useTranslation } from '@/hooks';
 
 import { evaluationMap } from './const';
-import { ExamTestResultPagePropsType } from './typings';
+import { type ExamTestResultPagePropsType } from './typings';
 
 import {
   Container,

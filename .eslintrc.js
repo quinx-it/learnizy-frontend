@@ -16,6 +16,10 @@ module.exports = {
     'react/function-component-definition': 'off',
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': 'off',
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
+      { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
+    ],
     'react/no-array-index-key': 'off',
     'react-hooks/exhaustive-deps': 'off',
     'prettier/prettier': 'error',

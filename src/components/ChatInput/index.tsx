@@ -6,11 +6,11 @@ import Image from 'next/image';
 import {
   useState,
   useRef,
-  FC,
-  ChangeEvent,
-  KeyboardEvent,
-  MouseEvent as ReactMouseEvent,
-  TouchEvent as ReactTouchEvent,
+  type FC,
+  type ChangeEvent,
+  type KeyboardEvent,
+  type MouseEvent as ReactMouseEvent,
+  type TouchEvent as ReactTouchEvent,
   useEffect,
   useCallback,
 } from 'react';
@@ -22,7 +22,7 @@ import { showToast } from '@/components/Toaster';
 import { useTranslation } from '@/hooks';
 
 import { MIN_RECORDING_DURATION_MS } from './const';
-import { IChatInputProps, ILocalFile } from './typings';
+import { type IChatInputProps, type ILocalFile } from './typings';
 
 import {
   AttachButton,

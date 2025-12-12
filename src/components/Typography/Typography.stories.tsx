@@ -1,4 +1,4 @@
-import { HeadingStoryType, TextStoryType } from './typings';
+import { type HeadingStoryType, type TextStoryType } from './typings';
 
 import { Heading, Text } from '.';
 
