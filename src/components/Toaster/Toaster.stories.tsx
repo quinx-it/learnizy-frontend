@@ -1,6 +1,6 @@
 'use client';
 
-import { Meta, StoryFn } from '@storybook/nextjs';
+import { type Meta, type StoryFn } from '@storybook/nextjs';
 import { ThemeProvider } from 'next-themes';
 
 import { Toaster, showToast } from '.';

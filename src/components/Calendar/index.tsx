@@ -1,10 +1,10 @@
 'use client';
 
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
-import { ComponentProps, useEffect, useRef } from 'react';
-import { DayButton, DayPicker, getDefaultClassNames } from 'react-day-picker';
+import { type ComponentProps, useEffect, useRef } from 'react';
+import { type DayButton, DayPicker, getDefaultClassNames } from 'react-day-picker';
 
-import Button, { buttonVariants } from '@/components/Button';
+import { buttonVariants } from '@/components/Button';
 import { cn } from '@/lib/utils';
 
 import {
@@ -14,6 +14,8 @@ import {
   StyledWeekNumberWrapper,
   StyledCalendarDayButton,
 } from './styles';
+
+import type Button from '@/components/Button';
 
 function CalendarDayButton({
   className,

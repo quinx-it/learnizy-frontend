@@ -1,13 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect, FC } from 'react';
+import { useState, useEffect, type FC } from 'react';
 
 import { Calendar } from '@/components/Calendar';
 import Popover from '@/components/Popover';
 import { useTranslation } from '@/hooks';
 
-import { IDatePickerProps } from './typings';
+import { type IDatePickerProps } from './typings';
 import { formatDate, parseDateString } from './utils';
 
 import { Container, StyledDateInput, IconWrapper } from './styles';

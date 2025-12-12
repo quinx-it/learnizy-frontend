@@ -1,11 +1,11 @@
 import Image from 'next/image';
-import { useEffect, useState, FC } from 'react';
+import { useEffect, useState, type FC } from 'react';
 
 import AudioPlayer from '@/components/AudioPlayer';
 import { Text } from '@/components/Typography';
 import { useTranslation, useVoiceRecorder } from '@/hooks';
 
-import { PropsType } from './typings';
+import { type PropsType } from './typings';
 
 import { ButtonWrapper, Container, DeleteButton } from './styles';
 

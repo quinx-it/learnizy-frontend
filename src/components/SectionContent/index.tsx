@@ -1,8 +1,8 @@
 'use client';
 
-import { FC } from 'react';
+import { type FC } from 'react';
 
-import { ISectionContentProps } from './typings';
+import { type ISectionContentProps } from './typings';
 
 import { Container } from './styles';
 

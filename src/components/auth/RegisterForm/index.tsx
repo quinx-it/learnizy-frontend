@@ -1,8 +1,8 @@
 'use client';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useState, useEffect, ChangeEvent, FC } from 'react';
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+import { useState, useEffect, type ChangeEvent, type FC } from 'react';
+import { useForm, type SubmitHandler, Controller } from 'react-hook-form';
 
 import {
   useRegisterMutation,
@@ -20,7 +20,7 @@ import { routes, HttpStatus } from '@/const';
 import { useRouter, useTranslation } from '@/hooks';
 
 import { createFormSchema, createVerificationSchema } from './const';
-import { VerificationFormValuesType, RegisterStep, IRegisterFormValues } from './typings';
+import { type VerificationFormValuesType, RegisterStep, type IRegisterFormValues } from './typings';
 
 import {
   CheckboxContainer,

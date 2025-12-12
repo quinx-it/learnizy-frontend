@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { FC } from 'react';
 
 import DashboardLink from '@/components/DashBoardLink';
 import { routes } from '@/const';
@@ -18,6 +17,8 @@ import {
   StyledCardWrapper,
   StyledImage,
 } from './styles';
+
+import type { FC } from 'react';
 
 const ProfileDashboard: FC = () => {
   const { t } = useTranslation();

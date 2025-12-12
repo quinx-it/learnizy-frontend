@@ -2,13 +2,13 @@
 
 import { Plus, X } from 'lucide-react';
 import Image from 'next/image';
-import { FC, useState } from 'react';
+import { type FC, useState } from 'react';
 
-import { useGetChatsQuery, IChat } from '@/api/endpoints/aiAssistant';
+import { useGetChatsQuery, type IChat } from '@/api/endpoints/aiAssistant';
 import { useTranslation } from '@/hooks';
 import { formatRelativeDate } from '@/lib/utils';
 
-import { IChatHistoryProps } from './typings';
+import { type IChatHistoryProps } from './typings';
 
 import {
   ChatGroup,

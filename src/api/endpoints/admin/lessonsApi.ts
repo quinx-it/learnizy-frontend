@@ -1,10 +1,10 @@
 import { api } from '@/api';
 
 import {
-  ILessonRequest,
-  ILessonWithContentList,
-  IUpdateLessonRequest,
-  ILessonMarkdownContentUpdateRequest,
+  type ILessonRequest,
+  type ILessonWithContentList,
+  type IUpdateLessonRequest,
+  type ILessonMarkdownContentUpdateRequest,
 } from './typings';
 
 const LESSON_URL = '/lesson';

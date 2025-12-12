@@ -1,17 +1,17 @@
 'use client';
 
 import {
-  FC,
-  ComponentProps,
+  type FC,
+  type ComponentProps,
   createContext,
-  CSSProperties,
+  type CSSProperties,
   useContext,
   useId,
   useMemo,
 } from 'react';
 import * as RechartsPrimitive from 'recharts';
 
-import { ChartConfigType, ChartContextPropsType, IChartStyleProps } from './typings';
+import { type ChartConfigType, type ChartContextPropsType, type IChartStyleProps } from './typings';
 
 import {
   LegendContainer,

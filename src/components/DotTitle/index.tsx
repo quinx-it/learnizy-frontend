@@ -1,8 +1,8 @@
 'use client';
 
-import { FC } from 'react';
+import { type FC } from 'react';
 
-import { IDotTitleProps } from './typings';
+import { type IDotTitleProps } from './typings';
 
 import { Container, Dot, SecondLabel, StyledHeading, StyledText } from './styles';
 

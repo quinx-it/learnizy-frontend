@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, PropsWithChildren, useEffect } from 'react';
+import { type FC, type PropsWithChildren, useEffect } from 'react';
 
 import FullscreenLoader from '@/components/FullscreenLoader';
 import { routes } from '@/const';

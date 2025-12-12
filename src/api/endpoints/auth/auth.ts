@@ -2,17 +2,17 @@ import { api } from '@/api';
 import { AUTH_BASE_URL } from '@/api/const';
 import { showToast } from '@/components/Toaster';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
-import { IAuthState } from '@/store/slices/auth/typings';
+import { type IAuthState } from '@/store/slices/auth/typings';
 
 import {
-  ForgotPasswordRequestType,
-  LoginRequestType,
-  RefreshResponseType,
-  ResetPasswordRequestType,
-  RegisterRequestType,
-  RegisterResponseType,
-  VerifyEmailRequestType,
-  ResendCodeRequestType,
+  type ForgotPasswordRequestType,
+  type LoginRequestType,
+  type RefreshResponseType,
+  type ResetPasswordRequestType,
+  type RegisterRequestType,
+  type RegisterResponseType,
+  type VerifyEmailRequestType,
+  type ResendCodeRequestType,
 } from './types';
 
 export const auth = api.injectEndpoints({

@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import CardWrapper from '@/components/CardWrapper';
 import DotTitle from '@/components/DotTitle';
@@ -8,7 +8,7 @@ import ProgressBar from '@/components/Progress';
 import { useTranslation } from '@/hooks';
 
 import { ProgressStatus } from './const';
-import { ProgressCardPropsType } from './typings';
+import { type ProgressCardPropsType } from './typings';
 
 import {
   Container,

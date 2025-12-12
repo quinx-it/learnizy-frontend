@@ -1,5 +1,12 @@
-import * as PopoverPrimitive from '@radix-ui/react-popover';
-import { ComponentProps, Dispatch, PropsWithChildren, ReactNode, SetStateAction } from 'react';
+import {
+  type ComponentProps,
+  type Dispatch,
+  type PropsWithChildren,
+  type ReactNode,
+  type SetStateAction,
+} from 'react';
+
+import type * as PopoverPrimitive from '@radix-ui/react-popover';
 
 export interface IPopoverProps extends PropsWithChildren {
   content: ReactNode;

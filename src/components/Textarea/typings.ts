@@ -1,7 +1,6 @@
-import { ComponentProps } from 'react';
+import { type ComponentProps } from 'react';
 
-import Textarea from '.';
-
+import type Textarea from '.';
 import type { StoryObj } from '@storybook/nextjs';
 
 export interface ITextareaProps extends ComponentProps<'textarea'> {

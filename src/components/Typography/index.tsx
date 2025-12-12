@@ -2,7 +2,7 @@
 
 import { forwardRef } from 'react';
 
-import { IHeadingProps, ITextProps } from './typings';
+import { type IHeadingProps, type ITextProps } from './typings';
 
 import { StyledHeading, StyledText } from './styles';
 

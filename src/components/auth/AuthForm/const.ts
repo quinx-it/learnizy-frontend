@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { TranslationFunctionType } from '@/types';
+import { type TranslationFunctionType } from '@/types';
 
 export const createFormSchema = (t: TranslationFunctionType) =>
   yup.object().shape({

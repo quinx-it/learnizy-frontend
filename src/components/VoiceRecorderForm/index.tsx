@@ -1,13 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FC, useState, useEffect } from 'react';
-import { Controller, useForm, Resolver } from 'react-hook-form';
+import { type FC, useState, useEffect } from 'react';
+import { Controller, useForm, type Resolver } from 'react-hook-form';
 
 import {
   AIQueryStatus,
   useUploadVoiceMutation,
   useCreateLessonAIQueryMutation,
   useGetLessonAIQueriesQuery,
-  CreateLessonAIQueryRequestType,
+  type CreateLessonAIQueryRequestType,
 } from '@/api/endpoints/voice';
 import Button from '@/components/Button';
 import Spinner from '@/components/Spinner';
@@ -17,7 +17,7 @@ import VoiceRecorderControl from '@/components/VoiceRecorderControl';
 import { useTranslation } from '@/hooks';
 
 import { createSchema } from './const';
-import { IAIQuestionFormValues, IVoiceRecorderFormProps } from './typings';
+import { type IAIQuestionFormValues, type IVoiceRecorderFormProps } from './typings';
 
 import {
   ErrorContainer,

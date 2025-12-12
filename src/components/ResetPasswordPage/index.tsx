@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import { FC, useState } from 'react';
+import { type FC, useState } from 'react';
 
 import ResetPasswordForm from '@/components/auth/ResetPasswordForm';
 import CardWrapper from '@/components/CardWrapper';
 import { Heading, Text } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
 
-import { IResetPasswordPageProps } from './typings';
+import { type IResetPasswordPageProps } from './typings';
 
 import {
   CardWrapperContainer,

@@ -1,11 +1,11 @@
 'use client';
 
 import Image from 'next/image';
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import { usePathname } from '@/hooks';
 
-import { INavbarLinkProps } from './typings';
+import { type INavbarLinkProps } from './typings';
 
 import { IconWrapper, StyledButton, StyledLink, StyledText } from './styles';
 

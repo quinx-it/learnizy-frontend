@@ -1,5 +1,4 @@
-import CustomSelect from '.';
-
+import type CustomSelect from '.';
 import type { StoryObj } from '@storybook/nextjs';
 
 export interface IOption {

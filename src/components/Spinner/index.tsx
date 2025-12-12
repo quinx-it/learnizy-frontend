@@ -1,6 +1,6 @@
-import { FC } from 'react';
+import { type FC } from 'react';
 
-import { SpinnerVariantPropsType, SpinnerPropsType } from './typings';
+import { type SpinnerVariantPropsType, type SpinnerPropsType } from './typings';
 
 import { StyledCircle, StyledRing } from './styles';
 

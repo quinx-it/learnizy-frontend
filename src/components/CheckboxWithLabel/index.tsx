@@ -1,8 +1,8 @@
 'use client';
 
-import { FC } from 'react';
+import { type FC } from 'react';
 
-import { ICheckboxWithLabelProps } from './typings';
+import { type ICheckboxWithLabelProps } from './typings';
 
 import { Container, StyledCheckbox, StyledLabel } from './styles';
 

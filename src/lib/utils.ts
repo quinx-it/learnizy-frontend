@@ -9,10 +9,10 @@ import {
   staticMentorRoutes,
   staticUserRoutes,
 } from '@/const/routes';
-import { IDecodedToken, UserRole } from '@/store/slices/auth/typings';
-import { TranslationFunctionType } from '@/types';
+import { type IDecodedToken, UserRole } from '@/store/slices/auth/typings';
+import { type TranslationFunctionType } from '@/types';
 
-import { IDecodedTokenPayload } from './typings';
+import { type IDecodedTokenPayload } from './typings';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

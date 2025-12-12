@@ -1,5 +1,5 @@
-import { LinkProps } from 'next/link';
-import { ComponentType } from 'react';
+import type { LinkProps } from 'next/link';
+import type { ComponentType } from 'react';
 
 export interface INavbarLinkProps extends LinkProps {
   src?: string;

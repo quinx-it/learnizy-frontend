@@ -1,5 +1,5 @@
-import { AccordionItemType } from '@/components/AccordionReview/typings';
-import { CourseListItemType } from '@/components/CourseListItem/typings';
+import { type AccordionItemType } from '@/components/AccordionReview/typings';
+import { type CourseListItemType } from '@/components/CourseListItem/typings';
 
 export const enum ModuleStatus {
   NotStarted = 'NotStarted',

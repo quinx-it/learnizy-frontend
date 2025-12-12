@@ -1,8 +1,8 @@
 'use client';
 
-import { FC } from 'react';
+import { type FC } from 'react';
 
-import { CardWrapperPropsType } from './typings';
+import { type CardWrapperPropsType } from './typings';
 
 import { Container } from './styles';
 

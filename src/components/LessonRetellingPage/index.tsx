@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import { useGetLessonQuery } from '@/api/endpoints/lessons';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -9,7 +9,7 @@ import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
 
 import { createBreadcrumbs } from './const';
-import { ILessonRetellingPageProps } from './typings';
+import { type ILessonRetellingPageProps } from './typings';
 
 import {
   CardWrapperContainer,

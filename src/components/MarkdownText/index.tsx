@@ -1,12 +1,12 @@
 'use client';
 
 import { Box } from '@mui/material';
-import { FC, ReactNode, CSSProperties } from 'react';
-import ReactMarkdown, { Components } from 'react-markdown';
+import { type FC, type ReactNode, type CSSProperties } from 'react';
+import ReactMarkdown, { type Components } from 'react-markdown';
 import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkGfm from 'remark-gfm';
 
-import { IMarkdownRendererProps } from './typings';
+import { type IMarkdownRendererProps } from './typings';
 
 import {
   Anchor,

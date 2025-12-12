@@ -1,6 +1,6 @@
 'use client';
 
-import { StoryType } from './typings';
+import { type StoryType } from './typings';
 
 import DatePicker from '.';
 

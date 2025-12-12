@@ -7,7 +7,7 @@ import Label from '@/components/Label';
 import { Text } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
 
-import { IPasswordInputProps } from './typings';
+import { type IPasswordInputProps } from './typings';
 
 import {
   InputWrapper,

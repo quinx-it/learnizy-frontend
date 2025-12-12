@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
 import { DictContext } from '@/lib/translate';
-import { DictionaryType, TranslationFunctionType } from '@/types';
+import { type DictionaryType, type TranslationFunctionType } from '@/types';
 
 interface UseTranslationReturn {
   t: TranslationFunctionType;

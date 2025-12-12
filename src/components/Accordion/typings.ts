@@ -1,5 +1,4 @@
-import CardAccordion from '.';
-
+import type CardAccordion from '.';
 import type { StoryObj } from '@storybook/nextjs';
 
 export interface IAccordionEntry {

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import ForgotPasswordForm from '@/components/auth/ForgotPasswordForm';
 import CardWrapper from '@/components/CardWrapper';

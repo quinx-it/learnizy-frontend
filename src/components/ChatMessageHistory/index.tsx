@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useLayoutEffect, useEffect, FC } from 'react';
+import { useRef, useLayoutEffect, useEffect, type FC } from 'react';
 
 import AudioPlayer from '@/components/AudioPlayer';
 import Typewriter from '@/components/ChatTypewriter';
@@ -11,7 +11,7 @@ import { usePrevious } from '@/hooks/usePrevious';
 import { isAudioUrl } from '@/lib/utils';
 
 import { Role } from './const';
-import { IChatMessageHistoryProps } from './typings';
+import { type IChatMessageHistoryProps } from './typings';
 
 import {
   AttachmentFilename,

@@ -1,10 +1,11 @@
 'use client';
 
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import Image from 'next/image';
-import { ComponentProps, FC } from 'react';
+import { type ComponentProps, type FC } from 'react';
 
 import { StyledIndicator, StyledRoot } from './styles';
+
+import type * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 
 const Checkbox: FC<ComponentProps<typeof CheckboxPrimitive.Root>> = ({ className, ...props }) => {
   return (

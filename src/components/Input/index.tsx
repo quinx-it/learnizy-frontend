@@ -6,7 +6,7 @@ import { forwardRef } from 'react';
 import Label from '@/components/Label';
 import { Text } from '@/components/Typography';
 
-import { IInputProps } from './typings';
+import { type IInputProps } from './typings';
 
 import { ErrorText, LabelWrapper, StyledInput } from './styles';
 

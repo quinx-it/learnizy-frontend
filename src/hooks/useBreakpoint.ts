@@ -2,7 +2,7 @@
 
 import { useMediaQuery } from 'react-responsive';
 
-import { BreakpointKeyType } from './typings';
+import { type BreakpointKeyType } from './typings';
 
 export const breakpoints = {
   sm: 640,

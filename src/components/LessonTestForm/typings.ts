@@ -1,4 +1,4 @@
-import { LessonQuestionItemType, LessonTestSubmitType } from '@/api/endpoints/test';
+import { type LessonQuestionItemType, type LessonTestSubmitType } from '@/api/endpoints/test';
 
 export type LessonTestFormPropsType = {
   testId: number;

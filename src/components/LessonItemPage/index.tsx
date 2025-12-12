@@ -2,7 +2,7 @@
 
 import MDEditor from '@uiw/react-md-editor';
 import { usePathname, useRouter } from 'next/navigation';
-import { FC, useState, useEffect } from 'react';
+import { type FC, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useUpdateLessonContentMarkdownMutation } from '@/api/endpoints/admin';
@@ -19,7 +19,7 @@ import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
 
 import { constants } from './const';
-import { ILessonItemPageProps } from './typings';
+import { type ILessonItemPageProps } from './typings';
 
 import {
   BlueButtonMedium,

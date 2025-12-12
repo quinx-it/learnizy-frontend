@@ -2,9 +2,9 @@
 
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { ChevronDownIcon, ChevronUpIcon, CheckIcon } from 'lucide-react';
-import { FC } from 'react';
+import { type FC } from 'react';
 
-import { ICustomSelectProps } from './typings';
+import { type ICustomSelectProps } from './typings';
 
 import {
   StyledContent,

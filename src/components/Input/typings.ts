@@ -1,7 +1,6 @@
-import { ComponentProps } from 'react';
+import { type ComponentProps } from 'react';
 
-import Input from '.';
-
+import type Input from '.';
 import type { StoryObj } from '@storybook/nextjs';
 
 export type StoryType = StoryObj<typeof Input>;

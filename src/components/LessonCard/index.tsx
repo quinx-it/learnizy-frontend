@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import { useTranslation } from '@/hooks';
 import { normalizeToFive } from '@/lib/utils';
 
-import { LessonCardPropsType } from './typings';
+import { type LessonCardPropsType } from './typings';
 
 import {
   CardContent,

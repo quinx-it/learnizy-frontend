@@ -1,12 +1,12 @@
 'use client';
 
 import { useTheme } from '@mui/material';
-import { FC } from 'react';
+import { type FC } from 'react';
 import { Area, AreaChart as AreaChartDefault, XAxis, YAxis } from 'recharts';
 
 import { ChartContainer } from '@/components/Chart';
 
-import { IChartLineProps } from './typings';
+import { type IChartLineProps } from './typings';
 
 import { ChartContainerStyled, Container } from './styles';
 

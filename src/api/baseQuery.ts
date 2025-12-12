@@ -1,17 +1,17 @@
 import {
-  BaseQueryFn,
-  FetchArgs,
+  type BaseQueryFn,
+  type FetchArgs,
   fetchBaseQuery,
-  FetchBaseQueryError,
+  type FetchBaseQueryError,
 } from '@reduxjs/toolkit/query';
 import { throttle } from 'lodash';
 
 import { API_BASE_URL, HttpStatus, REFRESH_THROTTLE } from '@/const';
-import { RootStateType } from '@/store';
+import { type RootStateType } from '@/store';
 import { logout, setCredentials } from '@/store/slices/auth/slice';
 
 import { AUTH_BASE_URL } from './const';
-import { IRefreshResponse, BaseQueryApi, BaseQueryExtraOptions } from './types';
+import { type IRefreshResponse, type BaseQueryApi, type BaseQueryExtraOptions } from './types';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: `${API_BASE_URL}/api/v1`,

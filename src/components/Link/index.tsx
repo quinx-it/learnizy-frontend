@@ -1,11 +1,11 @@
 'use client';
 
 import LinkBase from 'next/link';
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import { useTranslation } from '@/hooks';
 
-import { LinkProps } from './typings';
+import { type LinkProps } from './typings';
 
 const Link: FC<LinkProps> = ({ href, children, ...props }) => {
   const { lang } = useTranslation();

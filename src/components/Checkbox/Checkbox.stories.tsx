@@ -2,7 +2,7 @@
 
 import { Label } from '@radix-ui/react-label';
 
-import { StoryType } from './typings';
+import { type StoryType } from './typings';
 
 import Checkbox from '.';
 

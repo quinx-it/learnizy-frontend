@@ -1,6 +1,6 @@
 import { api } from '@/api';
 
-import { IUserDTO, IUpdateUserDTO, IAnalyticResponse, IPage } from './typings';
+import { type IUserDTO, type IUpdateUserDTO, type IAnalyticResponse, type IPage } from './typings';
 
 const USERS_URL = '/users';
 

@@ -3,13 +3,13 @@
 import { Box } from '@mui/material';
 import { Copy, Edit3 } from 'lucide-react';
 import Image from 'next/image';
-import { useState, FC } from 'react';
+import { useState, type FC } from 'react';
 
 import { Text } from '@/components/Typography';
 import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
 
-import { IStudentsTableProps } from './typings';
+import { type IStudentsTableProps } from './typings';
 
 import {
   Cell,

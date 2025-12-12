@@ -2,8 +2,8 @@
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box } from '@mui/material';
-import { FC } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { type FC } from 'react';
+import { useForm, type SubmitHandler } from 'react-hook-form';
 
 import { useLoginMutation } from '@/api/endpoints/auth';
 import Button from '@/components/Button';
@@ -15,7 +15,7 @@ import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
 
 import { createFormSchema } from './const';
-import { IAuthFormValues } from './typings';
+import { type IAuthFormValues } from './typings';
 
 import { AuthLink, Form, LinksRow } from './styles';
 

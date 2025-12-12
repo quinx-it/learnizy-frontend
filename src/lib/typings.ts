@@ -1,4 +1,4 @@
-import { UserRole } from '@/store/slices/auth/typings';
+import { type UserRole } from '@/store/slices/auth/typings';
 
 export interface IDecodedTokenPayload {
   role: UserRole;

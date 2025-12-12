@@ -1,11 +1,11 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import LessonRetellingPage from '@/components/LessonRetellingPage';
 
-import { ParamsType } from '../../../typings';
+import { type ParamsType } from '../../../typings';
 
 const LessonRetelling: FC = () => {
   const params = useParams<ParamsType>();

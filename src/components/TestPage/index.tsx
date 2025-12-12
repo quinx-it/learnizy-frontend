@@ -1,9 +1,9 @@
 'use client';
 
 import { Box } from '@mui/material';
-import { FC } from 'react';
+import { type FC } from 'react';
 
-import { LessonTestSubmitType, useSendTestMutation } from '@/api/endpoints/test';
+import { type LessonTestSubmitType, useSendTestMutation } from '@/api/endpoints/test';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
@@ -14,7 +14,7 @@ import { globalConstants, routes } from '@/const';
 import { useTranslation } from '@/hooks';
 
 import { constants, TestType } from './const';
-import { TestPagePropsType } from './typings';
+import { type TestPagePropsType } from './typings';
 
 import {
   CardContent,

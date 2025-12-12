@@ -1,7 +1,7 @@
 import { useTheme } from '@mui/material';
-import { FC } from 'react';
+import { type FC } from 'react';
 
-import { IProgressBarProps } from './typings';
+import { type IProgressBarProps } from './typings';
 
 import { ProgressIndicator, StyledCircle, StyledCircularSVG, StyledProgressBar } from './styles';
 

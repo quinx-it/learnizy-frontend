@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import CardWrapper from '@/components/CardWrapper';
 import { routes } from '@/const';
 import { useTranslation } from '@/hooks';
 
-import { IInterviewRecordsProps } from './typings';
+import { type IInterviewRecordsProps } from './typings';
 
 import {
   DescriptionText,

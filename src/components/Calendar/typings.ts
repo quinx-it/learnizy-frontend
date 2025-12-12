@@ -1,4 +1,4 @@
-import { Calendar } from '.';
+import { type Calendar } from '.';
 
 import type { StoryObj } from '@storybook/nextjs';
 

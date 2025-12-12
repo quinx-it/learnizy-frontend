@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useState } from 'react';
+import { type FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
@@ -9,7 +9,7 @@ import {
   useCreateModuleMutation,
   useUpdateModuleMutation,
   useDeleteModuleMutation,
-  IModuleInfo,
+  type IModuleInfo,
 } from '@/api/endpoints/admin';
 import { ModuleCompletionStatus, useGetMainPageProgressQuery } from '@/api/endpoints/progress';
 import { CompletionStatus } from '@/api/endpoints/types';
@@ -33,7 +33,7 @@ import { useTranslation } from '@/hooks';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
 
-import { IModuleProgressCardProps } from './typings';
+import { type IModuleProgressCardProps } from './typings';
 
 import {
   BlueButtonSmall,

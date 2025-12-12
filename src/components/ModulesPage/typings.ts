@@ -1,4 +1,4 @@
-import { IModuleResponse } from '@/api/endpoints/admin';
+import { type IModuleResponse } from '@/api/endpoints/admin';
 
 export interface IModuleProgressCardProps {
   module: IModuleResponse;

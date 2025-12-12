@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { StoryType } from './typings';
+import { type StoryType } from './typings';
 
 import CustomSelect from '.';
 

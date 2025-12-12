@@ -1,4 +1,1 @@
-export enum Role {
-  User = 'USER',
-  Assistant = 'ASSISTANT',
-}
+export { Role } from '@/api/endpoints/aiAssistant/const';

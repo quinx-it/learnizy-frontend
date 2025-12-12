@@ -1,11 +1,11 @@
 'use client';
 
 import Image from 'next/image';
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import { useTranslation } from '@/hooks';
 
-import { ErrorPropsType, ErrorType } from './typings';
+import { type ErrorPropsType, type ErrorType } from './typings';
 
 import {
   Container,

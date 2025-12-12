@@ -1,6 +1,6 @@
 import { api } from '@/api';
 
-import { IExamsResponse, ExamTestResponseType } from './types';
+import { type IExamsResponse, type ExamTestResponseType } from './types';
 
 const TESTS_PATH = '/tests';
 

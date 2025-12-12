@@ -2,12 +2,16 @@
 
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
-import { FC } from 'react';
-import { Toaster as Sonner, toast, ToasterProps } from 'sonner';
+import { type FC } from 'react';
+import { Toaster as Sonner, toast, type ToasterProps } from 'sonner';
 
 import { useTranslation } from '@/hooks';
 
-import { NotificationVariantType, ColorMapEntryType, CustomToastPropsType } from './typings';
+import {
+  type NotificationVariantType,
+  type ColorMapEntryType,
+  type CustomToastPropsType,
+} from './typings';
 
 import {
   CloseButton,

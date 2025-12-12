@@ -1,5 +1,4 @@
-import DatePicker from '.';
-
+import type DatePicker from '.';
 import type { StoryObj } from '@storybook/nextjs';
 
 export interface IDatePickerProps {

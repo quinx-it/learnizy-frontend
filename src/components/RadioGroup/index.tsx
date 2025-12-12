@@ -1,6 +1,5 @@
-import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 import Image from 'next/image';
-import { FC, ComponentProps } from 'react';
+import { type FC, type ComponentProps } from 'react';
 
 import Label from '@/components/Label';
 
@@ -10,6 +9,8 @@ import {
   StyledRadioGroupItem,
   StyledRadioGroupRoot,
 } from './styles';
+
+import type * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 
 const RadioGroup: FC<ComponentProps<typeof RadioGroupPrimitive.Root>> = ({
   className,

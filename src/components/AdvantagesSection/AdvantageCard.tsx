@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import { FC } from 'react';
+import { type FC } from 'react';
 
 import { Text } from '@/components/Typography';
 
-import { AdvantageCardPropsType } from './typings';
+import { type AdvantageCardPropsType } from './typings';
 
 import { StyledCard, CardContent, StyledCardHeading, ImageWrapper } from './styles';
 
