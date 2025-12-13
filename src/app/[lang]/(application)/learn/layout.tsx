@@ -5,8 +5,8 @@ import { type FC, type PropsWithChildren } from 'react';
 import AuthLayout from '@/components/AuthLayout';
 import ChatHeader from '@/components/ChatHeader';
 import Navbar from '@/components/navbar';
-import { navbarLinks } from '@/const/constants';
-import { routes } from '@/const/routes';
+import { NAVBAR_LINKS } from '@/const/constants';
+import { ROUTES } from '@/const/routes';
 import { usePathname, useTranslation } from '@/hooks';
 
 const LearnLayout: FC<PropsWithChildren> = (props) => {
@@ -17,12 +17,12 @@ const LearnLayout: FC<PropsWithChildren> = (props) => {
 
   const showChatHeader = pathname.startsWith('/learn/ai-assistant/chat/');
 
-  const isAiAssistantPage = pathname.startsWith(routes.user.aiAssistant);
+  const isAiAssistantPage = pathname.startsWith(ROUTES.user.aiAssistant);
   const mainClass = isAiAssistantPage
     ? 'h-full max-h-screen w-full overflow-y-auto'
     : 'h-full max-h-screen w-full overflow-y-auto px-4 py-5 md:px-7.5';
 
-  const links = navbarLinks.user.map(({ label, ...rest }) => ({
+  const links = NAVBAR_LINKS.user.map(({ label, ...rest }) => ({
     ...rest,
     label: t(label),
   }));

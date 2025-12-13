@@ -4,7 +4,7 @@ import { match as matchLocale } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import { NextResponse } from 'next/server';
 
-import { excludedPaths, excludedPrefixes } from '@/const/excludedPaths';
+import { EXCLUDED_PATHS, EXCLUDED_PREFIXES } from '@/const/excludedPaths';
 import { i18n } from '@/lib/translate';
 
 import type { NextRequest } from 'next/server';
@@ -28,8 +28,8 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const isExcluded =
-    excludedPaths.includes(pathname) ||
-    excludedPrefixes.some((prefix) => pathname.startsWith(prefix));
+    EXCLUDED_PATHS.includes(pathname) ||
+    EXCLUDED_PREFIXES.some((prefix) => pathname.startsWith(prefix));
 
   if (isExcluded) return;
 

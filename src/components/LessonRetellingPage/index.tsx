@@ -5,7 +5,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import VoiceRecorderForm from '@/components/VoiceRecorderForm';
-import { routes } from '@/const';
+import { ROUTES } from '@/const/routes';
 import { useTranslation } from '@/hooks';
 
 import { createBreadcrumbs } from './const';
@@ -38,7 +38,7 @@ const LessonRetellingPage: FC<ILessonRetellingPageProps> = (props) => {
     <Container>
       <Breadcrumbs
         items={breadcrumbs(moduleSequenceOrder ?? 1, module, lesson, sequenceOrder + 1)}
-        rootHref={routes.user.modules}
+        rootHref={ROUTES.user.modules}
         rootLabel={t('LESSON_RETELLING.MODULES')}
       />
       <CardWrapper>

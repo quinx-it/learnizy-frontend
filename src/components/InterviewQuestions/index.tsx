@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 
 import CardWrapper from '@/components/CardWrapper';
-import { routes } from '@/const';
+import { ROUTES } from '@/const/routes';
 import { useTranslation } from '@/hooks';
 
 import {
@@ -31,7 +31,7 @@ const InterviewQuestions: FC = () => {
           </DescriptionSecondaryText>
         </DescriptionContainer>
 
-        <StyledLinkButton href={routes.user.interviewQuestions}>
+        <StyledLinkButton href={ROUTES.user.interviewQuestions}>
           {t('INTERVIEW.BUTTON')}
         </StyledLinkButton>
 

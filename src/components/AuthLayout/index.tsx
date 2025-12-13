@@ -3,7 +3,7 @@
 import { type FC, type PropsWithChildren, useEffect } from 'react';
 
 import FullscreenLoader from '@/components/FullscreenLoader';
-import { routes } from '@/const';
+import { ROUTES } from '@/const/routes';
 import { useRouter } from '@/hooks';
 import { useAppSelector } from '@/hooks/redux';
 import { selectToken } from '@/store/slices/auth/selectors';
@@ -14,7 +14,7 @@ const AuthLayout: FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     if (!accessToken) {
-      router.replace(routes.public.loginPage);
+      router.replace(ROUTES.public.loginPage);
     }
   }, [accessToken, router]);
 

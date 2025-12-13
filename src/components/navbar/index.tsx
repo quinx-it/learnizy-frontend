@@ -7,7 +7,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { type INavbarProps } from '@/components/navbar/typings';
 import Spinner from '@/components/Spinner';
 import { Text } from '@/components/Typography';
-import { routes } from '@/const';
+import { ROUTES } from '@/const/routes';
 import { useTranslation } from '@/hooks';
 import { useLogout } from '@/hooks/useLogout';
 
@@ -50,7 +50,7 @@ const Navbar: FC<INavbarProps> = (props) => {
       </MobileMenuButtonWrapper>
 
       <NavbarContainer>
-        <LogoLink href={routes.user.homePage}>
+        <LogoLink href={ROUTES.user.homePage}>
           <Image
             src="/images/header-logo-mobile.svg"
             alt="Logo"
@@ -109,7 +109,7 @@ const Navbar: FC<INavbarProps> = (props) => {
             }}
           />
           <MobileMenuContainer isOpen={isOpen}>
-            <MobileLogoLink href={routes.user.homePage} onClick={() => setIsOpen(false)}>
+            <MobileLogoLink href={ROUTES.user.homePage} onClick={() => setIsOpen(false)}>
               <Image
                 src="/images/header-logo-mobile.svg"
                 alt="Logo"

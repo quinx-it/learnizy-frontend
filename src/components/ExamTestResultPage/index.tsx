@@ -7,7 +7,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
 import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
-import { globalConstants, routes } from '@/const';
+import { GLOBAL_CONSTANTS, ROUTES } from '@/const';
 import { useTranslation } from '@/hooks';
 
 import { evaluationMap } from './const';
@@ -64,8 +64,8 @@ const ExamTestResultPage: FC<ExamTestResultPagePropsType> = (props) => {
     <>
       <Breadcrumbs
         items={[{ label: t('TEST_RESULT.RESULTS'), href: `` }]}
-        rootHref={routes.user.exams}
-        rootLabel={t(globalConstants.rootBreadcrumbLabels.examsLabel)}
+        rootHref={ROUTES.user.exams}
+        rootLabel={t(GLOBAL_CONSTANTS.rootBreadcrumbLabels.examsLabel)}
       />
 
       <Container>

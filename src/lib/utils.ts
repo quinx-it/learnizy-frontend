@@ -3,11 +3,11 @@ import { jwtDecode } from 'jwt-decode';
 import { twMerge } from 'tailwind-merge';
 
 import {
-  dynamicMentorRoutes,
-  dynamicUserRoutes,
-  publicRoutes,
-  staticMentorRoutes,
-  staticUserRoutes,
+  DYNAMIC_MENTOR_ROUTES,
+  DYNAMIC_USER_ROUTES,
+  PUBLIC_ROUTES,
+  STATIC_MENTOR_ROUTES,
+  STATIC_USER_ROUTES,
 } from '@/const/routes';
 import { type IDecodedToken, UserRole } from '@/store/slices/auth/typings';
 import { type TranslationFunctionType } from '@/types';
@@ -59,16 +59,18 @@ export const isGuest = (role: UserRole) => {
 
 export function isMentorRoute(pathname: string) {
   return (
-    staticMentorRoutes.includes(pathname) || dynamicMentorRoutes.some((rx) => rx.test(pathname))
+    STATIC_MENTOR_ROUTES.includes(pathname) || DYNAMIC_MENTOR_ROUTES.some((rx) => rx.test(pathname))
   );
 }
 
 export function isUserRoute(pathname: string) {
-  return staticUserRoutes.includes(pathname) || dynamicUserRoutes.some((rx) => rx.test(pathname));
+  return (
+    STATIC_USER_ROUTES.includes(pathname) || DYNAMIC_USER_ROUTES.some((rx) => rx.test(pathname))
+  );
 }
 
 export function isPublicRoute(pathname: string) {
-  return publicRoutes.includes(pathname);
+  return PUBLIC_ROUTES.includes(pathname);
 }
 
 export function isRoleRoute(role: UserRole | undefined, pathname: string) {

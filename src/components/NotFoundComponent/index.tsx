@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { type FC } from 'react';
 
-import { defaultPage, routes } from '@/const';
+import { DEFAULT_PAGE, ROUTES } from '@/const/routes';
 import { useTranslation } from '@/hooks';
 import { useAppSelector } from '@/hooks/redux';
 import { selectUserRole } from '@/store/slices/auth/selectors';
@@ -26,7 +26,7 @@ const NotFoundComponent: FC<NotFoundComponentPropsType> = (props) => {
 
   const role = useAppSelector(selectUserRole);
 
-  const defaultUrl = role && defaultPage[role] ? defaultPage[role] : routes.public.loginPage;
+  const defaultUrl = role && DEFAULT_PAGE[role] ? DEFAULT_PAGE[role] : ROUTES.public.loginPage;
 
   return (
     <Container className={className}>

@@ -9,7 +9,7 @@ import Button from '@/components/Button';
 import { PasswordInput } from '@/components/PasswordInput';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
-import { routes } from '@/const';
+import { ROUTES } from '@/const/routes';
 import { useRouter, useTranslation } from '@/hooks';
 
 import { type IResetPasswordFormValues, createFormSchema } from './const';
@@ -57,7 +57,7 @@ const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
   };
 
   const onClick = () => {
-    router.push(routes.public.loginPage);
+    router.push(ROUTES.public.loginPage);
   };
 
   if (isSuccess) {

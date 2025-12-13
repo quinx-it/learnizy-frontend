@@ -13,7 +13,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import { Text } from '@/components/Typography';
-import { globalConstants, routes } from '@/const';
+import { GLOBAL_CONSTANTS, ROUTES } from '@/const';
 import { useTranslation } from '@/hooks';
 
 import { evaluationMap } from './const';
@@ -104,16 +104,16 @@ const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) => {
         items={[
           {
             label: `${t('TEST_RESULT.MODULE')} ${moduleSequenceOrder}`,
-            href: `${routes.user.modules}/${moduleId}`,
+            href: `${ROUTES.user.modules}/${moduleId}`,
           },
           {
             label: `${t('TEST_RESULT.LESSON')} ${lessonSequenceOrder + 1}`,
-            href: `${routes.user.modules}/${moduleId}/${lessonId}`,
+            href: `${ROUTES.user.modules}/${moduleId}/${lessonId}`,
           },
           { label: t('TEST_RESULT.RESULTS'), href: `` },
         ]}
-        rootHref={routes.user.modules}
-        rootLabel={t(globalConstants.rootBreadcrumbLabels.modulesLabel)}
+        rootHref={ROUTES.user.modules}
+        rootLabel={t(GLOBAL_CONSTANTS.rootBreadcrumbLabels.modulesLabel)}
       />
 
       <Container>

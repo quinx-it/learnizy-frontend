@@ -7,7 +7,7 @@ import { type IModuleInfo } from '@/api/endpoints/modules';
 import Button from '@/components/Button';
 import DotTitle from '@/components/DotTitle';
 import { Text } from '@/components/Typography';
-import { routes } from '@/const';
+import { ROUTES } from '@/const/routes';
 import { useRouter, useTranslation } from '@/hooks';
 import { pluralize } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';
@@ -85,7 +85,7 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
   const handleCardClick = () => {
     if (isBlocked && !isMentor) return;
 
-    router.push(isMentor ? `${routes.mentor.modules}/${id}` : `${routes.user.modules}/${id}`);
+    router.push(isMentor ? `${ROUTES.mentor.modules}/${id}` : `${ROUTES.user.modules}/${id}`);
   };
 
   return (
