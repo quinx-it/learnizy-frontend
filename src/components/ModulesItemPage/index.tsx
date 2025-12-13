@@ -30,7 +30,7 @@ import ProgressBar from '@/components/Progress';
 import Textarea from '@/components/Textarea';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
-import { routes } from '@/const';
+import { ROUTES } from '@/const/routes';
 import { useTranslation } from '@/hooks';
 import { percentage, pluralize } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';
@@ -165,7 +165,7 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
     <>
       <Breadcrumbs
         items={breadcrumbs(sequenceOrder)}
-        rootHref={routes.user.modules}
+        rootHref={ROUTES.user.modules}
         rootLabel={t('MODULES.STRUCTURE')}
       />
 
@@ -239,7 +239,7 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
                 />
                 <Text variant="l">
                   {t('COMMON.MODULE_COMPLETED')}{' '}
-                  <StyledLink href={routes.user.exams}>{t('COMMON.EXAM')}</StyledLink>
+                  <StyledLink href={ROUTES.user.exams}>{t('COMMON.EXAM')}</StyledLink>
                 </Text>
               </>
             ) : (
@@ -247,13 +247,13 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
                 <Image src="/images/lock-color-icon.svg" alt="Lock icon" width={19} height={21} />
                 <Text variant="l">
                   {t('COMMON.EXAM_LOCKED')}{' '}
-                  <StyledLink href={routes.user.exams}>{t('COMMON.EXAM')}</StyledLink>
+                  <StyledLink href={ROUTES.user.exams}>{t('COMMON.EXAM')}</StyledLink>
                 </Text>
               </>
             )}
           </ExamStatusContainer>
           <ExamActionsContainer>
-            <StyledLinkButton href={routes.user.exams}>
+            <StyledLinkButton href={ROUTES.user.exams}>
               <StyledStartButton disabled={!isAvailableExam(progress)}>
                 {t('COMMON.START_EXAM')}
               </StyledStartButton>

@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 
 import CardWrapper from '@/components/CardWrapper';
-import { routes } from '@/const';
+import { ROUTES } from '@/const/routes';
 import { useTranslation } from '@/hooks';
 
 import { type IInterviewRecordsProps } from './typings';
@@ -27,7 +27,7 @@ const InterviewRecords: FC<IInterviewRecordsProps> = (props) => {
 
         <DescriptionText variant="m">{t('INTERVIEW_RECORDS.DESCRIPTION')}</DescriptionText>
 
-        <StyledLinkButton href={routes.user.interviewRecords}>
+        <StyledLinkButton href={ROUTES.user.interviewRecords}>
           {t('INTERVIEW_RECORDS.BUTTON')}
         </StyledLinkButton>
       </StyledCardWrapper>

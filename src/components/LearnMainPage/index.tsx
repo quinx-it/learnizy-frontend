@@ -12,7 +12,7 @@ import ProgressCard from '@/components/ProgressCard';
 import { ProgressStatus } from '@/components/ProgressCard/const';
 import StatisticsChart from '@/components/StatisticsChart';
 import { Text } from '@/components/Typography';
-import { routes } from '@/const';
+import { ROUTES } from '@/const/routes';
 import { useRouter, useTranslation } from '@/hooks';
 
 import { constants, ModuleStatus } from './const';
@@ -93,7 +93,7 @@ const LearnMainPage: FC = () => {
           totalLessons={currentModule?.totalLessons || 0}
           lessons={currentModule?.completedLessons || 0}
           status={ProgressStatus.Continue}
-          onClick={() => currentModule && router.push(`${routes.user.modules}/${currentModule.id}`)}
+          onClick={() => currentModule && router.push(`${ROUTES.user.modules}/${currentModule.id}`)}
         />
 
         <CardWrapper>
@@ -128,7 +128,7 @@ const LearnMainPage: FC = () => {
                       progress={moduleProgress}
                       onClick={() =>
                         moduleStatus !== ModuleStatus.Blocked &&
-                        router.push(`${routes.user.modules}/${module.id}`)
+                        router.push(`${ROUTES.user.modules}/${module.id}`)
                       }
                     />
                   </li>

@@ -1,4 +1,4 @@
-import { routes } from '@/const';
+import { ROUTES } from '@/const/routes';
 
 export const enum TestType {
   Lesson = 'LESSON_TEST',
@@ -29,12 +29,12 @@ export const constants = {
             {
               label: 'BREADCRUMB_LABELS.MODULE_LABEL',
               number: moduleSequenceOrder,
-              href: `${routes.user.modules}/${moduleId}`,
+              href: `${ROUTES.user.modules}/${moduleId}`,
             },
             {
               label: 'BREADCRUMB_LABELS.LESSON_LABEL',
               number: lessonSequenceOrder + 1,
-              href: `${routes.user.modules}/${moduleId}/${lessonId}`,
+              href: `${ROUTES.user.modules}/${moduleId}/${lessonId}`,
             },
             { label: 'TITLE_TEST.LESSON_TEST', href: '' },
           ]
@@ -42,7 +42,7 @@ export const constants = {
             {
               label: 'BREADCRUMB_LABELS.MODULE_LABEL',
               number: moduleSequenceOrder,
-              href: `${routes.user.exams}`,
+              href: `${ROUTES.user.exams}`,
             },
           ];
 

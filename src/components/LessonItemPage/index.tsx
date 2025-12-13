@@ -13,7 +13,7 @@ import BlockRenderer from '@/components/ContentBlockParser';
 import DotTitle from '@/components/DotTitle';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import { showToast } from '@/components/Toaster';
-import { routes } from '@/const';
+import { ROUTES } from '@/const/routes';
 import { useTranslation } from '@/hooks';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
@@ -97,7 +97,7 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
       <BreadcrumbsWrapper>
         <Breadcrumbs
           items={constants.breadcrumbs(t, moduleSequenceOrder ?? 1, moduleId, sequenceOrder ?? 0)}
-          rootHref={routes.user.modules}
+          rootHref={ROUTES.user.modules}
           rootLabel={t('LESSON_ITEM_PAGE.BREADCRUMB_ROOT')}
         />
       </BreadcrumbsWrapper>
@@ -142,7 +142,7 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
       <CardWrapper>
         <SectionHeading variant="2xl">{t('LESSON_ITEM_PAGE.AI_ASSISTANT_TITLE')}</SectionHeading>
         <SectionText variant="l">{t('LESSON_ITEM_PAGE.AI_ASSISTANT_DESCRIPTION')}</SectionText>
-        <BlueButtonMedium onClick={() => router.push(routes.user.aiAssistant)}>
+        <BlueButtonMedium onClick={() => router.push(ROUTES.user.aiAssistant)}>
           {t('LESSON_ITEM_PAGE.AI_ASSISTANT_ASK_QUESTION')}
         </BlueButtonMedium>
       </CardWrapper>

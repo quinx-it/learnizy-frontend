@@ -5,8 +5,8 @@ import { type FC } from 'react';
 import CardAccordion from '@/components/Accordion';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
-import { routes } from '@/const';
-import { globalConstants } from '@/const/constants';
+import { ROUTES } from '@/const';
+import { GLOBAL_CONSTANTS } from '@/const/constants';
 import { useTranslation } from '@/hooks';
 
 import { createConstants } from './const';
@@ -20,8 +20,8 @@ const FaqPage: FC = () => {
   return (
     <>
       <Breadcrumbs
-        rootLabel={t(globalConstants.rootBreadcrumbLabels.knowlegeBaseLabel)}
-        rootHref={routes.user.knowlegeBase}
+        rootLabel={t(GLOBAL_CONSTANTS.rootBreadcrumbLabels.knowlegeBaseLabel)}
+        rootHref={ROUTES.user.knowlegeBase}
         items={constants.breadCrumbs}
       />
       <StyledCardWrapper>

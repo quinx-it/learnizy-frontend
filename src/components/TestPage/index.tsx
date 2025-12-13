@@ -10,7 +10,7 @@ import FullscreenLoader from '@/components/FullscreenLoader';
 import LessonTestForm from '@/components/LessonTestForm';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
-import { globalConstants, routes } from '@/const';
+import { GLOBAL_CONSTANTS, ROUTES } from '@/const';
 import { useTranslation } from '@/hooks';
 
 import { constants, TestType } from './const';
@@ -70,11 +70,11 @@ const TestPage: FC<TestPagePropsType> = (props) => {
     <>
       <Breadcrumbs
         items={currentBreadcrumbs}
-        rootHref={testType === TestType.Lesson ? routes.user.modules : routes.user.exams}
+        rootHref={testType === TestType.Lesson ? ROUTES.user.modules : ROUTES.user.exams}
         rootLabel={
           testType === TestType.Lesson
-            ? t(globalConstants.rootBreadcrumbLabels.modulesLabel)
-            : t(globalConstants.rootBreadcrumbLabels.examsLabel)
+            ? t(GLOBAL_CONSTANTS.rootBreadcrumbLabels.modulesLabel)
+            : t(GLOBAL_CONSTANTS.rootBreadcrumbLabels.examsLabel)
         }
       />
       <Container>

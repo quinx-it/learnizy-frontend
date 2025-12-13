@@ -11,7 +11,7 @@ import Input from '@/components/Input';
 import { PasswordInput } from '@/components/PasswordInput';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
-import { routes } from '@/const';
+import { ROUTES } from '@/const/routes';
 import { useTranslation } from '@/hooks';
 
 import { createFormSchema } from './const';
@@ -67,8 +67,8 @@ const AuthForm: FC = () => {
       />
 
       <LinksRow>
-        <AuthLink href={routes.public.registerPage}>{t('LOGIN.REGISTRATION')}</AuthLink>
-        <AuthLink href={routes.public.forgotPassword}>{t('LOGIN.FORGOT_PASSWORD')}</AuthLink>
+        <AuthLink href={ROUTES.public.registerPage}>{t('LOGIN.REGISTRATION')}</AuthLink>
+        <AuthLink href={ROUTES.public.forgotPassword}>{t('LOGIN.FORGOT_PASSWORD')}</AuthLink>
       </LinksRow>
 
       <Button type="submit" disabled={isLoading} size="medium" asChild={false}>

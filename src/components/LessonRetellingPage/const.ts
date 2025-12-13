@@ -1,4 +1,4 @@
-import { routes } from '@/const';
+import { ROUTES } from '@/const/routes';
 import { type TranslationFunctionType } from '@/types';
 
 export const createBreadcrumbs =
@@ -6,11 +6,11 @@ export const createBreadcrumbs =
   (moduleSequenceOrder: number, moduleId: string, lessonId: string, sequenceOrder: number) => [
     {
       label: `${t('TEST_RESULT.MODULE')} ${moduleSequenceOrder}`,
-      href: `${routes.user.modules}/${moduleId}`,
+      href: `${ROUTES.user.modules}/${moduleId}`,
     },
     {
       label: `${t('TEST_RESULT.LESSON')} ${sequenceOrder}`,
-      href: `${routes.user.modules}/${moduleId}/${lessonId}`,
+      href: `${ROUTES.user.modules}/${moduleId}/${lessonId}`,
     },
     { label: t('LESSON_RETELLING.ASK_QUESTION'), href: '' },
   ];

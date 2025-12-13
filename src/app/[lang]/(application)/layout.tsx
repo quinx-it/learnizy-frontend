@@ -6,21 +6,21 @@ import { useRefreshMutation } from '@/api/endpoints/auth';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import NotFoundPage from '@/components/NotFoundPage';
 import {
-  routes,
-  defaultPage,
-  publicRoutes,
-  staticUserRoutes,
-  dynamicUserRoutes,
-  staticMentorRoutes,
-  dynamicMentorRoutes,
+  ROUTES,
+  DEFAULT_PAGE,
+  PUBLIC_ROUTES,
+  STATIC_USER_ROUTES,
+  DYNAMIC_USER_ROUTES,
+  STATIC_MENTOR_ROUTES,
+  DYNAMIC_MENTOR_ROUTES,
 } from '@/const/routes';
 import { useRouter, usePathname } from '@/hooks';
 import { useAppSelector } from '@/hooks/redux';
 import { isRoleRoute } from '@/lib/utils';
 import { selectToken, selectUserRole } from '@/store/slices/auth/selectors';
 
-const allStaticRoutes = [...publicRoutes, ...staticUserRoutes, ...staticMentorRoutes];
-const allDynamicRoutes = [...dynamicUserRoutes, ...dynamicMentorRoutes];
+const allStaticRoutes = [...PUBLIC_ROUTES, ...STATIC_USER_ROUTES, ...STATIC_MENTOR_ROUTES];
+const allDynamicRoutes = [...DYNAMIC_USER_ROUTES, ...DYNAMIC_MENTOR_ROUTES];
 
 const isValidRoute = (pathname: string) => {
   if (allStaticRoutes.includes(pathname)) return true;
@@ -44,28 +44,28 @@ const ApplicationLayout: FC<PropsWithChildren> = (props) => {
   useEffect(() => {
     if (isLoading) return;
 
-    if (!accessToken && !publicRoutes.includes(pathname)) {
-      router.replace(routes.public.loginPage);
+    if (!accessToken && !PUBLIC_ROUTES.includes(pathname)) {
+      router.replace(ROUTES.public.loginPage);
 
       return;
     }
 
-    if (role && pathname === routes.public.loginPage) {
-      router.replace(defaultPage[role]);
+    if (role && pathname === ROUTES.public.loginPage) {
+      router.replace(DEFAULT_PAGE[role]);
 
       return;
     }
 
     if (role && !isRoleRoute(role, pathname)) {
       if (isValidRoute(pathname)) {
-        router.replace(defaultPage[role]);
+        router.replace(DEFAULT_PAGE[role]);
       }
     }
   }, [accessToken, pathname, router, isLoading, role]);
 
   if (isLoading) return <FullscreenLoader />;
 
-  if (role && (!isRoleRoute(role, pathname) || pathname === routes.public.loginPage))
+  if (role && (!isRoleRoute(role, pathname) || pathname === ROUTES.public.loginPage))
     return <FullscreenLoader />;
 
   if (!isValidRoute(pathname)) return <NotFoundPage />;

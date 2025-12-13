@@ -8,7 +8,7 @@ import DotTitle from '@/components/DotTitle';
 import { type ExamCardPropsType, ExamStatus } from '@/components/ExamsPage/typings';
 import Link from '@/components/Link';
 import { Text } from '@/components/Typography';
-import { routes } from '@/const';
+import { ROUTES } from '@/const/routes';
 import { useTranslation } from '@/hooks';
 
 import {
@@ -71,7 +71,7 @@ const ExamCard: FC<ExamCardPropsType> = (props) => {
       <UnavailableStatusText>
         {t('EXAMS.STATUS.UNAVAILABLE', { moduleLink: exam.moduleId })}{' '}
         <InlineLinkWrapper>
-          <Link href={`${routes.user.modules}/${exam.moduleId}`}>{t('EXAMS.STATUS.LESSONS')}</Link>
+          <Link href={`${ROUTES.user.modules}/${exam.moduleId}`}>{t('EXAMS.STATUS.LESSONS')}</Link>
         </InlineLinkWrapper>
         {` ${t('EXAMS.STATUS.MODULE')}`}
       </UnavailableStatusText>

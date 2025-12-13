@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { type FC } from 'react';
 
 import CardWrapper from '@/components/CardWrapper';
-import { routes } from '@/const';
+import { ROUTES } from '@/const/routes';
 import { useTranslation } from '@/hooks';
 
 import {
@@ -29,7 +29,7 @@ const FrequentlyAskedQuestions: FC = () => {
           <DescriptionSecondaryText variant="s">{t('FAQ.DESCRIPTION_2')}</DescriptionSecondaryText>
         </DescriptionContainer>
 
-        <StyledLinkButton href={routes.user.frequentlyAskedQuestions}>
+        <StyledLinkButton href={ROUTES.user.frequentlyAskedQuestions}>
           {t('FAQ.BUTTON')}
         </StyledLinkButton>
 

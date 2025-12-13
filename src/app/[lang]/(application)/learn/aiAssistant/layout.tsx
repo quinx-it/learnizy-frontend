@@ -4,7 +4,7 @@ import { useParams } from 'next/navigation';
 import { type FC, type PropsWithChildren } from 'react';
 
 import ChatHistory from '@/components/ChatHistory';
-import { routes } from '@/const/routes';
+import { ROUTES } from '@/const/routes';
 import { useRouter } from '@/hooks';
 
 const AiAssistantLayout: FC<PropsWithChildren> = ({ children }) => {
@@ -14,11 +14,11 @@ const AiAssistantLayout: FC<PropsWithChildren> = ({ children }) => {
   const selectedChatId = params.id ? parseInt(params.id as string, 10) : null;
 
   const handleSelectChat = (chatId: number) => {
-    router.push(`${routes.user.aiAssistant}/chat/${chatId}`);
+    router.push(`${ROUTES.user.aiAssistant}/chat/${chatId}`);
   };
 
   const handleCreateChat = () => {
-    router.push(routes.user.aiAssistant);
+    router.push(ROUTES.user.aiAssistant);
   };
 
   return (

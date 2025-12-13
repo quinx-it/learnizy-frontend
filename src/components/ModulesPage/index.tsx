@@ -27,8 +27,8 @@ import Input from '@/components/Input';
 import { ModuleCard } from '@/components/ModuleCard';
 import Textarea from '@/components/Textarea';
 import { showToast } from '@/components/Toaster';
-import { routes } from '@/const';
-import { globalConstants } from '@/const/constants';
+import { GLOBAL_CONSTANTS } from '@/const/constants';
+import { ROUTES } from '@/const/routes';
 import { useTranslation } from '@/hooks';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
@@ -177,8 +177,8 @@ const ModulesPage: FC = () => {
   return (
     <PageContainer>
       <Breadcrumbs
-        rootLabel={t(globalConstants.rootBreadcrumbLabels.modulesLabel)}
-        rootHref={routes.user.knowlegeBase}
+        rootLabel={t(GLOBAL_CONSTANTS.rootBreadcrumbLabels.modulesLabel)}
+        rootHref={ROUTES.user.knowlegeBase}
         rootDescription="Java Core"
       />
       {isMentor && (

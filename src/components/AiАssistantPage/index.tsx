@@ -8,7 +8,7 @@ import {
 import ChatInput from '@/components/ChatInput';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
-import { routes } from '@/const';
+import { ROUTES } from '@/const';
 import { useRouter, useTranslation } from '@/hooks';
 
 import { Container, ImageContainer, StyledImage, WelcomeText } from './styles';
@@ -30,7 +30,7 @@ export const AiAssistantPage = () => {
         data,
       }).unwrap();
 
-      router.push(`${routes.user.aiAssistant}/chat/${newChatId}`);
+      router.push(`${ROUTES.user.aiAssistant}/chat/${newChatId}`);
     } catch {
       showToast('error', t('CHAT.CREATE_CHAT_ERROR'), '');
     }

@@ -16,7 +16,7 @@ import { PasswordInput } from '@/components/PasswordInput';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
 import { Heading, Text } from '@/components/Typography';
-import { routes, HttpStatus } from '@/const';
+import { ROUTES, HttpStatus } from '@/const';
 import { useRouter, useTranslation } from '@/hooks';
 
 import { createFormSchema, createVerificationSchema } from './const';
@@ -119,7 +119,7 @@ const RegisterForm: FC = () => {
     try {
       await verifyEmail({ email: userEmail, code: data.code }).unwrap();
       showToast('success', t('AUTH.SUCCESS'), t('AUTH.EMAIL_CONFIRMED'));
-      router.push(routes.user.homePage);
+      router.push(ROUTES.user.homePage);
     } catch {
       showToast('error', t('COMMON.ERROR'), t('AUTH.INVALID_CODE'));
     }
@@ -234,9 +234,9 @@ const RegisterForm: FC = () => {
           render={({ field }) => (
             <CheckboxWithLabel checked={field.value} onCheckedChange={field.onChange}>
               {t('AUTH.ACCEPT_TERMS')}{' '}
-              <LinkStyled href={routes.public.userAgreement}>{t('AUTH.USER_AGREEMENT')}</LinkStyled>{' '}
+              <LinkStyled href={ROUTES.public.userAgreement}>{t('AUTH.USER_AGREEMENT')}</LinkStyled>{' '}
               {t('AUTH.AND_CONSENT')}{' '}
-              <LinkStyled href={routes.public.privacyPolicy}>{t('AUTH.PERSONAL_DATA')}</LinkStyled>
+              <LinkStyled href={ROUTES.public.privacyPolicy}>{t('AUTH.PERSONAL_DATA')}</LinkStyled>
             </CheckboxWithLabel>
           )}
         />

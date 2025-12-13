@@ -1,6 +1,6 @@
 import { UserRole } from '@/store/slices/auth/typings';
 
-export const routes = {
+export const ROUTES = {
   public: {
     landingPage: '/',
     loginPage: '/login',
@@ -29,10 +29,10 @@ export const routes = {
   },
 };
 
-export const publicRoutes = Object.values(routes.public);
+export const PUBLIC_ROUTES = Object.values(ROUTES.public);
 
-export const staticUserRoutes = Object.values(routes.user);
-export const dynamicUserRoutes = [
+export const STATIC_USER_ROUTES = Object.values(ROUTES.user);
+export const DYNAMIC_USER_ROUTES = [
   /^\/learn\/modules\/\d+$/,
   /^\/learn\/modules\/\d+\/\d+$/,
   /^\/learn\/modules\/\d+\/\d+\/test$/,
@@ -43,9 +43,9 @@ export const dynamicUserRoutes = [
   /^\/learn\/aiAssistant\/chat\/[^/]+$/,
 ];
 
-export const staticMentorRoutes = Object.values(routes.mentor);
+export const STATIC_MENTOR_ROUTES = Object.values(ROUTES.mentor);
 
-export const dynamicMentorRoutes = [
+export const DYNAMIC_MENTOR_ROUTES = [
   /^\/mentor\/students\/\d+$/,
   /^\/mentor\/modules\/\d+$/,
   /^\/mentor\/modules\/\d+\/\d+$/,
@@ -54,10 +54,10 @@ export const dynamicMentorRoutes = [
   /^\/mentor\/modules\/\d+\/\d+\/retelling$/,
 ];
 
-export const loginPageUrl = routes.public.loginPage;
+export const LOGIN_PAGE_URL = ROUTES.public.loginPage;
 
-export const defaultPage: Record<UserRole, string> = {
-  [UserRole.Guest]: routes.public.loginPage,
-  [UserRole.User]: routes.user.homePage,
-  [UserRole.Mentor]: routes.mentor.students,
+export const DEFAULT_PAGE: Record<UserRole, string> = {
+  [UserRole.Guest]: ROUTES.public.loginPage,
+  [UserRole.User]: ROUTES.user.homePage,
+  [UserRole.Mentor]: ROUTES.mentor.students,
 };

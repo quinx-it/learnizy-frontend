@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useState, type FC } from 'react';
 
 import { Text } from '@/components/Typography';
-import { routes } from '@/const';
+import { ROUTES } from '@/const/routes';
 import { useTranslation } from '@/hooks';
 
 import { type IStudentsTableProps } from './typings';
@@ -103,7 +103,7 @@ const StudentsTable: FC<IStudentsTableProps> = (props) => {
                 <Cell hasBorder hasPadding={false}>
                   <Text variant="m">{row.currentLesson}</Text>
                 </Cell>
-                <LinkCell href={`${routes.mentor.students}/${row.id}`}>
+                <LinkCell href={`${ROUTES.mentor.students}/${row.id}`}>
                   <Image
                     src="/images/arrow-right-icon.svg"
                     alt="Arrow right icon"

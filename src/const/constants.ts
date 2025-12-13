@@ -1,6 +1,6 @@
-import { routes } from '@/const';
+import { ROUTES } from '@/const';
 
-export const globalConstants = {
+export const GLOBAL_CONSTANTS = {
   rootBreadcrumbLabels: {
     modulesMainLabel: 'BREADCRUMB_LABELS.MODULES_MAIN_LABEL',
     modulesLabel: 'BREADCRUMB_LABELS.MODULES_LABEL',
@@ -28,32 +28,32 @@ export const enum HttpStatus {
 
 export const REFRESH_THROTTLE = 1000;
 
-export const navbarLinks = {
+export const NAVBAR_LINKS = {
   user: [
-    { href: routes.user.homePage, src: '/images/cubes-main-icon.svg', label: 'NAVBAR.HOME' },
-    { href: routes.user.modules, src: '/images/student-hat-icon.svg', label: 'NAVBAR.MODULES' },
+    { href: ROUTES.user.homePage, src: '/images/cubes-main-icon.svg', label: 'NAVBAR.HOME' },
+    { href: ROUTES.user.modules, src: '/images/student-hat-icon.svg', label: 'NAVBAR.MODULES' },
     {
-      href: routes.user.aiAssistant,
+      href: ROUTES.user.aiAssistant,
       src: '/images/four-pointed-star-icon.svg',
       label: 'NAVBAR.AI_ASSISTANT',
     },
     {
-      href: routes.user.knowlegeBase,
+      href: ROUTES.user.knowlegeBase,
       src: '/images/discussion-icon.svg',
       label: 'NAVBAR.KNOWLEDGE_BASE',
     },
-    { href: routes.user.exams, src: '/images/a-plus-icon.svg', label: 'NAVBAR.EXAMS' },
-    { href: routes.user.projects, src: '/images/projects-icon.svg', label: 'NAVBAR.PROJECTS' },
+    { href: ROUTES.user.exams, src: '/images/a-plus-icon.svg', label: 'NAVBAR.EXAMS' },
+    { href: ROUTES.user.projects, src: '/images/projects-icon.svg', label: 'NAVBAR.PROJECTS' },
     {
-      href: routes.user.userProfilePersonalData,
+      href: ROUTES.user.userProfilePersonalData,
       src: '/images/person-icon.svg',
       label: 'NAVBAR.PROFILE',
     },
   ],
   mentor: [
-    { href: routes.mentor.students, src: '/images/student-hat-icon.svg', label: 'NAVBAR.HOME' },
+    { href: ROUTES.mentor.students, src: '/images/student-hat-icon.svg', label: 'NAVBAR.HOME' },
     {
-      href: routes.mentor.modules,
+      href: ROUTES.mentor.modules,
       src: '/images/student-hat-icon.svg',
       label: 'NAVBAR.MODULES',
     },

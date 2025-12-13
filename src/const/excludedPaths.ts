@@ -1,4 +1,4 @@
-export const excludedPaths = [
+export const EXCLUDED_PATHS = [
   '/manifest.json',
   '/favicon.ico',
   '/robots.txt',
@@ -6,4 +6,4 @@ export const excludedPaths = [
   '/sitemap-0.xml',
 ];
 
-export const excludedPrefixes = ['/images/'];
+export const EXCLUDED_PREFIXES = ['/images/'];

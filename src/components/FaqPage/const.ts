@@ -1,12 +1,12 @@
-import { routes } from '@/const';
-import { globalConstants } from '@/const/constants';
+import { GLOBAL_CONSTANTS } from '@/const/constants';
+import { ROUTES } from '@/const/routes';
 import { type TranslationFunctionType } from '@/types';
 
 export const createConstants = (t: TranslationFunctionType) => ({
   breadCrumbs: [
     {
-      label: globalConstants.rootBreadcrumbLabels.faqLabel,
-      href: routes.user.frequentlyAskedQuestions,
+      label: GLOBAL_CONSTANTS.rootBreadcrumbLabels.faqLabel,
+      href: ROUTES.user.frequentlyAskedQuestions,
     },
   ],
   accordionItems: [
