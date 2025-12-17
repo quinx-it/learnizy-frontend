@@ -27,7 +27,7 @@ const InterviewRecords: FC<IInterviewRecordsProps> = (props) => {
 
         <DescriptionText variant="m">{t('INTERVIEW_RECORDS.DESCRIPTION')}</DescriptionText>
 
-        <StyledLinkButton href={ROUTES.user.interviewRecords}>
+        <StyledLinkButton href={ROUTES.USER_INTERVIEW_RECORDS}>
           {t('INTERVIEW_RECORDS.BUTTON')}
         </StyledLinkButton>
       </StyledCardWrapper>

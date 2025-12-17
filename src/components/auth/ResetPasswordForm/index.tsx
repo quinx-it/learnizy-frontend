@@ -57,7 +57,7 @@ const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
   };
 
   const onClick = () => {
-    router.push(ROUTES.public.loginPage);
+    router.push(ROUTES.LOGIN_PAGE);
   };
 
   if (isSuccess) {

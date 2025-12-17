@@ -30,30 +30,30 @@ export const REFRESH_THROTTLE = 1000;
 
 export const NAVBAR_LINKS = {
   user: [
-    { href: ROUTES.user.homePage, src: '/images/cubes-main-icon.svg', label: 'NAVBAR.HOME' },
-    { href: ROUTES.user.modules, src: '/images/student-hat-icon.svg', label: 'NAVBAR.MODULES' },
+    { href: ROUTES.USER_HOME_PAGE, src: '/images/cubes-main-icon.svg', label: 'NAVBAR.HOME' },
+    { href: ROUTES.USER_MODULES, src: '/images/student-hat-icon.svg', label: 'NAVBAR.MODULES' },
     {
-      href: ROUTES.user.aiAssistant,
+      href: ROUTES.USER_AI_ASSISTANT,
       src: '/images/four-pointed-star-icon.svg',
       label: 'NAVBAR.AI_ASSISTANT',
     },
     {
-      href: ROUTES.user.knowlegeBase,
+      href: ROUTES.USER_KNOWLEDGE_BASE,
       src: '/images/discussion-icon.svg',
       label: 'NAVBAR.KNOWLEDGE_BASE',
     },
-    { href: ROUTES.user.exams, src: '/images/a-plus-icon.svg', label: 'NAVBAR.EXAMS' },
-    { href: ROUTES.user.projects, src: '/images/projects-icon.svg', label: 'NAVBAR.PROJECTS' },
+    { href: ROUTES.USER_EXAMS, src: '/images/a-plus-icon.svg', label: 'NAVBAR.EXAMS' },
+    { href: ROUTES.USER_PROJECTS, src: '/images/projects-icon.svg', label: 'NAVBAR.PROJECTS' },
     {
-      href: ROUTES.user.userProfilePersonalData,
+      href: ROUTES.USER_PROFILE_PERSONAL_DATA,
       src: '/images/person-icon.svg',
       label: 'NAVBAR.PROFILE',
     },
   ],
   mentor: [
-    { href: ROUTES.mentor.students, src: '/images/student-hat-icon.svg', label: 'NAVBAR.HOME' },
+    { href: ROUTES.MENTOR_STUDENTS, src: '/images/student-hat-icon.svg', label: 'NAVBAR.HOME' },
     {
-      href: ROUTES.mentor.modules,
+      href: ROUTES.MENTOR_MODULES,
       src: '/images/student-hat-icon.svg',
       label: 'NAVBAR.MODULES',
     },

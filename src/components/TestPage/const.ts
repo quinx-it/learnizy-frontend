@@ -29,12 +29,12 @@ export const constants = {
             {
               label: 'BREADCRUMB_LABELS.MODULE_LABEL',
               number: moduleSequenceOrder,
-              href: `${ROUTES.user.modules}/${moduleId}`,
+              href: `${ROUTES.USER_MODULES}/${moduleId}`,
             },
             {
               label: 'BREADCRUMB_LABELS.LESSON_LABEL',
               number: lessonSequenceOrder + 1,
-              href: `${ROUTES.user.modules}/${moduleId}/${lessonId}`,
+              href: `${ROUTES.USER_MODULES}/${moduleId}/${lessonId}`,
             },
             { label: 'TITLE_TEST.LESSON_TEST', href: '' },
           ]
@@ -42,7 +42,7 @@ export const constants = {
             {
               label: 'BREADCRUMB_LABELS.MODULE_LABEL',
               number: moduleSequenceOrder,
-              href: `${ROUTES.user.exams}`,
+              href: `${ROUTES.USER_EXAMS}`,
             },
           ];
 

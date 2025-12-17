@@ -38,7 +38,7 @@ const LessonRetellingPage: FC<ILessonRetellingPageProps> = (props) => {
     <Container>
       <Breadcrumbs
         items={breadcrumbs(moduleSequenceOrder ?? 1, module, lesson, sequenceOrder + 1)}
-        rootHref={ROUTES.user.modules}
+        rootHref={ROUTES.USER_MODULES}
         rootLabel={t('LESSON_RETELLING.MODULES')}
       />
       <CardWrapper>

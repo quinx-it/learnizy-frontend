@@ -67,8 +67,8 @@ const AuthForm: FC = () => {
       />
 
       <LinksRow>
-        <AuthLink href={ROUTES.public.registerPage}>{t('LOGIN.REGISTRATION')}</AuthLink>
-        <AuthLink href={ROUTES.public.forgotPassword}>{t('LOGIN.FORGOT_PASSWORD')}</AuthLink>
+        <AuthLink href={ROUTES.REGISTER_PAGE}>{t('LOGIN.REGISTRATION')}</AuthLink>
+        <AuthLink href={ROUTES.FORGOT_PASSWORD}>{t('LOGIN.FORGOT_PASSWORD')}</AuthLink>
       </LinksRow>
 
       <Button type="submit" disabled={isLoading} size="medium" asChild={false}>

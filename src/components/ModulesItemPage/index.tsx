@@ -165,7 +165,7 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
     <>
       <Breadcrumbs
         items={breadcrumbs(sequenceOrder)}
-        rootHref={ROUTES.user.modules}
+        rootHref={ROUTES.USER_MODULES}
         rootLabel={t('MODULES.STRUCTURE')}
       />
 
@@ -239,7 +239,7 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
                 />
                 <Text variant="l">
                   {t('COMMON.MODULE_COMPLETED')}{' '}
-                  <StyledLink href={ROUTES.user.exams}>{t('COMMON.EXAM')}</StyledLink>
+                  <StyledLink href={ROUTES.USER_EXAMS}>{t('COMMON.EXAM')}</StyledLink>
                 </Text>
               </>
             ) : (
@@ -247,13 +247,13 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
                 <Image src="/images/lock-color-icon.svg" alt="Lock icon" width={19} height={21} />
                 <Text variant="l">
                   {t('COMMON.EXAM_LOCKED')}{' '}
-                  <StyledLink href={ROUTES.user.exams}>{t('COMMON.EXAM')}</StyledLink>
+                  <StyledLink href={ROUTES.USER_EXAMS}>{t('COMMON.EXAM')}</StyledLink>
                 </Text>
               </>
             )}
           </ExamStatusContainer>
           <ExamActionsContainer>
-            <StyledLinkButton href={ROUTES.user.exams}>
+            <StyledLinkButton href={ROUTES.USER_EXAMS}>
               <StyledStartButton disabled={!isAvailableExam(progress)}>
                 {t('COMMON.START_EXAM')}
               </StyledStartButton>

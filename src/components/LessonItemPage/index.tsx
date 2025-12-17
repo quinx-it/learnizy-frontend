@@ -97,7 +97,7 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
       <BreadcrumbsWrapper>
         <Breadcrumbs
           items={constants.breadcrumbs(t, moduleSequenceOrder ?? 1, moduleId, sequenceOrder ?? 0)}
-          rootHref={ROUTES.user.modules}
+          rootHref={ROUTES.USER_MODULES}
           rootLabel={t('LESSON_ITEM_PAGE.BREADCRUMB_ROOT')}
         />
       </BreadcrumbsWrapper>
@@ -142,7 +142,7 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
       <CardWrapper>
         <SectionHeading variant="2xl">{t('LESSON_ITEM_PAGE.AI_ASSISTANT_TITLE')}</SectionHeading>
         <SectionText variant="l">{t('LESSON_ITEM_PAGE.AI_ASSISTANT_DESCRIPTION')}</SectionText>
-        <BlueButtonMedium onClick={() => router.push(ROUTES.user.aiAssistant)}>
+        <BlueButtonMedium onClick={() => router.push(ROUTES.USER_AI_ASSISTANT)}>
           {t('LESSON_ITEM_PAGE.AI_ASSISTANT_ASK_QUESTION')}
         </BlueButtonMedium>
       </CardWrapper>

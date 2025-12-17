@@ -29,7 +29,7 @@ const FrequentlyAskedQuestions: FC = () => {
           <DescriptionSecondaryText variant="s">{t('FAQ.DESCRIPTION_2')}</DescriptionSecondaryText>
         </DescriptionContainer>
 
-        <StyledLinkButton href={ROUTES.user.frequentlyAskedQuestions}>
+        <StyledLinkButton href={ROUTES.USER_FREQUENTLY_ASKED_QUESTIONS}>
           {t('FAQ.BUTTON')}
         </StyledLinkButton>
 

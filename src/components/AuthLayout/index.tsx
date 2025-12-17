@@ -14,7 +14,7 @@ const AuthLayout: FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     if (!accessToken) {
-      router.replace(ROUTES.public.loginPage);
+      router.replace(ROUTES.LOGIN_PAGE);
     }
   }, [accessToken, router]);
 

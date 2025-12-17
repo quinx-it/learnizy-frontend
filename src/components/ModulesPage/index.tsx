@@ -178,7 +178,7 @@ const ModulesPage: FC = () => {
     <PageContainer>
       <Breadcrumbs
         rootLabel={t(GLOBAL_CONSTANTS.rootBreadcrumbLabels.modulesLabel)}
-        rootHref={ROUTES.user.knowlegeBase}
+        rootHref={ROUTES.USER_KNOWLEDGE_BASE}
         rootDescription="Java Core"
       />
       {isMentor && (
