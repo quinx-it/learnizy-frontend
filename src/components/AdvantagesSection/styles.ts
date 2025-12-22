@@ -1,12 +1,13 @@
 import { Box, styled } from '@mui/material';
+import Image from 'next/image';
 
 import SectionContent from '@/components/SectionContent';
 import { Heading as BaseHeading } from '@/components/Typography';
 
 import { CardType } from './const';
 
-export const StyledSectionContent = styled(SectionContent)(() => ({
-  backgroundColor: '#B7E3F0',
+export const StyledSectionContent = styled(SectionContent)(({ theme }) => ({
+  backgroundColor: theme.palette.info.main,
 }));
 
 export const SectionWrapper = styled(Box)(({ theme }) => ({
@@ -72,4 +73,17 @@ export const ImageWrapper = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(1.5),
   display: 'flex',
   justifyContent: 'center',
+}));
+
+export const StyledImage = styled(Image)(({ theme }) => ({
+  position: 'absolute',
+  right: '-10%',
+  bottom: '-10%',
+  width: '50%',
+  maxWidth: '305px',
+  transform: 'scaleX(-1)',
+
+  [theme.breakpoints.up('xl')]: {
+    width: '100%',
+  },
 }));

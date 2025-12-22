@@ -1,4 +1,5 @@
 import { styled } from '@mui/material';
+import Image from 'next/image';
 
 import Link from '@/components/Link';
 import { Text as BaseText, Heading as BaseHeading } from '@/components/Typography';
@@ -72,4 +73,10 @@ export const StyledDotTitleDot = styled('span')(() => ({
   paddingRight: '0.25rem',
   fontSize: '22px',
   display: 'inline',
+}));
+
+export const ArrowIcon = styled(Image)(({ theme }) => ({
+  width: '0.625rem',
+  height: '0.625rem',
+  color: theme.palette.primary.main,
 }));

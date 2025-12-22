@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { Fragment, type FC } from 'react';
 
 import { Text } from '@/components/Typography';
@@ -20,6 +19,7 @@ import {
   StyledDotTitleHeading,
   StyledDotTitleSecondLabel,
   StyledDotTitleDot,
+  ArrowIcon,
 } from './styles';
 
 const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
@@ -46,13 +46,11 @@ const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
             {items.map((crumb, index) => (
               <Fragment key={crumb.href}>
                 <StyledListItem>
-                  <Image
+                  <ArrowIcon
                     src="/images/arrow-right-icon.svg"
                     alt="Arrow right icon"
-                    width={9}
-                    height={16}
-                    className="size-2.5"
-                    style={{ color: '#238BA7' }}
+                    width={10}
+                    height={10}
                   />
                   {index === items.length - 1 ? (
                     <StyledText variant="l">{t(crumb.label)}</StyledText>

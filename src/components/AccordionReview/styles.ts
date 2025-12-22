@@ -6,6 +6,8 @@ import {
   AccordionTrigger as RadixAccordionTrigger,
 } from '@radix-ui/react-accordion';
 
+import { Text } from '@/components/Typography';
+
 const accordionDown = keyframes`
   from {
     height: 0;
@@ -111,4 +113,8 @@ export const StyledAccordionContent = styled(RadixAccordionContent)(() => ({
   '&[data-state="closed"]': {
     animation: `${accordionUp} 300ms ease-out`,
   },
+}));
+
+export const MediumText = styled(Text)(({ theme }) => ({
+  color: theme.palette.primary.main,
 }));

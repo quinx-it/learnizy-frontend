@@ -18,6 +18,8 @@ import {
   LanguageSwitcherContainer,
   LinksContainer,
   LogoLink,
+  LogoImageMdOnly,
+  LogoImageMobileAndLg,
   LogoutButton,
   LogoutButtonText,
   MobileLanguageSwitcherContainer,
@@ -51,19 +53,12 @@ const Navbar: FC<INavbarProps> = (props) => {
 
       <NavbarContainer>
         <LogoLink href={ROUTES.user.homePage}>
-          <Image
-            src="/images/header-logo-mobile.svg"
-            alt="Logo"
-            width={44}
-            height={44}
-            className="hidden md:block lg:hidden"
-          />
-          <Image
+          <LogoImageMdOnly src="/images/header-logo-mobile.svg" alt="Logo" width={44} height={44} />
+          <LogoImageMobileAndLg
             src="/images/header-logo-desktop.svg"
             alt="Logo"
             width={170}
             height={70}
-            className="md:hidden lg:block"
           />
         </LogoLink>
 
@@ -110,19 +105,17 @@ const Navbar: FC<INavbarProps> = (props) => {
           />
           <MobileMenuContainer isOpen={isOpen}>
             <MobileLogoLink href={ROUTES.user.homePage} onClick={() => setIsOpen(false)}>
-              <Image
+              <LogoImageMdOnly
                 src="/images/header-logo-mobile.svg"
                 alt="Logo"
                 width={44}
                 height={44}
-                className="hidden md:block lg:hidden"
               />
-              <Image
+              <LogoImageMobileAndLg
                 src="/images/header-logo-desktop.svg"
                 alt="Logo"
                 width={200}
                 height={70}
-                className="md:hidden lg:block"
               />
             </MobileLogoLink>
 

@@ -1,5 +1,7 @@
 import { Box, Divider as MuiDivider, styled } from '@mui/material';
 
+import { Text } from '@/components/Typography';
+
 export const Container = styled(Box)(({ theme }) => ({
   display: 'grid',
   gridTemplateColumns: '1fr',
@@ -41,4 +43,8 @@ export const StatisticsDivider = styled(MuiDivider)(({ theme }) => ({
   marginLeft: 0,
   marginRight: 0,
   marginBottom: '1rem',
+}));
+
+export const MediumText = styled(Text)(({ theme }) => ({
+  color: theme.palette.primary.main,
 }));

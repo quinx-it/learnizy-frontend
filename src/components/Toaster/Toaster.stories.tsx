@@ -5,74 +5,48 @@ import { ThemeProvider } from 'next-themes';
 
 import { Toaster, showToast } from '.';
 
+import { StoryContainer, StoryButton } from './styles';
+
 const Demo = () => {
   return (
-    <div className="flex w-[300px] flex-col">
-      <button
+    <StoryContainer>
+      <StoryButton
         type="button"
         onClick={() => showToast('success', 'Успешно!', 'Кастомный тост работает')}
-        style={{
-          padding: '8px 16px',
-          marginBottom: 20,
-          cursor: 'pointer',
-          backgroundColor: 'var(--success)',
-          color: 'var(--black)',
-          border: 'none',
-          borderRadius: 6,
-        }}
+        $bg="var(--success)"
+        $color="var(--black)"
       >
         Успех
-      </button>
+      </StoryButton>
 
-      <button
+      <StoryButton
         type="button"
         onClick={() => showToast('warning', 'Предупреждение!', 'Кастомный тост работает')}
-        style={{
-          padding: '8px 16px',
-          marginBottom: 20,
-          cursor: 'pointer',
-          backgroundColor: 'var(--warning)',
-          color: 'var(--black)',
-          border: 'none',
-          borderRadius: 6,
-        }}
+        $bg="var(--warning)"
+        $color="var(--black)"
       >
         Предупреждение
-      </button>
+      </StoryButton>
 
-      <button
+      <StoryButton
         type="button"
         onClick={() => showToast('error', 'Ошибка!', 'Кастомный тост работает')}
-        style={{
-          padding: '8px 16px',
-          marginBottom: 20,
-          cursor: 'pointer',
-          backgroundColor: 'var(--error)',
-          color: 'var(--black)',
-          border: 'none',
-          borderRadius: 6,
-        }}
+        $bg="var(--error)"
+        $color="var(--black)"
       >
         Ошибка
-      </button>
+      </StoryButton>
 
-      <button
+      <StoryButton
         type="button"
         onClick={() => showToast('info', 'Информация!', 'Кастомный тост работает')}
-        style={{
-          padding: '8px 16px',
-          marginBottom: 20,
-          cursor: 'pointer',
-          backgroundColor: 'var(--soft)',
-          color: 'var(--medium)',
-          border: 'none',
-          borderRadius: 6,
-        }}
+        $bg="var(--soft)"
+        $color="var(--medium)"
       >
         Информация
-      </button>
+      </StoryButton>
       <Toaster />
-    </div>
+    </StoryContainer>
   );
 };
 

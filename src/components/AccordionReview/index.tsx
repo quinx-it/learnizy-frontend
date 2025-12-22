@@ -16,6 +16,7 @@ import {
   StyledAccordionContent,
   StyledAccordionItem,
   StyledAccordionTrigger,
+  MediumText,
 } from './styles';
 
 const AccordionReview: FC<AccordionReviewPropsType> = (props) => {
@@ -30,9 +31,9 @@ const AccordionReview: FC<AccordionReviewPropsType> = (props) => {
           <StyledAccordionTrigger>
             <Text>
               {t('ACCORDION_REVIEW.MODULE')} {number} -{' '}
-              <Text tag="span" className="text-medium">
+              <MediumText tag="span">
                 {messageNumber} {t('ACCORDION_REVIEW.NEW_MESSAGES')}
-              </Text>
+              </MediumText>
             </Text>
             <IconWrapper>
               <IconOpen>

@@ -1,5 +1,6 @@
 import { Box, Button, styled } from '@mui/material';
 
+import PrimaryButton from '@/components/Button';
 import Input from '@/components/Input';
 import Link from '@/components/Link';
 
@@ -75,4 +76,8 @@ export const ErrorText = styled(Box)(({ theme }) => ({
 export const LinkStyled = styled(Link)(() => ({
   display: 'inline',
   textDecoration: 'underline',
+}));
+
+export const RoundedButton = styled(PrimaryButton)(() => ({
+  borderRadius: '50px',
 }));

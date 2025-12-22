@@ -1,4 +1,4 @@
-import { keyframes, styled } from '@mui/material';
+import { Button, keyframes, styled } from '@mui/material';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
 const fadeIn = keyframes`
@@ -138,4 +138,18 @@ export const StyledArrow = styled(TooltipPrimitive.Arrow)(({ theme }) => ({
   height: theme.spacing(1.25),
   transform: 'translateY(calc(-50% - 2px)) rotate(45deg)',
   borderRadius: '2px',
+}));
+
+export const StoryButton = styled(Button)(() => ({
+  borderRadius: '0.25rem',
+  backgroundColor: '#e5e7eb',
+  paddingInline: '1rem',
+  paddingBlock: '0.5rem',
+  border: 'none',
+  cursor: 'pointer',
+}));
+
+export const HelpText = styled('span')(() => ({
+  cursor: 'help',
+  textDecoration: 'underline',
 }));

@@ -6,6 +6,8 @@ import { type StoryType } from './typings';
 
 import Checkbox from '.';
 
+import { Row } from './styles';
+
 import type { Meta } from '@storybook/nextjs';
 
 const meta: Meta<typeof Checkbox> = {
@@ -25,10 +27,10 @@ export default meta;
 
 export const Default: StoryType = {
   render: (args) => (
-    <div className="flex items-center gap-2">
+    <Row>
       <Checkbox {...args} id="checkbox-default" />
       <Label htmlFor="checkbox-default">Default Checkbox</Label>
-    </div>
+    </Row>
   ),
 };
 

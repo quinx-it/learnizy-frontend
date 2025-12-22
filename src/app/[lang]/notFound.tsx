@@ -3,6 +3,8 @@ import { type FC } from 'react';
 
 import NotFoundPage from '@/components/NotFoundPage';
 
+import { PageWrapper } from './styles';
+
 export const metadata: Metadata = {
   title: '404 - Not Found',
   description: 'Sorry, this page does not exist.',
@@ -10,9 +12,9 @@ export const metadata: Metadata = {
 
 const GlobalNotFound: FC = () => {
   return (
-    <div className="flex h-screen items-center justify-center">
+    <PageWrapper>
       <NotFoundPage />
-    </div>
+    </PageWrapper>
   );
 };
 

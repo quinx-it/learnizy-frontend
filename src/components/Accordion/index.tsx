@@ -30,10 +30,10 @@ const CardAccordion: FC<IAccordionProps> = (props) => {
             </Text>
             <IconWrapper>
               <StyledPlusIcon className={cn(iconColor)}>
-                <Plus className="h-5 w-5" />
+                <Plus size={20} />
               </StyledPlusIcon>
               <StyledMinusIcon className={cn(iconColor)}>
-                <Minus className="h-5 w-5" />
+                <Minus size={20} />
               </StyledMinusIcon>
             </IconWrapper>
           </StyledAccordionTrigger>
