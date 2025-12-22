@@ -34,7 +34,7 @@ const LearnLayout: FC<PropsWithChildren> = (props) => {
       )}
       <LayoutGrid>
         <Navbar links={links} />
-        <MainContent $isAiPage={isAiAssistantPage}>{children}</MainContent>
+        <MainContent isAiPage={isAiAssistantPage}>{children}</MainContent>
       </LayoutGrid>
     </AuthLayout>
   );

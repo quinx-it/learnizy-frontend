@@ -13,7 +13,7 @@ const Demo = () => {
       <StoryButton
         type="button"
         onClick={() => showToast('success', 'Успешно!', 'Кастомный тост работает')}
-        $bg="var(--success)"
+        bg="var(--success)"
         $color="var(--black)"
       >
         Успех
@@ -22,7 +22,7 @@ const Demo = () => {
       <StoryButton
         type="button"
         onClick={() => showToast('warning', 'Предупреждение!', 'Кастомный тост работает')}
-        $bg="var(--warning)"
+        bg="var(--warning)"
         $color="var(--black)"
       >
         Предупреждение
@@ -31,7 +31,7 @@ const Demo = () => {
       <StoryButton
         type="button"
         onClick={() => showToast('error', 'Ошибка!', 'Кастомный тост работает')}
-        $bg="var(--error)"
+        bg="var(--error)"
         $color="var(--black)"
       >
         Ошибка
@@ -40,7 +40,7 @@ const Demo = () => {
       <StoryButton
         type="button"
         onClick={() => showToast('info', 'Информация!', 'Кастомный тост работает')}
-        $bg="var(--soft)"
+        bg="var(--soft)"
         $color="var(--medium)"
       >
         Информация

@@ -76,13 +76,13 @@ export const StoryContainer = styled(Box)(() => ({
 }));
 
 export const StoryButton = styled(Button, {
-  shouldForwardProp: (prop) => prop !== '$bg' && prop !== '$color',
-})<{ $bg: string; $color: string }>(({ $bg, $color }) => ({
+  shouldForwardProp: (prop) => prop !== 'bg' && prop !== '$color',
+})<{ bg: string; $color: string }>(({ bg, $color }) => ({
   padding: '8px 16px',
   marginBottom: '20px',
   cursor: 'pointer',
   border: 'none',
   borderRadius: '6px',
-  backgroundColor: $bg,
+  backgroundColor: bg,
   color: $color,
 }));

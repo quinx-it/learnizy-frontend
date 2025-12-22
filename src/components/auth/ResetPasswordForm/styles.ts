@@ -23,5 +23,5 @@ export const SuccessText = styled(Box)(({ theme }) => ({
 }));
 
 export const RoundedButton = styled(Button)(() => ({
-  borderRadius: '9999px',
+  borderRadius: '50px',
 }));

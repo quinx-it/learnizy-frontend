@@ -11,17 +11,17 @@ export const LayoutGrid = styled(Box)(({ theme }) => ({
 }));
 
 export const MainContent = styled('main', {
-  shouldForwardProp: (prop) => prop !== '$isAiPage',
-})<{ $isAiPage: boolean }>(({ theme, $isAiPage }) => ({
+  shouldForwardProp: (prop) => prop !== 'isAiPage',
+})<{ isAiPage: boolean }>(({ theme, isAiPage }) => ({
   height: '100%',
   maxHeight: '100vh',
   width: '100%',
   overflowY: 'auto',
-  paddingBlock: $isAiPage ? 0 : '1.25rem',
-  paddingInline: $isAiPage ? 0 : '1rem',
+  paddingBlock: isAiPage ? 0 : '1.25rem',
+  paddingInline: isAiPage ? 0 : '1rem',
 
   [theme.breakpoints.up('md')]: {
-    paddingInline: $isAiPage ? 0 : '1.875rem',
+    paddingInline: isAiPage ? 0 : '1.875rem',
   },
 }));
 
