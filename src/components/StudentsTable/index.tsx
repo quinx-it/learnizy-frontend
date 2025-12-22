@@ -109,7 +109,7 @@ const StudentsTable: FC<IStudentsTableProps> = (props) => {
                     alt="Arrow right icon"
                     width={9}
                     height={16}
-                    style={{ color: '#238BA7' }}
+                    style={{ color: 'inherit' }}
                   />
                 </LinkCell>
               </RowWrapper>

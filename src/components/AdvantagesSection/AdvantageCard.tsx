@@ -1,11 +1,10 @@
-import Image from 'next/image';
 import { type FC } from 'react';
 
 import { Text } from '@/components/Typography';
 
 import { type AdvantageCardPropsType } from './typings';
 
-import { StyledCard, CardContent, StyledCardHeading, ImageWrapper } from './styles';
+import { StyledCard, CardContent, StyledCardHeading, ImageWrapper, StyledImage } from './styles';
 
 export const AdvantageCard: FC<AdvantageCardPropsType> = (props) => {
   const { type, title, text, className } = props;
@@ -17,21 +16,7 @@ export const AdvantageCard: FC<AdvantageCardPropsType> = (props) => {
         <Text variant="l">{text}</Text>
       </CardContent>
       <ImageWrapper>
-        <Image
-          width={305}
-          height={306}
-          src="/images/rocketOnBlue.webp"
-          alt="rocket"
-          style={{
-            position: 'absolute',
-            right: '-10%',
-            bottom: '-10%',
-            width: '50%',
-            maxWidth: '305px',
-            transform: 'scaleX(-1)',
-          }}
-          className="xl:w-full"
-        />
+        <StyledImage width={305} height={306} src="/images/rocketOnBlue.webp" alt="rocket" />
       </ImageWrapper>
     </StyledCard>
   );

@@ -235,7 +235,7 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
                   alt="Check icon"
                   width={18}
                   height={13}
-                  style={{ color: '#238BA7' }}
+                  style={{ color: 'inherit' }}
                 />
                 <Text variant="l">
                   {t('COMMON.MODULE_COMPLETED')}{' '}

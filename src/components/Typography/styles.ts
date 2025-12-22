@@ -1,4 +1,4 @@
-import { styled } from '@mui/material';
+import { Box, styled } from '@mui/material';
 
 export const StyledHeading = styled('h3', {
   shouldForwardProp: (prop) => prop !== 'variant',
@@ -203,3 +203,10 @@ export const StyledText = styled('p', {
     ...getStyles(),
   };
 });
+export const VerticalStack = styled(Box, {
+  shouldForwardProp: (prop) => prop !== '$gap',
+})<{ $gap: number }>(({ theme, $gap }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: theme.spacing($gap),
+}));

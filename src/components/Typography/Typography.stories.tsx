@@ -2,6 +2,8 @@ import { type HeadingStoryType, type TextStoryType } from './typings';
 
 import { Heading, Text } from '.';
 
+import { VerticalStack } from './styles';
+
 import type { Meta } from '@storybook/nextjs';
 
 const meta: Meta<typeof Heading> = {
@@ -14,7 +16,7 @@ export default meta;
 
 export const AllHeadingVariants: HeadingStoryType = {
   render: () => (
-    <div className="space-y-4">
+    <VerticalStack $gap={2}>
       {(
         [
           'xl',
@@ -37,25 +39,25 @@ export const AllHeadingVariants: HeadingStoryType = {
           {variant}
         </Heading>
       ))}
-    </div>
+    </VerticalStack>
   ),
 };
 
 export const AllTextVariants: TextStoryType = {
   render: () => (
-    <div className="space-y-2">
+    <VerticalStack $gap={1}>
       {(['s', 's-bold', 'm', 'm-bold', 'l', 'l-bold'] as const).map((variant) => (
         <Text key={variant} variant={variant}>
           {variant} — The quick brown fox jumps over the lazy dog.
         </Text>
       ))}
-    </div>
+    </VerticalStack>
   ),
 };
 
 export const CustomTags: HeadingStoryType = {
   render: () => (
-    <div className="space-y-3">
+    <VerticalStack $gap={1.5}>
       <Heading tag="h1" variant="4xl">
         h1 tag, 4xl variant
       </Heading>
@@ -65,6 +67,6 @@ export const CustomTags: HeadingStoryType = {
       <Text tag="span" variant="m-bold">
         span tag, m-bold variant
       </Text>
-    </div>
+    </VerticalStack>
   ),
 };

@@ -1,4 +1,4 @@
-import { styled } from '@mui/material';
+import { Box, styled } from '@mui/material';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 
 export const StyledRoot = styled(CheckboxPrimitive.Root)(({ theme }) => ({
@@ -15,7 +15,7 @@ export const StyledRoot = styled(CheckboxPrimitive.Root)(({ theme }) => ({
   outline: 'none',
 
   '&:hover:not(:disabled)': {
-    borderColor: '#B9B9B9',
+    borderColor: theme.palette.grey[400],
   },
 
   '&:disabled': {
@@ -36,4 +36,10 @@ export const StyledIndicator = styled(CheckboxPrimitive.Indicator)(() => ({
     width: '9px',
     height: 'auto',
   },
+}));
+
+export const Row = styled(Box)(() => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.5rem',
 }));

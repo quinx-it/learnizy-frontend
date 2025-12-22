@@ -5,7 +5,6 @@ import { type FC, useEffect } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 
 import { useForgotPasswordMutation } from '@/api/endpoints/auth';
-import Button from '@/components/Button';
 import Input from '@/components/Input';
 import Spinner from '@/components/Spinner';
 import { showToast } from '@/components/Toaster';
@@ -14,7 +13,7 @@ import { useTranslation } from '@/hooks';
 import { createFormSchema } from './const';
 import { type IForgotPasswordFormValues } from './typings';
 
-import { Form } from './styles';
+import { Form, RoundedButton } from './styles';
 
 const ForgotPasswordForm: FC = () => {
   const { t } = useTranslation();
@@ -57,9 +56,9 @@ const ForgotPasswordForm: FC = () => {
         error={errors.email?.message}
       />
 
-      <Button type="submit" size="medium" disabled={isLoading} className="rounded-full">
+      <RoundedButton type="submit" size="medium" disabled={isLoading}>
         {isLoading ? <Spinner type="ring" /> : t('AUTH.SEND')}
-      </Button>
+      </RoundedButton>
     </Form>
   );
 };

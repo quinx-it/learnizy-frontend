@@ -4,11 +4,10 @@ import { Box } from '@mui/material';
 import { forwardRef } from 'react';
 
 import Label from '@/components/Label';
-import { Text } from '@/components/Typography';
 
 import { type IInputProps } from './typings';
 
-import { ErrorText, LabelWrapper, StyledInput } from './styles';
+import { ErrorText, ErrorTextContent, LabelWrapper, MediumText, StyledInput } from './styles';
 
 const Input = forwardRef<HTMLInputElement, IInputProps>(
   ({ innerClassName, className, type = 'text', error, label, autoComplete, ...props }, ref) => {
@@ -17,9 +16,7 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
         {label && (
           <LabelWrapper>
             <Label>
-              <Text variant="s" className="text-medium">
-                {label}
-              </Text>
+              <MediumText variant="s">{label}</MediumText>
             </Label>
           </LabelWrapper>
         )}
@@ -35,9 +32,7 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
         />
         {error && (
           <ErrorText>
-            <Text variant="s" className="text-error">
-              {error}
-            </Text>
+            <ErrorTextContent variant="s">{error}</ErrorTextContent>
           </ErrorText>
         )}
       </Box>

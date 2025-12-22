@@ -23,6 +23,7 @@ import {
   Divider,
   InfoContainer,
   TitleWrapper,
+  MediumText,
 } from './styles';
 
 const TestPage: FC<TestPagePropsType> = (props) => {
@@ -81,10 +82,10 @@ const TestPage: FC<TestPagePropsType> = (props) => {
         <CardContent>
           <Box>
             <TitleWrapper>
-              <Text variant="l" className="text-medium">
+              <MediumText variant="l">
                 {t(title)}{' '}
                 {testType === 'LESSON_TEST' ? lessonSequenceOrder + 1 : moduleSequenceOrder}
-              </Text>
+              </MediumText>
             </TitleWrapper>
 
             <Divider />
@@ -92,12 +93,12 @@ const TestPage: FC<TestPagePropsType> = (props) => {
               <DescriptionWrapper>
                 <Text variant="l">{t(description)}</Text>
               </DescriptionWrapper>
-              <Text variant="m" className="text-medium">
+              <MediumText variant="m">
                 {t(constants.questionAmount)} {questions.length}
-              </Text>
-              <Text variant="m" className="text-medium">
+              </MediumText>
+              <MediumText variant="m">
                 {t(constants.procent)} {passThresholdPercentage}%
-              </Text>
+              </MediumText>
             </InfoContainer>
           </Box>
         </CardContent>

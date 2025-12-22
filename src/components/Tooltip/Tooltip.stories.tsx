@@ -2,6 +2,8 @@ import { type StoryType } from './typings';
 
 import CustomTooltip from '.';
 
+import { HelpText, StoryButton } from './styles';
+
 import type { Meta } from '@storybook/nextjs';
 
 const meta: Meta<typeof CustomTooltip> = {
@@ -25,11 +27,7 @@ export default meta;
 export const Default: StoryType = {
   args: {
     content: 'This is a tooltip',
-    children: (
-      <button type="button" className="rounded bg-gray-200 px-4 py-2">
-        Hover me
-      </button>
-    ),
+    children: <StoryButton type="button">Hover me</StoryButton>,
   },
 };
 
@@ -38,11 +36,7 @@ export const WithOffset: StoryType = {
     content: 'Offset: 10px (side: right)',
     offset: 10,
     side: 'right',
-    children: (
-      <button type="button" className="rounded bg-gray-200 px-4 py-2">
-        Hover with offset
-      </button>
-    ),
+    children: <StoryButton type="button">Hover with offset</StoryButton>,
   },
 };
 
@@ -50,11 +44,7 @@ export const WithDelay: StoryType = {
   args: {
     content: 'Appears with delay (500ms)',
     delay: 500,
-    children: (
-      <button type="button" className="rounded bg-gray-200 px-4 py-2">
-        Hover with delay
-      </button>
-    ),
+    children: <StoryButton type="button">Hover with delay</StoryButton>,
   },
 };
 
@@ -62,11 +52,7 @@ export const PositionedBottom: StoryType = {
   args: {
     content: 'Tooltip on bottom',
     side: 'bottom',
-    children: (
-      <button type="button" className="rounded bg-gray-200 px-4 py-2">
-        Hover (bottom)
-      </button>
-    ),
+    children: <StoryButton type="button">Hover (bottom)</StoryButton>,
   },
 };
 
@@ -77,6 +63,6 @@ export const CustomContent: StoryType = {
         <strong>Bold</strong> tooltip text
       </span>
     ),
-    children: <span className="cursor-help underline">Hover for info</span>,
+    children: <HelpText>Hover for info</HelpText>,
   },
 };

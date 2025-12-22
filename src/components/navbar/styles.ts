@@ -1,4 +1,5 @@
 import { Box, Button as MuiButton, styled } from '@mui/material';
+import Image from 'next/image';
 
 import Link from '@/components/Link';
 
@@ -193,6 +194,30 @@ export const MobileLogoutButton = styled(MuiButton)(({ theme }) => ({
 
 export const MobileLogoutButtonText = styled(Box)(({ theme }) => ({
   display: 'none',
+
+  [theme.breakpoints.up('md')]: {
+    display: 'none',
+  },
+
+  [theme.breakpoints.up('lg')]: {
+    display: 'block',
+  },
+}));
+
+export const LogoImageMdOnly = styled(Image)(({ theme }) => ({
+  display: 'none',
+
+  [theme.breakpoints.up('md')]: {
+    display: 'block',
+  },
+
+  [theme.breakpoints.up('lg')]: {
+    display: 'none',
+  },
+}));
+
+export const LogoImageMobileAndLg = styled(Image)(({ theme }) => ({
+  display: 'block',
 
   [theme.breakpoints.up('md')]: {
     display: 'none',

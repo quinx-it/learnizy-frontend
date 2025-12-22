@@ -1,5 +1,7 @@
 import { Box, styled } from '@mui/material';
 
+import { Text } from '@/components/Typography';
+
 export const LabelWrapper = styled(Box)(({ theme }) => ({
   marginBottom: theme.spacing(0.375),
 }));
@@ -53,4 +55,12 @@ export const ErrorText = styled(Box)(({ theme }) => ({
   '& > *': {
     color: 'inherit',
   },
+}));
+
+export const MediumText = styled(Text)(({ theme }) => ({
+  color: theme.palette.primary.main,
+}));
+
+export const ErrorTextContent = styled(Text)(({ theme }) => ({
+  color: theme.palette.error.main,
 }));

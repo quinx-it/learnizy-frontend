@@ -1,5 +1,7 @@
 import { Box, styled } from '@mui/material';
 
+import Button from '@/components/Button';
+
 export const Form = styled('form')(() => ({
   display: 'flex',
   width: '100%',
@@ -18,4 +20,8 @@ export const SuccessText = styled(Box)(({ theme }) => ({
   fontSize: '1.125rem',
   fontWeight: 600,
   color: theme.palette.success.main,
+}));
+
+export const RoundedButton = styled(Button)(() => ({
+  borderRadius: '50px',
 }));
