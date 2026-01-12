@@ -30,10 +30,10 @@ export const viewport: Viewport = {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const paramsBase = await params;
-  const { lang } = paramsBase;
+  const lang = paramsBase.lang as Locale;
   const dict = await getDictionary(lang);
 
   const alternates = i18n.locales.reduce(
@@ -97,21 +97,22 @@ const involve = localFont({
   display: 'swap',
 });
 
-async function RootLayout(props: { children: React.ReactNode; params: Promise<{ lang: Locale }> }) {
+async function RootLayout(props: { children: React.ReactNode; params: Promise<{ lang: string }> }) {
   const { children, params: paramsBase } = props;
   const params = await paramsBase;
-  const dict = await getDictionary(params.lang);
+  const lang = params.lang as Locale;
+  const dict = await getDictionary(lang);
 
   const isXML = typeof window !== 'undefined' && window.location.pathname.endsWith('.xml');
 
   if (isXML) return children;
 
   return (
-    <html lang={params.lang} className={involve.className}>
+    <html lang={lang} className={involve.className}>
       <body>
         <StoreProvider>
           <ThemeProvider>
-            <DictionaryProvider dict={dict} lang={params.lang}>
+            <DictionaryProvider dict={dict} lang={lang}>
               {children}
               <Toaster />
             </DictionaryProvider>
