@@ -9,10 +9,10 @@ import { getOgLocale, getBaseUrl, getFullUrl } from '@/utils';
 export const generateMetadata = async ({
   params,
 }: {
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ lang: string }>;
 }): Promise<Metadata> => {
   const paramsBase = await params;
-  const { lang } = paramsBase;
+  const lang = paramsBase.lang as Locale;
   const dict = await getDictionary(lang);
 
   const ogLocale = getOgLocale(lang);
