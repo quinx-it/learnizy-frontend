@@ -19,7 +19,7 @@ const LearnLayout: FC<PropsWithChildren> = (props) => {
 
   const showChatHeader = pathname.startsWith('/learn/ai-assistant/chat/');
 
-  const isAiAssistantPage = pathname.startsWith(ROUTES.user.aiAssistant);
+  const isAiAssistantPage = pathname.startsWith(ROUTES.USER_AI_ASSISTANT);
   const links = NAVBAR_LINKS.user.map(({ label, ...rest }) => ({
     ...rest,
     label: t(label),

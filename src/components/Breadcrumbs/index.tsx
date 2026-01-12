@@ -28,7 +28,7 @@ const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
   const {
     items,
     rootLabel = t('NAVBAR.HOME'),
-    rootHref = ROUTES.user.homePage,
+    rootHref = ROUTES.USER_HOME_PAGE,
     className,
     rootDescription,
   } = props;

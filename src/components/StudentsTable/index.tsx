@@ -103,7 +103,7 @@ const StudentsTable: FC<IStudentsTableProps> = (props) => {
                 <Cell hasBorder hasPadding={false}>
                   <Text variant="m">{row.currentLesson}</Text>
                 </Cell>
-                <LinkCell href={`${ROUTES.mentor.students}/${row.id}`}>
+                <LinkCell href={`${ROUTES.MENTOR_STUDENTS}/${row.id}`}>
                   <Image
                     src="/images/arrow-right-icon.svg"
                     alt="Arrow right icon"

@@ -31,7 +31,7 @@ const InterviewQuestions: FC = () => {
           </DescriptionSecondaryText>
         </DescriptionContainer>
 
-        <StyledLinkButton href={ROUTES.user.interviewQuestions}>
+        <StyledLinkButton href={ROUTES.USER_INTERVIEW_QUESTIONS}>
           {t('INTERVIEW.BUTTON')}
         </StyledLinkButton>
 

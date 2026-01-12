@@ -64,7 +64,7 @@ const ExamTestResultPage: FC<ExamTestResultPagePropsType> = (props) => {
     <>
       <Breadcrumbs
         items={[{ label: t('TEST_RESULT.RESULTS'), href: `` }]}
-        rootHref={ROUTES.user.exams}
+        rootHref={ROUTES.USER_EXAMS}
         rootLabel={t(GLOBAL_CONSTANTS.rootBreadcrumbLabels.examsLabel)}
       />
 

@@ -104,15 +104,15 @@ const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) => {
         items={[
           {
             label: `${t('TEST_RESULT.MODULE')} ${moduleSequenceOrder}`,
-            href: `${ROUTES.user.modules}/${moduleId}`,
+            href: `${ROUTES.USER_MODULES}/${moduleId}`,
           },
           {
             label: `${t('TEST_RESULT.LESSON')} ${lessonSequenceOrder + 1}`,
-            href: `${ROUTES.user.modules}/${moduleId}/${lessonId}`,
+            href: `${ROUTES.USER_MODULES}/${moduleId}/${lessonId}`,
           },
           { label: t('TEST_RESULT.RESULTS'), href: `` },
         ]}
-        rootHref={ROUTES.user.modules}
+        rootHref={ROUTES.USER_MODULES}
         rootLabel={t(GLOBAL_CONSTANTS.rootBreadcrumbLabels.modulesLabel)}
       />
 

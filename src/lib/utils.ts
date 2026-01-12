@@ -2,13 +2,7 @@ import { clsx, type ClassValue } from 'clsx';
 import { jwtDecode } from 'jwt-decode';
 import { twMerge } from 'tailwind-merge';
 
-import {
-  DYNAMIC_MENTOR_ROUTES,
-  DYNAMIC_USER_ROUTES,
-  PUBLIC_ROUTES,
-  STATIC_MENTOR_ROUTES,
-  STATIC_USER_ROUTES,
-} from '@/const/routes';
+import { ROUTES } from '@/const/routes';
 import { type IDecodedToken, UserRole } from '@/store/slices/auth/typings';
 import { type TranslationFunctionType } from '@/types';
 
@@ -57,20 +51,66 @@ export const isGuest = (role: UserRole) => {
   return role === UserRole.Guest;
 };
 
+const STATIC_MENTOR_ROUTES = [ROUTES.MENTOR_STUDENTS, ROUTES.MENTOR_MODULES];
+const DYNAMIC_MENTOR_ROUTES = [
+  /^\/mentor\/students\/\d+$/,
+  /^\/mentor\/modules\/\d+$/,
+  /^\/mentor\/modules\/\d+\/\d+$/,
+  /^\/mentor\/modules\/\d+\/\d+\/test$/,
+  /^\/mentor\/modules\/\d+\/\d+\/result$/,
+  /^\/mentor\/modules\/\d+\/\d+\/retelling$/,
+];
+
+const STATIC_USER_ROUTES = [
+  ROUTES.USER_HOME_PAGE,
+  ROUTES.USER_EXAMS,
+  ROUTES.USER_KNOWLEDGE_BASE,
+  ROUTES.USER_AI_ASSISTANT,
+  ROUTES.USER_FREQUENTLY_ASKED_QUESTIONS,
+  ROUTES.USER_MODULES,
+  ROUTES.USER_PROJECTS,
+  ROUTES.USER_PROFILE_PERSONAL_DATA,
+  ROUTES.USER_PROFILE_SECURITY_SETTINGS,
+  ROUTES.USER_INTERVIEW_QUESTIONS,
+  ROUTES.USER_INTERVIEW_RECORDS,
+];
+const DYNAMIC_USER_ROUTES = [
+  /^\/learn\/modules\/\d+$/,
+  /^\/learn\/modules\/\d+\/\d+$/,
+  /^\/learn\/modules\/\d+\/\d+\/test$/,
+  /^\/learn\/modules\/\d+\/\d+\/result$/,
+  /^\/learn\/modules\/\d+\/\d+\/retelling$/,
+  /^\/learn\/exams\/\d+\/\d+\/test$/,
+  /^\/learn\/exams\/\d+\/\d+\/result$/,
+  /^\/learn\/aiAssistant\/chat\/[^/]+$/,
+];
+
+const PUBLIC_ROUTES = [
+  ROUTES.LANDING_PAGE,
+  ROUTES.LOGIN_PAGE,
+  ROUTES.REGISTER_PAGE,
+  ROUTES.FORGOT_PASSWORD,
+  ROUTES.RESET_PASSWORD,
+  ROUTES.USER_AGREEMENT,
+  ROUTES.PRIVACY_POLICY,
+];
+
 export function isMentorRoute(pathname: string) {
   return (
-    STATIC_MENTOR_ROUTES.includes(pathname) || DYNAMIC_MENTOR_ROUTES.some((rx) => rx.test(pathname))
+    STATIC_MENTOR_ROUTES.includes(pathname as ROUTES) ||
+    DYNAMIC_MENTOR_ROUTES.some((rx) => rx.test(pathname))
   );
 }
 
 export function isUserRoute(pathname: string) {
   return (
-    STATIC_USER_ROUTES.includes(pathname) || DYNAMIC_USER_ROUTES.some((rx) => rx.test(pathname))
+    STATIC_USER_ROUTES.includes(pathname as ROUTES) ||
+    DYNAMIC_USER_ROUTES.some((rx) => rx.test(pathname))
   );
 }
 
 export function isPublicRoute(pathname: string) {
-  return PUBLIC_ROUTES.includes(pathname);
+  return PUBLIC_ROUTES.includes(pathname as ROUTES);
 }
 
 export function isRoleRoute(role: UserRole | undefined, pathname: string) {

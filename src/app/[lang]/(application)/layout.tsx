@@ -5,24 +5,76 @@ import { type PropsWithChildren, useEffect, type FC } from 'react';
 import { useRefreshMutation } from '@/api/endpoints/auth';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import NotFoundPage from '@/components/NotFoundPage';
-import {
-  ROUTES,
-  DEFAULT_PAGE,
-  PUBLIC_ROUTES,
-  STATIC_USER_ROUTES,
-  DYNAMIC_USER_ROUTES,
-  STATIC_MENTOR_ROUTES,
-  DYNAMIC_MENTOR_ROUTES,
-} from '@/const/routes';
+import { ROUTES } from '@/const/routes';
 import { useRouter, usePathname } from '@/hooks';
 import { useAppSelector } from '@/hooks/redux';
 import { isRoleRoute } from '@/lib/utils';
 import { selectToken, selectUserRole } from '@/store/slices/auth/selectors';
+import { UserRole } from '@/store/slices/auth/typings';
+
+const PUBLIC_ROUTES = [
+  ROUTES.LANDING_PAGE,
+  ROUTES.LOGIN_PAGE,
+  ROUTES.REGISTER_PAGE,
+  ROUTES.FORGOT_PASSWORD,
+  ROUTES.RESET_PASSWORD,
+  ROUTES.USER_AGREEMENT,
+  ROUTES.PRIVACY_POLICY,
+];
+
+const STATIC_USER_ROUTES = [
+  ROUTES.USER_HOME_PAGE,
+  ROUTES.USER_EXAMS,
+  ROUTES.USER_KNOWLEDGE_BASE,
+  ROUTES.USER_AI_ASSISTANT,
+  ROUTES.USER_FREQUENTLY_ASKED_QUESTIONS,
+  ROUTES.USER_MODULES,
+  ROUTES.USER_PROJECTS,
+  ROUTES.USER_PROFILE_PERSONAL_DATA,
+  ROUTES.USER_PROFILE_SECURITY_SETTINGS,
+  ROUTES.USER_INTERVIEW_QUESTIONS,
+  ROUTES.USER_INTERVIEW_RECORDS,
+];
+
+const DYNAMIC_USER_ROUTES = [
+  /^\/learn\/modules\/\d+$/,
+  /^\/learn\/modules\/\d+\/\d+$/,
+  /^\/learn\/modules\/\d+\/\d+\/test$/,
+  /^\/learn\/modules\/\d+\/\d+\/result$/,
+  /^\/learn\/modules\/\d+\/\d+\/retelling$/,
+  /^\/learn\/exams\/\d+\/\d+\/test$/,
+  /^\/learn\/exams\/\d+\/\d+\/result$/,
+  /^\/learn\/aiAssistant\/chat\/[^/]+$/,
+];
+
+const STATIC_MENTOR_ROUTES = [ROUTES.MENTOR_STUDENTS, ROUTES.MENTOR_MODULES];
+
+const DYNAMIC_MENTOR_ROUTES = [
+  /^\/mentor\/students\/\d+$/,
+  /^\/mentor\/modules\/\d+$/,
+  /^\/mentor\/modules\/\d+\/\d+$/,
+  /^\/mentor\/modules\/\d+\/\d+\/test$/,
+  /^\/mentor\/modules\/\d+\/\d+\/result$/,
+  /^\/mentor\/modules\/\d+\/\d+\/retelling$/,
+];
 
 const allStaticRoutes = [...PUBLIC_ROUTES, ...STATIC_USER_ROUTES, ...STATIC_MENTOR_ROUTES];
 const allDynamicRoutes = [...DYNAMIC_USER_ROUTES, ...DYNAMIC_MENTOR_ROUTES];
 
-const isValidRoute = (pathname: string) => {
+const getDefaultPage = (role: UserRole): string => {
+  switch (role) {
+    case UserRole.Guest:
+      return ROUTES.LOGIN_PAGE;
+    case UserRole.User:
+      return ROUTES.USER_HOME_PAGE;
+    case UserRole.Mentor:
+      return ROUTES.MENTOR_STUDENTS;
+    default:
+      return ROUTES.LOGIN_PAGE;
+  }
+};
+
+const isValidRoute = (pathname: ROUTES) => {
   if (allStaticRoutes.includes(pathname)) return true;
 
   return allDynamicRoutes.some((regex) => regex.test(pathname));
@@ -44,31 +96,31 @@ const ApplicationLayout: FC<PropsWithChildren> = (props) => {
   useEffect(() => {
     if (isLoading) return;
 
-    if (!accessToken && !PUBLIC_ROUTES.includes(pathname)) {
-      router.replace(ROUTES.public.loginPage);
+    if (!accessToken && !PUBLIC_ROUTES.includes(pathname as ROUTES)) {
+      router.replace(ROUTES.LOGIN_PAGE);
 
       return;
     }
 
-    if (role && pathname === ROUTES.public.loginPage) {
-      router.replace(DEFAULT_PAGE[role]);
+    if (role && pathname === ROUTES.LOGIN_PAGE) {
+      router.replace(getDefaultPage(role));
 
       return;
     }
 
     if (role && !isRoleRoute(role, pathname)) {
-      if (isValidRoute(pathname)) {
-        router.replace(DEFAULT_PAGE[role]);
+      if (isValidRoute(pathname as ROUTES)) {
+        router.replace(getDefaultPage(role));
       }
     }
   }, [accessToken, pathname, router, isLoading, role]);
 
   if (isLoading) return <FullscreenLoader />;
 
-  if (role && (!isRoleRoute(role, pathname) || pathname === ROUTES.public.loginPage))
+  if (role && (!isRoleRoute(role, pathname) || pathname === ROUTES.LOGIN_PAGE))
     return <FullscreenLoader />;
 
-  if (!isValidRoute(pathname)) return <NotFoundPage />;
+  if (!isValidRoute(pathname as ROUTES)) return <NotFoundPage />;
 
   return children;
 };

@@ -30,7 +30,7 @@ export const AiAssistantPage = () => {
         data,
       }).unwrap();
 
-      router.push(`${ROUTES.user.aiAssistant}/chat/${newChatId}`);
+      router.push(`${ROUTES.USER_AI_ASSISTANT}/chat/${newChatId}`);
     } catch {
       showToast('error', t('CHAT.CREATE_CHAT_ERROR'), '');
     }

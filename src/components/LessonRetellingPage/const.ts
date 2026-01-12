@@ -6,11 +6,11 @@ export const createBreadcrumbs =
   (moduleSequenceOrder: number, moduleId: string, lessonId: string, sequenceOrder: number) => [
     {
       label: `${t('TEST_RESULT.MODULE')} ${moduleSequenceOrder}`,
-      href: `${ROUTES.user.modules}/${moduleId}`,
+      href: `${ROUTES.USER_MODULES}/${moduleId}`,
     },
     {
       label: `${t('TEST_RESULT.LESSON')} ${sequenceOrder}`,
-      href: `${ROUTES.user.modules}/${moduleId}/${lessonId}`,
+      href: `${ROUTES.USER_MODULES}/${moduleId}/${lessonId}`,
     },
     { label: t('LESSON_RETELLING.ASK_QUESTION'), href: '' },
   ];

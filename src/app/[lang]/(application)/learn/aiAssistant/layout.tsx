@@ -16,11 +16,11 @@ const AiAssistantLayout: FC<PropsWithChildren> = ({ children }) => {
   const selectedChatId = params.id ? parseInt(params.id as string, 10) : null;
 
   const handleSelectChat = (chatId: number) => {
-    router.push(`${ROUTES.user.aiAssistant}/chat/${chatId}`);
+    router.push(`${ROUTES.USER_AI_ASSISTANT}/chat/${chatId}`);
   };
 
   const handleCreateChat = () => {
-    router.push(ROUTES.user.aiAssistant);
+    router.push(ROUTES.USER_AI_ASSISTANT);
   };
 
   return (

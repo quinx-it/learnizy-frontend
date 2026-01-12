@@ -71,7 +71,7 @@ const ExamCard: FC<ExamCardPropsType> = (props) => {
       <UnavailableStatusText>
         {t('EXAMS.STATUS.UNAVAILABLE', { moduleLink: exam.moduleId })}{' '}
         <InlineLinkWrapper>
-          <Link href={`${ROUTES.user.modules}/${exam.moduleId}`}>{t('EXAMS.STATUS.LESSONS')}</Link>
+          <Link href={`${ROUTES.USER_MODULES}/${exam.moduleId}`}>{t('EXAMS.STATUS.LESSONS')}</Link>
         </InlineLinkWrapper>
         {` ${t('EXAMS.STATUS.MODULE')}`}
       </UnavailableStatusText>

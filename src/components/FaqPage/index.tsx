@@ -21,7 +21,7 @@ const FaqPage: FC = () => {
     <>
       <Breadcrumbs
         rootLabel={t(GLOBAL_CONSTANTS.rootBreadcrumbLabels.knowlegeBaseLabel)}
-        rootHref={ROUTES.user.knowlegeBase}
+        rootHref={ROUTES.USER_KNOWLEDGE_BASE}
         items={constants.breadCrumbs}
       />
       <StyledCardWrapper>

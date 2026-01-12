@@ -119,7 +119,7 @@ const RegisterForm: FC = () => {
     try {
       await verifyEmail({ email: userEmail, code: data.code }).unwrap();
       showToast('success', t('AUTH.SUCCESS'), t('AUTH.EMAIL_CONFIRMED'));
-      router.push(ROUTES.user.homePage);
+      router.push(ROUTES.USER_HOME_PAGE);
     } catch {
       showToast('error', t('COMMON.ERROR'), t('AUTH.INVALID_CODE'));
     }
@@ -234,9 +234,9 @@ const RegisterForm: FC = () => {
           render={({ field }) => (
             <CheckboxWithLabel checked={field.value} onCheckedChange={field.onChange}>
               {t('AUTH.ACCEPT_TERMS')}{' '}
-              <LinkStyled href={ROUTES.public.userAgreement}>{t('AUTH.USER_AGREEMENT')}</LinkStyled>{' '}
+              <LinkStyled href={ROUTES.USER_AGREEMENT}>{t('AUTH.USER_AGREEMENT')}</LinkStyled>{' '}
               {t('AUTH.AND_CONSENT')}{' '}
-              <LinkStyled href={ROUTES.public.privacyPolicy}>{t('AUTH.PERSONAL_DATA')}</LinkStyled>
+              <LinkStyled href={ROUTES.PRIVACY_POLICY}>{t('AUTH.PERSONAL_DATA')}</LinkStyled>
             </CheckboxWithLabel>
           )}
         />

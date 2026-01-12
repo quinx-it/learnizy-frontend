@@ -94,7 +94,7 @@ const LearnMainPage: FC = () => {
           totalLessons={currentModule?.totalLessons || 0}
           lessons={currentModule?.completedLessons || 0}
           status={ProgressStatus.Continue}
-          onClick={() => currentModule && router.push(`${ROUTES.user.modules}/${currentModule.id}`)}
+          onClick={() => currentModule && router.push(`${ROUTES.USER_MODULES}/${currentModule.id}`)}
         />
 
         <CardWrapper>
@@ -129,7 +129,7 @@ const LearnMainPage: FC = () => {
                       progress={moduleProgress}
                       onClick={() =>
                         moduleStatus !== ModuleStatus.Blocked &&
-                        router.push(`${ROUTES.user.modules}/${module.id}`)
+                        router.push(`${ROUTES.USER_MODULES}/${module.id}`)
                       }
                     />
                   </li>

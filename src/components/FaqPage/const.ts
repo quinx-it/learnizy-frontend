@@ -6,7 +6,7 @@ export const createConstants = (t: TranslationFunctionType) => ({
   breadCrumbs: [
     {
       label: GLOBAL_CONSTANTS.rootBreadcrumbLabels.faqLabel,
-      href: ROUTES.user.frequentlyAskedQuestions,
+      href: ROUTES.USER_FREQUENTLY_ASKED_QUESTIONS,
     },
   ],
   accordionItems: [

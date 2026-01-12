@@ -41,10 +41,10 @@ const ProfileDashboard: FC = () => {
         <NameText variant="m-bold">{t('PROFILE.NAME')}</NameText>
       </ProfileContainer>
       <LinksContainer>
-        <DashboardLink href={ROUTES.user.userProfilePersonalData} src="/images/person-icon.svg">
+        <DashboardLink href={ROUTES.USER_PROFILE_PERSONAL_DATA} src="/images/person-icon.svg">
           {t('PROFILE.PERSONAL_DATA')}
         </DashboardLink>
-        <DashboardLink href={ROUTES.user.userProfileSecuritySettings} src="/images/lock-icon.svg">
+        <DashboardLink href={ROUTES.USER_PROFILE_SECURITY_SETTINGS} src="/images/lock-icon.svg">
           {t('PROFILE.SECURITY_SETTINGS')}
         </DashboardLink>
         <LogoutButton variant="white">

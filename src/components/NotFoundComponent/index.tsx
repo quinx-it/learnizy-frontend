@@ -3,10 +3,11 @@
 import Image from 'next/image';
 import { type FC } from 'react';
 
-import { DEFAULT_PAGE, ROUTES } from '@/const/routes';
+import { ROUTES } from '@/const/routes';
 import { useTranslation } from '@/hooks';
 import { useAppSelector } from '@/hooks/redux';
 import { selectUserRole } from '@/store/slices/auth/selectors';
+import { UserRole } from '@/store/slices/auth/typings';
 
 import { type NotFoundComponentPropsType } from './typings';
 
@@ -26,7 +27,22 @@ const NotFoundComponent: FC<NotFoundComponentPropsType> = (props) => {
 
   const role = useAppSelector(selectUserRole);
 
-  const defaultUrl = role && DEFAULT_PAGE[role] ? DEFAULT_PAGE[role] : ROUTES.public.loginPage;
+  const getDefaultUrl = () => {
+    if (!role) return ROUTES.LOGIN_PAGE;
+
+    switch (role) {
+      case UserRole.Guest:
+        return ROUTES.LOGIN_PAGE;
+      case UserRole.User:
+        return ROUTES.USER_HOME_PAGE;
+      case UserRole.Mentor:
+        return ROUTES.MENTOR_STUDENTS;
+      default:
+        return ROUTES.LOGIN_PAGE;
+    }
+  };
+
+  const defaultUrl = getDefaultUrl();
 
   return (
     <Container className={className}>

@@ -85,7 +85,7 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
   const handleCardClick = () => {
     if (isBlocked && !isMentor) return;
 
-    router.push(isMentor ? `${ROUTES.mentor.modules}/${id}` : `${ROUTES.user.modules}/${id}`);
+    router.push(isMentor ? `${ROUTES.MENTOR_MODULES}/${id}` : `${ROUTES.USER_MODULES}/${id}`);
   };
 
   return (
