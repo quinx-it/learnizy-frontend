@@ -24,6 +24,7 @@ import {
   ModulesList,
   StatisticsDivider,
   StatisticsTitle,
+  MediumText,
 } from './styles';
 
 const mapModuleCompletionStatusToModuleStatus = (
@@ -101,9 +102,9 @@ const LearnMainPage: FC = () => {
             <CourseTitle>
               <Text tag="span" variant="m-bold">
                 {t('COMMON.COURSE_LABEL')}{' '}
-                <Text tag="span" className="text-medium" variant="m-bold">
+                <MediumText tag="span" variant="m-bold">
                   {mainPageProgress.courseInfo.title}
-                </Text>
+                </MediumText>
               </Text>
             </CourseTitle>
             <CourseDivider />

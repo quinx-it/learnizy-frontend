@@ -2,12 +2,11 @@ import Image from 'next/image';
 import { useEffect, useState, type FC } from 'react';
 
 import AudioPlayer from '@/components/AudioPlayer';
-import { Text } from '@/components/Typography';
 import { useTranslation, useVoiceRecorder } from '@/hooks';
 
 import { type PropsType } from './typings';
 
-import { ButtonWrapper, Container, DeleteButton } from './styles';
+import { ButtonWrapper, Container, DeleteButton, MediumText } from './styles';
 
 const VoiceRecorderControl: FC<PropsType> = (props) => {
   const { onChange } = props;
@@ -53,9 +52,9 @@ const VoiceRecorderControl: FC<PropsType> = (props) => {
           <ButtonWrapper type="button" onClick={stopRecording} size="medium">
             ⏹ {t('VOICE_RECORDER_CONTROL.STOP_RECORDING')}
           </ButtonWrapper>
-          <Text variant="m" className="text-medium">
+          <MediumText variant="m">
             {new Date(duration * 1000).toISOString().slice(14, 19)}
-          </Text>
+          </MediumText>
         </Container>
       )}
 

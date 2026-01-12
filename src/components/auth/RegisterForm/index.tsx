@@ -9,7 +9,6 @@ import {
   useVerifyEmailMutation,
   useResendVerificationCodeMutation,
 } from '@/api/endpoints/auth';
-import Button from '@/components/Button';
 import CheckboxWithLabel from '@/components/CheckboxWithLabel';
 import Input from '@/components/Input';
 import { PasswordInput } from '@/components/PasswordInput';
@@ -32,6 +31,7 @@ import {
   LinkStyled,
   ResendButton,
   ResendText,
+  RoundedButton,
   TextContainer,
   VerificationInput,
 } from './styles';
@@ -181,9 +181,9 @@ const RegisterForm: FC = () => {
             )}
           </ResendText>
 
-          <Button type="submit" disabled={isVerifying} className="rounded-full">
+          <RoundedButton type="submit" disabled={isVerifying}>
             {isVerifying ? <Spinner type="ring" /> : t('AUTH.CONFIRM')}
-          </Button>
+          </RoundedButton>
         </Form>
       </Container>
     );
@@ -243,9 +243,9 @@ const RegisterForm: FC = () => {
         {errors.agreement && <ErrorText>{errors.agreement.message}</ErrorText>}
       </CheckboxContainer>
 
-      <Button type="submit" disabled={isRegistering} className="rounded-full">
+      <RoundedButton type="submit" disabled={isRegistering}>
         {isRegistering ? <Spinner type="ring" /> : t('AUTH.REGISTER')}
-      </Button>
+      </RoundedButton>
     </Form>
   );
 };

@@ -15,7 +15,7 @@ import { useRouter, useTranslation } from '@/hooks';
 import { type IResetPasswordFormValues, createFormSchema } from './const';
 import { type IResetPasswordFormProps } from './typings';
 
-import { Form, SuccessContainer, SuccessText } from './styles';
+import { Form, RoundedButton, SuccessContainer, SuccessText } from './styles';
 
 const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
   const { token, onSuccess } = props;
@@ -89,9 +89,9 @@ const ResetPasswordForm: FC<IResetPasswordFormProps> = (props) => {
         error={errors.repeatPassword?.message}
       />
 
-      <Button type="submit" size="medium" className="rounded-full" disabled={isLoading}>
+      <RoundedButton type="submit" size="medium" disabled={isLoading}>
         {isLoading ? <Spinner size={22} /> : t('COMMON.SAVE')}
-      </Button>
+      </RoundedButton>
     </Form>
   );
 };

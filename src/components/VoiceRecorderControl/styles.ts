@@ -1,6 +1,7 @@
 import { Box, Button as MuiButton, styled } from '@mui/material';
 
 import Button from '@/components/Button';
+import { Text } from '@/components/Typography';
 
 export const ButtonWrapper = styled(Button)(() => ({
   display: 'flex',
@@ -26,4 +27,8 @@ export const DeleteButton = styled(MuiButton)(() => ({
   '&:hover': {
     boxShadow: 'none',
   },
+}));
+
+export const MediumText = styled(Text)(({ theme }) => ({
+  color: theme.palette.primary.main,
 }));

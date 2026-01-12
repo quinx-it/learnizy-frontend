@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { forwardRef, useState } from 'react';
 
 import Label from '@/components/Label';
-import { Text } from '@/components/Typography';
 import { useTranslation } from '@/hooks';
 
 import { type IPasswordInputProps } from './typings';
@@ -17,7 +16,7 @@ import {
   StyledInput,
   ToggleButton,
 } from './styles';
-import { ErrorText, LabelWrapper } from '@/components/Input/styles';
+import { ErrorText, ErrorTextContent, LabelWrapper, MediumText } from '@/components/Input/styles';
 
 const PasswordInput = forwardRef<HTMLInputElement, IPasswordInputProps>(
   ({ className, innerClassName, disabled, autoComplete, error, label, ...props }, ref) => {
@@ -29,9 +28,7 @@ const PasswordInput = forwardRef<HTMLInputElement, IPasswordInputProps>(
         {label && (
           <LabelWrapper>
             <Label>
-              <Text variant="s" className="text-medium">
-                {label}
-              </Text>
+              <MediumText variant="s">{label}</MediumText>
             </Label>
           </LabelWrapper>
         )}
@@ -76,9 +73,7 @@ const PasswordInput = forwardRef<HTMLInputElement, IPasswordInputProps>(
         </InputWrapper>
         {error && (
           <ErrorText>
-            <Text variant="s" className="text-error">
-              {error}
-            </Text>
+            <ErrorTextContent variant="s">{error}</ErrorTextContent>
           </ErrorText>
         )}
       </PasswordInputWrapper>

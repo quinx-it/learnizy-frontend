@@ -85,7 +85,7 @@ const DatePicker: FC<IDatePickerProps> = ({ label, value, onChange, error }) => 
             alt="Calendar icon"
             width={16}
             height={16}
-            style={{ color: '#0C0C0C' }}
+            style={{ color: 'inherit' }}
           />
         </IconWrapper>
       </Popover>

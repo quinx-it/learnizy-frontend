@@ -9,6 +9,8 @@ import { NAVBAR_LINKS } from '@/const/constants';
 import { ROUTES } from '@/const/routes';
 import { usePathname, useTranslation } from '@/hooks';
 
+import { ChatHeaderWrapper, LayoutGrid, MainContent } from './styles';
+
 const LearnLayout: FC<PropsWithChildren> = (props) => {
   const { children } = props;
 
@@ -18,10 +20,6 @@ const LearnLayout: FC<PropsWithChildren> = (props) => {
   const showChatHeader = pathname.startsWith('/learn/ai-assistant/chat/');
 
   const isAiAssistantPage = pathname.startsWith(ROUTES.USER_AI_ASSISTANT);
-  const mainClass = isAiAssistantPage
-    ? 'h-full max-h-screen w-full overflow-y-auto'
-    : 'h-full max-h-screen w-full overflow-y-auto px-4 py-5 md:px-7.5';
-
   const links = NAVBAR_LINKS.user.map(({ label, ...rest }) => ({
     ...rest,
     label: t(label),
@@ -30,12 +28,14 @@ const LearnLayout: FC<PropsWithChildren> = (props) => {
   return (
     <AuthLayout>
       {showChatHeader && (
-        <ChatHeader className="fixed z-30 block w-full bg-[#F2FCFF] md:ml-10 lg:ml-0" />
+        <ChatHeaderWrapper>
+          <ChatHeader />
+        </ChatHeaderWrapper>
       )}
-      <div className="bg-accent-background grid min-h-screen md:grid-cols-[auto_1fr]">
+      <LayoutGrid>
         <Navbar links={links} />
-        <main className={mainClass}>{children}</main>
-      </div>
+        <MainContent isAiPage={isAiAssistantPage}>{children}</MainContent>
+      </LayoutGrid>
     </AuthLayout>
   );
 };

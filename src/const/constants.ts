@@ -1,4 +1,4 @@
-import { ROUTES } from '@/const';
+import { ROUTES } from '@/const/routes';
 
 export const GLOBAL_CONSTANTS = {
   rootBreadcrumbLabels: {

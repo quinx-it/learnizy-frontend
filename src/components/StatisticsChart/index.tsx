@@ -1,5 +1,4 @@
 import { Box } from '@mui/material';
-import Image from 'next/image';
 import { type FC } from 'react';
 
 import AreaChart from '@/components/AreaChart';
@@ -9,7 +8,13 @@ import { useTranslation } from '@/hooks';
 import { WEEK_DAY_KEYS } from './const';
 import { type StatisticsChartPropsType } from './typings';
 
-import { HeaderContainer, StatisticsWrapper, TitleWrapper } from './styles';
+import {
+  CalendarIcon,
+  HeaderContainer,
+  MediumText,
+  StatisticsWrapper,
+  TitleWrapper,
+} from './styles';
 
 const StatisticsChart: FC<StatisticsChartPropsType> = (props) => {
   const { weeklyActivity } = props;
@@ -30,26 +35,25 @@ const StatisticsChart: FC<StatisticsChartPropsType> = (props) => {
     <Box>
       <HeaderContainer>
         <TitleWrapper>
-          <Image
+          <CalendarIcon
             src="/images/calendar-icon.svg"
             alt="Calendar icon"
             width={16}
             height={16}
-            style={{ color: '#A9DBE9' }}
           />
           <Text variant="m">{t('STATISTICS_CHART.LAST_WEEK')}</Text>
         </TitleWrapper>
         <StatisticsWrapper>
           <Text variant="m">
-            <Text tag="span" variant="l-bold" className="text-medium">
+            <MediumText tag="span" variant="l-bold">
               {totalLessons}
-            </Text>{' '}
+            </MediumText>{' '}
             {t('STATISTICS_CHART.LESSONS')}
           </Text>
           <Text variant="m">
-            <Text tag="span" variant="l-bold" className="text-medium">
+            <MediumText tag="span" variant="l-bold">
               {totalTests}
-            </Text>{' '}
+            </MediumText>{' '}
             {t('STATISTICS_CHART.TESTS')}
           </Text>
         </StatisticsWrapper>

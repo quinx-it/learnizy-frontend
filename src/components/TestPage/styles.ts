@@ -1,6 +1,7 @@
 import { Box, Divider as MuiDivider, styled } from '@mui/material';
 
 import CardWrapper from '@/components/CardWrapper';
+import { Text } from '@/components/Typography';
 
 export const Container = styled(Box)(() => ({
   display: 'flex',
@@ -43,4 +44,8 @@ export const DescriptionWrapper = styled(Box)(() => ({
   '& > *': {
     maxWidth: '90%',
   },
+}));
+
+export const MediumText = styled(Text)(({ theme }) => ({
+  color: theme.palette.primary.main,
 }));

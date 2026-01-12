@@ -1,5 +1,6 @@
 'use client';
 
+import { useTheme } from '@mui/material';
 import Image from 'next/image';
 import { useEffect, useRef, useState, type FC } from 'react';
 import WaveSurfer from 'wavesurfer.js';
@@ -23,6 +24,7 @@ import {
 const AudioPlayer: FC<IAudioPlayerProps> = (props) => {
   const { src, transcript } = props;
 
+  const theme = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
   const wavesurferRef = useRef<WaveSurfer | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -36,8 +38,8 @@ const AudioPlayer: FC<IAudioPlayerProps> = (props) => {
 
     const ws = WaveSurfer.create({
       container: containerRef.current,
-      waveColor: '#ffffffff',
-      progressColor: '#A9DBE9',
+      waveColor: theme.palette.common.white,
+      progressColor: theme.palette.info.main,
       cursorWidth: 0,
       height: 20,
       barWidth: 2,

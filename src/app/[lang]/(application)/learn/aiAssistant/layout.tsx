@@ -7,6 +7,8 @@ import ChatHistory from '@/components/ChatHistory';
 import { ROUTES } from '@/const/routes';
 import { useRouter } from '@/hooks';
 
+import { ContentWrapper, LayoutGrid } from './styles';
+
 const AiAssistantLayout: FC<PropsWithChildren> = ({ children }) => {
   const router = useRouter();
   const params = useParams();
@@ -22,14 +24,14 @@ const AiAssistantLayout: FC<PropsWithChildren> = ({ children }) => {
   };
 
   return (
-    <div className="grid h-full w-full grid-cols-[1fr_auto]">
-      <div className="relative flex flex-col overflow-hidden">{children}</div>
+    <LayoutGrid>
+      <ContentWrapper>{children}</ContentWrapper>
       <ChatHistory
         selectedChatId={selectedChatId}
         onSelectChat={handleSelectChat}
         onCreateChat={handleCreateChat}
       />
-    </div>
+    </LayoutGrid>
   );
 };
 
