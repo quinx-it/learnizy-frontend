@@ -10,7 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "typechecking": "tsc --noEmit",
     "format": "prettier --write .",
-    "prepare": "husky && echo \"npx lint-staged && pnpm typechecking\" > .husky/_/pre-commit",
+    "prepare": "[ ! -d .git ] || (husky && echo \"npx lint-staged && pnpm typechecking\" > .husky/_/pre-commit)",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
