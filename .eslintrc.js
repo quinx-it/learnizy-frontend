@@ -5,9 +5,8 @@ module.exports = {
     'airbnb/hooks',
     'plugin:prettier/recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:@next/eslint-plugin-next/recommended',
   ],
-  plugins: ['prettier', '@typescript-eslint', '@next/eslint-plugin-next'],
+  plugins: ['prettier', '@typescript-eslint'],
   rules: {
     'react/no-unstable-nested-components': 'off',
     '@typescript-eslint/triple-slash-reference': 'off',
