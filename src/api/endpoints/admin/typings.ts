@@ -64,6 +64,17 @@ export interface IModuleRequest {
   sequenceOrder: number;
 }
 
+export interface ICourseResponse {
+  id: number;
+  title: string;
+  description: string;
+}
+
+export interface ICourseRequest {
+  title: string;
+  description: string;
+}
+
 export interface ILessonDTO {
   id: number;
   title: string;

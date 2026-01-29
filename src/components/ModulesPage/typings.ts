@@ -6,4 +6,9 @@ export interface IModuleProgressCardProps {
   openEditModal: (moduleId: number) => void;
   handleDeleteModule: (moduleId: number) => void;
   shouldBlock?: boolean;
+  courseId: number;
+}
+
+export interface IModulesPageProps {
+  courseId?: number;
 }

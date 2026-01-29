@@ -110,5 +110,11 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
       },
     },
+    {
+      files: ['next-env.d.ts'],
+      rules: {
+        'import/extensions': 'off',
+      },
+    },
   ],
 };

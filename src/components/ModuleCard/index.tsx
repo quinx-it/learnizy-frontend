@@ -3,7 +3,6 @@
 import { memo, useMemo, type FC } from 'react';
 import { useSelector } from 'react-redux';
 
-import { type IModuleInfo } from '@/api/endpoints/modules';
 import Button from '@/components/Button';
 import DotTitle from '@/components/DotTitle';
 import { Text } from '@/components/Typography';
@@ -14,6 +13,7 @@ import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
 
 import { constants } from './const';
+import { type IModuleCardProps } from './typings';
 import { renderModuleProgress } from './utils';
 
 import {
@@ -27,7 +27,7 @@ import {
   TopSection,
 } from './styles';
 
-const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) => {
+const ModuleCardComponent: FC<IModuleCardProps> = (props) => {
   const {
     totalLessons,
     completedLessons,
@@ -37,6 +37,7 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
     id,
     sequenceOrder,
     className,
+    courseId,
   } = props;
 
   const { t } = useTranslation();
@@ -85,7 +86,13 @@ const ModuleCardComponent: FC<IModuleInfo & { className?: string }> = (props) =>
   const handleCardClick = () => {
     if (isBlocked && !isMentor) return;
 
-    router.push(isMentor ? `${ROUTES.MENTOR_MODULES}/${id}` : `${ROUTES.USER_MODULES}/${id}`);
+    if (isMentor && courseId != null) {
+      router.push(`${ROUTES.MENTOR_COURSES}/${courseId}/modules/${id}`);
+    } else if (isMentor) {
+      router.push(`${ROUTES.MENTOR_MODULES}/${id}`);
+    } else {
+      router.push(`${ROUTES.USER_MODULES}/${id}`);
+    }
   };
 
   return (

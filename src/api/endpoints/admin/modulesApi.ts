@@ -13,7 +13,7 @@ const MODULES_URL = '/modules';
 export const modulesApi = api.injectEndpoints({
   overrideExisting: true,
   endpoints: (builder) => ({
-    getModules: builder.query<
+    getAdminModules: builder.query<
       IPage<IModuleResponse>,
       {
         title?: string;
@@ -75,7 +75,7 @@ export const modulesApi = api.injectEndpoints({
 });
 
 export const {
-  useGetModulesQuery,
+  useGetAdminModulesQuery,
   useGetModuleByIdQuery,
   useCreateModuleMutation,
   useUpdateModuleMutation,

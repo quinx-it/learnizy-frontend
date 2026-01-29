@@ -63,7 +63,7 @@ import {
 } from './styles';
 
 const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
-  const { id } = props;
+  const { id, courseId: courseIdProp = 1 } = props;
 
   const { t } = useTranslation();
 
@@ -80,7 +80,7 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
     isLoading,
     isError,
     refetch,
-  } = useGetModuleQuery({ courseId: 1, moduleId: +id });
+  } = useGetModuleQuery({ courseId: courseIdProp, moduleId: +id });
 
   const [createLesson] = useCreateLessonMutation();
   const [updateLesson] = useUpdateLessonMutation();

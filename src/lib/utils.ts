@@ -51,7 +51,7 @@ export const isGuest = (role: UserRole) => {
   return role === UserRole.Guest;
 };
 
-const STATIC_MENTOR_ROUTES = [ROUTES.MENTOR_STUDENTS, ROUTES.MENTOR_MODULES];
+const STATIC_MENTOR_ROUTES = [ROUTES.MENTOR_STUDENTS, ROUTES.MENTOR_MODULES, ROUTES.MENTOR_COURSES];
 const DYNAMIC_MENTOR_ROUTES = [
   /^\/mentor\/students\/\d+$/,
   /^\/mentor\/modules\/\d+$/,
@@ -59,6 +59,12 @@ const DYNAMIC_MENTOR_ROUTES = [
   /^\/mentor\/modules\/\d+\/\d+\/test$/,
   /^\/mentor\/modules\/\d+\/\d+\/result$/,
   /^\/mentor\/modules\/\d+\/\d+\/retelling$/,
+  /^\/mentor\/courses\/\d+\/modules$/,
+  /^\/mentor\/courses\/\d+\/modules\/\d+$/,
+  /^\/mentor\/courses\/\d+\/modules\/\d+\/\d+$/,
+  /^\/mentor\/courses\/\d+\/modules\/\d+\/\d+\/test$/,
+  /^\/mentor\/courses\/\d+\/modules\/\d+\/\d+\/result$/,
+  /^\/mentor\/courses\/\d+\/modules\/\d+\/\d+\/retelling$/,
 ];
 
 const STATIC_USER_ROUTES = [

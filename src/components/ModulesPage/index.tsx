@@ -4,11 +4,12 @@ import { type FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
-  useGetModulesQuery,
+  useGetAdminModulesQuery,
   useGetModuleProgressQuery,
   useCreateModuleMutation,
   useUpdateModuleMutation,
   useDeleteModuleMutation,
+  useGetCourseByIdQuery,
   type IModuleInfo,
 } from '@/api/endpoints/admin';
 import { ModuleCompletionStatus, useGetMainPageProgressQuery } from '@/api/endpoints/progress';
@@ -27,13 +28,12 @@ import Input from '@/components/Input';
 import { ModuleCard } from '@/components/ModuleCard';
 import Textarea from '@/components/Textarea';
 import { showToast } from '@/components/Toaster';
-import { GLOBAL_CONSTANTS } from '@/const/constants';
 import { ROUTES } from '@/const/routes';
 import { useTranslation } from '@/hooks';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
 
-import { type IModuleProgressCardProps } from './typings';
+import { type IModuleProgressCardProps, type IModulesPageProps } from './typings';
 
 import {
   BlueButtonSmall,
@@ -51,10 +51,15 @@ import {
 } from './styles';
 
 const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
-  const { module, isMentor, openEditModal, handleDeleteModule, shouldBlock = false } = props;
+  const {
+    module,
+    isMentor,
+    openEditModal,
+    handleDeleteModule,
+    shouldBlock = false,
+    courseId,
+  } = props;
   const { t } = useTranslation();
-
-  const courseId = 1;
 
   const { data: progressData, isError } = useGetModuleProgressQuery({
     courseId,
@@ -86,7 +91,7 @@ const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
   return (
     <ModuleProgressCardContainer>
       <ModuleCardWrapper>
-        <ModuleCard {...moduleInfo} />
+        <ModuleCard {...moduleInfo} courseId={courseId} />
       </ModuleCardWrapper>
 
       {isMentor && (
@@ -101,7 +106,7 @@ const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
   );
 };
 
-const ModulesPage: FC = () => {
+const ModulesPage: FC<IModulesPageProps> = ({ courseId = 1 }) => {
   const role = useSelector(selectUserRole);
   const isMentor = role === UserRole.Mentor;
   const { t } = useTranslation();
@@ -111,7 +116,8 @@ const ModulesPage: FC = () => {
     isLoading,
     isError,
     refetch,
-  } = useGetModulesQuery({ page: 0, size: 20 });
+  } = useGetAdminModulesQuery({ page: 0, size: 20, courseId });
+  const { data: courseData } = useGetCourseByIdQuery(courseId);
   const { data: mainPageProgress } = useGetMainPageProgressQuery();
   const [createModule] = useCreateModuleMutation();
   const [updateModule] = useUpdateModuleMutation();
@@ -148,10 +154,10 @@ const ModulesPage: FC = () => {
       if (editingModuleId) {
         await updateModule({
           id: editingModuleId,
-          data: { title, description, courseId: 1, sequenceOrder },
+          data: { title, description, courseId, sequenceOrder },
         }).unwrap();
       } else {
-        await createModule({ title, description, courseId: 1, sequenceOrder }).unwrap();
+        await createModule({ title, description, courseId, sequenceOrder }).unwrap();
       }
 
       setModalOpen(false);
@@ -177,9 +183,9 @@ const ModulesPage: FC = () => {
   return (
     <PageContainer>
       <Breadcrumbs
-        rootLabel={t(GLOBAL_CONSTANTS.rootBreadcrumbLabels.modulesLabel)}
-        rootHref={ROUTES.USER_KNOWLEDGE_BASE}
-        rootDescription="Java Core"
+        rootLabel={t('BREADCRUMBS.COURSES')}
+        rootHref={isMentor ? `${ROUTES.MENTOR_COURSES}` : `${ROUTES.USER_KNOWLEDGE_BASE}`}
+        rootDescription={courseData?.title || 'Course'}
       />
       {isMentor && (
         <CreateButtonWrapper>
@@ -270,6 +276,7 @@ const ModulesPage: FC = () => {
                 openEditModal={openEditModal}
                 handleDeleteModule={handleDeleteModule}
                 shouldBlock={shouldBlock}
+                courseId={courseId}
               />
             );
           })}

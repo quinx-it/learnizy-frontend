@@ -19,4 +19,5 @@ export enum ROUTES {
   USER_INTERVIEW_RECORDS = 'user-interview-records',
   MENTOR_STUDENTS = '/mentor/students',
   MENTOR_MODULES = '/mentor/modules',
+  MENTOR_COURSES = '/mentor/courses',
 }
