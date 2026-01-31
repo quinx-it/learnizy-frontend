@@ -16,6 +16,7 @@
     "ADD_LESSON": "Добавить урок",
     "EDIT": "Редактировать",
     "DELETE": "Удалить",
+    "DETAILS": "Подробнее",
     "ERROR": "Ошибка",
     "SAVE_ERROR": "Ошибка при сохранении урока",
     "DELETE_ERROR": "Ошибка при удалении урока",
@@ -41,7 +42,24 @@
     "KNOWLEDGE_BASE": "База знаний",
     "EXAMS": "Экзамены",
     "PROJECTS": "Проекты",
-    "PROFILE": "Профиль"
+    "PROFILE": "Профиль",
+    "COURSES": "Курсы"
+  },
+  "COURSES_PAGE": {
+    "CREATE_COURSE": "Создать курс",
+    "EDIT_COURSE": "Редактирование курса",
+    "CREATE_NEW_COURSE": "Создание нового курса",
+    "COURSE_TITLE": "Название курса",
+    "COURSE_DESCRIPTION": "Описание курса",
+    "CANCEL": "Отмена",
+    "SAVE": "Сохранить",
+    "CREATE": "Создать",
+    "ERROR_SAVE": "Ошибка при сохранении курса",
+    "ERROR_DELETE": "Ошибка при удалении курса"
+  },
+  "BREADCRUMBS": {
+    "COURSES": "Курсы",
+    "COURSES_DESC": "Управление курсами"
   },
   "CHAT_INPUT": {
     "WRITE_YOUR_QUESTION": "Напишите ваш вопрос",

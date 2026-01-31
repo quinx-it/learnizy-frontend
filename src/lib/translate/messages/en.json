@@ -16,6 +16,7 @@
     "ADD_LESSON": "Add lesson",
     "EDIT": "Edit",
     "DELETE": "Delete",
+    "DETAILS": "Details",
     "ERROR": "Error",
     "SAVE_ERROR": "Error saving lesson",
     "DELETE_ERROR": "Error deleting lesson",
@@ -41,7 +42,24 @@
     "KNOWLEDGE_BASE": "Knowledge Base",
     "EXAMS": "Exams",
     "PROJECTS": "Projects",
-    "PROFILE": "Profile"
+    "PROFILE": "Profile",
+    "COURSES": "Courses"
+  },
+  "COURSES_PAGE": {
+    "CREATE_COURSE": "Create Course",
+    "EDIT_COURSE": "Edit Course",
+    "CREATE_NEW_COURSE": "Create New Course",
+    "COURSE_TITLE": "Course Title",
+    "COURSE_DESCRIPTION": "Course Description",
+    "CANCEL": "Cancel",
+    "SAVE": "Save",
+    "CREATE": "Create",
+    "ERROR_SAVE": "Error saving course",
+    "ERROR_DELETE": "Error deleting course"
+  },
+  "BREADCRUMBS": {
+    "COURSES": "Courses",
+    "COURSES_DESC": "Course Management"
   },
   "CHAT_INPUT": {
     "WRITE_YOUR_QUESTION": "Write your question",
