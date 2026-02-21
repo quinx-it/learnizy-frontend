@@ -4,6 +4,7 @@ import { type ICourseResponse } from '@/api/endpoints/admin';
 
 export interface ICourseCardProps extends ICourseResponse {
   className?: string;
+  detailsBaseRoute?: string;
   onEdit?: (e: MouseEvent) => void;
   onDelete?: (e: MouseEvent) => void;
 }

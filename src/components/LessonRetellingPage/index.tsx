@@ -21,7 +21,7 @@ import {
 } from './styles';
 
 const LessonRetellingPage: FC<ILessonRetellingPageProps> = (props) => {
-  const { module, lesson } = props;
+  const { module, lesson, courseId } = props;
   const { t } = useTranslation();
 
   const { data: lessonData, isLoading } = useGetLessonQuery(lesson);
@@ -32,13 +32,15 @@ const LessonRetellingPage: FC<ILessonRetellingPageProps> = (props) => {
 
   const { sequenceOrder, moduleSequenceOrder } = lessonData;
 
-  const breadcrumbs = createBreadcrumbs(t);
+  const breadcrumbs = createBreadcrumbs(t, courseId);
+  const rootHref =
+    courseId != null ? `${ROUTES.USER_COURSES}/${courseId}/modules` : ROUTES.USER_MODULES;
 
   return (
     <Container>
       <Breadcrumbs
         items={breadcrumbs(moduleSequenceOrder ?? 1, module, lesson, sequenceOrder + 1)}
-        rootHref={ROUTES.USER_MODULES}
+        rootHref={rootHref}
         rootLabel={t('LESSON_RETELLING.MODULES')}
       />
       <CardWrapper>

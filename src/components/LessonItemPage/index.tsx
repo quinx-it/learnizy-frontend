@@ -11,6 +11,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
 import BlockRenderer from '@/components/ContentBlockParser';
 import DotTitle from '@/components/DotTitle';
+import ErrorSection from '@/components/ErrorSection';
 import FullscreenLoader from '@/components/FullscreenLoader';
 import { showToast } from '@/components/Toaster';
 import { ROUTES } from '@/const/routes';
@@ -40,14 +41,14 @@ import {
 } from './styles';
 
 const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
-  const { lessonId, moduleId } = props;
+  const { lessonId, moduleId, courseId } = props;
 
   const { t } = useTranslation();
 
   const router = useRouter();
   const pathname = usePathname();
 
-  const { data: lesson, isLoading } = useGetLessonQuery(lessonId);
+  const { data: lesson, isLoading, refetch } = useGetLessonQuery(lessonId);
   const role = useSelector(selectUserRole);
   const isMentor = role === UserRole.Mentor;
 
@@ -64,7 +65,7 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
 
   if (isLoading) return <FullscreenLoader />;
 
-  if (!lesson) return null;
+  if (!lesson) return <ErrorSection reset={refetch} />;
 
   const { sequenceOrder, moduleSequenceOrder, contentBlocks, testQuestions } = lesson;
 
@@ -96,8 +97,16 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
     <Container>
       <BreadcrumbsWrapper>
         <Breadcrumbs
-          items={constants.breadcrumbs(t, moduleSequenceOrder ?? 1, moduleId, sequenceOrder ?? 0)}
-          rootHref={ROUTES.USER_MODULES}
+          items={constants.breadcrumbs(
+            t,
+            moduleSequenceOrder ?? 1,
+            moduleId,
+            sequenceOrder ?? 0,
+            courseId,
+          )}
+          rootHref={
+            courseId != null ? `${ROUTES.USER_COURSES}/${courseId}/modules` : ROUTES.USER_MODULES
+          }
           rootLabel={t('LESSON_ITEM_PAGE.BREADCRUMB_ROOT')}
         />
       </BreadcrumbsWrapper>
@@ -128,6 +137,14 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
               </ButtonsContainer>
             </EditingContainer>
           )}
+        </CardWrapper>
+      )}
+
+      {lesson.content && (
+        <CardWrapper>
+          <div data-color-mode="light">
+            <MDEditor.Markdown source={lesson.content} />
+          </div>
         </CardWrapper>
       )}
 

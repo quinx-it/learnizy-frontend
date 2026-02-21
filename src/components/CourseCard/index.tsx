@@ -20,12 +20,14 @@ import {
 } from './styles';
 
 const CourseCardComponent: FC<ICourseCardProps> = (props) => {
-  const { title, description, id, className, onEdit, onDelete } = props;
+  const { title, description, id, className, detailsBaseRoute, onEdit, onDelete } = props;
   const { t } = useTranslation();
   const router = useRouter();
 
+  const baseRoute = detailsBaseRoute ?? ROUTES.MENTOR_COURSES;
+
   const handleCardClick = () => {
-    router.push(`${ROUTES.MENTOR_COURSES}/${id}/modules`);
+    router.push(`${baseRoute}/${id}/modules`);
   };
 
   return (
@@ -84,7 +86,12 @@ const CourseCardComponent: FC<ICourseCardProps> = (props) => {
             </ButtonContainer>
           </BottomSection>
         </LeftContent>
-        <StyledImage width={115} height={115} src="/images/astronaut1.webp" alt="course-img" />
+        <StyledImage
+          width={115}
+          height={115}
+          src="/images/astronaut1.webp"
+          alt={t('COMMON.COURSE_IMAGE_ALT')}
+        />
       </ContentWrapper>
     </CardContainer>
   );

@@ -48,7 +48,7 @@ const getStatus = (status: TestStatus, passed: boolean, t: (key: string) => stri
 };
 
 const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) => {
-  const { lessonId, moduleId } = props;
+  const { lessonId, moduleId, courseId } = props;
   const { t } = useTranslation();
 
   const { data: lessonTest } = useGetTestByLessonIdQuery(+lessonId);
@@ -98,21 +98,24 @@ const LessonTestResultPage: FC<LessonTestResultPagePropsType> = (props) => {
   const scorePercent = answers.length > 0 ? Math.round((totalPoints / answers.length) * 100) : 0;
   const passed = scorePercent >= 70;
 
+  const modulesBase =
+    courseId != null ? `${ROUTES.USER_COURSES}/${courseId}/modules` : ROUTES.USER_MODULES;
+
   return (
     <>
       <Breadcrumbs
         items={[
           {
             label: `${t('TEST_RESULT.MODULE')} ${moduleSequenceOrder}`,
-            href: `${ROUTES.USER_MODULES}/${moduleId}`,
+            href: `${modulesBase}/${moduleId}`,
           },
           {
             label: `${t('TEST_RESULT.LESSON')} ${lessonSequenceOrder + 1}`,
-            href: `${ROUTES.USER_MODULES}/${moduleId}/${lessonId}`,
+            href: `${modulesBase}/${moduleId}/${lessonId}`,
           },
           { label: t('TEST_RESULT.RESULTS'), href: `` },
         ]}
-        rootHref={ROUTES.USER_MODULES}
+        rootHref={modulesBase}
         rootLabel={t(GLOBAL_CONSTANTS.rootBreadcrumbLabels.modulesLabel)}
       />
 

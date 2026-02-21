@@ -106,7 +106,8 @@ const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
   );
 };
 
-const ModulesPage: FC<IModulesPageProps> = ({ courseId = 1 }) => {
+const ModulesPage: FC<IModulesPageProps> = (props) => {
+  const { courseId = 2 } = props;
   const role = useSelector(selectUserRole);
   const isMentor = role === UserRole.Mentor;
   const { t } = useTranslation();
@@ -118,7 +119,7 @@ const ModulesPage: FC<IModulesPageProps> = ({ courseId = 1 }) => {
     refetch,
   } = useGetAdminModulesQuery({ page: 0, size: 20, courseId });
   const { data: courseData } = useGetCourseByIdQuery(courseId);
-  const { data: mainPageProgress } = useGetMainPageProgressQuery();
+  const { data: mainPageProgress } = useGetMainPageProgressQuery(courseId);
   const [createModule] = useCreateModuleMutation();
   const [updateModule] = useUpdateModuleMutation();
   const [deleteModule] = useDeleteModuleMutation();
@@ -180,12 +181,16 @@ const ModulesPage: FC<IModulesPageProps> = ({ courseId = 1 }) => {
 
   if (isError) return <ErrorSection reset={refetch} />;
 
+  const breadcrumbsRootLabel = t('BREADCRUMBS.COURSES');
+  const breadcrumbsRootHref = isMentor ? ROUTES.MENTOR_COURSES : ROUTES.USER_COURSES;
+  const breadcrumbsRootDescription = courseData?.title || t('COMMON.COURSE_LABEL');
+
   return (
     <PageContainer>
       <Breadcrumbs
-        rootLabel={t('BREADCRUMBS.COURSES')}
-        rootHref={isMentor ? `${ROUTES.MENTOR_COURSES}` : `${ROUTES.USER_KNOWLEDGE_BASE}`}
-        rootDescription={courseData?.title || 'Course'}
+        rootLabel={breadcrumbsRootLabel}
+        rootHref={breadcrumbsRootHref}
+        rootDescription={breadcrumbsRootDescription}
       />
       {isMentor && (
         <CreateButtonWrapper>

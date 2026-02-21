@@ -35,7 +35,7 @@ const mapExamStatus = (status: ExamApiStatus): ExamStatus => {
 };
 
 const ExamsPage: FC<IExamsPageProps> = (props) => {
-  const { courseId = 1 } = props;
+  const { courseId = 2 } = props;
 
   const { t } = useTranslation();
 

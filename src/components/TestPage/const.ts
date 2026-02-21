@@ -22,19 +22,22 @@ export const constants = {
     testType: string,
     lessonSequenceOrder: number,
     moduleSequenceOrder: number,
+    courseId?: number,
   ) => {
+    const modulesBase =
+      courseId != null ? `${ROUTES.USER_COURSES}/${courseId}/modules` : ROUTES.USER_MODULES;
     const items =
       testType === 'LESSON_TEST'
         ? [
             {
               label: 'BREADCRUMB_LABELS.MODULE_LABEL',
               number: moduleSequenceOrder,
-              href: `${ROUTES.USER_MODULES}/${moduleId}`,
+              href: `${modulesBase}/${moduleId}`,
             },
             {
               label: 'BREADCRUMB_LABELS.LESSON_LABEL',
               number: lessonSequenceOrder + 1,
-              href: `${ROUTES.USER_MODULES}/${moduleId}/${lessonId}`,
+              href: `${modulesBase}/${moduleId}/${lessonId}`,
             },
             { label: 'TITLE_TEST.LESSON_TEST', href: '' },
           ]

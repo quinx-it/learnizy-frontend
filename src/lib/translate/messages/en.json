@@ -33,7 +33,8 @@
     "SAVE": "Save",
     "CREATE": "Create",
     "BUTTON_LOGOUT": "Logout",
-    "MODULE": "Module"
+    "MODULE": "Module",
+    "COURSE_IMAGE_ALT": "Course image"
   },
   "NAVBAR": {
     "HOME": "Home",
@@ -59,7 +60,8 @@
   },
   "BREADCRUMBS": {
     "COURSES": "Courses",
-    "COURSES_DESC": "Course Management"
+    "COURSES_DESC": "Course Management",
+    "USER_COURSES_DESC": "My courses"
   },
   "CHAT_INPUT": {
     "WRITE_YOUR_QUESTION": "Write your question",

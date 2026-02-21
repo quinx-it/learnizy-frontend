@@ -12,6 +12,7 @@ export enum ROUTES {
   USER_AI_ASSISTANT = '/learn/aiAssistant',
   USER_FREQUENTLY_ASKED_QUESTIONS = 'user-frequently-asked-questions',
   USER_MODULES = '/learn/modules',
+  USER_COURSES = '/learn/courses',
   USER_PROJECTS = '/learn/projects',
   USER_PROFILE_PERSONAL_DATA = '/learn/userProfile/personalData',
   USER_PROFILE_SECURITY_SETTINGS = '/learn/userProfile/securitySettings',

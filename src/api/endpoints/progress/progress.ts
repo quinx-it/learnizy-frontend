@@ -4,8 +4,9 @@ import { type IMainPageInfoResponse } from './types';
 
 export const progressApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getMainPageProgress: builder.query<IMainPageInfoResponse, void>({
-      query: () => 'progress/users/main-page',
+    getMainPageProgress: builder.query<IMainPageInfoResponse, number | void>({
+      query: (courseId) =>
+        courseId ? `progress/users/main-page?courseId=${courseId}` : 'progress/users/main-page',
     }),
   }),
 });
