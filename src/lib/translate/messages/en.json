@@ -205,7 +205,22 @@
     "TOAST_SUCCESS_TITLE": "Success",
     "TOAST_SUCCESS_MESSAGE": "Content successfully saved",
     "TOAST_ERROR_TITLE": "Error",
-    "TOAST_ERROR_MESSAGE": "Error saving content"
+    "TOAST_ERROR_MESSAGE": "Error saving content",
+    "TEST_SECTION_TITLE": "Lesson test",
+    "TEST_CREATE_BUTTON": "Create test",
+    "TEST_EDIT_BUTTON": "Edit test",
+    "TEST_NO_TEST_MESSAGE": "No test for this lesson yet.",
+    "TEST_TITLE_LABEL": "Test title",
+    "TEST_PASS_THRESHOLD_LABEL": "Pass threshold (%)",
+    "TEST_QUESTIONS_HEADING": "Questions",
+    "TEST_QUESTION_TEXT_PLACEHOLDER": "Question text",
+    "TEST_QUESTION_MAX_SCORE": "Max score",
+    "TEST_ADD_QUESTION": "Add question",
+    "TEST_REMOVE_QUESTION": "Remove",
+    "TEST_SAVE": "Save test",
+    "TEST_CREATE_SUCCESS": "Test created successfully",
+    "TEST_UPDATE_SUCCESS": "Test updated successfully",
+    "TEST_ERROR": "Error saving test"
   },
   "PROGRESS_CARD": {
     "MODULES_LABEL": "Modules",

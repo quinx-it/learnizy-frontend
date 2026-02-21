@@ -205,7 +205,22 @@
     "TOAST_SUCCESS_TITLE": "Успех",
     "TOAST_SUCCESS_MESSAGE": "Контент успешно сохранён",
     "TOAST_ERROR_TITLE": "Ошибка",
-    "TOAST_ERROR_MESSAGE": "Ошибка при сохранении контента"
+    "TOAST_ERROR_MESSAGE": "Ошибка при сохранении контента",
+    "TEST_SECTION_TITLE": "Тест к уроку",
+    "TEST_CREATE_BUTTON": "Создать тест",
+    "TEST_EDIT_BUTTON": "Редактировать тест",
+    "TEST_NO_TEST_MESSAGE": "Теста к этому уроку пока нет.",
+    "TEST_TITLE_LABEL": "Название теста",
+    "TEST_PASS_THRESHOLD_LABEL": "Порог прохождения (%)",
+    "TEST_QUESTIONS_HEADING": "Вопросы",
+    "TEST_QUESTION_TEXT_PLACEHOLDER": "Текст вопроса",
+    "TEST_QUESTION_MAX_SCORE": "Макс. балл",
+    "TEST_ADD_QUESTION": "Добавить вопрос",
+    "TEST_REMOVE_QUESTION": "Удалить",
+    "TEST_SAVE": "Сохранить тест",
+    "TEST_CREATE_SUCCESS": "Тест успешно создан",
+    "TEST_UPDATE_SUCCESS": "Тест успешно обновлён",
+    "TEST_ERROR": "Ошибка при сохранении теста"
   },
   "PROGRESS_CARD": {
     "MODULES_LABEL": "Модулей",
