@@ -39,6 +39,23 @@ export type LessonTestResponseType = {
   questions: LessonQuestionItemType[];
 };
 
+export type CreateLessonTestQuestionRequest = {
+  text: string;
+  sequenceOrder: number;
+  maxScore?: number;
+};
+
+export type CreateLessonTestRequest = {
+  testType: 'LESSON_TEST';
+  lessonId: number;
+  moduleId: number;
+  title: string;
+  passThresholdPercentage: number;
+  questions: CreateLessonTestQuestionRequest[];
+};
+
+export type UpdateLessonTestRequest = CreateLessonTestRequest;
+
 export type LessonTestSubmitType = {
   testId: number;
   answers: QuestionAnswerSubmitType[];

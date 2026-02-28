@@ -63,6 +63,28 @@ export const TestInfoDotTitleWrapper = styled(Box)(({ theme }) => ({
   marginBottom: theme.spacing(1.5),
 }));
 
+export const TestFormContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: theme.spacing(1.5),
+}));
+
+export const TestQuestionRow = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: theme.spacing(0.5),
+  padding: theme.spacing(1),
+  border: `1px solid ${theme.palette.divider}`,
+  borderRadius: theme.shape.borderRadius,
+}));
+
+export const TestQuestionRowHeader = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  gap: theme.spacing(1),
+}));
+
 export const YellowButton = styled(MuiButton)(({ theme }) => ({
   textTransform: 'none',
   boxShadow: 'none',
