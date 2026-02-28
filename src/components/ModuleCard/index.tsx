@@ -90,6 +90,8 @@ const ModuleCardComponent: FC<IModuleCardProps> = (props) => {
       router.push(`${ROUTES.MENTOR_COURSES}/${courseId}/modules/${id}`);
     } else if (isMentor) {
       router.push(`${ROUTES.MENTOR_MODULES}/${id}`);
+    } else if (courseId != null) {
+      router.push(`${ROUTES.USER_COURSES}/${courseId}/modules/${id}`);
     } else {
       router.push(`${ROUTES.USER_MODULES}/${id}`);
     }

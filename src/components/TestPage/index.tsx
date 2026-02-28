@@ -27,7 +27,7 @@ import {
 } from './styles';
 
 const TestPage: FC<TestPagePropsType> = (props) => {
-  const { lessonId, moduleId, lessonTest, isLoading, isError, refetch } = props;
+  const { lessonId, moduleId, lessonTest, isLoading, isError, refetch, courseId } = props;
 
   const { t } = useTranslation();
 
@@ -56,6 +56,7 @@ const TestPage: FC<TestPagePropsType> = (props) => {
     testType,
     lessonSequenceOrder,
     moduleSequenceOrder,
+    courseId,
   );
 
   const onSubmit = async (data: LessonTestSubmitType) => {
@@ -67,11 +68,20 @@ const TestPage: FC<TestPagePropsType> = (props) => {
     }
   };
 
+  const getBreadcrumbsRootHref = (): string => {
+    if (testType === TestType.Lesson) {
+      return courseId != null ? `${ROUTES.USER_COURSES}/${courseId}/modules` : ROUTES.USER_MODULES;
+    }
+
+    return ROUTES.USER_EXAMS;
+  };
+  const breadcrumbsRootHref = getBreadcrumbsRootHref();
+
   return (
     <>
       <Breadcrumbs
         items={currentBreadcrumbs}
-        rootHref={testType === TestType.Lesson ? ROUTES.USER_MODULES : ROUTES.USER_EXAMS}
+        rootHref={breadcrumbsRootHref}
         rootLabel={
           testType === TestType.Lesson
             ? t(GLOBAL_CONSTANTS.rootBreadcrumbLabels.modulesLabel)

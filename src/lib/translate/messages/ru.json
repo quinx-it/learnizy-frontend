@@ -33,7 +33,8 @@
     "SAVE": "Сохранить",
     "CREATE": "Создать",
     "BUTTON_LOGOUT": "Выход",
-    "MODULE": "Модуль"
+    "MODULE": "Модуль",
+    "COURSE_IMAGE_ALT": "Изображение курса"
   },
   "NAVBAR": {
     "HOME": "Главная",
@@ -59,7 +60,8 @@
   },
   "BREADCRUMBS": {
     "COURSES": "Курсы",
-    "COURSES_DESC": "Управление курсами"
+    "COURSES_DESC": "Управление курсами",
+    "USER_COURSES_DESC": "Мои курсы"
   },
   "CHAT_INPUT": {
     "WRITE_YOUR_QUESTION": "Напишите ваш вопрос",

@@ -63,7 +63,7 @@ import {
 } from './styles';
 
 const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
-  const { id, courseId: courseIdProp = 1 } = props;
+  const { id, courseId: courseIdProp = 2 } = props;
 
   const { t } = useTranslation();
 
@@ -161,11 +161,16 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
 
   const isAvailableExam = (progressValue: number) => progressValue >= examAvailableNumber;
 
+  const isCourseContext = pathname.includes('/learn/courses/');
+  const modulesRootHref = isCourseContext
+    ? `${ROUTES.USER_COURSES}/${courseIdProp}/modules`
+    : ROUTES.USER_MODULES;
+
   return (
     <>
       <Breadcrumbs
         items={breadcrumbs(sequenceOrder)}
-        rootHref={ROUTES.USER_MODULES}
+        rootHref={modulesRootHref}
         rootLabel={t('MODULES.STRUCTURE')}
       />
 

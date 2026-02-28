@@ -102,12 +102,16 @@ const CoursesPage: FC = () => {
 
   if (isError) return <ErrorSection reset={refetch} />;
 
+  const breadcrumbsRootLabel = t('BREADCRUMBS.COURSES');
+  const breadcrumbsRootHref = ROUTES.MENTOR_COURSES;
+  const breadcrumbsRootDescription = t('BREADCRUMBS.COURSES_DESC');
+
   return (
     <PageContainer>
       <Breadcrumbs
-        rootLabel={t('BREADCRUMBS.COURSES')}
-        rootHref={ROUTES.MENTOR_COURSES}
-        rootDescription={t('BREADCRUMBS.COURSES_DESC')}
+        rootLabel={breadcrumbsRootLabel}
+        rootHref={breadcrumbsRootHref}
+        rootDescription={breadcrumbsRootDescription}
       />
       <CreateButtonWrapper>
         <BlueButtonSmall onClick={openCreateModal}>

@@ -12,4 +12,5 @@ export type TestPagePropsType = {
   isLoading: boolean;
   isError: boolean;
   refetch: () => void;
+  courseId?: number;
 };

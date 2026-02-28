@@ -31,7 +31,7 @@ export const REFRESH_THROTTLE = 1000;
 export const NAVBAR_LINKS = {
   user: [
     { href: ROUTES.USER_HOME_PAGE, src: '/images/cubes-main-icon.svg', label: 'NAVBAR.HOME' },
-    { href: ROUTES.USER_MODULES, src: '/images/student-hat-icon.svg', label: 'NAVBAR.MODULES' },
+    { href: ROUTES.USER_COURSES, src: '/images/student-hat-icon.svg', label: 'NAVBAR.COURSES' },
     {
       href: ROUTES.USER_AI_ASSISTANT,
       src: '/images/four-pointed-star-icon.svg',
