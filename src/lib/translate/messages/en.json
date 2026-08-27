@@ -471,8 +471,14 @@
   "ADVANTAGES": {
     "TITLE": "Why choose us?",
     "DESCRIPTION": "From practice with real cases to mentor support — everything to help you confidently pass a technical interview.",
-    "CARD_TITLE": "More than Java",
-    "CARD_TEXT": "We are not limited to programming only. At Learnizy you will find courses in marketing, logistics, business analytics and other in-demand areas"
+    "CARD_1_TITLE": "More than Java",
+    "CARD_1_TEXT": "We are not limited to programming only. At Learnizy you will find courses in marketing, logistics, business analytics and other in-demand areas",
+    "CARD_2_TITLE": "Pay after you are hired",
+    "CARD_2_TEXT": "Under the income share agreement, tuition comes out of your salary — and only once there is a salary to come out of",
+    "CARD_3_TITLE": "Mentors who do the hiring",
+    "CARD_3_TEXT": "Your code is reviewed by engineers who sit on the other side of the interview table every week and know what gets a candidate rejected",
+    "CARD_4_TITLE": "An interview you can replay",
+    "CARD_4_TEXT": "The AI simulator lets you fail a question privately, as many times as it takes, and tells you exactly what was missing from the answer"
   },
   "STUDENT_STATUS": {
     "CHECKED": "Checked",
@@ -523,6 +529,71 @@
   "VOICE_RECORDER_CONTROL": {
     "START_RECORDING": "Start recording",
     "STOP_RECORDING": "Stop"
+  },
+  "LANDING": {
+    "HERO": {
+      "EYEBROW": "Income share agreement",
+      "TITLE": "First the offer. Then the invoice.",
+      "DESCRIPTION": "Learnizy prepares Frontend, Backend, DevOps and Java developers alongside mentors from top companies. Rehearse on the AI simulator until the answers come easily — 87% of graduates get an offer.",
+      "PRIMARY_CTA": "Start learning",
+      "SECONDARY_CTA": "Sign in",
+      "NOTE": "No card required. Tuition comes out of your salary once there is one.",
+      "PANEL_LABEL": "AI interview simulator",
+      "PANEL_ROLE": "Java Developer · Middle",
+      "PANEL_PROGRESS": "Question 4 of 12",
+      "PANEL_QUESTION": "Two keys in a HashMap return the same hashCode. What happens?",
+      "PANEL_ANSWER_LABEL": "Your answer",
+      "PANEL_ANSWER": "They land in the same bucket. The map keeps them in a list and compares keys with equals — since Java 8 a long list turns into a tree.",
+      "PANEL_REVIEW_LABEL": "AI review",
+      "PANEL_REVIEW": "Correct. Name the threshold — eight entries — and this reads as a senior answer.",
+      "PANEL_SCORE": "9.1",
+      "PANEL_SCORE_LABEL": "out of 10"
+    },
+    "HOW_IT_WORKS": {
+      "TITLE": "How it works",
+      "DESCRIPTION": "Four steps from the first module to a signed offer. You pay at the fourth.",
+      "FREE": "Costs nothing",
+      "PAID": "Paid from your salary",
+      "STEP_1_TITLE": "Pick your track",
+      "STEP_1_TEXT": "Frontend, Backend, DevOps, Java — or marketing, logistics, business analysis. An entry test sets your starting level.",
+      "STEP_2_TITLE": "Learn with a mentor",
+      "STEP_2_TEXT": "Modules, real project work and code review from engineers who hire developers for a living.",
+      "STEP_3_TITLE": "Rehearse the interview",
+      "STEP_3_TEXT": "The AI simulator asks what real interviewers ask, then shows exactly where the answer fell short.",
+      "STEP_4_TITLE": "Take the offer",
+      "STEP_4_TEXT": "87% of graduates sign within six months. Tuition starts coming out of your salary — not a day before."
+    },
+    "AI": {
+      "EYEBROW": "AI assistant",
+      "TITLE": "Rehearse until the nerves are gone",
+      "TEXT": "Ask it to grill you on concurrency at two in the morning. It never tires, never softens the follow-up question, and remembers which topic you keep avoiding.",
+      "CTA": "Open the assistant"
+    },
+    "EXPLORE": {
+      "TITLE": "What is inside",
+      "DESCRIPTION": "Every part of the platform, one click away.",
+      "OPEN": "Open",
+      "COURSES_TEXT": "Full tracks with a mentor, from the first commit to a portfolio project.",
+      "MODULES_TEXT": "Short focused blocks: one topic, one test, one review.",
+      "EXAMS_TEXT": "Timed checkpoints built like a real technical screen.",
+      "AI_ASSISTANT_TEXT": "Practice interviews on demand, with a written review of every answer.",
+      "KNOWLEDGE_BASE_TEXT": "The questions interviewers actually ask, and answers worth memorising.",
+      "PROJECTS_TEXT": "Real cases you can put in front of a hiring manager."
+    },
+    "CTA": {
+      "TITLE": "Your next interview can go differently",
+      "TEXT": "Create an account and take the entry test. It takes twenty minutes and costs nothing.",
+      "BUTTON": "Create an account"
+    },
+    "FOOTER": {
+      "TAGLINE": "IT interview preparation with an employment guarantee.",
+      "LEARN_TITLE": "Learn",
+      "ACCOUNT_TITLE": "Account",
+      "SIGN_IN": "Sign in",
+      "SIGN_UP": "Sign up",
+      "FORGOT_PASSWORD": "Reset password",
+      "RIGHTS": "All rights reserved."
+    }
   },
   "SEO": {
     "DEFAULT": {

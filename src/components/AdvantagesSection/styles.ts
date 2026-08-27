@@ -10,25 +10,33 @@ export const StyledSectionContent = styled(SectionContent)(({ theme }) => ({
   backgroundColor: theme.palette.info.main,
 }));
 
-export const SectionWrapper = styled(Box)(({ theme }) => ({
+export const SectionWrapper = styled(Box)(() => ({
   marginLeft: 'auto',
   marginRight: 'auto',
   maxWidth: '1140px',
-  paddingLeft: theme.spacing(1),
 }));
 
 export const HeaderContainer = styled(Box)(({ theme }) => ({
   width: '100%',
-  paddingLeft: theme.spacing(4),
-  paddingRight: theme.spacing(4),
+  marginBottom: theme.spacing(6),
+
+  [theme.breakpoints.up('xl')]: {
+    marginBottom: theme.spacing(12),
+  },
 }));
 
-export const StyledHeading7xl = styled(BaseHeading)(() => ({
+export const StyledHeading7xl = styled(BaseHeading)(({ theme }) => ({
   marginBottom: '8px',
+  fontSize: '36px',
+  lineHeight: '42px',
+
+  [theme.breakpoints.up('md')]: {
+    fontSize: '52px',
+    lineHeight: '71px',
+  },
 }));
 
 export const StyledHeadingDescription = styled(BaseHeading)(() => ({
-  marginBottom: '120px',
   maxWidth: '750px',
 }));
 
@@ -52,8 +60,11 @@ export const StyledCard = styled(Box, {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
-  aspectRatio: '1 / 1',
   maxWidth: '558px',
+
+  [theme.breakpoints.up('md')]: {
+    aspectRatio: '1 / 1',
+  },
   overflow: 'hidden',
   borderRadius: '24px',
   padding: theme.spacing(4),
@@ -65,8 +76,15 @@ export const StyledCard = styled(Box, {
 
 export const CardContent = styled(Box)(() => ({}));
 
-export const StyledCardHeading = styled(BaseHeading)(() => ({
+export const StyledCardHeading = styled(BaseHeading)(({ theme }) => ({
   marginBottom: '12px',
+  fontSize: '28px',
+  lineHeight: '34px',
+
+  [theme.breakpoints.up('md')]: {
+    fontSize: '40px',
+    lineHeight: '55px',
+  },
 }));
 
 export const ImageWrapper = styled(Box)(({ theme }) => ({
