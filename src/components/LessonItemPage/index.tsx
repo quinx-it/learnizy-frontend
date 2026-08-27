@@ -2,7 +2,7 @@
 
 import MDEditor from '@uiw/react-md-editor';
 import { usePathname, useRouter } from 'next/navigation';
-import { type FC, useState, useEffect } from 'react';
+import { type ChangeEvent, type FC, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useUpdateLessonContentMarkdownMutation } from '@/api/endpoints/admin';
@@ -26,7 +26,7 @@ import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
 
 import { constants } from './const';
-import { type ILessonItemPageProps } from './typings';
+import { type ILessonItemPageProps, TestFormMode } from './typings';
 
 import {
   BlueButtonMedium,
@@ -43,6 +43,7 @@ import {
   SectionTextSmall,
   TestFormContainer,
   TestInfoDotTitleWrapper,
+  LessonMarkdownContent,
   TestQuestionRow,
   TestQuestionRowHeader,
   WhiteButton,
@@ -76,7 +77,7 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
   const [markdownContent, setMarkdownContent] = useState('');
 
   type TestFormQuestion = { text: string; maxScore: number };
-  const [testFormMode, setTestFormMode] = useState<null | 'create' | 'edit'>(null);
+  const [testFormMode, setTestFormMode] = useState<null | TestFormMode>(null);
   const [testTitle, setTestTitle] = useState('');
   const [testPassThreshold, setTestPassThreshold] = useState(70);
   const [formQuestions, setFormQuestions] = useState<TestFormQuestion[]>([
@@ -103,7 +104,7 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
     setTestTitle('');
     setTestPassThreshold(70);
     setFormQuestions([{ text: '', maxScore: 1 }]);
-    setTestFormMode('create');
+    setTestFormMode(TestFormMode.Create);
   };
   const openTestEditForm = () => {
     if (lessonTest) {
@@ -114,19 +115,24 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
           ? lessonTest.questions.map((q) => ({ text: q.text, maxScore: q.maxScore ?? 1 }))
           : [{ text: '', maxScore: 1 }],
       );
-      setTestFormMode('edit');
+      setTestFormMode(TestFormMode.Edit);
     }
   };
   const closeTestForm = () => setTestFormMode(null);
   const addTestQuestion = () => setFormQuestions((prev) => [...prev, { text: '', maxScore: 1 }]);
   const removeTestQuestion = (index: number) =>
     setFormQuestions((prev) => (prev.length > 1 ? prev.filter((_, i) => i !== index) : prev));
+  const onClick = (index: number) => () => removeTestQuestion(index);
   const updateTestQuestion = (index: number, field: 'text' | 'maxScore', value: string | number) =>
     setFormQuestions((prev) =>
       prev.map((q, i) =>
         i === index ? { ...q, [field]: field === 'maxScore' ? Number(value) || 0 : value } : q,
       ),
     );
+  const handleQuestionTextChange = (index: number) => (e: ChangeEvent<HTMLInputElement>) =>
+    updateTestQuestion(index, 'text', e.target.value);
+  const handleQuestionMaxScoreChange = (index: number) => (e: ChangeEvent<HTMLInputElement>) =>
+    updateTestQuestion(index, 'maxScore', e.target.value);
 
   const handleSaveTest = async () => {
     const body = {
@@ -142,14 +148,14 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
       })),
     };
     try {
-      if (testFormMode === 'create') {
+      if (testFormMode === TestFormMode.Create) {
         await createLessonTest(body).unwrap();
         showToast(
           'success',
           t('LESSON_ITEM_PAGE.TOAST_SUCCESS_TITLE'),
           t('LESSON_ITEM_PAGE.TEST_CREATE_SUCCESS'),
         );
-      } else if (testFormMode === 'edit' && lessonTest) {
+      } else if (testFormMode === TestFormMode.Edit && lessonTest) {
         await updateLessonTest({ id: lessonTest.id, data: body }).unwrap();
         showToast(
           'success',
@@ -215,7 +221,7 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
               <EditorWrapper data-color-mode="light">
                 <MDEditor
                   value={markdownContent}
-                  onChange={(val) => setMarkdownContent(val || '')}
+                  onChange={(val) => setMarkdownContent(val ?? '')}
                   height={400}
                 />
               </EditorWrapper>
@@ -234,9 +240,9 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
 
       {lesson.content && (
         <CardWrapper>
-          <div data-color-mode="light">
+          <LessonMarkdownContent data-color-mode="light">
             <MDEditor.Markdown source={lesson.content} />
-          </div>
+          </LessonMarkdownContent>
         </CardWrapper>
       )}
 
@@ -313,7 +319,7 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
                     </SectionTextSmall>
                     <WhiteButton
                       size="small"
-                      onClick={() => removeTestQuestion(index)}
+                      onClick={onClick(index)}
                       disabled={formQuestions.length <= 1}
                     >
                       {t('LESSON_ITEM_PAGE.TEST_REMOVE_QUESTION')}
@@ -322,13 +328,13 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
                   <Input
                     placeholder={t('LESSON_ITEM_PAGE.TEST_QUESTION_TEXT_PLACEHOLDER')}
                     value={q.text}
-                    onChange={(e) => updateTestQuestion(index, 'text', e.target.value)}
+                    onChange={handleQuestionTextChange(index)}
                   />
                   <Input
                     type="number"
                     label={t('LESSON_ITEM_PAGE.TEST_QUESTION_MAX_SCORE')}
                     value={q.maxScore}
-                    onChange={(e) => updateTestQuestion(index, 'maxScore', e.target.value)}
+                    onChange={handleQuestionMaxScoreChange(index)}
                     min={1}
                   />
                 </TestQuestionRow>
