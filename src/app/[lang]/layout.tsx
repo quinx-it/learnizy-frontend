@@ -56,15 +56,6 @@ export async function generateMetadata({
     },
     applicationName: 'Learnizy',
     generator: 'Next.js',
-    icons: {
-      icon: [
-        { url: '/icons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-        { url: '/icons/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-        { url: '/icons/favicon.ico', type: 'image/x-icon' },
-      ],
-      apple: '/icons/apple-touch-icon.png',
-    },
-    manifest: '/manifest.json',
     appleWebApp: {
       capable: true,
       statusBarStyle: 'default',
@@ -82,12 +73,12 @@ export async function generateMetadata({
       description: dict.SEO.DEFAULT.OG_DESCRIPTION,
       type: 'website',
       siteName: 'Learnizy',
-      images: [`${baseUrl}/img/logo.png`],
+      images: [`${baseUrl}/images/rocketOnBlue.webp`],
       locale: getOgLocale(lang),
     },
     twitter: {
       card: 'summary_large_image',
-      images: [`${baseUrl}/img/logo.png`],
+      images: [`${baseUrl}/images/rocketOnBlue.webp`],
     },
   };
 }
