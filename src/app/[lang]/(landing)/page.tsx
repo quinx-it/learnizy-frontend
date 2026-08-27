@@ -35,13 +35,13 @@ export const generateMetadata = async ({
     openGraph: {
       title: dict.SEO.MAIN_PAGE_SEO.OG_TITLE,
       description: dict.SEO.MAIN_PAGE_SEO.OG_DESCRIPTION,
-      images: [`${baseUrl}/img/logo.png`],
+      images: [`${baseUrl}/images/rocketOnBlue.webp`],
       locale: ogLocale,
     },
     twitter: {
       title: dict.SEO.MAIN_PAGE_SEO.OG_TITLE,
       description: dict.SEO.MAIN_PAGE_SEO.OG_DESCRIPTION,
-      images: [`${baseUrl}/img/logo.png`],
+      images: [`${baseUrl}/images/rocketOnBlue.webp`],
     },
   };
 };
