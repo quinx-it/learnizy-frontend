@@ -133,15 +133,17 @@ const LearnMainPage: FC = () => {
     return [...modulesData].sort((a, b) => a.sequenceOrder - b.sequenceOrder);
   }, [modulesData]);
 
-  const handleErrorReset = () => {
-    refetchCourse();
-    refetchModules();
-  };
-
   if (isCourseLoading || isModulesLoading) return <FullscreenLoader />;
 
   if (isCourseError || isModulesError) {
-    return <ErrorSection reset={handleErrorReset} />;
+    return (
+      <ErrorSection
+        reset={() => {
+          refetchCourse();
+          refetchModules();
+        }}
+      />
+    );
   }
 
   if (!courseData || !modulesData) return null;

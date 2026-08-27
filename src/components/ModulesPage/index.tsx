@@ -181,12 +181,16 @@ const ModulesPage: FC<IModulesPageProps> = (props) => {
 
   if (isError) return <ErrorSection reset={refetch} />;
 
+  const breadcrumbsRootLabel = t('BREADCRUMBS.COURSES');
+  const breadcrumbsRootHref = isMentor ? ROUTES.MENTOR_COURSES : ROUTES.USER_COURSES;
+  const breadcrumbsRootDescription = courseData?.title || t('COMMON.COURSE_LABEL');
+
   return (
     <PageContainer>
       <Breadcrumbs
-        rootLabel={t('BREADCRUMBS.COURSES')}
-        rootHref={isMentor ? ROUTES.MENTOR_COURSES : ROUTES.USER_COURSES}
-        rootDescription={courseData?.title || t('COMMON.COURSE_LABEL')}
+        rootLabel={breadcrumbsRootLabel}
+        rootHref={breadcrumbsRootHref}
+        rootDescription={breadcrumbsRootDescription}
       />
       {isMentor && (
         <CreateButtonWrapper>

@@ -41,19 +41,6 @@ export const MarkdownWrapper = styled(Box)(() => ({
   wordBreak: 'break-word',
 }));
 
-export const LessonMarkdownContent = styled(Box)(() => ({
-  maxWidth: '100%',
-  wordBreak: 'break-word',
-
-  '& img': {
-    display: 'block',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    maxWidth: '100%',
-    height: 'auto',
-  },
-}));
-
 export const SectionHeading = styled(BaseHeading)(({ theme }) => ({
   marginBottom: theme.spacing(1),
 }));
