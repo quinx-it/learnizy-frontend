@@ -1,6 +1,6 @@
 'use client';
 
-import { type FC } from 'react';
+import { type FC, useMemo } from 'react';
 
 import { useGetCoursesQuery } from '@/api/endpoints/admin';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -12,28 +12,27 @@ import { useTranslation } from '@/hooks';
 
 import { CourseCardWrapper, CoursesGrid, PageContainer } from './styles';
 
-const USER_COURSES_QUERY_PARAMS = { page: 0, size: 20 };
-
 const UserCoursesPage: FC = () => {
   const { t } = useTranslation();
 
-  const {
-    data: coursesData,
-    isLoading,
-    isError,
-    refetch,
-  } = useGetCoursesQuery(USER_COURSES_QUERY_PARAMS);
+  const queryParams = useMemo(() => ({ page: 0, size: 20 }), []);
+
+  const { data: coursesData, isLoading, isError, refetch } = useGetCoursesQuery(queryParams);
 
   if (isLoading) return <FullscreenLoader />;
 
   if (isError) return <ErrorSection reset={refetch} />;
 
+  const breadcrumbsRootLabel = t('BREADCRUMBS.COURSES');
+  const breadcrumbsRootHref = ROUTES.USER_COURSES;
+  const breadcrumbsRootDescription = t('BREADCRUMBS.USER_COURSES_DESC');
+
   return (
     <PageContainer>
       <Breadcrumbs
-        rootLabel={t('BREADCRUMBS.COURSES')}
-        rootHref={ROUTES.USER_COURSES}
-        rootDescription={t('BREADCRUMBS.USER_COURSES_DESC')}
+        rootLabel={breadcrumbsRootLabel}
+        rootHref={breadcrumbsRootHref}
+        rootDescription={breadcrumbsRootDescription}
       />
       <CoursesGrid>
         {(coursesData?.content || []).map((course) => (
