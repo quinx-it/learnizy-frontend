@@ -2,7 +2,6 @@
 
 import { type FC } from 'react';
 
-import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { useTranslation } from '@/hooks';
 
 import { accountLinks, learnLinks } from './const';
@@ -11,16 +10,16 @@ import {
   BottomBar,
   BrandColumn,
   ColumnTitle,
-  Columns,
   Copyright,
   FooterLink,
   FooterWrapper,
   LinkColumn,
   LinkList,
+  Statement,
   StyledLogo,
   StyledSectionContent,
-  SwitcherSlot,
   Tagline,
+  TopGrid,
 } from './styles';
 
 const LandingFooter: FC = () => {
@@ -31,10 +30,10 @@ const LandingFooter: FC = () => {
   return (
     <StyledSectionContent component="footer">
       <FooterWrapper>
-        <Columns>
+        <TopGrid>
           <BrandColumn>
-            <StyledLogo width={160} height={56} src="/images/logo.svg" alt="Learnizy" />
-            <Tagline variant="m">{t('LANDING.FOOTER.TAGLINE')}</Tagline>
+            <StyledLogo width={128} height={45} src="/images/logo.svg" alt="Learnizy" />
+            <Statement tag="p">{t('LANDING.FOOTER.STATEMENT')}</Statement>
           </BrandColumn>
 
           <LinkColumn>
@@ -64,16 +63,14 @@ const LandingFooter: FC = () => {
               ))}
             </LinkList>
           </LinkColumn>
-        </Columns>
+        </TopGrid>
 
         <BottomBar>
+          <Tagline variant="s">{t('LANDING.FOOTER.TAGLINE')}</Tagline>
+
           <Copyright variant="s">
             © {year} Learnizy. {t('LANDING.FOOTER.RIGHTS')}
           </Copyright>
-
-          <SwitcherSlot>
-            <LanguageSwitcher />
-          </SwitcherSlot>
         </BottomBar>
       </FooterWrapper>
     </StyledSectionContent>

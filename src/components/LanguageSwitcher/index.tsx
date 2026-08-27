@@ -31,7 +31,7 @@ const LanguageSwitcher: FC = () => {
       segments.unshift(lang);
     }
 
-    router.push(`/${segments.join('/')}`);
+    router.push(`/${segments.join('/')}`, { scroll: false });
     setOpen(false);
   };
 

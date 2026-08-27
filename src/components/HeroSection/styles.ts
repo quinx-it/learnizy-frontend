@@ -5,23 +5,8 @@ import { Heading as BaseHeading, Text as BaseText } from '@/components/Typograph
 
 export const StyledHeroSection = styled(SectionContent)(({ theme }) => ({
   position: 'relative',
-  overflow: 'hidden',
   color: theme.palette.common.white,
-  backgroundColor: theme.palette.common.black,
-
-
-  '&::before': {
-    content: '""',
-    position: 'absolute',
-    top: '-30%',
-    left: '-10%',
-    width: '60%',
-    paddingBottom: '60%',
-    borderRadius: '50%',
-    background: `radial-gradient(circle, ${theme.palette.primary.main} 0%, transparent 70%)`,
-    opacity: 0.22,
-    pointerEvents: 'none',
-  },
+  backgroundColor: 'transparent',
 }));
 
 export const Layout = styled(Box)(({ theme }) => ({
