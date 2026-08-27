@@ -56,9 +56,6 @@ export const SignInLink = styled(Link)(({ theme }) => ({
   },
 }));
 
-// LanguageSwitcher ships light-on-white for the app header; recolour it for the
-// dark band. Selectors are exact — a blanket `& button` also hits the menu items.
-// DOM: slot > container > [ toggle button, menu > item buttons ]
 export const SwitcherSlot = styled(Box)(({ theme }) => ({
   '& > div': {
     width: 'auto',

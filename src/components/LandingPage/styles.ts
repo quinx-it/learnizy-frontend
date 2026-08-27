@@ -7,8 +7,6 @@ export const Main = styled(Box)<{ component?: ElementType }>(() => ({
   padding: 0,
 }));
 
-// Header and hero share one dark band so the teal glow runs across both
-// without a seam between them.
 export const TopBand = styled(Box)(({ theme }) => ({
   position: 'relative',
   overflow: 'hidden',

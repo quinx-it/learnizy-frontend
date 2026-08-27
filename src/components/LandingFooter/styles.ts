@@ -5,7 +5,6 @@ import Link from '@/components/Link';
 import SectionContent from '@/components/SectionContent';
 import { Text as BaseText } from '@/components/Typography';
 
-// The footer closes the page, it does not need a full section's breathing room.
 export const StyledSectionContent = styled(SectionContent)(({ theme }) => ({
   color: theme.palette.common.white,
   backgroundColor: theme.palette.common.black,
