@@ -470,13 +470,13 @@
   },
   "ADVANTAGES": {
     "TITLE": "Why choose us?",
-    "DESCRIPTION": "From practice with real cases to mentor support — everything to help you confidently pass a technical interview.",
-    "CARD_1_TITLE": "More than Java",
-    "CARD_1_TEXT": "We are not limited to programming only. At Learnizy you will find courses in marketing, logistics, business analytics and other in-demand areas",
+    "DESCRIPTION": "From practice with real cases to mentor support — everything to help you confidently pass an interview.",
+    "CARD_1_TITLE": "Any field",
+    "CARD_1_TEXT": "We are not limited to one specialty. Learnizy has courses in development, marketing, logistics, business analysis and other in-demand fields",
     "CARD_2_TITLE": "Pay after you are hired",
     "CARD_2_TEXT": "Under the income share agreement, tuition comes out of your salary — and only once there is a salary to come out of",
     "CARD_3_TITLE": "Mentors who do the hiring",
-    "CARD_3_TEXT": "Your code is reviewed by engineers who sit on the other side of the interview table every week and know what gets a candidate rejected",
+    "CARD_3_TEXT": "Your work is reviewed by practitioners who sit on the other side of the interview table every week and know what gets a candidate rejected",
     "CARD_4_TITLE": "An interview you can replay",
     "CARD_4_TEXT": "The AI simulator lets you fail a question privately, as many times as it takes, and tells you exactly what was missing from the answer"
   },
@@ -531,21 +531,27 @@
     "STOP_RECORDING": "Stop"
   },
   "LANDING": {
+    "HEADER": {
+      "SIGN_IN": "Sign in",
+      "SIGN_UP": "Get started",
+      "NAV_HOW": "How it works",
+      "NAV_INSIDE": "What is inside"
+    },
     "HERO": {
       "EYEBROW": "Income share agreement",
       "TITLE": "First the offer. Then the invoice.",
-      "DESCRIPTION": "Learnizy prepares Frontend, Backend, DevOps and Java developers alongside mentors from top companies. Rehearse on the AI simulator until the answers come easily — 87% of graduates get an offer.",
+      "DESCRIPTION": "Learnizy prepares specialists alongside mentors from top companies. Rehearse on the AI simulator until the answers come easily — 87% of graduates get an offer.",
       "PRIMARY_CTA": "Start learning",
       "SECONDARY_CTA": "Sign in",
       "NOTE": "No card required. Tuition comes out of your salary once there is one.",
       "PANEL_LABEL": "AI interview simulator",
-      "PANEL_ROLE": "Java Developer · Middle",
+      "PANEL_ROLE": "Practice run · Mid level",
       "PANEL_PROGRESS": "Question 4 of 12",
-      "PANEL_QUESTION": "Two keys in a HashMap return the same hashCode. What happens?",
+      "PANEL_QUESTION": "Tell me about a task you got wrong. What did you do next?",
       "PANEL_ANSWER_LABEL": "Your answer",
-      "PANEL_ANSWER": "They land in the same bucket. The map keeps them in a list and compares keys with equals — since Java 8 a long list turns into a tree.",
+      "PANEL_ANSWER": "I misjudged the timeline and realised it halfway through. I flagged it to the team the same day, rebuilt the plan and shipped a reduced scope on time.",
       "PANEL_REVIEW_LABEL": "AI review",
-      "PANEL_REVIEW": "Correct. Name the threshold — eight entries — and this reads as a senior answer.",
+      "PANEL_REVIEW": "Solid answer. Add what you changed in how you estimate afterwards and it becomes a strong one.",
       "PANEL_SCORE": "9.1",
       "PANEL_SCORE_LABEL": "out of 10"
     },
@@ -554,10 +560,10 @@
       "DESCRIPTION": "Four steps from the first module to a signed offer. You pay at the fourth.",
       "FREE": "Costs nothing",
       "PAID": "Paid from your salary",
-      "STEP_1_TITLE": "Pick your track",
-      "STEP_1_TEXT": "Frontend, Backend, DevOps, Java — or marketing, logistics, business analysis. An entry test sets your starting level.",
+      "STEP_1_TITLE": "Pick your field",
+      "STEP_1_TEXT": "Choose a specialty from the catalogue. An entry test sets your starting level so you skip what you already know.",
       "STEP_2_TITLE": "Learn with a mentor",
-      "STEP_2_TEXT": "Modules, real project work and code review from engineers who hire developers for a living.",
+      "STEP_2_TEXT": "Modules, work on real tasks, and reviews of everything you produce from people who do the job daily.",
       "STEP_3_TITLE": "Rehearse the interview",
       "STEP_3_TEXT": "The AI simulator asks what real interviewers ask, then shows exactly where the answer fell short.",
       "STEP_4_TITLE": "Take the offer",
@@ -566,16 +572,16 @@
     "AI": {
       "EYEBROW": "AI assistant",
       "TITLE": "Rehearse until the nerves are gone",
-      "TEXT": "Ask it to grill you on concurrency at two in the morning. It never tires, never softens the follow-up question, and remembers which topic you keep avoiding.",
+      "TEXT": "Ask it to drill your weakest topic at two in the morning. It never tires, never softens the follow-up question, and remembers what you keep avoiding.",
       "CTA": "Open the assistant"
     },
     "EXPLORE": {
       "TITLE": "What is inside",
       "DESCRIPTION": "Every part of the platform, one click away.",
       "OPEN": "Open",
-      "COURSES_TEXT": "Full tracks with a mentor, from the first commit to a portfolio project.",
+      "COURSES_TEXT": "Full tracks with a mentor, from the first steps to a portfolio project.",
       "MODULES_TEXT": "Short focused blocks: one topic, one test, one review.",
-      "EXAMS_TEXT": "Timed checkpoints built like a real technical screen.",
+      "EXAMS_TEXT": "Timed checkpoints built like the real thing.",
       "AI_ASSISTANT_TEXT": "Practice interviews on demand, with a written review of every answer.",
       "KNOWLEDGE_BASE_TEXT": "The questions interviewers actually ask, and answers worth memorising.",
       "PROJECTS_TEXT": "Real cases you can put in front of a hiring manager."
@@ -586,7 +592,8 @@
       "BUTTON": "Create an account"
     },
     "FOOTER": {
-      "TAGLINE": "IT interview preparation with an employment guarantee.",
+      "STATEMENT": "You pay for the training only after it has paid off.",
+      "TAGLINE": "Interview preparation with an employment guarantee.",
       "LEARN_TITLE": "Learn",
       "ACCOUNT_TITLE": "Account",
       "SIGN_IN": "Sign in",

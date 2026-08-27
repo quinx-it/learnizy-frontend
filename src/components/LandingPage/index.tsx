@@ -7,13 +7,17 @@ import ExploreSection from '@/components/ExploreSection';
 import HeroSection from '@/components/HeroSection';
 import HowItWorksSection from '@/components/HowItWorksSection';
 import LandingFooter from '@/components/LandingFooter';
+import LandingHeader from '@/components/LandingHeader';
 
-import { Main } from './styles';
+import { Main, TopBand } from './styles';
 
 export const LandingPage = () => {
   return (
     <Main component="main">
-      <HeroSection />
+      <TopBand>
+        <LandingHeader />
+        <HeroSection />
+      </TopBand>
       <AdvantagesSection />
       <HowItWorksSection />
       <AiAssistantSection />
