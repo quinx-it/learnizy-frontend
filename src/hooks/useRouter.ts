@@ -11,11 +11,12 @@ export const useRouter = () => {
   const pathname = usePathname();
 
   const langs = Object.values(Language);
-  const match = langs.find((lang) => pathname.startsWith(`/${lang}/`));
+  const match = langs.find((lang) => pathname === `/${lang}` || pathname.startsWith(`/${lang}/`));
   const lang = match ?? Language.Ru;
 
   const localize = (path: string) => {
-    if (langs.some((l) => path.startsWith(`/${l}/`)) || path.startsWith('/api')) return path;
+    if (langs.some((l) => path === `/${l}` || path.startsWith(`/${l}/`)) || path.startsWith('/api'))
+      return path;
 
     return `/${lang}${path.startsWith('/') ? '' : '/'}${path}`;
   };

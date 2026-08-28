@@ -15,7 +15,7 @@ const LanguageSwitcher: FC = () => {
 
   const setCookie = (name: string, value: string, days: number) => {
     const expires = new Date(Date.now() + days * 864e5).toUTCString();
-    document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+    document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`;
   };
 
   const changeLanguage = (lng: Language) => {
@@ -31,7 +31,8 @@ const LanguageSwitcher: FC = () => {
       segments.unshift(lang);
     }
 
-    router.push(`/${segments.join('/')}`, { scroll: false });
+    router.replace(`/${segments.join('/')}`, { scroll: false });
+    router.refresh();
     setOpen(false);
   };
 

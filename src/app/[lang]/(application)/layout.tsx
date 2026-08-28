@@ -115,7 +115,7 @@ const ApplicationLayout: FC<PropsWithChildren> = (props) => {
       return;
     }
 
-    if (role && pathname === ROUTES.LOGIN_PAGE) {
+    if (role && pathname === ROUTES.LOGIN_PAGE && getDefaultPage(role) !== ROUTES.LOGIN_PAGE) {
       router.replace(getDefaultPage(role));
 
       return;
@@ -130,8 +130,10 @@ const ApplicationLayout: FC<PropsWithChildren> = (props) => {
 
   if (isLoading) return <FullscreenLoader />;
 
-  if (role && (!isRoleRoute(role, pathname) || pathname === ROUTES.LOGIN_PAGE))
-    return <FullscreenLoader />;
+  const isLeavingLoginPage =
+    !!role && pathname === ROUTES.LOGIN_PAGE && getDefaultPage(role) !== ROUTES.LOGIN_PAGE;
+
+  if (role && (!isRoleRoute(role, pathname) || isLeavingLoginPage)) return <FullscreenLoader />;
 
   if (!isValidRoute(pathname as ROUTES)) return <NotFoundPage />;
 
