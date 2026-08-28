@@ -1,12 +1,19 @@
 'use client';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { type FC } from 'react';
+import { format } from 'date-fns';
+import { useEffect, type FC } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
+import {
+  useGetCurrentUserQuery,
+  useUpdateCurrentUserMutation,
+  type ICurrentUserResponse,
+} from '@/api/endpoints/user';
 import DatePicker from '@/components/DatePicker';
 import Input from '@/components/Input';
 import { RadioGroup, RadioGroupItem } from '@/components/RadioGroup';
+import { showToast } from '@/components/Toaster';
 import { useTranslation } from '@/hooks';
 
 import { createPersonalDataSchema } from './const';
@@ -24,8 +31,23 @@ import {
   WhiteButton,
 } from './styles';
 
+const toFormValues = (user?: ICurrentUserResponse): PersonalDataFormValuesType => ({
+  gender: user?.gender === 'FEMALE' ? 'woman' : 'man',
+  firstName: user?.firstName ?? '',
+  lastName: user?.lastName ?? '',
+  email: user?.email ?? '',
+  address: user?.address ?? '',
+  phone: user?.phone ?? '',
+  birthDate: user?.birthDate ? new Date(user.birthDate) : (undefined as unknown as Date),
+  country: user?.country ?? '',
+  city: user?.city ?? '',
+});
+
 const PersonalDataForm: FC = () => {
   const { t } = useTranslation();
+
+  const { data: user } = useGetCurrentUserQuery();
+  const [updateCurrentUser, { isLoading: isSaving }] = useUpdateCurrentUserMutation();
 
   const {
     handleSubmit,
@@ -35,20 +57,32 @@ const PersonalDataForm: FC = () => {
     formState: { errors },
   } = useForm<PersonalDataFormValuesType>({
     resolver: yupResolver(createPersonalDataSchema(t)),
-    defaultValues: {
-      gender: 'man',
-      firstName: '',
-      lastName: '',
-      email: '',
-      address: '',
-      phone: '',
-      birthDate: undefined,
-      country: '',
-      city: '',
-    },
+    defaultValues: toFormValues(),
   });
 
-  const onSubmit = () => {};
+  useEffect(() => {
+    if (user) reset(toFormValues(user));
+  }, [user, reset]);
+
+  const onSubmit = async (values: PersonalDataFormValuesType) => {
+    try {
+      await updateCurrentUser({
+        email: values.email,
+        firstName: values.firstName,
+        lastName: values.lastName,
+        gender: values.gender === 'woman' ? 'FEMALE' : 'MALE',
+        phone: values.phone,
+        address: values.address,
+        birthDate: values.birthDate ? format(values.birthDate, 'yyyy-MM-dd') : undefined,
+        country: values.country,
+        city: values.city,
+      }).unwrap();
+
+      showToast('success', t('PERSONAL_DATA_FORM.SAVED'), '');
+    } catch {
+      showToast('error', t('COMMON.SAVE_ERROR'), '');
+    }
+  };
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -121,12 +155,18 @@ const PersonalDataForm: FC = () => {
 
         <ButtonsContainer>
           <ButtonWrapper>
-            <WhiteButton type="reset" onClick={() => reset()}>
+            <WhiteButton
+              type="button"
+              disabled={isSaving}
+              onClick={() => reset(toFormValues(user))}
+            >
               {t('PERSONAL_DATA_FORM.RESET')}
             </WhiteButton>
           </ButtonWrapper>
           <ButtonWrapper>
-            <BlueButton type="submit">{t('PERSONAL_DATA_FORM.SUBMIT')}</BlueButton>
+            <BlueButton type="submit" disabled={isSaving}>
+              {t('PERSONAL_DATA_FORM.SUBMIT')}
+            </BlueButton>
           </ButtonWrapper>
         </ButtonsContainer>
       </FormGrid>

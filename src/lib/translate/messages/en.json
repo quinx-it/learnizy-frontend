@@ -153,7 +153,9 @@
     "NAME": "First Last",
     "PERSONAL_DATA": "Personal Data",
     "SECURITY_SETTINGS": "Security Settings",
-    "LOGOUT": "Logout"
+    "LOGOUT": "Logout",
+    "AVATAR_UPDATED": "Photo updated",
+    "AVATAR_ERROR": "Could not update the photo"
   },
   "PERSONAL_DATA_FORM": {
     "GENDER": {
@@ -170,7 +172,8 @@
     "CITY": "City",
     "RESET": "Do not save",
     "SUBMIT": "Save Changes",
-    "DATE_PLACEHOLDER": "dd.mm.yyyy"
+    "DATE_PLACEHOLDER": "dd.mm.yyyy",
+    "SAVED": "Changes saved"
   },
   "LEARN_MAIN_PAGE": {
     "TITLES": {

@@ -153,7 +153,9 @@
     "NAME": "Имя Фамилия",
     "PERSONAL_DATA": "Персональные данные",
     "SECURITY_SETTINGS": "Настройки доступа",
-    "LOGOUT": "Выход"
+    "LOGOUT": "Выход",
+    "AVATAR_UPDATED": "Фото обновлено",
+    "AVATAR_ERROR": "Не удалось обновить фото"
   },
   "PERSONAL_DATA_FORM": {
     "GENDER": {
@@ -170,7 +172,8 @@
     "CITY": "Город",
     "RESET": "Не сохранять",
     "SUBMIT": "Сохранить изменения",
-    "DATE_PLACEHOLDER": "дд.мм.гггг"
+    "DATE_PLACEHOLDER": "дд.мм.гггг",
+    "SAVED": "Изменения сохранены"
   },
   "LEARN_MAIN_PAGE": {
     "TITLES": {
