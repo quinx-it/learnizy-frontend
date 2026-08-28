@@ -10,12 +10,16 @@ import { i18n } from '@/lib/translate';
 import type { NextRequest } from 'next/server';
 
 function getLocale(request: NextRequest): string | undefined {
+  const locales = Array.from(i18n.locales);
+
+  const savedLocale = request.cookies.get('language')?.value;
+
+  if (savedLocale && locales.includes(savedLocale as (typeof locales)[number])) return savedLocale;
+
   const negotiatorHeaders: Record<string, string> = {};
   request.headers.forEach((value, key) => {
     negotiatorHeaders[key] = value;
   });
-
-  const locales = Array.from(i18n.locales);
 
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages(locales);
 
