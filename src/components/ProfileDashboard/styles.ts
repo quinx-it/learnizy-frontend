@@ -1,5 +1,4 @@
 import { Box, styled } from '@mui/material';
-import Image from 'next/image';
 
 import Button from '@/components/Button';
 import { Text as BaseText } from '@/components/Typography';
@@ -25,8 +24,11 @@ export const AvatarContainer = styled(Box)(({ theme }) => ({
   borderRadius: '50%',
 }));
 
-export const StyledImage = styled(Image)(() => ({
+export const StyledImage = styled('img')(() => ({
+  width: '152px',
+  height: '152px',
   borderRadius: '50%',
+  objectFit: 'cover',
 }));
 
 export const EditButton = styled(Button)(() => ({
@@ -83,4 +85,8 @@ export const ExitIconWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+}));
+
+export const HiddenFileInput = styled('input')(() => ({
+  display: 'none',
 }));
