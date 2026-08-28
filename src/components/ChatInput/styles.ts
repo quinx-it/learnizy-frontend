@@ -21,9 +21,9 @@ export const Container = styled(Box, {
         borderRadius: '1.5rem',
       }
     : {
-        height: '48px',
+        minHeight: '48px',
         alignItems: 'center',
-        borderRadius: '50px',
+        borderRadius: '24px',
       }),
 }));
 

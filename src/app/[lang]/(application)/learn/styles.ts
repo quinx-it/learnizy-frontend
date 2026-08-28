@@ -3,7 +3,7 @@ import { styled, Box } from '@mui/material';
 export const LayoutGrid = styled(Box)(({ theme }) => ({
   backgroundColor: 'var(--accent-background)',
   display: 'grid',
-  minHeight: '100vh',
+  minHeight: '100dvh',
 
   [theme.breakpoints.up('md')]: {
     gridTemplateColumns: 'auto 1fr',
@@ -14,13 +14,15 @@ export const MainContent = styled('main', {
   shouldForwardProp: (prop) => prop !== 'isAiPage',
 })<{ isAiPage: boolean }>(({ theme, isAiPage }) => ({
   height: '100%',
-  maxHeight: '100vh',
+  maxHeight: '100dvh',
   width: '100%',
   overflowY: 'auto',
   paddingBlock: isAiPage ? 0 : '1.25rem',
+  paddingTop: isAiPage ? 0 : '3.75rem',
   paddingInline: isAiPage ? 0 : '1rem',
 
   [theme.breakpoints.up('md')]: {
+    paddingTop: isAiPage ? 0 : '1.25rem',
     paddingInline: isAiPage ? 0 : '1.875rem',
   },
 }));

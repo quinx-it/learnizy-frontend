@@ -71,7 +71,7 @@ const ChatHistory: FC<IChatHistoryProps> = (props) => {
     <>
       <MobileButtonWrapper>
         <MobileOpenButton variant="blue" size="small" onClick={() => setIsOpen(true)}>
-          <Image src="/images/history-icon.svg" alt="History icon" width={24} height={24} />
+          <Image src="/images/history-icon.svg" alt="History icon" width={20} height={20} />
         </MobileOpenButton>
       </MobileButtonWrapper>
 

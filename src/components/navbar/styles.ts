@@ -17,7 +17,10 @@ export const MobileMenuButtonWrapper = styled(Box)(({ theme }) => ({
 export const StyledMobileMenuButton = styled(MuiButton)(({ theme }) => ({
   borderRadius: '50%',
   border: `1px solid ${theme.palette.divider}`,
-  padding: theme.spacing(0.5),
+  minWidth: 0,
+  width: '40px',
+  height: '40px',
+  padding: 0,
   textTransform: 'none',
   boxShadow: 'none',
   backgroundColor: theme.palette.primary.main,

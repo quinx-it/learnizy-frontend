@@ -9,11 +9,11 @@ export const Container = styled(Box)(() => ({
 }));
 
 export const StyledHeading = styled(BaseHeading)(() => ({
-  minWidth: 'fit-content',
+  minWidth: 0,
 }));
 
 export const StyledText = styled(BaseText)(() => ({
-  minWidth: 'fit-content',
+  minWidth: 0,
 }));
 
 export const SecondLabel = styled('span')(() => ({

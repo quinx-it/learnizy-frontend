@@ -24,8 +24,12 @@ export const ContentWrapper = styled(Box)(() => ({
 }));
 
 export const DotTitleWrapper = styled(Box)(({ theme }) => ({
-  marginRight: '150px',
-  maxWidth: '370px',
+  minWidth: 0,
+
+  [theme.breakpoints.up('md')]: {
+    marginRight: '150px',
+    maxWidth: '370px',
+  },
 
   '& .progress-card-title-first': {
     color: theme.palette.common.black,
@@ -65,9 +69,8 @@ export const ProgressBarWrapper = styled(Box)(() => ({
 }));
 
 export const StatusButton = styled(Button)(({ theme }) => ({
-  position: 'absolute',
-  top: 0,
-  right: 0,
+  alignSelf: 'flex-start',
+  flexShrink: 0,
   paddingLeft: theme.spacing(2),
   paddingRight: theme.spacing(2),
   backgroundColor: theme.palette.primary.main,
