@@ -64,7 +64,6 @@ export const StepText = styled(BaseText)(({ theme }) => ({
   color: theme.palette.grey[600],
 }));
 
-// The chip is what separates the three free steps from the one you pay for.
 export const CostChip = styled(BaseText, {
   shouldForwardProp: (prop) => prop !== 'isPaid',
 })<{ isPaid: boolean }>(({ theme, isPaid }) => ({
