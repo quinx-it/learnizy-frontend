@@ -15,19 +15,29 @@ export const ErrorText = styled(Box)(({ theme }) => ({
 
 export const FormGrid = styled(Box)(({ theme }) => ({
   display: 'grid',
-  gridTemplateColumns: 'repeat(2, 1fr)',
-  gridTemplateRows: 'repeat(5, 1fr) auto',
-  gap: `${theme.spacing(4)} ${theme.spacing(2)}`,
+  gridTemplateColumns: '1fr',
+  gap: `${theme.spacing(3)} ${theme.spacing(2)}`,
+
+  [theme.breakpoints.up('sm')]: {
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gap: `${theme.spacing(4)} ${theme.spacing(2)}`,
+  },
 }));
 
 export const FormFieldFullWidth = styled(Box)(() => ({
-  gridColumn: 'span 2',
+  gridColumn: '1 / -1',
 }));
 
 export const ButtonsContainer = styled(Box)(({ theme }) => ({
-  gridColumn: 'span 2',
+  gridColumn: '1 / -1',
   display: 'flex',
-  gap: theme.spacing(0.5),
+  flexDirection: 'column',
+  gap: theme.spacing(1.5),
+
+  [theme.breakpoints.up('sm')]: {
+    flexDirection: 'row',
+    gap: theme.spacing(0.5),
+  },
 }));
 
 export const ButtonWrapper = styled(Box)(() => ({
@@ -47,10 +57,15 @@ export const WhiteButton = styled(MuiButton)(({ theme }) => ({
   backgroundColor: theme.palette.common.white,
   color: theme.palette.common.black,
   border: `1px solid ${theme.palette.primary.main}`,
-  paddingLeft: theme.spacing(4),
-  paddingRight: theme.spacing(4),
+  paddingLeft: theme.spacing(2),
+  paddingRight: theme.spacing(2),
   paddingTop: theme.spacing(1.5),
   paddingBottom: theme.spacing(1.5),
+
+  [theme.breakpoints.up('sm')]: {
+    paddingLeft: theme.spacing(4),
+    paddingRight: theme.spacing(4),
+  },
   fontSize: '16px',
   lineHeight: '22px',
   position: 'relative',
@@ -69,10 +84,15 @@ export const BlueButton = styled(MuiButton)(({ theme }) => ({
   borderRadius: '50px',
   backgroundColor: theme.palette.primary.main,
   color: theme.palette.common.white,
-  paddingLeft: theme.spacing(4),
-  paddingRight: theme.spacing(4),
+  paddingLeft: theme.spacing(2),
+  paddingRight: theme.spacing(2),
   paddingTop: theme.spacing(1.5),
   paddingBottom: theme.spacing(1.5),
+
+  [theme.breakpoints.up('sm')]: {
+    paddingLeft: theme.spacing(4),
+    paddingRight: theme.spacing(4),
+  },
   fontSize: '16px',
   lineHeight: '22px',
   position: 'relative',

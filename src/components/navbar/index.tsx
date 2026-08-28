@@ -47,7 +47,7 @@ const Navbar: FC<INavbarProps> = (props) => {
     <>
       <MobileMenuButtonWrapper>
         <StyledMobileMenuButton onClick={() => setIsOpen(!isOpen)}>
-          <Image src="/images/cubes-main-icon.svg" alt="Menu icon" width={16} height={16} />
+          <Image src="/images/cubes-main-icon.svg" alt="Menu icon" width={20} height={20} />
         </StyledMobileMenuButton>
       </MobileMenuButtonWrapper>
 
@@ -105,13 +105,7 @@ const Navbar: FC<INavbarProps> = (props) => {
           />
           <MobileMenuContainer isOpen={isOpen}>
             <MobileLogoLink href={ROUTES.USER_HOME_PAGE} onClick={() => setIsOpen(false)}>
-              <Image src="/images/header-logo-mobile.svg" alt="Logo" width={44} height={44} />
-              <LogoImageMobileAndLg
-                src="/images/header-logo-desktop.svg"
-                alt="Logo"
-                width={200}
-                height={70}
-              />
+              <Image src="/images/header-logo-desktop.svg" alt="Logo" width={200} height={70} />
             </MobileLogoLink>
 
             <MobileLinksContainer>

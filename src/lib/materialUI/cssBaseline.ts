@@ -5,7 +5,7 @@ const cssBaselineConfig = (theme: Theme) => ({
     styleOverrides: {
       html: {
         scrollBehavior: 'smooth',
-        maxWidth: '100vw',
+        maxWidth: '100%',
       },
       body: {
         backgroundColor: theme.palette.background.default,

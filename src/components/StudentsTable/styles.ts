@@ -70,7 +70,7 @@ export const Cell = styled(Box, {
 );
 
 export const EditButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.info.main,
+  color: theme.palette.primary.main,
   border: 'none',
   padding: theme.spacing(0.625),
   cursor: 'pointer',

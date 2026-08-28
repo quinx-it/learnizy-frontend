@@ -6,6 +6,7 @@ import CardWrapper from '@/components/CardWrapper';
 import DotTitle from '@/components/DotTitle';
 import ProgressBar from '@/components/Progress';
 import { useTranslation } from '@/hooks';
+import { percentage } from '@/lib/utils';
 
 import { ProgressStatus } from './const';
 import { type ProgressCardPropsType } from './typings';
@@ -30,7 +31,7 @@ const ProgressCard: FC<ProgressCardPropsType> = (props) => {
 
   const hasModules = totalModules !== undefined && modules !== undefined;
 
-  const progressValue = lessons / totalLessons !== 0 ? (lessons / totalLessons) * 100 : 1;
+  const progressValue = percentage(totalLessons, lessons);
 
   return (
     <CardWrapper>

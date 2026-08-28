@@ -4,10 +4,14 @@ import Button from '@/components/Button';
 
 export const MobileButtonWrapper = styled(Box)(({ theme }) => ({
   position: 'fixed',
-  top: '1rem',
-  right: 0,
+  top: theme.spacing(1),
+  right: theme.spacing(8),
   zIndex: 40,
-  marginLeft: '1.5rem',
+
+  [theme.breakpoints.up('md')]: {
+    top: '1rem',
+    right: theme.spacing(1.5),
+  },
 
   [theme.breakpoints.up('lg')]: {
     display: 'none',
@@ -56,10 +60,13 @@ export const MobileSidebarHeader = styled(Box)(() => ({
   gap: '0.75rem',
 }));
 
-export const MobileOpenButton = styled(Button)(() => ({
+export const MobileOpenButton = styled(Button)(({ theme }) => ({
   borderRadius: '50%',
-  border: '1px solid',
-  padding: '0.5rem',
+  border: `1px solid ${theme.palette.divider}`,
+  minWidth: 0,
+  width: '40px',
+  height: '40px',
+  padding: 0,
 }));
 
 export const CloseButton = styled(Button)(({ theme }) => ({
@@ -173,7 +180,7 @@ export const DesktopSidebar = styled(Box)(({ theme }) => ({
   right: 0,
   zIndex: 50,
   display: 'flex',
-  height: '100vh',
+  height: '100dvh',
   width: '230px',
   flexDirection: 'column',
   backgroundColor: theme.palette.background.default,

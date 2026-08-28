@@ -48,6 +48,7 @@ export const TopSection = styled(Box)(({ theme }) => ({
     color: theme.palette.common.black,
     fontWeight: 600,
     fontSize: '20px',
+    lineHeight: '26px',
   },
 }));
 

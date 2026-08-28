@@ -29,8 +29,8 @@ export const StyledListItem = styled('li')(({ theme }) => ({
 
 export const StyledRootLink = styled(Link, {
   shouldForwardProp: (prop) => prop !== 'hasItems',
-})<{ hasItems?: boolean }>(({ theme, hasItems }) => ({
-  color: hasItems ? theme.palette.info.main : theme.palette.primary.main,
+})<{ hasItems?: boolean }>(({ theme }) => ({
+  color: theme.palette.primary.main,
   transition: 'color 0.2s ease-in-out',
 
   '&:hover': {
@@ -39,7 +39,7 @@ export const StyledRootLink = styled(Link, {
 }));
 
 export const StyledLink = styled(Link)(({ theme }) => ({
-  color: theme.palette.info.main,
+  color: theme.palette.primary.main,
   transition: 'color 0.2s ease-in-out',
 
   '&:hover': {
@@ -57,11 +57,11 @@ export const StyledDotTitleContainer = styled(DotTitleContainer)(({ theme }) => 
 
 export const StyledDotTitleHeading = styled(BaseHeading)(({ theme }) => ({
   color: theme.palette.text.primary,
-  minWidth: 'fit-content',
+  minWidth: 0,
 }));
 
 export const StyledDotTitleSecondLabel = styled(DotTitleSecondLabel)(({ theme }) => ({
-  color: theme.palette.info.main,
+  color: theme.palette.primary.main,
   fontWeight: 500,
   display: 'inline',
 }));
