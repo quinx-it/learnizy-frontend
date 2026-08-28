@@ -18,8 +18,15 @@ export const SectionWrapper = styled(Box)(({ theme }) => ({
   maxWidth: '1140px',
 }));
 
-export const SectionTitle = styled(BaseHeading)(() => ({
+export const SectionTitle = styled(BaseHeading)(({ theme }) => ({
   maxWidth: '720px',
+  fontSize: '28px',
+  lineHeight: '34px',
+
+  [theme.breakpoints.up('md')]: {
+    fontSize: '44px',
+    lineHeight: '52px',
+  },
 }));
 
 export const SectionText = styled(BaseText)(() => ({

@@ -30,6 +30,7 @@ export const AdvantagesSection = () => {
               type={card.type}
               title={t(card.titleKey)}
               text={t(card.textKey)}
+              image={card.image}
             />
           ))}
         </CardsGrid>
