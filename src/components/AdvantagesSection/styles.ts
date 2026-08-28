@@ -74,7 +74,10 @@ export const StyledCard = styled(Box, {
     cardType === CardType.Dark ? theme.palette.primary.contrastText : theme.palette.primary.main,
 }));
 
-export const CardContent = styled(Box)(() => ({}));
+export const CardContent = styled(Box)(() => ({
+  position: 'relative',
+  zIndex: 1,
+}));
 
 export const StyledCardHeading = styled(BaseHeading)(({ theme }) => ({
   marginBottom: '12px',
@@ -88,20 +91,27 @@ export const StyledCardHeading = styled(BaseHeading)(({ theme }) => ({
 }));
 
 export const ImageWrapper = styled(Box)(({ theme }) => ({
-  marginTop: theme.spacing(1.5),
-  display: 'flex',
-  justifyContent: 'center',
-}));
+  alignSelf: 'flex-end',
+  flexShrink: 0,
+  marginTop: theme.spacing(2),
+  width: '104px',
 
-export const StyledImage = styled(Image)(({ theme }) => ({
-  position: 'absolute',
-  right: '-10%',
-  bottom: '-10%',
-  width: '50%',
-  maxWidth: '305px',
-  transform: 'scaleX(-1)',
+  [theme.breakpoints.up('md')]: {
+    position: 'absolute',
+    right: '-8%',
+    bottom: '-8%',
+    margin: 0,
+    width: '46%',
+    maxWidth: '305px',
+  },
 
   [theme.breakpoints.up('xl')]: {
-    width: '100%',
+    width: '58%',
   },
+}));
+
+export const StyledImage = styled(Image)(() => ({
+  width: '100%',
+  height: 'auto',
+  transform: 'scaleX(-1)',
 }));

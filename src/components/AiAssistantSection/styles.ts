@@ -38,6 +38,13 @@ export const Eyebrow = styled(BaseText)(({ theme }) => ({
 export const SectionTitle = styled(BaseHeading)(({ theme }) => ({
   marginBottom: theme.spacing(2),
   maxWidth: '620px',
+  fontSize: '28px',
+  lineHeight: '34px',
+
+  [theme.breakpoints.up('md')]: {
+    fontSize: '40px',
+    lineHeight: '48px',
+  },
 }));
 
 export const SectionText = styled(BaseText)(({ theme }) => ({

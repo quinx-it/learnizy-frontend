@@ -20,6 +20,13 @@ export const HeaderContainer = styled(Box)(({ theme }) => ({
 export const SectionTitle = styled(BaseHeading)(({ theme }) => ({
   marginBottom: theme.spacing(1),
   color: theme.palette.text.primary,
+  fontSize: '28px',
+  lineHeight: '34px',
+
+  [theme.breakpoints.up('md')]: {
+    fontSize: '40px',
+    lineHeight: '48px',
+  },
 }));
 
 export const SectionDescription = styled(BaseText)(({ theme }) => ({

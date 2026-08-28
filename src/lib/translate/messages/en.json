@@ -470,11 +470,11 @@
   },
   "ADVANTAGES": {
     "TITLE": "Why choose us?",
-    "DESCRIPTION": "From practice with real cases to mentor support — everything to help you confidently pass an interview.",
+    "DESCRIPTION": "Everything to help you confidently pass an interview, from practice with real cases to mentor support.",
     "CARD_1_TITLE": "Any field",
     "CARD_1_TEXT": "We are not limited to one specialty. Learnizy has courses in development, marketing, logistics, business analysis and other in-demand fields",
     "CARD_2_TITLE": "Pay after you are hired",
-    "CARD_2_TEXT": "Under the income share agreement, tuition comes out of your salary — and only once there is a salary to come out of",
+    "CARD_2_TEXT": "Under the income share agreement, tuition comes out of your salary, and only once there is a salary to come out of",
     "CARD_3_TITLE": "Mentors who do the hiring",
     "CARD_3_TEXT": "Your work is reviewed by practitioners who sit on the other side of the interview table every week and know what gets a candidate rejected",
     "CARD_4_TITLE": "An interview you can replay",
@@ -540,7 +540,7 @@
     "HERO": {
       "EYEBROW": "Income share agreement",
       "TITLE": "First the offer. Then the invoice.",
-      "DESCRIPTION": "Learnizy prepares specialists alongside mentors from top companies. Rehearse on the AI simulator until the answers come easily — 87% of graduates get an offer.",
+      "DESCRIPTION": "Learnizy prepares specialists alongside mentors from top companies. Rehearse on the AI simulator until the answers come easily. 87% of graduates get an offer.",
       "PRIMARY_CTA": "Start learning",
       "SECONDARY_CTA": "Sign in",
       "NOTE": "No card required. Tuition comes out of your salary once there is one.",
@@ -567,7 +567,7 @@
       "STEP_3_TITLE": "Rehearse the interview",
       "STEP_3_TEXT": "The AI simulator asks what real interviewers ask, then shows exactly where the answer fell short.",
       "STEP_4_TITLE": "Take the offer",
-      "STEP_4_TEXT": "87% of graduates sign within six months. Tuition starts coming out of your salary — not a day before."
+      "STEP_4_TEXT": "87% of graduates sign within six months. Tuition starts coming out of your salary, not a day before."
     },
     "AI": {
       "EYEBROW": "AI assistant",
