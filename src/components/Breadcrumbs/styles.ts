@@ -22,6 +22,7 @@ export const StyledList = styled('ul')(({ theme }) => ({
 }));
 
 export const StyledListItem = styled('li')(({ theme }) => ({
+  flexWrap: 'wrap',
   display: 'flex',
   alignItems: 'center',
   gap: theme.spacing(0.5),

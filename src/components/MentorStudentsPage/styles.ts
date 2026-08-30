@@ -30,8 +30,13 @@ export const GrowthChartContainer = styled(Box)(({ theme }) => ({
 
 export const ProgressContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
+  flexWrap: 'wrap',
   alignItems: 'center',
   gap: theme.spacing(2),
+
+  '& > *': {
+    minWidth: 0,
+  },
 }));
 
 export const StatsContainer = styled(Box)(({ theme }) => ({

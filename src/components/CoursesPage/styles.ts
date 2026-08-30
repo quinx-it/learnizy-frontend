@@ -49,6 +49,7 @@ export const DialogContentWrapper = styled(Box)(() => ({
 }));
 
 export const DialogFooterWrapper = styled(Box)(({ theme }) => ({
+  flexWrap: 'wrap',
   '& [data-slot="dialog-footer"]': {
     display: 'flex',
     justifyContent: 'flex-end',

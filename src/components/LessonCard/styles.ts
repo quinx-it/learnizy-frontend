@@ -30,10 +30,13 @@ export const StyledCardWrapper = styled(Box, {
 });
 
 export const CardContent = styled(Box)(() => ({
+  alignItems: 'flex-start',
+  gap: '12px',
   display: 'flex',
 }));
 
 export const LeftContent = styled(Box)(({ theme }) => ({
+  minWidth: 0,
   flex: 1,
   display: 'flex',
   flexDirection: 'column',
@@ -41,6 +44,7 @@ export const LeftContent = styled(Box)(({ theme }) => ({
 }));
 
 export const RightContent = styled(Box)(() => ({
+  flexShrink: 0,
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-end',

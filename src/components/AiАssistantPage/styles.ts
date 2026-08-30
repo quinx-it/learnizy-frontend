@@ -14,6 +14,7 @@ export const ImageContainer = styled(Box)(() => ({
   position: 'relative',
   height: '178px',
   width: '264px',
+  maxWidth: '100%',
 }));
 
 export const StyledImage = styled(Image)(() => ({

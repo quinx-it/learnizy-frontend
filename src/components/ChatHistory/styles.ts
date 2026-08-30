@@ -95,6 +95,7 @@ export const DesktopNewChatButton = styled(NewChatButton)(() => ({
 }));
 
 export const HeaderTitle = styled(Typography)(() => ({
+  minWidth: 0,
   fontSize: '20px',
   wordBreak: 'break-word',
   textAlign: 'center',

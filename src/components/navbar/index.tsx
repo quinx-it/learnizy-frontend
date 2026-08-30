@@ -114,7 +114,7 @@ const Navbar: FC<INavbarProps> = (props) => {
                   key={label}
                   href={href}
                   src={src || ''}
-                  label={label}
+                  label={t(label)}
                   onClick={() => setIsOpen(false)}
                 />
               ))}

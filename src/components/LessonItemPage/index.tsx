@@ -78,6 +78,11 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
 
   type TestFormQuestion = { text: string; maxScore: number };
   const [testFormMode, setTestFormMode] = useState<null | TestFormMode>(null);
+  const [testErrors, setTestErrors] = useState<{
+    title?: string;
+    threshold?: string;
+    questions: Record<number, string>;
+  }>({ questions: {} });
   const [testTitle, setTestTitle] = useState('');
   const [testPassThreshold, setTestPassThreshold] = useState(70);
   const [formQuestions, setFormQuestions] = useState<TestFormQuestion[]>([
@@ -118,7 +123,10 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
       setTestFormMode(TestFormMode.Edit);
     }
   };
-  const closeTestForm = () => setTestFormMode(null);
+  const closeTestForm = () => {
+    setTestFormMode(null);
+    setTestErrors({ questions: {} });
+  };
   const addTestQuestion = () => setFormQuestions((prev) => [...prev, { text: '', maxScore: 1 }]);
   const removeTestQuestion = (index: number) =>
     setFormQuestions((prev) => (prev.length > 1 ? prev.filter((_, i) => i !== index) : prev));
@@ -129,12 +137,40 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
         i === index ? { ...q, [field]: field === 'maxScore' ? Number(value) || 0 : value } : q,
       ),
     );
-  const handleQuestionTextChange = (index: number) => (e: ChangeEvent<HTMLInputElement>) =>
+  const handleQuestionTextChange = (index: number) => (e: ChangeEvent<HTMLInputElement>) => {
     updateTestQuestion(index, 'text', e.target.value);
+    setTestErrors((prev) => {
+      const questions = { ...prev.questions };
+      delete questions[index];
+
+      return { ...prev, questions };
+    });
+  };
   const handleQuestionMaxScoreChange = (index: number) => (e: ChangeEvent<HTMLInputElement>) =>
     updateTestQuestion(index, 'maxScore', e.target.value);
 
   const handleSaveTest = async () => {
+    const questionErrors: Record<number, string> = {};
+
+    formQuestions.forEach((q, index) => {
+      if (!q.text.trim()) questionErrors[index] = t('VALIDATION.REQUIRED_QUESTION_TEXT');
+      else if (!Number.isFinite(q.maxScore) || q.maxScore < 1)
+        questionErrors[index] = t('VALIDATION.INVALID_MAX_SCORE');
+    });
+
+    const nextErrors = {
+      title: testTitle.trim().length < 3 ? t('VALIDATION.TEST_TITLE_MIN_3') : undefined,
+      threshold:
+        !Number.isFinite(testPassThreshold) || testPassThreshold < 0 || testPassThreshold > 100
+          ? t('VALIDATION.INVALID_THRESHOLD')
+          : undefined,
+      questions: questionErrors,
+    };
+
+    setTestErrors(nextErrors);
+
+    if (nextErrors.title || nextErrors.threshold || Object.keys(questionErrors).length > 0) return;
+
     const body = {
       testType: 'LESSON_TEST' as const,
       lessonId: Number(lessonId),
@@ -297,14 +333,22 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
               <Input
                 label={t('LESSON_ITEM_PAGE.TEST_TITLE_LABEL')}
                 value={testTitle}
-                onChange={(e) => setTestTitle(e.target.value)}
+                error={testErrors.title}
+                onChange={(e) => {
+                  setTestTitle(e.target.value);
+                  setTestErrors((prev) => ({ ...prev, title: undefined }));
+                }}
                 placeholder={t('LESSON_ITEM_PAGE.TEST_TITLE_LABEL')}
               />
               <Input
                 type="number"
                 label={t('LESSON_ITEM_PAGE.TEST_PASS_THRESHOLD_LABEL')}
                 value={testPassThreshold}
-                onChange={(e) => setTestPassThreshold(Number(e.target.value) || 0)}
+                error={testErrors.threshold}
+                onChange={(e) => {
+                  setTestPassThreshold(Number(e.target.value) || 0);
+                  setTestErrors((prev) => ({ ...prev, threshold: undefined }));
+                }}
                 min={0}
                 max={100}
               />
@@ -328,6 +372,7 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
                   <Input
                     placeholder={t('LESSON_ITEM_PAGE.TEST_QUESTION_TEXT_PLACEHOLDER')}
                     value={q.text}
+                    error={testErrors.questions[index]}
                     onChange={handleQuestionTextChange(index)}
                   />
                   <Input

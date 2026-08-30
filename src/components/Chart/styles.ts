@@ -136,6 +136,7 @@ export const TooltipIndicator = styled(Box, {
 export const TooltipItemContent = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'nestLabel',
 })<{ nestLabel?: boolean }>(({ nestLabel }) => ({
+  minWidth: 0,
   display: 'flex',
   flex: 1,
   justifyContent: 'space-between',

@@ -527,7 +527,18 @@
     "REQUIRED_CODE": "Enter code",
     "CODE_6_DIGITS": "Code must contain 6 digits",
     "REQUIRED_EMAIL_OR_USERNAME": "Enter email or username",
-    "INVALID_EMAIL_USERNAME": "Invalid email or nickname"
+    "INVALID_EMAIL_USERNAME": "Invalid email or nickname",
+    "REQUIRED_LESSON_TITLE": "Enter a lesson title",
+    "REQUIRED_LESSON_DESCRIPTION": "Enter a lesson description",
+    "REQUIRED_COURSE_TITLE": "Enter a course title",
+    "REQUIRED_COURSE_DESCRIPTION": "Enter a course description",
+    "REQUIRED_MODULE_TITLE": "Enter a module title",
+    "REQUIRED_MODULE_DESCRIPTION": "Enter a module description",
+    "INVALID_SEQUENCE_ORDER": "Order must be 1 or higher",
+    "TEST_TITLE_MIN_3": "Title must be at least 3 characters",
+    "INVALID_THRESHOLD": "Pass threshold must be between 0 and 100",
+    "REQUIRED_QUESTION_TEXT": "Enter the question text",
+    "INVALID_MAX_SCORE": "Score must be 1 or higher"
   },
   "VOICE_RECORDER_CONTROL": {
     "START_RECORDING": "Start recording",
