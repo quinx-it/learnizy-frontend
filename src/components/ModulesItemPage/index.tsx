@@ -91,6 +91,7 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [content, setContent] = useState('');
+  const [fieldErrors, setFieldErrors] = useState<{ title?: string; description?: string }>({});
 
   if (isLoading) return <FullscreenLoader />;
 
@@ -109,6 +110,7 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
     setTitle('');
     setDescription('');
     setContent('');
+    setFieldErrors({});
     setModalOpen(true);
   };
 
@@ -117,10 +119,21 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
     setTitle(lesson.title);
     setDescription(lesson.description);
     setContent(lesson.content || '');
+    setFieldErrors({});
     setModalOpen(true);
   };
 
   const handleSaveLesson = async () => {
+    const nextErrors: { title?: string; description?: string } = {};
+
+    if (!title.trim()) nextErrors.title = t('VALIDATION.REQUIRED_LESSON_TITLE');
+
+    if (!description.trim()) nextErrors.description = t('VALIDATION.REQUIRED_LESSON_DESCRIPTION');
+
+    setFieldErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) return;
+
     try {
       if (editingLessonId) {
         await updateLesson({
@@ -283,13 +296,21 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
                 <Input
                   placeholder={t('COMMON.LESSON_TITLE')}
                   value={title}
-                  onChange={(e) => setTitle(e.target.value)}
+                  error={fieldErrors.title}
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                    setFieldErrors((prev) => ({ ...prev, title: undefined }));
+                  }}
                 />
 
                 <Textarea
                   placeholder={t('COMMON.LESSON_DESCRIPTION')}
                   value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  error={fieldErrors.description}
+                  onChange={(e) => {
+                    setDescription(e.target.value);
+                    setFieldErrors((prev) => ({ ...prev, description: undefined }));
+                  }}
                 />
 
                 <Textarea

@@ -20,6 +20,7 @@ export const IconWrapper = styled(Box)(() => ({
 }));
 
 export const ContentWrapper = styled(Box)(() => ({
+  minWidth: 0,
   flex: 1,
 }));
 

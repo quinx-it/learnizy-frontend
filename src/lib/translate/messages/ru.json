@@ -527,7 +527,18 @@
     "REQUIRED_CODE": "Введите код",
     "CODE_6_DIGITS": "Код должен содержать 6 цифр",
     "REQUIRED_EMAIL_OR_USERNAME": "Введите email или имя пользователя",
-    "INVALID_EMAIL_USERNAME": "Неверный email или никнейм"
+    "INVALID_EMAIL_USERNAME": "Неверный email или никнейм",
+    "REQUIRED_LESSON_TITLE": "Введите название урока",
+    "REQUIRED_LESSON_DESCRIPTION": "Введите описание урока",
+    "REQUIRED_COURSE_TITLE": "Введите название курса",
+    "REQUIRED_COURSE_DESCRIPTION": "Введите описание курса",
+    "REQUIRED_MODULE_TITLE": "Введите название модуля",
+    "REQUIRED_MODULE_DESCRIPTION": "Введите описание модуля",
+    "INVALID_SEQUENCE_ORDER": "Порядковый номер должен быть не меньше 1",
+    "TEST_TITLE_MIN_3": "Название не короче 3 символов",
+    "INVALID_THRESHOLD": "Порог прохождения — от 0 до 100",
+    "REQUIRED_QUESTION_TEXT": "Введите текст вопроса",
+    "INVALID_MAX_SCORE": "Балл должен быть не меньше 1"
   },
   "VOICE_RECORDER_CONTROL": {
     "START_RECORDING": "Начать запись",

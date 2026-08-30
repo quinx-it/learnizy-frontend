@@ -18,6 +18,7 @@ export const Container = styled(Box)(({ theme }) => ({
 }));
 
 export const ContentWrapper = styled(Box)(({ theme }) => ({
+  minWidth: 0,
   display: 'flex',
   width: '100%',
   flexDirection: 'column',

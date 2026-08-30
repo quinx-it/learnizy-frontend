@@ -11,6 +11,7 @@ export const Container = styled(Box)(({ theme }) => ({
 }));
 
 export const HeaderContainer = styled(Box)(({ theme }) => ({
+  flexWrap: 'wrap',
   display: 'flex',
   alignItems: 'center',
   alignContent: 'baseline',

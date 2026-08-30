@@ -52,11 +52,13 @@ const CoursesPage: FC = () => {
   const [editingCourseId, setEditingCourseId] = useState<number | null>(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [fieldErrors, setFieldErrors] = useState<{ title?: string; description?: string }>({});
 
   const openCreateModal = () => {
     setEditingCourseId(null);
     setTitle('');
     setDescription('');
+    setFieldErrors({});
     setModalOpen(true);
   };
 
@@ -68,10 +70,21 @@ const CoursesPage: FC = () => {
     setEditingCourseId(courseId);
     setTitle(course.title);
     setDescription(course.description);
+    setFieldErrors({});
     setModalOpen(true);
   };
 
   const handleSaveCourse = async () => {
+    const nextErrors: { title?: string; description?: string } = {};
+
+    if (!title.trim()) nextErrors.title = t('VALIDATION.REQUIRED_COURSE_TITLE');
+
+    if (!description.trim()) nextErrors.description = t('VALIDATION.REQUIRED_COURSE_DESCRIPTION');
+
+    setFieldErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) return;
+
     try {
       if (editingCourseId) {
         await updateCourse({
@@ -131,12 +144,20 @@ const CoursesPage: FC = () => {
                 <Input
                   placeholder={t('COURSES_PAGE.COURSE_TITLE')}
                   value={title}
-                  onChange={(e) => setTitle(e.target.value)}
+                  error={fieldErrors.title}
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                    setFieldErrors((prev) => ({ ...prev, title: undefined }));
+                  }}
                 />
                 <Textarea
                   placeholder={t('COURSES_PAGE.COURSE_DESCRIPTION')}
                   value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  error={fieldErrors.description}
+                  onChange={(e) => {
+                    setDescription(e.target.value);
+                    setFieldErrors((prev) => ({ ...prev, description: undefined }));
+                  }}
                 />
               </FormContent>
 

@@ -23,6 +23,8 @@ export const CardContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const ContentWrapper = styled(Box)(({ theme }) => ({
+  minWidth: 0,
+  flexWrap: 'wrap',
   display: 'flex',
   height: '100%',
   alignItems: 'flex-start',
@@ -33,7 +35,11 @@ export const ContentWrapper = styled(Box)(({ theme }) => ({
 export const LeftContent = styled(Box)(({ theme }) => ({
   display: 'flex',
   height: '100%',
-  maxWidth: '70%',
+  minWidth: 0,
+
+  [theme.breakpoints.up('md')]: {
+    maxWidth: '70%',
+  },
   flexDirection: 'column',
   justifyContent: 'space-between',
   gap: theme.spacing(1.75),
@@ -59,6 +65,7 @@ export const BottomSection = styled(Box)(({ theme }) => ({
 }));
 
 export const ButtonContainer = styled(Box)(({ theme }) => ({
+  flexWrap: 'wrap',
   display: 'flex',
   alignItems: 'flex-end',
   gap: theme.spacing(1.5),

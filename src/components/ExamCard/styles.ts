@@ -17,6 +17,7 @@ export const StyledCardWrapper = styled(Box)(({ theme }) => ({
 }));
 
 export const ContentWrapper = styled(Box)(({ theme }) => ({
+  minWidth: 0,
   flex: 1,
   display: 'flex',
   flexDirection: 'column',
@@ -27,6 +28,7 @@ export const ContentWrapper = styled(Box)(({ theme }) => ({
 }));
 
 export const StatusContainer = styled(Box)(({ theme }) => ({
+  flexWrap: 'wrap',
   display: 'flex',
   gap: theme.spacing(1),
 }));

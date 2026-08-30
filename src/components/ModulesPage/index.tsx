@@ -129,12 +129,18 @@ const ModulesPage: FC<IModulesPageProps> = (props) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [sequenceOrder, setSequenceOrder] = useState(1);
+  const [fieldErrors, setFieldErrors] = useState<{
+    title?: string;
+    description?: string;
+    sequenceOrder?: string;
+  }>({});
 
   const openCreateModal = () => {
     setEditingModuleId(null);
     setTitle('');
     setDescription('');
     setSequenceOrder(modulesData ? modulesData.totalElements + 1 : 1);
+    setFieldErrors({});
     setModalOpen(true);
   };
 
@@ -147,10 +153,24 @@ const ModulesPage: FC<IModulesPageProps> = (props) => {
     setTitle(mod.title);
     setDescription(mod.description);
     setSequenceOrder(mod.sequenceOrder);
+    setFieldErrors({});
     setModalOpen(true);
   };
 
   const handleSaveModule = async () => {
+    const nextErrors: { title?: string; description?: string; sequenceOrder?: string } = {};
+
+    if (!title.trim()) nextErrors.title = t('VALIDATION.REQUIRED_MODULE_TITLE');
+
+    if (!description.trim()) nextErrors.description = t('VALIDATION.REQUIRED_MODULE_DESCRIPTION');
+
+    if (!Number.isFinite(sequenceOrder) || sequenceOrder < 1)
+      nextErrors.sequenceOrder = t('VALIDATION.INVALID_SEQUENCE_ORDER');
+
+    setFieldErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) return;
+
     try {
       if (editingModuleId) {
         await updateModule({
@@ -214,17 +234,29 @@ const ModulesPage: FC<IModulesPageProps> = (props) => {
                   placeholder={t('MODULES_PAGE.SEQUENCE_NUMBER')}
                   value={sequenceOrder}
                   min={1}
-                  onChange={(e) => setSequenceOrder(Number(e.target.value))}
+                  error={fieldErrors.sequenceOrder}
+                  onChange={(e) => {
+                    setSequenceOrder(Number(e.target.value));
+                    setFieldErrors((prev) => ({ ...prev, sequenceOrder: undefined }));
+                  }}
                 />
                 <Input
                   placeholder={t('MODULES_PAGE.MODULE_TITLE')}
                   value={title}
-                  onChange={(e) => setTitle(e.target.value)}
+                  error={fieldErrors.title}
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                    setFieldErrors((prev) => ({ ...prev, title: undefined }));
+                  }}
                 />
                 <Textarea
                   placeholder={t('MODULES_PAGE.MODULE_DESCRIPTION')}
                   value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  error={fieldErrors.description}
+                  onChange={(e) => {
+                    setDescription(e.target.value);
+                    setFieldErrors((prev) => ({ ...prev, description: undefined }));
+                  }}
                 />
               </FormContent>
 
