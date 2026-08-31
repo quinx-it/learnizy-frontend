@@ -4,13 +4,12 @@ import Button from '@/components/Button';
 
 export const MobileButtonWrapper = styled(Box)(({ theme }) => ({
   position: 'fixed',
-  top: theme.spacing(1),
-  right: theme.spacing(8),
+  bottom: 'calc(96px + env(safe-area-inset-bottom))',
+  insetInlineEnd: theme.spacing(9),
   zIndex: 40,
 
   [theme.breakpoints.up('md')]: {
-    top: '1rem',
-    right: theme.spacing(1.5),
+    insetInlineEnd: theme.spacing(2),
   },
 
   [theme.breakpoints.up('lg')]: {

@@ -5,8 +5,8 @@ import Link from '@/components/Link';
 
 export const MobileMenuButtonWrapper = styled(Box)(({ theme }) => ({
   position: 'fixed',
-  top: theme.spacing(1),
-  right: theme.spacing(1.5),
+  bottom: 'calc(96px + env(safe-area-inset-bottom))',
+  insetInlineEnd: theme.spacing(2),
   zIndex: 30,
 
   [theme.breakpoints.up('md')]: {

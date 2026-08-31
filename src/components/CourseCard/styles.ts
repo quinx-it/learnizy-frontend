@@ -8,8 +8,13 @@ export const CardContainer = styled(Box)(({ theme }) => ({
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
-  padding: theme.spacing(3),
+  padding: theme.spacing(2),
   borderRadius: '1rem',
+
+  [theme.breakpoints.up('sm')]: {
+    padding: theme.spacing(3),
+  },
+
   backgroundColor: theme.palette.background.default,
   boxShadow: '0px 4px 13px 0px rgba(0, 0, 0, 0.15)',
   border: '1px solid',
@@ -71,6 +76,11 @@ export const ButtonContainer = styled(Box)(({ theme }) => ({
   gap: theme.spacing(1.5),
 }));
 
-export const StyledImage = styled(Image)(() => ({
-  display: 'block',
+export const StyledImage = styled(Image)(({ theme }) => ({
+  display: 'none',
+  flexShrink: 0,
+
+  [theme.breakpoints.up('sm')]: {
+    display: 'block',
+  },
 }));

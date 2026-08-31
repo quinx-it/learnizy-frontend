@@ -18,7 +18,11 @@ export const StyledCardWrapper = styled(Box, {
   return {
     position: 'relative',
     width: '100%',
-    padding: theme.spacing(3),
+    padding: theme.spacing(2),
+
+    [theme.breakpoints.up('sm')]: {
+      padding: theme.spacing(3),
+    },
     borderRadius: '1rem',
     backgroundColor: theme.palette.background.default,
     boxShadow: active
@@ -29,10 +33,16 @@ export const StyledCardWrapper = styled(Box, {
   };
 });
 
-export const CardContent = styled(Box)(() => ({
-  alignItems: 'flex-start',
-  gap: '12px',
+export const CardContent = styled(Box)(({ theme }) => ({
   display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'stretch',
+  gap: '12px',
+
+  [theme.breakpoints.up('sm')]: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
 }));
 
 export const LeftContent = styled(Box)(({ theme }) => ({
@@ -43,16 +53,29 @@ export const LeftContent = styled(Box)(({ theme }) => ({
   gap: theme.spacing(0.5),
 }));
 
-export const RightContent = styled(Box)(() => ({
+export const RightContent = styled(Box)(({ theme }) => ({
   flexShrink: 0,
   display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-end',
+  flexDirection: 'row-reverse',
+  alignItems: 'center',
   justifyContent: 'space-between',
+  gap: theme.spacing(1),
+
+  [theme.breakpoints.up('sm')]: {
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+  },
 }));
 
-export const StyledHeading = styled(BaseHeading)(() => ({
+export const StyledHeading = styled(BaseHeading)(({ theme }) => ({
   wordBreak: 'break-word',
+  fontSize: '18px',
+  lineHeight: '24px',
+
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '24px',
+    lineHeight: '33px',
+  },
 }));
 
 export const TitleSpan = styled('span', {

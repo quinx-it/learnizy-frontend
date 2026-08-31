@@ -18,11 +18,11 @@ export const MainContent = styled('main', {
   width: '100%',
   overflowY: 'auto',
   paddingBlock: isAiPage ? 0 : '1.25rem',
-  paddingTop: isAiPage ? 0 : '3.75rem',
+  paddingBottom: isAiPage ? 0 : 'calc(9rem + env(safe-area-inset-bottom))',
   paddingInline: isAiPage ? 0 : '1rem',
 
   [theme.breakpoints.up('md')]: {
-    paddingTop: isAiPage ? 0 : '1.25rem',
+    paddingBottom: isAiPage ? 0 : '1.25rem',
     paddingInline: isAiPage ? 0 : '1.875rem',
   },
 }));
