@@ -4,6 +4,7 @@ import Link from '@/components/Link';
 
 export const HeaderBand = styled('header')(({ theme }) => ({
   position: 'relative',
+  zIndex: 3,
   width: '100%',
   backgroundColor: 'transparent',
   paddingLeft: theme.spacing(2.5),
@@ -74,6 +75,7 @@ export const SwitcherSlot = styled(Box)(({ theme }) => ({
 
   '& > div > div': {
     right: 0,
+    zIndex: 4,
     backgroundColor: theme.palette.grey[900],
     borderColor: 'rgba(169, 219, 233, 0.22)',
   },

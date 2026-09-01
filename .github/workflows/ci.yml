@@ -27,8 +27,8 @@ jobs:
     name: Quality Checks & Build Verification
     runs-on: ubuntu-latest
     env:
-      NEXT_PUBLIC_BASE_URL: https://edu.pxel.software
-      NEXT_PUBLIC_API_BASE_URL: https://api.edu.pxel.software
+      NEXT_PUBLIC_BASE_URL: https://learnizy-frontend.vercel.app
+      NEXT_PUBLIC_API_BASE_URL: https://backend-production-fc6dc.up.railway.app
 
     steps:
       - name: Checkout repository
@@ -103,7 +103,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            NEXT_PUBLIC_BASE_URL=https://edu.pxel.software
-            NEXT_PUBLIC_API_BASE_URL=https://api.edu.pxel.software
+            NEXT_PUBLIC_BASE_URL=https://learnizy-frontend.vercel.app
+            NEXT_PUBLIC_API_BASE_URL=https://backend-production-fc6dc.up.railway.app
           cache-from: type=gha
           cache-to: type=gha,mode=max

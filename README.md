@@ -40,7 +40,7 @@ http://localhost:3000
 Cоберите образ и поднимите контейнер:
 
 ```bash
-docker build --build-arg NEXT_PUBLIC_API_BASE_URL=https://api.edu.pxel.software -t edu-frontend:latest .
+docker build --build-arg NEXT_PUBLIC_API_BASE_URL=https://backend-production-fc6dc.up.railway.app -t edu-frontend:latest .
 docker run --rm -p 3015:3000 edu-frontend:latest
 ```
 
