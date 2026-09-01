@@ -7,7 +7,7 @@
 1. Клонирование репозитория
 
 ```bash
-git clone https://github.com/pxel-pioneer/learnizy-frontend.git
+git clone https://github.com/quinx-it/learnizy-frontend.git
 cd learnizy-frontend
 ```
 

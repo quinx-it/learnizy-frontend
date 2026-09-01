@@ -1,4 +1,4 @@
-name: PXEL Educational Frontend CI/CD
+name: Learnizy Frontend CI/CD
 
 on:
   push:
