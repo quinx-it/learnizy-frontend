@@ -34,7 +34,9 @@ export const DropdownMenu = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'isOpen',
 })<{ isOpen: boolean }>(({ theme, isOpen }) => ({
   position: 'absolute',
+  top: '100%',
   right: '1rem',
+  zIndex: 50,
   marginTop: '0.5rem',
   width: '7rem',
   borderRadius: '0.375rem',
