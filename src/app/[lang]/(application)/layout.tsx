@@ -96,20 +96,25 @@ const isValidRoute = (pathname: ROUTES) => {
 const ApplicationLayout: FC<PropsWithChildren> = (props) => {
   const { children } = props;
 
-  const [refreshAccessToken, { isLoading }] = useRefreshMutation();
+  const [refreshAccessToken, { isLoading, isUninitialized }] = useRefreshMutation();
   const pathname = usePathname();
   const router = useRouter();
   const accessToken = useAppSelector(selectToken);
   const role = useAppSelector(selectUserRole);
 
+  const isPublicRoute = PUBLIC_ROUTES.includes(pathname as ROUTES);
+  const isRestoringSession = !isPublicRoute && (isUninitialized || isLoading);
+
   useEffect(() => {
+    if (isPublicRoute) return;
+
     refreshAccessToken();
-  }, [refreshAccessToken]);
+  }, [refreshAccessToken, isPublicRoute]);
 
   useEffect(() => {
-    if (isLoading) return;
+    if (isRestoringSession) return;
 
-    if (!accessToken && !PUBLIC_ROUTES.includes(pathname as ROUTES)) {
+    if (!accessToken && !isPublicRoute) {
       router.replace(ROUTES.LOGIN_PAGE);
 
       return;
@@ -126,9 +131,9 @@ const ApplicationLayout: FC<PropsWithChildren> = (props) => {
         router.replace(getDefaultPage(role));
       }
     }
-  }, [accessToken, pathname, router, isLoading, role]);
+  }, [accessToken, pathname, router, isRestoringSession, isPublicRoute, role]);
 
-  if (isLoading) return <FullscreenLoader />;
+  if (isRestoringSession) return <FullscreenLoader />;
 
   const isLeavingLoginPage =
     !!role && pathname === ROUTES.LOGIN_PAGE && getDefaultPage(role) !== ROUTES.LOGIN_PAGE;

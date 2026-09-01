@@ -59,3 +59,5 @@ export const NAVBAR_LINKS = {
     },
   ],
 };
+
+export const PASSWORD_LATIN_REGEX = /^[ -~]+$/;

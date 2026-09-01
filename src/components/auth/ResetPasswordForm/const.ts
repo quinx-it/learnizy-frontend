@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 
+import { PASSWORD_LATIN_REGEX } from '@/const/constants';
 import { type TranslationFunctionType } from '@/types';
 
 export interface IResetPasswordFormValues {
@@ -12,6 +13,7 @@ export const createFormSchema = (t: TranslationFunctionType) =>
     password: yup
       .string()
       .min(8, t('VALIDATION.MIN_8_CHARS'))
+      .matches(PASSWORD_LATIN_REGEX, t('VALIDATION.PASSWORD_LATIN_ONLY'))
       .required(t('VALIDATION.REQUIRED_PASSWORD_AUTH')),
     repeatPassword: yup
       .string()
