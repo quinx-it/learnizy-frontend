@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 
+import { PASSWORD_LATIN_REGEX } from '@/const/constants';
 import { type TranslationFunctionType } from '@/types';
 
 export const createFormSchema = (t: TranslationFunctionType) =>
@@ -16,6 +17,7 @@ export const createFormSchema = (t: TranslationFunctionType) =>
       .string()
       .min(6, t('VALIDATION.MIN_6_CHARS'))
       .max(100, t('VALIDATION.MAX_100_CHARS'))
+      .matches(PASSWORD_LATIN_REGEX, t('VALIDATION.PASSWORD_LATIN_ONLY'))
       .required(t('VALIDATION.REQUIRED_PASSWORD_AUTH')),
     repeatPassword: yup
       .string()

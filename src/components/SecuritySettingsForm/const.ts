@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 
+import { PASSWORD_LATIN_REGEX } from '@/const/constants';
 import { type TranslationFunctionType } from '@/types';
 
 export const createSecuritySettingsSchema = (t: TranslationFunctionType) =>
@@ -8,6 +9,7 @@ export const createSecuritySettingsSchema = (t: TranslationFunctionType) =>
       .string()
       .required(t('VALIDATION.REQUIRED_PASSWORD'))
       .min(8, t('VALIDATION.MIN_8_CHARS'))
+      .matches(PASSWORD_LATIN_REGEX, t('VALIDATION.PASSWORD_LATIN_ONLY'))
       .matches(/[A-Za-z]/, t('VALIDATION.PASSWORD_LETTERS'))
       .matches(/\d/, t('VALIDATION.PASSWORD_DIGITS')),
 
@@ -15,6 +17,7 @@ export const createSecuritySettingsSchema = (t: TranslationFunctionType) =>
       .string()
       .required(t('VALIDATION.REQUIRED_NEW_PASSWORD'))
       .min(8, t('VALIDATION.MIN_8_CHARS'))
+      .matches(PASSWORD_LATIN_REGEX, t('VALIDATION.PASSWORD_LATIN_ONLY'))
       .matches(/[A-Za-z]/, t('VALIDATION.PASSWORD_LETTERS'))
       .matches(/\d/, t('VALIDATION.PASSWORD_DIGITS'))
       .notOneOf([yup.ref('password')], t('VALIDATION.PASSWORD_MATCH')),

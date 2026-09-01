@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { type FC, useState } from 'react';
+import { type FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
@@ -10,7 +10,7 @@ import {
   useUpdateLessonMutation,
   useDeleteLessonMutation,
 } from '@/api/endpoints/admin';
-import { type ILesson } from '@/api/endpoints/lessons';
+import { type ILesson, useGetLessonQuery } from '@/api/endpoints/lessons';
 import { useGetModuleQuery } from '@/api/endpoints/modules';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
@@ -92,6 +92,18 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
   const [description, setDescription] = useState('');
   const [content, setContent] = useState('');
   const [fieldErrors, setFieldErrors] = useState<{ title?: string; description?: string }>({});
+
+  const { data: editingLesson } = useGetLessonQuery(String(editingLessonId), {
+    skip: editingLessonId === null,
+  });
+
+  useEffect(() => {
+    if (!editingLesson) return;
+
+    setTitle(editingLesson.title ?? '');
+    setDescription(editingLesson.description ?? '');
+    setContent(editingLesson.content ?? '');
+  }, [editingLesson]);
 
   if (isLoading) return <FullscreenLoader />;
 

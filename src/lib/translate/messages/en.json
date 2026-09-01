@@ -493,7 +493,7 @@
   "VALIDATION": {
     "REQUIRED_PASSWORD": "Enter current password",
     "MIN_8_CHARS": "Minimum 8 characters",
-    "PASSWORD_LETTERS": "Password must contain letters",
+    "PASSWORD_LETTERS": "Password must contain Latin letters",
     "PASSWORD_DIGITS": "Password must contain digits",
     "REQUIRED_NEW_PASSWORD": "Enter new password",
     "PASSWORD_MATCH": "New password must not match current password",
@@ -538,7 +538,8 @@
     "TEST_TITLE_MIN_3": "Title must be at least 3 characters",
     "INVALID_THRESHOLD": "Pass threshold must be between 0 and 100",
     "REQUIRED_QUESTION_TEXT": "Enter the question text",
-    "INVALID_MAX_SCORE": "Score must be 1 or higher"
+    "INVALID_MAX_SCORE": "Score must be 1 or higher",
+    "PASSWORD_LATIN_ONLY": "Password may contain only Latin letters, digits and symbols"
   },
   "VOICE_RECORDER_CONTROL": {
     "START_RECORDING": "Start recording",

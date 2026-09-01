@@ -493,7 +493,7 @@
   "VALIDATION": {
     "REQUIRED_PASSWORD": "Введите текущий пароль",
     "MIN_8_CHARS": "Минимум 8 символов",
-    "PASSWORD_LETTERS": "Пароль должен содержать буквы",
+    "PASSWORD_LETTERS": "Пароль должен содержать латинские буквы",
     "PASSWORD_DIGITS": "Пароль должен содержать цифры",
     "REQUIRED_NEW_PASSWORD": "Введите новый пароль",
     "PASSWORD_MATCH": "Новый пароль не должен совпадать с текущим",
@@ -538,7 +538,8 @@
     "TEST_TITLE_MIN_3": "Название не короче 3 символов",
     "INVALID_THRESHOLD": "Порог прохождения — от 0 до 100",
     "REQUIRED_QUESTION_TEXT": "Введите текст вопроса",
-    "INVALID_MAX_SCORE": "Балл должен быть не меньше 1"
+    "INVALID_MAX_SCORE": "Балл должен быть не меньше 1",
+    "PASSWORD_LATIN_ONLY": "Пароль может содержать только латинские буквы, цифры и символы"
   },
   "VOICE_RECORDER_CONTROL": {
     "START_RECORDING": "Начать запись",
