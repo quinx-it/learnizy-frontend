@@ -107,7 +107,9 @@ const ModuleProgressCard: FC<IModuleProgressCardProps> = (props) => {
 };
 
 const ModulesPage: FC<IModulesPageProps> = (props) => {
-  const { courseId = 2 } = props;
+  const { courseId: courseIdProp } = props;
+  const courseId = courseIdProp ?? 2;
+  const canCreateModule = courseIdProp !== undefined;
   const role = useSelector(selectUserRole);
   const isMentor = role === UserRole.Mentor;
   const { t } = useTranslation();
@@ -126,6 +128,7 @@ const ModulesPage: FC<IModulesPageProps> = (props) => {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [editingModuleId, setEditingModuleId] = useState<number | null>(null);
+  const [editingCourseId, setEditingCourseId] = useState<number | null>(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [sequenceOrder, setSequenceOrder] = useState(1);
@@ -137,6 +140,7 @@ const ModulesPage: FC<IModulesPageProps> = (props) => {
 
   const openCreateModal = () => {
     setEditingModuleId(null);
+    setEditingCourseId(null);
     setTitle('');
     setDescription('');
     setSequenceOrder(modulesData ? modulesData.totalElements + 1 : 1);
@@ -150,6 +154,7 @@ const ModulesPage: FC<IModulesPageProps> = (props) => {
     if (!mod) return;
 
     setEditingModuleId(moduleId);
+    setEditingCourseId(mod.courseId);
     setTitle(mod.title);
     setDescription(mod.description);
     setSequenceOrder(mod.sequenceOrder);
@@ -175,7 +180,7 @@ const ModulesPage: FC<IModulesPageProps> = (props) => {
       if (editingModuleId) {
         await updateModule({
           id: editingModuleId,
-          data: { title, description, courseId, sequenceOrder },
+          data: { title, description, courseId: editingCourseId ?? courseId, sequenceOrder },
         }).unwrap();
       } else {
         await createModule({ title, description, courseId, sequenceOrder }).unwrap();
@@ -208,7 +213,7 @@ const ModulesPage: FC<IModulesPageProps> = (props) => {
         rootHref={isMentor ? ROUTES.MENTOR_COURSES : ROUTES.USER_COURSES}
         rootDescription={courseData?.title || t('COMMON.COURSE_LABEL')}
       />
-      {isMentor && (
+      {isMentor && canCreateModule && (
         <CreateButtonWrapper>
           <BlueButtonSmall onClick={openCreateModal}>
             {t('MODULES_PAGE.CREATE_MODULE')}
