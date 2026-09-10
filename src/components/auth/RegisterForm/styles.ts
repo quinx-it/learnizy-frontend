@@ -78,6 +78,19 @@ export const LinkStyled = styled(Link)(() => ({
   textDecoration: 'underline',
 }));
 
+export const LinksRow = styled(Box)(() => ({
+  display: 'flex',
+  width: '100%',
+  justifyContent: 'center',
+  gap: '0.375rem',
+  fontSize: '12px',
+}));
+
+export const AuthLink = styled(Link)(({ theme }) => ({
+  color: theme.palette.primary.main,
+  textDecoration: 'underline',
+}));
+
 export const RoundedButton = styled(PrimaryButton)(() => ({
   borderRadius: '50px',
 }));

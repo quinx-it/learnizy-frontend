@@ -22,6 +22,7 @@ import { createFormSchema, createVerificationSchema } from './const';
 import { type VerificationFormValuesType, RegisterStep, type IRegisterFormValues } from './typings';
 
 import {
+  AuthLink,
   CheckboxContainer,
   Container,
   EmailText,
@@ -29,6 +30,7 @@ import {
   Form,
   HeadingContainer,
   LinkStyled,
+  LinksRow,
   ResendButton,
   ResendText,
   RoundedButton,
@@ -246,6 +248,11 @@ const RegisterForm: FC = () => {
       <RoundedButton type="submit" disabled={isRegistering}>
         {isRegistering ? <Spinner type="ring" /> : t('AUTH.REGISTER')}
       </RoundedButton>
+
+      <LinksRow>
+        {t('AUTH.HAVE_ACCOUNT')}{' '}
+        <AuthLink href={ROUTES.LOGIN_PAGE}>{t('AUTH.GO_TO_LOGIN')}</AuthLink>
+      </LinksRow>
     </Form>
   );
 };

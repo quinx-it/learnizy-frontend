@@ -8,7 +8,7 @@ export const createFormSchema = (t: TranslationFunctionType) =>
     login: yup
       .string()
       .required(t('VALIDATION.REQUIRED_USERNAME'))
-      .matches(/^[a-zA-Z0-9._-]{3,50}$/, t('VALIDATION.USERNAME_FORMAT')),
+      .matches(/^[a-zA-Z._-]{3,50}$/, t('VALIDATION.USERNAME_FORMAT')),
     email: yup
       .string()
       .required(t('VALIDATION.REQUIRED_EMAIL'))

@@ -179,7 +179,6 @@
     "TITLES": {
       "CURRENT_COURSE": "Current Course",
       "CURRENT_MODULE": "Current Module",
-      "COURSE_NAME": "Java Core",
       "MODULE_NAME": "Introduction",
       "REVIEW": "Mentor Review",
       "STATISTICS": "Activity Statistics"
@@ -382,6 +381,8 @@
     "ERROR_SEND": "Failed to send test"
   },
   "AUTH": {
+    "HAVE_ACCOUNT": "Have an account?",
+    "GO_TO_LOGIN": "Sign in",
     "SUCCESS": "Success",
     "CODE_SENT": "Verification code sent to your email.",
     "EMAIL_EXISTS": "An account with this email already exists. Log in or recover access.",
@@ -394,11 +395,11 @@
     "RESEND_CODE": "Resend code",
     "CONFIRM": "Confirm",
     "ENTER_LOGIN": "Enter login",
-    "LOGIN_PLACEHOLDER": "login",
+    "LOGIN_PLACEHOLDER": "Login",
     "ENTER_EMAIL": "Enter email",
-    "EMAIL_PLACEHOLDER": "email",
+    "EMAIL_PLACEHOLDER": "Email",
     "ENTER_PASSWORD": "Enter password",
-    "PASSWORD_PLACEHOLDER": "password",
+    "PASSWORD_PLACEHOLDER": "Password",
     "REPEAT_PASSWORD": "Repeat password",
     "ACCEPT_AGREEMENT": "You must accept the agreement",
     "REGISTER": "Register",
@@ -517,7 +518,7 @@
     "ANSWER_OR_FILE": "You need to fill in the answer or attach a file (but not both)",
     "ANSWER_OR_FILE_ONLY": "Fill in either the answer or attach a file",
     "REQUIRED_USERNAME": "Enter username",
-    "USERNAME_FORMAT": "Username can only contain letters, numbers, \".\", \"_\" and \"-\"",
+    "USERNAME_FORMAT": "Username can only contain latin letters, \".\", \"_\" and \"-\"",
     "MIN_6_CHARS": "Minimum 6 characters",
     "MAX_100_CHARS": "Maximum 100 characters",
     "REQUIRED_PASSWORD_AUTH": "Enter password",
@@ -617,25 +618,58 @@
       "RIGHTS": "All rights reserved."
     }
   },
+  "LEGAL": {
+    "BACK": "Back to home",
+    "UPDATED": "Draft of 10 September 2026",
+    "DRAFT_NOTICE": "This is placeholder text for layout purposes. It has no legal force and must be replaced with a document prepared by a lawyer before launch.",
+    "USER_AGREEMENT": {
+      "TITLE": "Terms of Service",
+      "INTRO": "These terms describe how you may use the Learnizy platform, what we undertake to provide, and on what conditions tuition is paid.",
+      "S1_TITLE": "Subject of the agreement",
+      "S1_TEXT": "Learnizy grants access to learning materials, mentor support and interview practice tools. You use the platform for personal learning and do not transfer your account to anyone else.",
+      "S2_TITLE": "Account",
+      "S2_TEXT": "You are responsible for keeping your credentials safe and for everything done under your account. Tell us straight away if you suspect someone else has access to it.",
+      "S3_TITLE": "Payment for tuition",
+      "S3_TEXT": "Tuition is paid under an income share agreement: payments begin only after you are employed and start receiving a salary. The amount and duration are fixed before the course starts.",
+      "S4_TITLE": "Content and intellectual property",
+      "S4_TEXT": "Course materials belong to Learnizy and its authors. You may use them for your own learning, but you may not publish, resell or distribute them.",
+      "S5_TITLE": "Termination",
+      "S5_TEXT": "You may stop learning at any time. Obligations that arose before you stopped remain in force. We may restrict access if the platform is used in breach of these terms."
+    },
+    "PRIVACY_POLICY": {
+      "TITLE": "Privacy Policy",
+      "INTRO": "This policy explains what personal data Learnizy collects, why it is needed, and what you can do about it.",
+      "S1_TITLE": "What we collect",
+      "S1_TEXT": "Registration details: username, email and password. Profile details you fill in yourself: name, phone, address, date of birth, country and city. Learning data: progress, test results and interview practice recordings.",
+      "S2_TITLE": "Why we need it",
+      "S2_TEXT": "To give you access to your account, track progress, prepare feedback on your answers, and contact you about your learning. We do not sell your data and do not pass it to third parties for advertising.",
+      "S3_TITLE": "Storage and protection",
+      "S3_TEXT": "Data is stored on servers with restricted access. Passwords are kept as hashes and cannot be recovered. Communication with the platform goes over an encrypted connection.",
+      "S4_TITLE": "Cookies",
+      "S4_TEXT": "We use cookies to keep you signed in between visits and to remember your language choice. Without them you would have to sign in again on every page.",
+      "S5_TITLE": "Your rights",
+      "S5_TEXT": "You may view and change your details in your profile, ask for your account to be deleted, or ask what data we hold about you. Write to us and we will reply within thirty days."
+    }
+  },
   "SEO": {
     "DEFAULT": {
       "TITLE": "Learnizy - IT Developer Interview Preparation with Employment Guarantee",
-      "DESCRIPTION": "Guaranteed employment for Frontend, Backend, DevOps, and Java developers under the ISA model. AI simulator, pay only after getting a job. 87% of graduates receive an offer.",
-      "KEYWORDS": "java developer interview, employment guarantee, technical interview preparation, ai interview simulator, java courses with employment, interview preparation, isa training, it employment, tech interviews, career in it, frontend backend courses, learnizy, online school, training courses, distance learning, learning platform, online tutors",
+      "DESCRIPTION": "Guaranteed employment for IT specialists under the ISA model. AI simulator, pay only after getting a job. 87% of graduates receive an offer.",
+      "KEYWORDS": "developer interview, employment guarantee, technical interview preparation, ai interview simulator, it courses with employment, interview preparation, isa training, it employment, tech interviews, career in it, programming courses, learnizy, online school, training courses, distance learning, learning platform, online tutors",
       "OG_TITLE": "Pay for training only after employment. AI interview simulator and mentors from top companies.",
       "OG_DESCRIPTION": "Pay for training only after getting a job. AI simulator, top-company mentors, 87% of graduates receive an offer. Personalized approach to learning. Programming courses."
     },
     "MAIN_PAGE_SEO": {
       "TITLE": "Learnizy - IT Developer Interview Preparation with Employment Guarantee",
-      "DESCRIPTION": "Guaranteed employment for Frontend, Backend, DevOps, and Java developers under the ISA model. AI simulator, pay only after getting a job. 87% of graduates receive an offer.",
-      "KEYWORDS": "java developer interview, employment guarantee, technical interview preparation, ai interview simulator, java courses with employment, interview preparation, isa training, it employment, tech interviews, career in it, frontend backend courses, learnizy, online school, training courses, distance learning, learning platform, online tutors",
+      "DESCRIPTION": "Guaranteed employment for IT specialists under the ISA model. AI simulator, pay only after getting a job. 87% of graduates receive an offer.",
+      "KEYWORDS": "developer interview, employment guarantee, technical interview preparation, ai interview simulator, it courses with employment, interview preparation, isa training, it employment, tech interviews, career in it, programming courses, learnizy, online school, training courses, distance learning, learning platform, online tutors",
       "OG_TITLE": "Pay for training only after employment. AI interview simulator and mentors from top companies.",
       "OG_DESCRIPTION": "Pay for training only after getting a job. AI simulator, top-company mentors, 87% of graduates receive an offer. Personalized approach to learning. Programming courses."
     },
     "FAQ_PAGE_SEO": {
       "TITLE": "Frequently Asked Questions About Interview Preparation and Employment Guarantee",
       "DESCRIPTION": "Answers to questions about IT interview preparation at Learnizy: training duration, employment guarantees, ISA model, working with mentors, AI simulator.",
-      "KEYWORDS": "learnizy faq, isa payment model, java employment guarantee, ai interview simulator, java development mentor, java training duration",
+      "KEYWORDS": "learnizy faq, isa payment model, employment guarantee, ai interview simulator, development mentor, training duration",
       "OG_TITLE": "Learn everything about the training process, employment guarantees, and the ISA model. Transparent conditions and answers to common questions.",
       "OG_DESCRIPTION": "Everything about the ISA model, employment guarantee, AI simulator, and mentor support at Learnizy"
     },

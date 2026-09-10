@@ -32,18 +32,6 @@ export const HeaderTitle = styled(Typography)(({ theme }) => ({
   },
 }));
 
-export const HeaderSubtitle = styled(Typography)(({ theme }) => ({
-  fontSize: '18px',
-
-  [theme.breakpoints.up('md')]: {
-    fontSize: '24px',
-  },
-}));
-
-export const IconWrapper = styled(Box)(() => ({
-  display: 'block',
-}));
-
 export const InterviewRecordsWrapper = styled(Box)(({ theme }) => ({
   width: '100%',
   gridColumn: 'span 1',

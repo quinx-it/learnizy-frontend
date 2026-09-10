@@ -12,7 +12,6 @@ export const constants = {
   titles: {
     currentCourse: 'LEARN_MAIN_PAGE.TITLES.CURRENT_COURSE',
     currentModule: 'LEARN_MAIN_PAGE.TITLES.CURRENT_MODULE',
-    courseName: 'LEARN_MAIN_PAGE.TITLES.COURSE_NAME',
     moduleName: 'LEARN_MAIN_PAGE.TITLES.MODULE_NAME',
     review: 'LEARN_MAIN_PAGE.TITLES.REVIEW',
     statistics: 'LEARN_MAIN_PAGE.TITLES.STATISTICS',
