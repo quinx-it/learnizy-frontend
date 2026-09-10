@@ -1,6 +1,6 @@
-import { type ILesson, type ILessonProgress } from '@/api/endpoints/lessons';
+import { type ILessonProgressItem, type ILessonProgress } from '@/api/endpoints/lessons';
 
-export type LessonCardPropsType = ILesson & {
+export type LessonCardPropsType = ILessonProgressItem & {
   progress: ILessonProgress;
   onClick: (lessonId: number) => void;
 };

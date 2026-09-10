@@ -10,7 +10,7 @@ import {
   useUpdateLessonMutation,
   useDeleteLessonMutation,
 } from '@/api/endpoints/admin';
-import { type ILesson, useGetLessonQuery } from '@/api/endpoints/lessons';
+import { type ILessonProgressItem, useGetLessonQuery } from '@/api/endpoints/lessons';
 import { useGetModuleQuery } from '@/api/endpoints/modules';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
@@ -126,11 +126,11 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
     setModalOpen(true);
   };
 
-  const openEditModal = (lesson: ILesson) => {
+  const openEditModal = (lesson: ILessonProgressItem) => {
     setEditingLessonId(lesson.id);
     setTitle(lesson.title);
-    setDescription(lesson.description);
-    setContent(lesson.content || '');
+    setDescription('');
+    setContent('');
     setFieldErrors({});
     setModalOpen(true);
   };
@@ -240,7 +240,7 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
             {lessons
               .slice()
               .sort((a, b) => a.sequenceOrder - b.sequenceOrder)
-              .map((lesson: ILesson) => (
+              .map((lesson: ILessonProgressItem) => (
                 <LessonListItem key={lesson.id}>
                   <LessonCard onClick={handleLessonCardClick} {...lesson} />
                   {isMentor && (

@@ -1,10 +1,10 @@
 import { api } from '@/api';
 
-import { type ILesson } from './types';
+import { type ILessonWithContent } from './types';
 
 export const lessonsApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getLesson: builder.query<ILesson, string>({
+    getLesson: builder.query<ILessonWithContent, string>({
       query: (lessonId) => `/lesson/${lessonId}`,
     }),
   }),

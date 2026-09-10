@@ -1,4 +1,4 @@
-import { type ILesson } from '../lessons/types';
+import { type ILessonProgressItem } from '../lessons/types';
 import { type CompletionStatus } from '../types';
 
 export interface IModuleInfo {
@@ -13,7 +13,7 @@ export interface IModuleInfo {
 
 export interface IModuleData {
   moduleInfo: IModuleInfo;
-  lessons: ILesson[];
+  lessons: ILessonProgressItem[];
 }
 
 export interface IGetModuleRequest {
