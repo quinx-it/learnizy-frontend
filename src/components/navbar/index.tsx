@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, type FC } from 'react';
+import { useEffect, useState, type FC } from 'react';
 
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { type INavbarProps } from '@/components/navbar/typings';
@@ -22,6 +22,7 @@ import {
   LogoImageMobileAndLg,
   LogoutButton,
   LogoutButtonText,
+  MobileCloseButton,
   MobileLanguageSwitcherContainer,
   MobileLinksContainer,
   MobileLogoLink,
@@ -30,6 +31,7 @@ import {
   MobileLogoutContainer,
   MobileMenuButtonWrapper,
   MobileMenuContainer,
+  MobileMenuHeader,
   NavbarContainer,
   Overlay,
   SpinnerWrapper,
@@ -42,6 +44,17 @@ const Navbar: FC<INavbarProps> = (props) => {
   const { handleLogout, isLoading } = useLogout();
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isOpen]);
 
   return (
     <>
@@ -69,7 +82,7 @@ const Navbar: FC<INavbarProps> = (props) => {
         </LinksContainer>
 
         <LanguageSwitcherContainer>
-          <LanguageSwitcher />
+          <LanguageSwitcher fullWidth />
         </LanguageSwitcherContainer>
 
         <LogoutButton onClick={handleLogout}>
@@ -92,61 +105,65 @@ const Navbar: FC<INavbarProps> = (props) => {
         </LogoutButton>
       </NavbarContainer>
 
-      {isOpen && (
-        <>
-          <Overlay
-            role="button"
-            tabIndex={0}
-            aria-label={t('COMMON_LABELS.CLOSE')}
-            onClick={() => setIsOpen(false)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') setIsOpen(false);
-            }}
-          />
-          <MobileMenuContainer isOpen={isOpen}>
-            <MobileLogoLink href={ROUTES.USER_HOME_PAGE} onClick={() => setIsOpen(false)}>
-              <Image src="/images/header-logo-desktop.svg" alt="Logo" width={200} height={70} />
-            </MobileLogoLink>
+      <Overlay
+        isOpen={isOpen}
+        role="button"
+        tabIndex={isOpen ? 0 : -1}
+        aria-hidden={!isOpen}
+        aria-label={t('COMMON_LABELS.CLOSE')}
+        onClick={() => setIsOpen(false)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') setIsOpen(false);
+        }}
+      />
+      <MobileMenuContainer isOpen={isOpen} aria-hidden={!isOpen}>
+        <MobileMenuHeader>
+          <MobileLogoLink href={ROUTES.USER_HOME_PAGE} onClick={() => setIsOpen(false)}>
+            <Image src="/images/header-logo-desktop.svg" alt="Logo" width={150} height={52} />
+          </MobileLogoLink>
 
-            <MobileLinksContainer>
-              {links.map(({ href, src, label }) => (
-                <NavbarLink
-                  key={label}
-                  href={href}
-                  src={src || ''}
-                  label={t(label)}
-                  onClick={() => setIsOpen(false)}
-                />
-              ))}
-            </MobileLinksContainer>
+          <MobileCloseButton onClick={() => setIsOpen(false)} aria-label={t('COMMON_LABELS.CLOSE')}>
+            <Image src="/images/cross-icon.svg" alt="" width={16} height={16} />
+          </MobileCloseButton>
+        </MobileMenuHeader>
 
-            <MobileLanguageSwitcherContainer>
-              <LanguageSwitcher />
-            </MobileLanguageSwitcherContainer>
+        <MobileLinksContainer>
+          {links.map(({ href, src, label }) => (
+            <NavbarLink
+              key={label}
+              href={href}
+              src={src || ''}
+              label={t(label)}
+              onClick={() => setIsOpen(false)}
+            />
+          ))}
+        </MobileLinksContainer>
 
-            <MobileLogoutContainer>
-              <MobileLogoutButton onClick={handleLogout}>
-                {isLoading ? (
-                  <SpinnerWrapper>
-                    <Spinner type="ring" size={16} />
-                  </SpinnerWrapper>
-                ) : (
-                  <>
-                    <IconWrapper>
-                      <Image src="/images/exit-icon.svg" alt="Exit icon" width={16} height={16} />
-                    </IconWrapper>
-                    <MobileLogoutButtonText>
-                      <Text variant="s" tag="span">
-                        {t('COMMON.BUTTON_LOGOUT')}
-                      </Text>
-                    </MobileLogoutButtonText>
-                  </>
-                )}
-              </MobileLogoutButton>
-            </MobileLogoutContainer>
-          </MobileMenuContainer>
-        </>
-      )}
+        <MobileLanguageSwitcherContainer>
+          <LanguageSwitcher fullWidth />
+        </MobileLanguageSwitcherContainer>
+
+        <MobileLogoutContainer>
+          <MobileLogoutButton onClick={handleLogout}>
+            {isLoading ? (
+              <SpinnerWrapper>
+                <Spinner type="ring" size={16} />
+              </SpinnerWrapper>
+            ) : (
+              <>
+                <IconWrapper>
+                  <Image src="/images/exit-icon.svg" alt="Exit icon" width={16} height={16} />
+                </IconWrapper>
+                <MobileLogoutButtonText>
+                  <Text variant="s" tag="span">
+                    {t('COMMON.BUTTON_LOGOUT')}
+                  </Text>
+                </MobileLogoutButtonText>
+              </>
+            )}
+          </MobileLogoutButton>
+        </MobileLogoutContainer>
+      </MobileMenuContainer>
     </>
   );
 };

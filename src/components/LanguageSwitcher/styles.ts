@@ -1,14 +1,19 @@
 import { Box, Button, styled } from '@mui/material';
 
-export const Container = styled(Box)(() => ({
+export const Container = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'fullWidth',
+})<{ fullWidth?: boolean }>(({ fullWidth }) => ({
   position: 'relative',
   display: 'flex',
   width: '100%',
-  justifyContent: 'flex-end',
-  paddingRight: '1rem',
+  minWidth: 0,
+  justifyContent: fullWidth ? 'stretch' : 'flex-end',
+  paddingRight: fullWidth ? 0 : '1rem',
 }));
 
-export const ToggleButton = styled(Button)(({ theme }) => ({
+export const ToggleButton = styled(Button, {
+  shouldForwardProp: (prop) => prop !== 'fullWidth',
+})<{ fullWidth?: boolean }>(({ theme, fullWidth }) => ({
   display: 'flex',
   alignItems: 'center',
   gap: '0.5rem',
@@ -23,6 +28,12 @@ export const ToggleButton = styled(Button)(({ theme }) => ({
   textTransform: 'none',
   boxShadow: 'none',
   transition: 'background-color 0.2s ease-in-out',
+  ...(fullWidth && {
+    width: '100%',
+    minWidth: 0,
+    minHeight: '44px',
+    justifyContent: 'center',
+  }),
 
   '&:hover': {
     backgroundColor: theme.palette.grey[100],
@@ -31,14 +42,15 @@ export const ToggleButton = styled(Button)(({ theme }) => ({
 }));
 
 export const DropdownMenu = styled(Box, {
-  shouldForwardProp: (prop) => prop !== 'isOpen',
-})<{ isOpen: boolean }>(({ theme, isOpen }) => ({
+  shouldForwardProp: (prop) => prop !== 'isOpen' && prop !== 'fullWidth',
+})<{ isOpen: boolean; fullWidth?: boolean }>(({ theme, isOpen, fullWidth }) => ({
   position: 'absolute',
   top: '100%',
-  right: '1rem',
+  right: fullWidth ? 0 : '1rem',
+  left: fullWidth ? 0 : 'auto',
   zIndex: 50,
   marginTop: '0.5rem',
-  width: '7rem',
+  width: fullWidth ? 'auto' : '7rem',
   borderRadius: '0.375rem',
   border: `1px solid ${theme.palette.grey[200]}`,
   backgroundColor: theme.palette.background.paper,

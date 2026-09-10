@@ -4,7 +4,7 @@ import { Fragment, type FC } from 'react';
 
 import { Text } from '@/components/Typography';
 import { ROUTES } from '@/const/routes';
-import { useTranslation } from '@/hooks';
+import { usePathname, useTranslation } from '@/hooks';
 
 import { type IBreadcrumbsProps } from './typings';
 
@@ -17,6 +17,7 @@ import {
   StyledText,
   StyledDotTitleContainer,
   StyledDotTitleHeading,
+  StyledDotTitleLink,
   StyledDotTitleSecondLabel,
   StyledDotTitleDot,
   ArrowIcon,
@@ -24,6 +25,7 @@ import {
 
 const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
   const { t } = useTranslation();
+  const pathname = usePathname();
 
   const {
     items,
@@ -67,7 +69,11 @@ const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
           <StyledListItem>
             <StyledDotTitleContainer>
               <StyledDotTitleHeading variant="2xl">
-                {t(rootLabel)}
+                {pathname === rootHref ? (
+                  t(rootLabel)
+                ) : (
+                  <StyledDotTitleLink href={rootHref}>{t(rootLabel)}</StyledDotTitleLink>
+                )}
                 <StyledDotTitleSecondLabel>
                   <StyledDotTitleDot>•</StyledDotTitleDot>
                   {rootDescription || ''}

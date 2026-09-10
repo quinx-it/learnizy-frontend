@@ -5,9 +5,12 @@ import { useState, useRef, useEffect, type FC } from 'react';
 
 import { Language } from '@/const';
 
+import { type ILanguageSwitcherProps } from './typings';
+
 import { Container, DropdownMenu, MenuItem, ToggleButton } from './styles';
 
-const LanguageSwitcher: FC = () => {
+const LanguageSwitcher: FC<ILanguageSwitcherProps> = (props) => {
+  const { fullWidth = false } = props;
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -53,12 +56,12 @@ const LanguageSwitcher: FC = () => {
   }, []);
 
   return (
-    <Container ref={menuRef}>
-      <ToggleButton type="button" onClick={() => setOpen((prev) => !prev)}>
+    <Container ref={menuRef} fullWidth={fullWidth}>
+      <ToggleButton fullWidth={fullWidth} type="button" onClick={() => setOpen((prev) => !prev)}>
         {pathname.split('/')[1]?.toUpperCase() || Language.En.toUpperCase()}
       </ToggleButton>
 
-      <DropdownMenu isOpen={open}>
+      <DropdownMenu isOpen={open} fullWidth={fullWidth}>
         <MenuItem type="button" onClick={() => changeLanguage(Language.En)}>
           English
         </MenuItem>
