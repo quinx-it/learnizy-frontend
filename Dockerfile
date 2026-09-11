@@ -2,7 +2,7 @@
 FROM node:22-alpine AS deps
 WORKDIR /app
 
-RUN npm install -g pnpm
+RUN npm install -g pnpm@10.5.2
 
 COPY package.json pnpm-lock.yaml .npmrc* ./
 
@@ -17,7 +17,7 @@ ARG NEXT_PUBLIC_API_BASE_URL
 ENV NEXT_PUBLIC_BASE_URL=${NEXT_PUBLIC_BASE_URL}
 ENV NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL}
 
-RUN npm install -g pnpm
+RUN npm install -g pnpm@10.5.2
 
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
