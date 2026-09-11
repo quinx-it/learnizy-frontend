@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { type FC } from 'react';
 
+import { useGetCourseQuery } from '@/api/endpoints/courses';
 import { useGetExamsQuery, ExamApiStatus } from '@/api/endpoints/exams';
 import ErrorSection from '@/components/ErrorSection';
 import ExamCard from '@/components/ExamCard';
@@ -40,6 +41,7 @@ const ExamsPage: FC<IExamsPageProps> = (props) => {
   const { t } = useTranslation();
 
   const { data, isLoading, isError, refetch } = useGetExamsQuery({ courseId, page: 0, size: 10 });
+  const { data: course } = useGetCourseQuery(courseId);
 
   if (isLoading) return <FullscreenLoader />;
 
@@ -49,10 +51,14 @@ const ExamsPage: FC<IExamsPageProps> = (props) => {
     <Container>
       <HeaderContainer>
         <StyledHeading variant="2xl">{t('EXAMS.TITLE')}</StyledHeading>
-        <IconWrapper>
-          <Image src="/images/circle-icon.svg" alt="Circle icon" width={8} height={8} />
-        </IconWrapper>
-        <StyledHeadingSecondary variant="2xl">Java Core</StyledHeadingSecondary>
+        {course?.title && (
+          <>
+            <IconWrapper>
+              <Image src="/images/circle-icon.svg" alt="Circle icon" width={8} height={8} />
+            </IconWrapper>
+            <StyledHeadingSecondary variant="2xl">{course.title}</StyledHeadingSecondary>
+          </>
+        )}
       </HeaderContainer>
 
       {data.content.map((examItem) => {

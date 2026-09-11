@@ -10,7 +10,8 @@ import { type LinkProps } from './typings';
 const Link: FC<LinkProps> = ({ href, children, ...props }) => {
   const { lang } = useTranslation();
 
-  const localizedHref = `/${lang}${href}`;
+  const path = typeof href === 'string' ? href : String(href);
+  const localizedHref = `/${lang}${path.startsWith('/') ? path : `/${path}`}`;
 
   return (
     <LinkBase href={localizedHref} {...props}>
