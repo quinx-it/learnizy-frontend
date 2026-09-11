@@ -77,6 +77,9 @@ export const LinksContainer = styled(Box)(({ theme }) => ({
 
 export const LanguageSwitcherContainer = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(1.5),
+  width: '100%',
+  paddingLeft: theme.spacing(1.25),
+  paddingRight: theme.spacing(1.25),
 }));
 
 export const LogoutButton = styled(MuiButton)(({ theme }) => ({
@@ -109,12 +112,20 @@ export const LogoutButtonText = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const Overlay = styled(Box)(() => ({
+export const Overlay = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'isOpen',
+})<{ isOpen: boolean }>(({ theme, isOpen }) => ({
   position: 'fixed',
   inset: 0,
   zIndex: 30,
   backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  transition: 'opacity 0.3s',
+  opacity: isOpen ? 1 : 0,
+  visibility: isOpen ? 'visible' : 'hidden',
+  transition: 'opacity 0.3s, visibility 0.3s',
+
+  [theme.breakpoints.up('md')]: {
+    display: 'none',
+  },
 }));
 
 export const MobileMenuContainer = styled(Box, {
@@ -126,60 +137,98 @@ export const MobileMenuContainer = styled(Box, {
   left: 0,
   zIndex: 50,
   display: 'flex',
-  height: '100%',
-  width: '80%',
-  maxWidth: '200px',
+  height: '100dvh',
+  width: '85%',
+  maxWidth: '320px',
   transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
+  visibility: isOpen ? 'visible' : 'hidden',
   flexDirection: 'column',
   alignItems: 'flex-start',
   justifyContent: 'flex-start',
-  borderTopRightRadius: '2rem',
-  borderBottomRightRadius: '2rem',
-  padding: theme.spacing(1.5),
+  borderTopRightRadius: '1.5rem',
+  borderBottomRightRadius: '1.5rem',
+  paddingTop: `calc(${theme.spacing(2)} + env(safe-area-inset-top))`,
+  paddingBottom: `calc(${theme.spacing(2)} + env(safe-area-inset-bottom))`,
+  paddingLeft: theme.spacing(2),
+  paddingRight: theme.spacing(2),
   boxShadow: theme.shadows[8],
-  transition: 'transform 0.3s',
+  transition: 'transform 0.3s, visibility 0.3s',
+  overflowY: 'auto',
+  overscrollBehavior: 'contain',
 
   [theme.breakpoints.up('md')]: {
     display: 'none',
   },
 }));
 
-export const MobileLogoLink = styled(Link)(({ theme }) => ({
-  marginTop: theme.spacing(0.5),
+export const MobileMenuHeader = styled(Box)(({ theme }) => ({
   display: 'flex',
-  justifyContent: 'center',
+  width: '100%',
+  minWidth: 0,
   alignItems: 'center',
-  '& svg': {
-    transform: 'scale(1.2)',
+  justifyContent: 'space-between',
+  gap: theme.spacing(1),
+}));
+
+export const MobileCloseButton = styled(MuiButton)(({ theme }) => ({
+  minWidth: 0,
+  flexShrink: 0,
+  width: '40px',
+  height: '40px',
+  padding: 0,
+  borderRadius: '50%',
+  backgroundColor: 'transparent',
+  boxShadow: 'none',
+
+  '&:hover': {
+    backgroundColor: theme.palette.grey[100],
+    boxShadow: 'none',
   },
 }));
 
+export const MobileLogoLink = styled(Link)(() => ({
+  display: 'flex',
+  minWidth: 0,
+  alignItems: 'center',
+  overflow: 'hidden',
+}));
+
 export const MobileLinksContainer = styled(Box)(({ theme }) => ({
-  marginTop: theme.spacing(2.5),
+  marginTop: theme.spacing(3),
   display: 'flex',
   width: '100%',
   flexDirection: 'column',
-  gap: theme.spacing(1.5),
+  gap: theme.spacing(1),
+
+  '& button': {
+    minHeight: '44px',
+    fontSize: '14px',
+  },
 }));
 
 export const MobileLanguageSwitcherContainer = styled(Box)(({ theme }) => ({
-  marginTop: theme.spacing(1.5),
+  marginTop: theme.spacing(2),
   width: '100%',
+  paddingLeft: theme.spacing(2),
+  paddingRight: theme.spacing(1.25),
 }));
 
 export const MobileLogoutContainer = styled(Box)(({ theme }) => ({
   marginTop: 'auto',
   width: '100%',
-  paddingTop: theme.spacing(1.5),
+  paddingTop: theme.spacing(2),
+  paddingLeft: theme.spacing(2),
+  paddingRight: theme.spacing(1.25),
 }));
 
 export const MobileLogoutButton = styled(MuiButton)(({ theme }) => ({
   width: '100%',
+  minHeight: '44px',
   justifyContent: 'flex-start',
   gap: theme.spacing(0.625),
   border: 'none',
-  paddingLeft: theme.spacing(1.25),
-  paddingRight: theme.spacing(1.25),
+  paddingLeft: theme.spacing(1.5),
+  paddingRight: theme.spacing(1.5),
   paddingTop: theme.spacing(0.5),
   paddingBottom: theme.spacing(0.5),
   textTransform: 'none',
@@ -195,16 +244,9 @@ export const MobileLogoutButton = styled(MuiButton)(({ theme }) => ({
   },
 }));
 
-export const MobileLogoutButtonText = styled(Box)(({ theme }) => ({
-  display: 'none',
-
-  [theme.breakpoints.up('md')]: {
-    display: 'none',
-  },
-
-  [theme.breakpoints.up('lg')]: {
-    display: 'block',
-  },
+export const MobileLogoutButtonText = styled(Box)(() => ({
+  display: 'block',
+  fontSize: '14px',
 }));
 
 export const LogoImageMdOnly = styled(Image)(({ theme }) => ({

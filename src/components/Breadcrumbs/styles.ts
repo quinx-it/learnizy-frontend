@@ -67,6 +67,17 @@ export const StyledDotTitleSecondLabel = styled(DotTitleSecondLabel)(({ theme })
   display: 'inline',
 }));
 
+export const StyledDotTitleLink = styled(Link)(({ theme }) => ({
+  color: 'inherit',
+  textDecoration: 'none',
+  transition: 'color 0.2s ease-in-out',
+
+  '&:hover': {
+    color: theme.palette.primary.main,
+    textDecoration: 'underline',
+  },
+}));
+
 export const StyledDotTitleDot = styled('span')(() => ({
   lineHeight: 'inherit',
   backgroundColor: 'transparent',
