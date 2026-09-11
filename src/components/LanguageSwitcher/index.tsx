@@ -1,5 +1,6 @@
 'use client';
 
+import { Globe } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, useRef, useEffect, type FC } from 'react';
 
@@ -7,7 +8,7 @@ import { Language } from '@/const';
 
 import { type ILanguageSwitcherProps } from './typings';
 
-import { Container, DropdownMenu, MenuItem, ToggleButton } from './styles';
+import { Container, DropdownMenu, IconWrapper, LabelText, MenuItem, ToggleButton } from './styles';
 
 const LanguageSwitcher: FC<ILanguageSwitcherProps> = (props) => {
   const { fullWidth = false } = props;
@@ -15,6 +16,8 @@ const LanguageSwitcher: FC<ILanguageSwitcherProps> = (props) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const pathname = usePathname();
+
+  const currentLanguage = pathname.split('/')[1]?.toUpperCase() || Language.En.toUpperCase();
 
   const setCookie = (name: string, value: string, days: number) => {
     const expires = new Date(Date.now() + days * 864e5).toUTCString();
@@ -58,7 +61,16 @@ const LanguageSwitcher: FC<ILanguageSwitcherProps> = (props) => {
   return (
     <Container ref={menuRef} fullWidth={fullWidth}>
       <ToggleButton fullWidth={fullWidth} type="button" onClick={() => setOpen((prev) => !prev)}>
-        {pathname.split('/')[1]?.toUpperCase() || Language.En.toUpperCase()}
+        {fullWidth ? (
+          <>
+            <IconWrapper>
+              <Globe size={16} />
+            </IconWrapper>
+            <LabelText>{currentLanguage}</LabelText>
+          </>
+        ) : (
+          currentLanguage
+        )}
       </ToggleButton>
 
       <DropdownMenu isOpen={open} fullWidth={fullWidth}>

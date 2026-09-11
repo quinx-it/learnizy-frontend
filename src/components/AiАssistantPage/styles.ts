@@ -30,6 +30,11 @@ export const StyledImage = styled(Image)(() => ({
   objectFit: 'contain',
 }));
 
+export const GreetingText = styled(Box)(({ theme }) => ({
+  fontWeight: 700,
+  color: theme.palette.text.primary,
+}));
+
 export const WelcomeText = styled(Box)(({ theme }) => ({
   marginTop: '1rem',
   marginBottom: '1.25rem',

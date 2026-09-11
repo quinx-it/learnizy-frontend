@@ -6,12 +6,13 @@ import {
   type ISendMessageRequest,
 } from '@/api/endpoints/aiAssistant';
 import ChatInput from '@/components/ChatInput';
+import ChatSuggestions from '@/components/ChatSuggestions';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
 import { ROUTES } from '@/const';
 import { useRouter, useTranslation } from '@/hooks';
 
-import { Container, ImageContainer, StyledImage, WelcomeText } from './styles';
+import { Container, GreetingText, ImageContainer, StyledImage, WelcomeText } from './styles';
 
 export const AiAssistantPage = () => {
   const router = useRouter();
@@ -42,9 +43,14 @@ export const AiAssistantPage = () => {
         <StyledImage src="/images/blue-planet-with-moon.webp" alt="Planet" fill />
       </ImageContainer>
       <WelcomeText>
+        <GreetingText>{t('CHAT.GREETING')}</GreetingText>
         <Text>{t('COMMON.HELP_PROMPT')}</Text>
       </WelcomeText>
       <ChatInput onSendMessage={handleStartNewChat} isLoading={isLoading} />
+      <ChatSuggestions
+        disabled={isLoading}
+        onSelect={(prompt) => handleStartNewChat({ text: prompt })}
+      />
     </Container>
   );
 };

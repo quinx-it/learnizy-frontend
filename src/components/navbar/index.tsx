@@ -6,7 +6,6 @@ import { useEffect, useState, type FC } from 'react';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { type INavbarProps } from '@/components/navbar/typings';
 import Spinner from '@/components/Spinner';
-import { Text } from '@/components/Typography';
 import { ROUTES } from '@/const/routes';
 import { useTranslation } from '@/hooks';
 import { useLogout } from '@/hooks/useLogout';
@@ -95,11 +94,7 @@ const Navbar: FC<INavbarProps> = (props) => {
               <IconWrapper>
                 <Image src="/images/exit-icon.svg" alt="Exit icon" width={16} height={16} />
               </IconWrapper>
-              <LogoutButtonText>
-                <Text variant="s" tag="span">
-                  {t('COMMON.BUTTON_LOGOUT')}
-                </Text>
-              </LogoutButtonText>
+              <LogoutButtonText>{t('COMMON.BUTTON_LOGOUT')}</LogoutButtonText>
             </>
           )}
         </LogoutButton>
@@ -154,11 +149,7 @@ const Navbar: FC<INavbarProps> = (props) => {
                 <IconWrapper>
                   <Image src="/images/exit-icon.svg" alt="Exit icon" width={16} height={16} />
                 </IconWrapper>
-                <MobileLogoutButtonText>
-                  <Text variant="s" tag="span">
-                    {t('COMMON.BUTTON_LOGOUT')}
-                  </Text>
-                </MobileLogoutButtonText>
+                <MobileLogoutButtonText>{t('COMMON.BUTTON_LOGOUT')}</MobileLogoutButtonText>
               </>
             )}
           </MobileLogoutButton>

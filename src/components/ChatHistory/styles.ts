@@ -89,15 +89,14 @@ export const NewChatButton = styled(Button)(() => ({
   paddingBottom: '0.5rem',
 }));
 
-export const DesktopNewChatButton = styled(NewChatButton)(() => ({
-  marginTop: 'auto',
-}));
+export const DesktopNewChatButton = styled(NewChatButton)(() => ({}));
 
 export const HeaderTitle = styled(Typography)(() => ({
   minWidth: 0,
-  fontSize: '20px',
+  fontSize: '18px',
+  fontWeight: 600,
   wordBreak: 'break-word',
-  textAlign: 'center',
+  textAlign: 'left',
   flex: 1,
 }));
 
@@ -105,18 +104,10 @@ export const NewChatButtonWrapper = styled(Box)(() => ({
   marginBottom: '1rem',
 }));
 
-export const ChatsLabel = styled(Typography)(({ theme }) => ({
-  marginBottom: '1rem',
-  display: 'block',
-  textAlign: 'left',
-  fontSize: '12px',
-  fontWeight: 600,
-  letterSpacing: '0.5px',
-  color: theme.palette.primary.main,
-}));
-
 export const ScrollContainer = styled(Box)(() => ({
   flex: 1,
+  minHeight: 0,
+  paddingBottom: '0.75rem',
   overflowY: 'auto',
   msOverflowStyle: 'none',
   scrollbarWidth: 'none',
@@ -128,6 +119,8 @@ export const ScrollContainer = styled(Box)(() => ({
 
 export const GroupLabel = styled(Typography)(({ theme }) => ({
   display: 'block',
+  marginBottom: '0.25rem',
+  paddingLeft: '0.75rem',
   textAlign: 'left',
   fontSize: '12px',
   letterSpacing: '0.5px',
@@ -137,26 +130,24 @@ export const GroupLabel = styled(Typography)(({ theme }) => ({
 export const ChatItem = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'isSelected',
 })<{ isSelected: boolean }>(({ theme, isSelected }) => ({
-  marginTop: '0.5rem',
   display: 'flex',
+  minWidth: 0,
+  minHeight: '40px',
   cursor: 'pointer',
   alignItems: 'center',
-  borderRadius: '1rem',
-  padding: '0.5rem',
+  borderRadius: '0.75rem',
+  paddingLeft: '0.75rem',
+  paddingRight: '0.75rem',
   transition: 'background-color 0.2s',
   backgroundColor: isSelected ? theme.palette.grey[200] : 'transparent',
 
   '&:hover': {
     backgroundColor: isSelected ? theme.palette.grey[200] : theme.palette.grey[100],
   },
-
-  '&:last-child': {
-    marginBottom: '0.625rem',
-  },
 }));
 
 export const ChatText = styled(Typography)(() => ({
-  marginLeft: '0.5rem',
+  minWidth: 0,
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
@@ -170,7 +161,7 @@ export const DesktopWrapper = styled(Box)(({ theme }) => ({
 
   [theme.breakpoints.up('lg')]: {
     display: 'block',
-    width: '230px',
+    width: '260px',
   },
 }));
 
@@ -181,35 +172,37 @@ export const DesktopSidebar = styled(Box)(({ theme }) => ({
   zIndex: 50,
   display: 'flex',
   height: '100dvh',
-  width: '230px',
+  width: '260px',
   flexDirection: 'column',
   backgroundColor: theme.palette.background.default,
   borderRadius: '1.5rem 0 0 1.5rem',
-  paddingLeft: '1.5rem',
-  paddingRight: '1.5rem',
-  overflowY: 'auto',
+  paddingLeft: '1rem',
+  paddingRight: '1rem',
+  overflowY: 'hidden',
   boxShadow: '0px 4px 13px 0px rgba(0, 0, 0, 0.149)',
 }));
 
 export const DesktopSidebarHeader = styled(Box)(() => ({
-  marginTop: '2rem',
-  marginBottom: '3.8125rem',
+  marginTop: '1.5rem',
+  marginBottom: '1rem',
   display: 'flex',
-  justifyContent: 'flex-end',
+  alignItems: 'center',
+  justifyContent: 'flex-start',
 }));
 
 export const DesktopHeaderTitle = styled(Typography)(() => ({
   display: 'block',
-  height: '48px',
-  textAlign: 'center',
-  fontSize: '20px',
+  minWidth: 0,
+  textAlign: 'left',
+  fontSize: '18px',
+  fontWeight: 600,
   wordBreak: 'break-word',
 }));
 
 export const DesktopNewChatButtonWrapper = styled(Box)(({ theme }) => ({
-  marginBottom: '1rem',
+  marginBottom: '0.75rem',
   borderBottom: `1px solid ${theme.palette.grey[200]}`,
-  paddingBottom: '0.5rem',
+  paddingBottom: '0.75rem',
 }));
 
 export const LoadingText = styled(Typography)(({ theme }) => ({
@@ -224,4 +217,16 @@ export const ErrorText = styled(Typography)(({ theme }) => ({
   color: theme.palette.error.main,
 }));
 
-export const ChatGroup = styled(Box)(() => ({}));
+export const ChatGroup = styled(Box)(() => ({
+  marginTop: '1rem',
+
+  '&:first-of-type': {
+    marginTop: 0,
+  },
+}));
+
+export const EmptyText = styled(Typography)(({ theme }) => ({
+  padding: '0.75rem',
+  fontSize: '0.875rem',
+  color: theme.palette.grey[500],
+}));
