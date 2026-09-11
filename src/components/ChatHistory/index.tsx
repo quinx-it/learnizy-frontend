@@ -14,7 +14,6 @@ import {
   ChatGroup,
   ChatItem,
   ChatText,
-  ChatsLabel,
   CloseButton,
   DesktopHeaderTitle,
   DesktopNewChatButton,
@@ -22,6 +21,7 @@ import {
   DesktopSidebar,
   DesktopSidebarHeader,
   DesktopWrapper,
+  EmptyText,
   ErrorText,
   GroupLabel,
   HeaderTitle,
@@ -66,6 +66,7 @@ const ChatHistory: FC<IChatHistoryProps> = (props) => {
 
   const groupedChats = groupChatsByDate(chats);
   const chatGroups = Object.keys(groupedChats);
+  const isEmpty = !isLoading && !isError && chatGroups.length === 0;
 
   return (
     <>
@@ -102,11 +103,10 @@ const ChatHistory: FC<IChatHistoryProps> = (props) => {
               </NewChatButton>
             </NewChatButtonWrapper>
 
-            <ChatsLabel>{t('COMMON.CHATS')}</ChatsLabel>
-
             <ScrollContainer>
               {isLoading && <LoadingText>{t('COMMON.LOADING')}</LoadingText>}
               {isError && <ErrorText>{t('COMMON.FAILED_TO_LOAD_CHATS')}</ErrorText>}
+              {isEmpty && <EmptyText>{t('COMMON.NO_CHATS')}</EmptyText>}
 
               {chatGroups.map((group) => (
                 <ChatGroup key={group}>
@@ -149,10 +149,10 @@ const ChatHistory: FC<IChatHistoryProps> = (props) => {
               {t('COMMON.NEW_CHAT')}
             </DesktopNewChatButton>
           </DesktopNewChatButtonWrapper>
-          <ChatsLabel>{t('COMMON.CHATS')}</ChatsLabel>
           <ScrollContainer>
             {isLoading && <LoadingText>{t('COMMON.LOADING')}</LoadingText>}
             {isError && <ErrorText>{t('COMMON.FAILED_TO_LOAD_CHATS')}</ErrorText>}
+            {isEmpty && <EmptyText>{t('COMMON.NO_CHATS')}</EmptyText>}
 
             {chatGroups.map((group) => (
               <ChatGroup key={group}>

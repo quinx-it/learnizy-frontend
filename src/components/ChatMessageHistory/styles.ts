@@ -6,6 +6,7 @@ export const ScrollContainer = styled(Box)(({ theme }) => ({
   maxWidth: '659px',
   overflowY: 'auto',
   paddingTop: theme.spacing(3),
+  paddingBottom: theme.spacing(3),
   msOverflowStyle: 'none',
   scrollbarWidth: 'none',
 
@@ -25,20 +26,19 @@ export const LoadingContainer = styled(Box)(({ theme }) => ({
 export const MessageWrapper = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'isUser',
 })<{ isUser: boolean }>(({ isUser }) => ({
-  marginBottom: '0.75rem',
   display: 'flex',
-  ...(isUser
-    ? {
-        justifyContent: 'flex-end',
-      }
-    : {
-        justifyContent: 'flex-start',
-      }),
+  marginTop: isUser ? '2rem' : '0.75rem',
+  justifyContent: isUser ? 'flex-end' : 'flex-start',
+
+  '&:first-of-type': {
+    marginTop: 0,
+  },
 }));
 
 export const MessageBubble = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'isUser',
 })<{ isUser: boolean }>(({ theme, isUser }) => ({
+  boxSizing: 'border-box',
   borderRadius: '1.5rem',
   paddingTop: '0.5rem',
   paddingBottom: '0.5rem',
@@ -51,6 +51,9 @@ export const MessageBubble = styled(Box, {
       }
     : {
         width: '100%',
+        paddingLeft: '1rem',
+        paddingRight: '1rem',
+        lineHeight: 1.6,
       }),
 
   [theme.breakpoints.up('lg')]: {
@@ -67,6 +70,18 @@ export const UserMessageText = styled(Typography)(() => ({
 
 export const MarkdownWrapper = styled(Box)(() => ({
   wordBreak: 'break-word',
+
+  '& > * + *': {
+    marginTop: '0.75rem',
+  },
+
+  '& ul, & ol': {
+    paddingLeft: '1.25rem',
+  },
+
+  '& li + li': {
+    marginTop: '0.375rem',
+  },
 }));
 
 export const AttachmentsWrapper = styled(Box)(() => ({
@@ -103,7 +118,7 @@ export const AttachmentFilename = styled(Typography)(() => ({
 }));
 
 export const ThinkingWrapper = styled(Box)(() => ({
-  marginBottom: '2rem',
+  marginTop: '0.75rem',
   display: 'flex',
   justifyContent: 'flex-start',
 }));

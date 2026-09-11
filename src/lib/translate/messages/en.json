@@ -8,6 +8,7 @@
     "CHATS": "Chats",
     "LOADING": "Loading...",
     "FAILED_TO_LOAD_CHATS": "Failed to load chats",
+    "NO_CHATS": "No chats yet",
     "COMING_SOON_TEXT": "We are actively working on this section.\nSomething useful will appear here soon!",
     "GO_HOME": "Go to Home",
     "NOT_FOUND_TITLE": "Not Found",
@@ -421,7 +422,18 @@
   "CHAT": {
     "SEND_ERROR": "Failed to send message",
     "AI_THINKING": "AI is thinking...",
-    "CREATE_CHAT_ERROR": "Failed to create new chat"
+    "CREATE_CHAT_ERROR": "Failed to create new chat",
+    "GREETING": "Hi there!",
+    "SUGGESTIONS": {
+      "EXPLAIN_LABEL": "Explain a topic",
+      "EXPLAIN_PROMPT": "Explain the topic from my latest lesson in plain words and give an example.",
+      "MISTAKE_LABEL": "Debug my code",
+      "MISTAKE_PROMPT": "Help me work out why my code does not run. I will paste it next.",
+      "INTERVIEW_LABEL": "Interview questions",
+      "INTERVIEW_PROMPT": "Ask me five interview questions about the material I have covered.",
+      "PLAN_LABEL": "Study plan",
+      "PLAN_PROMPT": "Put together a one-month plan to prepare me for an interview."
+    }
   },
   "COMMON_LABELS": {
     "CLOSE": "Close",

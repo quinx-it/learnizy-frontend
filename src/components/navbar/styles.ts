@@ -107,6 +107,10 @@ export const LogoutButton = styled(MuiButton)(({ theme }) => ({
 
 export const LogoutButtonText = styled(Box)(({ theme }) => ({
   display: 'none',
+  fontSize: '14px',
+  lineHeight: '22px',
+  fontWeight: 500,
+
   [theme.breakpoints.up('lg')]: {
     display: 'block',
   },
@@ -247,6 +251,8 @@ export const MobileLogoutButton = styled(MuiButton)(({ theme }) => ({
 export const MobileLogoutButtonText = styled(Box)(() => ({
   display: 'block',
   fontSize: '14px',
+  lineHeight: '22px',
+  fontWeight: 500,
 }));
 
 export const LogoImageMdOnly = styled(Image)(({ theme }) => ({
