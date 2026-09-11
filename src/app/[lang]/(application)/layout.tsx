@@ -51,7 +51,7 @@ const DYNAMIC_USER_ROUTES = [
   /^\/learn\/courses\/\d+\/modules\/\d+\/\d+\/retelling$/,
   /^\/learn\/exams\/\d+\/\d+\/test$/,
   /^\/learn\/exams\/\d+\/\d+\/result$/,
-  /^\/learn\/aiAssistant\/chat\/[^/]+$/,
+  /^\/learn\/ai-assistant\/chat\/[^/]+$/,
 ];
 
 const STATIC_MENTOR_ROUTES = [ROUTES.MENTOR_STUDENTS, ROUTES.MENTOR_MODULES, ROUTES.MENTOR_COURSES];
