@@ -163,15 +163,23 @@ interface IAdviceBlock extends IBaseBlock {
 
 export type { Block };
 
-export interface ILesson {
+export interface ILessonWithContent {
   id: number;
   title: string;
   description: string;
   sequenceOrder: number;
   testQuestions: number;
   moduleSequenceOrder: number;
-  status: LessonStatus;
-  progress: ILessonProgress;
   content: string;
   contentBlocks: Block[];
 }
+
+export interface ILessonProgressItem {
+  id: number;
+  title: string;
+  sequenceOrder: number;
+  status: LessonStatus;
+  progress: ILessonProgress;
+}
+
+export type ILesson = ILessonWithContent & ILessonProgressItem;
