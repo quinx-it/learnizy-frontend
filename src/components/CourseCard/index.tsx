@@ -15,7 +15,6 @@ import {
   CardContainer,
   ContentWrapper,
   LeftContent,
-  StyledImage,
   TopSection,
 } from './styles';
 
@@ -86,12 +85,6 @@ const CourseCardComponent: FC<ICourseCardProps> = (props) => {
             </ButtonContainer>
           </BottomSection>
         </LeftContent>
-        <StyledImage
-          width={115}
-          height={115}
-          src="/images/astronaut1.webp"
-          alt={t('COMMON.COURSE_IMAGE_ALT')}
-        />
       </ContentWrapper>
     </CardContainer>
   );

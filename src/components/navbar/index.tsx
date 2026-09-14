@@ -21,6 +21,7 @@ import {
   LogoImageMobileAndLg,
   LogoutButton,
   LogoutButtonText,
+  LogoutContainer,
   MobileCloseButton,
   MobileLanguageSwitcherContainer,
   MobileLinksContainer,
@@ -84,20 +85,22 @@ const Navbar: FC<INavbarProps> = (props) => {
           <LanguageSwitcher fullWidth />
         </LanguageSwitcherContainer>
 
-        <LogoutButton onClick={handleLogout}>
-          {isLoading ? (
-            <SpinnerWrapper>
-              <Spinner type="ring" size={16} />
-            </SpinnerWrapper>
-          ) : (
-            <>
-              <IconWrapper>
-                <Image src="/images/exit-icon.svg" alt="Exit icon" width={16} height={16} />
-              </IconWrapper>
-              <LogoutButtonText>{t('COMMON.BUTTON_LOGOUT')}</LogoutButtonText>
-            </>
-          )}
-        </LogoutButton>
+        <LogoutContainer>
+          <LogoutButton onClick={handleLogout}>
+            {isLoading ? (
+              <SpinnerWrapper>
+                <Spinner type="ring" size={16} />
+              </SpinnerWrapper>
+            ) : (
+              <>
+                <IconWrapper>
+                  <Image src="/images/exit-icon.svg" alt="Exit icon" width={16} height={16} />
+                </IconWrapper>
+                <LogoutButtonText>{t('COMMON.BUTTON_LOGOUT')}</LogoutButtonText>
+              </>
+            )}
+          </LogoutButton>
+        </LogoutContainer>
       </NavbarContainer>
 
       <Overlay
