@@ -1,4 +1,4 @@
-export type TestType = 'LESSON_TEST';
+export type TestType = 'LESSON_TEST' | 'MODULE_EXAM';
 
 export const enum AnswerInputType {
   Text = 'TEXT',
@@ -45,16 +45,18 @@ export type CreateLessonTestQuestionRequest = {
   maxScore?: number;
 };
 
-export type CreateLessonTestRequest = {
-  testType: 'LESSON_TEST';
-  lessonId: number;
+export type CreateTestRequest = {
+  testType: TestType;
+  lessonId?: number;
   moduleId: number;
   title: string;
   passThresholdPercentage: number;
   questions: CreateLessonTestQuestionRequest[];
 };
 
-export type UpdateLessonTestRequest = CreateLessonTestRequest;
+export type CreateLessonTestRequest = CreateTestRequest;
+
+export type UpdateLessonTestRequest = CreateTestRequest;
 
 export type LessonTestSubmitType = {
   testId: number;

@@ -210,3 +210,9 @@ export const formatRelativeDate = (date: Date, t: TranslationFunctionType): stri
     t('TIME.YEAR_MANY'),
   ])} ${t('TIME.AGO')}`;
 };
+
+export const getServerErrorMessage = (error: unknown): string | null => {
+  const data = (error as { data?: { message?: unknown } } | undefined)?.data;
+
+  return typeof data?.message === 'string' && data.message.trim() ? data.message : null;
+};

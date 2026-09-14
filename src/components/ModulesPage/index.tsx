@@ -30,6 +30,7 @@ import Textarea from '@/components/Textarea';
 import { showToast } from '@/components/Toaster';
 import { ROUTES } from '@/const/routes';
 import { useTranslation } from '@/hooks';
+import { getServerErrorMessage } from '@/lib/utils';
 import { selectUserRole } from '@/store/slices/auth/selectors';
 import { UserRole } from '@/store/slices/auth/typings';
 
@@ -177,7 +178,7 @@ const ModulesPage: FC<IModulesPageProps> = (props) => {
     if (Object.keys(nextErrors).length > 0) return;
 
     try {
-      if (editingModuleId) {
+      if (editingModuleId !== null) {
         await updateModule({
           id: editingModuleId,
           data: { title, description, courseId: editingCourseId ?? courseId, sequenceOrder },
@@ -188,8 +189,12 @@ const ModulesPage: FC<IModulesPageProps> = (props) => {
 
       setModalOpen(false);
       refetch();
-    } catch {
-      showToast('error', t('COMMON.ERROR'), t('MODULES_PAGE.ERROR_SAVE'));
+    } catch (error) {
+      showToast(
+        'error',
+        t('COMMON.ERROR'),
+        getServerErrorMessage(error) || t('MODULES_PAGE.ERROR_SAVE'),
+      );
     }
   };
 
@@ -197,8 +202,12 @@ const ModulesPage: FC<IModulesPageProps> = (props) => {
     try {
       await deleteModule(moduleId).unwrap();
       refetch();
-    } catch {
-      showToast('error', t('COMMON.ERROR'), t('MODULES_PAGE.ERROR_DELETE'));
+    } catch (error) {
+      showToast(
+        'error',
+        t('COMMON.ERROR'),
+        getServerErrorMessage(error) || t('MODULES_PAGE.ERROR_DELETE'),
+      );
     }
   };
 
