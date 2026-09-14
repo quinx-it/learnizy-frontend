@@ -3,10 +3,9 @@
 import { Box } from '@mui/material';
 import { type FC, useMemo } from 'react';
 
-import { useGetCourseQuery } from '@/api/endpoints/courses';
-import { useGetModulesQuery } from '@/api/endpoints/modules';
-import { CompletionStatus } from '@/api/endpoints/types';
+import { ModuleCompletionStatus, useGetMainPageProgressQuery } from '@/api/endpoints/progress';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import Button from '@/components/Button';
 import CardWrapper from '@/components/CardWrapper';
 import CourseListItem from '@/components/CourseListItem';
 import { CourseListItemStatus } from '@/components/CourseListItem/const';
@@ -25,23 +24,23 @@ import {
   Container,
   CourseDivider,
   CourseTitle,
+  EmptyStateText,
+  EmptyStateWrapper,
   ModulesList,
   StatisticsDivider,
   StatisticsTitle,
   MediumText,
 } from './styles';
 
-const COURSE_ID = 2;
-
 const mapCompletionStatusToModuleStatus = (
-  apiStatus: CompletionStatus,
+  apiStatus: ModuleCompletionStatus,
   completedLessons: number,
 ): ModuleStatus => {
-  if (apiStatus === CompletionStatus.Blocked) {
+  if (apiStatus === ModuleCompletionStatus.Blocked) {
     return ModuleStatus.Blocked;
   }
 
-  if (apiStatus === CompletionStatus.Completed) {
+  if (apiStatus === ModuleCompletionStatus.Completed) {
     return ModuleStatus.Completed;
   }
 
@@ -71,61 +70,16 @@ const LearnMainPage: FC = () => {
   const router = useRouter();
   const { t } = useTranslation();
 
-  const {
-    data: courseData,
-    isLoading: isCourseLoading,
-    isError: isCourseError,
-    refetch: refetchCourse,
-  } = useGetCourseQuery(COURSE_ID);
+  const { data: mainPage, isLoading, isError, refetch } = useGetMainPageProgressQuery();
 
-  const {
-    data: modulesData,
-    isLoading: isModulesLoading,
-    isError: isModulesError,
-    refetch: refetchModules,
-  } = useGetModulesQuery(COURSE_ID);
-
-  const courseProgress = useMemo(() => {
-    if (!modulesData) {
-      return {
-        totalModules: 0,
-        completedModules: 0,
-        totalLessons: 0,
-        completedLessons: 0,
-        currentModuleId: null,
-      };
-    }
-
-    const totalModules = modulesData.length;
-    const completedModules = modulesData.filter(
-      (m) => m.completionStatus === CompletionStatus.Completed,
-    ).length;
-    const totalLessons = modulesData.reduce((sum, m) => sum + m.totalLessons, 0);
-    const completedLessons = modulesData.reduce((sum, m) => sum + m.completedLessons, 0);
-
-    const currentModule =
-      modulesData.find(
-        (m) =>
-          m.completionStatus === CompletionStatus.InProgress ||
-          (m.completionStatus !== CompletionStatus.Completed && m.completedLessons > 0),
-      ) ||
-      modulesData.find((m) => m.completionStatus === CompletionStatus.NotStarted) ||
-      modulesData[0];
-
-    return {
-      totalModules,
-      completedModules,
-      totalLessons,
-      completedLessons,
-      currentModuleId: currentModule?.id || null,
-    };
-  }, [modulesData]);
+  const courseInfo = mainPage?.courseInfo;
+  const modulesData = mainPage?.modules;
 
   const currentModule = useMemo(() => {
-    if (!modulesData || !courseProgress.currentModuleId) return null;
+    if (!modulesData || !courseInfo) return null;
 
-    return modulesData.find((m) => m.id === courseProgress.currentModuleId);
-  }, [modulesData, courseProgress.currentModuleId]);
+    return modulesData.find((m) => m.id === courseInfo.currentModuleId);
+  }, [modulesData, courseInfo]);
 
   const sortedModules = useMemo(() => {
     if (!modulesData) return [];
@@ -133,31 +87,38 @@ const LearnMainPage: FC = () => {
     return [...modulesData].sort((a, b) => a.sequenceOrder - b.sequenceOrder);
   }, [modulesData]);
 
-  const handleErrorReset = () => {
-    refetchCourse();
-    refetchModules();
-  };
+  if (isLoading) return <FullscreenLoader />;
 
-  if (isCourseLoading || isModulesLoading) return <FullscreenLoader />;
+  if (isError) return <ErrorSection reset={refetch} />;
 
-  if (isCourseError || isModulesError) {
-    return <ErrorSection reset={handleErrorReset} />;
+  if (!mainPage) return null;
+
+  if (!courseInfo) {
+    return (
+      <CardWrapper>
+        <EmptyStateWrapper>
+          <Text variant="m-bold">{t('LEARN_MAIN_PAGE.NO_COURSE_TITLE')}</Text>
+          <EmptyStateText variant="m">{t('LEARN_MAIN_PAGE.NO_COURSE_TEXT')}</EmptyStateText>
+          <Button variant="blue" size="small" onClick={() => router.push(ROUTES.USER_COURSES)}>
+            {t('LEARN_MAIN_PAGE.NO_COURSE_BUTTON')}
+          </Button>
+        </EmptyStateWrapper>
+      </CardWrapper>
+    );
   }
-
-  if (!courseData || !modulesData) return null;
 
   return (
     <Box>
-      <Breadcrumbs rootDescription={courseData.title || ''} />
+      <Breadcrumbs rootDescription={courseInfo.title || ''} />
 
       <Container>
         <ProgressCard
           title={t(constants.titles.currentCourse)}
-          subTitle={courseData.title || ''}
-          modules={courseProgress.completedModules}
-          totalLessons={courseProgress.totalLessons}
-          totalModules={courseProgress.totalModules}
-          lessons={courseProgress.completedLessons}
+          subTitle={courseInfo.title || ''}
+          modules={courseInfo.completedModules}
+          totalLessons={courseInfo.totalLessons}
+          totalModules={courseInfo.totalModules}
+          lessons={courseInfo.completedLessons}
           image="/images/rocket.webp"
         />
 
@@ -176,7 +137,7 @@ const LearnMainPage: FC = () => {
               <Text tag="span" variant="m-bold">
                 {t('COMMON.COURSE_LABEL')}{' '}
                 <MediumText tag="span" variant="m-bold">
-                  {courseData.title}
+                  {courseInfo.title}
                 </MediumText>
               </Text>
             </CourseTitle>
@@ -193,13 +154,13 @@ const LearnMainPage: FC = () => {
                 if (index > 0) {
                   const prevModule = sortedModules[index - 1];
 
-                  if (prevModule.completionStatus !== CompletionStatus.Completed) {
+                  if (prevModule.completionStatus !== ModuleCompletionStatus.Completed) {
                     shouldBlock = true;
                   }
                 }
 
                 const actualStatus = shouldBlock
-                  ? CompletionStatus.Blocked
+                  ? ModuleCompletionStatus.Blocked
                   : module.completionStatus;
                 const moduleStatus = mapCompletionStatusToModuleStatus(
                   actualStatus,
@@ -231,7 +192,7 @@ const LearnMainPage: FC = () => {
               <Text variant="m-bold">{t(constants.titles.statistics)}</Text>
             </StatisticsTitle>
             <StatisticsDivider />
-            <StatisticsChart weeklyActivity={[]} />
+            <StatisticsChart weeklyActivity={mainPage.weeklyActivity} />
           </Box>
         </CardWrapper>
       </Container>

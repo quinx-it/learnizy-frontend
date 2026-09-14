@@ -22,7 +22,7 @@ export const userApi = api.injectEndpoints({
       query: (id) => ({ url: `${USERS_URL}/${id}`, method: 'DELETE' }),
     }),
     getDashboardAnalytics: builder.query<IAnalyticResponse, void>({
-      query: () => `/admin/analytics/dashboard`,
+      query: () => `/admin/analytics/dashboard?period=month`,
     }),
   }),
 });

@@ -22,7 +22,7 @@ export interface IModuleInfo {
   totalLessons: number;
   completedLessons: number;
   completionStatus: ModuleCompletionStatus;
-  sequenceNumber: number;
+  sequenceOrder: number;
 }
 
 export interface IWeeklyActivity {
@@ -32,7 +32,7 @@ export interface IWeeklyActivity {
 }
 
 export interface IMainPageInfoResponse {
-  courseInfo: ICourseInfo;
+  courseInfo: ICourseInfo | null;
   modules: IModuleInfo[];
   weeklyActivity: IWeeklyActivity[];
 }
