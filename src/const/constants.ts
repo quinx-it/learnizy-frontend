@@ -51,7 +51,7 @@ export const NAVBAR_LINKS = {
     },
   ],
   mentor: [
-    { href: ROUTES.MENTOR_STUDENTS, src: '/images/student-hat-icon.svg', label: 'NAVBAR.HOME' },
+    { href: ROUTES.MENTOR_STUDENTS, src: '/images/cubes-main-icon.svg', label: 'NAVBAR.HOME' },
     {
       href: ROUTES.MENTOR_COURSES,
       src: '/images/student-hat-icon.svg',

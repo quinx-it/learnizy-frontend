@@ -78,17 +78,25 @@ export const LinksContainer = styled(Box)(({ theme }) => ({
 export const LanguageSwitcherContainer = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(1.5),
   width: '100%',
-  paddingLeft: theme.spacing(1.25),
+  paddingLeft: theme.spacing(2),
+  paddingRight: theme.spacing(1.25),
+}));
+
+export const LogoutContainer = styled(Box)(({ theme }) => ({
+  marginTop: 'auto',
+  width: '100%',
+  paddingLeft: theme.spacing(2),
   paddingRight: theme.spacing(1.25),
 }));
 
 export const LogoutButton = styled(MuiButton)(({ theme }) => ({
-  marginTop: 'auto',
+  width: '100%',
+  minHeight: '44px',
   justifyContent: 'flex-start',
   gap: theme.spacing(0.625),
   border: 'none',
-  paddingLeft: theme.spacing(1.25),
-  paddingRight: theme.spacing(1.25),
+  paddingLeft: theme.spacing(1.5),
+  paddingRight: theme.spacing(1.5),
   paddingTop: theme.spacing(0.5),
   paddingBottom: theme.spacing(0.5),
   textTransform: 'none',

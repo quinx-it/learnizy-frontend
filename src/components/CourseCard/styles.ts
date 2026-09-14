@@ -1,5 +1,4 @@
 import { Box, styled } from '@mui/material';
-import Image from 'next/image';
 
 export const CardContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
@@ -74,13 +73,4 @@ export const ButtonContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'flex-end',
   gap: theme.spacing(1.5),
-}));
-
-export const StyledImage = styled(Image)(({ theme }) => ({
-  display: 'none',
-  flexShrink: 0,
-
-  [theme.breakpoints.up('sm')]: {
-    display: 'block',
-  },
 }));
