@@ -4,8 +4,7 @@ import {
   type LessonTestResponseType,
   type LessonTestSubmitType,
   type ITestAttemptResponse,
-  type CreateLessonTestRequest,
-  type UpdateLessonTestRequest,
+  type CreateTestRequest,
 } from './types';
 
 export const voice = api.injectEndpoints({
@@ -14,24 +13,25 @@ export const voice = api.injectEndpoints({
       query: (lessonId) => `/tests/lesson/${lessonId}`,
       providesTags: (_result, _error, lessonId) => [{ type: 'LessonTest', id: lessonId }],
     }),
-    createLessonTest: builder.mutation<LessonTestResponseType, CreateLessonTestRequest>({
+    createTest: builder.mutation<LessonTestResponseType, CreateTestRequest>({
       query: (body) => ({
         url: '/tests',
         method: 'POST',
         body,
       }),
-      invalidatesTags: (_result, _error, arg) => [{ type: 'LessonTest', id: arg.lessonId }],
+      invalidatesTags: (_result, _error, arg) =>
+        arg.lessonId ? [{ type: 'LessonTest' as const, id: arg.lessonId }, 'Exams'] : ['Exams'],
     }),
-    updateLessonTest: builder.mutation<
-      LessonTestResponseType,
-      { id: number; data: UpdateLessonTestRequest }
-    >({
+    updateTest: builder.mutation<LessonTestResponseType, { id: number; data: CreateTestRequest }>({
       query: ({ id, data }) => ({
         url: `/tests/${id}`,
         method: 'PUT',
         body: data,
       }),
-      invalidatesTags: (_result, _error, arg) => [{ type: 'LessonTest', id: arg.data.lessonId }],
+      invalidatesTags: (_result, _error, arg) =>
+        arg.data.lessonId
+          ? [{ type: 'LessonTest' as const, id: arg.data.lessonId }, 'Exams']
+          : ['Exams'],
     }),
     sendTest: builder.mutation<LessonTestSubmitType, LessonTestSubmitType>({
       query: (body) => ({
@@ -48,8 +48,8 @@ export const voice = api.injectEndpoints({
 
 export const {
   useGetTestByLessonIdQuery,
-  useCreateLessonTestMutation,
-  useUpdateLessonTestMutation,
+  useCreateTestMutation,
+  useUpdateTestMutation,
   useSendTestMutation,
   useGetLastTestAttemptQuery,
 } = voice;

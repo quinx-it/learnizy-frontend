@@ -189,7 +189,10 @@
       "IN_PROGRESS": "In Progress",
       "COMPLETED": "Completed",
       "BLOCKED": "Blocked"
-    }
+    },
+    "NO_COURSE_TITLE": "You have not started learning yet",
+    "NO_COURSE_TEXT": "Once you open your first lesson, your current course and its progress will show up here.",
+    "NO_COURSE_BUTTON": "Pick a course"
   },
   "LESSON_ITEM_PAGE": {
     "BREADCRUMB_ROOT": "Learning Structure",
@@ -257,7 +260,11 @@
     "SAT": "Sat"
   },
   "MODULES": {
-    "STRUCTURE": "Learning structure"
+    "STRUCTURE": "Learning structure",
+    "EXAM_SECTION_TITLE": "Module exam",
+    "EXAM_NO_EXAM_MESSAGE": "No exam has been created for this module yet",
+    "EXAM_CREATE_BUTTON": "Create exam",
+    "EXAM_EDIT_BUTTON": "Edit exam"
   },
   "LESSON": {
     "ONE": "lesson",

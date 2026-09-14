@@ -189,7 +189,10 @@
       "IN_PROGRESS": "В процессе",
       "COMPLETED": "Завершен",
       "BLOCKED": "Заблокирован"
-    }
+    },
+    "NO_COURSE_TITLE": "Обучение ещё не начато",
+    "NO_COURSE_TEXT": "Как только вы откроете первый урок, здесь появится ваш текущий курс и прогресс по нему.",
+    "NO_COURSE_BUTTON": "Выбрать курс"
   },
   "LESSON_ITEM_PAGE": {
     "BREADCRUMB_ROOT": "Структура обучения",
@@ -257,7 +260,11 @@
     "SAT": "Сб"
   },
   "MODULES": {
-    "STRUCTURE": "Структура обучения"
+    "STRUCTURE": "Структура обучения",
+    "EXAM_SECTION_TITLE": "Экзамен по модулю",
+    "EXAM_NO_EXAM_MESSAGE": "Экзамен для этого модуля пока не создан",
+    "EXAM_CREATE_BUTTON": "Создать экзамен",
+    "EXAM_EDIT_BUTTON": "Редактировать экзамен"
   },
   "LESSON": {
     "ONE": "урок",

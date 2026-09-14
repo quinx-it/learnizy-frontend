@@ -9,6 +9,7 @@ export const examsApi = api.injectEndpoints({
     getExams: builder.query<IExamsResponse, { courseId: number; page?: number; size?: number }>({
       query: ({ courseId, page = 0, size = 10 }) =>
         `${TESTS_PATH}/api/v1/exams?courseId=${courseId}&page=${page}&size=${size}`,
+      providesTags: ['Exams'],
     }),
     getExamById: builder.query<ExamTestResponseType, number>({
       query: (testId) => `${TESTS_PATH}/${testId}`,

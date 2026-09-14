@@ -10,6 +10,7 @@ import {
   useUpdateLessonMutation,
   useDeleteLessonMutation,
 } from '@/api/endpoints/admin';
+import { useGetExamByIdQuery, useGetExamsQuery } from '@/api/endpoints/exams';
 import { type ILessonProgressItem, useGetLessonQuery } from '@/api/endpoints/lessons';
 import { useGetModuleQuery } from '@/api/endpoints/modules';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -27,6 +28,7 @@ import FullscreenLoader from '@/components/FullscreenLoader';
 import Input from '@/components/Input';
 import LessonCard from '@/components/LessonCard';
 import ProgressBar from '@/components/Progress';
+import TestBuilder from '@/components/TestBuilder';
 import Textarea from '@/components/Textarea';
 import { showToast } from '@/components/Toaster';
 import { Text } from '@/components/Typography';
@@ -81,6 +83,15 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
     isError,
     refetch,
   } = useGetModuleQuery({ courseId: courseIdProp, moduleId: +id });
+
+  const { data: examsData } = useGetExamsQuery(
+    { courseId: courseIdProp, page: 0, size: 100 },
+    { skip: !isMentor },
+  );
+  const moduleExam = examsData?.content.find((exam) => exam.moduleId === +id);
+  const { data: examDetails } = useGetExamByIdQuery(moduleExam?.testId ?? 0, {
+    skip: !moduleExam,
+  });
 
   const [createLesson] = useCreateLessonMutation();
   const [updateLesson] = useUpdateLessonMutation();
@@ -293,6 +304,20 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
           </ExamActionsContainer>
         </CardWrapperContainer>
       </CardWrapper>
+
+      {isMentor && (
+        <CardWrapper>
+          <TestBuilder
+            testType="MODULE_EXAM"
+            moduleId={+id}
+            existingTest={examDetails ?? null}
+            sectionTitle={t('MODULES.EXAM_SECTION_TITLE')}
+            emptyMessage={t('MODULES.EXAM_NO_EXAM_MESSAGE')}
+            createButtonLabel={t('MODULES.EXAM_CREATE_BUTTON')}
+            editButtonLabel={t('MODULES.EXAM_EDIT_BUTTON')}
+          />
+        </CardWrapper>
+      )}
 
       {modalOpen && (
         <DialogContentWrapper>
