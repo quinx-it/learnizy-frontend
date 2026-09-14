@@ -48,3 +48,15 @@ export const StatisticsDivider = styled(MuiDivider)(({ theme }) => ({
 export const MediumText = styled(Text)(({ theme }) => ({
   color: theme.palette.primary.main,
 }));
+
+export const EmptyStateWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  gap: theme.spacing(2),
+  padding: theme.spacing(1),
+}));
+
+export const EmptyStateText = styled(Text)(({ theme }) => ({
+  color: theme.palette.text.secondary,
+}));
