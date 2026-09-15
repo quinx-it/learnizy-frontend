@@ -204,6 +204,10 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
 
   const isAvailableExam = (progressValue: number) => progressValue >= examAvailableNumber;
 
+  const moduleLabel = Number.isFinite(sequenceOrder)
+    ? `${t('COMMON.MODULE')} ${sequenceOrder}`
+    : t('COMMON.MODULE');
+
   const isCourseContext = pathname.includes('/learn/courses/');
   const modulesRootHref = isCourseContext
     ? `${ROUTES.USER_COURSES}/${courseId}/modules`
@@ -223,7 +227,7 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
             <ModuleTitleWrapper>
               <DotTitle
                 heading
-                firstLabel={`${t('COMMON.MODULE')} ${sequenceOrder}`}
+                firstLabel={moduleLabel}
                 secondLabel={moduleTitle}
                 firstClassName="module-title-first"
                 secondClassName="module-title-second"

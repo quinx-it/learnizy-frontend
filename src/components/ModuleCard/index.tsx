@@ -65,9 +65,15 @@ const ModuleCardComponent: FC<IModuleCardProps> = (props) => {
     [progressStatus, active, completed, blocked],
   );
 
-  const moduleLabel = bonus
-    ? t('MODULES_CARD.BONUS')
-    : t('MODULES_CARD.MODULE', { number: sequenceOrder });
+  const getModuleLabel = () => {
+    if (bonus) return t('MODULES_CARD.BONUS');
+
+    if (!Number.isFinite(sequenceOrder)) return t('COMMON.MODULE');
+
+    return t('MODULES_CARD.MODULE', { number: sequenceOrder });
+  };
+
+  const moduleLabel = getModuleLabel();
 
   const lessonInfo = `${pluralize(
     totalLessons,
@@ -107,7 +113,7 @@ const ModuleCardComponent: FC<IModuleCardProps> = (props) => {
         <LeftContent>
           <TopSection>
             <DotTitle
-              firstLabel={t(moduleLabel)}
+              firstLabel={moduleLabel}
               secondLabel={title}
               firstVariant="m-bold"
               secondVariant="m"
