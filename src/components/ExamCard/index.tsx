@@ -29,7 +29,7 @@ const ExamCard: FC<ExamCardPropsType> = (props) => {
 
   const { t } = useTranslation();
 
-  const { title, description, questions, time } = exam;
+  const { title, description, questions } = exam;
   const router = useRouter();
   const pathname = usePathname();
 
@@ -95,7 +95,6 @@ const ExamCard: FC<ExamCardPropsType> = (props) => {
           <InfoDotTitleWrapper>
             <DotTitle
               firstLabel={t('EXAMS.QUESTIONS_COUNT', { count: questions })}
-              secondLabel={t('EXAMS.DURATION', { time })}
               firstVariant="m"
             />
           </InfoDotTitleWrapper>

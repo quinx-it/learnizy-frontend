@@ -9,7 +9,6 @@ export type ExamType = {
   title: string;
   description: string;
   questions: number;
-  time: number;
   moduleId: number;
   testId: number;
 };

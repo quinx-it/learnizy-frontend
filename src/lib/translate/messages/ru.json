@@ -130,7 +130,6 @@
     "TITLE": "Экзамены",
     "MODULE_TITLE": "Экзамен по модулю {{moduleNumber}}",
     "QUESTIONS_COUNT": "📋 {{count}} вопросов",
-    "DURATION": "⏱ {{time}} минут",
     "BUTTONS": {
       "RETRY": "Попробовать снова",
       "START": "Начать экзамен"
@@ -205,7 +204,6 @@
     "CHECK_YOUR_KNOWLEDGE_TITLE": "Проверь свои знания",
     "CHECK_YOUR_KNOWLEDGE_DESCRIPTION": "Пройдите короткий тест, чтобы закрепить материал и проверить понимание темы. Не спешите — отвечайте вдумчиво, ведь именно сейчас вы формируете прочную основу для успешного прохождения собеседований.",
     "TEST_QUESTIONS_LABEL": "вопросов",
-    "TEST_TIME_LABEL": "15 минут",
     "BUTTON_START": "Начать",
     "BUTTON_RESULT": "Результат",
     "TOAST_SUCCESS_TITLE": "Успех",
@@ -271,20 +269,12 @@
     "FEW": "урока",
     "MANY": "уроков"
   },
-  "TEST": {
-    "ONE": "тест",
-    "FEW": "теста",
-    "MANY": "тестов"
-  },
   "MODULES_CARD": {
     "BONUS": "Бонусный модуль",
     "MODULE": "Модуль {{number}}",
     "LESSON_ONE": "урок",
     "LESSON_TWO": "урока",
     "LESSON_MANY": "уроков",
-    "TASK_ONE": "тест",
-    "TASK_TWO": "теста",
-    "TASK_MANY": "заданий",
     "START": "Начать",
     "COMPLETED": "Проверено"
   },

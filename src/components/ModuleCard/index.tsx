@@ -76,13 +76,6 @@ const ModuleCardComponent: FC<IModuleCardProps> = (props) => {
     t('MODULES_CARD.LESSON_MANY'),
   )}`;
 
-  const taskInfo = `${pluralize(
-    totalLessons * 2,
-    t('MODULES_CARD.TASK_ONE'),
-    t('MODULES_CARD.TASK_TWO'),
-    t('MODULES_CARD.TASK_MANY'),
-  )}`;
-
   const handleCardClick = () => {
     if (isBlocked && !isMentor) return;
 
@@ -125,12 +118,7 @@ const ModuleCardComponent: FC<IModuleCardProps> = (props) => {
           </TopSection>
           <BottomSection>
             <DotTitleWrapper bonus={bonus}>
-              <DotTitle
-                firstLabel={lessonInfo}
-                secondLabel={taskInfo}
-                firstVariant="m"
-                secondVariant="m"
-              />
+              <DotTitle firstLabel={lessonInfo} firstVariant="m" secondVariant="m" />
             </DotTitleWrapper>
 
             <ButtonContainer>

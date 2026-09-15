@@ -130,7 +130,6 @@
     "TITLE": "Exams",
     "MODULE_TITLE": "Module {{moduleNumber}} Exam",
     "QUESTIONS_COUNT": "📋{{count}} questions",
-    "DURATION": "⏱ {{time}} minutes",
     "BUTTONS": {
       "RETRY": "Try again",
       "START": "Start exam"
@@ -205,7 +204,6 @@
     "CHECK_YOUR_KNOWLEDGE_TITLE": "Check Your Knowledge",
     "CHECK_YOUR_KNOWLEDGE_DESCRIPTION": "Take a short test to reinforce the material and check your understanding of the topic. Take your time — answering thoughtfully now builds a solid foundation for successful interviews.",
     "TEST_QUESTIONS_LABEL": "questions",
-    "TEST_TIME_LABEL": "15 minutes",
     "BUTTON_START": "Start",
     "BUTTON_RESULT": "Result",
     "TOAST_SUCCESS_TITLE": "Success",
@@ -271,20 +269,12 @@
     "FEW": "lessons",
     "MANY": "lessons"
   },
-  "TEST": {
-    "ONE": "test",
-    "FEW": "tests",
-    "MANY": "tests"
-  },
   "MODULES_CARD": {
     "BONUS": "Bonus module",
     "MODULE": "Module {{number}}",
     "LESSON_ONE": "lesson",
     "LESSON_TWO": "lessons",
     "LESSON_MANY": "lessons",
-    "TASK_ONE": "test",
-    "TASK_TWO": "tests",
-    "TASK_MANY": "tasks",
     "START": "Start",
     "COMPLETED": "Checked"
   },

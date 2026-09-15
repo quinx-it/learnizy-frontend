@@ -74,10 +74,12 @@ const Breadcrumbs: FC<IBreadcrumbsProps> = (props) => {
                 ) : (
                   <StyledDotTitleLink href={rootHref}>{t(rootLabel)}</StyledDotTitleLink>
                 )}
-                <StyledDotTitleSecondLabel>
-                  <StyledDotTitleDot>•</StyledDotTitleDot>
-                  {rootDescription || ''}
-                </StyledDotTitleSecondLabel>
+                {rootDescription && (
+                  <StyledDotTitleSecondLabel>
+                    <StyledDotTitleDot>•</StyledDotTitleDot>
+                    {rootDescription}
+                  </StyledDotTitleSecondLabel>
+                )}
               </StyledDotTitleHeading>
             </StyledDotTitleContainer>
           </StyledListItem>

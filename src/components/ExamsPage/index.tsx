@@ -5,6 +5,7 @@ import { type FC } from 'react';
 
 import { useGetCourseQuery } from '@/api/endpoints/courses';
 import { useGetExamsQuery, ExamApiStatus } from '@/api/endpoints/exams';
+import { useGetMainPageProgressQuery } from '@/api/endpoints/progress';
 import ErrorSection from '@/components/ErrorSection';
 import ExamCard from '@/components/ExamCard';
 import FullscreenLoader from '@/components/FullscreenLoader';
@@ -36,16 +37,25 @@ const mapExamStatus = (status: ExamApiStatus): ExamStatus => {
 };
 
 const ExamsPage: FC<IExamsPageProps> = (props) => {
-  const { courseId = 2 } = props;
+  const { courseId: courseIdProp } = props;
 
   const { t } = useTranslation();
 
-  const { data, isLoading, isError, refetch } = useGetExamsQuery({ courseId, page: 0, size: 10 });
-  const { data: course } = useGetCourseQuery(courseId);
+  const { data: mainPage, isLoading: isMainPageLoading } = useGetMainPageProgressQuery(undefined, {
+    skip: courseIdProp !== undefined,
+  });
 
-  if (isLoading) return <FullscreenLoader />;
+  const courseId = courseIdProp ?? mainPage?.courseInfo?.id;
 
-  if (isError || !data) return <ErrorSection reset={refetch} />;
+  const { data, isLoading, isError, refetch } = useGetExamsQuery(
+    { courseId: courseId ?? 0, page: 0, size: 10 },
+    { skip: !courseId },
+  );
+  const { data: course } = useGetCourseQuery(courseId ?? 0, { skip: !courseId });
+
+  if (isMainPageLoading || isLoading) return <FullscreenLoader />;
+
+  if (courseId && (isError || !data)) return <ErrorSection reset={refetch} />;
 
   return (
     <Container>
@@ -61,13 +71,12 @@ const ExamsPage: FC<IExamsPageProps> = (props) => {
         )}
       </HeaderContainer>
 
-      {data.content.map((examItem) => {
+      {(data?.content ?? []).map((examItem) => {
         const exam: ExamType = {
           ...examItem,
           title: t('EXAMS.MODULE_TITLE', { moduleNumber: examItem.moduleSequenceOrder }),
           description: examItem.moduleTitle,
           questions: examItem.questionsCount,
-          time: 20,
         };
 
         return (
