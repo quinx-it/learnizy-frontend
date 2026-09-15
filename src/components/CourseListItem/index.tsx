@@ -30,7 +30,10 @@ const CourseListItem: FC<CourseListItemType> = (props) => {
     <Container>
       <ContentWrapper>
         <ModuleWrapper>
-          <StyledModuleText> {`${t('MAIN_PAGE.MODULE')} ${number}`}</StyledModuleText>
+          <StyledModuleText>
+            {' '}
+            {Number.isFinite(number) ? `${t('MAIN_PAGE.MODULE')} ${number}` : t('MAIN_PAGE.MODULE')}
+          </StyledModuleText>
           <ProgressBar size={12} strokeWidth={2} variant="circular" value={progressBarValue} />
         </ModuleWrapper>
         <TitleWrapper>

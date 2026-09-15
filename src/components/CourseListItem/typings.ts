@@ -2,7 +2,7 @@ import { type CourseListItemStatus } from './const';
 
 export type CourseListItemType = {
   title: string;
-  number: number;
+  number?: number;
   status?: CourseListItemStatus;
   progress?: number;
   onClick?: () => void;

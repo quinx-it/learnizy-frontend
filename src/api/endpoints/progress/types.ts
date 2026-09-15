@@ -18,11 +18,11 @@ export interface ICourseInfo {
 export interface IModuleInfo {
   id: number;
   title: string;
-  description: string;
+  description?: string;
   totalLessons: number;
   completedLessons: number;
   completionStatus: ModuleCompletionStatus;
-  sequenceOrder: number;
+  sequenceNumber: number;
 }
 
 export interface IWeeklyActivity {
