@@ -13,6 +13,7 @@ import {
 import { useGetExamByIdQuery, useGetExamsQuery } from '@/api/endpoints/exams';
 import { type ILessonProgressItem, useGetLessonQuery } from '@/api/endpoints/lessons';
 import { useGetModuleQuery } from '@/api/endpoints/modules';
+import { useGetMainPageProgressQuery } from '@/api/endpoints/progress';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CardWrapper from '@/components/CardWrapper';
 import {
@@ -65,7 +66,7 @@ import {
 } from './styles';
 
 const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
-  const { id, courseId: courseIdProp = 2 } = props;
+  const { id, courseId: courseIdProp } = props;
 
   const { t } = useTranslation();
 
@@ -77,16 +78,22 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
 
   const breadcrumbs = createBreadcrumbs(t);
 
+  const { data: mainPage } = useGetMainPageProgressQuery(undefined, {
+    skip: courseIdProp !== undefined,
+  });
+
+  const courseId = courseIdProp ?? mainPage?.courseInfo?.id;
+
   const {
     data: module,
     isLoading,
     isError,
     refetch,
-  } = useGetModuleQuery({ courseId: courseIdProp, moduleId: +id });
+  } = useGetModuleQuery({ courseId: courseId ?? 0, moduleId: +id }, { skip: !courseId });
 
   const { data: examsData } = useGetExamsQuery(
-    { courseId: courseIdProp, page: 0, size: 100 },
-    { skip: !isMentor },
+    { courseId: courseId ?? 0, page: 0, size: 100 },
+    { skip: !isMentor || !courseId },
   );
   const moduleExam = examsData?.content.find((exam) => exam.moduleId === +id);
   const { data: examDetails } = useGetExamByIdQuery(moduleExam?.testId ?? 0, {
@@ -116,7 +123,7 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
     setContent(editingLesson.content ?? '');
   }, [editingLesson]);
 
-  if (isLoading) return <FullscreenLoader />;
+  if (isLoading || !courseId) return <FullscreenLoader />;
 
   if (isError || !module) return <ErrorSection reset={refetch} />;
 
@@ -199,7 +206,7 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
 
   const isCourseContext = pathname.includes('/learn/courses/');
   const modulesRootHref = isCourseContext
-    ? `${ROUTES.USER_COURSES}/${courseIdProp}/modules`
+    ? `${ROUTES.USER_COURSES}/${courseId}/modules`
     : ROUTES.USER_MODULES;
 
   return (
@@ -230,12 +237,6 @@ const ModuleItemPage: FC<ModuleItemPagePropsType> = (props) => {
                   t('LESSON.ONE'),
                   t('LESSON.FEW'),
                   t('LESSON.MANY'),
-                )}
-                secondLabel={pluralize(
-                  totalLessons * 2,
-                  t('TEST.ONE'),
-                  t('TEST.FEW'),
-                  t('TEST.MANY'),
                 )}
               />
             </ModuleInfoWrapper>

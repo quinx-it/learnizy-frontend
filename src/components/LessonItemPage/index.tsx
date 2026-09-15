@@ -206,9 +206,7 @@ const LessonItemPage: FC<ILessonItemPageProps> = (props) => {
         <TestInfoDotTitleWrapper>
           <DotTitle
             firstLabel={`📋 ${testQuestions ?? 0} ${t('LESSON_ITEM_PAGE.TEST_QUESTIONS_LABEL')}`}
-            secondLabel={t('LESSON_ITEM_PAGE.TEST_TIME_LABEL')}
             firstVariant="m"
-            secondVariant="m"
           />
         </TestInfoDotTitleWrapper>
         <ButtonsRow>

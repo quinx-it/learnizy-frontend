@@ -24,21 +24,25 @@ const DotTitle: FC<IDotTitleProps> = (props) => {
         <StyledHeading variant="2xl" className={firstClassName}>
           {firstLabel}
 
-          <SecondLabel className={secondClassName}>
-            <Dot className={dotClassName}>•</Dot>
-            {secondLabel}
-          </SecondLabel>
+          {secondLabel && (
+            <SecondLabel className={secondClassName}>
+              <Dot className={dotClassName}>•</Dot>
+              {secondLabel}
+            </SecondLabel>
+          )}
         </StyledHeading>
       ) : (
         <StyledText variant={firstVariant} className={firstClassName}>
           {firstLabel}
 
-          <SecondLabel className={secondClassName}>
-            <Dot isSmall className={dotClassName}>
-              •
-            </Dot>
-            {secondLabel}
-          </SecondLabel>
+          {secondLabel && (
+            <SecondLabel className={secondClassName}>
+              <Dot isSmall className={dotClassName}>
+                •
+              </Dot>
+              {secondLabel}
+            </SecondLabel>
+          )}
         </StyledText>
       )}
     </Container>
