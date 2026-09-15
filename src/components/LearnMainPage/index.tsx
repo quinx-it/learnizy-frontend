@@ -84,7 +84,7 @@ const LearnMainPage: FC = () => {
   const sortedModules = useMemo(() => {
     if (!modulesData) return [];
 
-    return [...modulesData].sort((a, b) => a.sequenceNumber - b.sequenceNumber);
+    return [...modulesData].sort((a, b) => a.sequenceOrder - b.sequenceOrder);
   }, [modulesData]);
 
   if (isLoading) return <FullscreenLoader />;
@@ -171,7 +171,7 @@ const LearnMainPage: FC = () => {
                 return (
                   <li key={module.id}>
                     <CourseListItem
-                      number={module.sequenceNumber}
+                      number={module.sequenceOrder}
                       title={module.title}
                       status={courseListItemStatus}
                       progress={moduleProgress}
